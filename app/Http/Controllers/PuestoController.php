@@ -42,7 +42,7 @@ class PuestoController extends Controller
         $puesto->descripcion = $request->descripcion;
         $puesto->save();
 
-        return redirect()->route('puestoLaboral.create', $puesto);//Tendria que colocar index h2
+        return redirect()->route('puestoLaboral.create', $puesto)->with('guardar','ok');//Tendria que colocar index h2
         /** redireciona una vez enviado  */
     }
 
