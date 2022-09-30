@@ -20,7 +20,8 @@ Route::get('/', function () {
 });
 
 /**Route::get('/principal', PrincipalController::class, 'index')->name('principal');*/
-Route::controller(PuestoController::class)->group(function(){
+Route::controller(PuestoController::class)->group(function(){  
+    Route::get('puesto', 'index')->name('puestoLaboral.index');
     Route::get('puesto/create', 'create')->name('puestoLaboral.create');
     Route::post('puesto', 'store')->name('puestoLaboral.store'); 
 }); 

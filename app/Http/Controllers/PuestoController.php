@@ -14,7 +14,8 @@ class PuestoController extends Controller
      */
     public function index()
     {
-        // 
+        $puestos = Puesto::orderBy('numPuesto','desc')->paginate(10); 
+        return view('puestoLaboral.index', compact('puestos'));
     }
 
     /**
@@ -42,7 +43,7 @@ class PuestoController extends Controller
         $puesto->descripcion = $request->descripcion;
         $puesto->save();
 
-        return redirect()->route('puestoLaboral.create', $puesto)->with('guardar','ok');//Tendria que colocar index h2
+        return redirect()->route('puestoLaboral.index', $puesto)->with('guardar','ok');//Tendria que colocar index h2
         /** redireciona una vez enviado  */
     }
 
