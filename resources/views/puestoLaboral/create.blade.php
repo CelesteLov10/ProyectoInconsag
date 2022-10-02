@@ -23,6 +23,7 @@
             @enderror
         </div>
       </div>
+
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Sueldo:</label>
         <div class="col-sm-5">
@@ -32,6 +33,7 @@
           @enderror
         </div>
       </div>
+
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Descripción:</label>
         <div class="col-sm-5">
@@ -41,9 +43,10 @@
          @enderror
         </div>
       </div>
+      
       <div class="mb-3 row">
         <div class="offset-sm-3 col-sm-9">
-          <button type="submit" class="btn btn-primary" onclick="guardar()">Guardar</button> 
+          <button type="submit" class="btn btn-outline-info" onclick="guardar()">Guardar</button> 
           {{-- Scrip de alert cuando se presione guardar --}}
            <script> 
               function guardar(){

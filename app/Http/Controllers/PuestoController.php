@@ -14,7 +14,7 @@ class PuestoController extends Controller
      */
     public function index()
     {
-        $puestos = Puesto::orderBy('numPuesto','desc')->paginate(10); 
+        $puestos = Puesto::orderBy('id','desc')->paginate(10); 
         return view('puestoLaboral.index', compact('puestos'));
     }
 
@@ -64,9 +64,14 @@ class PuestoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // Metodo para que use la ruta de editar y lleve a la vista editar
     public function edit($id)
     {
         //
+        $puesto = Puesto::findOrFail($id);
+
+        return view('puestoLaboral.edit')->with('puesto', $puesto);
+
     }
 
     /**
@@ -76,9 +81,25 @@ class PuestoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //Metodo para actualizar el registro
     public function update(Request $request, $id)
     {
         //
+        $puesto = Puesto::findOrFail($id);
+
+        $puesto->nombreCargo = $request->nombreCargo;
+        $puesto->sueldo = $request->sueldo;
+        $puesto->descripcion = $request->descripcion;
+
+        $create = $puesto->save();
+
+        if ($create){
+            return redirect()->route('puestoLaboral.index')
+            ->with('mensaje', 'Se actualizó el puesto laboral correctamente');
+        }else{
+            //Aqui colocaremos un mensaje de error si no actualizo 
+        }
+
     }
 
     /**

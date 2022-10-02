@@ -13,7 +13,7 @@
 
 <div class="container ">
     <div class="mb-3 text-end">
-        <a class="btn btn-primary text-right" href="{{route('puestoLaboral.create')}}">Nuevo</a>
+        <a class="btn btn-outline-success text-right" href="{{route('puestoLaboral.create')}}">Nuevo</a>
     </div>
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
         <div class="col-60 bg-light p-5">
@@ -33,7 +33,8 @@
                     {{--
                       {{route('puestoLaboral.edit',['id'=>$puesto->numPuesto])}} 
                       --}}
-                    <td><a class="btn btn-warning" href="#">Actualizar</a></td>
+                    <td><a class="btn btn-outline-warning" 
+                      href="{{route('puestoLaboral.edit', ['id' => $puesto->id])}}">Actualizar</a></td>
                         @csrf
                   </tr>
                   @empty

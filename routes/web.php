@@ -21,7 +21,16 @@ Route::get('/', function () {
 
 /**Route::get('/principal', PrincipalController::class, 'index')->name('principal');*/
 Route::controller(PuestoController::class)->group(function(){  
+    //Ruta para listado de cargos
     Route::get('puesto', 'index')->name('puestoLaboral.index');
+    //Ruta para crear un "nuevo puesto laboral"
     Route::get('puesto/create', 'create')->name('puestoLaboral.create');
+    //Ruta para guardar los registros
     Route::post('puesto', 'store')->name('puestoLaboral.store'); 
+    //Ruta para editar un puesto laboral
+    Route::get('/puesto/{id}/edit', 'edit')->name('puestoLaboral.edit');
+    //Ruta para el metodo editar
+    Route::put('/puesto/{id}/edit', 'update')
+    ->name('puestoLaboral.update');
+   
 }); 
