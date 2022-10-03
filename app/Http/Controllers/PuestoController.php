@@ -36,14 +36,25 @@ class PuestoController extends Controller
      */
     public function store(Request $request)
     {
+         //validacion para cuando se agregue un puesto
+        $request->validate([
+            // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
+            'nombreCargo' =>'required|unique:puestos|regex:/^[a-zA-Z\s]+$/u',
+            'sueldo' => 'required|numeric',
+            'descripcion' =>'required'
+        ]);
         $puesto = new Puesto();
 
         $puesto->nombreCargo = $request->nombreCargo;
         $puesto->sueldo = $request->sueldo;
         $puesto->descripcion = $request->descripcion;
-        $puesto->save();
-
-        return redirect()->route('puestoLaboral.index', $puesto)->with('guardar','ok');//Tendria que colocar index h2
+        
+        $create = $puesto->save();
+        
+        if ($create){
+            return redirect()->route('puestoLaboral.index')
+            ->with('mensaje', 'Se guardó el puesto laboral correctamente');
+        } 
         /** redireciona una vez enviado  */
     }
 
@@ -84,7 +95,13 @@ class PuestoController extends Controller
     //Metodo para actualizar el registro
     public function update(Request $request, $id)
     {
-        //
+        //Validacion para la vista de actualizar un puesto
+        $request->validate([
+            // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
+            'nombreCargo' =>'required|unique:puestos|regex:/^[a-zA-Z\s]+$/u',
+            'sueldo' => 'required|numeric',
+            'descripcion' =>'required'
+        ]);
         $puesto = Puesto::findOrFail($id);
 
         $puesto->nombreCargo = $request->nombreCargo;
@@ -95,7 +112,7 @@ class PuestoController extends Controller
 
         if ($create){
             return redirect()->route('puestoLaboral.index')
-            ->with('mensaje', 'Se actualizó el puesto laboral correctamente');
+            ->with('mensajew', 'Se actualizó el puesto laboral correctamente');
         }else{
             //Aqui colocaremos un mensaje de error si no actualizo 
         }
