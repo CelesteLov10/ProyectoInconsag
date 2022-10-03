@@ -112,9 +112,7 @@ class PuestoController extends Controller
 
         if ($create){
             return redirect()->route('puestoLaboral.index')
-            ->with('mensajew', 'Se actualizó el puesto laboral correctamente');
-        }else{
-            //Aqui colocaremos un mensaje de error si no actualizo 
+            ->with('mensajeW', 'Se actualizó el puesto laboral correctamente');
         }
 
     }

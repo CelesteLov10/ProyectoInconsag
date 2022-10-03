@@ -18,6 +18,18 @@
         </div>
       @endif
 
+      {{-- alerta de mensaje cuando se actualice un dato correctamente --}}
+
+@if (session('mensajeW'))
+<!-- <div class="alert alert-success">
+     { { session('mensaje')}}
+ </div>-->
+ <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+   {{ session('mensajeW')}}
+   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+ </div>
+@endif
+
 <div class="container ">
     <div class="mb-3 text-end">
         <a class="btn btn-outline-success text-right" href="{{route('puestoLaboral.create')}}">Nuevo</a>

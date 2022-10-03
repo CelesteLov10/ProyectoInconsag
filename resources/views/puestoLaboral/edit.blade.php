@@ -4,14 +4,15 @@
     
 @section('contenido') 
 
-<div class="mb-5">
+<!--<div class="mb-5">
   <div class="mb-3 row">
     <div class="offset-sm-3 col-sm-9">
-      <a class="btn btn-outline-info" href="{{route('puestoLaboral.index')}}">Atrás</a>   
+      <a class="btn btn-outline-info btn-sm" href="{{route('puestoLaboral.index')}}">Atrás</a>   
     </div>
-  </div> 
+  </div> -->
     <h4 class=" text-center">
       <strong>Actualización de un puesto laboral</strong> 
+      
     </h4>
 </div>
 
@@ -19,7 +20,9 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 " >
       <div class = " card-header py-3 " >
-          <h6 class = "n-font-weight-bold text-primary" >Actualización Puesto </h6 > 
+          <h6 class = "n-font-weight-bold text-primary" >Actualización Puesto 
+            <a class="btn btn-outline-info btn-sm justify-content-md-end "href="{{route('puestoLaboral.index')}}">Atrás</a>   
+          </h6 > 
       </div >
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
       <div class="col-60 bg-light p-5">   
