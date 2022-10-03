@@ -9,7 +9,13 @@
     <h4 class=" text-center">
       <strong>Listado de puestos laborales</strong> 
     </h4>
+
+    
 </div>
+  
+
+<div class="container ">
+
       {{-- alerta de mensaje cuando se guardo correctamente --}}
       @if (session('mensaje'))
         <div class="alert alert-success alert-dismissible fade show" role="alert" >
@@ -29,8 +35,6 @@
    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
  </div>
 @endif
-
-<div class="container ">
     <div class="mb-3 text-end">
         <a class="btn btn-outline-success text-right" href="{{route('puestoLaboral.create')}}">Nuevo</a>
     </div>

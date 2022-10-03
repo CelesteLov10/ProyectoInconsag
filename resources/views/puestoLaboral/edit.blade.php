@@ -7,7 +7,7 @@
 <!--<div class="mb-5">
   <div class="mb-3 row">
     <div class="offset-sm-3 col-sm-9">
-      <a class="btn btn-outline-info btn-sm" href="{{route('puestoLaboral.index')}}">Atrás</a>   
+      <a class="btn btn-outline-info btn-sm" href="{ {route('puestoLaboral.index')}}">Atrás</a>   
     </div>
   </div> -->
     <h4 class=" text-center">

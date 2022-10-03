@@ -93,24 +93,26 @@ class PuestoController extends Controller
      * @return \Illuminate\Http\Response
      */
     //Metodo para actualizar el registro
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Puesto $puest)
     {
+       
         //Validacion para la vista de actualizar un puesto
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
-            'nombreCargo' =>'required|unique:puestos|regex:/^[a-zA-Z\s]+$/u',
+            //agregamos en elcampo  "unique:puestos,: el campo del nombreCargo y el id para que no haya problemas al momento de actualizar ya que son campos unicos
+            'nombreCargo' =>'required|unique:puestos,nombreCargo,'.$id.'id|regex:/^[a-zA-Z\s]+$/u',
             'sueldo' => 'required|numeric',
             'descripcion' =>'required'
         ]);
         $puesto = Puesto::findOrFail($id);
 
-        $puesto->nombreCargo = $request->nombreCargo;
-        $puesto->sueldo = $request->sueldo;
+        $puesto->nombreCargo = $request->input('nombreCargo');
+        $puesto->sueldo = $request->input('sueldo');
         $puesto->descripcion = $request->descripcion;
 
-        $create = $puesto->save();
+        $update = $puesto->save();
 
-        if ($create){
+        if ($update){
             return redirect()->route('puestoLaboral.index')
             ->with('mensajeW', 'Se actualizó el puesto laboral correctamente');
         }
