@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\PuestoController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +34,12 @@ Route::controller(PuestoController::class)->group(function(){
     ->name('puestoLaboral.update');
    
 }); 
+
+Route::controller(EmpleadoController::class)->group(function(){
+    //Ruta para listado de empleados
+    Route::get('empleado', 'index')->name('empleado.index');
+    //Ruta para crear un "nuevo empleado"
+    Route::get('empleado/create', 'create')->name('empleado.create');
+    //Ruta para guardar los registros del empleado
+    Route::post('empleado', 'store')->name('empleado.store');
+});
