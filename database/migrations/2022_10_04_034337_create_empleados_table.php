@@ -19,10 +19,13 @@ return new class extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('telefono');
+            $table->string('estado');
             $table->string('correo');
             $table->date('fechaNacimiento');
             $table->string('direccion');
             $table->date('fechaIngreso');
+            $table->unsignedBigInteger('puesto_id');//Relacion con tabla puesto
+            $table->foreign('puesto_id')->references('id')->on('puestos');// Restriccion llave foranea
             $table->timestamps();
         });
     }

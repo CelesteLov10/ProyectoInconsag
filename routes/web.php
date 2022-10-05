@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\PuestoController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,16 +31,20 @@ Route::controller(PuestoController::class)->group(function(){
     //Ruta para editar un puesto laboral
     Route::get('/puesto/{id}/edit', 'edit')->name('puestoLaboral.edit');
     //Ruta para el metodo editar
-    Route::put('/puesto/{id}/edit', 'update')
-    ->name('puestoLaboral.update');
-   
+    Route::put('/puesto/{id}/edit', 'update')->name('puestoLaboral.update'); 
 }); 
 
 Route::controller(EmpleadoController::class)->group(function(){
     //Ruta para listado de empleados
-    Route::get('empleado', 'index')->name('empleado.index');
+    Route::get('empleado', 'index')->name('empleado.indexEmp');
     //Ruta para crear un "nuevo empleado"
-    Route::get('empleado/create', 'create')->name('empleado.create');
+    Route::get('empleado/create', 'create')->name('empleado.createEmp');
     //Ruta para guardar los registros del empleado
-    Route::post('empleado', 'store')->name('empleado.store');
+    Route::post('empleado', 'store')->name('empleado.storeEmp');
 });
+
+    // Ruta para el campo de busqueda empleado
+    Route::controller(SearchController::class)->group(function(){
+        //Ruta para listado de empleados
+        Route::get('search/empleado', 'empleado')->name('empleado.search');
+    });

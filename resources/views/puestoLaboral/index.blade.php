@@ -1,9 +1,7 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Nuevo Puesto')
-    
+@section('titulo', 'Nuevo Puesto') 
 @section('contenido') 
-
 
 <div class="mb-5">
     <h4 class=" text-center">
@@ -28,11 +26,11 @@
 
 @if (session('mensajeW'))
 <!-- <div class="alert alert-success">
-     { { session('mensaje')}}
- </div>-->
- <div class="alert alert-warning alert-dismissible fade show" role="alert" >
-   {{ session('mensajeW')}}
-   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+{ { session('mensaje')}}
+</div>-->
+<div class="alert alert-warning alert-dismissible fade show" role="alert" >
+  {{ session('mensajeW')}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
  </div>
 @endif
     <div class="mb-3 text-end">
@@ -64,9 +62,9 @@
                         @csrf
                   </tr>
                   @empty
-                   <tr>
-                     <td col-span="4">No hay registros</td>
-                   </tr>
+                  <tr>
+                    <td col-span="4">No hay registros</td>
+                  </tr>
                 @endforelse
                   
                 </tbody>

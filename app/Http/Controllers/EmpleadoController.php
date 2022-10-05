@@ -13,8 +13,17 @@ class EmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {    //Campo busqueda
+        $empleados = Empleado::query()
+        ->when(request('search'), function($query){
+            return $query->where('identidad', 'LIKE', '%' .request('search') .'%')
+            ->orWhere('nombres', 'LIKE', '%' .request('search') .'%')
+               //Aqui es la tabla relacionada y abajo el nombre del campo que desea.
+            ->orWhereHas('puesto', function($q){
+                $q->where('nombreCargo','LIKE', '%' .request('search') .'%');
+            });
+        })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+        return view('empleado.indexEmp', compact('empleados'));
     }
 
     /**
@@ -24,7 +33,8 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        return view('empleado.createEmp');
+    $estados = Empleado::all();
+        return view('empleado.createEmp', compact('estados'));
     }
 
     /**
@@ -49,7 +59,7 @@ class EmpleadoController extends Controller
         $create = $empleado->save();
         
         if ($create){
-            return redirect()->route('empleado.create')
+            return redirect()->route('empleado.indexEmp')
             ->with('mensaje', 'Se guardó el empleado correctamente');
         } 
         /** redireciona una vez enviado  */

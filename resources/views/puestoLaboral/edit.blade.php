@@ -36,9 +36,9 @@
         <div class="col-sm-5">
           <input type="text" autofocus class="form-control rounded-pill" 
           placeholder="Ingrese un cargo" name="nombreCargo"
-           value="{{old('nombreCargo', $puesto->nombreCargo)}}">
+          value="{{old('nombreCargo', $puesto->nombreCargo)}}">
             @error('nombreCargo')
-               <small class="text-danger"><strong>*</strong>{{$message}}</small>
+              <small class="text-danger"><strong>*</strong>{{$message}}</small>
             @enderror
         </div>
       </div>
@@ -48,9 +48,9 @@
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" 
           placeholder="Ingrese una cantidad" name="sueldo"
-           value="{{old('sueldo', $puesto->sueldo)}}">
+          value="{{old('sueldo', $puesto->sueldo)}}">
           @error('sueldo')
-           <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
       </div>
@@ -61,9 +61,9 @@
           <textarea type="text" class="form-control rounded-pill" 
           placeholder="Ingrese una descripción" 
           name="descripcion">{{old('descripcion', $puesto->descripcion)}}</textarea>
-         @error('descripcion')
+        @error('descripcion')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
-         @enderror
+        @enderror
         </div>
       </div>
       <br>
@@ -74,7 +74,7 @@
           <button class="btn btn-outline-info" onclick="actualizar()">
             Actualizar
           </button> 
-       {{-- onclick="actualizar()"  --}}
+      {{-- onclick="actualizar()"  --}}
     
 
           {{-- Boton para restablecer los valores de los campos --}}
@@ -90,7 +90,7 @@
   </div>
 @endsection
 @section('js')
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
 
 
-      @endsection
+    @endsection

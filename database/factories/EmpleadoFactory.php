@@ -18,15 +18,16 @@ class EmpleadoFactory extends Factory
     {
         return [
             //
-            'identidad'=>$this->faker->numberBetween(0, 13),
+            'identidad'=>$this->faker->numerify('####-####-#####'),
             'nombres'=>$this->faker->name(),
-            'apellidos'=>$this->faker->name(),
-            'teléfono'=>$this->faker->numberBetween(0, 8),
+            'apellidos'=>$this->faker->lastname(),
+            'telefono'=>$this->faker->phoneNumber(),
+            'estado'=>$this->faker->randomElement(['Activo','Inactivo']),
             'correo'=>$this->faker->email(),
-            'fechaNacimiento'=>$this->faker->date(),
-            'dirección'=>$this->faker->string(),
-            'fechaIngreso'=>$this->faker->date()
-
+            'fechaNacimiento'=>$this->faker->date($format = 'Y-m-d', $max = 2001),
+            'direccion'=>$this->faker->address(),
+            'fechaIngreso'=>$this->faker->date(),
+            'puesto_id'=>$this->faker->numberBetween(1,50)
         ];
     }
 }

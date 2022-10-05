@@ -26,7 +26,7 @@
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese un cargo" name="nombreCargo" value="{{old('nombreCargo')}}">
             @error('nombreCargo')
-               <small class="text-danger"><strong>*</strong>{{$message}}</small>
+              <small class="text-danger"><strong>*</strong>{{$message}}</small>
             @enderror
         </div>
       </div>
@@ -36,7 +36,7 @@
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese una cantidad" name="sueldo" value="{{old('sueldo')}}">
           @error('sueldo')
-           <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
       </div>
@@ -45,9 +45,9 @@
         <label class="col-sm-3 col-form-label">Descripción:</label>
         <div class="col-sm-5">
           <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese una descripción" name="descripcion">{{old('descripcion')}}</textarea>
-         @error('descripcion')
+        @error('descripcion')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
-         @enderror
+        @enderror
         </div>
       </div>
       
@@ -62,12 +62,5 @@
   </div>
 @endsection
 @section('js')
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
-       {{-- Scrip de alert cuando se presione guardar 
-           <script> 
-              function guardar(){
-                window.alert('El registro se guardó exitosamente');
-                } 
-           </script>
-           --}}
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
