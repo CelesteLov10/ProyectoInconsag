@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use App\Models\Estado;
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
@@ -32,8 +33,8 @@ class EmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-    $estados = Empleado::all();
+    {    //select de estados 
+        $estados = Estado::all();
         return view('empleado.createEmp', compact('estados'));
     }
 
@@ -51,10 +52,12 @@ class EmpleadoController extends Controller
         $empleado->nombres = $request->nombres;
         $empleado->apellidos = $request->apellidos;
         $empleado->telefono = $request->telefono;
+        $empleado->estado = $request->estado;
         $empleado->correo = $request->correo;
         $empleado->fechaNacimiento = $request->fechaNacimiento;
         $empleado->direccion = $request->direccion;
         $empleado->fechaIngreso = $request->fechaIngreso;
+        $empleado->puesto_id = $request->puesto_id;
         
         $create = $empleado->save();
         

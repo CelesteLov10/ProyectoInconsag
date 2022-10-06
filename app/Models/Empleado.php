@@ -12,4 +12,9 @@ class Empleado extends Model
     public function puesto(){
         return $this->belongsTo(Puesto::class);
     }
+
+    public function estado()
+    { 
+       // return $this->belongsTo(Estado::class);
+    }
 }

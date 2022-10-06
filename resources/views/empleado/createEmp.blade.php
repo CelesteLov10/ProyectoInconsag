@@ -71,7 +71,7 @@
         <div class="col-sm-5 form">
           <select class="form-control rounded-pill" name="estado">
             @foreach ($estados as $estado)
-                <option value="{{$estado->id}}" selected >{{$estado->estado}}</option>
+                <option value="{{$estado->nombreE}}">{{$estado->nombreE}}</option>
             @endforeach
           </select>
         @error('estado')
