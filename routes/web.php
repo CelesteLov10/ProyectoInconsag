@@ -37,10 +37,17 @@ Route::controller(PuestoController::class)->group(function(){
 Route::controller(EmpleadoController::class)->group(function(){
     //Ruta para listado de empleados
     Route::get('empleado', 'index')->name('empleado.indexEmp');
+    //Ruta para mostrar un empleado
+    Route::get('/empleado/{id}', 'show')->name('empleado.showEmp')
+    ->where('id','[0-9]+');
     //Ruta para crear un "nuevo empleado"
     Route::get('empleado/create', 'create')->name('empleado.createEmp');
     //Ruta para guardar los registros del empleado
     Route::post('empleado', 'store')->name('empleado.storeEmp');
+      //Ruta para editar un puesto laboral
+      Route::get('/empleado/{id}/edit', 'edit')->name('empleado.editEmp');
+      //Ruta para el metodo editar
+      Route::put('/empleado/{id}/edit', 'update')->name('empleado.update'); 
 });
 
     // Ruta para el campo de busqueda empleado

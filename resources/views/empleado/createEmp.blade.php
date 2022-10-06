@@ -125,15 +125,19 @@
       </div>
 
       <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Puesto id:</label>
+        <label class="col-sm-3 col-form-label">Nombre del cargo</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el id del puesto"
-          name="puesto_id" value="{{old('puesto_id')}}">
-        @error('puesto_id')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
-        @enderror
+        <select name="puesto_id" id="" class="form-select rounded-pill">
+            @foreach ($puesto as $puestos)
+            <option value="{{$puestos->id}}">{{$puestos->nombreCargo}}</option>
+              
+            @endforeach
+            @error('descripcion')
+            <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          @enderror
+        </select>
         </div>
-      </div>
+          </div>
       
       
       <div class="mb-3 row">

@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('empleados', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('identidad')->unique;
             $table->string('nombres');
@@ -26,6 +27,8 @@ return new class extends Migration
             $table->date('fechaIngreso');
             $table->unsignedBigInteger('puesto_id');//Relacion con tabla puesto
             $table->foreign('puesto_id')->references('id')->on('puestos');// Restriccion llave foranea
+
+           
             $table->timestamps();
         });
     }
