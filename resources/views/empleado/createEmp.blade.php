@@ -132,7 +132,7 @@
             <option value="{{$puestos->id}}">{{$puestos->nombreCargo}}</option>
               
             @endforeach
-            @error('descripcion')
+            @error('nombreCargo')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
         </select>

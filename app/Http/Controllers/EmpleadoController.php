@@ -46,6 +46,7 @@ class EmpleadoController extends Controller
         $empleado = Empleado::findOrFail($id);
         return view('empleado.showEmp', compact('estado', 'puesto'))->with('empleado', $empleado);
 
+
     }
     public function create()
     {    //select de estados 
