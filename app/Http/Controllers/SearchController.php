@@ -10,8 +10,9 @@ class SearchController extends Controller
 {
     public function empleado(Request $request){
         $term = $request->get('term');
+        $termi = $request->get('termi');
         $querys = Empleado::where('identidad', 'LIKE', '%'. $term . '%')->get();
-        $queros = Puesto::where('nombreCargo', 'LIKE', '%'. $term . '%')->get();
+        $queros = Puesto::where('nombreCargo', 'LIKE', '%'. $termi . '%')->get();
 
         $data = [];
         foreach($querys as $query){
@@ -19,13 +20,15 @@ class SearchController extends Controller
         'label' => $query->identidad
         ];
         }
-        /* Se supone que buscar por puesto
-        $data1 = [];
+       
+        $dataa =[];
         foreach($queros as $quero){
-        $data1[] = [
+        $dataa[] = [
         'label' => $quero->nombreCargo
         ];
-        }*/
+        }
         return $data;
+        return $dataa;
+       
     }
 }

@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('puestos', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id()->autoIncrement();
             $table->string('nombreCargo');
             $table->double('sueldo');
@@ -22,7 +23,7 @@ return new class extends Migration
         });
     }
 
-    /**
+    /** 
      * Reverse the migrations.
      *
      * @return void

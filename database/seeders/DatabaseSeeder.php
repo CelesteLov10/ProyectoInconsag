@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Puesto;
 use App\Models\Empleado;
+use App\Models\Estado;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         // ]);
         Puesto::factory(50)->create();
         Empleado::factory(50)->create();
+        Estado::factory(2)->create();
     }
 }

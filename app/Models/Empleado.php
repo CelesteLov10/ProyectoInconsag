@@ -9,6 +9,8 @@ class Empleado extends Model
 {
     use HasFactory;
     // relacion un empleado pertenece a un solo puesto
+
+    protected $fillable =['id','estado', 'puesto_id'];
     public function puesto(){
         return $this->belongsTo(Puesto::class);
     }

@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
 @endsection
 
+@section('css')
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    
+@endsection
+
 @section('contenido') 
 
 
@@ -79,11 +85,14 @@
                     <td>{{$empleado->apellidos}}</td>
                     <td>{{$empleado->telefono}}</td>
                     <td>{{$empleado->estado}}</td>
-                    <td><a class="btn btn-outline-success" 
-                        href="{{route('empleado.createEmp', ['id' => $empleado->id])}}">Ver</a>
-                      </td>
+
+                    <td><a class="btn btn-outline-success" href="{{route('empleado.showEmp', ['id'=>$empleado->id])}}">Ver</a></td>
+
+                   <!-- <td><a class="btn btn-outline-success" 
+                        href="{ {route('empleado.showEmp', ['id' => $empleado->id])}}">Ver</a>
+                      </td>-->
                     <td><a class="btn btn-outline-warning" 
-                      href="{{route('empleado.createEmp', ['id' => $empleado->id])}}">Actualizar</a>
+                      href="{{route('empleado.editEmp', ['id' => $empleado->id])}}">Actualizar</a>
                     </td>
                     @csrf
                   </tr>
@@ -104,7 +113,9 @@
 @section('js')
 {{-- plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
-
+<script>src="https://code.jquery.com/jquery-3.5.1.js"</script>
+<script> src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"</script>
+<script> src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"</script>
 <script>
     //extraiga los datos de la BD
     $('#search').autocomplete({
