@@ -6,6 +6,7 @@ use App\Models\Empleado;
 use App\Models\Estado;
 use App\Models\Puesto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmpleadoController extends Controller
 {
@@ -42,11 +43,10 @@ class EmpleadoController extends Controller
         //$puesto = Puesto::all();
         $estado = Estado::all();
         $puesto = Puesto::all();
-
+        
         $empleado = Empleado::findOrFail($id);
         return view('empleado.showEmp', compact('estado', 'puesto'))->with('empleado', $empleado);
-
-
+    
     }
     public function create()
     {    //select de estados 
