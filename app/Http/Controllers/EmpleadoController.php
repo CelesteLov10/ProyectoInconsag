@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 use App\Models\Estado;
 use App\Models\Puesto;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
@@ -64,8 +65,24 @@ class EmpleadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+        //variable para establecer si es mayor de edad o se coloca otro numero
+        $dt = new Carbon();
+        $before = $dt->subYears(18)->format("Y-m-d");
+        //validacion para cuando se agregue un empleado
+        $request->validate([
+            // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
+            'identidad' =>'numeric|required|unique:empleados|digits_between:6,13',
+            'nombres' =>'required|regex:/^[a-zA-Z\s]+$/u',
+            'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
+            'telefono' => 'required|numeric|digits:8',
+            'estado' => 'required',
+            'correo' => 'required|email',
+            'fechaNacimiento' => 'required|date_format:Y/m/d|before:'. $before,
+            'direccion' => 'required',
+            'fechaIngreso' => 'required|date_format:Y/m/d',
+            'puesto_id' => 'required',
+        ]);
         $empleado = new Empleado();
 
         $empleado->identidad = $request->identidad;
@@ -88,7 +105,6 @@ class EmpleadoController extends Controller
         /** redireciona una vez enviado  */
     }
 
-   
     public function edit($id){
         
         $empleado = Empleado::findOrFail($id);
@@ -100,6 +116,24 @@ class EmpleadoController extends Controller
     }
 
     public function update(Request $request, $id){
+        //variable para establecer si es mayor de edad o se coloca otro numero
+        $dt = new Carbon();
+        $before = $dt->subYears(18)->format("Y-m-d");
+        //validacion para cuando se agregue un empleado
+        $request->validate([
+            // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
+            //agregamos en elcampo  "unique:empleados,: el campo del identidad y el id para que no haya problemas al momento de actualizar ya que son campos unicos
+            'identidad' =>'numeric|required|unique:empleados,id,'.$id.'id|digits_between:6,13',
+            'nombres' =>'required|regex:/^[a-zA-Z\s]+$/u',
+            'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
+            'telefono' => 'required|numeric|digits:8',
+            'estado' => 'required',
+            'correo' => 'required|email',
+            'fechaNacimiento' => 'required|date_format:Y/m/d|before:'. $before,
+            'direccion' => 'required',
+            'fechaIngreso' => 'required|date_format:Y/m/d',
+            'puesto_id' => 'required',
+        ]);
         $empleado = Empleado::findOrFail($id);
 
         $empleado->identidad = $request->input('identidad');

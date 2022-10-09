@@ -25,7 +25,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Identidad:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese la identidad" 
+          <input type="text" class="form-control rounded-pill" placeholder="0000-0000-00000" 
             name="identidad" value="{{old('identidad')}}">
             @error('identidad')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -58,7 +58,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Teléfono:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el teléfono"
+          <input type="text" class="form-control rounded-pill" placeholder="0000 0000"
           name="telefono" value="{{old('telefono')}}">
         @error('telefono')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -69,7 +69,7 @@
       <div class="mb-3 row form-group">
         <label class="col-sm-3 col-form-label">Estado:</label>
         <div class="col-sm-5 form">
-          <select class="form-control rounded-pill" name="estado">
+          <select class="form-control form-select rounded-pill" name="estado">
             @foreach ($estados as $estado)
                 <option value="{{$estado->nombreE}}">{{$estado->nombreE}}</option>
             @endforeach
@@ -94,7 +94,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha de nacimiento:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese la fecha de nacimiento"
+          <input type="text" class="form-control rounded-pill" placeholder="YYYY/MM/DD"
           name="fechaNacimiento" value="{{old('fechaNacimiento')}}">
         @error('fechaNacimiento')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -116,7 +116,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha de ingreso:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese la fecha de ingreso"
+          <input type="text" class="form-control rounded-pill" placeholder="YYYY/MM/DD"
           name="fechaIngreso" value="{{old('fechaIngreso')}}">
         @error('fechaIngreso')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -128,14 +128,14 @@
         <label class="col-sm-3 col-form-label">Nombre del cargo</label>
         <div class="col-sm-5">
         <select name="puesto_id" id="" class="form-select rounded-pill">
+          <option value="" disabled selected>-- Selecione una opción--</option>
             @foreach ($puesto as $puestos)
             <option value="{{$puestos->id}}">{{$puestos->nombreCargo}}</option>
-              
             @endforeach
-            @error('nombreCargo')
-            <small class="text-danger"><strong>*</strong>{{$message}}</small>
-          @enderror
-        </select>
+        </select> 
+        @error('puesto_id')
+          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+        @enderror
         </div>
           </div>
       

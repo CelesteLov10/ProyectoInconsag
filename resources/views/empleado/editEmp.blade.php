@@ -5,8 +5,7 @@
 @section('contenido') 
 
     <h4 class=" text-center">
-      <strong>Actualización de un empleado laboral</strong> 
-      
+      <strong>Actualización de un empleado laboral</strong>  
     </h4>
 </div>
 
@@ -23,7 +22,6 @@
     <form action="{{route('empleado.update', $empleado)}}" id="formu" class="empleado-actualizar" method="POST">
         <!-- metodo put para que guarde los cambios en la base de datos-->
         @method('put')
-
         @csrf {{-- TOKEN INPUT OCULTO --}}
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Identidad:</label>
@@ -36,7 +34,6 @@
             @enderror
         </div>
       </div>
-
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombres:</label>
         <div class="col-sm-5">
@@ -48,21 +45,17 @@
           @enderror
         </div>
       </div>
-
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Apellidos:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill" 
+          <input type="text" class="form-control rounded-pill" 
           placeholder="Ingrese los apellidos" 
-          name="apellidos">{{old('apellidos', $empleado->apellidos)}}</textarea>
+          name="apellidos" value="{{old('apellidos', $empleado->apellidos)}}">
         @error('apellidos')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
-
-
-
       
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Teléfono:</label>
@@ -75,14 +68,13 @@
           @enderror
         </div>
       </div>
-
       
-        <div class="mb-3 row">
+        <div class="mb-3 row"> {{-- FALTAAAAAAAAA --}}
         <label class="col-sm-3 col-form-label">Estado:</label>
         <div class="col-sm-5">
         <select class="form-select rounded-pill" name="estado">
             @foreach ($estado as $estados)
-                <option value="{{old('nombreE',$estados->id)}}">{{$estados->nombreE}}</option>
+                <option value="{{old('nombreE',$estados->nombreE)}}">{{$estados->nombreE}}</option>
             @endforeach
             @error('estado')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -91,32 +83,28 @@
         </div>
         </div>
         
-
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Correo:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill" 
+          <input type="text" class="form-control rounded-pill" 
           placeholder="Ingrese el correo electrónico" 
-          name="correo">{{old('correo', $empleado->correo)}}</textarea>
+          name="correo" value="{{old('correo', $empleado->correo)}}">
         @error('correo')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
-
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha de nacimiento:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill" 
+          <input type="text" class="form-control rounded-pill" 
           placeholder="Ingrese la fecha de nacimiento" 
-          name="fechaNacimiento">{{old('fechaNacimiento', $empleado->fechaNacimiento)}}</textarea>
+          name="fechaNacimiento" value="{{old('fechaNacimiento', $empleado->fechaNacimiento)}}">
         @error('fechaNacimiento')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
-
-
       
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Dirección:</label>
@@ -129,47 +117,39 @@
           @enderror
         </div>
       </div>
-
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha de ingreso:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill" 
+          <input type="text" class="form-control rounded-pill" 
           placeholder="Ingrese la fecha de ingreso" 
-          name="fechaIngreso">{{old('fechaIngreso', $empleado->fechaIngreso)}}</textarea>
+          name="fechaIngreso" value="{{old('fechaIngreso', $empleado->fechaIngreso)}}">
         @error('fechaIngreso')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
-
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre del cargo</label>
         <div class="col-sm-5">
         <select name="puesto_id" id="" class="form-select rounded-pill">
             @foreach ($puesto as $puestos)
             <option value="{{old('nombreCargo',$puestos->id)}}">{{$puestos->nombreCargo}}</option>
-              
             @endforeach
-            @error('nombreCargo')
-            <small class="text-danger"><strong>*</strong>{{$message}}</small>
-          @enderror
         </select>
+        @error('nombreCargo')
+            <small class="text-danger"><strong>*</strong>{{$message}}</small>
+        @enderror
         </div>
           </div>
         
-       
-      
       <br>
       <br>
-
       <div class="mb-3 row">
         <div class="offset-sm-3 col-sm-9">
           <button type="submit" class="btn btn-outline-info" >
             Actualizar
           </button> 
       {{-- onclick="actualizar()"  --}}
-    
-
           {{-- Boton para restablecer los valores de los campos --}}
           <button type="reset" form="formu" class="btn btn-outline-danger">
             Restablecer
@@ -216,6 +196,5 @@
                     console.log(response);
                 })
             }
-
           </script>
 @endsection 

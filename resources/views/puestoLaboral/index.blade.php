@@ -55,7 +55,7 @@
                 <tbody>
                 @forelse($puestos as $puesto)
                   <tr>
-                    <th>{{$puesto->nombreCargo}}</th>
+                    <td>{{$puesto->nombreCargo}}</td>
                     <td>{{$puesto->sueldo}}</td>
                     <td><a class="btn btn-outline-warning" 
                       href="{{route('puestoLaboral.edit', ['id' => $puesto->id])}}">Actualizar</a></td>
