@@ -54,7 +54,7 @@ class EmpleadoController extends Controller
         //esta es una prueba deberia de funcionar, pero bueno
 
         $estados = Estado::all();
-        $puesto = Puesto::all();
+        $puesto = Puesto::orderBy('nombreCargo')->get();
         
         return view('empleado.createEmp', compact('estados', 'puesto'));
     }
@@ -100,7 +100,7 @@ class EmpleadoController extends Controller
         
         if ($create){
             return redirect()->route('empleado.indexEmp')
-            ->with('mensaje', 'Se guardó el empleado correctamente');
+            ->with('mensaje', 'Se guardó un nuevo empleado correctamente');
         } 
         /** redireciona una vez enviado  */
     }

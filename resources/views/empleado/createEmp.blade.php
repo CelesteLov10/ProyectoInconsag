@@ -25,7 +25,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Identidad:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="0000-0000-00000" 
+          <input type="text" class="form-control rounded-pill" placeholder="0000 0000 00000" 
             name="identidad" value="{{old('identidad')}}">
             @error('identidad')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>
