@@ -7,8 +7,8 @@
 @endsection
 
 @section('css')
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     
 @endsection
 
@@ -80,7 +80,7 @@
                 <tbody>
                 @forelse($empleados as $empleado)
                   <tr>
-                    <th>{{$empleado->identidad}}</th>
+                    <td>{{$empleado->identidad}}</td>
                     <td>{{$empleado->nombres}}</td>
                     <td>{{$empleado->apellidos}}</td>
                     <td>{{$empleado->telefono}}</td>
@@ -88,7 +88,7 @@
 
                     <td><a class="btn btn-outline-success" href="{{route('empleado.showEmp', ['id'=>$empleado->id])}}">Ver</a></td>
 
-                   <!-- <td><a class="btn btn-outline-success" 
+                  <!-- <td><a class="btn btn-outline-success" 
                         href="{ {route('empleado.showEmp', ['id' => $empleado->id])}}">Ver</a>
                       </td>-->
                     <td><a class="btn btn-outline-warning" 

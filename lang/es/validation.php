@@ -169,7 +169,10 @@ return [
     */
 
     'attributes' => [
-        'descripcion' => 'descripción'
+        'descripcion' => 'descripción',
+        'telefono' => 'teléfono',
+        'direccion' => 'dirección',
+        'puesto_id' => 'nombre cargo'
     ],
 
 ];

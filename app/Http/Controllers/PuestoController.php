@@ -53,7 +53,7 @@ class PuestoController extends Controller
         
         if ($create){
             return redirect()->route('puestoLaboral.index')
-            ->with('mensaje', 'Se guardó el puesto laboral correctamente');
+            ->with('mensaje', 'Se guardó un nuevo puesto laboral correctamente');
         } 
         /** redireciona una vez enviado  */
     }
