@@ -17,7 +17,7 @@ class InventarioFactory extends Factory
     public function definition()
     {
         return [
-            'nombreInv'=>$this->faker->name(),
+            'nombreInv'=>$this->faker->word(),
             'cantidad'=>$this->faker->numberBetween(2, 30),
             'descripcion'=>$this->faker->paragraph(),
             'empleado_id'=>$this->faker->numberBetween(1,50)

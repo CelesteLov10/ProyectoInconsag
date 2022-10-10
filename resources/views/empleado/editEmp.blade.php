@@ -73,7 +73,7 @@
         <label class="col-sm-3 col-form-label">Estado:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" 
-          placeholder="Ingrese el estado" name="estado"
+          placeholder="Ingrese activo o inactivo" name="estado"
           value="{{old('estado', $empleado->estado)}}">
           @error('estado')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>

@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class EmpleadoController extends Controller
 {
     /**
@@ -65,7 +66,7 @@ class EmpleadoController extends Controller
         //validacion para cuando se agregue un empleado
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
-            'identidad' =>'numeric|required|unique:empleados|digits_between:6,13',
+            'identidad' =>'numeric|required|unique:empleados|digits_between:10,13',
             'nombres' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'telefono' => 'required|numeric|digits:8',
@@ -120,7 +121,7 @@ class EmpleadoController extends Controller
             'nombres' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'telefono' => 'required|numeric|digits:8',
-            'estado' => '',
+            'estado' => 'required|string|in:activo,inactivo',
             'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#|unique:empleados,id,'.$id.'id',
             'fechaNacimiento' => 'required|date_format:Y-m-d|before:'. $before,
             'direccion' => 'required',
