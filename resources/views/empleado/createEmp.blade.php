@@ -94,7 +94,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha de nacimiento:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="YYYY/MM/DD"
+          <input type="text" class="form-control rounded-pill" placeholder="YYYY-MM-DD"
           name="fechaNacimiento" value="{{old('fechaNacimiento')}}">
         @error('fechaNacimiento')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
