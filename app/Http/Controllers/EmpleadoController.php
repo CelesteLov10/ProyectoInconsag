@@ -17,19 +17,18 @@ class EmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {    //Campo busqueda
-       
+    {       //Campo busqueda
         $empleados = Empleado::query()
-        ->when(request('search'), function($query){
+            ->when(request('search'), function($query){
             return $query->where('identidad', 'LIKE', '%' .request('search') .'%')
             ->orWhere('nombres', 'LIKE', '%' .request('search') .'%')
-               //Aqui es la tabla relacionada y abajo el nombre del campo que desea.
+            //Aqui es la tabla relacionada y abajo el nombre del campo que desea.
             ->orWhereHas('puesto', function($q){
                 $q->where('nombreCargo','LIKE', '%' .request('search') .'%');
             });
         })->orderBy('id','desc')->paginate(10)->withQueryString(); 
         $puesto = Puesto::all();
-       
+        
         return view('empleado.indexEmp', compact('empleados', 'puesto'));
     }
 
@@ -40,19 +39,13 @@ class EmpleadoController extends Controller
      */
     public function show($id)
     {
-        //
-        //$puesto = Puesto::all();
-        $estado = Estado::all();
-        $puesto = Puesto::all();
-        
         $empleado = Empleado::findOrFail($id);
-        return view('empleado.showEmp', compact('estado', 'puesto'))->with('empleado', $empleado);
+        return view('empleado.showEmp')->with('empleado', $empleado);
     
     }
     public function create()
-    {    //select de estados 
+    {   //select de estados 
         //esta es una prueba deberia de funcionar, pero bueno
-
         $estados = Estado::all();
         $puesto = Puesto::orderBy('nombreCargo')->get();
         
@@ -77,7 +70,7 @@ class EmpleadoController extends Controller
             'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'telefono' => 'required|numeric|digits:8',
             'estado' => 'required',
-            'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#',
+            'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#|unique:empleados',
             'fechaNacimiento' => 'required|date_format:Y-m-d|before:'. $before,
             'direccion' => 'required',
             'fechaIngreso' => 'required|date_format:Y-m-d',
@@ -127,8 +120,8 @@ class EmpleadoController extends Controller
             'nombres' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'telefono' => 'required|numeric|digits:8',
-            'estado' => 'required',
-            'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#',
+            'estado' => '',
+            'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#|unique:empleados,id,'.$id.'id',
             'fechaNacimiento' => 'required|date_format:Y-m-d|before:'. $before,
             'direccion' => 'required',
             'fechaIngreso' => 'required|date_format:Y-m-d',

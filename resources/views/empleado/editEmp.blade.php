@@ -69,7 +69,7 @@
         </div>
       </div>
       
-      {{--<div class="mb-3 row">
+      <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Estado:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" autocomplete=""
@@ -78,21 +78,7 @@
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
-      </div>--}}
-
-       <div class="mb-3 row"> {{-- FALTAAAAAAAAA --}}
-        <label class="col-sm-3 col-form-label">Estado:</label>
-        <div class="col-sm-5">
-        <select class="form-select rounded-pill" name="estado">
-            @foreach ($estado as $estados)
-                <option value="{{old('nombreE',$estados->nombreE)}}">{{$estados->nombreE}}</option>
-            @endforeach
-            @error('estado')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
-        @enderror
-    </select>
-        </div>
-        </div>
+      </div>
         
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Correo:</label>
