@@ -61,7 +61,7 @@
                     <td>{{$inventario->cantidad}}</td>                    {{-- aqui vista show --}}
                     <td><a class="btn btn-outline-success" href="{{route('inventario.create', ['id'=>$inventario->id])}}">Ver</a></td>
                     <td><a class="btn btn-outline-warning" 
-                      href="{{route('inventario.create', ['id' => $inventario->id])}}">Actualizar</a></td>
+                      href="{{route('inventario.edit', ['id' => $inventario->id])}}">Actualizar</a></td>
                         @csrf           {{-- aqui vista edit --}}
                   </tr>
                   @empty

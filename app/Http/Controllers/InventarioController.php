@@ -72,6 +72,12 @@ class InventarioController extends Controller
     public function edit($id)
     {
         //
+        $inventario = Inventario::findOrFail($id);
+        $empleado = Empleado::all();
+
+        return view('inventario.edit',  compact('empleado'))
+        ->with('inventario', $inventario);
+
     }
 
     /**
@@ -84,6 +90,19 @@ class InventarioController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $inventario = Inventario::findOrFail($id);
+
+        $inventario->nombreInv = $request->input('nombreInv');
+        $inventario->cantidad = $request->input('cantidad');
+        $inventario->descripcion = $request->descripcion;
+        $inventario->empleado_id = $request->empleado_id;
+        
+        $update = $inventario->save();
+        
+        if ($update){
+            return redirect()->route('inventario.index')
+            ->with('mensaje', 'Se actualizó el inventario correctamente');
+        } 
     }
 
     /**

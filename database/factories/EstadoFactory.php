@@ -18,7 +18,7 @@ class EstadoFactory extends Factory
     {
         return [
             //
-            'nombreE' =>$this->faker->randomElement(['Activo', 'Inactivo'])
+         'nombreE' =>$this->faker->randomElement(['Activo', 'Inactivo'])
         ];
     }
 }

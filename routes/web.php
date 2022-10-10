@@ -67,8 +67,8 @@ Route::controller(EmpleadoController::class)->group(function(){
     Route::get('inventario/create', 'create')->name('inventario.create');
     //Ruta para guardar los registros del inventario
     Route::post('inventario', 'store')->name('inventario.store');
-    /*//Ruta para editar un inventario
+    //Ruta para editar un inventario
     Route::get('/inventario/{id}/edit', 'edit')->name('inventario.edit');
     //Ruta para el metodo editar
-    Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');*/
+    Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');
 });
