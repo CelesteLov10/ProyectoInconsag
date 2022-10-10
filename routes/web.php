@@ -48,19 +48,19 @@ Route::controller(EmpleadoController::class)->group(function(){
     //Ruta para editar un empleado
     Route::get('/empleado/{id}/edit', 'edit')->name('empleado.editEmp');
     //Ruta para el metodo editar
-    Route::put('/empleado/{id}/edit', 'update')->name('empleado.update'); 
+    Route::put('/empleado/{id}/edit', 'update')->name('empleado.update');   
 });
 
-    // Ruta para el campo de busqueda empleado
+    //Ruta para el campo de busqueda empleado
     Route::controller(SearchController::class)->group(function(){
     //Ruta para listado de empleados
     Route::get('search/empleado', 'empleado')->name('empleado.search');
-    });
+});
 
     Route::controller(InventarioController::class)->group(function(){
-    /*Ruta para listado de inventariophp
-    Route::get(inventario', 'index')->name('inventario.index');
-    //Ruta para mostrar un inventario
+    //Ruta para listado de inventario
+    Route::get('inventario', 'index')->name('inventario.index');
+    /*Ruta para mostrar un inventario
     Route::get('/inventario/{id}', 'show')->name('inventario.show')
     ->where('id','[0-9]+');*/
     //Ruta para crear un "nuevo inventario"
@@ -71,4 +71,4 @@ Route::controller(EmpleadoController::class)->group(function(){
     Route::get('/inventario/{id}/edit', 'edit')->name('inventario.edit');
     //Ruta para el metodo editar
     Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');*/
-    });
+});

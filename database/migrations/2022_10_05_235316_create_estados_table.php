@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('nombreE');
             $table->timestamps();
         });
+
+      /*  DB::table('estados')->insert([
+            ['nombreE'=>'Activo'],
+            ['nombreE'=>'Inactivo'],  
+        ]);*/
     }
 
     /**

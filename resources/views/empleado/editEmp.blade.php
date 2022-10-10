@@ -13,7 +13,7 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 " >
       <div class = " card-header py-3 " >
-          <h6 class = "n-font-weight-bold text-primary" >Actualización de Empleado
+        <h6 class = "n-font-weight-bold text-primary">Actualización de Empleado
             <a class="btn btn-outline-info btn-sm justify-content-md-end "href="{{route('empleado.indexEmp')}}">Atrás</a>   
           </h6 > 
       </div >
@@ -74,12 +74,12 @@
         <div class="col-sm-5">
         <select class="form-select rounded-pill" name="estado">
             @foreach ($estado as $estados)
-                <option value="{{old('nombreE',$estados->nombreE)}}">{{$estados->nombreE}}</option>
+                <option value="{{old('nombreE',$estados->nombreE)}}">{{old('$estados->nombreE')}}</option>
             @endforeach
             @error('estado')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
         @enderror
-    </select>
+        </select>
         </div>
         </div>
         
