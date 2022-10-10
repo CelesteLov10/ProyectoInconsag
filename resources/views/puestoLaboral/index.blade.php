@@ -1,6 +1,6 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Nuevo Puesto') 
+@section('titulo', 'Listado puesto') 
 @section('contenido') 
 
 <div class="mb-5">

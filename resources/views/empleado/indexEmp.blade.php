@@ -1,6 +1,6 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Nuevo Puesto')
+@section('titulo', 'Lista de empleados')
 
 @section('css')
   <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
@@ -60,7 +60,7 @@
       {{-- encabezado --}}
       <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
-            <h6 class = "n-font-weight-bold text-primary"> Todos los empleados </h6 > 
+            <a href="{{route('empleado.indexEmp')}} "style="text-decoration:none"><h6 class = "n-font-weight-bold text-primary">Todos los empleados</h6 ></a> 
         </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">

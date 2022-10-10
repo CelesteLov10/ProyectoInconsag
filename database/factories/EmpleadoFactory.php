@@ -24,9 +24,9 @@ class EmpleadoFactory extends Factory
             'telefono'=>$this->faker->phoneNumber(),
             'estado'=>$this->faker->randomElement(['Activo','Inactivo']),
             'correo'=>$this->faker->email(),
-            'fechaNacimiento'=>$this->faker->date($format = 'Y/m/d', $max = 2001),
+            'fechaNacimiento'=>$this->faker->date('Y-m-d', $max = 2001),
             'direccion'=>$this->faker->address(),
-            'fechaIngreso'=>$this->faker->date(),
+            'fechaIngreso'=>$this->faker->date('Y-m-d'),
             'puesto_id'=>$this->faker->numberBetween(1,50)
         ];
     }

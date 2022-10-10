@@ -1,6 +1,6 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Detalle de Empleado')
+@section('titulo', 'Detalle de empleado')
 
 @section('css')
   <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 

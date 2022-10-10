@@ -1,6 +1,6 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Nuevo Inventario')
+@section('titulo', 'Nuevo inventario')
     
 @section('contenido') 
 

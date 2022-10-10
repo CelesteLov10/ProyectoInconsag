@@ -1,6 +1,6 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Nuevo Empleado')
+@section('titulo', 'Nuevo empleado')
     
 @section('contenido') 
 
@@ -25,7 +25,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Identidad:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="0000 0000 00000" 
+          <input type="text" class="form-control rounded-pill" placeholder="Ingrese la identidad" 
             name="identidad" value="{{old('identidad')}}">
             @error('identidad')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -58,7 +58,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Teléfono:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="0000 0000"
+          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el numero de teléfono"
           name="telefono" value="{{old('telefono')}}">
         @error('telefono')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>

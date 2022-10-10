@@ -1,6 +1,6 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Actualizar Puesto')
+@section('titulo', 'Actualizar puesto')
     
 @section('contenido') 
 

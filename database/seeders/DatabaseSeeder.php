@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         Puesto::factory(50)->create();
         Empleado::factory(50)->create();
-        Estado::factory(2)->create();
+        // Estado::factory(2)->create();
         Inventario::factory(50)->create();
     }
 }

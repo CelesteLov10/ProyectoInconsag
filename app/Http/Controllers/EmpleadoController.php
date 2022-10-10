@@ -77,10 +77,10 @@ class EmpleadoController extends Controller
             'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'telefono' => 'required|numeric|digits:8',
             'estado' => 'required',
-            'correo' => 'required|email',
-            'fechaNacimiento' => 'required|date_format:Y/m/d|before:'. $before,
+            'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#',
+            'fechaNacimiento' => 'required|date_format:Y-m-d|before:'. $before,
             'direccion' => 'required',
-            'fechaIngreso' => 'required|date_format:Y/m/d',
+            'fechaIngreso' => 'required|date_format:Y-m-d',
             'puesto_id' => 'required',
         ]);
         $empleado = new Empleado();
@@ -128,10 +128,10 @@ class EmpleadoController extends Controller
             'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'telefono' => 'required|numeric|digits:8',
             'estado' => 'required',
-            'correo' => 'required|email',
-            'fechaNacimiento' => 'required|date_format:Y/m/d|before:'. $before,
+            'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#',
+            'fechaNacimiento' => 'required|date_format:Y-m-d|before:'. $before,
             'direccion' => 'required',
-            'fechaIngreso' => 'required|date_format:Y/m/d',
+            'fechaIngreso' => 'required|date_format:Y-m-d',
             'puesto_id' => 'required',
         ]);
         $empleado = Empleado::findOrFail($id);
