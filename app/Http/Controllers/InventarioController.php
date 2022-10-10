@@ -14,8 +14,8 @@ class InventarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   $inventarios = Inventario::orderBy('id','desc')->paginate(10); 
+        return view('inventario.index', compact('inventarios'));
     }
 
     /**
@@ -26,7 +26,7 @@ class InventarioController extends Controller
     public function create()
     {   
         $empleado = Empleado::orderBy('nombres')->get();
-        return view('inventario.create',compact( 'empleado'));
+        return view('inventario.create',compact('empleado'));
     }
 
     /**
@@ -47,7 +47,7 @@ class InventarioController extends Controller
         $create = $inventario->save();
         
         if ($create){
-            return redirect()->route('inventario.create')
+            return redirect()->route('inventario.index')
             ->with('mensaje', 'Se guardó un nuevo inventario correctamente');
         }
     }

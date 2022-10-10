@@ -13,7 +13,7 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 " >
       <div class = " card-header py-3 " >
-          <h6 class = "n-font-weight-bold text-primary" >Actualización de Empleado
+        <h6 class = "n-font-weight-bold text-primary">Actualización de Empleado
             <a class="btn btn-outline-info btn-sm justify-content-md-end "href="{{route('empleado.indexEmp')}}">Atrás</a>   
           </h6 > 
       </div >
