@@ -61,7 +61,7 @@
             <select name="empleado_id" id="" class="form-select rounded-pill">
                 <option value="" disabled selected>-- Selecione una opción--</option>
                 @foreach ($empleado as $empleados)
-                <option value="{{$empleados->id}}">{{$empleados->nombres}}</option>
+                <option value="{{$empleados->id}}">{{$empleados->id}}-{{$empleados->nombres}}</option>
                 @endforeach
             </select> 
             @error('puesto_id')

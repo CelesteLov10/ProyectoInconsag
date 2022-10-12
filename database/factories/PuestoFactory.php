@@ -18,7 +18,7 @@ class PuestoFactory extends Factory
     {
         return [
             //
-            'nombreCargo'=>$this->faker->jobTitle(),
+            'nombreCargo'=>$this->faker->unique()->jobTitle(),
             'sueldo'=>$this->faker->numberBetween(5000, 45000),
             'descripcion'=>$this->faker->paragraph()
 

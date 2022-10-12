@@ -70,6 +70,7 @@
         <label class="col-sm-3 col-form-label">Estado:</label>
         <div class="col-sm-5 form">
           <select class="form-control form-select rounded-pill" name="estado">
+            <option value="" disabled selected>-- Selecione una opción--</option>
             @foreach ($estados as $estado)
                 <option value="{{$estado->nombreE}}">{{$estado->nombreE}}</option>
             @endforeach
@@ -130,7 +131,7 @@
         <select name="puesto_id" id="" class="form-select rounded-pill">
           <option value="" disabled selected>-- Selecione una opción--</option>
             @foreach ($puesto as $puestos)
-            <option value="{{$puestos->id}}">{{$puestos->nombreCargo}}</option>
+            <option value="{{$puestos->id}}">{{$puestos->id}}-{{$puestos->nombreCargo}}</option>
             @endforeach
         </select> 
         @error('puesto_id')

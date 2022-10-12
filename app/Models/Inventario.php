@@ -12,5 +12,9 @@ class Inventario extends Model
     public function empleado(){
         return $this->belongsTo(Empleado::class);
     }
+
+    public function oficina(){
+        return $this->belongsTo(Oficina::class);
+    }
 }
 

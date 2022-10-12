@@ -72,3 +72,19 @@ Route::controller(EmpleadoController::class)->group(function(){
     //Ruta para el metodo editar
     Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');
 });
+
+Route::controller(InventarioController::class)->group(function(){
+    /*Ruta para listado de inventario
+    Route::get('inventario', 'index')->name('inventario.index');
+    //Ruta para mostrar un inventario
+    Route::get('/inventario/{id}', 'show')->name('inventario.show')
+    ->where('id','[0-9]+');*/
+    //Ruta para crear un "nueva oficina"
+    Route::get('oficina/create', 'create')->name('oficina.create');
+    //Ruta para guardar los registros de oficina
+    Route::post('oficina', 'store')->name('oficina.store');
+    /*Ruta para editar un inventario
+    Route::get('/inventario/{id}/edit', 'edit')->name('inventario.edit');
+    //Ruta para el metodo editar
+    Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');*/
+});

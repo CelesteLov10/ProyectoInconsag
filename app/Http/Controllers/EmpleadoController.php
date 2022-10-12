@@ -145,7 +145,7 @@ class EmpleadoController extends Controller
         
         if ($update){
             return redirect()->route('empleado.indexEmp')
-            ->with('mensaje', 'Se actualizó el empleado correctamente');
+            ->with('mensajeW', 'Se actualizó el empleado correctamente');
         } 
     }
     public function destroy($id)

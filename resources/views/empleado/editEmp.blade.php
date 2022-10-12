@@ -126,7 +126,7 @@
         @enderror
         </div>
       </div>
-      <div class="mb-3 row">
+      {{-- <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre del cargo</label>
         <div class="col-sm-5">
         <select name="puesto_id" id="" class="form-select rounded-pill">
@@ -139,6 +139,18 @@
         @enderror
         </div>
           </div>
+         --}}
+         
+         <div class="mb-3 row">
+          <label class="col-sm-3 col-form-label">Id de puesto</label>
+          <div class="col-sm-5">
+          <input type="text" name="puesto_id" class="form-control rounded-pill"
+             value="{{old('puesto_id',$empleado->puesto_id)}}">
+          @error('puesto_id')
+              <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          @enderror
+          </div>
+        </div>
         
       <br>
       <br>

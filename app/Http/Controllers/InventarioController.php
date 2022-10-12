@@ -101,7 +101,7 @@ class InventarioController extends Controller
         
         if ($update){
             return redirect()->route('inventario.index')
-            ->with('mensaje', 'Se actualizó el inventario correctamente');
+            ->with('mensajeW', 'Se actualizó el inventario correctamente');
         } 
     }
 

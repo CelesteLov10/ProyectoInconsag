@@ -25,9 +25,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Puesto::factory(50)->create();
+        Puesto::factory(30)->create();
         Empleado::factory(50)->create();
-        // Estado::factory(2)->create();
-        Inventario::factory(50)->create();
+        Inventario::factory(100)->create();
     }
 }
