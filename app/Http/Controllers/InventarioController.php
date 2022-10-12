@@ -40,8 +40,8 @@ class InventarioController extends Controller
         $inventario = new Inventario();
 
         $inventario->nombreInv = $request->nombreInv;
-        $inventario->cantidad = $request->cantidad;
         $inventario->descripcion = $request->descripcion;
+        $inventario->fecha = $request->fecha;
         $inventario->empleado_id = $request->empleado_id;
         
         $create = $inventario->save();

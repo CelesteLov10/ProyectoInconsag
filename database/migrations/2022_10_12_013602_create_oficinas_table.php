@@ -17,8 +17,10 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('nombreDepto');
+            $table->string('direccion');
+            $table->integer('cantidadInv');
             $table->unsignedBigInteger('inventario_id');//Relacion con tabla oficina
-            $table->foreign('empleado_id')->references('id')->on('empleados');// Restriccion llave foranea
+            $table->foreign('inventario_id')->references('id')->on('inventarios');// Restriccion llave foranea
             $table->timestamps();
         });
     }

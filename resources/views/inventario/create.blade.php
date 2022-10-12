@@ -34,22 +34,22 @@
         </div>
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Cantidad:</label>
+            <label class="col-sm-3 col-form-label">Descripción:</label>
             <div class="col-sm-5">
-                    <input type="text" class="form-control rounded-pill" placeholder="Ingrese una cantidad" 
-                    name="cantidad" value="{{old('cantidad')}}">
-                    @error('cantidad')
+                    <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese una descripción"
+                    name="descripcion">{{old('descripcion')}}</textarea>
+                    @error('descripcion')
                     <small class="text-danger"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>
         </div>
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Descripción:</label>
+            <label class="col-sm-3 col-form-label">fecha:</label>
             <div class="col-sm-5">
-                    <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese una descripción"
-                    name="descripcion">{{old('descripcion')}}</textarea>
-                    @error('descripcion')
+                    <input type="text" class="form-control rounded-pill" placeholder="YY-MM-DD" 
+                    name="fecha" value="{{old('fecha')}}">
+                    @error('fecha')
                     <small class="text-danger"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>

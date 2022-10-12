@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventario;
+use App\Models\Oficina;
 use Illuminate\Http\Request;
 
 class OficinaController extends Controller
@@ -23,7 +25,8 @@ class OficinaController extends Controller
      */
     public function create()
     {
-        //
+        $inventario = Inventario::orderBy('nombreInv')->get();
+        return view('oficina.create',compact('inventario'));
     }
 
     /**
@@ -34,7 +37,19 @@ class OficinaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $oficina = new Oficina();
+
+        $oficina->nombreDepto = $request->nombreDepto;
+        $oficina->direccion= $request->direccion;
+        $oficina->cantidadInv = $request->cantidadInv;
+        $oficina->inventario_id = $request->inventario_id;
+        
+        $create = $oficina->save();
+        
+        if ($create){
+            return redirect()->route('oficina.create')
+            ->with('mensaje', 'Se guardó nueva oficina correctamente');
+        }
     }
 
     /**

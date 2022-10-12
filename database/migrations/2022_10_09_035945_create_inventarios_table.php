@@ -17,8 +17,8 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->id()->autoIncrement();
             $table->string('nombreInv');
-            $table->integer('cantidad');
             $table->text('descripcion');
+            $table->date('fecha');
             $table->unsignedBigInteger('empleado_id');//Relacion con tabla empleado
             $table->foreign('empleado_id')->references('id')->on('empleados');// Restriccion llave foranea
             $table->timestamps();

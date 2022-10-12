@@ -28,7 +28,6 @@ return new class extends Migration
             $table->unsignedBigInteger('puesto_id');//Relacion con tabla puesto
             $table->foreign('puesto_id')->references('id')->on('puestos');// Restriccion llave foranea
 
-           
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\OficinaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,7 +74,7 @@ Route::controller(EmpleadoController::class)->group(function(){
     Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');
 });
 
-Route::controller(InventarioController::class)->group(function(){
+Route::controller(OficinaController::class)->group(function(){
     /*Ruta para listado de inventario
     Route::get('inventario', 'index')->name('inventario.index');
     //Ruta para mostrar un inventario
