@@ -4,7 +4,6 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\InventarioController;
-use App\Http\Controllers\OficinaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,17 +52,21 @@ Route::controller(EmpleadoController::class)->group(function(){
 });
 
     //Ruta para el campo de busqueda empleado
-    Route::controller(SearchController::class)->group(function(){
+Route::controller(SearchController::class)->group(function(){
     //Ruta para listado de empleados
     Route::get('search/empleado', 'empleado')->name('empleado.search');
+    //Ruta para listado puesto
+    Route::get('search/puesto', 'puesto')->name('puesto.search');
+    //Ruta para listado inventario
+    Route::get('search/inventario', 'inventario')->name('inventario.search');
 });
 
-    Route::controller(InventarioController::class)->group(function(){
+Route::controller(InventarioController::class)->group(function(){
     //Ruta para listado de inventario
     Route::get('inventario', 'index')->name('inventario.index');
-    /*Ruta para mostrar un inventario
+    //Ruta para mostrar un inventario
     Route::get('/inventario/{id}', 'show')->name('inventario.show')
-    ->where('id','[0-9]+');*/
+    ->where('id','[0-9]+');
     //Ruta para crear un "nuevo inventario"
     Route::get('inventario/create', 'create')->name('inventario.create');
     //Ruta para guardar los registros del inventario
@@ -72,20 +75,4 @@ Route::controller(EmpleadoController::class)->group(function(){
     Route::get('/inventario/{id}/edit', 'edit')->name('inventario.edit');
     //Ruta para el metodo editar
     Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');
-});
-
-Route::controller(OficinaController::class)->group(function(){
-    /*Ruta para listado de inventario
-    Route::get('inventario', 'index')->name('inventario.index');
-    //Ruta para mostrar un inventario
-    Route::get('/inventario/{id}', 'show')->name('inventario.show')
-    ->where('id','[0-9]+');*/
-    //Ruta para crear un "nueva oficina"
-    Route::get('oficina/create', 'create')->name('oficina.create');
-    //Ruta para guardar los registros de oficina
-    Route::post('oficina', 'store')->name('oficina.store');
-    /*Ruta para editar un inventario
-    Route::get('/inventario/{id}/edit', 'edit')->name('inventario.edit');
-    //Ruta para el metodo editar
-    Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');*/
 });

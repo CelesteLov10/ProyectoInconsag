@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('estado');
             $table->string('correo');
-            $table->date('fechaNacimiento');
+            $table->string('fechaNacimiento');
             $table->string('direccion');
-            $table->date('fechaIngreso');
+            $table->string('fechaIngreso');
             $table->unsignedBigInteger('puesto_id');//Relacion con tabla puesto
             $table->foreign('puesto_id')->references('id')->on('puestos');// Restriccion llave foranea
 

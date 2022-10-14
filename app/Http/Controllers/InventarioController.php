@@ -13,8 +13,14 @@ class InventarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {   $inventarios = Inventario::orderBy('id','desc')->paginate(10); 
+    public function index(){
+         //Campo busqueda
+        $inventarios = Inventario::query()
+        ->when(request('search'), function($query){
+        return $query->where('nombreInv', 'LIKE', '%' .request('search') .'%');
+        })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+        
+        $empleado = Empleado::all();
         return view('inventario.index', compact('inventarios'));
     }
 
@@ -60,7 +66,8 @@ class InventarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $inventario = Inventario::findOrFail($id);
+        return view('inventario.show')->with('inventario', $inventario);
     }
 
     /**
@@ -93,8 +100,8 @@ class InventarioController extends Controller
         $inventario = Inventario::findOrFail($id);
 
         $inventario->nombreInv = $request->input('nombreInv');
-        $inventario->cantidad = $request->input('cantidad');
         $inventario->descripcion = $request->descripcion;
+        $inventario->fecha = $request->fecha;
         $inventario->empleado_id = $request->empleado_id;
         
         $update = $inventario->save();

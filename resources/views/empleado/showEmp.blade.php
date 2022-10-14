@@ -30,8 +30,8 @@
 <table class="table">
     <thead class="table-light">
         <tr>
-            <th scope="col" class="col-md-4">Campo</th>
-            <th scope="col">Valor</th>
+            <th scope="col" class="col-md-4">Datos</th>
+            <th scope="col">Información</th>
         </tr>
     </thead>
     <tbody>
@@ -64,7 +64,7 @@
             <td>{{$empleado->direccion}}</td>    
         </tr>
         <tr>
-            <th scope="row">Fecha de Ingreso</th>
+            <th scope="row">Fecha de ingreso</th>
             <td>{{$empleado->fechaIngreso}}</td>    
         </tr>
         
@@ -90,5 +90,4 @@
 @section('js')
 {{-- plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
-
 @endsection

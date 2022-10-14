@@ -19,7 +19,7 @@ class InventarioFactory extends Factory
         return [
             'nombreInv'=>$this->faker->word(),
             'descripcion'=>$this->faker->paragraph(),
-            'fecha'=>$this->faker->date('Y-m-d'),
+            'fecha'=>$this->faker->dateTime(),
             'empleado_id'=>$this->faker->numberBetween(1,50)
         ];
     }

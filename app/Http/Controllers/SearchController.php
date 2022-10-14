@@ -4,31 +4,47 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Empleado;
+use App\Models\Inventario;
 use App\Models\Puesto;
 
 class SearchController extends Controller
 {
     public function empleado(Request $request){
         $term = $request->get('term');
-        $termi = $request->get('termi');
         $querys = Empleado::where('identidad', 'LIKE', '%'. $term . '%')->get();
-        $queros = Puesto::where('nombreCargo', 'LIKE', '%'. $termi . '%')->get();
-
+        
         $data = [];
         foreach($querys as $query){
         $data[] = [
         'label' => $query->identidad
         ];
         }
-       
-        $dataa =[];
-        foreach($queros as $quero){
-        $dataa[] = [
-        'label' => $quero->nombreCargo
+        return $data;  
+    }
+
+    public function puesto(Request $request){
+        $term = $request->get('term');
+        $querys = Puesto::where('nombreCargo', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->nombreCargo
         ];
         }
         return $data;
-        return $dataa;
-       
+    }
+
+    public function inventario(Request $request){
+        $term = $request->get('term');
+        $querys = Inventario::where('nombreInv', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->nombreInv
+        ];
+        }
+        return $data;
     }
 }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('nombreInv');
             $table->text('descripcion');
-            $table->date('fecha');
+            $table->string('fecha');
             $table->unsignedBigInteger('empleado_id');//Relacion con tabla empleado
             $table->foreign('empleado_id')->references('id')->on('empleados');// Restriccion llave foranea
             $table->timestamps();

@@ -7,7 +7,6 @@ use App\Models\Estado;
 use App\Models\Puesto;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 
 class EmpleadoController extends Controller
@@ -25,7 +24,7 @@ class EmpleadoController extends Controller
             ->orWhere('nombres', 'LIKE', '%' .request('search') .'%')
             //Aqui es la tabla relacionada y abajo el nombre del campo que desea.
             ->orWhereHas('puesto', function($q){
-                $q->where('nombreCargo','LIKE', '%' .request('search') .'%');
+             $q->where('nombreCargo','LIKE', '%' .request('search') .'%');
             });
         })->orderBy('id','desc')->paginate(10)->withQueryString(); 
         $puesto = Puesto::all();
@@ -62,19 +61,19 @@ class EmpleadoController extends Controller
     public function store(Request $request){
         //variable para establecer si es mayor de edad o se coloca otro numero
         $dt = new Carbon();
-        $before = $dt->subYears(18)->format("Y-m-d");
+        $before = $dt->subYears(18);
         //validacion para cuando se agregue un empleado
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
-            'identidad' =>'numeric|required|unique:empleados|digits_between:10,13',
+            'identidad' =>'numeric|required|starts_with:0,1 between: 01,18|unique:empleados|digits:13',
             'nombres' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
-            'telefono' => 'required|numeric|digits:8',
+            'telefono' => 'required|unique:empleados|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/',
             'estado' => 'required',
             'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#|unique:empleados',
-            'fechaNacimiento' => 'required|date_format:Y-m-d|before:'. $before,
+            'fechaNacimiento' => 'required|before:'. $before,
             'direccion' => 'required',
-            'fechaIngreso' => 'required|date_format:Y-m-d',
+            'fechaIngreso' => 'required',
             'puesto_id' => 'required',
         ]);
         $empleado = new Empleado();
@@ -105,27 +104,27 @@ class EmpleadoController extends Controller
         $estado = Estado::all();
         $puesto = Puesto::all();
 
-        return view('empleado.editEmp',  compact('empleado', 'estado','puesto'))
+        return view('empleado.editEmp', compact('empleado', 'estado','puesto'))
         ->with('empleado', $empleado);
     }
 
     public function update(Request $request, $id){
         //variable para establecer si es mayor de edad o se coloca otro numero
         $dt = new Carbon();
-        $before = $dt->subYears(18)->format("Y-m-d");
+        $before = $dt->subYears(18);
         //validacion para cuando se agregue un empleado
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
             //agregamos en elcampo  "unique:empleados,: el campo del identidad y el id para que no haya problemas al momento de actualizar ya que son campos unicos
-            'identidad' =>'numeric|required|unique:empleados,id,'.$id.'id|digits_between:6,13',
+            'identidad' =>'numeric|required|starts_with:0,1 between: 01,18|unique:empleados,identidad,'.$id.'id|digits:13',
             'nombres' =>'required|regex:/^[a-zA-Z\s]+$/u',
             'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
-            'telefono' => 'required|numeric|digits:8',
+            'telefono' => 'required|unique:empleados,telefono,'.$id.'id|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/',
             'estado' => 'required|string|in:activo,inactivo',
-            'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#|unique:empleados,id,'.$id.'id',
-            'fechaNacimiento' => 'required|date_format:Y-m-d|before:'. $before,
+            'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#|unique:empleados,correo,'.$id.'id',
+            'fechaNacimiento' => 'required|before:'. $before,
             'direccion' => 'required',
-            'fechaIngreso' => 'required|date_format:Y-m-d',
+            'fechaIngreso' => 'required',
             'puesto_id' => 'required',
         ]);
         $empleado = Empleado::findOrFail($id);

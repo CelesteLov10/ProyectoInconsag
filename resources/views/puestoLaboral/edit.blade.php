@@ -12,17 +12,18 @@
   </div> -->
     <h4 class=" text-center">
       <strong>Actualización de un puesto laboral</strong> 
-      
     </h4>
 </div>
 
 <div class="container ">
+  <div class="mb-3 text-end">
+    <a class="btn btn-outline-primary" href="{{route('puestoLaboral.index')}}">Atrás</a>
+  </div>
+
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 " >
       <div class = " card-header py-3 " >
-          <h6 class = "n-font-weight-bold text-primary" >Actualización Puesto 
-            <a class="btn btn-outline-info btn-sm justify-content-md-end "href="{{route('puestoLaboral.index')}}">Atrás</a>   
-          </h6 > 
+          <h6 class = "n-font-weight-bold text-primary" >Actualización Puesto </h6 > 
       </div >
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
       <div class="col-60 bg-light p-5">   
@@ -32,7 +33,7 @@
 
         @csrf {{-- TOKEN INPUT OCULTO --}}
       <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Nombre Cargo:</label>
+        <label class="col-sm-3 col-form-label">Nombre del cargo:</label>
         <div class="col-sm-5">
           <input type="text" autofocus class="form-control rounded-pill" 
           placeholder="Ingrese un cargo" name="nombreCargo"
@@ -89,8 +90,7 @@
     </div>
   </div>
 @endsection
+
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
-
-
-    @endsection
+@endsection

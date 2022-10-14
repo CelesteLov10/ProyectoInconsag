@@ -14,8 +14,13 @@ class PuestoController extends Controller
      */
     public function index()
     {
-        $puestos = Puesto::orderBy('id','desc')->paginate(10); 
-        return view('puestoLaboral.index', compact('puestos'));
+         //Campo busqueda
+        $puestos = Puesto::query()
+        ->when(request('search'), function($query){
+        return $query->where('nombreCargo', 'LIKE', '%' .request('search') .'%');
+        })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+
+    return view('puestoLaboral.index', compact('puestos'));
     }
 
     /**
@@ -40,7 +45,7 @@ class PuestoController extends Controller
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
             'nombreCargo' =>'required|unique:puestos|regex:/^[a-zA-Z\s]+$/u',
-            'sueldo' => 'required|numeric',
+            'sueldo' => 'required|numeric|between:5000,20000',
             'descripcion' =>'required'
         ]);
         $puesto = new Puesto();
