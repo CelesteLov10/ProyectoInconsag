@@ -15,12 +15,10 @@ return new class extends Migration
     {
         Schema::create('oficinas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->id();
-            $table->string('nombreDepto');
+            $table->id()->autoIncrement();
+            $table->string('nombreOficina');
+            $table->string('municipio');
             $table->string('direccion');
-            $table->integer('cantidadInv');
-            $table->unsignedBigInteger('inventario_id');//Relacion con tabla oficina
-            $table->foreign('inventario_id')->references('id')->on('inventarios');// Restriccion llave foranea
             $table->timestamps();
         });
     }

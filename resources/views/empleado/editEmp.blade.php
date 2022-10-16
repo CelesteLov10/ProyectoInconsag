@@ -133,41 +133,38 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha de ingreso:</label>
         <div class="col-sm-5">
-          <input type="text" id="datepicker2" autocomplete="off" class="form-control rounded-pill" placeholder="Seleccione la fecha de ingreso"
+          <input type="text" id="datepicker2" autocomplete="off" class="form-control rounded-pill" 
+          placeholder="Seleccione la fecha de ingreso"
           name="fechaIngreso" value="{{old('fechaIngreso', $empleado->fechaIngreso)}}">
         @error('fechaIngreso')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
-          {{-- {{$empleado->nombreCargo}} 
-      <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Nombre del cargo</label>
-        <div class="col-sm-5">
-        <select name="puesto_id" id="" class="form-select rounded-pill">
-            <option value="{{$empleado->puesto_id}}" 
-              {{old('puesto_id' , $empleado->puesto->nombreCargo)==$empleado->puesto->id ? 'selected' : ''}}>{{$empleado->puesto->nombreCargo}}</option>
-              
-              @foreach ($empleado as $empleados)
-                <option value="{{$empleados->puesto_id}}">{{$empleados->puesto->nombreCargo}}</option>
-              @endforeach
-        </select> 
-        @error('puesto_id')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
-        @enderror
-        </div>
-      </div>--}}
+          
+   
+  
 
-      <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Id de puesto</label>
-          <div class="col-sm-5">
-          <input type="text" name="puesto_id" class="form-control rounded-pill"
-              value="{{old('puesto_id',$empleado->puesto_id)}}">
-          @error('puesto_id')
-              <small class="text-danger"><strong>*</strong>{{$message}}</small>
-          @enderror
-          </div>
-      </div>
+{{-- esta si creo --}}
+<div class="mb-3 row">
+  <label class="col-sm-3 col-form-label">Nombre del cargo</label>
+  <div class="col-sm-5">
+  <select name="puesto_id" id="" class="form-select rounded-pill">
+            {{-- se muestra el registro guardado --}}
+      <option value="{{$empleado->puesto_id}}" 
+        {{old('puesto_id' , $empleado->puesto->nombreCargo)==$empleado->puesto->id ? 'selected' : ''}}>{{$empleado->puesto->nombreCargo}}</option>
+            {{-- para que enliste los nombres del cargo --}}
+        @foreach ($puesto as $puestos)
+          <option value="{{old('nombreCargo', $puestos->id)}}"
+            {{old('puesto_id' , $puestos->nombreCargo)==$puestos->id ? 'selected' : ''}}>{{$puestos->nombreCargo}}</option>
+        @endforeach
+  </select> 
+  @error('puesto_id')
+    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+  @enderror
+  </div>
+      </div>
+
 
       <br>
       <br>
@@ -194,67 +191,5 @@
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
     {{-- formulario para edicion --}}
-    <script>
-      function empleadoEdit(id){
-      var formData = new formData(document.getElementById('empleado'));
-        formData.append('id', id);
-          axios({
-            method : 'post', 
-            url: 'editEmp',
-            data: formData,
-            headers:{
-              'Content-Type': 'multipart/form-data'
-                }
-          })
-          .then(function(response){
-            var contentdiv = document.getElementById('mycontent');
-            empleado.id.value = response.data["id"];
-            empleado.nombres.value = response.data["nombres"];
-            empleado.apellidos.value = response.data["apellidos"];
-            empleado.telefono.value = response.data["telefono"];
-            empleado.correo.value = response.data["correo"];
-            empleado.direccion.value = response.data["direccion"];
-            empleado.fechaIngreso.value = response.data["fechaIngreso"];
-          })
-            .then(function(response){
-            var contentdiv = document.getElementById('mycontent');
-            contentdiv.innerHTML = response.data;
-          })
-            .catch(function(response){
-            console.log(response);
-          })
-      }
-  </script>
-
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker({
-      dateFormat: "dd-mm-yy",
-      changeMonth: true,
-      changeYear: true,
-      firstDay: 0,
-					monthNamesShort: ['Enero', 'Febrero', 'Marzo',
-					'Abril', 'Mayo', 'Junio',
-					'Julio', 'Agosto', 'Septiembre',
-					'Octubre', 'Noviembre', 'Diciembre'],
-					dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-    });
-  } );
-  </script>
-        {{-- calendario del segundo campo de fecha ingreso showOn: "both", buttonText: " " --}}
-  <script>
-    $( function() {
-      $( "#datepicker2" ).datepicker({
-        dateFormat: "dd-mm-yy",
-        changeMonth: true,
-        changeYear: true,
-        firstDay: 0,
-					monthNames: ['Enero', 'Febrero', 'Marzo',
-					'Abril', 'Mayo', 'Junio',
-					'Julio', 'Agosto', 'Septiembre',
-					'Octubre', 'Noviembre', 'Diciembre'],
-					dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-      });//.datepicker("setDate", new Date());
-    } );
-  </script>
+   
 @endsection 

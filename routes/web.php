@@ -4,6 +4,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\OficinaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,4 +76,20 @@ Route::controller(InventarioController::class)->group(function(){
     Route::get('/inventario/{id}/edit', 'edit')->name('inventario.edit');
     //Ruta para el metodo editar
     Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');
+});
+
+Route::controller(OficinaController::class)->group(function(){
+    //Ruta para listado de inventario
+   // Route::get('oficina', 'index')->name('oficina.index');
+    //Ruta para mostrar un oficina
+   // Route::get('/oficina/{id}', 'show')->name('oficina.show')
+   // ->where('id','[0-9]+');
+    //Ruta para crear un "nuevo oficina"
+    Route::get('oficina/create', 'create')->name('oficina.create');
+    //Ruta para guardar los registros del oficina
+    Route::post('oficina', 'store')->name('oficina.store');
+    //Ruta para editar un oficina
+  //  Route::get('/oficina/{id}/edit', 'edit')->name('oficina.edit');
+    //Ruta para el metodo editar
+   // Route::put('/oficina/{id}/edit', 'update')->name('oficina.update');
 });

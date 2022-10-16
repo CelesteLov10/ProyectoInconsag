@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Oficina extends Model
 {
     use HasFactory;
-    public function inventario()
-    {
-        return $this->hasMany(Inventario::class);
-    }
 }

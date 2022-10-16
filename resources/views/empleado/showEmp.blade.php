@@ -36,6 +36,10 @@
     </thead>
     <tbody>
         <tr>
+            <th scope="row">Identidad</th>
+            <td>{{$empleado->identidad}}</td>    
+        </tr>
+        <tr>
             <th scope="row">Nombres</th>
             <td>{{$empleado->nombres}}</td>    
         </tr>

@@ -17,10 +17,7 @@ class OficinaFactory extends Factory
     public function definition()
     {
         return [
-            'nombreDepto'=>$this->faker->unique()->word(),
-            'direccion'=>$this->faker->address(),
-            'cantidadInv'=>$this->faker->numberBetween(1,50),
-            'inventario_id'=>$this->faker->numberBetween(1,50)
+            //
         ];
     }
 }
