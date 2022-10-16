@@ -83,15 +83,42 @@
         </div> --}}
     
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Id de empleado</label>
+            <label class="col-sm-3 col-form-label">Nombre del empleado</label>
             <div class="col-sm-5">
-            <input type="text" name="empleado_id" class="form-control rounded-pill"
-                value="{{old('empleado_id',$inventario->empleado_id)}}">
+            <select name="empleado_id" id="" class="form-select rounded-pill">
+                      {{-- se muestra el registro guardado --}}
+                <option value="{{$inventario->empleado_id}}" 
+                  {{old('empleado_id' , $inventario->empleado->nombres)==$inventario->empleado->id ? 'selected' : ''}}>{{$inventario->empleado->nombres}}</option>
+                      {{-- para que enliste los nombres del cargo --}}
+                  @foreach ($empleado as $empleados)
+                    <option value="{{old('nombres', $empleados->id)}}"
+                      {{old('empleado_id' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}}</option>
+                  @endforeach
+            </select> 
             @error('empleado_id')
-                <small class="text-danger"><strong>*</strong>{{$message}}</small>
+              <small class="text-danger"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
-        </div>
+                </div>
+
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Nombre de la oficina</label>
+            <div class="col-sm-5">
+            <select name="oficina_id" id="" class="form-select rounded-pill">
+                      {{-- se muestra el registro guardado --}}
+                <option value="{{$inventario->oficina_id}}" 
+                  {{old('oficina_id' , $inventario->oficina->nombreOficina)==$inventario->oficina->id ? 'selected' : ''}}>{{$inventario->oficina->nombreOficina}}</option>
+                      {{-- para que enliste los nombres del cargo --}}
+                  @foreach ($oficina as $oficinas)
+                    <option value="{{old('nombreCargo', $puestos->id)}}"
+                      {{old('oficina_id' , $oficinas->nombreOficina)==$oficinas->id ? 'selected' : ''}}>{{$oficinas->nombreOficina}}</option>
+                  @endforeach
+            </select> 
+            @error('oficina_id')
+              <small class="text-danger"><strong>*</strong>{{$message}}</small>
+            @enderror
+            </div>
+                </div>
 
         <div class="mb-3 row">
         <div class="offset-sm-3 col-sm-9">

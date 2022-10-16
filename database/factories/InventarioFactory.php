@@ -20,7 +20,9 @@ class InventarioFactory extends Factory
             'nombreInv'=>$this->faker->word(),
             'descripcion'=>$this->faker->paragraph(),
             'fecha'=>$this->faker->dateTime(),
-            'empleado_id'=>$this->faker->numberBetween(1,50)
+            'empleado_id'=>$this->faker->numberBetween(1,50),
+            'oficina_id'=>$this->faker->numberBetween(1,10)
+
         ];
     }
 }

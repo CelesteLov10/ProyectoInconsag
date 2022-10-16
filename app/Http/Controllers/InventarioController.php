@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
+use App\Models\Oficina;
 
 class InventarioController extends Controller
 {
@@ -21,7 +22,8 @@ class InventarioController extends Controller
         })->orderBy('id','desc')->paginate(10)->withQueryString(); 
         
         $empleado = Empleado::all();
-        return view('inventario.index', compact('inventarios'));
+        $oficina = Oficina::all();
+        return view('inventario.index', compact('inventarios', 'empleado', 'oficina'));
     }
 
     /**
@@ -32,7 +34,8 @@ class InventarioController extends Controller
     public function create()
     {   
         $empleado = Empleado::orderBy('nombres')->get();
-        return view('inventario.create',compact('empleado'));
+        $oficina = Oficina::orderBy('nombreOficina')->get();
+        return view('inventario.create',compact('empleado', 'oficina'));
     }
 
     /**
@@ -49,6 +52,7 @@ class InventarioController extends Controller
         $inventario->descripcion = $request->descripcion;
         $inventario->fecha = $request->fecha;
         $inventario->empleado_id = $request->empleado_id;
+        $inventario->oficina_id = $request->oficina_id;
         
         $create = $inventario->save();
         
@@ -67,7 +71,9 @@ class InventarioController extends Controller
     public function show($id)
     {
         $inventario = Inventario::findOrFail($id);
-        return view('inventario.show')->with('inventario', $inventario);
+        $oficina = Oficina::findOrFail($id);
+        return view('inventario.show')->with('inventario', $inventario, $oficina);
+   
     }
 
     /**
@@ -80,11 +86,14 @@ class InventarioController extends Controller
     {
         //
         $inventario = Inventario::findOrFail($id);
-        $empleado = Empleado::all();
+        $empleado = Empleado::orderBy('nombres')->get();
+        $oficina = Oficina::orderBy('nombreOficina')->get();
 
-        return view('inventario.edit',  compact('empleado'))
-        ->with('inventario', $inventario);
-
+        // $puesto = DB::table('puestos')->orderBy('name', 'asc')->list('name');
+          
+  
+          return view('empleado.editEmp', compact('inventario', 'empleado','oficina'))
+          ->with('empleado', $empleado);
     }
 
     /**
@@ -98,11 +107,13 @@ class InventarioController extends Controller
     {
         //
         $inventario = Inventario::findOrFail($id);
+      
 
         $inventario->nombreInv = $request->input('nombreInv');
         $inventario->descripcion = $request->descripcion;
         $inventario->fecha = $request->fecha;
         $inventario->empleado_id = $request->empleado_id;
+        $inventario->oficina_id = $request->oficina_id;
         
         $update = $inventario->save();
         

@@ -20,6 +20,9 @@ class OficinaController extends Controller
         $oficina->nombreOficina = $request->nombreOficina;
         $oficina->municipio = $request->municipio;
         $oficina->direccion = $request->direccion;
+        $oficina->inventario_id = $request->inventario_id;
+
+
         
         $create = $oficina->save();
         

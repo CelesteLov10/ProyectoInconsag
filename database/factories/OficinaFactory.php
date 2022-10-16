@@ -18,6 +18,13 @@ class OficinaFactory extends Factory
     {
         return [
             //
+            'nombreOficina' =>$this->faker->catchPhrase(),
+            'municipio'=>$this->faker->state(),
+            'direccion'=>$this->faker->address()
+
         ];
     }
 }
+/*'nombreOficina');
+            $table->string('municipio');
+            $table->string('direccion' */

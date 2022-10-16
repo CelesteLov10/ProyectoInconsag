@@ -19,4 +19,8 @@ class Empleado extends Model
     { 
        // return $this->belongsTo(Estado::class);
     }
+    // un empleado puede ingresar varios inventarios
+    public function inventario(){
+        return $this->hasMany(Inventario::class);
+    }
 }

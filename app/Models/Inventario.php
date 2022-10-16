@@ -13,8 +13,11 @@ class Inventario extends Model
         return $this->belongsTo(Empleado::class);
     }
 
+    // un inventario pertenece a una oficina
+    
     public function oficina(){
         return $this->belongsTo(Oficina::class);
     }
+    
 }
 

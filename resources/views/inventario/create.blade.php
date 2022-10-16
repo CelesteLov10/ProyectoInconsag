@@ -82,6 +82,22 @@
             @enderror
             </div>
         </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Nombre de la oficina</label>
+            <div class="col-sm-5">
+            <select name="oficina_id" id="" class="form-select rounded-pill">
+                <option value="" disabled selected>-- Selecione una oficina --</option>
+                @foreach ($oficina as $oficinas)
+                <option value="{{$oficinas->id}}" 
+                    {{old('nombreOficina' , $oficinas->nombreOficina)==$oficinas->id ? 'selected' : ''}}>{{$oficinas->nombreOficina}}</option>
+                @endforeach
+            </select> 
+            @error('oficina_id')
+                <small class="text-danger"><strong>*</strong>{{$message}}</small>
+            @enderror
+            </div>
+        </div>
         <div class="mb-3 row">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-outline-info">Guardar</button> 

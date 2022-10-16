@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('oficinas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->id()->autoIncrement();
+            $table->id();
             $table->string('nombreOficina');
             $table->string('municipio');
             $table->string('direccion');
