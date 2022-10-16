@@ -60,6 +60,8 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/puesto', 'puesto')->name('puesto.search');
     //Ruta para listado inventario
     Route::get('search/inventario', 'inventario')->name('inventario.search');
+    //Ruta para listado oficina
+    Route::get('search/oficina', 'oficina')->name('oficina.search');
 });
 
 Route::controller(InventarioController::class)->group(function(){
@@ -79,8 +81,8 @@ Route::controller(InventarioController::class)->group(function(){
 });
 
 Route::controller(OficinaController::class)->group(function(){
-    //Ruta para listado de inventario
-   // Route::get('oficina', 'index')->name('oficina.index');
+    //Ruta para listado de oficina
+     Route::get('oficina', 'index')->name('oficina.index');
     //Ruta para mostrar un oficina
    // Route::get('/oficina/{id}', 'show')->name('oficina.show')
    // ->where('id','[0-9]+');
