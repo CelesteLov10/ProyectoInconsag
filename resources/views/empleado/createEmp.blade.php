@@ -84,9 +84,10 @@
         <div class="col-sm-5 form">
           <select class="form-control form-select rounded-pill" name="estado">
             <option value="" disabled selected>-- Selecione un estado --</option>
+            {{--  {{old('estado' , $estado->nombreE)==$estado->id ? 'selected' : ''}} --}}
             @foreach ($estados as $estado)
-                <option value="{{$estado->id}}" 
-                {{old('estado' , $estado->nombreE)==$estado->id ? 'selected' : ''}}>{{$estado->nombreE}}</option>
+                <option value="{{$estado->nombreE}}" 
+                >{{$estado->nombreE}}</option>
             @endforeach
           </select>
         @error('estado')
@@ -140,7 +141,7 @@
       </div>
 
       <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Nombre del cargo</label>
+        <label class="col-sm-3 col-form-label">Nombre del cargo:</label>
         <div class="col-sm-5">
         <select name="puesto_id" id="" class="form-select rounded-pill">
           <option value="" disabled selected>-- Selecione un cargo --</option>
@@ -154,6 +155,22 @@
         @enderror
         </div>
       </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Nombre de la oficina:</label>
+        <div class="col-sm-5">
+        <select name="oficina_id" id="" class="form-select rounded-pill">
+            <option value="" disabled selected>-- Selecione una oficina --</option>
+            @foreach ($oficina as $oficinas)
+            <option value="{{$oficinas->id}}" 
+                {{old('oficina_id' , $oficinas->nombreOficina)==$oficinas->id ? 'selected' : ''}}>{{$oficinas->nombreOficina}}</option>
+            @endforeach
+        </select> 
+        @error('oficina_id')
+            <small class="text-danger"><strong>*</strong>{{$message}}</small>
+        @enderror
+        </div>
+    </div>
       
       <div class="mb-3 row">
         <div class="offset-sm-3 col-sm-9">
@@ -167,15 +184,14 @@
 @endsection
 
 @section('js')
-    {{-- plugins para el calendario fechas jquery ui --}}
+    {{-- plugins para el calendario fechas jquery ui 
+          yearRange: "1960:2004",
+          defaultDate: '01 ENE 2000',--}}
     <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script>
-    var maximaFechaInicio = new Date();
-    var minimoFechaInicio = new Date(maximaFechaInicio.getFullYear(), 
-    maximaFechaInicio.getMonth(), maximaFechaInicio.getDate() -1000);
   $( function() {
     $( "#datepicker" ).datepicker({
       dateFormat: "dd-mm-yy",
@@ -186,7 +202,10 @@
 					'Abril', 'Mayo', 'Junio',
 					'Julio', 'Agosto', 'Septiembre',
 					'Octubre', 'Noviembre', 'Diciembre'],
-					dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+					dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'], 
+          yearRange: "-80:-18",
+          maxDate: "-18Y",
+          minDate: "-80Y"
     });
   } );
 </script>
@@ -201,6 +220,7 @@
 					'Julio', 'Agosto', 'Septiembre',
 					'Octubre', 'Noviembre', 'Diciembre'],
 					dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+          maxDate: "2m",
           minDate: 0,
       });//.datepicker("setDate", new Date());
     } );

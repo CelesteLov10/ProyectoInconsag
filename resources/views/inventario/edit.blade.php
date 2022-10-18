@@ -1,6 +1,6 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Editar inventario')
+@section('titulo', 'Actualizar inventario')
 
 @section('css')
 <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
@@ -25,7 +25,7 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
-        <h6 class = "n-font-weight-bold text-primary">Actualización de Inventario </h6 > 
+        <h6 class = "n-font-weight-bold text-primary">Actualización de inventario </h6 > 
     </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -46,6 +46,17 @@
         </div>
 
         <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Cantidad:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control rounded-pill" placeholder="Ingrese la cantidad de inventario" 
+                    name="cantidad" value="{{old('cantidad', $inventario->cantidad)}}">
+                    @error('cantidad')
+                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    @enderror
+            </div>
+        </div>
+
+        <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Descripción:</label>
             <div class="col-sm-5">
                     <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese una descripción"
@@ -60,7 +71,7 @@
             <label class="col-sm-3 col-form-label">Fecha:</label>
             <div class="col-sm-5">
                     <input type="text" class="form-control rounded-pill" placeholder="Seleccione la fecha" 
-                    name="fecha" id="datepicker" autocomplete="off" value="{{old('cantidad', $inventario->fecha)}}">
+                    name="fecha" id="datepicker" autocomplete="off" value="{{old('fecha', $inventario->fecha)}}">
                     @error('fecha')
                     <small class="text-danger"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -86,39 +97,39 @@
             <label class="col-sm-3 col-form-label">Nombre del empleado</label>
             <div class="col-sm-5">
             <select name="empleado_id" id="" class="form-select rounded-pill">
-                      {{-- se muestra el registro guardado --}}
+                    {{-- se muestra el registro guardado --}}
                 <option value="{{$inventario->empleado_id}}" 
-                  {{old('empleado_id' , $inventario->empleado->nombres)==$inventario->empleado->id ? 'selected' : ''}}>{{$inventario->empleado->nombres}}</option>
-                      {{-- para que enliste los nombres del cargo --}}
-                  @foreach ($empleado as $empleados)
-                    <option value="{{old('nombres', $empleados->id)}}"
-                      {{old('empleado_id' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}}</option>
-                  @endforeach
+                {{old('empleado_id' , $inventario->empleado->nombres)==$inventario->empleado->id ? 'selected' : ''}}>{{$inventario->empleado->nombres}}</option>
+                {{-- para que enliste los nombres del cargo --}}
+                @foreach ($empleado as $empleados)
+                <option value="{{old('nombres', $empleados->id)}}"
+                {{old('empleado_id' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}}</option>
+                @endforeach
             </select> 
             @error('empleado_id')
-              <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                <small class="text-danger"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
-                </div>
+        </div>
 
-          <div class="mb-3 row">
+        <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre de la oficina</label>
             <div class="col-sm-5">
             <select name="oficina_id" id="" class="form-select rounded-pill">
-                      {{-- se muestra el registro guardado --}}
+                {{-- se muestra el registro guardado --}}
                 <option value="{{$inventario->oficina_id}}" 
-                  {{old('oficina_id' , $inventario->oficina->nombreOficina)==$inventario->oficina->id ? 'selected' : ''}}>{{$inventario->oficina->nombreOficina}}</option>
-                      {{-- para que enliste los nombres del cargo --}}
-                  @foreach ($oficina as $oficinas)
-                    <option value="{{old('nombreCargo', $puestos->id)}}"
-                      {{old('oficina_id' , $oficinas->nombreOficina)==$oficinas->id ? 'selected' : ''}}>{{$oficinas->nombreOficina}}</option>
-                  @endforeach
+                {{old('oficina_id' , $inventario->oficina->nombreOficina)==$inventario->oficina->id ? 'selected' : ''}}>{{$inventario->oficina->nombreOficina}}</option>
+                {{-- para que enliste los nombres del cargo --}}
+                @foreach ($oficina as $oficinas)
+                <option value="{{old('nombreOficina', $oficinas->id)}}"
+                {{old('oficina_id' , $oficinas->nombreOficina)==$oficinas->id ? 'selected' : ''}}>{{$oficinas->nombreOficina}}</option>
+                @endforeach
             </select> 
             @error('oficina_id')
-              <small class="text-danger"><strong>*</strong>{{$message}}</small>
+            <small class="text-danger"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
-                </div>
+        </div>
 
         <div class="mb-3 row">
         <div class="offset-sm-3 col-sm-9">
@@ -150,8 +161,9 @@ $( function() {
 				'Abril', 'Mayo', 'Junio',
 				'Julio', 'Agosto', 'Septiembre',
 				'Octubre', 'Noviembre', 'Diciembre'],
-		dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-    
+		dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        maxDate: "2m",
+        minDate: "-2m",
     });
     } );
 </script>

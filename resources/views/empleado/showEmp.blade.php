@@ -86,6 +86,18 @@
             <th scope="row">Descripción</th>
             <td>{{$empleado->puesto->descripcion}}</td>
         </tr> 
+        <tr>
+            <th scope="row">Oficina a la que pertenece</th>
+            <td>{{$empleado->oficina->nombreOficina}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Municipio</th>
+            <td>{{$empleado->oficina->municipio}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Dirección</th>
+            <td>{{$empleado->oficina->direccion}}</td>
+        </tr>
     </tbody>
 </table>
 

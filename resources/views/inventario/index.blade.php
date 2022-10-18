@@ -23,7 +23,7 @@
           <div class="col-5 p-2">
               <div class="input-group">
                     <input type="text" name="search" id="search"  class="form-control"
-                    placeholder="Buscar por nombre del inventario" value="{{request('search')}}"/> 
+                    placeholder="Buscar por inventario, oficina o empleado" value="{{request('search')}}"/> 
                   <button type="submit" class="btn btn-outline-primary">Buscar</button>
                 </div>
               </div>
@@ -56,7 +56,7 @@
       {{-- encabezado --}}
       <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
-          <a href="{{route('puestoLaboral.index')}}">
+          <a href="{{route('inventario.index')}}">
             <h6 class = "n-font-weight-bold text-primary">Todos los inventarios </h6 ></a> 
         </div >
 
@@ -67,7 +67,9 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre de inventario</th>
-                    <th scope="col">Fecha</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Oficina</th>
+                    <th scope="col">Empleado</th>
                     <th scope="col">Ver</th>
                     <th scope="col">Actualizar</th>
                   </tr>
@@ -76,8 +78,10 @@
                 @forelse($inventarios as $inventario)
                   <tr>
                     <td>{{$inventario->id}}</td>
-                    <td>{{$inventario->nombreInv}}</td>
-                    <td>{{$inventario->fecha}}</td>                    {{-- aqui vista show --}}
+                    <td>{{$inventario->nombreInv}}</td> 
+                    <td>{{$inventario->cantidad}}</td>   
+                    <td>{{$inventario->oficina->nombreOficina}}</td> 
+                    <td>{{$inventario->empleado->nombres}}</td>     {{-- aqui vista show --}}
                     <td><a class="btn btn-outline-success" href="{{route('inventario.show', ['id'=>$inventario->id])}}">Ver</a></td>
                     <td><a class="btn btn-outline-warning" 
                       href="{{route('inventario.edit', ['id' => $inventario->id])}}">Actualizar</a></td>

@@ -20,11 +20,9 @@ class OficinaFactory extends Factory
             //
             'nombreOficina' =>$this->faker->catchPhrase(),
             'municipio'=>$this->faker->state(),
-            'direccion'=>$this->faker->address()
-
+            'direccion'=>$this->faker->address(),
+            'nombreGerente'=>$this->faker->name(),
+            'telefono'=>$this->faker->phoneNumber()
         ];
     }
 }
-/*'nombreOficina');
-            $table->string('municipio');
-            $table->string('direccion' */

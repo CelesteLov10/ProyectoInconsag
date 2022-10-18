@@ -27,9 +27,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         Puesto::factory(30)->create();
-        Empleado::factory(50)->create();
         Oficina::factory(10)->create();
+        Empleado::factory(50)->create();
         Inventario::factory(100)->create();
-      
+        
     }
 }

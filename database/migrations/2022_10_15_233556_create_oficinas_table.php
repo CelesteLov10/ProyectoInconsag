@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('nombreOficina');
             $table->string('municipio');
             $table->string('direccion');
+            $table->string('nombreGerente');
+            $table->string('telefono');
             $table->timestamps();
         });
     }

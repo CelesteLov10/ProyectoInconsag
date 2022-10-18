@@ -52,7 +52,7 @@
         <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert" >
             {{ session('mensajeW')}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-         </div>
+        </div>
         @endif
 
     <div class="mb-3 text-end">
@@ -74,6 +74,7 @@
                     <th scope="col">Nombre de oficina</th>
                     <th scope="col">Nombre de municipio</th>
                     <th scope="col">Actualizar</th>
+                    <th scope="col">Ver</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -82,9 +83,9 @@
                     <td>{{$oficina->id}}</td>
                     <td>{{$oficina->nombreOficina}}</td>
                     <td>{{$oficina->municipio}}</td>
-                    
+                    <td><a class="btn btn-outline-success" href="{{route('oficina.show', ['id'=>$oficina->id])}}">Ver</a></td>
                     <td><a class="btn btn-outline-warning" 
-                      href="{{route('oficina.create', ['id' => $oficina->id])}}">Actualizar</a>
+                      href="{{route('oficina.edit', ['id' => $oficina->id])}}">Actualizar</a>
                     </td>
                     @csrf
                   </tr>

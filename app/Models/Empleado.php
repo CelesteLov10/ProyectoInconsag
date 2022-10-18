@@ -15,12 +15,16 @@ class Empleado extends Model
         return $this->belongsTo(Puesto::class);
     }
     
-    public function estado()
-    { 
-       // return $this->belongsTo(Estado::class);
+    public function estado(){ 
+    // return $this->belongsTo(Estado::class);
     }
+
     // un empleado puede ingresar varios inventarios
     public function inventario(){
         return $this->hasMany(Inventario::class);
+    }
+    //un empleado solo puede pertenecer a una oficina
+    public function oficina(){
+        return $this->belongsTo(Oficina::class);
     }
 }

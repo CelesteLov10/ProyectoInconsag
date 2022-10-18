@@ -25,11 +25,11 @@ Route::get('/', function () {
 /**Route::get('/principal', PrincipalController::class, 'index')->name('principal');*/
 Route::controller(PuestoController::class)->group(function(){  
     //Ruta para listado de cargos
-    Route::get('puesto', 'index')->name('puestoLaboral.index');
+    Route::get('/puesto', 'index')->name('puestoLaboral.index');
     //Ruta para crear un "nuevo puesto laboral"
-    Route::get('puesto/create', 'create')->name('puestoLaboral.create');
+    Route::get('/puesto/create', 'create')->name('puestoLaboral.create');
     //Ruta para guardar los registros
-    Route::post('puesto', 'store')->name('puestoLaboral.store'); 
+    Route::post('/puesto', 'store')->name('puestoLaboral.store'); 
     //Ruta para editar un puesto laboral
     Route::get('/puesto/{id}/edit', 'edit')->name('puestoLaboral.edit');
     //Ruta para el metodo editar
@@ -38,14 +38,14 @@ Route::controller(PuestoController::class)->group(function(){
 
 Route::controller(EmpleadoController::class)->group(function(){
     //Ruta para listado de empleados
-    Route::get('empleado', 'index')->name('empleado.indexEmp');
+    Route::get('/empleado', 'index')->name('empleado.indexEmp');
     //Ruta para mostrar un empleado
     Route::get('/empleado/{id}', 'show')->name('empleado.showEmp')
     ->where('id','[0-9]+');
     //Ruta para crear un "nuevo empleado"
-    Route::get('empleado/create', 'create')->name('empleado.createEmp');
+    Route::get('/empleado/create', 'create')->name('empleado.createEmp');
     //Ruta para guardar los registros del empleado
-    Route::post('empleado', 'store')->name('empleado.storeEmp');
+    Route::post('/empleado', 'store')->name('empleado.storeEmp');
     //Ruta para editar un empleado
     Route::get('/empleado/{id}/edit', 'edit')->name('empleado.editEmp');
     //Ruta para el metodo editar
@@ -66,14 +66,14 @@ Route::controller(SearchController::class)->group(function(){
 
 Route::controller(InventarioController::class)->group(function(){
     //Ruta para listado de inventario
-    Route::get('inventario', 'index')->name('inventario.index');
+    Route::get('/inventario', 'index')->name('inventario.index');
     //Ruta para mostrar un inventario
     Route::get('/inventario/{id}', 'show')->name('inventario.show')
     ->where('id','[0-9]+');
     //Ruta para crear un "nuevo inventario"
-    Route::get('inventario/create', 'create')->name('inventario.create');
+    Route::get('/inventario/create', 'create')->name('inventario.create');
     //Ruta para guardar los registros del inventario
-    Route::post('inventario', 'store')->name('inventario.store');
+    Route::post('/inventario', 'store')->name('inventario.store');
     //Ruta para editar un inventario
     Route::get('/inventario/{id}/edit', 'edit')->name('inventario.edit');
     //Ruta para el metodo editar
@@ -82,16 +82,16 @@ Route::controller(InventarioController::class)->group(function(){
 
 Route::controller(OficinaController::class)->group(function(){
     //Ruta para listado de oficina
-     Route::get('oficina', 'index')->name('oficina.index');
+    Route::get('/oficina', 'index')->name('oficina.index');
     //Ruta para mostrar un oficina
-   // Route::get('/oficina/{id}', 'show')->name('oficina.show')
-   // ->where('id','[0-9]+');
+    Route::get('/oficina/{id}', 'show')->name('oficina.show')
+    ->where('id','[0-9]+');
     //Ruta para crear un "nuevo oficina"
-    Route::get('oficina/create', 'create')->name('oficina.create');
+    Route::get('/oficina/create', 'create')->name('oficina.create');
     //Ruta para guardar los registros del oficina
-    Route::post('oficina', 'store')->name('oficina.store');
+    Route::post('/oficina', 'store')->name('oficina.store');
     //Ruta para editar un oficina
-  //  Route::get('/oficina/{id}/edit', 'edit')->name('oficina.edit');
+    Route::get('/oficina/{id}/edit', 'edit')->name('oficina.edit');
     //Ruta para el metodo editar
-   // Route::put('/oficina/{id}/edit', 'update')->name('oficina.update');
+    Route::put('/oficina/{id}/edit', 'update')->name('oficina.update');
 });

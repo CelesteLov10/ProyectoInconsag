@@ -7,41 +7,22 @@ use Illuminate\Http\Request;
 
 class PuestoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-         //Campo busqueda
+    public function index(){
+        //Campo busqueda
         $puestos = Puesto::query()
-        ->when(request('search'), function($query){
-        return $query->where('nombreCargo', 'LIKE', '%' .request('search') .'%');
-        })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+            ->when(request('search'), function($query){
+            return $query->where('nombreCargo', 'LIKE', '%' .request('search') .'%');
+            })->orderBy('id','desc')->paginate(10)->withQueryString(); 
 
-    return view('puestoLaboral.index', compact('puestos'));
+        return view('puestoLaboral.index', compact('puestos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    public function create(){
         return view('puestoLaboral.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-         //validacion para cuando se agregue un puesto
+    public function store(Request $request){
+        //validacion para cuando se agregue un puesto
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
             'nombreCargo' =>'required|unique:puestos|regex:/^[a-zA-Z\s]+$/u',
@@ -63,44 +44,18 @@ class PuestoController extends Controller
         /** redireciona una vez enviado  */
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+    public function show($id){
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     // Metodo para que use la ruta de editar y lleve a la vista editar
-    public function edit($id)
-    {
-        //
+    public function edit($id){
         $puesto = Puesto::findOrFail($id);
-
         return view('puestoLaboral.edit')->with('puesto', $puesto);
-
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     //Metodo para actualizar el registro
-    public function update(Request $request, $id, Puesto $puest)
-    {
-       
+    public function update(Request $request, $id, Puesto $puest){ 
         //Validacion para la vista de actualizar un puesto
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
@@ -122,16 +77,5 @@ class PuestoController extends Controller
             ->with('mensajeW', 'Se actualizó el puesto laboral correctamente');
         }
 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

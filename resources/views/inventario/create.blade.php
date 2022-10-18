@@ -46,6 +46,17 @@
         </div>
 
         <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Cantidad:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control rounded-pill" placeholder="Ingrese una cantidad de inventario" 
+                    name="cantidad" value="{{old('cantidad')}}">
+                    @error('cantidad')
+                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    @enderror
+            </div>
+        </div>
+
+        <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Descripción:</label>
             <div class="col-sm-5">
                     <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese una descripción"
@@ -126,8 +137,9 @@ $( function() {
 				'Abril', 'Mayo', 'Junio',
 				'Julio', 'Agosto', 'Septiembre',
 				'Octubre', 'Noviembre', 'Diciembre'],
-		dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-    
+		dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        maxDate: "2m",
+        minDate: "-2m",
     });
     } );
 </script>

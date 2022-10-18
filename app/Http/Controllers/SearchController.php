@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Empleado;
 use App\Models\Inventario;
+use App\Models\Oficina;
 use App\Models\Puesto;
 
 class SearchController extends Controller
@@ -47,4 +48,18 @@ class SearchController extends Controller
         }
         return $data;
     }
+
+    public function oficina(Request $request){
+        $term = $request->get('term');
+        $querys = Oficina::where('nombreOficina', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->nombreOficina
+        ];
+        }
+        return $data;
+    }
+    
 }

@@ -9,46 +9,36 @@ use App\Models\Oficina;
 
 class InventarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(){
-         //Campo busqueda
+        //Campo busqueda
         $inventarios = Inventario::query()
-        ->when(request('search'), function($query){
-        return $query->where('nombreInv', 'LIKE', '%' .request('search') .'%');
-        })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+            ->when(request('search'), function($query){
+            return $query->where('nombreInv', 'LIKE', '%' .request('search') .'%')
+            //Aqui es la tabla relacionada y abajo el nombre del campo que desea.
+            ->orWhereHas('oficina', function($q){
+                $q->where('nombreOficina','LIKE', '%' .request('search') .'%');
+            })
+            ->orWhereHas('empleado', function($q){
+                $q->where('nombres','LIKE', '%' .request('search') .'%');
+            });
+            })->orderBy('id','desc')->paginate(10)->withQueryString(); 
         
         $empleado = Empleado::all();
         $oficina = Oficina::all();
         return view('inventario.index', compact('inventarios', 'empleado', 'oficina'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {   
+    public function create(){   
         $empleado = Empleado::orderBy('nombres')->get();
         $oficina = Oficina::orderBy('nombreOficina')->get();
         return view('inventario.create',compact('empleado', 'oficina'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $inventario = new Inventario();
 
         $inventario->nombreInv = $request->nombreInv;
+        $inventario->cantidad = $request->cantidad;
         $inventario->descripcion = $request->descripcion;
         $inventario->fecha = $request->fecha;
         $inventario->empleado_id = $request->empleado_id;
@@ -62,54 +52,26 @@ class InventarioController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+    public function show($id){
         $inventario = Inventario::findOrFail($id);
-        $oficina = Oficina::findOrFail($id);
-        return view('inventario.show')->with('inventario', $inventario, $oficina);
-   
+        //$oficina = Oficina::findOrFail($id); no se para que funciona , $oficina
+        return view('inventario.show')->with('inventario', $inventario);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
         $inventario = Inventario::findOrFail($id);
         $empleado = Empleado::orderBy('nombres')->get();
         $oficina = Oficina::orderBy('nombreOficina')->get();
 
-        // $puesto = DB::table('puestos')->orderBy('name', 'asc')->list('name');
-          
-  
-          return view('empleado.editEmp', compact('inventario', 'empleado','oficina'))
-          ->with('empleado', $empleado);
+        return view('inventario.edit', compact('inventario', 'empleado','oficina'))
+        ->with('inventario', $inventario);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
         $inventario = Inventario::findOrFail($id);
-      
 
         $inventario->nombreInv = $request->input('nombreInv');
+        $inventario->cantidad = $request->cantidad;
         $inventario->descripcion = $request->descripcion;
         $inventario->fecha = $request->fecha;
         $inventario->empleado_id = $request->empleado_id;
@@ -121,16 +83,5 @@ class InventarioController extends Controller
             return redirect()->route('inventario.index')
             ->with('mensajeW', 'Se actualizó el inventario correctamente');
         } 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

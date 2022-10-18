@@ -40,6 +40,10 @@
             <td>{{$inventario->nombreInv}}</td>    
         </tr>
         <tr>
+            <th scope="row">Cantidad</th>
+            <td>{{$inventario->cantidad}}</td>    
+        </tr>
+        <tr>
             <th scope="row">Descripción</th>
             <td>{{$inventario->descripcion}}</td>    
         </tr>
@@ -55,7 +59,10 @@
             <th scope="row">Teléfono del empleado</th>
             <td>{{$inventario->empleado->telefono}}</td>    
         </tr>
-    
+        <tr>
+            <th scope="row">Nombre oficina</th>
+            <td>{{$inventario->oficina->nombreOficina}}</td>    
+        </tr>
     </tbody>
 </table>
 @endsection
