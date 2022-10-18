@@ -51,17 +51,16 @@ class EmpleadoController extends Controller
         //validacion para cuando se agregue un empleado
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
-            'identidad' =>'required|starts_with:0, 1|numeric|unique:empleados',
-            'nombres' =>'required|regex:/^[a-zA-Z\s]+$/u',
-            'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
-            'telefono' => 'required|numeric|digits:8',
-            'estado' => 'required',
-            'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#|unique:empleados',
-            'fechaNacimiento' => 'required|before:'. $before,
-            'direccion' => 'required',
-            'fechaIngreso' => 'required',
-            'puesto_id' => 'required',
-            'oficina_id' => 'required',
+            'identidad' => 'required|numeric|digits:13|unique:empleados|Regex:/^[(0)(1)][0-9]+$/u',
+            'nombres'   => 'required|regex:/^[a-zA-Z]+\s[a-zA-Z]+$/u|regex:/^.{1,20}$/u',
+            'apellidos' => 'required|regex:/^[a-zA-Z]+\s[a-zA-Z]+$/u|regex:/^.{1,20}$/u',
+            'telefono'  => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:empleados',
+            'estado'    => 'required|string|in:activo,inactivo',
+            'correo'    => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#|unique:empleados',
+            'fechaNacimiento' => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u|before:'. $before,
+            'direccion'       => 'required|regex:/^.{1,50}$/u',
+            'fechaIngreso'    => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
+            'puesto_id'       => 'required',
         ]);
         $empleado = new Empleado();
 
@@ -105,17 +104,16 @@ class EmpleadoController extends Controller
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
             //agregamos en elcampo  "unique:empleados,: el campo del identidad y el id para que no haya problemas al momento de actualizar ya que son campos unicos
-            'identidad' =>'numeric|required|unique:empleados,identidad,'.$id.'id',
-            'nombres' =>'required|regex:/^[a-zA-Z\s]+$/u',
-            'apellidos' =>'required|regex:/^[a-zA-Z\s]+$/u',
-            'telefono' => 'required|numeric|digits:8',
-            'estado' => 'required',
-            'correo' => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#|unique:empleados,correo,'.$id.'id',
-            'fechaNacimiento' => 'required|before:'. $before,
-            'direccion' => 'required',
-            'fechaIngreso' => 'required',
-            'puesto_id' => 'required',
-            'oficina_id' => 'required',
+            'identidad' => 'numeric|required|Regex:/^[(0)(1)][0-9]+$/u|unique:empleados,identidad,'.$id.'id|digits:13',
+            'nombres'   => 'required|regex:/^[a-zA-Z/s]+$/u|regex:/^.{1,20}$/u',
+            'apellidos' => 'required|regex:/^[a-zA-Z/s]+$/u|regex:/^.{1,20}$/u',
+            'telefono'  => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:empleados,telefono,'.$id.'id',
+            'estado'    => 'required|string|in:activo,inactivo',
+            'correo'    => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#|unique:empleados,correo,'.$id.'id',
+            'fechaNacimiento' => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u|before:'. $before,
+            'direccion'       => 'required|regex:/^.{1,50}$/u',
+            'fechaIngreso'    => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
+            'puesto_id'       => 'required',
         ]);
         $empleado = Empleado::findOrFail($id);
 

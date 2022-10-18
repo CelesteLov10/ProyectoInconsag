@@ -6,6 +6,7 @@ use App\Models\Empleado;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
 use App\Models\Oficina;
+use Carbon\Carbon;
 
 class InventarioController extends Controller
 {
@@ -35,6 +36,18 @@ class InventarioController extends Controller
     }
 
     public function store(Request $request){
+
+        $request->validate([
+
+            'nombreInv'   => 'required|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,25}$/u',
+            'cantidad'    => 'required|numeric|regex:/^[0-9]{1,3}+$/u',
+            'descripcion' => 'required|regex:/^.{1,255}$/u',
+            'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
+            'empleado_id' => 'required',
+            'oficina_id'  => 'required',
+    
+        ]);
+
         $inventario = new Inventario();
 
         $inventario->nombreInv = $request->nombreInv;
@@ -68,6 +81,18 @@ class InventarioController extends Controller
     }
 
     public function update(Request $request, $id){
+
+        $request->validate([
+
+            'nombreInv'   => 'required|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,25}$/u',
+            'cantidad'    => 'required|numeric|regex:/^[0-9]{1,3}+$/u',
+            'descripcion' => 'required|regex:/^.{1,255}$/u',
+            'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
+            'empleado_id' => 'required',
+            'oficina_id'  => 'required',
+    
+        ]);
+
         $inventario = Inventario::findOrFail($id);
 
         $inventario->nombreInv = $request->input('nombreInv');

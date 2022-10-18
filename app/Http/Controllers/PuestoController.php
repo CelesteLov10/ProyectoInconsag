@@ -25,9 +25,9 @@ class PuestoController extends Controller
         //validacion para cuando se agregue un puesto
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
-            'nombreCargo' =>'required|unique:puestos|regex:/^[a-zA-Z\s]+$/u',
-            'sueldo' => 'required|numeric|between:5000,20000',
-            'descripcion' =>'required'
+            'nombreCargo' => 'required|unique:puestos,nombreCargo|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,40}$/u',
+            'sueldo'      => 'required|numeric|between: 7500, 20000', // falta averiguar cual es el salario minimo y el maximo
+            'descripcion' => 'required|regex:/^.{1,255}$/u'
         ]);
         $puesto = new Puesto();
 
@@ -60,9 +60,9 @@ class PuestoController extends Controller
         $request->validate([
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
             //agregamos en elcampo  "unique:puestos,: el campo del nombreCargo y el id para que no haya problemas al momento de actualizar ya que son campos unicos
-            'nombreCargo' =>'required|unique:puestos,nombreCargo,'.$id.'id|regex:/^[a-zA-Z\s]+$/u',
-            'sueldo' => 'required|numeric',
-            'descripcion' =>'required'
+            'nombreCargo' => 'required|unique:puestos,nombreCargo,'.$id.'id|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,25}$/u',
+            'sueldo'      => 'required|numeric|between: 7500, 20000', // falta averiguar cual es el salario minimo y el maximo
+            'descripcion' => 'required|regex:/^.{1,255}$/u'
         ]);
         $puesto = Puesto::findOrFail($id);
 
