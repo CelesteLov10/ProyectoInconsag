@@ -50,18 +50,16 @@ class EmpleadoController extends Controller
         $before = $dt->subYears(18);
         //validacion para cuando se agregue un empleado
         $reglas = [
-            // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
-            'identidad' => 'required|unique:empleados|numeric|regex:/^[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0-9]+$/u',
+            'identidad' => 'required|numeric|digits:13|unique:empleados|regex:/^[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0-9]+$/u',
             'nombres'   => 'required|regex:/^[a-zA-Z]+\s{0,1}[a-zA-Z]+$/u|regex:/^.{1,20}$/u',
             'apellidos' => 'required|regex:/^[a-zA-Z]+\s{0,1}[a-zA-Z]+$/u|regex:/^.{1,20}$/u',
             'telefono'  => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:empleados',
             'estado'    => 'required|string|in:activo,inactivo',
             'correo'    => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#|unique:empleados',
             'fechaNacimiento' => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u|before:'. $before,
-            'direccion'       => 'required|string|min:40',
+            'direccion'       => 'required|regex:/^.{1,50}$/u',
             'fechaIngreso'    => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'puesto_id'       => 'required',
-            'oficina_id'       => 'required',
 
         ];
         $mensaje=[
@@ -86,9 +84,9 @@ class EmpleadoController extends Controller
 
             'estado.required' => 'Debe seleccionar un estado.',
 
-            'correo.required' => '¡Debe ingresar el correo electrónico!',
-            'correo.email' => '¡Debe ingresar un correo electrónico válido!',
-            'correo.unique' => '¡Debe ingresar un correo electrónico diferente!',
+            'correo.required' => 'Debe ingresar el correo electrónico.',
+            'correo.email' => 'Debe ingresar un correo electrónico válido.',
+            'correo.unique' => 'Debe ingresar un correo electrónico diferente.',
 
             'fechaNacimiento.required' => 'La fecha de nacimiento no puede ir vacío.',
             'fechaNacimiento.regex' => 'Debe ser mayor de edad.',
@@ -146,8 +144,6 @@ class EmpleadoController extends Controller
         $before = $dt->subYears(18);
         //validacion para cuando se agregue un empleado
         $request->validate([
-            // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
-            //agregamos en elcampo  "unique:empleados,: el campo del identidad y el id para que no haya problemas al momento de actualizar ya que son campos unicos
             'identidad' => 'numeric|required|Regex:/^[(0)(1)][0-9]+$/u|unique:empleados,identidad,'.$id.'id|digits:13',
             'nombres'   => 'required|regex:/^[a-zA-Z/s]+$/u|regex:/^.{1,20}$/u',
             'apellidos' => 'required|regex:/^[a-zA-Z/s]+$/u|regex:/^.{1,20}$/u',
