@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('empleados', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string('identidad')->unique;
+            $table->string('identidad')->unique();
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('telefono');

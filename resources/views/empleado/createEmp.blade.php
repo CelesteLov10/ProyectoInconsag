@@ -13,6 +13,7 @@
     
 @section('contenido') 
 
+
 <div class="mb-5">
     <h4 class=" text-center">
       <strong>Creación de un nuevo empleado</strong> 
@@ -39,7 +40,8 @@
         <label class="col-sm-3 col-form-label">Identidad:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese la identidad" 
-            name="identidad" value="{{old('identidad')}}">
+            name="identidad" value="{{old('identidad')}}" pattern="[0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
+            title="Ingrese un numero de identidad valido" maxlength="13">
             @error('identidad')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>
             @enderror

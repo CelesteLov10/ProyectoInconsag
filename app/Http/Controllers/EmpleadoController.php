@@ -49,39 +49,83 @@ class EmpleadoController extends Controller
         $dt = new Carbon();
         $before = $dt->subYears(18);
         //validacion para cuando se agregue un empleado
-        $request->validate([
+        $reglas = [
             // regex:/^[a-zA-Z\s]+$/u permite letras y espacios
-            'identidad' => 'required|numeric|digits:13|unique:empleados|Regex:/^[(0)(1)][0-9]+$/u',
-            'nombres'   => 'required|regex:/^[a-zA-Z]+\s[a-zA-Z]+$/u|regex:/^.{1,20}$/u',
-            'apellidos' => 'required|regex:/^[a-zA-Z]+\s[a-zA-Z]+$/u|regex:/^.{1,20}$/u',
+            'identidad' => 'required|unique:empleados|numeric|regex:/^[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0-9]+$/u',
+            'nombres'   => 'required|regex:/^[a-zA-Z]+\s{0,1}[a-zA-Z]+$/u|regex:/^.{1,20}$/u',
+            'apellidos' => 'required|regex:/^[a-zA-Z]+\s{0,1}[a-zA-Z]+$/u|regex:/^.{1,20}$/u',
             'telefono'  => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:empleados',
             'estado'    => 'required|string|in:activo,inactivo',
             'correo'    => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#|unique:empleados',
             'fechaNacimiento' => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u|before:'. $before,
-            'direccion'       => 'required|regex:/^.{1,50}$/u',
+            'direccion'       => 'required|string|min:40',
             'fechaIngreso'    => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'puesto_id'       => 'required',
-        ]);
-        $empleado = new Empleado();
+            'oficina_id'       => 'required',
 
-        $empleado->identidad = $request->identidad;
-        $empleado->nombres = $request->nombres;
-        $empleado->apellidos = $request->apellidos;
-        $empleado->telefono = $request->telefono;
-        $empleado->estado = $request->estado;
-        $empleado->correo = $request->correo;
-        $empleado->fechaNacimiento = $request->fechaNacimiento;
-        $empleado->direccion = $request->direccion;
-        $empleado->fechaIngreso = $request->fechaIngreso;
-        $empleado->puesto_id = $request->puesto_id;
-        $empleado->oficina_id = $request->oficina_id;
-        
-        $create = $empleado->save();
-        
-        if ($create){
+        ];
+        $mensaje=[
+            'identidad.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
+            'identidad.digits' => 'El número de identidad debe tener 13 dígitos. ',
+            'identidad.unique' => 'El número de identidad debe ser único.',
+           // 'identidad.numeric' => 'El número de identidad sólo se permiten números ',
+           'identidad.regex' => 'El formato para el número de identidad no es válido.',
+
+           'nombres.required' => 'El nombre no puede ir vacío.',
+            'nombres.alpha' => 'En el nombre sólo permite letras.',
+            'nombres.regex' => 'En el nombre sólo se permite un espacio entre los nombres.',
+
+            'apellidos.required' => 'El apellido no puede ir vacío.',
+            'apellidos.alpha' => 'En el apellido sólo se permite letras.',
+            'apellidos.regex' => 'En el apellido sólo se permite un espacio entre los apellidos.',
+
+            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.numeric' => 'El teléfono debe contener sólo números.',
+            'telefono.digits' => 'El teléfono debe contener sólo 8 números.',
+            'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
+
+            'estado.required' => 'Debe seleccionar un estado.',
+
+            'correo.required' => '¡Debe ingresar el correo electrónico!',
+            'correo.email' => '¡Debe ingresar un correo electrónico válido!',
+            'correo.unique' => '¡Debe ingresar un correo electrónico diferente!',
+
+            'fechaNacimiento.required' => 'La fecha de nacimiento no puede ir vacío.',
+            'fechaNacimiento.regex' => 'Debe ser mayor de edad.',
+
+            'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
+            'direccion.min' => 'La dirección es muy corta.',
+
+            'fechaIngreso.required' => 'Debe seleccionar la fecha de ingreso, no puede ir vacío.',
+            'puesto_id.required' => 'Debe seleccionar el puesto de trabajo, no puede ir vacío.',
+            'oficina_id.required'=> 'Debe seleccionar la oficina, no puede ir vacío.',
+            
+            
+
+        ];
+        $this->validate($request, $reglas, $mensaje);
+
+        /*|regex:([0-1][0-8][0-2][0-9]{10})|max:13
+         regex:/^[a-zA-Z]+\s[a-zA-Z]+$/u|regex:/^.{1,20}$/u
+         |regex:/^[a-zA-Z]+\s[a-zA-Z]+$/u|regex:/^.{1,20}$/u
+        */
+        Empleado::create([
+            'identidad'=>$request['identidad'],
+            'nombres'=>$request['nombres'],
+            'apellidos'=>$request['apellidos'],
+            'telefono'=>$request['telefono'],
+            'estado'=>$request['estado'], 
+            'correo'=>$request['correo'], 
+            'fechaNacimiento'=>$request['fechaNacimiento'], 
+            'direccion'=>$request['direccion'],
+            'fechaIngreso'=>$request['fechaIngreso'], 
+            'puesto_id'=>$request['puesto_id'],
+            'oficina_id'=>$request['oficina_id'],
+        ]);
+
             return redirect()->route('empleado.indexEmp')
             ->with('mensaje', 'Se guardó un nuevo empleado correctamente');
-        } 
+        
         /** redireciona una vez enviado  */
     }
 
