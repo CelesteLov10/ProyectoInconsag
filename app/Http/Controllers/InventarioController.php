@@ -39,9 +39,9 @@ class InventarioController extends Controller
 
         $request->validate([
 
-            'nombreInv'   => 'required|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,25}$/u',
-            'cantidad'    => 'required|numeric|regex:/^[0-9]{1,3}+$/u',
-            'descripcion' => 'required|regex:/^.{1,255}$/u',
+            'nombreInv'   => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
+            'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
+            'descripcion' => 'required',
             'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'empleado_id' => 'required',
             'oficina_id'  => 'required',
@@ -84,9 +84,9 @@ class InventarioController extends Controller
 
         $request->validate([
 
-            'nombreInv'   => 'required|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,25}$/u',
-            'cantidad'    => 'required|numeric|regex:/^[0-9]{1,3}+$/u',
-            'descripcion' => 'required|regex:/^.{1,255}$/u',
+            'nombreInv'   => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
+            'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
+            'descripcion' => 'required',
             'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'empleado_id' => 'required',
             'oficina_id'  => 'required',

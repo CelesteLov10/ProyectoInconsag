@@ -24,9 +24,9 @@ class PuestoController extends Controller
     public function store(Request $request){
         //validacion para cuando se agregue un puesto
         $request->validate([
-            'nombreCargo' => 'required|unique:puestos,nombreCargo|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,40}$/u',
+            'nombreCargo' => 'required|unique:puestos,nombreCargo|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
             'sueldo'      => 'required|numeric|between: 7500, 20000', // falta averiguar cual es el salario minimo y el maximo
-            'descripcion' => 'required|regex:/^.{1,255}$/u'
+            'descripcion' => 'required'
         ]);
         $puesto = new Puesto();
 
@@ -57,9 +57,9 @@ class PuestoController extends Controller
     public function update(Request $request, $id, Puesto $puest){ 
         //Validacion para la vista de actualizar un puesto
         $request->validate([
-            'nombreCargo' => 'required|unique:puestos,nombreCargo,'.$id.'id|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,25}$/u',
+            'nombreCargo' => 'required|unique:puestos,nombreCargo,'.$id.'id|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
             'sueldo'      => 'required|numeric|between: 7500, 20000', // falta averiguar cual es el salario minimo y el maximo
-            'descripcion' => 'required|regex:/^.{1,255}$/u'
+            'descripcion' => 'required'
         ]);
         $puesto = Puesto::findOrFail($id);
 

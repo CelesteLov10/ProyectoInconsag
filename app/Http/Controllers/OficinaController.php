@@ -34,10 +34,10 @@ class OficinaController extends Controller
 
         $request->validate([
 
-            'nombreOficina' => 'required|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,25}$/u',
-            'municipio'     => 'required|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,15}$/u',
-            'direccion'     => 'required|regex:/^.{1,100}$/u',
-            'nombreGerente' => 'required|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,40}$/u',
+            'nombreOficina' => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9\s]+$/u',
+            'municipio'     => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
+            'direccion'     => 'required',
+            'nombreGerente' => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
             'telefono'      => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/',
     
         ]);
@@ -68,10 +68,10 @@ class OficinaController extends Controller
 
         $request->validate([
 
-            'nombreOficina' => 'required|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,25}$/u',
-            'municipio'     => 'required|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,15}$/u',
-            'direccion'     => 'required|regex:/^.{1,100}$/u',
-            'nombreGerente' => 'required|regex:/^[a-zA-Z\s]+$/u|regex:/^.{1,40}$/u',
+            'nombreOficina' => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9\s]+$/u',
+            'municipio'     => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
+            'direccion'     => 'required',
+            'nombreGerente' => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
             'telefono'      => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/',
     
         ]);

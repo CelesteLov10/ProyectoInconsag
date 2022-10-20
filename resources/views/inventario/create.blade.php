@@ -38,7 +38,7 @@
             <label class="col-sm-3 col-form-label">Nombre inventario:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill" placeholder="Ingrese un nombre de inventario" 
-                    name="nombreInv" value="{{old('nombreInv')}}">
+                    name="nombreInv" value="{{old('nombreInv')}}" maxlength="50">
                     @error('nombreInv')
                     <small class="text-danger"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -49,7 +49,7 @@
             <label class="col-sm-3 col-form-label">Cantidad:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill" placeholder="Ingrese una cantidad de inventario" 
-                    name="cantidad" value="{{old('cantidad')}}">
+                    name="cantidad" value="{{old('cantidad')}}" maxlength="4">
                     @error('cantidad')
                     <small class="text-danger"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -60,7 +60,7 @@
             <label class="col-sm-3 col-form-label">Descripción:</label>
             <div class="col-sm-5">
                     <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese una descripción"
-                    name="descripcion">{{old('descripcion')}}</textarea>
+                    name="descripcion" maxlength="255">{{old('descripcion')}}</textarea>
                     @error('descripcion')
                     <small class="text-danger"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -71,7 +71,7 @@
             <label class="col-sm-3 col-form-label">Fecha:</label>
             <div class="col-sm-5">
                     <input type="text" class="form-control rounded-pill" placeholder="Seleccione la fecha" 
-                    name="fecha" id="datepicker" autocomplete="off" value="{{old('fecha')}}">
+                    name="fecha" id="datepicker" autocomplete="off" value="{{old('fecha')}}" maxlength="10">
                     @error('fecha')
                     <small class="text-danger"><strong>*</strong>{{$message}}</small>
                     @enderror

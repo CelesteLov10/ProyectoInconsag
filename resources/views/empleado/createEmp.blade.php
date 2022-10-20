@@ -40,7 +40,7 @@
         <label class="col-sm-3 col-form-label">Identidad:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese la identidad" 
-            name="identidad" value="{{old('identidad')}}" pattern="[0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
+            name="identidad" value="{{old('identidad')}}"
             title="Ingrese un numero de identidad valido" maxlength="13">
             @error('identidad')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -52,7 +52,7 @@
         <label class="col-sm-3 col-form-label">Nombres:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese los nombres" 
-          name="nombres" value="{{old('nombres')}}">
+          name="nombres" value="{{old('nombres')}}" maxlength="25">
           @error('nombres')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
@@ -63,7 +63,7 @@
         <label class="col-sm-3 col-form-label">Apellidos:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese los apellidos" 
-          name="apellidos" value="{{old('apellidos')}}">
+          name="apellidos" value="{{old('apellidos')}}" maxlength="25">
           @error('apellidos')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
@@ -74,7 +74,7 @@
         <label class="col-sm-3 col-form-label">Teléfono:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese el numero de teléfono"
-          name="telefono" value="{{old('telefono')}}">
+          name="telefono" value="{{old('telefono')}}" maxlength="8">
         @error('telefono')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
         @enderror
@@ -102,7 +102,7 @@
         <label class="col-sm-3 col-form-label">Correo:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese el correo electrónico"
-          name="correo" value="{{old('correo')}}">
+          name="correo" value="{{old('correo')}}" maxlength="40">
         @error('correo')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
         @enderror
@@ -112,7 +112,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha de nacimiento:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Seleccione la fecha de nacimiento"
+          <input type="text"  class="form-control rounded-pill" maxlength="10" placeholder="Seleccione la fecha de nacimiento"
           name="fechaNacimiento" id="datepicker" autocomplete="off" value="{{old('fechaNacimiento')}}">
         @error('fechaNacimiento')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -123,7 +123,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Dirección:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese la dirección"
+          <textarea type="text" class="form-control rounded-pill" maxlength="100" placeholder="Ingrese la dirección"
           name="direccion" value="">{{old('direccion')}}</textarea>
         @error('direccion')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -134,7 +134,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha de ingreso:</label>
         <div class="col-sm-5">
-          <input type="text" id="datepicker2" autocomplete="off" class="form-control rounded-pill" placeholder="Seleccione la fecha de ingreso"
+          <input type="text" id="datepicker2" autocomplete="off" maxlength="10" class="form-control rounded-pill" placeholder="Seleccione la fecha de ingreso"
           name="fechaIngreso" value="{{old('fechaIngreso')}}">
         @error('fechaIngreso')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>

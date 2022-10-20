@@ -27,7 +27,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre de la oficina:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el nombre que tendrá la oficina" name="nombreOficina" value="{{old('nombreOficina')}}">
+          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el nombre que tendrá la oficina" name="nombreOficina" value="{{old('nombreOficina')}}" maxlength="50">
             @error('nombreOficina')
               <small class="text-danger"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -38,7 +38,7 @@
         <label class="col-sm-3 col-form-label">Municipio:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese el municipio que pertenece la oficina" 
-          name="municipio" value="{{old('municipio')}}">
+          name="municipio" value="{{old('municipio')}}" maxlength="40">
           @error('municipio')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
@@ -48,7 +48,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Dirección:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese la dirección de la oficina " name="direccion">{{old('direccion')}}</textarea>
+          <textarea type="text" maxlength="100" class="form-control rounded-pill" placeholder="Ingrese la dirección de la oficina " name="direccion">{{old('direccion')}}</textarea>
         @error('direccion')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
         @enderror
@@ -58,7 +58,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre del gerente:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el gerente de la oficina" 
+          <input type="text" maxlength="50" class="form-control rounded-pill" placeholder="Ingrese el gerente de la oficina" 
           name="nombreGerente" value="{{old('nombreGerente')}}">
           @error('nombreGerente')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -69,7 +69,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Teléfono:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el teléfono del gerente" 
+          <input type="text" maxlength="8" class="form-control rounded-pill" placeholder="Ingrese el teléfono del gerente" 
           name="telefono" value="{{old('telefono')}}">
           @error('telefono')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>

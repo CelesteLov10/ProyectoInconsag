@@ -49,15 +49,21 @@ class EmpleadoController extends Controller
         $dt = new Carbon();
         $before = $dt->subYears(18);
         //validacion para cuando se agregue un empleado
+        // regex basico para nombres regex:/^[a-zA-Z]+\s{0,1}[a-zA-Z]+$/u
+
+        /* regex para verificacion de la primera letra mayuscula 
+           regex:/^([A-Z]{1})[a-z]{0,15}+\s{0,1}[A-Z]{0,1}[a-z]{0,15}+$/u */
+
         $reglas = [
-            'identidad' => 'required|numeric|digits:13|unique:empleados|regex:/^[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0-9]+$/u',
-            'nombres'   => 'required|regex:/^[a-zA-Z]+\s{0,1}[a-zA-Z]+$/u|regex:/^.{1,20}$/u',
-            'apellidos' => 'required|regex:/^[a-zA-Z]+\s{0,1}[a-zA-Z]+$/u|regex:/^.{1,20}$/u',
+            'identidad' => 'required|numeric|unique:empleados|digits:13
+            |regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u',
+            'nombres'   => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u',
+            'apellidos' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}\[a-záéíóúñ]{0,15}+$/u',
             'telefono'  => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:empleados',
             'estado'    => 'required|string|in:activo,inactivo',
             'correo'    => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#|unique:empleados',
             'fechaNacimiento' => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u|before:'. $before,
-            'direccion'       => 'required|regex:/^.{1,50}$/u',
+            'direccion'       => 'required|regex:/^.{10,100}$/u',
             'fechaIngreso'    => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'puesto_id'       => 'required',
 
@@ -66,33 +72,34 @@ class EmpleadoController extends Controller
             'identidad.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
             'identidad.digits' => 'El número de identidad debe tener 13 dígitos. ',
             'identidad.unique' => 'El número de identidad debe ser único.',
-           // 'identidad.numeric' => 'El número de identidad sólo se permiten números ',
-           'identidad.regex' => 'El formato para el número de identidad no es válido.',
+        //  'identidad.numeric' => 'El número de identidad sólo se permiten números ',
+            'identidad.regex' => 'El formato para el número de identidad no es válido.',
 
-           'nombres.required' => 'El nombre no puede ir vacío.',
-            'nombres.alpha' => 'En el nombre sólo permite letras.',
-            'nombres.regex' => 'En el nombre sólo se permite un espacio entre los nombres.',
+            'nombres.required' => 'El nombre no puede ir vacío.',
+            'nombres.alpha' => 'El nombre sólo permite letras.',
+            'nombres.regex' => 'El nombre debe iniciar con mayuscula y solo permite un espacio entre los nombres.',
 
             'apellidos.required' => 'El apellido no puede ir vacío.',
-            'apellidos.alpha' => 'En el apellido sólo se permite letras.',
-            'apellidos.regex' => 'En el apellido sólo se permite un espacio entre los apellidos.',
+            'apellidos.alpha' => 'El apellido sólo permite letras.',
+            'apellidos.regex' => 'El apellido sólo permite un espacio entre los apellidos.',
 
             'telefono.required' => 'El teléfono no puede ir vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener sólo 8 números.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
+            'telefono.unique' => 'El número de teléfono ya está en uso.',
 
             'estado.required' => 'Debe seleccionar un estado.',
 
             'correo.required' => 'Debe ingresar el correo electrónico.',
             'correo.email' => 'Debe ingresar un correo electrónico válido.',
-            'correo.unique' => 'Debe ingresar un correo electrónico diferente.',
+            'correo.unique' => 'El correo electrónico ya está en uso.',
 
             'fechaNacimiento.required' => 'La fecha de nacimiento no puede ir vacío.',
             'fechaNacimiento.regex' => 'Debe ser mayor de edad.',
 
             'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
-            'direccion.min' => 'La dirección es muy corta.',
+            'direccion.regex' => 'La dirección es muy corta.',
 
             'fechaIngreso.required' => 'Debe seleccionar la fecha de ingreso, no puede ir vacío.',
             'puesto_id.required' => 'Debe seleccionar el puesto de trabajo, no puede ir vacío.',
@@ -102,11 +109,7 @@ class EmpleadoController extends Controller
 
         ];
         $this->validate($request, $reglas, $mensaje);
-
-        /*|regex:([0-1][0-8][0-2][0-9]{10})|max:13
-         regex:/^[a-zA-Z]+\s[a-zA-Z]+$/u|regex:/^.{1,20}$/u
-         |regex:/^[a-zA-Z]+\s[a-zA-Z]+$/u|regex:/^.{1,20}$/u
-        */
+        
         Empleado::create([
             'identidad'=>$request['identidad'],
             'nombres'=>$request['nombres'],
@@ -144,14 +147,15 @@ class EmpleadoController extends Controller
         $before = $dt->subYears(18);
         //validacion para cuando se agregue un empleado
         $request->validate([
-            'identidad' => 'numeric|required|Regex:/^[(0)(1)][0-9]+$/u|unique:empleados,identidad,'.$id.'id|digits:13',
-            'nombres'   => 'required|regex:/^[a-zA-Z/s]+$/u|regex:/^.{1,20}$/u',
-            'apellidos' => 'required|regex:/^[a-zA-Z/s]+$/u|regex:/^.{1,20}$/u',
+            'identidad' => 'numeric|required|digits:13|unique:empleados,identidad,'.$id.'id
+            |regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u',
+            'nombres'   => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u',
+            'apellidos' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u',
             'telefono'  => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:empleados,telefono,'.$id.'id',
             'estado'    => 'required|string|in:activo,inactivo',
             'correo'    => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#|unique:empleados,correo,'.$id.'id',
             'fechaNacimiento' => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u|before:'. $before,
-            'direccion'       => 'required|regex:/^.{1,50}$/u',
+            'direccion'       => 'required',
             'fechaIngreso'    => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'puesto_id'       => 'required',
         ]);
