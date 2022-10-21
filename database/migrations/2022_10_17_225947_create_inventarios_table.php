@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombreInv');
             $table->integer('cantidad');
+            $table->double('precioInv');
             $table->text('descripcion');
             $table->string('fecha');
             $table->unsignedBigInteger('empleado_id');//Relacion con tabla empleado

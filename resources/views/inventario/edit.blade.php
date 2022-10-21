@@ -57,6 +57,17 @@
         </div>
 
         <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Precio del inventario:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control rounded-pill" placeholder="Ingrese el precio del inventario" 
+                    name="precioInv" value="{{old('precioInv', $inventario->precioInv)}}">
+                    @error('precioInv')
+                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    @enderror
+            </div>
+        </div>
+
+        <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Descripción:</label>
             <div class="col-sm-5">
                     <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese una descripción"

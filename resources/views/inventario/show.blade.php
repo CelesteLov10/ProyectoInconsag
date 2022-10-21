@@ -44,6 +44,11 @@
             <td>{{$inventario->cantidad}}</td>    
         </tr>
         <tr>
+            <th scope="row">Precio del Inventario</th>
+            <td>{{$inventario->precioInv}}</td>    
+        </tr>
+
+        <tr>
             <th scope="row">Descripción</th>
             <td>{{$inventario->descripcion}}</td>    
         </tr>

@@ -10,7 +10,8 @@ class Inventario extends Model
     use HasFactory;
     protected $fillable =['id',
     'nombreInv',
-    'cantidad', 
+    'cantidad',
+    'precioInv',
     'descripcion',
     'fecha',
     'empleado_id', 

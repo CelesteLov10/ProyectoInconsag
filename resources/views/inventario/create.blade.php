@@ -57,6 +57,17 @@
         </div>
 
         <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Precio del inventario:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control rounded-pill" placeholder="Ingrese el precio del inventario" 
+                    name="precioInv" value="{{old('precioInv')}}" maxlength="2">
+                    @error('precioInv')
+                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    @enderror
+            </div>
+        </div>
+
+        <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Descripción:</label>
             <div class="col-sm-5">
                     <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese una descripción"
@@ -70,7 +81,7 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Fecha:</label>
             <div class="col-sm-5">
-                    <input type="text" class="form-control rounded-pill" placeholder="Seleccione la fecha" 
+                    <input type="text" class="form-control rounded-pill" placeholder="Seleccione la fecha de compra del inventario" 
                     name="fecha" id="datepicker" autocomplete="off" value="{{old('fecha')}}" maxlength="10">
                     @error('fecha')
                     <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -88,7 +99,7 @@
                     {{old('estado' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}}</option>
                 @endforeach
             </select> 
-            @error('puesto_id')
+            @error('empleado_id')
                 <small class="text-danger"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>

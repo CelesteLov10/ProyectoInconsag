@@ -23,23 +23,36 @@ class PuestoController extends Controller
 
     public function store(Request $request){
         //validacion para cuando se agregue un puesto
-        $request->validate([
-            'nombreCargo' => 'required|unique:puestos,nombreCargo|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
-            'sueldo'      => 'required|numeric|between: 7500, 20000', // falta averiguar cual es el salario minimo y el maximo
-            'descripcion' => 'required'
-        ]);
-        $puesto = new Puesto();
+        $this->validate($request, [
+            'nombreCargo' => ['required','unique:puestos,nombreCargo','regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u'],
+            'sueldo'      => ['required','numeric','between: 7500.00, 200000.00'], // falta averiguar cual es el salario minimo y el maximo
+            'descripcion' => ['required']
+        ], [
+            'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 
+            'nombreCargo.unique' => 'El nombre del puesto ingresado ya está en uso.', 
+            'nombreCargo.regex' => 'El nombre del puesto no debe contener números.' , 
+            //'nombreCargo.regex' => 'El nombre del puesto no debe contener muchos espacios' , 
 
-        $puesto->nombreCargo = $request->nombreCargo;
+            'sueldo.required' => 'Debe ingresar el sueldo', 
+            'sueldo.numeric' => 'El sueldo solo puede debe contener  números.', 
+            'sueldo.between' => 'El sueldo debe tener un rango de 7500 y 20000', 
+
+            'descripcion' => 'La descripción del puesto es requerida.'
+
+        ]);
+        $input = $request->all();
+        Puesto::create($input);
+
+       /* $puesto->nombreCargo = $request->nombreCargo;
         $puesto->sueldo = $request->sueldo;
         $puesto->descripcion = $request->descripcion;
         
         $create = $puesto->save();
         
-        if ($create){
+        if ($create){*/
             return redirect()->route('puestoLaboral.index')
             ->with('mensaje', 'Se guardó un nuevo puesto laboral correctamente');
-        } 
+        
         /** redireciona una vez enviado  */
     }
 
@@ -54,12 +67,23 @@ class PuestoController extends Controller
     }
 
     //Metodo para actualizar el registro
-    public function update(Request $request, $id, Puesto $puest){ 
+    public function update(Request $request, $id){ 
         //Validacion para la vista de actualizar un puesto
-        $request->validate([
-            'nombreCargo' => 'required|unique:puestos,nombreCargo,'.$id.'id|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
-            'sueldo'      => 'required|numeric|between: 7500, 20000', // falta averiguar cual es el salario minimo y el maximo
-            'descripcion' => 'required'
+        $this->validate($request,[
+            'nombreCargo' => ['required','unique:puestos,nombreCargo,'.$id.'id','regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u'],
+            'sueldo'      => ['required','numeric','between: 7500, 20000'], // falta averiguar cual es el salario minimo y el maximo
+            'descripcion' => ['required'],
+        ],[
+            'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 
+            'nombreCargo.unique' => 'El nombre del puesto ingresado ya está en uso.', 
+            'nombreCargo.regex' => 'El nombre del puesto no debe contener números.' , 
+            //'nombreCargo.regex' => 'El nombre del puesto no debe contener muchos espacios' , 
+
+            'sueldo.required' => 'Debe ingresar el sueldo', 
+            'sueldo.numeric' => 'El sueldo solo puede debe contener  números.', 
+            'sueldo.between' => 'El sueldo debe tener un rango de 7500.00 y 20000.00', 
+
+            'descripcion' => 'La descripción del puesto es requerida.'
         ]);
         $puesto = Puesto::findOrFail($id);
 

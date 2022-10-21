@@ -37,32 +37,56 @@ class InventarioController extends Controller
 
     public function store(Request $request){
 
-        $request->validate([
+        $reglas = [
 
             'nombreInv'   => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
             'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
+            'precioInv'    => 'required|regex:/^[0-9]{1,8}+$/u',
             'descripcion' => 'required',
             'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'empleado_id' => 'required',
             'oficina_id'  => 'required',
     
+        ];
+        $mensaje =[
+            'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
+            'nombreInv.regex' => 'El nombre del inventario no puede contener números.',
+
+            'cantidad.required' => 'La cantidad del inventario es requerdido.', 
+            'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',
+            'cantidad.regex' => 'No puede ingresar mas de 9999 artículos.',
+
+            'precioInv.required' => 'El precio del inventario es requerido, no puede estar vacío.',
+            'precioInv.'=> 'No se permiten letras.',
+
+            'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
+
+            'fecha.required' => 'La fecha es requerida', 
+            'fecha.regex' => 'No debe agregar mas datos a la fecha seleccionada', 
+
+            'empleado_id.required' => 'Debe seleccionar un empleado',
+
+            'oficina_id.required' => 'Debe seleccionar una oficina'
+
+
+
+
+        ];
+        $this->validate($request, $reglas, $mensaje);
+
+        Inventario::create([
+            'nombreInv'=>$request['nombreInv'],
+            'cantidad'=>$request['cantidad'],
+            'precioInv'=>$request['precioInv'],
+            'descripcion'=>$request['descripcion'],
+             'fecha' =>$request[ 'fecha' ],
+            'empleado_id'=>$request['empleado_id'], 
+            'oficina_id'=>$request['oficina_id'], 
+            
         ]);
-
-        $inventario = new Inventario();
-
-        $inventario->nombreInv = $request->nombreInv;
-        $inventario->cantidad = $request->cantidad;
-        $inventario->descripcion = $request->descripcion;
-        $inventario->fecha = $request->fecha;
-        $inventario->empleado_id = $request->empleado_id;
-        $inventario->oficina_id = $request->oficina_id;
-        
-        $create = $inventario->save();
-        
-        if ($create){
             return redirect()->route('inventario.index')
             ->with('mensaje', 'Se guardó un nuevo inventario correctamente');
-        }
+        
     }
 
     public function show($id){
@@ -82,14 +106,35 @@ class InventarioController extends Controller
 
     public function update(Request $request, $id){
 
-        $request->validate([
+        $this->validate($request,[
 
-            'nombreInv'   => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
-            'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
-            'descripcion' => 'required',
-            'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
-            'empleado_id' => 'required',
-            'oficina_id'  => 'required',
+            'nombreInv'   => ['required','regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u'],
+            'cantidad'    => ['required','numeric','regex:/^[0-9]{1,4}+$/u'],
+            'precioInv'    => ['required','regex:/^[0-9]{1,8}+$/u'],
+            'descripcion' => ['required'],
+            'fecha'       => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
+            'empleado_id' => ['required'],
+            'oficina_id'  => ['required'],
+        ],[
+            'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
+            'nombreInv.regex' => 'El nombre del inventario no puede contener números.',
+
+            'cantidad.required' => 'La cantidad del inventario es requerdido.', 
+            'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',
+            'cantidad.regex' => 'No puede ingresar mas de 9999 artículos.',
+
+            'precioInv.required' => 'El precio del inventario es requerido, no puede estar vacío.',
+            'precioInv.'=> 'No se permiten letras.',
+
+            'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
+
+            'fecha.required' => 'La fecha es requerida', 
+            'fecha.regex' => 'No debe agregar mas datos a la fecha seleccionada', 
+
+            'empleado_id.required' => 'Debe seleccionar un empleado',
+
+            'oficina_id.required' => 'Debe seleccionar una oficina'
+
     
         ]);
 

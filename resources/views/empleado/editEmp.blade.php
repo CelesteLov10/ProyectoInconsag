@@ -40,7 +40,7 @@
         <div class="col-sm-5">
           <input type="text" autofocus class="form-control rounded-pill" 
           placeholder="Ingrese la identidad del empleado" name="identidad"
-          value="{{old('identidad', $empleado->identidad)}}">
+          value="{{old('identidad', $empleado->identidad)}}"  maxlength="13">
             @error('identidad')
               <small class="text-danger"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -76,31 +76,12 @@
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" 
           placeholder="Ingrese el teléfono" name="telefono"
-          value="{{old('telefono', $empleado->telefono)}}">
+          value="{{old('telefono', $empleado->telefono)}}" maxlength="8">
           @error('telefono')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
       </div>
-
-      {{-- <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Estado:</label>
-        <div class="col-sm-5">
-          <select  class="form-control form-select rounded-pill" id="" name="estado"> 
-            {{-- se muestra el registro guardado 
-            <option disabled value="{{$empleado->estado}}" 
-              {{old('estado' , $empleado->estado)==$empleado->estado ? 'selected' : ''}}>{{$empleado->estado}}</option>
-                {{-- para que enliste los nombres del cargo 
-                @foreach ($estado as $estados)
-                <option value="{{old('nombreE', $estados->nombreE)}}"
-                {{old('estado' , $estados->nombreE)==$estados->id ? 'selected' : ''}}>{{$estados->nombreE}}</option>
-                @endforeach
-            </select>
-            @error('estado')
-            <small class="text-danger"><strong>*</strong>{{$message}}</small>
-            @enderror
-          </div>
-        </div>  --}}
 
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Estado:</label>

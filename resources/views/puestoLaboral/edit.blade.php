@@ -44,7 +44,7 @@
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" 
           placeholder="Ingrese una cantidad" name="sueldo"
-          value="{{old('sueldo', $puesto->sueldo)}}">
+          value="{{old('sueldo', $puesto->sueldo)}}" maxlength="7">
           @error('sueldo')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
