@@ -9,6 +9,9 @@
 {{-- plugins para el calendario --}}
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
+{{-- Plugins de mascara para inputs --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 @endsection
 
 @section('contenido') 
@@ -59,8 +62,8 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Precio del inventario:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill" placeholder="Ingrese el precio del inventario" 
-                    name="precioInv" value="{{old('precioInv')}}" maxlength="2">
+                <input type="text" class="form-control rounded-pill" placeholder="0.00" 
+                    name="precioInv" id="precioInv" value="{{old('precioInv')}}" maxlength="8">
                     @error('precioInv')
                     <small class="text-danger"><strong>*</strong>{{$message}}</small>
                     @enderror

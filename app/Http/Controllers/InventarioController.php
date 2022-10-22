@@ -41,7 +41,7 @@ class InventarioController extends Controller
 
             'nombreInv'   => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
             'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
-            'precioInv'    => 'required|regex:/^[0-9]{1,8}+$/u',
+            'precioInv'   => 'required|regex:/^[0-9]{4,5}.[0-9]{0,2}+$/u',
             'descripcion' => 'required',
             'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'empleado_id' => 'required',
@@ -110,7 +110,7 @@ class InventarioController extends Controller
 
             'nombreInv'   => ['required','regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u'],
             'cantidad'    => ['required','numeric','regex:/^[0-9]{1,4}+$/u'],
-            'precioInv'    => ['required','regex:/^[0-9]{1,8}+$/u'],
+            'precioInv'   => ['required','regex:/^[0-9]{1,5}+[.]{1}[0-9]{2}$/u'],
             'descripcion' => ['required'],
             'fecha'       => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'empleado_id' => ['required'],

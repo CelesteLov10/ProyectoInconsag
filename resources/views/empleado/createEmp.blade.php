@@ -52,7 +52,7 @@
         <label class="col-sm-3 col-form-label">Nombres:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese los nombres" 
-          name="nombres" value="{{old('nombres')}}" maxlength="25">
+          name="nombres" value="{{old('nombres')}}" maxlength="30">
           @error('nombres')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
@@ -63,7 +63,7 @@
         <label class="col-sm-3 col-form-label">Apellidos:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill" placeholder="Ingrese los apellidos" 
-          name="apellidos" value="{{old('apellidos')}}" maxlength="25">
+          name="apellidos" value="{{old('apellidos')}}" maxlength="30">
           @error('apellidos')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror

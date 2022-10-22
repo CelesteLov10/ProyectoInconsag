@@ -25,7 +25,7 @@ class PuestoController extends Controller
         //validacion para cuando se agregue un puesto
         $this->validate($request, [
             'nombreCargo' => ['required','unique:puestos,nombreCargo','regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u'],
-            'sueldo'      => ['required','numeric','between: 7500.00, 200000.00'], // falta averiguar cual es el salario minimo y el maximo
+            'sueldo'      => ['required','numeric','between: 7500.00, 20000.00'], // falta averiguar cual es el salario minimo y el maximo
             'descripcion' => ['required']
         ], [
             'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 

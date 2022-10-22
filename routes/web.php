@@ -5,6 +5,7 @@ use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\OficinaController;
+use App\Http\Controllers\ProveedorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -94,4 +95,13 @@ Route::controller(OficinaController::class)->group(function(){
     Route::get('/oficina/{id}/edit', 'edit')->name('oficina.edit');
     //Ruta para el metodo editar
     Route::put('/oficina/{id}/edit', 'update')->name('oficina.update');
+});
+
+Route::controller(ProveedorController::class)->group(function(){
+    //Ruta para listado de proveedores
+    Route::get('/proveedor', 'index')->name('proveedor.index');
+    //Ruta para crear un nuevo proveedor
+    Route::get('/proveedor/create', 'create')->name('proveedor.create');
+    //Ruta para guardar los registros del proveedor
+    Route::post('/proveedor', 'store')->name('proveedor.store');
 });

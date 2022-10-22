@@ -37,7 +37,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Sueldo:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="00000.00" name="sueldo" value="{{old('sueldo')}}" maxlength="7">
+          <input type="text" class="form-control rounded-pill" placeholder="0.00" name="sueldo" value="{{old('sueldo')}}" maxlength="7">
           @error('sueldo')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
