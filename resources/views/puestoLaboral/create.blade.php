@@ -6,7 +6,7 @@
 
 <div class="mb-5">
     <h4 class=" text-center">
-      <strong>Creación de un nuevo puesto laboral</strong> 
+      <strong>Registro de un nuevo puesto laboral</strong> 
     </h4>
 </div>
 <div class="container ">

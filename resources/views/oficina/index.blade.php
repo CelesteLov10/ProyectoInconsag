@@ -14,12 +14,6 @@
 @section('contenido') 
 
 
-<div class="mb-5">
-    <h4 class=" text-center">
-      <strong>Listado de oficina</strong> 
-    </h4>   
-</div>
-
   {{-- Campo de busqueda  --}}
   <form method="GET" action="">
     <div class="container">
@@ -61,8 +55,8 @@
       {{-- encabezado style="text-decoration:none"--}}
       <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
-            <a href="{{route('oficina.index')}}" >
-              <h6 class = "n-font-weight-bold text-primary">Todas las oficinas</h6 ></a> 
+            <a href="{{route('oficina.index')}}" id="sinLinea">
+              <h5 class = "n-font-weight-bold text-primary">Lista de las oficinas</h5 ></a> 
         </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -73,8 +67,8 @@
                     <th scope="col">#</th>
                     <th scope="col">Nombre de oficina</th>
                     <th scope="col">Nombre de municipio</th>
+                    <th scope="col">Detalle</th>
                     <th scope="col">Actualizar</th>
-                    <th scope="col">Ver</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -83,7 +77,7 @@
                     <td>{{$oficina->id}}</td>
                     <td>{{$oficina->nombreOficina}}</td>
                     <td>{{$oficina->municipio}}</td>
-                    <td><a class="btn btn-outline-success" href="{{route('oficina.show', ['id'=>$oficina->id])}}">Ver</a></td>
+                    <td><a class="btn btn-outline-primary" href="{{route('oficina.show', ['id'=>$oficina->id])}}">Ver</a></td>
                     <td><a class="btn btn-outline-warning" 
                       href="{{route('oficina.edit', ['id' => $oficina->id])}}">Actualizar</a>
                     </td>

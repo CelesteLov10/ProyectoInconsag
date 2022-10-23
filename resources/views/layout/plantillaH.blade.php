@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    {{-- css --}}
+    <link rel="stylesheet" type="text/css" href="{{asset('estilos.css')}}"> <!--El asset es un archivo que se encuentra en la web que puede ser utilizado
+    esto es para que todas las plantillas tengan el mismo estilo-->
+    <link rel="stylesheet" href="fontello.css">
+    {{-- ICONS BOOTSTRAP --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
     <title>@yield('titulo')</title>
+
     
     @yield('css')
-    
+
 
 </head>
 <body>
@@ -46,13 +54,9 @@
       </main>
 
 
-      <div class="container">
+      <div id="footer">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-          <p class="col-md-4 mb-0 text-muted">© 2022 CCFS</p>
-      
-          <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-          </a>
+          <p id= "par" class="col-md-6 mb-0 text-muted ">© 2022 CCFS</p>
         </footer>
       </div>
       

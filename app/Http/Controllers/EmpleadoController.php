@@ -60,7 +60,7 @@ class EmpleadoController extends Controller
             'nombres'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u'],
             'apellidos' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u'],
             'telefono'  => ['required','numeric','digits:8','regex:/^[(2)(3)(8)(9)][0-9]/','unique:empleados'],
-            'estado'    => ['required','string','in:activo,inactivo'],
+            'estado'    => ['required','alpha','in:activo,inactivo'],
             'correo'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:empleados'],
             'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
             'direccion'       => ['required','regex:/^.{10,100}$/u'],
@@ -89,6 +89,7 @@ class EmpleadoController extends Controller
             'telefono.unique' => 'El número de teléfono ya está en uso.',
 
             'estado.required' => 'Debe seleccionar un estado.',
+           // 'estado.in:activo,inactivo' => 'Solo se permite: activo o inactivo.',
 
             'correo.required' => 'Debe ingresar el correo electrónico.',
             'correo.email' => 'Debe ingresar un correo electrónico válido.',

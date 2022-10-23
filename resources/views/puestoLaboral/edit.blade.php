@@ -18,7 +18,7 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 " >
       <div class = " card-header py-3 " >
-          <h6 class = "n-font-weight-bold text-primary" >Actualización puesto </h6 > 
+          <h5 class = "n-font-weight-bold text-primary" >Actualización del puesto laboral </h5 > 
       </div >
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
       <div class="col-60 bg-light p-5">   

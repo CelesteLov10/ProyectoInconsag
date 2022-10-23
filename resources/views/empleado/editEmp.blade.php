@@ -26,7 +26,7 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 " >
       <div class = " card-header py-3 " >
-        <h6 class = "n-font-weight-bold text-primary">Actualización de Empleado</h6 > 
+        <h5 class = "n-font-weight-bold text-primary">Actualización del empleado</h5 > 
       </div >
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
       <div class="col-60 bg-light p-5">   
@@ -183,7 +183,7 @@
 
       <div class="mb-3 row">
         <div class="offset-sm-3 col-sm-9">
-          <button type="submit" class="btn btn-outline-info" >Actualizar </button> 
+          <button type="submit" class="btn btn-outline-warning" >Actualizar </button> 
       {{-- onclick="actualizar()"  --}}
           {{-- Boton para restablecer los valores de los campos --}}
           <button type="reset" form="formu" class="btn btn-outline-danger">Restablecer</button> 

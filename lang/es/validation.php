@@ -63,7 +63,7 @@ return [
         'array'   => 'El  :attribute debe contener :value o más elementos.',
     ],
     'image' => 'El  :attribute debe ser una imagen.',
-    'in'  => 'El  :attribute es inválido.',
+    'in'  => 'En el :attribute solo se permite: activo o inactivo.', //este es para el estado de actualizacion en empleado
     'in_array' => 'El  :attribute no existe en :other.',
     'integer' => 'El  :attribute debe ser un número entero.',
     'ip' => 'El  :attribute debe ser una dirección IP válida.',

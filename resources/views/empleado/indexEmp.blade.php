@@ -14,12 +14,6 @@
 @section('contenido') 
 
 
-<div class="mb-5">
-    <h4 class=" text-center">
-      <strong>Listado de empleados</strong> 
-    </h4>   
-</div>
-
   {{-- Campo de busqueda  --}}
   <form method="GET" action="">
     <div class="container">
@@ -61,8 +55,8 @@
       {{-- encabezado style="text-decoration:none"--}}
       <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
-            <a href="{{route('empleado.indexEmp')}}" >
-              <h6 class = "n-font-weight-bold text-primary">Todos los empleados</h6 ></a> 
+            <a href="{{route('empleado.indexEmp')}}" id="sinLinea">
+              <h5 class = "n-font-weight-bold text-primary">Lista de empleados</h5 ></a> 
         </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -76,7 +70,7 @@
                     <th scope="col">Apellidos</th>
                     <th scope="col">Nombre del cargo</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Ver</th>
+                    <th scope="col">Detalle</th>
                     <th scope="col">Actualizar</th>
                   </tr>
                 </thead>
@@ -90,7 +84,7 @@
                     <td>{{$empleado->puesto->nombreCargo}}</td>
                     <td>{{$empleado->estado}}</td>
 
-                    <td><a class="btn btn-outline-success" href="{{route('empleado.showEmp', ['id'=>$empleado->id])}}">Ver</a></td>
+                    <td><a class="btn btn-outline-primary" href="{{route('empleado.showEmp', ['id'=>$empleado->id])}}">Ver</a></td>
 
                   <!-- <td><a class="btn btn-outline-success" 
                         href="{ {route('empleado.showEmp', ['id' => $empleado->id])}}">Ver</a>

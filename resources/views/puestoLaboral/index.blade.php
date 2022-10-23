@@ -2,6 +2,7 @@
 
 @section('titulo', 'Listado puesto') 
 
+
 @section('css')
 <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
@@ -10,11 +11,6 @@
 
 @section('contenido') 
 
-<div class="mb-5">
-    <h4 class=" text-center">
-      <strong>Listado de puestos laborales</strong> 
-    </h4>   
-</div>
 
       {{-- Campo de busqueda  --}}
       <form method="GET" action="">
@@ -56,8 +52,8 @@
       {{-- encabezado style="text-decoration:none"--}}
       <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
-          <a href="{{route('puestoLaboral.index')}}">
-            <h6 class = "n-font-weight-bold text-primary">Todos los puestos</h6 ></a> 
+          <a href="{{route('puestoLaboral.index')}}" id="sinLinea">
+            <h5 class = "n-font-weight-bold text-primary"> Lista de los puestos</h5 ></a> 
         </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">

@@ -13,7 +13,7 @@
 
 <div class="mb-5">
     <h4 class=" text-center">
-      <strong>Creación de un nuevo prooveedor</strong> 
+      <strong>Registro de un nuevo prooveedor</strong> 
     </h4>
 </div>
 

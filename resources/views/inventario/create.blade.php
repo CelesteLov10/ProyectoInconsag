@@ -18,7 +18,7 @@
 
 <div class="mb-5">
     <h4 class=" text-center">
-    <strong>Creación de un nuevo inventario</strong> 
+    <strong>Registro de un nuevo inventario</strong> 
     </h4>
 </div>
 <div class="container ">

@@ -25,7 +25,7 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
-        <h6 class = "n-font-weight-bold text-primary">Actualización de inventario </h6 > 
+        <h5 class = "n-font-weight-bold text-primary">Actualización del inventario </h5 > 
     </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -88,21 +88,6 @@
                     @enderror
             </div>
         </div>
-
-            {{-- <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Nombre del empleado</label>
-            <div class="col-sm-5">
-            <select name="empleado_id" id="" class="form-select rounded-pill">
-                <option value="" disabled selected>-- Selecione una opción--</option>
-                @foreach ($empleado as $empleados)
-                <option value="{{old('nombres',$empleados->id)}}">{{$empleados->nombres}}</option>
-                @endforeach
-            </select> 
-            @error('puesto_id')
-                <small class="text-danger"><strong>*</strong>{{$message}}</small>
-            @enderror
-            </div>
-        </div> --}}
     
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre del empleado</label>
@@ -144,7 +129,7 @@
 
         <div class="mb-3 row">
         <div class="offset-sm-3 col-sm-9">
-            <button type="submit" class="btn btn-outline-info">Actualizar</button> 
+            <button type="submit" class="btn btn-outline-warning">Actualizar</button> 
             <button type="reset" form="formu" class="btn btn-outline-danger">
                 Restablecer</button> 
         </div>

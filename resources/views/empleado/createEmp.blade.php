@@ -8,22 +8,24 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 {{-- plugins para el calendario --}}
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+ <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+
 @endsection
     
 @section('contenido') 
 
-
 <div class="mb-5">
     <h4 class=" text-center">
-      <strong>Creación de un nuevo empleado</strong> 
+      <strong>Registro de un nuevo empleado</strong> 
     </h4>
 </div>
+
 
 <div class="container ">
   <div class="mb-3 text-end">
     <a class="btn btn-outline-primary" href="{{route('empleado.indexEmp')}}">Atrás</a>
 </div>
+
 
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 " >
@@ -33,9 +35,9 @@
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
         <div class="col-60 bg-light p-5">
-    <form action="{{route('empleado.storeEmp')}}" class="empleado-guardar" method="POST">
+    <form action="{{route('empleado.storeEmp')}}" id="p" class="empleado-guardar" method="POST">
         @csrf {{-- TOKEN INPUT OCULTO --}}
-
+   
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Identidad:</label>
         <div class="col-sm-5">
@@ -183,6 +185,10 @@
       </div>
     </div>
   </div>
+
+
+
+
 @endsection
 
 @section('js')
@@ -227,4 +233,6 @@
       });//.datepicker("setDate", new Date());
     } );
 </script>
+
+
 @endsection

@@ -10,11 +10,6 @@
 
 @section('contenido') 
 
-<div class="mb-5">
-    <h4 class=" text-center">
-      <strong>Listado de inventario</strong> 
-    </h4>
-</div>
   
 {{-- Campo de busqueda  --}}
 <form method="GET" action="">
@@ -56,8 +51,8 @@
       {{-- encabezado --}}
       <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
-          <a href="{{route('inventario.index')}}">
-            <h6 class = "n-font-weight-bold text-primary">Todos los inventarios </h6 ></a> 
+          <a href="{{route('inventario.index')}}" id="sinLinea">
+            <h5 class = "n-font-weight-bold text-primary">Lista de inventario</h5 ></a> 
         </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -70,7 +65,7 @@
                     <th scope="col">Cantidad</th>
                     <th scope="col">Oficina</th>
                     <th scope="col">Empleado</th>
-                    <th scope="col">Ver</th>
+                    <th scope="col">Detalle</th>
                     <th scope="col">Actualizar</th>
                   </tr>
                 </thead>
@@ -82,7 +77,7 @@
                     <td>{{$inventario->cantidad}}</td>   
                     <td>{{$inventario->oficina->nombreOficina}}</td> 
                     <td>{{$inventario->empleado->nombres}}</td>     {{-- aqui vista show --}}
-                    <td><a class="btn btn-outline-success" href="{{route('inventario.show', ['id'=>$inventario->id])}}">Ver</a></td>
+                    <td><a class="btn btn-outline-primary" href="{{route('inventario.show', ['id'=>$inventario->id])}}">Ver</a></td>
                     <td><a class="btn btn-outline-warning" 
                       href="{{route('inventario.edit', ['id' => $inventario->id])}}">Actualizar</a></td>
                         @csrf           {{-- aqui vista edit --}}
