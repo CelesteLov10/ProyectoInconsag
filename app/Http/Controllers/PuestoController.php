@@ -26,7 +26,7 @@ class PuestoController extends Controller
         $this->validate($request, [
             'nombreCargo' => ['required','unique:puestos,nombreCargo','regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u'],
             'sueldo'      => ['required','numeric','between: 7500.00, 20000.00'], // falta averiguar cual es el salario minimo y el maximo
-            'descripcion' => ['required']
+            'descripcion' => ['required','regex:/^.{10,100}$/u']
         ], [
             'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 
             'nombreCargo.unique' => 'El nombre del puesto ingresado ya está en uso.', 
@@ -37,13 +37,14 @@ class PuestoController extends Controller
             'sueldo.numeric' => 'El sueldo solo puede debe contener  números.', 
             'sueldo.between' => 'El sueldo debe tener un rango de 7500 y 20000', 
 
-            'descripcion' => 'La descripción del puesto es requerida.'
+            'descripcion' => 'La descripción del puesto es requerida.',
+            'descripcion.regex' => 'La descripción es muy corta.',
 
         ]);
         $input = $request->all();
         Puesto::create($input);
 
-       /* $puesto->nombreCargo = $request->nombreCargo;
+        /* $puesto->nombreCargo = $request->nombreCargo;
         $puesto->sueldo = $request->sueldo;
         $puesto->descripcion = $request->descripcion;
         
@@ -72,7 +73,7 @@ class PuestoController extends Controller
         $this->validate($request,[
             'nombreCargo' => ['required','unique:puestos,nombreCargo,'.$id.'id','regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u'],
             'sueldo'      => ['required','numeric','between: 7500, 20000'], // falta averiguar cual es el salario minimo y el maximo
-            'descripcion' => ['required'],
+            'descripcion' => ['required','regex:/^.{10,100}$/u'],
         ],[
             'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 
             'nombreCargo.unique' => 'El nombre del puesto ingresado ya está en uso.', 
@@ -83,7 +84,8 @@ class PuestoController extends Controller
             'sueldo.numeric' => 'El sueldo solo puede debe contener  números.', 
             'sueldo.between' => 'El sueldo debe tener un rango de 7500.00 y 20000.00', 
 
-            'descripcion' => 'La descripción del puesto es requerida.'
+            'descripcion' => 'La descripción del puesto es requerida.',
+            'descripcion.regex' => 'La descripción es muy corta.',
         ]);
         $puesto = Puesto::findOrFail($id);
 

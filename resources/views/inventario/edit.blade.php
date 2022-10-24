@@ -20,7 +20,8 @@
 </div>
 <div class="container ">
     <div class="mb-3 text-end">
-        <a class="btn btn-outline-primary" href="{{route('inventario.index')}}">Atrás</a>
+        <a class="btn btn-outline-primary" href="{{route('inventario.index')}}">
+            <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
     </div>
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 " >
@@ -37,10 +38,11 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre inventario:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill" placeholder="Ingrese el nuevo nombre de inventario" 
+                <input type="text" class="form-control rounded-pill @error('nombreInv') is-invalid @enderror" 
+                    placeholder="Ingrese el nuevo nombre de inventario" 
                     name="nombreInv" value="{{old('nombreInv', $inventario->nombreInv)}}">
                     @error('nombreInv')
-                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>
         </div>
@@ -48,10 +50,11 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Cantidad:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill" placeholder="Ingrese la cantidad de inventario" 
+                <input type="text" class="form-control rounded-pill @error('cantidad') is-invalid @enderror" 
+                    placeholder="Ingrese la cantidad de inventario" 
                     name="cantidad" value="{{old('cantidad', $inventario->cantidad)}}">
                     @error('cantidad')
-                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>
         </div>
@@ -59,10 +62,11 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Precio del inventario:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill" placeholder="Ingrese el precio del inventario" 
+                <input type="text" class="form-control rounded-pill @error('precioInv') is-invalid @enderror" 
+                    placeholder="Ingrese el precio del inventario" 
                     name="precioInv" value="{{old('precioInv', $inventario->precioInv)}}">
                     @error('precioInv')
-                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>
         </div>
@@ -70,10 +74,11 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Descripción:</label>
             <div class="col-sm-5">
-                    <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese una descripción"
+                    <textarea type="text" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
+                    placeholder="Ingrese una descripción"
                     name="descripcion">{{old('descripcion', $inventario->descripcion)}}</textarea>
                     @error('descripcion')
-                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>
         </div>
@@ -81,10 +86,11 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Fecha:</label>
             <div class="col-sm-5">
-                    <input type="text" class="form-control rounded-pill" placeholder="Seleccione la fecha" 
+                    <input type="text" class="form-control rounded-pill @error('fecha') is-invalid @enderror" 
+                    maxlength="10" placeholder="Seleccione la fecha" 
                     name="fecha" id="datepicker" autocomplete="off" value="{{old('fecha', $inventario->fecha)}}">
                     @error('fecha')
-                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>
         </div>
@@ -92,7 +98,7 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre del empleado</label>
             <div class="col-sm-5">
-            <select name="empleado_id" id="" class="form-select rounded-pill">
+            <select name="empleado_id" id="" class="form-select rounded-pill @error('empleado_id') is-invalid @enderror">
                     {{-- se muestra el registro guardado --}}
                 <option value="{{$inventario->empleado_id}}" 
                 {{old('empleado_id' , $inventario->empleado->nombres)==$inventario->empleado->id ? 'selected' : ''}}>{{$inventario->empleado->nombres}}</option>
@@ -103,7 +109,7 @@
                 @endforeach
             </select> 
             @error('empleado_id')
-                <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
         </div>
@@ -111,7 +117,7 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre de la oficina</label>
             <div class="col-sm-5">
-            <select name="oficina_id" id="" class="form-select rounded-pill">
+            <select name="oficina_id" id="" class="form-select rounded-pill @error('oficina_id') is-invalid @enderror">
                 {{-- se muestra el registro guardado --}}
                 <option value="{{$inventario->oficina_id}}" 
                 {{old('oficina_id' , $inventario->oficina->nombreOficina)==$inventario->oficina->id ? 'selected' : ''}}>{{$inventario->oficina->nombreOficina}}</option>
@@ -122,7 +128,7 @@
                 @endforeach
             </select> 
             @error('oficina_id')
-            <small class="text-danger"><strong>*</strong>{{$message}}</small>
+            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
         </div>
@@ -130,8 +136,7 @@
         <div class="mb-3 row">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-outline-warning">Actualizar</button> 
-            <button type="reset" form="formu" class="btn btn-outline-danger">
-                Restablecer</button> 
+            <button type="reset" form="formu" class="btn btn-outline-danger">Restablecer</button> 
         </div>
     </div>  
     </form>

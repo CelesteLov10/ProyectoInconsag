@@ -23,7 +23,8 @@
 
 <div class="container ">
   <div class="mb-3 text-end">
-    <a class="btn btn-outline-primary" href="{{route('empleado.indexEmp')}}">Atrás</a>
+    <a class="btn btn-outline-primary" href="{{route('empleado.indexEmp')}}"> 
+      <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
 </div>
 
 
@@ -41,11 +42,12 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Identidad:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese la identidad" 
+          <input type="text" class="form-control rounded-pill @error('identidad') is-invalid @enderror" 
+            placeholder="Ingrese la identidad" 
             name="identidad" value="{{old('identidad')}}"
-            title="Ingrese un numero de identidad valido" maxlength="13">
+            title="Ingrese un numero de identidad válido" maxlength="13">
             @error('identidad')
-            <small class="text-danger"><strong>*</strong>{{$message}}</small>
+            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
         </div>
       </div>
@@ -53,10 +55,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombres:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese los nombres" 
+          <input type="text" class="form-control rounded-pill @error('nombres') is-invalid @enderror" 
+          placeholder="Ingrese los nombres" 
           name="nombres" value="{{old('nombres')}}" maxlength="30">
           @error('nombres')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
       </div>
@@ -64,10 +67,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Apellidos:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese los apellidos" 
+          <input type="text" class="form-control rounded-pill @error('apellidos') is-invalid @enderror" 
+          placeholder="Ingrese los apellidos" 
           name="apellidos" value="{{old('apellidos')}}" maxlength="30">
           @error('apellidos')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
       </div>
@@ -75,10 +79,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Teléfono:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el numero de teléfono"
+          <input type="text" class="form-control rounded-pill @error('telefono') is-invalid @enderror" 
+          placeholder="Ingrese el numero de teléfono"
           name="telefono" value="{{old('telefono')}}" maxlength="8">
         @error('telefono')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
@@ -86,7 +91,7 @@
       <div class="mb-3 row form-group">
         <label class="col-sm-3 col-form-label">Estado:</label>
         <div class="col-sm-5 form">
-          <select class="form-control form-select rounded-pill" name="estado">
+          <select class="form-control form-select rounded-pill @error('estado') is-invalid @enderror" name="estado">
             <option value="" disabled selected>-- Selecione un estado --</option>
             {{--  {{old('estado' , $estado->nombreE)==$estado->id ? 'selected' : ''}} --}}
             @foreach ($estados as $estado)
@@ -95,7 +100,7 @@
             @endforeach
           </select>
         @error('estado')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
@@ -103,10 +108,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Correo:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el correo electrónico"
+          <input type="text" class="form-control rounded-pill @error('correo') is-invalid @enderror" 
+          placeholder="Ingrese el correo electrónico"
           name="correo" value="{{old('correo')}}" maxlength="40">
         @error('correo')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
@@ -114,21 +120,23 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha de nacimiento:</label>
         <div class="col-sm-5">
-          <input type="text"  class="form-control rounded-pill" maxlength="10" placeholder="Seleccione la fecha de nacimiento"
-          name="fechaNacimiento" id="datepicker" autocomplete="off" value="{{old('fechaNacimiento')}}">
-        @error('fechaNacimiento')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
-        @enderror
-        </div>
+            <input type="text" class="form-control rounded-pill @error('fechaNacimiento') is-invalid @enderror" 
+            maxlength="10" placeholder="Seleccione la fecha de nacimiento"
+            name="fechaNacimiento" autocomplete="off" value="{{old('fechaNacimiento')}}" id="datepicker"> 
+              @error('fechaNacimiento')
+            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+          @enderror
+          </div>
       </div>
 
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Dirección:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill" maxlength="100" placeholder="Ingrese la dirección"
+          <textarea type="text" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
+          maxlength="100" placeholder="Ingrese la dirección"
           name="direccion" value="">{{old('direccion')}}</textarea>
         @error('direccion')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
@@ -136,18 +144,20 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha de ingreso:</label>
         <div class="col-sm-5">
-          <input type="text" id="datepicker2" autocomplete="off" maxlength="10" class="form-control rounded-pill" placeholder="Seleccione la fecha de ingreso"
-          name="fechaIngreso" value="{{old('fechaIngreso')}}">
-        @error('fechaIngreso')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
-        @enderror
-        </div>
+            <input type="text" id="datepicker2" autocomplete="off" maxlength="10" 
+            class="form-control rounded-pill @error('fechaIngreso') is-invalid @enderror" 
+            placeholder="Seleccione la fecha de ingreso"
+            name="fechaIngreso" value="{{old('fechaIngreso')}}">
+              @error('fechaIngreso')
+                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+              @enderror
+          </div>
       </div>
 
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre del cargo:</label>
         <div class="col-sm-5">
-        <select name="puesto_id" id="" class="form-select rounded-pill">
+        <select name="puesto_id" id="" class="form-select rounded-pill @error('puesto_id') is-invalid @enderror">
           <option value="" disabled selected>-- Selecione un cargo --</option>
             @foreach ($puesto as $puestos)
             <option value="{{$puestos->id}}" 
@@ -155,7 +165,7 @@
             @endforeach
         </select> 
         @error('puesto_id')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
@@ -163,7 +173,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre de la oficina:</label>
         <div class="col-sm-5">
-        <select name="oficina_id" id="" class="form-select rounded-pill">
+        <select name="oficina_id" id="" class="form-select rounded-pill @error('oficina_id') is-invalid @enderror">
             <option value="" disabled selected>-- Selecione una oficina --</option>
             @foreach ($oficina as $oficinas)
             <option value="{{$oficinas->id}}" 
@@ -171,7 +181,7 @@
             @endforeach
         </select> 
         @error('oficina_id')
-            <small class="text-danger"><strong>*</strong>{{$message}}</small>
+            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
     </div>

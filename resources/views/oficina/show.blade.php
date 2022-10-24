@@ -17,7 +17,8 @@
 
 <div class="container ">
     <div class="mb-3 text-end">
-        <a class="btn btn-outline-primary" href="{{route('oficina.index')}}">Atrás</a>
+        <a class="btn btn-outline-primary" href="{{route('oficina.index')}}">
+            <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
     </div>
     {{-- encabezado --}}
     <div class = " card shadow ab-4 " >

@@ -19,7 +19,9 @@
               <div class="input-group">
                     <input type="text" name="search" id="search"  class="form-control"
                     placeholder="Buscar por inventario, oficina o empleado" value="{{request('search')}}"/> 
-                  <button type="submit" class="btn btn-outline-primary">Buscar</button>
+                  <button type="submit" class="btn btn-outline-primary">
+                    <i class="bi bi-search"></i>
+                  </button>
                 </div>
               </div>
           </div>
@@ -46,13 +48,13 @@
       @endif
 
     <div class="mb-3 text-end">
-        <a class="btn btn-outline-success text-right" href="{{route('inventario.create')}}">Nuevo</a>
+        <a class="btn btn-outline-success text-right" href="{{route('inventario.create')}}">Nuevo inventario <i class="bi bi-plus-square-dotted"></i></a>
     </div>
       {{-- encabezado --}}
       <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
           <a href="{{route('inventario.index')}}" id="sinLinea">
-            <h5 class = "n-font-weight-bold text-primary">Lista de inventario</h5 ></a> 
+            <h5 class = "n-font-weight-bold text-primary" title="Volver a todos los registros">Lista de inventario</h5 ></a> 
         </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -77,9 +79,10 @@
                     <td>{{$inventario->cantidad}}</td>   
                     <td>{{$inventario->oficina->nombreOficina}}</td> 
                     <td>{{$inventario->empleado->nombres}}</td>     {{-- aqui vista show --}}
-                    <td><a class="btn btn-outline-primary" href="{{route('inventario.show', ['id'=>$inventario->id])}}">Ver</a></td>
+                    <td><a class="btn btn-outline-primary" href="{{route('inventario.show', ['id'=>$inventario->id])}}">
+                      <i class="bi bi-eye"></i> </a></td>
                     <td><a class="btn btn-outline-warning" 
-                      href="{{route('inventario.edit', ['id' => $inventario->id])}}">Actualizar</a></td>
+                      href="{{route('inventario.edit', ['id' => $inventario->id])}}"><i class="bi bi-pencil-square"></i></a></td>
                         @csrf           {{-- aqui vista edit --}}
                   </tr>
                   @empty

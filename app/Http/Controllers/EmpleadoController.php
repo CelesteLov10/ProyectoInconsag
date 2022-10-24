@@ -66,6 +66,7 @@ class EmpleadoController extends Controller
             'direccion'       => ['required','regex:/^.{10,100}$/u'],
             'fechaIngreso'    => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'puesto_id'       => ['required'],
+            'oficina_id'       => ['required'],
 
         ],[
             'identidad.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
@@ -144,9 +145,10 @@ class EmpleadoController extends Controller
             'estado'    => ['required','string','in:activo,inactivo'],
             'correo'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:empleados,correo,'.$id.'id'],
             'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u', 'before:'. $before],
-            'direccion'       => ['required'],
+            'direccion'       => ['required','regex:/^.{10,100}$/u'],
             'fechaIngreso'    => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'puesto_id'       => ['required'],
+            'oficina_id'       => ['required'],
         ], [
     
             'identidad.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',

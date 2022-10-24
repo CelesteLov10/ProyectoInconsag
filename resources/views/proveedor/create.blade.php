@@ -19,7 +19,8 @@
 
 <div class="container ">
   <div class="mb-3 text-end">
-    <a class="btn btn-outline-primary" href="{{route('proveedor.index')}}">Atrás</a>
+    <a class="btn btn-outline-primary" href="{{route('proveedor.index')}}">
+      <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
 </div>
 
     {{-- encabezado  --}}
@@ -37,9 +38,10 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre del proveedor:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el nombre del proveedor" 
-          name="nombres" value="{{old('nombres')}}" maxlength="40">
-          @error('nombres')
+          <input type="text" class="form-control rounded-pill @error('nombreProveedor') is-invalid @enderror" 
+          placeholder="Ingrese el nombre del proveedor" 
+          name="nombreProveedor" value="{{old('nombreProveedor')}}" maxlength="40">
+          @error('nombreProveedor')
           <small class="text-danger"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
@@ -48,10 +50,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre del contacto:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el nombre del contacto" 
-          name="apellidos" value="{{old('apellidos')}}" maxlength="40">
-          @error('apellidos')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <input type="text" class="form-control rounded-pill  @error('nombreContacto') is-invalid @enderror" 
+          placeholder="Ingrese el nombre del contacto" 
+          name="nombreContacto" value="{{old('nombreContacto')}}" maxlength="40">
+          @error('nombreContacto')
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
       </div>
@@ -59,10 +62,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Cargo del contacto:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el cargo del contacto" 
-          name="apellidos" value="{{old('apellidos')}}" maxlength="50">
-          @error('apellidos')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <input type="text" class="form-control rounded-pill  @error('cargoContacto') is-invalid @enderror" 
+          placeholder="Ingrese el cargo del contacto" 
+          name="cargoContacto" value="{{old('cargoContacto')}}" maxlength="50">
+          @error('cargoContacto')
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
       </div>
@@ -70,10 +74,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Dirección:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill" maxlength="100" placeholder="Ingrese la dirección"
+          <textarea type="text" class="form-control rounded-pill  @error('direccion') is-invalid @enderror" 
+          maxlength="100" placeholder="Ingrese la dirección"
           name="direccion" value="">{{old('direccion')}}</textarea>
         @error('direccion')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
@@ -81,10 +86,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Ciudad:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese la ciudad"
-          name="correo" value="{{old('correo')}}" maxlength="40">
-        @error('correo')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <input type="text" class="form-control rounded-pill  @error('ciudad') is-invalid @enderror" 
+          placeholder="Ingrese la ciudad"
+          name="ciudad" value="{{old('ciudad')}}" maxlength="40">
+        @error('ciudad')
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
@@ -92,10 +98,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Teléfono:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el numero de teléfono"
+          <input type="text" class="form-control rounded-pill  @error('telefono') is-invalid @enderror" 
+          placeholder="Ingrese el numero de teléfono"
           name="telefono" value="{{old('telefono')}}" maxlength="8">
         @error('telefono')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
@@ -103,10 +110,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Correo:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el correo electrónico"
-          name="correo" value="{{old('correo')}}" maxlength="40">
-        @error('correo')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <input type="text" class="form-control rounded-pill  @error('email') is-invalid @enderror" 
+          placeholder="Ingrese el correo electrónico"
+          name="email" value="{{old('email')}}" maxlength="40">
+        @error('email')
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>

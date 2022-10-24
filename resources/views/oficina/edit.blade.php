@@ -12,7 +12,8 @@
 
 <div class="container ">
   <div class="mb-3 text-end">
-    <a class="btn btn-outline-primary" href="{{route('oficina.index')}}">Atrás</a>
+    <a class="btn btn-outline-primary" href="{{route('oficina.index')}}">
+      <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
   </div>
 
     {{-- encabezado  --}}
@@ -30,11 +31,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre de la oficina:</label>
         <div class="col-sm-5">
-          <input type="text" autofocus class="form-control rounded-pill" 
+          <input type="text" autofocus class="form-control rounded-pill @error('nombreOficina') is-invalid @enderror" 
           placeholder="Ingrese una oficina" name="nombreOficina"
           value="{{old('nombreOficina', $oficina->nombreOficina)}}">
             @error('nombreOficina')
-              <small class="text-danger"><strong>*</strong>{{$message}}</small>
+              <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
         </div>
       </div>
@@ -42,11 +43,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Municipio:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" 
+          <input type="text" class="form-control rounded-pill  @error('municipio') is-invalid @enderror" 
           placeholder="Ingrese un municipio" name="municipio"
           value="{{old('municipio', $oficina->municipio)}}">
           @error('municipio')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
       </div>
@@ -54,11 +55,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Dirección:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill" 
+          <textarea type="text" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
           placeholder="Ingrese una dirección" 
           name="direccion">{{old('direccion', $oficina->direccion)}}</textarea>
         @error('direccion')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
       </div>
@@ -66,10 +67,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre del gerente:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el gerente de la oficina" 
+          <input type="text" class="form-control rounded-pill @error('nombreGerente') is-invalid @enderror" 
+          placeholder="Ingrese el gerente de la oficina" 
           name="nombreGerente" value="{{old('nombreGerente', $oficina->nombreGerente)}}">
           @error('nombreGerente')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
       </div>
@@ -77,10 +79,11 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Teléfono:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" placeholder="Ingrese el teléfono del gerente" 
+          <input type="text" class="form-control rounded-pill @error('telefono') is-invalid @enderror" 
+          placeholder="Ingrese el teléfono del gerente" 
           name="telefono" value="{{old('telefono', $oficina->telefono)}}">
           @error('telefono')
-          <small class="text-danger"><strong>*</strong>{{$message}}</small>
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
         </div>
       </div>

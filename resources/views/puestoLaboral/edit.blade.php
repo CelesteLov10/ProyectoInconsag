@@ -12,7 +12,8 @@
 
 <div class="container ">
   <div class="mb-3 text-end">
-    <a class="btn btn-outline-primary" href="{{route('puestoLaboral.index')}}">Atrás</a>
+    <a class="btn btn-outline-primary" href="{{route('puestoLaboral.index')}}">
+      <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
   </div>
 
     {{-- encabezado  --}}
@@ -30,7 +31,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre del cargo:</label>
         <div class="col-sm-5">
-          <input type="text" autofocus class="form-control rounded-pill" 
+          <input type="text" autofocus class="form-control rounded-pill @error('nombreCargo') is-invalid @enderror" 
           placeholder="Ingrese un cargo" name="nombreCargo"
           value="{{old('nombreCargo', $puesto->nombreCargo)}}">
             @error('nombreCargo')
@@ -42,7 +43,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Sueldo:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill" 
+          <input type="text" class="form-control rounded-pill @error('sueldo') is-invalid @enderror" 
           placeholder="Ingrese una cantidad" name="sueldo"
           value="{{old('sueldo', $puesto->sueldo)}}" maxlength="7">
           @error('sueldo')
@@ -54,7 +55,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Descripción:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill" 
+          <textarea type="text" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
           placeholder="Ingrese una descripción" 
           name="descripcion">{{old('descripcion', $puesto->descripcion)}}</textarea>
         @error('descripcion')

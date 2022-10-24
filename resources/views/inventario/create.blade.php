@@ -23,7 +23,8 @@
 </div>
 <div class="container ">
     <div class="mb-3 text-end">
-        <a class="btn btn-outline-primary" href="{{route('inventario.index')}}">Atrás</a>
+        <a class="btn btn-outline-primary" href="{{route('inventario.index')}}">
+            <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
     </div>
 
     {{-- encabezado  --}}
@@ -40,10 +41,11 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre inventario:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill" placeholder="Ingrese un nombre de inventario" 
+                <input type="text" class="form-control rounded-pill  @error('nombreInv') is-invalid @enderror" 
+                    placeholder="Ingrese un nombre de inventario" 
                     name="nombreInv" value="{{old('nombreInv')}}" maxlength="50">
                     @error('nombreInv')
-                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>
         </div>
@@ -51,10 +53,11 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Cantidad:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill" placeholder="Ingrese una cantidad de inventario" 
+                <input type="text" class="form-control rounded-pill  @error('cantidad') is-invalid @enderror" 
+                placeholder="Ingrese una cantidad de inventario" 
                     name="cantidad" value="{{old('cantidad')}}" maxlength="4">
                     @error('cantidad')
-                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>
         </div>
@@ -62,10 +65,11 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Precio del inventario:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill" placeholder="0.00" 
+                <input type="text" class="form-control rounded-pill  @error('precioInv') is-invalid @enderror" 
+                    placeholder="0.00" 
                     name="precioInv" id="precioInv" value="{{old('precioInv')}}" maxlength="8">
                     @error('precioInv')
-                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>
         </div>
@@ -73,10 +77,11 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Descripción:</label>
             <div class="col-sm-5">
-                    <textarea type="text" class="form-control rounded-pill" placeholder="Ingrese una descripción"
+                    <textarea type="text" class="form-control rounded-pill  @error('descripcion') is-invalid @enderror" 
+                    placeholder="Ingrese una descripción"
                     name="descripcion" maxlength="255">{{old('descripcion')}}</textarea>
                     @error('descripcion')
-                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
             </div>
         </div>
@@ -84,18 +89,19 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Fecha:</label>
             <div class="col-sm-5">
-                    <input type="text" class="form-control rounded-pill" placeholder="Seleccione la fecha de compra del inventario" 
+                    <input type="text" class="form-control rounded-pill  @error('fecha') is-invalid @enderror" 
+                    placeholder="Seleccione la fecha de compra del inventario" 
                     name="fecha" id="datepicker" autocomplete="off" value="{{old('fecha')}}" maxlength="10">
                     @error('fecha')
-                    <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                        <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
-            </div>
+                </div>
         </div>
 
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre del empleado</label>
             <div class="col-sm-5">
-            <select name="empleado_id" id="" class="form-select rounded-pill">
+            <select name="empleado_id" id="" class="form-select rounded-pill  @error('empleado_id') is-invalid @enderror">
                 <option value="" disabled selected>-- Selecione un nombre de empleado --</option>
                 @foreach ($empleado as $empleados)
                 <option value="{{$empleados->id}}" 
@@ -103,7 +109,7 @@
                 @endforeach
             </select> 
             @error('empleado_id')
-                <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
         </div>
@@ -111,7 +117,7 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre de la oficina</label>
             <div class="col-sm-5">
-            <select name="oficina_id" id="" class="form-select rounded-pill">
+            <select name="oficina_id" id="" class="form-select rounded-pill  @error('oficina_id') is-invalid @enderror">
                 <option value="" disabled selected>-- Selecione una oficina --</option>
                 @foreach ($oficina as $oficinas)
                 <option value="{{$oficinas->id}}" 
@@ -119,7 +125,7 @@
                 @endforeach
             </select> 
             @error('oficina_id')
-                <small class="text-danger"><strong>*</strong>{{$message}}</small>
+                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
         </div>

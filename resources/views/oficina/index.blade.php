@@ -23,7 +23,9 @@
                       <input type="text" name="search" id="search"  class="form-control"
                       placeholder="Buscar por nombre de oficina y municipio" 
                       value="{{request('search')}}"/> {{-- busca por nombre de oficina y nombre de municipio --}}
-                    <button type="submit" class="btn btn-outline-primary">Buscar</button>
+                    <button type="submit" class="btn btn-outline-primary">
+                      <i class="bi bi-search"></i>
+                    </button>
                   </div>
                 </div>
             </div>
@@ -50,13 +52,13 @@
         @endif
 
     <div class="mb-3 text-end">
-        <a class="btn btn-outline-success text-right" href="{{route('oficina.create')}}">Nuevo</a>
+        <a class="btn btn-outline-success text-right" href="{{route('oficina.create')}}">Nueva oficina <i class="bi bi-plus-square-dotted"></i></a>
     </div>
       {{-- encabezado style="text-decoration:none"--}}
       <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
             <a href="{{route('oficina.index')}}" id="sinLinea">
-              <h5 class = "n-font-weight-bold text-primary">Lista de las oficinas</h5 ></a> 
+              <h5 class = "n-font-weight-bold text-primary" title="Volver a todos los registros">Lista de las oficinas</h5 ></a> 
         </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -77,9 +79,11 @@
                     <td>{{$oficina->id}}</td>
                     <td>{{$oficina->nombreOficina}}</td>
                     <td>{{$oficina->municipio}}</td>
-                    <td><a class="btn btn-outline-primary" href="{{route('oficina.show', ['id'=>$oficina->id])}}">Ver</a></td>
+                    <td><a class="btn btn-outline-primary" href="{{route('oficina.show', ['id'=>$oficina->id])}}">
+                      <i class="bi bi-eye"></i> </a></td>
                     <td><a class="btn btn-outline-warning" 
-                      href="{{route('oficina.edit', ['id' => $oficina->id])}}">Actualizar</a>
+                      href="{{route('oficina.edit', ['id' => $oficina->id])}}">
+                      <i class="bi bi-pencil-square"></i></a>
                     </td>
                     @csrf
                   </tr>

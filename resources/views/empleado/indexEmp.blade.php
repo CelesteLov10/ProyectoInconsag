@@ -23,7 +23,9 @@
                       <input type="text" name="search" id="search"  class="form-control"
                       placeholder="Buscar por identidad, nombre o nombre del cargo" 
                       value="{{request('search')}}"/> {{-- busca por identidad nombre empleado y nombre cargo --}}
-                    <button type="submit" class="btn btn-outline-primary">Buscar</button>
+                    <button type="submit" class="btn btn-outline-primary">
+                      <i class="bi bi-search"></i>
+                    </button>
                   </div>
                 </div>
             </div>
@@ -50,13 +52,13 @@
         @endif
 
     <div class="mb-3 text-end">
-        <a class="btn btn-outline-success text-right" href="{{route('empleado.createEmp')}}">Nuevo</a>
+        <a class="btn btn-outline-success text-right" href="{{route('empleado.createEmp')}}">Nuevo empleado  <i class="bi bi-person-plus"></i></a>
     </div>
       {{-- encabezado style="text-decoration:none"--}}
       <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
             <a href="{{route('empleado.indexEmp')}}" id="sinLinea">
-              <h5 class = "n-font-weight-bold text-primary">Lista de empleados</h5 ></a> 
+              <h5 class = "n-font-weight-bold text-primary" title="Volver a todos los registros"">Lista de empleados</h5 ></a> 
         </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -84,13 +86,17 @@
                     <td>{{$empleado->puesto->nombreCargo}}</td>
                     <td>{{$empleado->estado}}</td>
 
-                    <td><a class="btn btn-outline-primary" href="{{route('empleado.showEmp', ['id'=>$empleado->id])}}">Ver</a></td>
+                    <td><a class="btn btn-outline-primary" href="{{route('empleado.showEmp', ['id'=>$empleado->id])}}">
+                      <i class="bi bi-eye"></i> 
+                    </a></td>
 
                   <!-- <td><a class="btn btn-outline-success" 
                         href="{ {route('empleado.showEmp', ['id' => $empleado->id])}}">Ver</a>
                       </td>-->
                     <td><a class="btn btn-outline-warning" 
-                      href="{{route('empleado.editEmp', ['id' => $empleado->id])}}">Actualizar</a>
+                      href="{{route('empleado.editEmp', ['id' => $empleado->id])}}">
+                      <i class="bi bi-pencil-square"></i>
+                    </a>
                     </td>
                     @csrf
                   </tr>

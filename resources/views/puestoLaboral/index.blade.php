@@ -20,7 +20,8 @@
                     <div class="input-group">
                           <input type="text" name="search" id="search"  class="form-control"
                           placeholder="Buscar por nombre del cargo" value="{{request('search')}}"/> {{-- busca por nombre cargo --}}
-                        <button type="submit" class="btn btn-outline-primary">Buscar</button>
+                        <button type="submit" class="btn btn-outline-primary">
+                          <i class="bi bi-search"></i></button>
                       </div>
                     </div>
                 </div>
@@ -47,13 +48,13 @@
       @endif
 
     <div class="mb-3 text-end">
-        <a class="btn btn-outline-success text-right" href="{{route('puestoLaboral.create')}}">Nuevo</a>
+        <a class="btn btn-outline-success text-right" href="{{route('puestoLaboral.create')}}">Nuevo puesto <i class="bi bi-plus-square-dotted"></i></a>
     </div>
       {{-- encabezado style="text-decoration:none"--}}
       <div class = " card shadow ab-4 " >
         <div class = " card-header py-3 " >
           <a href="{{route('puestoLaboral.index')}}" id="sinLinea">
-            <h5 class = "n-font-weight-bold text-primary"> Lista de los puestos</h5 ></a> 
+            <h5 class = "n-font-weight-bold text-primary" title="Volver a todos los registros"> Lista de los puestos laborales</h5 ></a> 
         </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -74,7 +75,8 @@
                     <td>{{$puesto->nombreCargo}}</td>
                     <td>{{$puesto->sueldo}}</td>
                     <td><a class="btn btn-outline-warning" 
-                      href="{{route('puestoLaboral.edit', ['id' => $puesto->id])}}">Actualizar</a></td>
+                      href="{{route('puestoLaboral.edit', ['id' => $puesto->id])}}">
+                      <i class="bi bi-pencil-square"></i></a></td>
                         @csrf
                   </tr>
                   @empty
