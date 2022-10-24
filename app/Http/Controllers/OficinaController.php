@@ -67,12 +67,11 @@ class OficinaController extends Controller
     public function update(Request $request, $id){
 
         $request->validate([
-
-            'nombreOficina' => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9\s]+$/u',
-            'municipio'     => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
-            'direccion'     => 'required',
-            'nombreGerente' => 'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
-            'telefono'      => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/',
+            'nombreOficina' =>'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9\s]+$/u',
+            'municipio'     =>'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
+            'direccion'     =>'required',
+            'nombreGerente' =>'required| regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
+            'telefono'      =>'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/',
     
         ]);
         
