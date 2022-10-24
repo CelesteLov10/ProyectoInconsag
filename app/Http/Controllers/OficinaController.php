@@ -44,11 +44,11 @@ class OficinaController extends Controller
 
         $oficina = new Oficina();
 
-        $oficina-> nombreOficina = $request-> nombreOficina;
-        $oficina-> municipio = $request-> municipio;
-        $oficina-> direccion = $request-> direccion;
-        $oficina-> nombreGerente = $request-> nombreGerente;
-        $oficina-> telefono = $request-> telefono;
+        $oficina->nombreOficina = $request->nombreOficina;
+        $oficina->municipio = $request->municipio;
+        $oficina->direccion = $request->direccion;
+        $oficina->nombreGerente = $request->nombreGerente;
+        $oficina->telefono = $request->telefono;
 
         $create = $oficina->save();
         
@@ -67,27 +67,27 @@ class OficinaController extends Controller
     public function update(Request $request, $id){
 
         $request->validate([
-            'nombreOficina' => ' required| regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9\s]+$/u',
-            'municipio'     => ' required| regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
-            'direccion'     => ' required ',
-            'nombreGerente' => ' required| regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
-            'telefono'      => ' required| numeric |digits:8 |regex:/^[(2)(3)(8)(9)][0-9]/',
+            'nombreOficina' =>'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9\s]+$/u',
+            'municipio'     =>'required|regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
+            'direccion'     =>'required',
+            'nombreGerente' =>'required| regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u',
+            'telefono'      =>'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/',
     
         ]);
         
         $oficina = Oficina::findOrFail($id);
 
-        $oficina-> nombreOficina= $request->input('nombreOficina ');
-        $oficina-> municipio = $request->input('municipio ');
-        $oficina-> direccion = $request->input('direccion ');
-        $oficina-> nombreGerente = $request->input('nombreGerente ');
-        $oficina-> telefono = $request->input('telefono ');
+        $oficina->nombreOficina= $request->input('nombreOficina');
+        $oficina->municipio = $request->input('municipio');
+        $oficina->direccion = $request->input('direccion');
+        $oficina->nombreGerente = $request->input('nombreGerente');
+        $oficina->telefono = $request->input('telefono');
         
         $update = $oficina->save();
         
         if ($update){
             return redirect()->route('oficina.index')
-            ->with('mensajeW', ' Se actualizó el registro de la oficina correctamente ');
+            ->with('mensajeW', 'Se actualizó el registro de la oficina correctamente');
         } 
     }
 }
