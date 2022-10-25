@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Proveedore;
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
@@ -36,6 +36,19 @@ class ProveedorController extends Controller
     public function store(Request $request)
     {
         //
+        
+        Proveedor::create([
+            'nombreProveedor'=>$request['nombreProveedor'],
+            'nombreContacto'=>$request['nombreContacto'],
+            'cargoContacto'=>$request['cargoContacto'],
+            'direccion'=>$request['direccion'],
+            'ciudad'=>$request['ciudad'],
+             'telefono' =>$request[ 'telefono' ],
+            'email'=>$request['email'], 
+            
+        ]);
+            return redirect()->route('inventario.index')
+            ->with('mensaje', 'Se guardó un nuevo registro de proveedor correctamente');
     }
 
     /**

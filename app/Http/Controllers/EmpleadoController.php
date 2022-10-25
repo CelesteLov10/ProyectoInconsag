@@ -76,7 +76,7 @@ class EmpleadoController extends Controller
             'identidad.regex' => 'El formato para el número de identidad no es válido.',
 
             'nombres.required' => 'El nombre no puede ir vacío.',
-            'nombres.alpha' => 'El nombre sólo permite letras.',
+            'nombres.alpha' => 'En el nombre sólo se permite letras.',
             'nombres.regex' => 'El nombre debe iniciar con mayuscula y solo permite un espacio entre los nombres.',
 
             'apellidos.required' => 'El apellido no puede ir vacío.',
@@ -85,7 +85,7 @@ class EmpleadoController extends Controller
 
             'telefono.required' => 'El teléfono no puede ir vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
-            'telefono.digits' => 'El teléfono debe contener sólo 8 números.',
+            'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
             'telefono.unique' => 'El número de teléfono ya está en uso.',
 
@@ -167,7 +167,7 @@ class EmpleadoController extends Controller
 
             'telefono.required' => 'El teléfono no puede ir vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
-            'telefono.digits' => 'El teléfono debe contener sólo 8 números.',
+            'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
             'telefono.unique' => 'El número de teléfono ya está en uso.',
 

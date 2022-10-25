@@ -9,6 +9,7 @@ use App\Models\Empleado;
 use App\Models\Estado;
 use App\Models\Inventario;
 use App\Models\Oficina;
+use App\Models\Proveedor;
 use App\Models\Proveedore;
 
 use Illuminate\Database\Seeder;
@@ -32,6 +33,6 @@ class DatabaseSeeder extends Seeder
         Oficina::factory(10)->create();
         Empleado::factory(50)->create();
         Inventario::factory(100)->create();
-        Proveedore::factory(10)->create();
+        Proveedor::factory(10)->create();
     }
 }
