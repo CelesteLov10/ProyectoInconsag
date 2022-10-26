@@ -57,7 +57,7 @@ class OficinaController extends Controller
 
             'telefono.required' =>  'El teléfono es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono no puede contener letras.',
-            'telefono.digits' => 'El teléfono debe contener  8 dígitos.',
+            'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono solo puede iniciar con los siguientes dígitos: 2, 3, 8 ó 9. ',
 
         ];
