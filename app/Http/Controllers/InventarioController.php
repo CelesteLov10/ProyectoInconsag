@@ -39,9 +39,9 @@ class InventarioController extends Controller
 
         $reglas = [
 
-            'nombreInv'   => 'required|regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u',
+            'nombreInv'   => 'required|regex:/^[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}+$/u',
             'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
-            'precioInv'   => 'required|numeric|min:1.00|regex:/^[0-9]{1,5}+[.]{1}[0-9]{2}$/u',
+            'precioInv'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
             'descripcion' => 'required|regex:/^.{10,100}$/u',
             'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'empleado_id' => 'required',
@@ -50,7 +50,7 @@ class InventarioController extends Controller
         ];
         $mensaje =[
             'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
-            'nombreInv.regex' => 'El nombre del inventario debe iniciar con mayúscula, solo permite un espacio entre los nombres y no debe  incluir números.',
+            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres y no debe  incluir números.',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
 
             'cantidad.required' => 'La cantidad del inventario es requerido.', 
@@ -58,12 +58,13 @@ class InventarioController extends Controller
             'cantidad.regex' => 'No puede ingresar mas de 9999 artículos.',
 
             'precioInv.required' => 'El precio del inventario es requerido, no puede estar vacío.',
-            'precioInv.numeric'=> 'En el precio del inventario no se permiten letras.',
+            'precioInv.numeric'=> 'No se permiten letras o espacios vacíos.',
             'precioInv.min' => 'El precio del inventario no puede ser menor a $1.00.',
-            'precioInv.regex' => 'En el precio del inventario debe incluir los centavos y no pueden ir espacios.',
+            'precioInv.max' => 'El precio del inventario no puede ser mayor a $99999.00.',
+            'precioInv.regex' => 'El precio del inventario debe contener 1 o 2 cifras despues del punto (opcional).',
 
             'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
-            'descripcion.regex' => 'La descripción es muy corta.',
+            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 100 palabras.',
 
 
             'fecha.required' => 'La fecha es requerida', 
@@ -113,30 +114,31 @@ class InventarioController extends Controller
 
         $this->validate($request,[
 
-            'nombreInv'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
+            'nombreInv'   => ['required','regex:/^[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}+$/u'],
             'cantidad'    => ['required','numeric','regex:/^[0-9]{1,4}+$/u'],
-            'precioInv'   => ['required','numeric','min:1.00','regex:/^[0-9]{1,5}+[.]{1}[0-9]{2}$/u'],
-            'descripcion' => ['required', 'regex:/^.{10,100}$/u'],
+            'precioInv'   => ['required','numeric','max:99999','min:1.00','regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/'],
+            'descripcion' => ['required','regex:/^.{10,100}$/u'],
             'fecha'       => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'empleado_id' => ['required'],
             'oficina_id'  => ['required'],
         ],[
             'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
-            'nombreInv.regex' => 'El nombre del inventario debe iniciar con mayúscula y solo permite un espacio entre el nombre',
+            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres y no debe  incluir números.',
 
             'cantidad.required' => 'La cantidad del inventario es requerido.', 
             'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',
             'cantidad.regex' => 'No puede ingresar mas de 9999 artículos.',
 
             'precioInv.required' => 'El precio del inventario es requerido, no puede estar vacío.',
-            'precioInv.numeric'=> 'No se permiten letras.',
+            'precioInv.numeric'=> 'No se permiten letras o espacios vacíos.',
             'precioInv.min' => 'El precio del inventario no puede ser menor a $1.00.',
-            'precioInv.regex' => 'El precio del inventario debe incluir los centavos.',
+            'precioInv.max' => 'El precio del inventario no puede ser mayor a $99999.00.',
+            'precioInv.regex' => 'El precio del inventario debe contener 1 o 2 cifras despues del punto (opcional).',
       
 
             'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
-            'descripcion.regex' => 'La descripción es muy corta.',
+            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 100 palabras..',
 
 
             'fecha.required' => 'La fecha es requerida', 

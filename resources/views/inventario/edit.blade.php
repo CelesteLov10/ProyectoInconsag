@@ -40,7 +40,7 @@
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('nombreInv') is-invalid @enderror" 
                     placeholder="Ingrese el nuevo nombre de inventario" 
-                    name="nombreInv" value="{{old('nombreInv', $inventario->nombreInv)}}">
+                    name="nombreInv" value="{{old('nombreInv', $inventario->nombreInv)}}" maxlength="50">
                     @error('nombreInv')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -52,7 +52,7 @@
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('cantidad') is-invalid @enderror" 
                     placeholder="Ingrese la cantidad de inventario" 
-                    name="cantidad" value="{{old('cantidad', $inventario->cantidad)}}">
+                    name="cantidad" value="{{old('cantidad', $inventario->cantidad)}}" maxlength="4">
                     @error('cantidad')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -63,8 +63,8 @@
             <label class="col-sm-3 col-form-label">Precio del inventario:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('precioInv') is-invalid @enderror" 
-                    placeholder="Ingrese el precio del inventario" 
-                    name="precioInv" value="{{old('precioInv', $inventario->precioInv)}}">
+                    placeholder="0.00" 
+                    name="precioInv" value="{{old('precioInv', $inventario->precioInv)}}"  maxlength="8">
                     @error('precioInv')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -76,7 +76,7 @@
             <div class="col-sm-5">
                     <textarea type="text" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
                     placeholder="Ingrese una descripción"
-                    name="descripcion">{{old('descripcion', $inventario->descripcion)}}</textarea>
+                    name="descripcion" maxlength="100">{{old('descripcion', $inventario->descripcion)}}</textarea>
                     @error('descripcion')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror

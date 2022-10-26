@@ -79,7 +79,7 @@
             <div class="col-sm-5">
                     <textarea type="text" class="form-control rounded-pill  @error('descripcion') is-invalid @enderror" 
                     placeholder="Ingrese una descripción"
-                    name="descripcion" maxlength="255">{{old('descripcion')}}</textarea>
+                    name="descripcion" maxlength="100">{{old('descripcion')}}</textarea>
                     @error('descripcion')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
