@@ -6,21 +6,19 @@
     color: rgb(14, 17, 15);
 }
 body{
-  max-height: 1200px;
-  background-image: url(./imagenes/inconsag.svg);
-  /*background-attachment: fixed;*/
+    max-height: 1500px;
+    background-image: url(./imagenes/inconsag.svg);
+    /*background-attachment: fixed;*/
     background-position: center center;
     background-size: cover;
     justify-content: center;
-   align-items: center;
+    align-items: center;
     background-repeat: no-repeat;
     opacity: 0.9;
 }
 #footer{
     background-color:rgb(216, 207, 206);
     text-align-last: right;
-  
-  
 }
 #sinLinea{
     text-decoration-color: rgb(144, 176, 176);
