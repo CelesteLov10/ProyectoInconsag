@@ -43,7 +43,7 @@ class ProveedorController extends Controller
             'cargoContacto'=>$request['cargoContacto'],
             'direccion'=>$request['direccion'],
             'ciudad'=>$request['ciudad'],
-             'telefono' =>$request[ 'telefono' ],
+            'telefono' =>$request['telefono' ],
             'email'=>$request['email'], 
             
         ]);

@@ -34,11 +34,11 @@ class PuestoController extends Controller
             //'nombreCargo.regex' => 'El nombre del puesto no debe contener muchos espacios' , 
 
             'sueldo.required' => 'Debe ingresar el sueldo', 
-            'sueldo.numeric' => 'El sueldo solo puede debe contener  números.', 
+            'sueldo.numeric' => 'El sueldo solo puede debe contener números.', 
             'sueldo.between' => 'El sueldo debe tener un rango de 7500 y 20000', 
 
             'descripcion' => 'La descripción del puesto es requerida.',
-            'descripcion.regex' => 'La descripción es muy corta.',
+            'descripcion.regex' => 'La descripción debe corta.',
 
         ]);
         $input = $request->all();
@@ -85,7 +85,7 @@ class PuestoController extends Controller
             'sueldo.between' => 'El sueldo debe tener un rango de 7500.00 y 20000.00', 
 
             'descripcion' => 'La descripción del puesto es requerida.',
-            'descripcion.regex' => 'La descripción es muy corta.',
+            'descripcion.regex' => 'La descripción debe corta.',
         ]);
         $puesto = Puesto::findOrFail($id);
 

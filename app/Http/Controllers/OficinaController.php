@@ -34,31 +34,31 @@ class OficinaController extends Controller
 
         $reglas = [
 
-            'nombreOficina' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u',
-            'municipio'     => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u',
-            'direccion'     => 'required|regex:/^.{10,200}$/u',
-            'nombreGerente' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u',
-            'telefono'      => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/',
+            'nombreOficina' => 'required|regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u',
+            'municipio'     => 'required|regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u',
+            'direccion'     => 'required|regex:/^.{10,100}$/u',
+            'nombreGerente' => 'required|regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u',
+            'telefono'      => 'required|numeric|regex:/^[(2)(3)(8)(9)][0-9]/|unique:oficinas',
     
         ];
         $mensaje = [
-            'nombreOficina.required' => 'Debe escoger un nombre para la oficina, no puede estar vacío.',
+            'nombreOficina.required' =>'Debe escoger un nombre para la oficina, no puede estar vacío.',
             'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula y solo permite un espacio entre los nombres de la oficina.',
 
-            'municipio.required' => 'El nombre del municipio es obligatorio.',
+            'municipio.required' =>'El nombre del municipio es obligatorio.',
             'municipio.regex' => 'El nombre de la oficina debe iniciar con mayúscula.',
 
-            'direccion.required' => 'La ubicación de dirección es obligatorio.', 
-            'direccion.regex' => 'La descripción es muy corta.',
+            'direccion.required' =>'La ubicación de dirección es obligatorio.', 
+            'direccion.regex' =>'La descripción es muy corta.',
 
-            'nombreGerente.required' => 'El nombre del gerente es obligatorio, no puede estar vacío.', 
-            'nombreGerente.alpha' => 'En el nombre del gerente sólo se permite letras.',
-            'nombreGerente.regex' => 'El nombre del gerente debe iniciar con mayúscula, solo permite un espacio entre los nombres y no se admiten números.',
+            'nombreGerente.required' =>'El nombre del gerente es obligatorio, no puede estar vacío.', 
+            'nombreGerente.alpha' =>'En el nombre del gerente sólo se permite letras.',
+            'nombreGerente.regex' =>'El nombre del gerente debe iniciar con mayúscula, solo permite un espacio entre los nombres y no se admiten números.',
 
-            'telefono.required' =>  'El teléfono es obligatorio, no puede estar vacío.',
-            'telefono.numeric' => 'El teléfono no puede contener letras.',
-            'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
-            'telefono.regex' => 'El teléfono solo puede iniciar con los siguientes dígitos: 2, 3, 8 ó 9. ',
+            'telefono.required' =>'El teléfono es obligatorio, no puede estar vacío.',
+            'telefono.numeric' =>'El teléfono no puede contener letras.',
+            'telefono.digits' =>'El teléfono debe contener 8 dígitos.',
+            'telefono.regex' =>'El teléfono solo puede iniciar con los siguientes dígitos: 2, 3, 8 ó 9. ',
 
         ];
         $this->validate($request, $reglas, $mensaje);
@@ -90,11 +90,11 @@ class OficinaController extends Controller
 
         $this->validate($request,[
        
-            'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u'],
-            'municipio'     => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u'],
+            'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
+            'municipio'     => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
             'direccion'     => ['required', 'regex:/^.{10,200}$/u'],
-            'nombreGerente' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u'],
-            'telefono'      => ['required','numeric','digits:8','regex:/^[(2)(3)(8)(9)][0-9]/'],
+            'nombreGerente' => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
+            'telefono'      => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:oficinas'],
         ],[
             'nombreOficina.required' => 'Debe escoger un nombre para la oficina, no puede estar vacío.',
             'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula y solo permite un espacio entre los nombres.',

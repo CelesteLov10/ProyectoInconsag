@@ -39,7 +39,7 @@ class InventarioController extends Controller
 
         $reglas = [
 
-            'nombreInv'   => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u',
+            'nombreInv'   => 'required|regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u',
             'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
             'precioInv'   => 'required|numeric|min:1.00|regex:/^[0-9]{1,5}+[.]{1}[0-9]{2}$/u',
             'descripcion' => 'required|regex:/^.{10,100}$/u',
@@ -50,7 +50,7 @@ class InventarioController extends Controller
         ];
         $mensaje =[
             'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
-            'nombreInv.regex' => 'El nombre del inventario debe iniciar con mayuscula, solo permite un espacio entre los nombres y no debe  incluir números.',
+            'nombreInv.regex' => 'El nombre del inventario debe iniciar con mayúscula, solo permite un espacio entre los nombres y no debe  incluir números.',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
 
             'cantidad.required' => 'La cantidad del inventario es requerido.', 
@@ -113,7 +113,7 @@ class InventarioController extends Controller
 
         $this->validate($request,[
 
-            'nombreInv'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u'],
+            'nombreInv'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
             'cantidad'    => ['required','numeric','regex:/^[0-9]{1,4}+$/u'],
             'precioInv'   => ['required','numeric','min:1.00','regex:/^[0-9]{1,5}+[.]{1}[0-9]{2}$/u'],
             'descripcion' => ['required', 'regex:/^.{10,100}$/u'],
@@ -123,7 +123,7 @@ class InventarioController extends Controller
         ],[
             'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
-            'nombreInv.regex' => 'El nombre del inventario debe iniciar con mayuscula y solo permite un espacio entre el nombre',
+            'nombreInv.regex' => 'El nombre del inventario debe iniciar con mayúscula y solo permite un espacio entre el nombre',
 
             'cantidad.required' => 'La cantidad del inventario es requerido.', 
             'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',
@@ -140,7 +140,7 @@ class InventarioController extends Controller
 
 
             'fecha.required' => 'La fecha es requerida', 
-            'fecha.regex' => 'No debe agregar mas datos a la fecha seleccionada', 
+            'fecha.regex' => 'No debe agregar más datos a la fecha seleccionada', 
 
             'empleado_id.required' => 'Debe seleccionar un empleado',
 

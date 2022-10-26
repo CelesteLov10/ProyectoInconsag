@@ -33,7 +33,7 @@
         <div class="col-sm-5">
           <input type="text" autofocus class="form-control rounded-pill @error('nombreOficina') is-invalid @enderror" 
           placeholder="Ingrese una oficina" name="nombreOficina"
-          value="{{old('nombreOficina', $oficina->nombreOficina)}}">
+          value="{{old('nombreOficina', $oficina->nombreOficina)}}" maxlength="50">
             @error('nombreOficina')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -45,7 +45,7 @@
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill  @error('municipio') is-invalid @enderror" 
           placeholder="Ingrese un municipio" name="municipio"
-          value="{{old('municipio', $oficina->municipio)}}">
+          value="{{old('municipio', $oficina->municipio)}}" maxlength="40">
           @error('municipio')
           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
@@ -55,7 +55,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Dirección:</label>
         <div class="col-sm-5">
-          <textarea type="text" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
+          <textarea type="text" maxlength="100" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
           placeholder="Ingrese una dirección" 
           name="direccion">{{old('direccion', $oficina->direccion)}}</textarea>
         @error('direccion')
@@ -69,7 +69,7 @@
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill @error('nombreGerente') is-invalid @enderror" 
           placeholder="Ingrese el gerente de la oficina" 
-          name="nombreGerente" value="{{old('nombreGerente', $oficina->nombreGerente)}}">
+          name="nombreGerente" value="{{old('nombreGerente', $oficina->nombreGerente)}}" maxlength="50">
           @error('nombreGerente')
           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
@@ -81,7 +81,7 @@
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill @error('telefono') is-invalid @enderror" 
           placeholder="Ingrese el teléfono del gerente" 
-          name="telefono" value="{{old('telefono', $oficina->telefono)}}">
+          name="telefono" value="{{old('telefono', $oficina->telefono)}}" maxlength="8">
           @error('telefono')
           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
