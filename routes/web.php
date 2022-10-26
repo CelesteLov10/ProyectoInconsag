@@ -4,6 +4,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\ProveedorController;
 use Illuminate\Support\Facades\Route;
@@ -104,4 +105,9 @@ Route::controller(ProveedorController::class)->group(function(){
     Route::get('/proveedor/create', 'create')->name('proveedor.create');
     //Ruta para guardar los registros del proveedor
     Route::post('/proveedor', 'store')->name('proveedor.store');
+});
+
+Route::controller(MenuController::class)->group(function(){
+    //Ruta para listado de proveedores
+    Route::get('/menu', 'index')->name('menuPrincipal');
 });
