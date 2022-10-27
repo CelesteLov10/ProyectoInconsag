@@ -3,11 +3,11 @@
 @section('titulo', 'Nueva Oficina')
     
 @section('contenido') 
-
-<div class="mb-5">
-    <h4 class=" text-center">
+<div>
+<div class="mb-5 m-5">
+    <h2 class=" text-center">
       <strong>Registro de una nueva oficina</strong> 
-    </h4>
+    </h2>
 </div>
 <div class="container ">
   <div class="mb-3 text-end">
@@ -16,9 +16,9 @@
   </div>
 
     {{-- encabezado  --}}
-    <div class = " card shadow ab-4 " >
+    <div class = " card shadow ab-4 bg-success bg-gradient" >
       <div class = " card-header py-3 " >
-          <h6 class = "n-font-weight-bold text-primary" >Creación nueva oficina </h6 > 
+          <h5 class = "n-font-weight-bold text-white" >Creación nueva oficina </h5 > 
       </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -94,6 +94,7 @@
       </div>
     </div>
   </div>
+</div>
 @endsection
 
 @section('js')

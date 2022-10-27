@@ -8,11 +8,11 @@
 
 @section('contenido') 
 
-
-<div class="mb-5">
-    <h4 class=" text-center">
+<div>
+<div class="mb-5 m-5">
+    <h2 class=" text-center">
         <strong>Detalle de oficina</strong> 
-    </h4>   
+    </h2>   
 </div>
 
 <div class="container ">
@@ -21,9 +21,9 @@
             <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
     </div>
     {{-- encabezado --}}
-    <div class = " card shadow ab-4 " >
+    <div class = " card shadow ab-4 bg-success bg-gradient" >
         <div class = " card-header py-3 " >
-            <h5 class = "n-font-weight-bold text-primary">Detalles de {{$oficina->nombreOficina}}</h5 > 
+            <h5 class = "n-font-weight-bold text-white">Detalles de {{$oficina->nombreOficina}}</h5 > 
         </div >
 
     <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
@@ -59,6 +59,7 @@
     
     </tbody>
 </table>
+</div>
 @endsection
         
 @section('js')

@@ -13,104 +13,104 @@
 
 @section('contenido') 
 
-
-  {{-- Campo de busqueda  --}}
-  <form method="GET" action="">
-    <div class="container">
-        <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-            <div class="col-5 p-2">
-                <div class="input-group">
-                      <input type="text" name="search" id="search"  class="form-control"
-                      placeholder="Buscar por identidad, nombre o nombre del cargo" 
-                      value="{{request('search')}}"/> {{-- busca por identidad nombre empleado y nombre cargo --}}
-                    <button type="submit" class="btn btn-outline-primary">
-                      <i class="bi bi-search"></i>
-                    </button>
+<div>
+    {{-- Campo de busqueda  --}}
+    <form method="GET" action="">
+      <div class="container">
+          <div class="vh-50 row m-5 text-center align-items-center justify-content-center">
+              <div class="col-7 p-2">
+                  <div class="input-group">
+                        <input type="text" name="search" id="search"  class="form-control"
+                        placeholder="Buscar por identidad, nombre o nombre del cargo" 
+                        value="{{request('search')}}"/> {{-- busca por identidad nombre empleado y nombre cargo --}}
+                      <button type="submit" class="btn btn-outline-primary">
+                        <i class="bi bi-search"></i>
+                      </button>
+                    </div>
                   </div>
-                </div>
-            </div>
-        </div>
-    </div>    
-  </form>
-  
-<div class="container ">
+              </div>
+          </div>
+      </div>    
+    </form>  
+  <div class="container">
 
-      {{-- alerta de mensaje cuando se guardo correctamente --}}
-      @if (session('mensaje'))
-        <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
-          {{ session('mensaje')}}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      @endif
-
-      {{-- alerta de mensaje cuando se actualice un dato correctamente --}}
-        @if (session('mensajeW'))
-        <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert" >
-            {{ session('mensajeW')}}
+        {{-- alerta de mensaje cuando se guardo correctamente --}}
+        @if (session('mensaje'))
+          <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
+            {{ session('mensaje')}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-         </div>
+          </div>
         @endif
 
-    <div class="mb-3 text-end">
-        <a class="btn btn-outline-success text-right" href="{{route('empleado.createEmp')}}">Nuevo empleado  <i class="bi bi-person-plus"></i></a>
-    </div>
-      {{-- encabezado style="text-decoration:none"--}}
-      <div class = " card shadow ab-4 " >
-        <div class = " card-header py-3 " >
-            <a href="{{route('empleado.indexEmp')}}" id="sinLinea">
-              <h5 class = "n-font-weight-bold text-primary" title="Volver a todos los registros"">Lista de empleados</h5 ></a> 
-        </div >
+        {{-- alerta de mensaje cuando se actualice un dato correctamente --}}
+          @if (session('mensajeW'))
+          <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert" >
+              {{ session('mensajeW')}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
 
-    <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-        <div class="col-60 bg-light p-5">
-            <table class="table border border-2 rounded-pill">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Identidad</th>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Nombre del cargo</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Detalle</th>
-                    <th scope="col">Actualizar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                @forelse($empleados as $empleado)
-                  <tr>
-                    <td>{{$empleado->id}}</td>
-                    <td>{{$empleado->identidad}}</td>
-                    <td>{{$empleado->nombres}}</td>
-                    <td>{{$empleado->apellidos}}</td>
-                    <td>{{$empleado->puesto->nombreCargo}}</td>
-                    <td>{{$empleado->estado}}</td>
+      <div class="mb-3 text-end">
+          <a class="btn btn-outline-success text-right" href="{{route('empleado.createEmp')}}">Nuevo empleado  <i class="bi bi-person-plus"></i></a>
+      </div>
+        {{-- encabezado style="text-decoration:none"--}}
+        <div class = " card shadow ab-4 bg-success bg-gradient " >
+          <div class = " card-header py-3 " >
+              <a href="{{route('empleado.indexEmp')}}" id="sinLinea">
+                <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Lista de empleados</h5 ></a> 
+          </div >
 
-                    <td><a class="btn btn-outline-primary" href="{{route('empleado.showEmp', ['id'=>$empleado->id])}}">
-                      <i class="bi bi-eye"></i> 
-                    </a></td>
+      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
+          <div class="col-60 bg-light p-5">
+              <table class="table border border-2 rounded-pill">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Identidad</th>
+                      <th scope="col">Nombres</th>
+                      <th scope="col">Apellidos</th>
+                      <th scope="col">Nombre del cargo</th>
+                      <th scope="col">Estado</th>
+                      <th scope="col">Detalle</th>
+                      <th scope="col">Actualizar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  @forelse($empleados as $empleado)
+                    <tr>
+                      <td>{{$empleado->id}}</td>
+                      <td>{{$empleado->identidad}}</td>
+                      <td>{{$empleado->nombres}}</td>
+                      <td>{{$empleado->apellidos}}</td>
+                      <td>{{$empleado->puesto->nombreCargo}}</td>
+                      <td>{{$empleado->estado}}</td>
 
-                  <!-- <td><a class="btn btn-outline-success" 
-                        href="{ {route('empleado.showEmp', ['id' => $empleado->id])}}">Ver</a>
-                      </td>-->
-                    <td><a class="btn btn-outline-warning" 
-                      href="{{route('empleado.editEmp', ['id' => $empleado->id])}}">
-                      <i class="bi bi-pencil-square"></i>
-                    </a>
-                    </td>
-                    @csrf
-                  </tr>
-                  @empty
-                  <tr>
-                <td col-span="4">No hay registros</td>
-                  </tr>
-                @endforelse
-                  
-                </tbody>
-              </table>
-              {{$empleados->links()}}
-        </div>
-    </div>
+                      <td><a class="btn btn-outline-primary" href="{{route('empleado.showEmp', ['id'=>$empleado->id])}}">
+                        <i class="bi bi-eye"></i> 
+                      </a></td>
+
+                    <!-- <td><a class="btn btn-outline-success" 
+                          href="{ {route('empleado.showEmp', ['id' => $empleado->id])}}">Ver</a>
+                        </td>-->
+                      <td><a class="btn btn-outline-warning" 
+                        href="{{route('empleado.editEmp', ['id' => $empleado->id])}}">
+                        <i class="bi bi-pencil-square"></i>
+                      </a>
+                      </td>
+                      @csrf
+                    </tr>
+                    @empty
+                    <tr>
+                  <td col-span="4">No hay registros</td>
+                    </tr>
+                  @endforelse
+                    
+                  </tbody>
+                </table>
+                {{$empleados->links()}}
+          </div>
+      </div>
+  </div>
 </div>
 @endsection
 

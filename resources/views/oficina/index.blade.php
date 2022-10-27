@@ -12,13 +12,13 @@
 @endsection
 
 @section('contenido') 
-
-
+{{-- DIV PARA QUE TODO ESTE ALINEADO A LA DERECHA --}}
+<div>
   {{-- Campo de busqueda  --}}
   <form method="GET" action="">
     <div class="container">
-        <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-            <div class="col-5 p-2">
+        <div class="vh-50 row m-5 text-center align-items-center justify-content-center">
+            <div class="col-7 p-2">
                 <div class="input-group">
                       <input type="text" name="search" id="search"  class="form-control"
                       placeholder="Buscar por nombre de oficina y municipio" 
@@ -33,8 +33,7 @@
     </div>    
   </form>
   
-<div class="container ">
-
+  <div class="container ">
       {{-- alerta de mensaje cuando se guardo correctamente --}}
       @if (session('mensaje'))
         <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
@@ -55,10 +54,10 @@
         <a class="btn btn-outline-success text-right" href="{{route('oficina.create')}}">Nueva oficina <i class="bi bi-plus-square-dotted"></i></a>
     </div>
       {{-- encabezado style="text-decoration:none"--}}
-      <div class = " card shadow ab-4 " >
+      <div class = " card shadow ab-4 bg-success bg-gradient" >
         <div class = " card-header py-3 " >
             <a href="{{route('oficina.index')}}" id="sinLinea">
-              <h5 class = "n-font-weight-bold text-primary" title="Volver a todos los registros">Lista de las oficinas</h5 ></a> 
+              <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Lista de las oficinas</h5 ></a> 
         </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -98,6 +97,7 @@
               {{$oficinas->links()}}
         </div>
     </div>
+  </div>
 </div>
 @endsection
 

@@ -14,71 +14,34 @@
 </head>
 <body>
 
-    <div class="d-flex flex-column flex-shrink-0  justify-content-between p-3 text-white bg-dark bg-gradient rounded-end" style="width: 260px; height: 700px">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <span class="m-2"><i class="bi bi-house-fill text-light"></i></span>
-            <span class="fs-4 text-light">Menú principal</span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto list-group">
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="{{route('menuPrincipal')}}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+              <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+            </svg>
+            <svg class="bi me-2" width="5" height="32">
+              <use xlink:href="#bootstrap">
+              </use>
+            </svg>
+            <span class="fs-4" _msthash="1127126" _msttexthash="316940">
+              INCONSAG
+            </span>
+          </a>
+          <ul class="nav nav-pills">
             <li class="nav-item">
-            <a href="{{route('puestoLaboral.index')}}" 
-                class="nav-link link-light list-group-item list-group-item-action list-group-item-dark" aria-current="page">
-                <span class="p-2"><i class="bi bi-person-lines-fill text-white"></i></span>
-                Puesto laboral
-            </a>
+              <a href="#" class="nav-link" _msthash="1281800" _msttexthash="418782">
+                Contactos
+              </a>
             </li>
-            <li>
-            <a href="{{route('empleado.indexEmp')}}" 
-            class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-                <span class="p-2"><i class="bi bi-person-circle text-white"></i></span>
-                Empleados
-            </a>
+            <li class="nav-item">
+              <a href="#" class="nav-link" _msthash="1281982" _msttexthash="107419">
+                Acerca de
+              </a>
             </li>
-            <li>
-            <a href="{{route('oficina.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-                <span class="p-2"><i class="bi bi-building text-light"></i></span>
-                Oficina
-            </a>
-            </li>
-            <li>
-            <a href="{{route('inventario.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-                <span class="p-2"><i class="bi bi-stack text-light"></i></span>
-                Inventario
-            </a>
-            </li>
-            <li>
-            <a href="{{route('proveedor.create')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-                <span class="p-2"><i class="bi bi-bag-dash-fill text-light"></i></span>
-                Proveedor
-            </a>
-            </li>
-            <li>
-            <a href="#" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-                <span class="p-2"><i class="bi bi-truck-front-fill text-light"></i></span>
-                Maquinaria
-            </a>
-            </li>
-        </ul>
-        <hr>
-        <div class="dropdown">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong class="text-light">mdo</strong>
-            </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
-        </div>
-    </div>
-    <div id="footer">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 mb-0 border-top">
-            <p id= "par" class="col-md-7 mb-0 text-muted ">©copyright 2022 CCFS</p>
-        </footer>
+          </ul>
+        </header>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

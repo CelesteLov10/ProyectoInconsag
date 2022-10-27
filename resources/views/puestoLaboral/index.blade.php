@@ -11,12 +11,12 @@
 
 @section('contenido') 
 
-
+<div>
       {{-- Campo de busqueda  --}}
       <form method="GET" action="">
         <div class="container">
-            <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-                <div class="col-5 p-2">
+            <div class="vh-50 row m-5 text-center align-items-center justify-content-center">
+                <div class="col-7 p-2">
                     <div class="input-group">
                           <input type="text" name="search" id="search"  class="form-control"
                           placeholder="Buscar por nombre del cargo" value="{{request('search')}}"/> {{-- busca por nombre cargo --}}
@@ -29,67 +29,68 @@
         </div>    
       </form>
 
-<div class="container ">
+  <div class="container">
 
-      {{-- alerta de mensaje cuando se guardo correctamente --}}
-      @if (session('mensaje'))
-        <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
-          {{ session('mensaje')}}
+        {{-- alerta de mensaje cuando se guardo correctamente --}}
+        @if (session('mensaje'))
+          <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
+            {{ session('mensaje')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+
+        {{-- alerta de mensaje cuando se actualice un dato correctamente --}}
+        @if (session('mensajeW'))
+        <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert" >
+          {{ session('mensajeW')}}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-      @endif
+        @endif
 
-      {{-- alerta de mensaje cuando se actualice un dato correctamente --}}
-      @if (session('mensajeW'))
-      <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert" >
-        {{ session('mensajeW')}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-       </div>
-      @endif
+      <div class="mb-3 text-end">
+          <a class="btn btn-outline-success text-right" href="{{route('puestoLaboral.create')}}">Nuevo puesto <i class="bi bi-plus-square-dotted"></i></a>
+      </div>
+        {{-- encabezado style="text-decoration:none"--}}
+        <div class = " card shadow ab-4 bg-success bg-gradient" >
+          <div class = " card-header py-3 " >
+            <a href="{{route('puestoLaboral.index')}}" id="sinLinea">
+              <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros"> Lista de los puestos laborales</h5 ></a> 
+          </div >
 
-    <div class="mb-3 text-end">
-        <a class="btn btn-outline-success text-right" href="{{route('puestoLaboral.create')}}">Nuevo puesto <i class="bi bi-plus-square-dotted"></i></a>
-    </div>
-      {{-- encabezado style="text-decoration:none"--}}
-      <div class = " card shadow ab-4 " >
-        <div class = " card-header py-3 " >
-          <a href="{{route('puestoLaboral.index')}}" id="sinLinea">
-            <h5 class = "n-font-weight-bold text-primary" title="Volver a todos los registros"> Lista de los puestos laborales</h5 ></a> 
-        </div >
-
-    <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-        <div class="col-60 bg-light p-5">
-            <table class="table border border-2 rounded-pill">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre del cargo</th>
-                    <th scope="col">Sueldo</th>
-                    <th scope="col">Actualizar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                @forelse($puestos as $puesto)
-                  <tr>
-                    <td>{{$puesto->id}}</td>
-                    <td>{{$puesto->nombreCargo}}</td>
-                    <td>{{$puesto->sueldo}}</td>
-                    <td><a class="btn btn-outline-warning" 
-                      href="{{route('puestoLaboral.edit', ['id' => $puesto->id])}}">
-                      <i class="bi bi-pencil-square"></i></a></td>
-                        @csrf
-                  </tr>
-                  @empty
-                  <tr>
-                    <td col-span="4">No hay registros</td>
-                  </tr>
-                @endforelse
-                  
-                </tbody>
-              </table>
-              {{$puestos->links()}}
-        </div>
-    </div>
+      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
+          <div class="col-60 bg-light p-5">
+              <table class="table border border-2 rounded-pill">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nombre del cargo</th>
+                      <th scope="col">Sueldo</th>
+                      <th scope="col">Actualizar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  @forelse($puestos as $puesto)
+                    <tr>
+                      <td>{{$puesto->id}}</td>
+                      <td>{{$puesto->nombreCargo}}</td>
+                      <td>{{$puesto->sueldo}}</td>
+                      <td><a class="btn btn-outline-warning" 
+                        href="{{route('puestoLaboral.edit', ['id' => $puesto->id])}}">
+                        <i class="bi bi-pencil-square"></i></a></td>
+                          @csrf
+                    </tr>
+                    @empty
+                    <tr>
+                      <td col-span="4">No hay registros</td>
+                    </tr>
+                  @endforelse
+                    
+                  </tbody>
+                </table>
+                {{$puestos->links()}}
+          </div>
+      </div>
+  </div>
 </div>
 @endsection
 

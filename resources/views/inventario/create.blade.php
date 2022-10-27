@@ -15,126 +15,127 @@
 @endsection
 
 @section('contenido') 
-
-<div class="mb-5">
-    <h4 class=" text-center">
-    <strong>Registro de un nuevo inventario</strong> 
-    </h4>
-</div>
-<div class="container ">
-    <div class="mb-3 text-end">
-        <a class="btn btn-outline-primary" href="{{route('inventario.index')}}">
-            <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
+<div>
+    <div class="mb-5 m-5">
+        <h2 class=" text-center">
+        <strong>Registro de un nuevo inventario</strong> 
+        </h2>
     </div>
-
-    {{-- encabezado  --}}
-    <div class = " card shadow ab-4 " >
-        <div class = " card-header py-3 " >
-        <h6 class = "n-font-weight-bold text-primary" >Creación inventario</h6 > 
-    </div >
-
-    <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-        <div class="col-60 bg-light p-5">
-    <form action="{{route('inventario.store')}}" method="POST">
-        @csrf {{-- TOKEN INPUT OCULTO --}}
-
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Nombre inventario:</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill  @error('nombreInv') is-invalid @enderror" 
-                    placeholder="Ingrese un nombre de inventario" 
-                    name="nombreInv" value="{{old('nombreInv')}}" maxlength="50">
-                    @error('nombreInv')
-                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
+    <div class="container ">
+        <div class="mb-3 text-end">
+            <a class="btn btn-outline-primary" href="{{route('inventario.index')}}">
+                <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
         </div>
 
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Cantidad:</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill  @error('cantidad') is-invalid @enderror" 
-                placeholder="Ingrese una cantidad de inventario" 
-                    name="cantidad" value="{{old('cantidad')}}" maxlength="4">
-                    @error('cantidad')
-                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
-        </div>
+        {{-- encabezado  --}}
+        <div class = " card shadow ab-4 bg-success bg-gradient" >
+            <div class = " card-header py-3 " >
+            <h5 class = "n-font-weight-bold text-white" >Creación inventario</h5 > 
+        </div >
 
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Precio del inventario:</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill  @error('precioInv') is-invalid @enderror" 
-                    placeholder="0.00" 
-                    name="precioInv" id="precioInv" value="{{old('precioInv')}}" maxlength="8">
-                    @error('precioInv')
-                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
-        </div>
+        <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
+            <div class="col-60 bg-light p-5">
+        <form action="{{route('inventario.store')}}" method="POST">
+            @csrf {{-- TOKEN INPUT OCULTO --}}
 
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Descripción:</label>
-            <div class="col-sm-5">
-                    <textarea type="text" class="form-control rounded-pill  @error('descripcion') is-invalid @enderror" 
-                    placeholder="Ingrese una descripción"
-                    name="descripcion" maxlength="100">{{old('descripcion')}}</textarea>
-                    @error('descripcion')
-                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
-        </div>
-
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Fecha:</label>
-            <div class="col-sm-5">
-                    <input type="text" class="form-control rounded-pill  @error('fecha') is-invalid @enderror" 
-                    placeholder="Seleccione la fecha de compra del inventario" 
-                    name="fecha" id="datepicker" autocomplete="off" value="{{old('fecha')}}" maxlength="10">
-                    @error('fecha')
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Nombre inventario:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control rounded-pill  @error('nombreInv') is-invalid @enderror" 
+                        placeholder="Ingrese un nombre de inventario" 
+                        name="nombreInv" value="{{old('nombreInv')}}" maxlength="50">
+                        @error('nombreInv')
                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
+                        @enderror
                 </div>
-        </div>
-
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Nombre del empleado</label>
-            <div class="col-sm-5">
-            <select name="empleado_id" id="" class="form-select rounded-pill  @error('empleado_id') is-invalid @enderror">
-                <option value="" disabled selected>-- Selecione un nombre de empleado --</option>
-                @foreach ($empleado as $empleados)
-                <option value="{{$empleados->id}}" 
-                    {{old('estado' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}}</option>
-                @endforeach
-            </select> 
-            @error('empleado_id')
-                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-            @enderror
             </div>
-        </div>
 
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Nombre de la oficina</label>
-            <div class="col-sm-5">
-            <select name="oficina_id" id="" class="form-select rounded-pill  @error('oficina_id') is-invalid @enderror">
-                <option value="" disabled selected>-- Selecione una oficina --</option>
-                @foreach ($oficina as $oficinas)
-                <option value="{{$oficinas->id}}" 
-                    {{old('nombreOficina' , $oficinas->nombreOficina)==$oficinas->id ? 'selected' : ''}}>{{$oficinas->nombreOficina}}</option>
-                @endforeach
-            </select> 
-            @error('oficina_id')
-                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-            @enderror
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Cantidad:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control rounded-pill  @error('cantidad') is-invalid @enderror" 
+                    placeholder="Ingrese una cantidad de inventario" 
+                        name="cantidad" value="{{old('cantidad')}}" maxlength="4">
+                        @error('cantidad')
+                        <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                        @enderror
+                </div>
             </div>
-        </div>
-        <div class="mb-3 row">
-        <div class="offset-sm-3 col-sm-9">
-            <button type="submit" class="btn btn-outline-info">Guardar</button> 
-        </div>
-    </div>  
-    </form>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Precio del inventario:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control rounded-pill  @error('precioInv') is-invalid @enderror" 
+                        placeholder="0.00" 
+                        name="precioInv" id="precioInv" value="{{old('precioInv')}}" maxlength="8">
+                        @error('precioInv')
+                        <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                        @enderror
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Descripción:</label>
+                <div class="col-sm-5">
+                        <textarea type="text" class="form-control rounded-pill  @error('descripcion') is-invalid @enderror" 
+                        placeholder="Ingrese una descripción"
+                        name="descripcion" maxlength="100">{{old('descripcion')}}</textarea>
+                        @error('descripcion')
+                        <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                        @enderror
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Fecha:</label>
+                <div class="col-sm-5">
+                        <input type="text" class="form-control rounded-pill  @error('fecha') is-invalid @enderror" 
+                        placeholder="Seleccione la fecha de compra del inventario" 
+                        name="fecha" id="datepicker" autocomplete="off" value="{{old('fecha')}}" maxlength="10">
+                        @error('fecha')
+                            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                        @enderror
+                    </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Nombre del empleado</label>
+                <div class="col-sm-5">
+                <select name="empleado_id" id="" class="form-select rounded-pill  @error('empleado_id') is-invalid @enderror">
+                    <option value="" disabled selected>-- Selecione un nombre de empleado --</option>
+                    @foreach ($empleado as $empleados)
+                    <option value="{{$empleados->id}}" 
+                        {{old('estado' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}}</option>
+                    @endforeach
+                </select> 
+                @error('empleado_id')
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                @enderror
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Nombre de la oficina</label>
+                <div class="col-sm-5">
+                <select name="oficina_id" id="" class="form-select rounded-pill  @error('oficina_id') is-invalid @enderror">
+                    <option value="" disabled selected>-- Selecione una oficina --</option>
+                    @foreach ($oficina as $oficinas)
+                    <option value="{{$oficinas->id}}" 
+                        {{old('nombreOficina' , $oficinas->nombreOficina)==$oficinas->id ? 'selected' : ''}}>{{$oficinas->nombreOficina}}</option>
+                    @endforeach
+                </select> 
+                @error('oficina_id')
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                @enderror
+                </div>
+            </div>
+            <div class="mb-3 row">
+            <div class="offset-sm-3 col-sm-9">
+                <button type="submit" class="btn btn-outline-info">Guardar</button> 
+            </div>
+        </div>  
+        </form>
+            </div>
         </div>
     </div>
 </div>
