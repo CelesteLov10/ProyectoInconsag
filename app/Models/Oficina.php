@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Oficina extends Model
 {
     use HasFactory;
+    protected $fillable =['id',
+    'nombreOficina', 
+    'direccion', 
+    'nombreGerente', 
+    'telefono', 
+    'departamento_id',
+    'municipio_id'];
     //Una oficina puede tener muchos articulos de inventario
     public function inventario(){
         return $this->hasMany(Inventario::class);

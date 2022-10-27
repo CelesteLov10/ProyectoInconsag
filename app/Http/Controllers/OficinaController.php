@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventario;
+use App\Models\Municipio;
 use App\Models\Oficina;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,7 @@ class OficinaController extends Controller
 
         $reglas = [
 
-            'nombreOficina' => 'required|regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u',
+            'nombreOficina' => 'required|regex:/^([a-záéíóúñ]+\s{0,1})+$/u',
             'municipio'     => 'required|regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u',
             'direccion'     => 'required|regex:/^.{10,100}$/u',
             'nombreGerente' => 'required|regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u',
@@ -79,7 +80,27 @@ class OficinaController extends Controller
             ->with('mensaje', 'Se guardó el registro de la nueva oficina correctamente');
         } 
     }
-
+    public function getMunicipios(Request $request){
+        if ($request->ajax()){
+            $municipios = Municipio::where('departamento_id', $request->departamento_id)->get();
+            foreach ($municipios as $municipio){
+                $municipiosArray[$municipio->id] = $municipio->nombreM;
+            }
+            return response()->json($municipiosArray);
+        }
+      /* $conexion=mysqli_connect('localhost', 'root', '', 'proyectoInconsag');
+        $departamento= $_POST['departamento'];
+        $sql="SELECT id, nombreD, nombreM from  municipios where departamento_id = '$departamento'";
+        $result= mysqli_query($conexion, $departamento);
+        $cadena = "<label>Municipios</label> 
+        <select id='lista2' name= 'lista2'>";
+     
+        while ($ver=mysqli_fetch_row($result)){
+            $cadena= $cadena.'<option value='.$ver[0].'>'.utf8_encode($ver[2]).'</option>';
+        }
+        echo $cadena."</select>";*/
+       
+    }
     public function edit($id){
         
         $oficina = Oficina::findOrFail($id);
@@ -90,7 +111,7 @@ class OficinaController extends Controller
 
         $this->validate($request,[
        
-            'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
+            'nombreOficina' => ['required','regex:/^([a-záéíóúñ]+\s{0,1})+$/u'],
             'municipio'     => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
             'direccion'     => ['required', 'regex:/^.{10,200}$/u'],
             'nombreGerente' => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],

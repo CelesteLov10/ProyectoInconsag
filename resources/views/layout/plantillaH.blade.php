@@ -17,8 +17,14 @@
     
     @yield('css')
 
+    <script
+      src="{{asset('https://code.jquery.com/jquery-3.6.1.js')}}"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous">
+    </script>
 
 </head>
+
 <body>
       <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -67,5 +73,6 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       @yield('js')
       
+      @yield('script')
 </body>
 </html>
