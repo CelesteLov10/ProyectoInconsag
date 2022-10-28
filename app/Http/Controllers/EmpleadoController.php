@@ -63,7 +63,7 @@ class EmpleadoController extends Controller
             'estado'    => ['required','alpha','in:activo,inactivo'],
             'correo'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:empleados'],
             'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
-            'direccion'       => ['required','regex:/^.{10,100}$/u'],
+            'direccion'       => ['required','regex:/^.{10,150}$/u'],
             'fechaIngreso'    => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'puesto_id'       => ['required'],
             'oficina_id'       => ['required'],
@@ -100,7 +100,7 @@ class EmpleadoController extends Controller
             'fechaNacimiento.regex' => 'Debe ser mayor de edad.',
 
             'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
-            'direccion.regex' => 'La dirección es muy corta.',
+            'direccion.regex' => 'La dirección permite mínimo 10 y máximo 150 palabras.',
 
             'fechaIngreso.required' => 'Debe seleccionar la fecha de ingreso, no puede ir vacío.',
             'puesto_id.required' => 'Debe seleccionar el puesto de trabajo, no puede ir vacío.',
@@ -145,7 +145,7 @@ class EmpleadoController extends Controller
             'estado'    => ['required','string','in:activo,inactivo'],
             'correo'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:empleados,correo,'.$id.'id'],
             'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u', 'before:'. $before],
-            'direccion'       => ['required','regex:/^.{10,100}$/u'],
+            'direccion'       => ['required','regex:/^.{10,150}$/u'],
             'fechaIngreso'    => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'puesto_id'       => ['required'],
             'oficina_id'       => ['required'],
@@ -181,7 +181,7 @@ class EmpleadoController extends Controller
             'fechaNacimiento.regex' =>'Debe ser mayor de edad.',
 
             'direccion.required' =>'Se necesita saber la dirección, no puede ir vacío.',
-            'direccion.regex' => 'La dirección es muy corta.',
+            'direccion.regex' => 'La dirección permite mínimo 10 y máximo 150 palabras.',
 
             'fechaIngreso.required' =>'Debe seleccionar la fecha de ingreso, no puede ir vacío.',
             'puesto_id.required' =>'Debe seleccionar el puesto de trabajo, no puede ir vacío.',

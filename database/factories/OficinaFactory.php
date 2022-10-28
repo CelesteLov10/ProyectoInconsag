@@ -19,7 +19,6 @@ class OficinaFactory extends Factory
         return [
             //
             'nombreOficina' =>$this->faker->catchPhrase(),
-            'municipio'=>$this->faker->state(),
             'direccion'=>$this->faker->address(),
             'nombreGerente'=>$this->faker->name(),
             'telefono'=>$this->faker->phoneNumber(),

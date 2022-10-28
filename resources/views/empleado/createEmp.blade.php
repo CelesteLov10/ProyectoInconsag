@@ -134,7 +134,7 @@
           <label class="col-sm-3 col-form-label">Dirección:</label>
           <div class="col-sm-5">
             <textarea type="text" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
-            maxlength="100" placeholder="Ingrese la dirección"
+            maxlength="150" placeholder="Ingrese la dirección"
             name="direccion" value="">{{old('direccion')}}</textarea>
           @error('direccion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>

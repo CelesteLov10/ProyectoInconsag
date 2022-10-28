@@ -10,9 +10,10 @@
     esto es para que todas las plantillas tengan el mismo estilo-->
     {{-- ICONS BOOTSTRAP --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    
+
     <title>@yield('titulo')</title>
-    
+    {{-- cdn para los select dependientes --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     @yield('css')
 </head>
 
@@ -81,7 +82,7 @@
       </div>
   </div>
                                                                                                                                 {{-- ancho y alto del div de todas las vistas --}}
-    <main class="d-flex flex-column flex-shrink-0  justify-content-between p-3 m-0  text-white bg-light bg-gradient rounded" style="width: 1030px; height: 1100px">
+    <main class="d-flex flex-column flex-shrink-0  justify-content-start p-3 m-0  text-white bg-light bg-gradient rounded" style="width: 1030px; height: 1100px">
       @yield('contenido')
     </main>
 </div>
@@ -100,6 +101,5 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       @yield('js')
       
-      @yield('script')
 </body>
 </html>

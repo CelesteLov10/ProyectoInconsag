@@ -42,7 +42,7 @@ class InventarioController extends Controller
             'nombreInv'   => 'required|regex:/^([a-záéíóúñ]+\s{0,1})+$/u',
             'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
             'precioInv'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
-            'descripcion' => 'required|regex:/^.{10,100}$/u',
+            'descripcion' => 'required|regex:/^.{10,150}$/u',
             'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'empleado_id' => 'required',
             'oficina_id'  => 'required',
@@ -50,7 +50,7 @@ class InventarioController extends Controller
         ];
         $mensaje =[
             'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
-            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres y no se amdmiten números.',
+            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres, no se admiten números y letras mayúsculas.',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
 
             'cantidad.required' => 'La cantidad del inventario es requerido.', 
@@ -64,7 +64,7 @@ class InventarioController extends Controller
             'precioInv.regex' => 'El precio del inventario debe contener 1 o 2 cifras despues del punto (opcional).',
 
             'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
-            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 100 palabras.',
+            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
 
             'fecha.required' => 'La fecha es requerida', 
             'fecha.regex' => 'No debe agregar mas datos a la fecha seleccionada', 
@@ -116,14 +116,14 @@ class InventarioController extends Controller
             'nombreInv'   => ['required','regex:/^([a-záéíóúñ]+\s{0,1})+$/u'],
             'cantidad'    => ['required','numeric','regex:/^[0-9]{1,4}+$/u'],
             'precioInv'   => ['required','numeric','max:99999','min:1.00','regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/'],
-            'descripcion' => ['required','regex:/^.{10,100}$/u'],
+            'descripcion' => ['required','regex:/^.{10,150}$/u'],
             'fecha'       => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'empleado_id' => ['required'],
             'oficina_id'  => ['required'],
         ],[
             'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
-            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres y no se admiten números.',
+            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres, no se admiten números y letras mayúsculas.',
 
             'cantidad.required' => 'La cantidad del inventario es requerido.', 
             'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',
@@ -136,7 +136,7 @@ class InventarioController extends Controller
             'precioInv.regex' => 'El precio del inventario debe contener 1 o 2 cifras despues del punto (opcional).',   
 
             'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
-            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 100 palabras..',
+            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
 
             'fecha.required' => 'La fecha es requerida', 
             'fecha.regex' => 'No debe agregar más datos a la fecha seleccionada', 

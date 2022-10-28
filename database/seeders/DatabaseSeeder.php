@@ -6,12 +6,10 @@ namespace Database\Seeders;
 
 use App\Models\Puesto;
 use App\Models\Empleado;
-use App\Models\Estado;
 use App\Models\Inventario;
 use App\Models\Oficina;
 use App\Models\Proveedor;
-use App\Models\Proveedore;
-
+use App\Models\Municipio;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,6 +27,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
         Puesto::factory(30)->create();
         Oficina::factory(10)->create();
         Empleado::factory(50)->create();

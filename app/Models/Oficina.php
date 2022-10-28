@@ -24,4 +24,14 @@ class Oficina extends Model
     public function empleado(){
         return $this->hasMany(Empleado::class);
     }
+
+    //Una oficina pertenece a una departamento
+    public function departamento(){
+        return $this->belongsTo(Departamento::class);
+    }
+
+    //Una oficina puede tener muchos empleados
+    public function municipio(){
+        return $this->belongsTo(Municipio::class);
+    }
 }

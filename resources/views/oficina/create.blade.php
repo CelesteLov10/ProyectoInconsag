@@ -1,8 +1,16 @@
 @extends('layout.plantillaH')
 
 @section('titulo', 'Nueva Oficina')
-@inject('departamentos', 'App\Services\Departamentos')
+
+@section('css')
+{{-- plugins para el calendario --}}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+@endsection
+
+
 @section('contenido') 
+@inject('departamentos', 'App\Services\Departamentos')
 <div>
 <div class="mb-5 m-5">
     <h2 class=" text-center">
@@ -40,7 +48,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Dirección:</label>
         <div class="col-sm-5">
-          <textarea type="text" maxlength="100" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
+          <textarea type="text" maxlength="150" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
           placeholder="Ingrese la dirección de la oficina " 
           name="direccion">{{old('direccion')}}</textarea>
         @error('direccion')
@@ -76,10 +84,10 @@
       <div class="mb-3 row">
         <label for="departamento" class="col-sm-3 col-form-label">Departamento:</label>
         <div class="col-sm-6">
-        <select id="departamento" name="departamento"  class="form-select rounded-pill{{ $errors->has('faculty_id') ? ' is-invalid' : '' }}" required>
+        <select id="departamento" name="departamento_id"  class="form-select rounded-pill{{ $errors->has('departamento_id') ? ' is-invalid' : '' }}" required>
             @foreach ($departamentos->get() as $index => $departamento)
             <option value="{{$index}}" 
-              {{old('departamento_id') == $index ? 'selected' : '' }}> {{ $departamento}}
+              {{old('departamento_id') == $index ? 'selected' : '' }}>  {{ $departamento}}
             </option>
             @endforeach
         </select> 
@@ -94,7 +102,8 @@
       
         <div class="col-sm-6">
             <select id="municipio" data-old="{{ old('municipio_id') }}" name="municipio_id"  class="form-select rounded-pill{{ $errors->has('municipio_id') ? ' is-invalid' : '' }}"
-              required></select>
+              required>
+            </select>
       
             @error('municipio_id')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -115,32 +124,24 @@
 @endsection
 
 @section('js')
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@endsection
 
-@section('script')
         <script>
-          
-       $(document).ready(function(){
-             /function loadMunicipio(){
-                var departamento_id = $('#departamento').val();
-                if($.trim(departamento_id) != '') {
+          $(document).ready(function(){
+            $('#departamento').on('change', function(){
+              var departamento_id = $(this).val();
+              if($.trim(departamento_id) != '') {
                       //mandamos a llamra a la ruta "municipios"
                       $.get('municipios', {departamento_id: departamento_id}, function (municipios) {
-
-                        var old= $('#municipio').data('old') != '' ? $('#municipio').data('old') : '';
-                       
+                
                         $('#municipio').empty();//para borar lo que tenia
-                        $("#municipio").append("<option value='"+municipios[i].id+"'> "+municipios[i].nombreM+"</option>");                       // $("#state\\\").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                        $('#municipio').append("<option value=''> selecione un carre</option>");                       // $("#state\\\").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
                         $.each(municipios, function (index, value) {
-                    $('#career').append("<option value='" + index + "'" + (old == index ? 'selected' : '') + ">" + value +"</option>");
-                     })
-                      });
-                    }
+                    $('#municipio').append("<option value='" + index +"'>" + value +"</option>");
+                      })
+                    });
                   }
-
-                    loadMunicipio();
-                  $('#departamento').on('change', loadMunicipio);
-                  });
+                });
+            });      
         </script>
-        @endsection
+
+@endsection

@@ -16,7 +16,7 @@ class OficinaController extends Controller
             return $query->where('nombreOficina', 'LIKE', '%' .request('search') .'%')
             ->orWhere('municipio', 'LIKE', '%' .request('search') .'%');
         })->orderBy('id','desc')->paginate(10)->withQueryString(); 
-        $inventario = inventario::all();
+        $inventario = Inventario::all();
 
         return view('oficina.index', compact('oficinas', 'inventario'));
     }
@@ -36,10 +36,11 @@ class OficinaController extends Controller
         $reglas = [
 
             'nombreOficina' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})+$/u',
-            'municipio'     => 'required|regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u',
-            'direccion'     => 'required|regex:/^.{10,200}$/u',//regex:/^(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)
+            'direccion'     => 'required|regex:/^.{10,150}$/u',//regex:/^(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)
             'nombreGerente' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',
             'telefono'      => 'required|numeric|regex:/^[(2)(3)(8)(9)][0-9]/|unique:oficinas',
+            'departamento_id'=> 'required|exists:departamentos,id',
+            'municipio_id'=> 'required|exists:municipios,id',
     
         ];
         $mensaje = [
@@ -50,7 +51,7 @@ class OficinaController extends Controller
             'municipio.regex' => 'El nombre de la oficina debe iniciar con mayúscula.',
 
             'direccion.required' =>'La ubicación de dirección es obligatorio.', 
-            'direccion.regex' =>'La descripción es muy corta.',
+            'direccion.regex' =>'La descripción permite mínimo 10 y máximo 150 palabras.',
 
             'nombreGerente.required' =>'El nombre del gerente es obligatorio, no puede estar vacío.', 
             'nombreGerente.alpha' =>'En el nombre del gerente sólo se permite letras.',
@@ -80,27 +81,20 @@ class OficinaController extends Controller
             ->with('mensaje', 'Se guardó el registro de la nueva oficina correctamente');
         } 
     }
-    public function getMunicipios(Request $request){
-        if ($request->ajax()){
-            $municipios = Municipio::where('departamento_id', $request->departamento_id)->get();
-            foreach ($municipios as $municipio){
-                $municipiosArray[$municipio->id] = $municipio->nombreM;
-            }
-            return response()->json($municipiosArray);
-        }
-      /* $conexion=mysqli_connect('localhost', 'root', '', 'proyectoInconsag');
+    
+
+        /* $conexion=mysqli_connect('localhost', 'root', '', 'proyectoInconsag');
         $departamento= $_POST['departamento'];
         $sql="SELECT id, nombreD, nombreM from  municipios where departamento_id = '$departamento'";
         $result= mysqli_query($conexion, $departamento);
         $cadena = "<label>Municipios</label> 
         <select id='lista2' name= 'lista2'>";
-     
+
         while ($ver=mysqli_fetch_row($result)){
             $cadena= $cadena.'<option value='.$ver[0].'>'.utf8_encode($ver[2]).'</option>';
         }
         echo $cadena."</select>";*/
-       
-    }
+    
     public function edit($id){
         
         $oficina = Oficina::findOrFail($id);
@@ -110,10 +104,10 @@ class OficinaController extends Controller
     public function update(Request $request, $id){
 
         $this->validate($request,[
-       
+            
             'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
             'municipio'     => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
-            'direccion'     => ['required','regex:/^.{10,200}$/u'],
+            'direccion'     => ['required','regex:/^.{10,150}$/u'],
             'nombreGerente' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})+$/u',],
             'telefono'      => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:oficinas,telefono,'.$id.'id'],
         ],[
@@ -124,7 +118,7 @@ class OficinaController extends Controller
             'municipio.regex' => 'El nombre de la oficina debe iniciar con mayúscula.',
 
             'direccion.required' => 'La ubicación de dirección es obligatorio.', 
-            'direccion.regex' => 'La descripción es muy corta.',
+            'direccion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
 
             'nombreGerente.required' => 'El nombre del gerente es obligatorio, no puede estar vacío.', 
             'nombreGerente.regex' => 'El nombre del gerente debe iniciar con mayúscula, solo permite un espacio entre los nombres y no se admiten números.',
@@ -150,5 +144,15 @@ class OficinaController extends Controller
             return redirect()->route('oficina.index')
             ->with('mensajeW', 'Se actualizó el registro de la oficina correctamente');
         } 
+    }
+
+    public function getMunicipios(Request $request){
+        if ($request->ajax()){
+            $municipios = Municipio::where('departamento_id', $request->departamento_id)->get();
+            foreach ($municipios as $municipio){
+                $municipiosArray[$municipio->id] = $municipio->nombreM;
+            }
+            return response()->json($municipiosArray);
+        }
     }
 }

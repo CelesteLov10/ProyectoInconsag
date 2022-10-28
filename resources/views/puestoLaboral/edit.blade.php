@@ -57,7 +57,7 @@
           <label class="col-sm-3 col-form-label">Descripción:</label>
           <div class="col-sm-5">
             <textarea type="text" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
-            placeholder="Ingrese una descripción" 
+            placeholder="Ingrese una descripción" maxlength="150"
             name="descripcion">{{old('descripcion', $puesto->descripcion)}}</textarea>
           @error('descripcion')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>

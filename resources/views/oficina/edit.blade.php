@@ -55,7 +55,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Dirección:</label>
         <div class="col-sm-5">
-          <textarea type="text" maxlength="100" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
+          <textarea type="text" maxlength="150" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
           placeholder="Ingrese una dirección" 
           name="direccion">{{old('direccion', $oficina->direccion)}}</textarea>
         @error('direccion')
