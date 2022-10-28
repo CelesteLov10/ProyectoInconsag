@@ -17,10 +17,13 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('nombreOficina');
-            $table->string('municipio');
             $table->string('direccion');
             $table->string('nombreGerente');
             $table->string('telefono');
+            $table->unsignedBigInteger('departamento_id');//Relacion con tabla departamento
+            $table->foreign('departamento_id')->references('id')->on('departamentos');// Restriccion llave foranea
+            $table->unsignedBigInteger('municipio_id');//Relacion con tabla municipio
+            $table->foreign('municipio_id')->references('id')->on('municipios');// Restriccion llave foránea
             $table->timestamps();
         });
     }
