@@ -20,7 +20,7 @@
 <body>
 
   <div class="d-flex justify-content-between ">                                                                                   {{-- ancho y alto de menu vertical --}}
-    <div class="d-flex flex-column flex-shrink-0  justify-content-between p-3 m-0 text-white bg-dark bg-gradient rounded-end" style="width: 210px; height: 1100px">
+    <div class="d-flex flex-column flex-shrink-0  justify-content-between p-3 m-0 text-white bg-dark bg-gradient rounded-end" style="width: 275px; height: 1350px">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-4 me-md-auto text-white text-decoration-none">
           <span class="m-2"><i class="bi bi-house-fill text-light"></i></span>
           <span class="fs-5 text-light">Menú principal</span>
@@ -82,7 +82,7 @@
       </div>
   </div>
                                                                                                                                 {{-- ancho y alto del div de todas las vistas --}}
-    <main class="d-flex flex-column flex-shrink-0  justify-content-start p-3 m-0  text-white bg-light bg-gradient rounded" style="width: 1030px; height: 1100px">
+    <main class="d-flex flex-column flex-shrink-0  justify-content-start p-0 m-0  text-white bg-light bg-gradient rounded" style="width: 85%; height: 70%">
       @yield('contenido')
     </main>
 </div>

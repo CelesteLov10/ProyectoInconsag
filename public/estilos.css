@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 20px;
     font-family: 'Harlow Solid Italic';
     color: rgb(14, 17, 15);
 }
@@ -14,6 +15,7 @@ body{
     justify-content: center;
    align-items: center;
     background-repeat: no-repeat;
+
     opacity: 0.9;
 }
 #footer{
