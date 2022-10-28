@@ -39,7 +39,7 @@ class InventarioController extends Controller
 
         $reglas = [
 
-            'nombreInv'   => 'required|regex:/^[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}+$/u',
+            'nombreInv'   => 'required|regex:/^([a-záéíóúñ]+\s{0,1})+$/u',
             'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
             'precioInv'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
             'descripcion' => 'required|regex:/^.{10,100}$/u',
@@ -114,7 +114,7 @@ class InventarioController extends Controller
 
         $this->validate($request,[
 
-            'nombreInv'   => ['required','regex:/^[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}[a-záéíóúñ]+\s{0,1}+$/u'],
+            'nombreInv'   => ['required','regex:/^([a-záéíóúñ]+\s{0,1})+$/u'],
             'cantidad'    => ['required','numeric','regex:/^[0-9]{1,4}+$/u'],
             'precioInv'   => ['required','numeric','max:99999','min:1.00','regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/'],
             'descripcion' => ['required','regex:/^.{10,100}$/u'],

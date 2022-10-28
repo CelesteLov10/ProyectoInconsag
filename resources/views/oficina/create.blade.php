@@ -1,7 +1,7 @@
 @extends('layout.plantillaH')
 
 @section('titulo', 'Nueva Oficina')
-    
+@inject('departamentos', 'App\Services\Departamentos')
 @section('contenido') 
 
 <div class="mb-5">
@@ -34,18 +34,6 @@
             @error('nombreOficina')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
-        </div>
-      </div>
-
-      <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Municipio:</label>
-        <div class="col-sm-5">
-          <input type="text" class="form-control rounded-pill @error('municipio') is-invalid @enderror" 
-          placeholder="Ingrese el municipio que pertenece la oficina" 
-          name="municipio" value="{{old('municipio')}}" maxlength="40">
-          @error('municipio')
-          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-          @enderror
         </div>
       </div>
 
@@ -86,6 +74,35 @@
       </div>
 
       <div class="mb-3 row">
+        <label for="departamento" class="col-sm-3 col-form-label">Departamento:</label>
+        <div class="col-sm-6">
+        <select id="departamento" name="departamento"  class="form-select rounded-pill{{ $errors->has('faculty_id') ? ' is-invalid' : '' }}" required>
+            @foreach ($departamentos->get() as $index => $departamento)
+            <option value="{{$index}}" 
+              {{old('departamento_id') == $index ? 'selected' : '' }}> {{ $departamento}}
+            </option>
+            @endforeach
+        </select> 
+        @error('departamento_id')
+          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+        @enderror
+        </div>
+      </div>
+    
+      <div class="mb-3 row">
+        <label for="municipio" class="col-sm-3 col-form-label">Municipio:</label>
+      
+        <div class="col-sm-6">
+            <select id="municipio" data-old="{{ old('municipio_id') }}" name="municipio_id"  class="form-select rounded-pill{{ $errors->has('municipio_id') ? ' is-invalid' : '' }}"
+              required></select>
+      
+            @error('municipio_id')
+            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+          @enderror
+        </div>
+      </div>
+
+      <div class="mb-3 row">
         <div class="offset-sm-3 col-sm-9">
           <button type="submit" class="btn btn-outline-info">Guardar</button> 
         </div>
@@ -99,3 +116,30 @@
 @section('js')
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
+
+@section('script')
+        <script>
+          
+       $(document).ready(function(){
+             /function loadMunicipio(){
+                var departamento_id = $('#departamento').val();
+                if($.trim(departamento_id) != '') {
+                      //mandamos a llamra a la ruta "municipios"
+                      $.get('municipios', {departamento_id: departamento_id}, function (municipios) {
+
+                        var old= $('#municipio').data('old') != '' ? $('#municipio').data('old') : '';
+                       
+                        $('#municipio').empty();//para borar lo que tenia
+                        $("#municipio").append("<option value='"+municipios[i].id+"'> "+municipios[i].nombreM+"</option>");                       // $("#state\\\").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                        $.each(municipios, function (index, value) {
+                    $('#career').append("<option value='" + index + "'" + (old == index ? 'selected' : '') + ">" + value +"</option>");
+                     })
+                      });
+                    }
+                  }
+
+                    loadMunicipio();
+                  $('#departamento').on('change', loadMunicipio);
+                  });
+        </script>
+        @endsection

@@ -95,6 +95,8 @@ Route::controller(OficinaController::class)->group(function(){
     Route::get('/oficina/{id}/edit', 'edit')->name('oficina.edit');
     //Ruta para el metodo editar
     Route::put('/oficina/{id}/edit', 'update')->name('oficina.update');
+    // muestra los registros de la tabla municipios
+    Route::get('/municipios', 'getMunicipios');
 });
 
 Route::controller(ProveedorController::class)->group(function(){
