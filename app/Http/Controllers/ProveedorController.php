@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,8 @@ class ProveedorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('proveedor.create');
+    {   $categoria = Categoria::orderBy('nombreCat')->get();
+        return view('proveedor.create', compact('categoria'));
     }
 
     /**
@@ -42,9 +43,9 @@ class ProveedorController extends Controller
             'nombreContacto'=>$request['nombreContacto'],
             'cargoContacto'=>$request['cargoContacto'],
             'direccion'=>$request['direccion'],
-            'ciudad'=>$request['ciudad'],
             'telefono' =>$request['telefono' ],
             'email'=>$request['email'], 
+            'categoria_id'=>$request['categoria_id'],
             
         ]);
             return redirect()->route('inventario.index')

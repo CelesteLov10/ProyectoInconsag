@@ -21,9 +21,9 @@ class ProveedorFactory extends Factory
             'nombreContacto'=>$this->faker->name(),
             'cargoContacto'=>$this->faker->jobTitle(),
             'direccion'=>$this->faker->address(),
-            'ciudad'=>$this->faker->city(),
             'telefono'=>$this->faker->phoneNumber(),
             'email'=>$this->faker->unique()->email(),
+            'categoria_id'=>$this->faker->numberBetween(1,3),
         ];
     }
 }

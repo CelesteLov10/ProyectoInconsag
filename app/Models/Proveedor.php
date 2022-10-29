@@ -13,9 +13,13 @@ class Proveedor extends Model
     protected $fillable =['id',
     'nombreProveedor',
     'nombreContacto',
-    'cargoContacto',
+    'cargoContacto', 
     'direccion',
-    'ciudad',
     'telefono',
-    'email'];
+    'email',
+    'categoria_id',];
+
+    public function categoria(){
+        return $this->belongsTo(Categoria::class);
+    }
 }

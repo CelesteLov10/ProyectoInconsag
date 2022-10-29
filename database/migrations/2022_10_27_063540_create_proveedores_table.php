@@ -20,9 +20,10 @@ return new class extends Migration
             $table->string('nombreContacto');
             $table->string('cargoContacto');
             $table->string('direccion');
-            $table->string('ciudad');
             $table->string('telefono');
             $table->string('email');
+            $table->unsignedBigInteger('categoria_id');//Relacion con tabla categoria select
+            $table->foreign('categoria_id')->references('id')->on('categorias');// Restriccion llave foranea
             $table->timestamps();
         });
     }
