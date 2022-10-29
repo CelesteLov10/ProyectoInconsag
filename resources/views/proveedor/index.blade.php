@@ -67,7 +67,7 @@
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Nombre proveedor</th>
-                      <th scope="col">Telefono</th>
+                      <th scope="col">Teléfono</th>
                       <th scope="col">Categoria</th>
                       <th scope="col">Detalle</th>
                       <th scope="col">Actualizar</th>
@@ -79,22 +79,19 @@
                       <td>{{$proveedores->id}}</td>
                       <td>{{$proveedores->nombreProveedor}}</td>
                       <td>{{$proveedores->telefono}}</td>
-                      <td>{{$proveedores->categoria}}</td>
+                      <td>{{$proveedores->categoria->nombreCat}}</td>
 
-                      <td><a class="btn btn-outline-primary" href="{{route('proveedor.create')}}">
+                      <td><a class="btn btn-outline-primary" 
+                        href="{{route('proveedor.create')}}">
                         <i class="bi bi-eye"></i> 
                       </a></td>
 
-                     <td><a class="btn btn-outline-warning" 
-                          href="{ {route('proveedor.create')}}"> <i class="bi bi-pencil-square"></i></a>
-
-                          
-                        </td>
-                    <!--  <td><a class="btn btn-outline-warning" 
-                        href="{ {route('proveedor.create', ['id' => $proveedor->id])}}">
+                      <td><a class="btn btn-outline-warning" 
+                        href="{{route('proveedor.edit', ['id' => $proveedores->id])}}">
                         <i class="bi bi-pencil-square"></i>
-                      </a>
-                      </td>-->
+                      </a>  
+                      </td>
+
                       @csrf
                     </tr>
                     @empty

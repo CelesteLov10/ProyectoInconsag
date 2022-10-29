@@ -34,13 +34,12 @@
       <form action="{{route('proveedor.store')}}" class="proveedor-guardar" method="POST">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
-
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Nombre del proveedor:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('nombreProveedor') is-invalid @enderror" 
             placeholder="Ingrese el nombre del proveedor" 
-            name="nombreProveedor" value="{{old('nombreProveedor')}}" maxlength="40">
+            name="nombreProveedor" value="{{old('nombreProveedor')}}" maxlength="50">
             @error('nombreProveedor')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -52,7 +51,7 @@
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('nombreContacto') is-invalid @enderror" 
             placeholder="Ingrese el nombre del contacto" 
-            name="nombreContacto" value="{{old('nombreContacto')}}" maxlength="40">
+            name="nombreContacto" value="{{old('nombreContacto')}}" maxlength="50">
             @error('nombreContacto')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -100,7 +99,7 @@
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('email') is-invalid @enderror" 
             placeholder="Ingrese el correo electrónico"
-            name="email" value="{{old('email')}}" maxlength="40">
+            name="email" value="{{old('email')}}" maxlength="50">
           @error('email')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
@@ -122,6 +121,7 @@
           @enderror
           </div>
         </div>
+        
         <div class="mb-3 row">
           <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-outline-info">Guardar</button> 

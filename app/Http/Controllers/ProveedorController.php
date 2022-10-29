@@ -8,104 +8,148 @@ use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+
+    public function index(){
             //Campo busqueda
             $proveedor = Proveedor::query()
                 ->when(request('search'), function($query){
                 return $query->where('nombreProveedor', 'LIKE', '%' .request('search') .'%')
                 ->orWhere('nombreContacto', 'LIKE', '%' .request('search') .'%')
-                ->orWhere('categoria', 'LIKE', '%' .request('search') .'%');
+                ->orWhereHas('categoria', function($q){
+                    $q->where('nombreCat','LIKE', '%' .request('search') .'%');
+            });
             })->orderBy('id','desc')->paginate(10)->withQueryString();
 
-            return view('proveedor.index', compact('proveedor'));
+            $categoria = Categoria::all();
+            return view('proveedor.index', compact('proveedor','categoria'));
         
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('proveedor.create');
+    public function create(){   
+        $categoria = Categoria::orderBy('nombreCat')->get();
+        return view('proveedor.create', compact('categoria'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-        Proveedor::create([
-            'nombreProveedor'=>$request['nombreProveedor'],
-            'nombreContacto'=>$request['nombreContacto'],
-            'cargoContacto'=>$request['cargoContacto'],
-            'direccion'=>$request['direccion'],
-            'ciudad'=>$request['ciudad'],
-            'telefono' =>$request['telefono' ],
-            'email'=>$request['email'], 
-            'categoria_id'=>$request['categoria_id'],
+    public function store(Request $request){
+        $reglas = [
+
+            'nombreProveedor' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',
+            'nombreContacto' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',
+            'cargoContacto' => 'required|regex:/^([a-záéíóúñ]+\s{0,1})+$/u',
+            'direccion' => 'required|regex:/^.{10,150}$/u',
+            'telefono'  => 'required|numeric|regex:/^[(2)(3)(8)(9)][0-9]/|unique:proveedores',
+            'email'    => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#|unique:proveedores',
+            'categoria_id' => 'required',
+    
+        ];
+        $mensaje =[
+            'nombreProveedor.required' => 'El nombre del proveedor es requerido, no puede estar vacío. ',
+            'nombreProveedor.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
+
+            'nombreContacto.required' => 'El nombre del contacto es requerido, no puede estar vacío. ',
+            'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
+
+            'cargoContacto.required' => 'El cargo del contacto es requerido, no puede estar vacío. ',
+            'cargoContacto.regex' => 'El cargo del solo permite un espacio entre los nombres, no se admiten números y letras mayúsculas.',
+
+            'direccion' => 'La direccion es requerido, no puede estar vacío. ',
+            'direccion.regex' => 'La direccion permite mínimo 10 y máximo 150 palabras.',
+
+            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.numeric' => 'El teléfono debe contener sólo números.',
+            'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
+            'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
+            'telefono.unique' => 'El número de teléfono ya está en uso.',
+
+            'email.required' => 'Debe ingresar el correo electrónico.',
+            'email.email' => 'Debe ingresar un correo electrónico válido.',
+            'email.unique' => 'El correo electrónico ya está en uso.',
+
+            'categoria_id.required' => 'Debe seleccionar una categoria',
+
+        ];
+            $this->validate($request, $reglas, $mensaje);
+
+            Proveedor::create([
+                'nombreProveedor'=>$request['nombreProveedor'],
+                'nombreContacto'=>$request['nombreContacto'],
+                'cargoContacto'=>$request['cargoContacto'],
+                'direccion'=>$request['direccion'],
+                'telefono'=>$request['telefono'],
+                'email' =>$request[ 'email' ],
+                'categoria_id'=>$request['categoria_id'], 
+            ]);
             
-        ]);
-        $input = $request->all();
-        Proveedor::create($input);
             return redirect()->route('proveedor.index')
             ->with('mensaje', 'Se guardó un nuevo registro de proveedor correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+    public function show($id){
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+        $proveedor = Proveedor::findOrFail($id);
+        $categoria = Categoria::with(['proveedor.categoria'])->get();
+        return view('proveedor.edit', compact('proveedor','categoria'))
+        ->with('proveedor', $proveedor);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+        
+        $this->validate($request,[
+            
+            'nombreProveedor' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
+            'nombreContacto' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
+            'cargoContacto' => ['required','regex:/^([a-záéíóúñ]+\s{0,1})+$/u'],
+            'direccion' => ['required','regex:/^.{10,150}$/u'],
+            'telefono' => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:proveedores,telefono,'.$id.'id'],
+            'email'  => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:proveedores,email,'.$id.'id'],
+            'categoria_id' => ['required'],
+        ],[
+            'nombreProveedor.required' => 'El nombre del proveedor es requerido, no puede estar vacío. ',
+            'nombreProveedor.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
+
+            'nombreContacto.required' => 'El nombre del contacto es requerido, no puede estar vacío. ',
+            'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
+
+            'cargoContacto.required' => 'El cargo del contacto es requerido, no puede estar vacío. ',
+            'cargoContacto.regex' => 'El cargo del solo permite un espacio entre los nombres, no se admiten números y letras mayúsculas.',
+
+            'direccion' => 'La direccion es requerido, no puede estar vacío. ',
+            'direccion.regex' => 'La direccion permite mínimo 10 y máximo 150 palabras.',
+
+            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.numeric' => 'El teléfono debe contener sólo números.',
+            'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
+            'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
+            'telefono.unique' => 'El número de teléfono ya está en uso.',
+
+            'email.required' => 'Debe ingresar el correo electrónico.',
+            'email.email' => 'Debe ingresar un correo electrónico válido.',
+            'email.unique' => 'El correo electrónico ya está en uso.',
+
+            'categoria_id.required' => 'Debe seleccionar una categoria',
+    
+        ]);
+        
+        $proveedor = Proveedor::findOrFail($id);
+
+        $proveedor->nombreProveedor = $request->input('nombreProveedor');
+        $proveedor->nombreContacto = $request->input('nombreContacto');
+        $proveedor->cargoContacto= $request->input('cargoContacto');
+        $proveedor->direccion = $request->input('direccion');
+        $proveedor->telefono = $request->input('telefono');
+        $proveedor->email = $request->input('email');
+        $proveedor->categoria_id = $request->input('categoria_id');;
+        
+        $update = $proveedor->save();
+        
+        if ($update){
+            return redirect()->route('proveedor.index')
+            ->with('mensajeW', 'Se actualizó el registro del proveedor correctamente');
+        } 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
