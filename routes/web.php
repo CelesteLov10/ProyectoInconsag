@@ -63,6 +63,8 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/inventario', 'inventario')->name('inventario.search');
     //Ruta para listado oficina
     Route::get('search/oficina', 'oficina')->name('oficina.search');
+    //Ruta para listado proveedor:
+    Route::get('search/proveedor', 'proveedor')->name('proveedor.search');
 });
 
 Route::controller(InventarioController::class)->group(function(){

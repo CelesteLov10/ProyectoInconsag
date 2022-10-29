@@ -54,7 +54,7 @@
           </a>
           </li>
           <li>
-          <a href="{{route('proveedor.create')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+          <a href="{{route('proveedor.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
               <span class="p-2"><i class="bi bi-bag-dash-fill text-light"></i></span>
               Proveedor
           </a>

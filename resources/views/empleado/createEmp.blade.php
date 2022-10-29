@@ -16,7 +16,7 @@
 
 <div>
   <div class="mb-5 m-5">
-      <h2 class=" text-center">
+      <h2 class=" text-center" id="titulo">
         <strong>Registro de un nuevo empleado</strong> 
       </h2>
   </div>
@@ -32,7 +32,7 @@
       {{-- encabezado  --}}
       <div class = " card shadow ab-4 bg-success bg-gradient" >
         <div class = " card-header py-3 " >
-            <h5 class = "n-font-weight-bold text-white">Creación empleado</h5> 
+            <h5 class = "n-font-weight-bold text-white" >Creación empleado</h5> 
         </div >
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
