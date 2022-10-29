@@ -70,7 +70,7 @@
             @enderror
           </div>
         </div>
-        
+
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Dirección:</label>
           <div class="col-sm-5">
@@ -78,18 +78,6 @@
             maxlength="150" placeholder="Ingrese la dirección"
             name="direccion" value="">{{old('direccion')}}</textarea>
           @error('direccion')
-            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-          @enderror
-          </div>
-        </div>
-
-        <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Ciudad:</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control rounded-pill  @error('ciudad') is-invalid @enderror" 
-            placeholder="Ingrese la ciudad"
-            name="ciudad" value="{{old('ciudad')}}" maxlength="40">
-          @error('ciudad')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
           </div>
@@ -118,6 +106,8 @@
           @enderror
           </div>
         </div>
+
+
       
         <div class="mb-3 row">
           <div class="offset-sm-3 col-sm-9">

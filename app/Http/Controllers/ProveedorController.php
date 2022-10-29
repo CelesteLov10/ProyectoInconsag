@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,16 @@ class ProveedorController extends Controller
      */
     public function index()
     {
+            //Campo busqueda
+            $proveedor = Proveedor::query()
+                ->when(request('search'), function($query){
+                return $query->where('nombreProveedor', 'LIKE', '%' .request('search') .'%')
+                ->orWhere('nombreContacto', 'LIKE', '%' .request('search') .'%')
+                ->orWhere('categoria', 'LIKE', '%' .request('search') .'%');
+            })->orderBy('id','desc')->paginate(10)->withQueryString();
+
+            return view('proveedor.index', compact('proveedor'));
+        
         //
     }
 
@@ -23,7 +34,8 @@ class ProveedorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
+
         return view('proveedor.create');
     }
 
@@ -36,18 +48,18 @@ class ProveedorController extends Controller
     public function store(Request $request)
     {
         //
-        
         Proveedor::create([
             'nombreProveedor'=>$request['nombreProveedor'],
             'nombreContacto'=>$request['nombreContacto'],
             'cargoContacto'=>$request['cargoContacto'],
             'direccion'=>$request['direccion'],
-            'ciudad'=>$request['ciudad'],
             'telefono' =>$request['telefono' ],
             'email'=>$request['email'], 
             
         ]);
-            return redirect()->route('inventario.index')
+        $input = $request->all();
+        Proveedor::create($input);
+            return redirect()->route('proveedor.index')
             ->with('mensaje', 'Se guardó un nuevo registro de proveedor correctamente');
     }
 

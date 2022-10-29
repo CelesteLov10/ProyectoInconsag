@@ -61,5 +61,18 @@ class SearchController extends Controller
         }
         return $data;
     }
+
+    public function proveedor(Request $request){
+        $term = $request->get('term');
+        $querys = Oficina::where('nombreProveedor', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->nombreProveedor
+        ];
+        }
+        return $data;
+    }
     
 }
