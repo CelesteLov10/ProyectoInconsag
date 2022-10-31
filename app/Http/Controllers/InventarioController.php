@@ -59,8 +59,8 @@ class InventarioController extends Controller
 
             'precioInv.required' => 'El precio del inventario es requerido, no puede estar vacío.',
             'precioInv.numeric'=> 'No se permiten letras o espacios vacíos.',
-            'precioInv.min' => 'El precio del inventario no puede ser menor a $1.00.',
-            'precioInv.max' => 'El precio del inventario no puede ser mayor a $99999.00.',
+            'precioInv.min' => 'El precio del inventario no puede ser menor a L.1.00.',
+            'precioInv.max' => 'El precio del inventario no puede ser mayor a L.99999.00.',
             'precioInv.regex' => 'El precio del inventario debe contener 1 o 2 cifras despues del punto (opcional).',
 
             'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
@@ -131,8 +131,8 @@ class InventarioController extends Controller
 
             'precioInv.required' => 'El precio del inventario es requerido, no puede estar vacío.',
             'precioInv.numeric'=> 'No se permiten letras o espacios vacíos.',
-            'precioInv.min' => 'El precio del inventario no puede ser menor a $1.00.',
-            'precioInv.max' => 'El precio del inventario no puede ser mayor a $99999.00.',
+            'precioInv.min' => 'El precio del inventario no puede ser menor a L.1.00.',
+            'precioInv.max' => 'El precio del inventario no puede ser mayor a L.99999.00.',
             'precioInv.regex' => 'El precio del inventario debe contener 1 o 2 cifras despues del punto (opcional).',   
 
             'descripcion' => 'La descripción es requerido, no puede estar vacío. ',

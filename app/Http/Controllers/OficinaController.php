@@ -38,7 +38,7 @@ class OficinaController extends Controller
 
         $reglas = [
 
-            'nombreOficina' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})+$/u',
+            'nombreOficina' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})[0-9]+$/u',
             'direccion'     => 'required|regex:/^.{10,150}$/u',//regex:/^(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)
             'nombreGerente' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',
             'telefono'      => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:oficinas',
@@ -48,7 +48,7 @@ class OficinaController extends Controller
         ];
         $mensaje = [
             'nombreOficina.required' =>'Debe escoger un nombre para la oficina, no puede estar vacío.',
-            'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula, solo permite un espacio entre los nombres y sin números.',
+            'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula Y solo permite un espacio entre los nombres.',
 
             'direccion.required' =>'La dirección es obligatoria.', 
             'direccion.regex' =>'La dirección permite mínimo 10 y máximo 150 palabras.',
@@ -112,7 +112,7 @@ class OficinaController extends Controller
 
         $this->validate($request,[
             
-            'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})+$/u'],
+            'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})[0-9]+$/u'],
             'direccion'     => ['required','regex:/^.{10,150}$/u'],
             'nombreGerente' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',],
             'telefono'      => ['required','numeric','digits:8','regex:/^[(2)(3)(8)(9)][0-9]/','unique:oficinas,telefono,'.$id.'id'],
@@ -120,7 +120,7 @@ class OficinaController extends Controller
             'municipio_id'=> ['required','exists:municipios,id'],
         ],[
             'nombreOficina.required' => 'Debe escoger un nombre para la oficina, no puede estar vacío.',
-            'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula, solo permite un espacio entre los nombres y sin números.',
+            'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula Y solo permite un espacio entre los nombres.',
 
 
             'direccion.required' => 'La dirección es obligatoria.', 

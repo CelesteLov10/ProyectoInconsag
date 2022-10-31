@@ -57,7 +57,7 @@
           <label class="col-sm-3 col-form-label">Nombres:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('nombres') is-invalid @enderror" 
-            placeholder="Ingrese los nombres" 
+            placeholder="Ingrese los nombres (ejem. Pablo Jose)" 
             name="nombres" value="{{old('nombres')}}" maxlength="30">
             @error('nombres')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -69,7 +69,7 @@
           <label class="col-sm-3 col-form-label">Apellidos:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('apellidos') is-invalid @enderror" 
-            placeholder="Ingrese los apellidos" 
+            placeholder="Ingrese los apellidos (ejem. Mendoza Sauceda)" 
             name="apellidos" value="{{old('apellidos')}}" maxlength="30">
             @error('apellidos')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>

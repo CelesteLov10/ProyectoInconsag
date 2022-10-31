@@ -84,8 +84,8 @@
                       <td>{{$proveedores->categoria->nombreCat}}</td>
 
                       <td><a class="btn btn-outline-primary" 
-                        href="{{route('proveedor.create')}}">
-                        <i class="bi bi-eye"></i> 
+                        href="{{route('proveedor.show', ['id'=>$proveedores->id])}}">
+                        <i class="bi bi-eye"></i>
                       </a></td>
 
                       <td><a class="btn btn-outline-warning" 

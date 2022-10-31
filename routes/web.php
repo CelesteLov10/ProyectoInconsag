@@ -109,6 +109,9 @@ Route::controller(ProveedorController::class)->group(function(){
     Route::get('/proveedor/create', 'create')->name('proveedor.create');
     //Ruta para guardar los registros del proveedor
     Route::post('/proveedor', 'store')->name('proveedor.store');
+    //Ruta para mostrar un proveedores
+    Route::get('/proveedor/{id}', 'show')->name('proveedor.show')
+    ->where('id','[0-9]+');
     //Ruta para editar un proveedor
     Route::get('/proveedor/{id}/edit', 'edit')->name('proveedor.edit');
     //Ruta para el metodo editar
