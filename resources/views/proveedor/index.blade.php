@@ -66,7 +66,8 @@
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Nombre proveedor</th>
+                      <th scope="col">Nombre del proveedor</th>
+                      <th scope="col">Nombre del contacto</th>
                       <th scope="col">Teléfono</th>
                       <th scope="col">Categoria</th>
                       <th scope="col">Detalle</th>
@@ -78,6 +79,7 @@
                     <tr>
                       <td>{{$proveedores->id}}</td>
                       <td>{{$proveedores->nombreProveedor}}</td>
+                      <td>{{$proveedores->nombreContacto}}</td>
                       <td>{{$proveedores->telefono}}</td>
                       <td>{{$proveedores->categoria->nombreCat}}</td>
 
@@ -87,7 +89,7 @@
                       </a></td>
 
                       <td><a class="btn btn-outline-warning" 
-                        href="{{route('proveedor.index', ['id' => $proveedores->id])}}">
+                        href="{{route('proveedor.edit', ['id' => $proveedores->id])}}">
                         <i class="bi bi-pencil-square"></i>
                       </a>  
                       </td>

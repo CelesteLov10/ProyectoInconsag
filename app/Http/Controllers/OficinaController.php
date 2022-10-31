@@ -41,7 +41,7 @@ class OficinaController extends Controller
             'nombreOficina' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})+$/u',
             'direccion'     => 'required|regex:/^.{10,150}$/u',//regex:/^(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)
             'nombreGerente' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',
-            'telefono'      => 'required|numeric|regex:/^[(2)(3)(8)(9)][0-9]/|unique:oficinas',
+            'telefono'      => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:oficinas',
             'departamento_id'=> 'required|exists:departamentos,id',
             'municipio_id'=> 'required|exists:municipios,id',
     
@@ -50,12 +50,11 @@ class OficinaController extends Controller
             'nombreOficina.required' =>'Debe escoger un nombre para la oficina, no puede estar vacío.',
             'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula, solo permite un espacio entre los nombres y sin números.',
 
-            'direccion.required' =>'La ubicación de dirección es obligatorio.', 
-            'direccion.regex' =>'La descripción permite mínimo 10 y máximo 150 palabras.',
+            'direccion.required' =>'La dirección es obligatoria.', 
+            'direccion.regex' =>'La dirección permite mínimo 10 y máximo 150 palabras.',
 
             'nombreGerente.required' =>'El nombre del gerente es obligatorio, no puede estar vacío.', 
-            'nombreGerente.alpha' =>'En el nombre del gerente sólo se permite letras.',
-            'nombreGerente.regex' =>'El nombre del gerente debe iniciar con mayúscula, solo permite un espacio entre los nombres y no se admiten números.',
+            'nombreGerente.regex' =>'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
 
             'telefono.required' =>'El teléfono es obligatorio, no puede estar vacío.',
             'telefono.numeric' =>'El teléfono no puede contener letras.',
@@ -116,7 +115,7 @@ class OficinaController extends Controller
             'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})+$/u'],
             'direccion'     => ['required','regex:/^.{10,150}$/u'],
             'nombreGerente' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',],
-            'telefono'      => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:oficinas,telefono,'.$id.'id'],
+            'telefono'      => ['required','numeric','digits:8','regex:/^[(2)(3)(8)(9)][0-9]/','unique:oficinas,telefono,'.$id.'id'],
             'departamento_id'=> ['required','exists:departamentos,id'],
             'municipio_id'=> ['required','exists:municipios,id'],
         ],[
@@ -124,11 +123,11 @@ class OficinaController extends Controller
             'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula, solo permite un espacio entre los nombres y sin números.',
 
 
-            'direccion.required' => 'La ubicación de dirección es obligatorio.', 
-            'direccion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
+            'direccion.required' => 'La dirección es obligatoria.', 
+            'direccion.regex' => 'La dirección permite mínimo 10 y máximo 150 palabras.',
 
             'nombreGerente.required' => 'El nombre del gerente es obligatorio, no puede estar vacío.', 
-            'nombreGerente.regex' => 'El nombre del gerente debe iniciar con mayúscula, solo permite un espacio entre los nombres y no se admiten números.',
+            'nombreGerente.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
 
             'telefono.required' =>  'El teléfono es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono no puede contener letras.',
@@ -162,12 +161,12 @@ class OficinaController extends Controller
     }
 
     public function getMunicipios($id){
-       $municipios = Municipio::where('departamento_id', '=', $id)->get();
-       return response()->json($municipios);
+        $municipios = Municipio::where('departamento_id', '=', $id)->get();
+        return response()->json($municipios);
     }
 
     public function getMunicipioss($id){
         $municipios = Municipio::where('departamento_id', '=', $id)->get();
         return $municipios;
-     }
+    }
 }

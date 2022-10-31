@@ -181,7 +181,7 @@ function cambiomunicipio(id_departamento){
         }
 function agregarSelect(municipio){
   $('#municipio').empty();
-  $('#municipio').append("<option selected disabled value=''>Seleccione un municipio</option>"); 
+  $('#municipio').append("<option selected disabled value=''>{{$oficina->municipio->nombreM}}</option>"); 
   for (let i = 0; i < municipio.length; i++) {
     $('#municipio').append("<option value='"+ municipio[i].id+"'>"+municipio[i].nombreM+"</option>"); 
     
