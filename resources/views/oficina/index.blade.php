@@ -51,7 +51,7 @@
         @endif
 
     <div class="mb-3 text-end">
-        <a class="btn btn-outline-success text-right" href="{{route('oficina.create')}}">Nueva oficina <i class="bi bi-plus-square-dotted"></i></a>
+        <a class="btn btn-outline-success text-right" href="{{route('oficina.create')}}">Nueva oficina <i class="bi bi-person-plus"></i></a>
     </div>
       {{-- encabezado style="text-decoration:none"--}}
       <div class = " card shadow ab-4 bg-success bg-gradient" >
@@ -77,7 +77,7 @@
                   <tr>
                     <td>{{$oficina->id}}</td>
                     <td>{{$oficina->nombreOficina}}</td>
-                    <td>{{$oficina->municipio}}</td>
+                    <td>{{$oficina->municipio->nombreM}}</td>
                     <td><a class="btn btn-outline-primary" href="{{route('oficina.show', ['id'=>$oficina->id])}}">
                       <i class="bi bi-eye"></i> </a></td>
                     <td><a class="btn btn-outline-warning" 

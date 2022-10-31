@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departamento;
 use App\Models\Inventario;
 use App\Models\Municipio;
 use App\Models\Oficina;
@@ -27,7 +28,9 @@ class OficinaController extends Controller
     }
     public function create(){
 
-        return view('oficina.create');
+        $departamentos = Departamento::all();
+        $municipios = Municipio::all();
+        return view('oficina.create', compact('departamentos', 'municipios'));
 
     }
 
@@ -47,9 +50,6 @@ class OficinaController extends Controller
             'nombreOficina.required' =>'Debe escoger un nombre para la oficina, no puede estar vacío.',
             'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula, solo permite un espacio entre los nombres y sin números.',
 
-            'municipio.required' =>'El nombre del municipio es obligatorio.',
-            'municipio.regex' => 'El nombre de la oficina debe iniciar con mayúscula.',
-
             'direccion.required' =>'La ubicación de dirección es obligatorio.', 
             'direccion.regex' =>'La descripción permite mínimo 10 y máximo 150 palabras.',
 
@@ -62,6 +62,9 @@ class OficinaController extends Controller
             'telefono.digits' =>'El teléfono debe contener 8 dígitos.',
             'telefono.regex' =>'El teléfono solo puede iniciar con los siguientes dígitos: 2, 3, 8 ó 9. ',
 
+            'departamento_id.required' => 'Debe seleccionar un departamento, no puede estar vacío.',
+            'municipio_id.required' => 'Debe seleccionar un municipio, no puede estar vacío.', 
+
         ];
         $this->validate($request, $reglas, $mensaje);
 
@@ -69,10 +72,11 @@ class OficinaController extends Controller
         $oficina = new Oficina();
 
         $oficina->nombreOficina = $request->nombreOficina;
-        $oficina->municipio = $request->municipio;
         $oficina->direccion = $request->direccion;
         $oficina->nombreGerente = $request->nombreGerente;
         $oficina->telefono = $request->telefono;
+        $oficina->departamento_id = $request->departamento_id;
+        $oficina->municipio_id = $request->municipio_id;
 
         $create = $oficina->save();
         
@@ -98,24 +102,27 @@ class OficinaController extends Controller
     public function edit($id){
         
         $oficina = Oficina::findOrFail($id);
-        return view('oficina.edit')->with('oficina', $oficina);
+        $departamentos = Departamento::orderBy('nombreD')->get();
+        $municipios = Municipio::orderBy('nombreM')->get();
+        
+
+        return view('oficina.edit', compact('departamentos', 'municipios'))->with('oficina', $oficina);
     }
 
     public function update(Request $request, $id){
 
         $this->validate($request,[
             
-            'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
-            'municipio'     => ['required','regex:/^([A-ZÁÉÍÓÚÑ a-záéíóúñ]+\s{0,1})+$/u'],
+            'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})+$/u'],
             'direccion'     => ['required','regex:/^.{10,150}$/u'],
-            'nombreGerente' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})+$/u',],
+            'nombreGerente' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',],
             'telefono'      => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:oficinas,telefono,'.$id.'id'],
+            'departamento_id'=> ['required','exists:departamentos,id'],
+            'municipio_id'=> ['required','exists:municipios,id'],
         ],[
             'nombreOficina.required' => 'Debe escoger un nombre para la oficina, no puede estar vacío.',
             'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula, solo permite un espacio entre los nombres y sin números.',
 
-            'municipio.required' => 'El nombre del municipio es obligatorio.',
-            'municipio.regex' => 'El nombre de la oficina debe iniciar con mayúscula.',
 
             'direccion.required' => 'La ubicación de dirección es obligatorio.', 
             'direccion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
@@ -127,16 +134,24 @@ class OficinaController extends Controller
             'telefono.numeric' => 'El teléfono no puede contener letras.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono solo puede iniciar con los siguientes dígitos: 2, 3, 8 ó 9. ',
+
+            'departamento_id.required' => 'Debe seleccionar un departamento, no puede estar vacío.',
+            'departamento_id.exists'=> 'El departamento seleccionado no existe', 
+            'municipio_id.required' => 'Debe seleccionar un municipio, no puede estar vacío.',
+            'municipio_id.exists'=> 'El municipio seleccionado no existe', 
+
+
     
         ]);
         
         $oficina = Oficina::findOrFail($id);
 
         $oficina->nombreOficina= $request->input('nombreOficina');
-        $oficina->municipio = $request->input('municipio');
         $oficina->direccion = $request->input('direccion');
         $oficina->nombreGerente = $request->input('nombreGerente');
         $oficina->telefono = $request->input('telefono');
+        $oficina->departamento_id = $request->departamento_id;
+        $oficina->municipio_id = $request->municipio_id;
         
         $update = $oficina->save();
         
@@ -146,13 +161,13 @@ class OficinaController extends Controller
         } 
     }
 
-    public function getMunicipios(Request $request){
-        if ($request->ajax()){
-            $municipios = Municipio::where('departamento_id', $request->departamento_id)->get();
-            foreach ($municipios as $municipio){
-                $municipiosArray[$municipio->id] = $municipio->nombreM;
-            }
-            return response()->json($municipiosArray);
-        }
+    public function getMunicipios($id){
+       $municipios = Municipio::where('departamento_id', '=', $id)->get();
+       return response()->json($municipios);
     }
+
+    public function getMunicipioss($id){
+        $municipios = Municipio::where('departamento_id', '=', $id)->get();
+        return $municipios;
+     }
 }

@@ -87,7 +87,7 @@
                       </a></td>
 
                       <td><a class="btn btn-outline-warning" 
-                        href="{{route('proveedor.edit', ['id' => $proveedores->id])}}">
+                        href="{{route('proveedor.index', ['id' => $proveedores->id])}}">
                         <i class="bi bi-pencil-square"></i>
                       </a>  
                       </td>

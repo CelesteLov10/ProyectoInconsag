@@ -14,7 +14,7 @@
 <div>
 <div class="mb-5 m-5">
     <h2 class=" text-center">
-      <strong>Registro de una nueva oficina</strong> 
+      <strong id="titulo">Registro de una nueva oficina</strong> 
     </h2>
 </div>
 <div class="container ">
@@ -83,8 +83,9 @@
 
       <div class="mb-3 row">
         <label for="departamento" class="col-sm-3 col-form-label">Departamento:</label>
-        <div class="col-sm-6">
-        <select id="departamento" name="departamento_id"  class="form-select rounded-pill{{ $errors->has('departamento_id') ? ' is-invalid' : '' }}" required>
+        <div class="col-sm-5">
+        <select id="departamento" name="departamento_id" class="form-select rounded-pill @error('departamento_id') is-invalid @enderror"
+          onchange="cambiomunicipio(this.value)">
             @foreach ($departamentos->get() as $index => $departamento)
             <option value="{{$index}}" 
               {{old('departamento_id') == $index ? 'selected' : '' }}>  {{ $departamento}}
@@ -96,15 +97,14 @@
         @enderror
         </div>
       </div>
-    
+
+    <input type="hidden" value="{{ old('municipio_id') }}" id="prueba">
       <div class="mb-3 row">
         <label for="municipio" class="col-sm-3 col-form-label">Municipio:</label>
-      
-        <div class="col-sm-6">
-            <select id="municipio" data-old="{{ old('municipio_id') }}" name="municipio_id"  class="form-select rounded-pill{{ $errors->has('municipio_id') ? ' is-invalid' : '' }}"
-              required>
+        <div class="col-sm-5">
+            <select id="municipio" name="municipio_id"  class="form-select rounded-pill @error('municipio_id') is-invalid @enderror"
+            >
             </select>
-      
             @error('municipio_id')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
@@ -126,21 +126,65 @@
 @section('js')
 
         <script>
+          /*Peticion segun la ruta*/
+    function peticion(id){
+    let _token= "{{ csrf_token() }}";
+    $.ajax({
+    type: "POST",
+    url: "/getMunicipios/"+id,
+    data: {
+      _token: _token},
+      success: function(municipio) {
+            if ((municipio.errors)) {
+                alert('')
+            } else {
+                agregarSelect(municipio);            
+            }
+        },
+    });
+    }
+
+    function cargarselectmunicipio(iddpto, idmuni){
+      if (idmuni===null) {
+        
+      } else {
+        
+      
+    let _token= "{{ csrf_token() }}";
+    $.ajax({
+    type: "POST",
+    url: "/getMunicipios/"+iddpto,
+    data: {
+      _token: _token},
+      success: function(municipio) {
+            if ((municipio.errors)) {
+                alert('')
+            } else {
+                agregarSelect(municipio); 
+                $('#municipio').val(idmuni);           
+            }
+        },
+    });
+      }
+    }
+ /* Metodo para mandar a llamar los municipios*/
+    function cambiomunicipio(id_departamento){
+            peticion(id_departamento);
+            }
+    function agregarSelect(municipio){
+      $('#municipio').empty();
+      $('#municipio').append("<option selected disabled value=''>Seleccione un municipio</option>"); 
+      for (let i = 0; i < municipio.length; i++) {
+        $('#municipio').append("<option value='"+ municipio[i].id+"'>"+municipio[i].nombreM+"</option>"); 
+        
+      }
+    }
+
+
+
+
           $(document).ready(function(){
-            $('#departamento').on('change', function(){
-              var departamento_id = $(this).val();
-              if($.trim(departamento_id) != '') {
-                      //mandamos a llamra a la ruta "municipios"
-                      $.get('municipios', {departamento_id: departamento_id}, function (municipios) {
-                
-                        $('#municipio').empty();//para borar lo que tenia
-                        $('#municipio').append("<option value=''> selecione un carre</option>");                       // $("#state\\\").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
-                        $.each(municipios, function (index, value) {
-                    $('#municipio').append("<option value='" + index +"'>" + value +"</option>");
-                      })
-                    });
-                  }
-                });
+            cargarselectmunicipio($('#departamento').val(),$('#prueba').val())
             });      
         </script>
 

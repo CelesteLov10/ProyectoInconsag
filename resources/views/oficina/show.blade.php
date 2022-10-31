@@ -40,10 +40,7 @@
             <th scope="row">Nombre de la oficina</th>
             <td>{{$oficina->nombreOficina}}</td>    
         </tr>
-        <tr>
-            <th scope="row">Municipio</th>
-            <td>{{$oficina->municipio}}</td>    
-        </tr>
+    
         <tr>
             <th scope="row">Dirección</th>
             <td>{{$oficina->direccion}}</td>    
@@ -55,6 +52,14 @@
         <tr>
             <th scope="row">Teléfono del gerente</th>
             <td>{{$oficina->telefono}}</td>    
+        </tr>
+        <tr>
+            <th scope="row">Departamento</th>
+            <td>{{$oficina->departamento->nombreD}}</td>    
+        </tr>
+        <tr>
+            <th scope="row">Municipio</th>
+            <td>{{$oficina->municipio->nombreM}}</td>    
         </tr>
     
     </tbody>

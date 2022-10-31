@@ -25,14 +25,14 @@ return new class extends Migration
                 "nombreD" => "Atlántida", 
             ]);
 
-        DB::table("departamentos")
-            ->insert([
-                "nombreD" => "Choluteca", 
-            ]);
-        
-        DB::table("departamentos")
+            DB::table("departamentos")
             ->insert([
                 "nombreD" => "Colón", 
+            ]);
+        
+            DB::table("departamentos")
+            ->insert([
+                "nombreD" => "Comayagua", 
             ]);
         
         DB::table("departamentos")
@@ -40,14 +40,15 @@ return new class extends Migration
                 "nombreD" => "Copán", 
             ]);
 
-        DB::table("departamentos")
-            ->insert([
-                "nombreD" => "Comayagua", 
-            ]);
         
         DB::table("departamentos")
             ->insert([
                 "nombreD" => "Cortés", 
+            ]);
+
+            DB::table("departamentos")
+            ->insert([
+                "nombreD" => "Choluteca", 
             ]);
             
         DB::table("departamentos")
@@ -72,7 +73,7 @@ return new class extends Migration
 
         DB::table("departamentos")
             ->insert([
-                "nombreD" => "Islas de a Bahía", 
+                "nombreD" => "Islas de La Bahía", 
             ]);
 
         DB::table("departamentos")

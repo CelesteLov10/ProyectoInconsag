@@ -38,7 +38,7 @@ class PuestoController extends Controller
             'sueldo.between' => 'El sueldo debe tener un rango de 7500 y 20000', 
 
             'descripcion' => 'La descripción del puesto es requerida.',
-            'descripcion.regex' => 'La descripción debe corta.',
+            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
 
         ]);
         $input = $request->all();
@@ -85,7 +85,7 @@ class PuestoController extends Controller
             'sueldo.between' => 'El sueldo debe tener un rango de 7500.00 y 20000.00', 
 
             'descripcion' => 'La descripción del puesto es requerida.',
-            'descripcion.regex' => 'La descripción debe corta.',
+            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
         ]);
         $puesto = Puesto::findOrFail($id);
 

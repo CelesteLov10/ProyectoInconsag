@@ -23,8 +23,8 @@ class OficinaFactory extends Factory
             'nombreGerente'=>$this->faker->name(),
             'telefono'=>$this->faker->phoneNumber(),
             // llaves foraneas
-            'departamento_id'=>$this->faker->numberBetween(1,4),
-            'municipio_id'=>$this->faker->numberBetween(1,8),
+            'departamento_id'=>$this->faker->numberBetween(1,18),
+            'municipio_id'=>$this->faker->numberBetween(1,298),
         ];
     }
 }
