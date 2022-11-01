@@ -99,7 +99,7 @@
         </div>
       </div>
 
-    <input type="hidden" value="{{ old('municipio_id') }}" id="prueba">
+      <input type="hidden" value="{{ old('municipio_id') }}" id="prueba">
       <div class="mb-3 row">
         <label for="municipio" class="col-sm-3 col-form-label">Municipio:</label>
         <div class="col-sm-5">
@@ -169,7 +169,9 @@ data: {
             alert('')
         } else {
             agregarSelect(municipio); 
-            $('#municipio').val(idmuni);           
+            $('#municipio').val(idmuni);
+            $('#municipio').append("<option value=''></option>"); 
+           
         }
     },
 });
@@ -181,7 +183,7 @@ function cambiomunicipio(id_departamento){
         }
 function agregarSelect(municipio){
   $('#municipio').empty();
-  $('#municipio').append("<option selected disabled value=''>{{$oficina->municipio->nombreM}}</option>"); 
+  $('#municipio').append("<option value='{{$oficina->municipio->id}}'>{{$oficina->municipio->nombreM}}</option>"); 
   for (let i = 0; i < municipio.length; i++) {
     $('#municipio').append("<option value='"+ municipio[i].id+"'>"+municipio[i].nombreM+"</option>"); 
     

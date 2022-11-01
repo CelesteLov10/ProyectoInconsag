@@ -42,7 +42,7 @@
                 <label class="col-sm-3 col-form-label">Nombre inventario:</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control rounded-pill  @error('nombreInv') is-invalid @enderror" 
-                        placeholder="Ingrese un nombre de inventario" 
+                        placeholder="Ingrese el nombre del inventario. Ejem. 'sillas'" 
                         name="nombreInv" value="{{old('nombreInv')}}" maxlength="50">
                         @error('nombreInv')
                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -54,7 +54,7 @@
                 <label class="col-sm-3 col-form-label">Cantidad:</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control rounded-pill  @error('cantidad') is-invalid @enderror" 
-                    placeholder="Ingrese una cantidad de inventario" 
+                    placeholder="Ingrese la cantidad de inventario. Ejem. 0000" 
                         name="cantidad" value="{{old('cantidad')}}" maxlength="4">
                         @error('cantidad')
                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -66,7 +66,7 @@
                 <label class="col-sm-3 col-form-label">Precio del inventario:</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control rounded-pill  @error('precioInv') is-invalid @enderror" 
-                        placeholder="0.00" 
+                        placeholder="Ingrese el precio del inventario. Ejem. '0.00' ó '0' " 
                         name="precioInv" id="precioInv" value="{{old('precioInv')}}" maxlength="8">
                         @error('precioInv')
                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>

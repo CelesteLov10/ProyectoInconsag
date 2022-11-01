@@ -15,12 +15,16 @@ class OficinaController extends Controller
         $oficinas = Oficina::query()
             ->when(request('search'), function($query){
             return $query->where('nombreOficina', 'LIKE', '%' .request('search') .'%')
-            ->orWhere('municipio', 'LIKE', '%' .request('search') .'%');
+            ->orWhereHas('municipio', function($q){
+                $q->where('nombreM','LIKE', '%' .request('search') .'%');
+            });
         })->orderBy('id','desc')->paginate(10)->withQueryString(); 
         $inventario = Inventario::all();
+    
 
         return view('oficina.index', compact('oficinas', 'inventario'));
     }
+    
 
     public function show($id){
         $oficina = Oficina::findOrFail($id);
@@ -38,7 +42,7 @@ class OficinaController extends Controller
 
         $reglas = [
 
-            'nombreOficina' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})[0-9]+$/u',
+            'nombreOficina' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1}([0-9]{0,15}?))+$/u',
             'direccion'     => 'required|regex:/^.{10,150}$/u',//regex:/^(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)(([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})?)
             'nombreGerente' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',
             'telefono'      => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:oficinas',
@@ -48,9 +52,9 @@ class OficinaController extends Controller
         ];
         $mensaje = [
             'nombreOficina.required' =>'Debe escoger un nombre para la oficina, no puede estar vacío.',
-            'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula Y solo permite un espacio entre los nombres.',
+            'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula y solo permite un espacio entre los nombres.',
 
-            'direccion.required' =>'La dirección es obligatoria.', 
+            'direccion.required' =>'La dirección es obligatoria, no puede estar vacío.', 
             'direccion.regex' =>'La dirección permite mínimo 10 y máximo 150 palabras.',
 
             'nombreGerente.required' =>'El nombre del gerente es obligatorio, no puede estar vacío.', 
@@ -62,7 +66,9 @@ class OficinaController extends Controller
             'telefono.regex' =>'El teléfono solo puede iniciar con los siguientes dígitos: 2, 3, 8 ó 9. ',
 
             'departamento_id.required' => 'Debe seleccionar un departamento, no puede estar vacío.',
+            'departamento_id.exists'=> 'El departamento seleccionado no existe', 
             'municipio_id.required' => 'Debe seleccionar un municipio, no puede estar vacío.', 
+            'municipio_id.exists'=> 'El municipio seleccionado no forma parte del departamento seleccionado.', 
 
         ];
         $this->validate($request, $reglas, $mensaje);
@@ -102,7 +108,7 @@ class OficinaController extends Controller
         
         $oficina = Oficina::findOrFail($id);
         $departamentos = Departamento::orderBy('nombreD')->get();
-        $municipios = Municipio::orderBy('nombreM')->get();
+        $municipios = Municipio::all();
         
 
         return view('oficina.edit', compact('departamentos', 'municipios'))->with('oficina', $oficina);
@@ -112,7 +118,7 @@ class OficinaController extends Controller
 
         $this->validate($request,[
             
-            'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1})[0-9]+$/u'],
+            'nombreOficina' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})([a-záéíóúñ]+\s{0,1}([0-9]{0,15}?))+$/u'],
             'direccion'     => ['required','regex:/^.{10,150}$/u'],
             'nombreGerente' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',],
             'telefono'      => ['required','numeric','digits:8','regex:/^[(2)(3)(8)(9)][0-9]/','unique:oficinas,telefono,'.$id.'id'],
@@ -120,10 +126,10 @@ class OficinaController extends Controller
             'municipio_id'=> ['required','exists:municipios,id'],
         ],[
             'nombreOficina.required' => 'Debe escoger un nombre para la oficina, no puede estar vacío.',
-            'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula Y solo permite un espacio entre los nombres.',
+            'nombreOficina.regex' =>'El nombre de la oficina debe iniciar con mayúscula y solo permite un espacio entre los nombres.',
 
 
-            'direccion.required' => 'La dirección es obligatoria.', 
+            'direccion.required' => 'La dirección es obligatoria, no puede estar vacío.', 
             'direccion.regex' => 'La dirección permite mínimo 10 y máximo 150 palabras.',
 
             'nombreGerente.required' => 'El nombre del gerente es obligatorio, no puede estar vacío.', 
@@ -137,7 +143,7 @@ class OficinaController extends Controller
             'departamento_id.required' => 'Debe seleccionar un departamento, no puede estar vacío.',
             'departamento_id.exists'=> 'El departamento seleccionado no existe', 
             'municipio_id.required' => 'Debe seleccionar un municipio, no puede estar vacío.',
-            'municipio_id.exists'=> 'El municipio seleccionado no existe', 
+            'municipio_id.exists'=> 'El municipio seleccionado no forma parte del departamento seleccionado.', 
 
 
     

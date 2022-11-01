@@ -37,7 +37,7 @@
         <label class="col-sm-3 col-form-label">Nombre de la oficina:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill @error('nombreOficina') is-invalid @enderror" 
-            placeholder="Ingrese el nombre que tendrá la oficina" 
+            placeholder="Ingrese el nombre de la oficina. Ejem. 'Inconsag 1'" 
             name="nombreOficina" value="{{old('nombreOficina')}}" maxlength="50">
             @error('nombreOficina')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -61,7 +61,7 @@
         <label class="col-sm-3 col-form-label">Nombre del gerente:</label>
         <div class="col-sm-5">
           <input type="text" maxlength="50" class="form-control rounded-pill @error('nombreGerente') is-invalid @enderror" 
-          placeholder="Ingrese el gerente de la oficina" 
+          placeholder="Ingrese el gerente de la oficina. Ejem. 'Juan Rodolfo Diaz Martinez'" 
           name="nombreGerente" value="{{old('nombreGerente')}}">
           @error('nombreGerente')
           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -73,7 +73,7 @@
         <label class="col-sm-3 col-form-label">Teléfono:</label>
         <div class="col-sm-5">
           <input type="text" maxlength="8" class="form-control rounded-pill @error('telefono') is-invalid @enderror" 
-          placeholder="Ingrese el teléfono del gerente" 
+          placeholder="Ingrese el teléfono del gerente. Ejem. 00000000" 
           name="telefono" value="{{old('telefono')}}">
           @error('telefono')
           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>

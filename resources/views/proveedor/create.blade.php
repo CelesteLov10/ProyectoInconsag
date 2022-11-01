@@ -38,7 +38,7 @@
           <label class="col-sm-3 col-form-label">Nombre del proveedor:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('nombreProveedor') is-invalid @enderror" 
-            placeholder="Ingrese el nombre del proveedor" 
+            placeholder="Ingrese el nombre del proveedor. Ejem. 'La Torre'" 
             name="nombreProveedor" value="{{old('nombreProveedor')}}" maxlength="50">
             @error('nombreProveedor')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -50,7 +50,7 @@
           <label class="col-sm-3 col-form-label">Nombre del contacto:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('nombreContacto') is-invalid @enderror" 
-            placeholder="Ingrese el nombre del contacto" 
+            placeholder="Ingrese el nombre del contacto. Ejem. 'Juan Rodolfo Diaz Martinez'" 
             name="nombreContacto" value="{{old('nombreContacto')}}" maxlength="50">
             @error('nombreContacto')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -62,7 +62,7 @@
           <label class="col-sm-3 col-form-label">Cargo del contacto:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('cargoContacto') is-invalid @enderror" 
-            placeholder="Ingrese el cargo del contacto" 
+            placeholder="Ingrese el cargo del contacto. Ejem. 'distribuidor'" 
             name="cargoContacto" value="{{old('cargoContacto')}}" maxlength="50">
             @error('cargoContacto')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -86,7 +86,7 @@
           <label class="col-sm-3 col-form-label">Teléfono:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('telefono') is-invalid @enderror" 
-            placeholder="Ingrese el numero de teléfono"
+            placeholder="Ingrese el numero de teléfono. Ejem. 00000000"
             name="telefono" value="{{old('telefono')}}" maxlength="8">
           @error('telefono')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -98,7 +98,7 @@
           <label class="col-sm-3 col-form-label">Correo:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('email') is-invalid @enderror" 
-            placeholder="Ingrese el correo electrónico"
+            placeholder="Ingrese el correo electrónico. Ejem. 'john.smith@example.com'"
             name="email" value="{{old('email')}}" maxlength="50">
           @error('email')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>

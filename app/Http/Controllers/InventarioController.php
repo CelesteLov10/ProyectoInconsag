@@ -50,7 +50,7 @@ class InventarioController extends Controller
         ];
         $mensaje =[
             'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
-            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres, no se admiten números y letras mayúsculas.',
+            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres, no se admiten números ni letras mayúsculas.',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
 
             'cantidad.required' => 'La cantidad del inventario es requerido.', 
@@ -123,7 +123,7 @@ class InventarioController extends Controller
         ],[
             'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
-            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres, no se admiten números y letras mayúsculas.',
+            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres, no se admiten números ni letras mayúsculas.',
 
             'cantidad.required' => 'La cantidad del inventario es requerido.', 
             'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',
