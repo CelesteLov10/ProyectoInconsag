@@ -38,7 +38,7 @@
           <label class="col-sm-3 col-form-label">Nombre del proveedor:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('nombreProveedor') is-invalid @enderror" 
-            placeholder="Ingrese el nombre del proveedor. Ejem. 'La Torre'" 
+            placeholder="Ingrese el nombre del proveedor. Ejem. 'La casita de Maria'" 
             name="nombreProveedor" value="{{old('nombreProveedor')}}" maxlength="50">
             @error('nombreProveedor')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>

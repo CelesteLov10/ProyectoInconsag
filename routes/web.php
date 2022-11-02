@@ -4,6 +4,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\MaquinariaController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\ProveedorController;
 use Illuminate\Support\Facades\Route;
@@ -116,4 +117,20 @@ Route::controller(ProveedorController::class)->group(function(){
     Route::get('/proveedor/{id}/edit', 'edit')->name('proveedor.edit');
     //Ruta para el metodo editar
     Route::put('/proveedor/{id}/edit', 'update')->name('proveedor.update');
+});
+
+Route::controller(MaquinariaController::class)->group(function(){
+        //Ruta para listado de proveedores
+        Route::get('/maquinaria', 'index')->name('maquinaria.index');
+        //Ruta para crear un nuevo maquinaria
+        Route::get('/maquinaria/create', 'create')->name('maquinaria.create');
+        //Ruta para guardar los registros del maquinaria
+        Route::post('/maquinaria', 'store')->name('maquinaria.store');
+        //Ruta para mostrar un maquinariaes
+        Route::get('/maquinaria/{id}', 'show')->name('maquinaria.show')
+        ->where('id','[0-9]+');
+        //Ruta para editar un maquinaria
+        Route::get('/maquinaria/{id}/edit', 'edit')->name('maquinaria.edit');
+        //Ruta para el metodo editar
+        Route::put('/maquinaria/{id}/edit', 'update')->name('maquinaria.update');
 });
