@@ -16,7 +16,11 @@ class Maquinaria extends Model
     'placa', 
     'cantidadMaquinaria',
     'descripcion',
-    'fechaCompra',
+    'fechaAdquisicion',
     'proveedor_id',
+    'maquinaria',
+    'cantidadHoraAlquilada',
+    'valorHora',
+    'totalPagar',
    ];
 }

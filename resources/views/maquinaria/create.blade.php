@@ -18,6 +18,7 @@
         display: none;
     }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 @endsection
     
 @section('contenido') 
@@ -45,7 +46,7 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
           <div class="col-60 bg-light p-5">
-      <form action="{{route('maquinaria.store')}}" id="p" class="maquinaria-guardar" method="POST">
+      <form action="{{route('maquinaria.store')}}" id="form1" class="maquinaria-guardar" name="formulario1" method="POST">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
         <div class="mb-3 row">
@@ -85,15 +86,15 @@
         </div>
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Cantidad:</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill  @error('cantidaMaquinaria') is-invalid @enderror" 
-                placeholder="Ingrese la cantidad de maquinaria. Ejem. 000" 
-                    name="cantidadMaquinaria" value="{{old('cantidadMaquinaria')}}" maxlength="3">
-                    @error('cantidadMaquinaria')
-                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
+          <label class="col-sm-3 col-form-label">Cantidad:</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control rounded-pill @error('cantidadMaquinaria') is-invalid @enderror" 
+            placeholder="Ingrese la cantidad de maquinaria." 
+            name="cantidadMaquinaria" value="{{old('cantidadMaquinaria')}}" maxlength="8">
+            @error('cantidadMaquinaria')
+            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+            @enderror
+          </div>
         </div>
 
         <div class="mb-3 row">
@@ -106,15 +107,15 @@
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
-          </div>
+        </div>
         
         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Fecha de compra:</label>
+          <label class="col-sm-3 col-form-label">Fecha de adquisición:</label>
           <div class="col-sm-5">
-              <input type="text" class="form-control rounded-pill @error('fechaCompra') is-invalid @enderror" 
-              maxlength="10" placeholder="Seleccione la fecha de compra."
-              name="fechaCompra" autocomplete="off" value="{{old('fechaCompra')}}" id="datepicker"> 
-                @error('fechaCompra')
+              <input type="text" class="form-control rounded-pill @error('fechaAdquisicion') is-invalid @enderror" 
+              maxlength="10" placeholder="Seleccione la fecha de adquisición de la maquinaria."
+              name="fechaAdquisicion" autocomplete="off" value="{{old('fechaAdquisicion')}}" id="datepicker"> 
+                @error('fechaAdquisicion')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
@@ -124,7 +125,7 @@
           <label class="col-sm-3 col-form-label">Nombre del proveedor:</label>
           <div class="col-sm-5">
           <select name="proveedor_id" id="" class="form-select rounded-pill @error('proveedor_id') is-invalid @enderror">
-            <option value="" disabled selected>-- Selecione un proveedor --</option>
+            <option value="" disabled selected>-- Seleccione un proveedor --</option>
               @foreach ($proveedor as $proveedores)
               <option value="{{$proveedores->id}}" 
                 {{old('proveedor_id' , $proveedores->nombreProveedor)==$proveedores->id ? 'selected' : ''}}>{{$proveedores->nombreProveedor}}</option>
@@ -135,127 +136,73 @@
           @enderror
           </div>
         </div>
+      
+        <div class="form-group">
+            <div class="mb-2  form-check-inline">  
+                        <input class="form-check-input" type="radio" name="maquinaria" id="maquinariaPropia" value="propia" {{ (old('maquinaria') == "propia") ? "checked" : ""}} onclick="Desplegar('mostrarBoton'); Contraer('mostrar')">
+                        <label class="form-check-label" for="flexRadioDefault1">Maquinaria propia</label>
+              </div>   
+              <div class="mb-3  form-check-inline"> 
+                        <input class="form-check-input" type="radio" name="maquinaria" id="maquinariaAlquilada" value="alquilada" {{ (old('maquinaria') == "alquilada") ? "checked" : ""}}  onclick="Desplegar('mostrar'); Contraer('mostrarBoton')">
+                        <label class="form-check-label" for="flexRadioDefault1">Maquinaria alquilada</label>
+              </div>
+        </div>
 
-        <div class="mb-2  form-check-inline">  
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="maquinariaPropia">
-                    <label class="form-check-label" for="flexRadioDefault1">Maquinaria propia</label>
+        <div class="mb-3 row" id="mostrarBoton">
+          <div class="offset-sm-3 col-sm-9">
+            <button type="submit" class="btn btn-outline-info">Guardar</button> 
           </div>
-          
-          <div class="mb-3  form-check-inline"> 
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="maquinariaAlquilada">
-                    <label class="form-check-label" for="flexRadioDefault1">Maquinaria Alquilada</label>
-          </div>
+        </div>  
 
-          <div class="mb-3 row" id="mostrarBoton">
-            <div class="offset-sm-3 col-sm-9">
-              <button type="submit" class="btn btn-outline-info">Guardar</button> 
+         {{--********************************* Maquinaria alquilada *********************************************************** --}}
+
+        <div class="vh-50 row m-0 text-center align-items-center justify-content-center " id="mostrar">
+          <div class="col-60 bg-light p-5">
+
+        <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Cantidad de horas alquiladas:</label>
+            <div class="col-sm-5">
+                <input type="number" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
+                placeholder="Ingrese la cantidad de hora alquiladas. Ejem. 000" 
+                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada')}}" maxlength="3" oninput="calcularPago()">
+                    @error('cantidadHoraAlquilada')
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                    @enderror
             </div>
-          </div>  
-        </form>
+        </div>
+
+        <div class="mb-3 row">
+          <label class="col-sm-3 col-form-label">Valor por hora:</label>
+          <div class="col-sm-5">
+              <input type="number" id="valorHora" class="form-control rounded-pill  @error('valorHora') is-invalid @enderror" 
+              placeholder="Ingrese la cantidad de valor por hora. Ejem. 00000" 
+                  name="valorHora" value="{{old('valorHora')}}" maxlength="5" oninput="calcularPago()">
+                  @error('valorHora')
+                  <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                  @enderror
           </div>
         </div>
   
-        {{--********************************* Maquinaria alquilada *********************************************************** --}}
-          <div class="vh-50 row m-0 text-center align-items-center justify-content-center " id="mostrar">
-            <div class="col-60 bg-light p-5">
-        <form action="{{route('maquinaria.store')}}" id="p" class="maquinaria-guardar" method="POST">
-            @csrf {{-- TOKEN INPUT OCULTO --}}
-  
-          <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Nombre de maquinaria:</label>
-            <div class="col-sm-5">
-              <input type="text" class="form-control rounded-pill @error('nombreMaquinaria') is-invalid @enderror" 
-                placeholder="Ingrese el nombre de la maquinaria." 
-                name="nombreMaquinaria" value="{{old('nombreMaquinaria')}}" maxlength="50">
-                @error('nombreMaquinaria')
-                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                @enderror
-            </div>
-          </div>
-  
-          <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Modelo:</label>
-            <div class="col-sm-5">
-              <input type="text" class="form-control rounded-pill @error('modelo') is-invalid @enderror" 
-              placeholder="Ingrese el modelo." 
-              name="modelo" value="{{old('modelo')}}" maxlength="30">
-              @error('modelo')
-              <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-              @enderror
-            </div>
-          </div>
-  
-          <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Placa:</label>
-            <div class="col-sm-5">
-              <input type="text" class="form-control rounded-pill @error('placa') is-invalid @enderror" 
-              placeholder="Ingrese el número de placa. Ejem. 'H" 
-              name="placa" value="{{old('placa')}}" maxlength="8">
-              @error('placa')
-              <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-              @enderror
-            </div>
-          </div>
-  
-          <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Cantidad:</label>
-              <div class="col-sm-5">
-                  <input type="text" class="form-control rounded-pill  @error('cantidaMaquinaria') is-invalid @enderror" 
-                  placeholder="Ingrese la cantidad de maquinaria. Ejem. 000" 
-                      name="cantidadMaquinaria" value="{{old('cantidadMaquinaria')}}" maxlength="3">
-                      @error('cantidadMaquinaria')
-                      <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                      @enderror
-              </div>
-          </div>
-  
-          <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Descripción:</label>
-              <div class="col-sm-5">
-                <textarea type="text" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
-                maxlength="150" placeholder="Ingrese la descripción de la maquinaria."
-                name="descripcion" value="">{{old('descripcion')}}</textarea>
-              @error('descripcion')
-                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-              @enderror
-              </div>
-            </div>
-          
-          <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Fecha de compra:</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill @error('fechaCompra') is-invalid @enderror" 
-                maxlength="10" placeholder="Seleccione la fecha de compra."
-                name="fechaCompra" autocomplete="off" value="{{old('fechaCompra')}}" id="datepicker"> 
-                  @error('fechaCompra')
-                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-              @enderror
-              </div>
-          </div>
-  
-          <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Nombre del proveedor:</label>
-            <div class="col-sm-5">
-            <select name="proveedor_id" id="" class="form-select rounded-pill @error('proveedor_id') is-invalid @enderror">
-              <option value="" disabled selected>-- Selecione un proveedor --</option>
-                @foreach ($proveedor as $proveedores)
-                <option value="{{$proveedores->id}}" 
-                  {{old('proveedor_id' , $proveedores->nombreProveedor)==$proveedores->id ? 'selected' : ''}}>{{$proveedores->nombreProveedor}}</option>
-                @endforeach
-            </select> 
-            @error('proveedor_id')
+        <div class="mb-3 row">
+          <label class="col-sm-3 col-form-label">Total a pagar:</label>
+          <div class="col-sm-5">
+            <input id="totalPagar" type="text" class="form-control rounded-pill @error('totalPagar') is-invalid @enderror" 
+              name="totalPagar"  value="{{old('totalPagar')}}" readonly=»readonly»> 
+                @error('totalPagar')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
-          </div>
-  
-          <div class="mb-3 row">
+        </div>
+
+          <div class="mb-3 row" >
             <div class="offset-sm-3 col-sm-9">
-              <button type="submit" class="btn btn-outline-info">Guardar</button> 
+              <button type="submit" class="btn btn-outline-info" >Guardar</button> 
             </div>
           </div>  
+
         </form>
-          </div>
+        </div>
+      </div>
     </div>
 </div>
 @endsection
@@ -286,28 +233,37 @@
   } );
 </script>
 
+
 <script>
-    var maquinariaAlquilada = document.getElementById("maquinariaAlquilada");
-
-    maquinariaAlquilada.addEventListener("click",mostrar);
-    //maquinariaAlquilada.addEventListener("click",ocultar);
-
-    function mostrar(){
-        document.getElementById('mostrar').style.display='block';
+  /Funciones para que al dar click en el otro radioBottom se oculte y muestre lo que hay en otro/
+    function Desplegar(radiosb){ 
+    var ver = document.getElementById(radiosb); 
+    ver.style.display = "block"; 
     }
-
-    function ocultar(){
-        document.getElementById('mostrar').style.display='none';
+    function Contraer(radiosb){ 
+    var ver = document.getElementById(radiosb); 
+    ver.style.display = "none"; 
     }
 </script>
 
+
 <script>
-    var maquinariaPropia = document.getElementById("maquinariaPropia");
-    maquinariaPropia.addEventListener("click",mostrarBoton);
-    
-    function mostrarBoton(){
-        document.getElementById('mostrarBoton').style.display='block';
-    }
+  /*Funcion para que le salga el valor total que tendra que pagar por las horas alquiladas * el precio*/
+try
+  {function calcularPago(){
+  
+  var cantidadHoraAlquilada = document.getElementById('cantidadHoraAlquilada').value;
+  var valorHora = document.getElementById('valorHora').value;
+  var totalPagar = document.getElementById('totalPagar');
+
+  var resultado = cantidadHoraAlquilada * valorHora; 
+
+  totalPagar.value = resultado;
+
+  }
+  }catch (error) {throw error;}
+
+
 </script>
 
 @endsection

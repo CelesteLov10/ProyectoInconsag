@@ -28,7 +28,7 @@ class MaquinariaController extends Controller
             'placa'  => ['required','unique:maquinarias'],
             'cantidadMaquinaria' =>['required'],
             'descripcion'       => ['required','regex:/^.{10,150}$/u'],
-            'fechaCompra'    => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
+            'fechaAdquisicion'    => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'proveedor_id'       => ['required'],
 
         ],[
@@ -57,5 +57,6 @@ class MaquinariaController extends Controller
             ->with('mensaje', 'Se guardó el registro de una nueva maquinaria correctamente');
 
     }
+    
     
 }
