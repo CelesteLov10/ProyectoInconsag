@@ -17,10 +17,15 @@ class Maquinaria extends Model
     'cantidadMaquinaria',
     'descripcion',
     'fechaAdquisicion',
-    'proveedor_id',
     'maquinaria',
     'cantidadHoraAlquilada',
     'valorHora',
     'totalPagar',
+    'proveedor_id',
+
    ];
+
+   public function proveedor(){
+    return $this->belongsTo(Proveedor::class);
+}
 }

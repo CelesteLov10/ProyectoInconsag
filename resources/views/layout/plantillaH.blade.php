@@ -35,18 +35,18 @@
           </a>
           </li>
           <li>
-          <a href="{{route('empleado.indexEmp')}}" 
-          class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-              <span class="p-2"><i class="bi bi-person-circle text-white"></i></span>
-              Empleados
-          </a>
-          </li>
-          <li>
           <a href="{{route('oficina.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
               <span class="p-2"><i class="bi bi-building text-light"></i></span>
               Oficina
           </a>
           </li>
+          <li>
+            <a href="{{route('empleado.indexEmp')}}" 
+            class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+                <span class="p-2"><i class="bi bi-person-circle text-white"></i></span>
+                Empleados
+            </a>
+            </li>
           <li>
           <a href="{{route('inventario.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
               <span class="p-2"><i class="bi bi-stack text-light"></i></span>
@@ -60,7 +60,7 @@
           </a>
           </li>
           <li>
-          <a href="#" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+          <a href="{{route('maquinaria.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
               <span class="p-2"><i class="bi bi-truck-front-fill text-light"></i></span>
               Maquinaria
           </a>

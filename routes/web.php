@@ -51,7 +51,7 @@ Route::controller(EmpleadoController::class)->group(function(){
     //Ruta para editar un empleado
     Route::get('/empleado/{id}/edit', 'edit')->name('empleado.editEmp');
     //Ruta para el metodo editar
-    Route::put('/empleado/{id}/edit', 'update')->name('empleado.update');   
+    Route::put('/empleado/{id}/edit', 'update')->name('empleado.update');
 });
 
     //Ruta para el campo de busqueda empleado
@@ -66,6 +66,9 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/oficina', 'oficina')->name('oficina.search');
     //Ruta para listado proveedor:
     Route::get('search/proveedor', 'proveedor')->name('proveedor.search');
+    //Ruta para listado maquinaria:
+    Route::get('search/maquinaria', 'maquinaria')->name('maquinaria.search');
+    
 });
 
 Route::controller(InventarioController::class)->group(function(){
@@ -82,6 +85,8 @@ Route::controller(InventarioController::class)->group(function(){
     Route::get('/inventario/{id}/edit', 'edit')->name('inventario.edit');
     //Ruta para el metodo editar
     Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');
+    //Ruta para imprimir el listado del inventario
+    Route::get('/inventario/pdf', 'pdf')->name('inventario.pdf');
 });
 
 Route::controller(OficinaController::class)->group(function(){

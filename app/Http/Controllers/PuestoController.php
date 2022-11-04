@@ -24,13 +24,13 @@ class PuestoController extends Controller
     public function store(Request $request){
         //validacion para cuando se agregue un puesto
         $this->validate($request, [
-            'nombreCargo' => ['required','unique:puestos,nombreCargo','regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u'],
+            'nombreCargo' => ['required','unique:puestos,nombreCargo','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
             'sueldo'      => ['required','numeric','between: 7500.00, 20000.00'], // falta averiguar cual es el salario minimo y el maximo
             'descripcion' => ['required','regex:/^.{10,100}$/u']
         ], [
             'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 
             'nombreCargo.unique' => 'El nombre del puesto ingresado ya está en uso.', 
-            'nombreCargo.regex' => 'El nombre del puesto no debe contener números.' , 
+            'nombreCargo.regex' => 'El nombre del puesto no debe contener números y solo se permite un espacio entre palabras.' , 
             //'nombreCargo.regex' => 'El nombre del puesto no debe contener muchos espacios' , 
 
             'sueldo.required' => 'Debe ingresar el sueldo', 
@@ -71,13 +71,13 @@ class PuestoController extends Controller
     public function update(Request $request, $id){ 
         //Validacion para la vista de actualizar un puesto
         $this->validate($request,[
-            'nombreCargo' => ['required','unique:puestos,nombreCargo,'.$id.'id','regex:/^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/u'],
+            'nombreCargo' => ['required','unique:puestos,nombreCargo,'.$id.'id','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
             'sueldo'      => ['required','numeric','between: 7500, 20000'], // falta averiguar cual es el salario minimo y el maximo
             'descripcion' => ['required','regex:/^.{10,100}$/u'],
         ],[
             'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 
             'nombreCargo.unique' => 'El nombre del puesto ingresado ya está en uso.', 
-            'nombreCargo.regex' => 'El nombre del puesto no debe contener números.' , 
+            'nombreCargo.regex' => 'El nombre del puesto no debe contener números y solo se permite un espacio entre palabras.' , 
             //'nombreCargo.regex' => 'El nombre del puesto no debe contener muchos espacios' , 
 
             'sueldo.required' => 'Debe ingresar el sueldo', 

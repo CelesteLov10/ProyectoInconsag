@@ -6,7 +6,9 @@ use App\Models\Empleado;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
 use App\Models\Oficina;
-use Carbon\Carbon;
+
+// Importamos la libreria PDF de esta manera
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class InventarioController extends Controller
 {
@@ -29,6 +31,29 @@ class InventarioController extends Controller
         return view('inventario.index', compact('inventarios', 'empleado', 'oficina'));
     }
 
+    // Metodo para mostrar pdf
+    public function pdf (){
+
+        $inventarios = Inventario::query()
+            ->when(request('search'), function($query){
+            return $query->where('nombreInv', 'LIKE', '%' .request('search') .'%')
+            ->orWhereHas('oficina', function($q){
+                $q->where('nombreOficina','LIKE', '%' .request('search') .'%');
+            })
+            ->orWhereHas('empleado', function($q){
+                $q->where('nombres','LIKE', '%' .request('search') .'%');
+            });
+            })->orderBy('id','desc')->paginate()->withQueryString(); 
+            
+        $empleado = Empleado::all();
+        $oficina = Oficina::all();
+
+        // Aqui hacemos uso de la libreria PDF para que genere el documento pdf
+        $pdf = PDF::loadView('inventario.pdf', compact('inventarios', 'empleado', 'oficina'));
+        return $pdf -> stream();
+        
+    }
+
     public function create(){   
         $empleado = Empleado::orderBy('nombres')->get();
         $oficina = Oficina::orderBy('nombreOficina')->get();
@@ -39,7 +64,7 @@ class InventarioController extends Controller
 
         $reglas = [
 
-            'nombreInv'   => 'required|regex:/^([a-záéíóúñ]+\s{0,1})+$/u',
+            'nombreInv'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u',
             'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
             'precioInv'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
             'descripcion' => 'required|regex:/^.{10,150}$/u',
@@ -50,7 +75,7 @@ class InventarioController extends Controller
         ];
         $mensaje =[
             'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
-            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres, no se admiten números ni letras mayúsculas.',
+            'nombreInv.regex' => 'El nombre del inventario no permite numeros y solo permite un espacio entre los nombres.',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
 
             'cantidad.required' => 'La cantidad del inventario es requerido.', 
@@ -113,7 +138,7 @@ class InventarioController extends Controller
 
         $this->validate($request,[
 
-            'nombreInv'   => ['required','regex:/^([a-záéíóúñ]+\s{0,1})+$/u'],
+            'nombreInv'   => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
             'cantidad'    => ['required','numeric','regex:/^[0-9]{1,4}+$/u'],
             'precioInv'   => ['required','numeric','max:99999','min:1.00','regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/'],
             'descripcion' => ['required','regex:/^.{10,150}$/u'],
@@ -123,7 +148,7 @@ class InventarioController extends Controller
         ],[
             'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
-            'nombreInv.regex' => 'El nombre del inventario solo permite un espacio entre los nombres, no se admiten números ni letras mayúsculas.',
+            'nombreInv.regex' => 'El nombre del inventario no permite numeros y solo permite un espacio entre los nombres.',
 
             'cantidad.required' => 'La cantidad del inventario es requerido.', 
             'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',

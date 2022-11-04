@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Puesto;
 use App\Models\Empleado;
 use App\Models\Inventario;
+use App\Models\Maquinaria;
 use App\Models\Oficina;
 use App\Models\Proveedor;
 use App\Models\Municipio;
@@ -33,5 +34,6 @@ class DatabaseSeeder extends Seeder
         Empleado::factory(50)->create();
         Inventario::factory(100)->create();
         Proveedor::factory(10)->create();
+        Maquinaria::factory(30)->create();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Empleado;
 use App\Models\Inventario;
+use App\Models\Maquinaria;
 use App\Models\Oficina;
 use App\Models\Proveedor;
 use App\Models\Puesto;
@@ -71,6 +72,19 @@ class SearchController extends Controller
         foreach($querys as $query){
         $data[] = [
         'label' => $query->nombreProveedor
+        ];
+        }
+        return $data;
+    }
+
+    public function maquinaria(Request $request){
+        $term = $request->get('term');
+        $querys = Maquinaria::where('nombreMaquinaria', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->nombreMaquinaria
         ];
         }
         return $data;

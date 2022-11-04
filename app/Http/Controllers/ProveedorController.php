@@ -37,7 +37,7 @@ class ProveedorController extends Controller
 
             'nombreProveedor' => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]{1}[a-záéíóúñ]+\s{0,1}([0-9]{0,15}?))+$/u|unique:proveedores',
             'nombreContacto' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u',
-            'cargoContacto' => 'required|regex:/^([a-záéíóúñ]+\s{0,1})+$/u',
+            'cargoContacto' => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u',
             'direccion' => 'required|regex:/^.{10,150}$/u',
             'telefono'  => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:proveedores',
             'email'    => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#|unique:proveedores',
@@ -53,7 +53,7 @@ class ProveedorController extends Controller
             'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
 
             'cargoContacto.required' => 'El cargo del contacto es requerido, no puede estar vacío. ',
-            'cargoContacto.regex' => 'El cargo del contacto solo permite un espacio entre los nombres, no se admiten números ni letras mayúsculas.',
+            'cargoContacto.regex' => 'El cargo del contacto solo permite un espacio entre los nombres y no permite números.',
 
             'direccion' => 'La direccion es requerido, no puede estar vacío. ',
             'direccion.regex' => 'La direccion permite mínimo 10 y máximo 150 palabras.',
@@ -105,7 +105,7 @@ class ProveedorController extends Controller
             
             'nombreProveedor' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]{1}[a-záéíóúñ]+\s{0,1}([0-9]{0,15}?))+$/u','unique:proveedores,nombreProveedor,'.$id.'id'],
             'nombreContacto' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
-            'cargoContacto' => ['required','regex:/^([a-záéíóúñ]+\s{0,1})+$/u'],
+            'cargoContacto' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
             'direccion' => ['required','regex:/^.{10,150}$/u'],
             'telefono' => ['required','numeric','digits:8','regex:/^[(2)(3)(8)(9)][0-9]/','unique:proveedores,telefono,'.$id.'id'],
             'email'  => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:proveedores,email,'.$id.'id'],
@@ -119,7 +119,7 @@ class ProveedorController extends Controller
             'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
 
             'cargoContacto.required' => 'El cargo del contacto es requerido, no puede estar vacío. ',
-            'cargoContacto.regex' => 'El cargo del contacto solo permite un espacio entre los nombres, no se admiten números ni letras mayúsculas.',
+            'cargoContacto.regex' => 'El cargo del contacto solo permite un espacio entre los nombres y no permite números.',
 
             'direccion' => 'La direccion es requerido, no puede estar vacío. ',
             'direccion.regex' => 'La direccion permite mínimo 10 y máximo 150 palabras.',

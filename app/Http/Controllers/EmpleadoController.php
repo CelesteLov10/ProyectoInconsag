@@ -57,8 +57,8 @@ class EmpleadoController extends Controller
         $this->validate($request,[
             'identidad' => ['required','numeric','unique:empleados',
             'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
-            'nombres'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u'],
-            'apellidos' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u'],
+            'nombres'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
+            'apellidos' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:empleados'],
             'estado'    => ['required','alpha','in:activo,inactivo'],
             'correo'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:empleados'],
@@ -77,11 +77,11 @@ class EmpleadoController extends Controller
 
             'nombres.required' => 'El nombre no puede ir vacío.',
             'nombres.alpha' => 'En el nombre sólo se permite letras.',
-            'nombres.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre los nombres.',
+            'nombres.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
             'apellidos.required' => 'El apellido no puede ir vacío.',
             'apellidos.alpha' => 'El apellido sólo permite letras.',
-            'apellidos.regex' => 'El apellido sólo permite un espacio entre los apellidos.',
+            'apellidos.regex' => 'El apellido debe iniciar con mayúscula y sólo permite un espacio entre ellos.',
 
             'telefono.required' => 'El teléfono no puede ir vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
@@ -139,8 +139,8 @@ class EmpleadoController extends Controller
         $this->validate($request, [
             'identidad' => ['numeric','required','unique:empleados,identidad,'.$id.'id'
             ,'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
-            'nombres'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u'],
-            'apellidos' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1})[a-záéíóúñ]{0,15}+\s{0,1}[A-ZÁÉÍÓÚÑ]{0,1}[a-záéíóúñ]{0,15}+$/u'],
+            'nombres'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
+            'apellidos' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:empleados,telefono,'.$id.'id'],
             'estado'    => ['required','string','in:activo,inactivo'],
             'correo'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:empleados,correo,'.$id.'id'],
@@ -159,11 +159,11 @@ class EmpleadoController extends Controller
 
             'nombres.required' => 'El nombre no puede ir vacío.',
             'nombres.alpha' => 'El nombre sólo permite letras.',
-            'nombres.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre los nombres.',
+            'nombres.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
             'apellidos.required' =>'El apellido no puede ir vacío.',
             'apellidos.alpha' =>'El apellido sólo permite letras.',
-            'apellidos.regex' =>'El apellido sólo permite un espacio entre los apellidos.',
+            'apellidos.regex' =>'El apellido debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
             'telefono.required' => 'El teléfono no puede ir vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',

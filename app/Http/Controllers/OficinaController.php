@@ -58,7 +58,7 @@ class OficinaController extends Controller
             'direccion.regex' =>'La dirección permite mínimo 10 y máximo 150 palabras.',
 
             'nombreGerente.required' =>'El nombre del gerente es obligatorio, no puede estar vacío.', 
-            'nombreGerente.regex' =>'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
+            'nombreGerente.regex' =>'Debe iniciar con mayúscula cada nombre, solo permite un espacio entre los nombres y no se admiten números.',
 
             'telefono.required' =>'El teléfono es obligatorio, no puede estar vacío.',
             'telefono.numeric' =>'El teléfono no puede contener letras.',
@@ -133,7 +133,7 @@ class OficinaController extends Controller
             'direccion.regex' => 'La dirección permite mínimo 10 y máximo 150 palabras.',
 
             'nombreGerente.required' => 'El nombre del gerente es obligatorio, no puede estar vacío.', 
-            'nombreGerente.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
+            'nombreGerente.regex' => 'Debe iniciar con mayúscula cada nombre, solo permite un espacio entre los nombres y no se admiten números.',
 
             'telefono.required' =>  'El teléfono es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono no puede contener letras.',

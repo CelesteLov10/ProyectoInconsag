@@ -22,4 +22,9 @@ class Proveedor extends Model
     public function categoria(){
         return $this->belongsTo(Categoria::class);
     }
+
+      // un proveedor puede  tener mucha maquinaria
+      public function maquinaria(){
+        return $this->hasMany(Maquinaria::class);
+    }
 }

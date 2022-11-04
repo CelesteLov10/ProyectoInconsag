@@ -10,6 +10,26 @@ class MaquinariaController extends Controller
 {
     //
 
+    public function index(){
+        //Campo busqueda
+       $maquinarias = Maquinaria::query()
+            ->when(request('search'), function($query){
+            return $query->where('nombreMaquinaria', 'LIKE', '%' .request('search') .'%')
+            //Aqui es la tabla relacionada y abajo el nombre del campo que desea.
+            ->orWhereHas('proveedor', function($q){
+                $q->where('nombreProveedor','LIKE', '%' .request('search') .'%');
+            })
+            ->orWhereHas('proveedor', function($q){
+                $q->where('nombreContacto','LIKE', '%' .request('search') .'%');
+            });
+            })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+        $proveedor = Proveedor::all();
+        
+        return view('maquinaria.index', compact('maquinarias', 'proveedor'));
+
+    }
+
+
     public function create(){   
         $proveedor = Proveedor::orderBy('nombreProveedor')->get();
         return view('maquinaria.create',compact('proveedor'));
@@ -53,10 +73,8 @@ class MaquinariaController extends Controller
         
      
          Maquinaria::create($input);
-            return redirect()->route('inventario.index')
+            return redirect()->route('maquinaria.index')
             ->with('mensaje', 'Se guardó el registro de una nueva maquinaria correctamente');
 
     }
-    
-    
 }
