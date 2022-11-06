@@ -157,7 +157,7 @@
          {{--********************************* Maquinaria alquilada *********************************************************** --}}
 
         <div class="vh-50 row m-0 text-center align-items-center justify-content-center " id="mostrar">
-          <div class="col-60 bg-light p-5">
+          <div class="col-60 bg-light p-1">
 
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Cantidad de horas alquiladas:</label>

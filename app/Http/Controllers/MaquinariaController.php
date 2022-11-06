@@ -28,10 +28,10 @@ class MaquinariaController extends Controller
         return view('maquinaria.index', compact('maquinarias', 'proveedor'));
 
     }
-      public function show($id){
+    public function show($id){
         $maquinaria = Maquinaria::findOrFail($id);
         return view('maquinaria.show')->with('maquinaria', $maquinaria);
-       }
+    }
 
     
     public function create(){   
@@ -75,10 +75,53 @@ class MaquinariaController extends Controller
         ]);
         $input = $request->all();
         
-     
-         Maquinaria::create($input);
+        Maquinaria::create($input);
             return redirect()->route('maquinaria.index')
             ->with('mensaje', 'Se guardó el registro de una nueva maquinaria correctamente');
 
     }
+
+    public function edit($id){
+        $maquinaria = Maquinaria::findOrFail($id);
+        $proveedor = Proveedor::orderBy('nombreProveedor')->get();
+        return view('maquinaria.edit', compact('maquinaria', 'proveedor'))
+        ->with('maquinaria', $maquinaria);
+    }
+
+    public function update(Request $request, $id){
+
+        $this->validate($request,[
+
+            'nombreMaquinaria' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]{1}[a-záéíóúñ]+\s{0,1}([0-9]{0,15}?))+$/u'],
+            'modelo'           => ['required'],
+            'placa'            => ['required','unique:maquinarias'],
+            'cantidadMaquinaria'=>['required'],
+            'descripcion'       => ['required','regex:/^.{10,150}$/u'],
+            'fechaAdquisicion'  => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
+            'proveedor_id'      => ['required'],
+        ],[
+
+            'nombreMaquinaria.required' => 'El nombre no puede ir vacío.',
+            'nombreMaquinaria.regex' => 'El nombre solo permite un espacio entre los nombres.',
+    
+        ]);
+
+        $maquinaria = Maquinaria::findOrFail($id);
+
+        $maquinaria->nombreMaquinaria = $request->input('nombreMaquinaria');
+        $maquinaria->modelo = $request->input('modelo');
+        $maquinaria->placa = $request->input('placa');
+        $maquinaria->cantidadMaquinaria = $request->input('cantidadMaquinaria');
+        $maquinaria->descripcion = $request->input('descripcion');
+        $maquinaria->fechaAdquisicion = $request->input('fechaAdquisicion');
+        $maquinaria->proveedor_id = $request->proveedor_id;
+        
+        $update = $maquinaria->save();
+        
+        if ($update){
+            return redirect()->route('maquinaria.index')
+            ->with('mensajeW', 'Se actualizó el registro de la maquinaria correctamente');
+        } 
+    }
+
 }

@@ -43,7 +43,7 @@ class InventarioController extends Controller
             ->orWhereHas('empleado', function($q){
                 $q->where('nombres','LIKE', '%' .request('search') .'%');
             });
-            })->orderBy('id','desc')->paginate()->withQueryString(); 
+            })->orderBy('id','desc')->paginate(100000000000000)->withQueryString(); 
             
         $empleado = Empleado::all();
         $oficina = Oficina::all();

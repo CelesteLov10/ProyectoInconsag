@@ -64,11 +64,9 @@
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Nombre de maquinaria</th>
-                      <th scope="col">Modelo</th>
                       <th scope="col">Maquinaria</th>
                       <th scope="col">Nombre del proveedor</th>
                       <th scope="col">Nombre del contacto</th>
-                      <th scope="col">Teléfono</th>
                       <th scope="col">Detalle</th>
                       <th scope="col">Actualizar</th>
                     </tr>
@@ -77,17 +75,15 @@
                   @forelse($maquinarias as $maquinaria)
                     <tr>
                       <td>{{$maquinaria->id}}</td>
-                      <td>{{$maquinaria->nombreMaquinaria}}</td> 
-                      <td>{{$maquinaria->modelo}}</td>  
+                      <td>{{$maquinaria->nombreMaquinaria}}</td>  
                       <td>{{$maquinaria->maquinaria}}</td>  
                       <td>{{$maquinaria->proveedor->nombreProveedor}}</td> 
                       <td>{{$maquinaria->proveedor->nombreContacto}}</td> 
-                      <td>{{$maquinaria->proveedor->telefono}}</td> 
                      <td><a class="btn btn-outline-primary" 
                         href="{{route('maquinaria.show', ['id'=> $maquinaria->id])}}">
                         <i class="bi bi-eye"></i> </a></td> 
                       <td><a class="btn btn-outline-warning" 
-                        href="{ {route(' maquinaria.edit', ['id' => $maquinaria->id])}}">
+                        href="{{route('maquinaria.edit', ['id' => $maquinaria->id])}}">
                         <i class="bi bi-pencil-square"></i></a></td>
                           @csrf
                     </tr>
