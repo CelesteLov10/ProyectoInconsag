@@ -84,10 +84,10 @@
                       <td>{{$maquinaria->proveedor->nombreContacto}}</td> 
                       <td>{{$maquinaria->proveedor->telefono}}</td> 
                      <td><a class="btn btn-outline-primary" 
-                        href="{ {route(' maquinaria.show', ['id'=> $maquinarias->id])}}">
+                        href="{{route('maquinaria.show', ['id'=> $maquinaria->id])}}">
                         <i class="bi bi-eye"></i> </a></td> 
                       <td><a class="btn btn-outline-warning" 
-                        href="{ {route('maquinaria.edit', ['id' => $maquinarias->id])}}">
+                        href="{ {route(' maquinaria.edit', ['id' => $maquinaria->id])}}">
                         <i class="bi bi-pencil-square"></i></a></td>
                           @csrf
                     </tr>

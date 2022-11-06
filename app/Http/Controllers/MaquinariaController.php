@@ -28,8 +28,12 @@ class MaquinariaController extends Controller
         return view('maquinaria.index', compact('maquinarias', 'proveedor'));
 
     }
+      public function show($id){
+        $maquinaria = Maquinaria::findOrFail($id);
+        return view('maquinaria.show')->with('maquinaria', $maquinaria);
+       }
 
-
+    
     public function create(){   
         $proveedor = Proveedor::orderBy('nombreProveedor')->get();
         return view('maquinaria.create',compact('proveedor'));
