@@ -66,15 +66,15 @@
                 <td>{{$maquinaria->cantidadHoraAlquilada}}</td>    
             </tr>
             <tr>
-                <th scope="row">valor por Hora</th>
+                <th scope="row">Valor por Hora</th>
                 <td>{{$maquinaria->valorHora}}</td>    
             </tr>
             <tr>
-                <th scope="row">total a Pagar</th>
+                <th scope="row">Total a Pagar</th>
                 <td>{{$maquinaria->totalPagar}}</td>    
             </tr>
             <tr>
-                <th scope="row">proveedor</th>
+                <th scope="row">Proveedor</th>
                 <td>{{$maquinaria->proveedor->nombreProveedor}}</td>    
             </tr>
          
