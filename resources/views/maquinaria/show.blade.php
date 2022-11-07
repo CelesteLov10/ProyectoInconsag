@@ -62,6 +62,10 @@
                 <td>{{$maquinaria->fechaAdquisicion}}</td>    
             </tr>
             <tr>
+                <th scope="row">proveedor</th>
+                <td>{{$maquinaria->proveedor->nombreProveedor}}</td>    
+            </tr>
+            <tr>
                 <th scope="row">Cantidad Hora Alquilada</th>
                 <td>{{$maquinaria->cantidadHoraAlquilada}}</td>    
             </tr>
@@ -73,10 +77,7 @@
                 <th scope="row">total a Pagar</th>
                 <td>{{$maquinaria->totalPagar}}</td>    
             </tr>
-            <tr>
-                <th scope="row">proveedor</th>
-                <td>{{$maquinaria->proveedor_id}}</td>    
-            </tr>
+         
         </tbody>
     </table>
 </div>

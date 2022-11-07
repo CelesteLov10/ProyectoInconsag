@@ -78,7 +78,7 @@
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('placa') is-invalid @enderror" 
                 placeholder="Ingrese el número de placa. Ejem. 'H" 
-                name="placa" value="{{old('placa', $maquinaria->placa)}}" maxlength="8">
+                name="placa" value="{{old('placa', $maquinaria->placa)}}" maxlength="7">
                 @error('placa')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                 @enderror
@@ -169,7 +169,7 @@
             <label class="col-sm-3 col-form-label">Cantidad de horas alquiladas:</label>
             <div class="col-sm-5">
                 <input type="number" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
-                placeholder="Ingrese la cantidad de hora alquiladas. Ejem. 000" 
+                placeholder="Ingrese la cantidad de hora alquiladas. Ejem. 1.45" 
                     name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada', $maquinaria->cantidadHoraAlquilada)}}" maxlength="3" oninput="calcularPago()">
                     @error('cantidadHoraAlquilada')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>

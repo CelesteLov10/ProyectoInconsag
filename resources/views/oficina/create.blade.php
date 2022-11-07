@@ -37,7 +37,7 @@
         <label class="col-sm-3 col-form-label">Nombre de la oficina:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill @error('nombreOficina') is-invalid @enderror" 
-            placeholder="Ingrese el nombre de la oficina. Ejem. 'Inconsag 1'" 
+            placeholder="Ingrese el nombre de la oficina. Ejem. 'La casita de Inconsag'." 
             name="nombreOficina" value="{{old('nombreOficina')}}" maxlength="50">
             @error('nombreOficina')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>

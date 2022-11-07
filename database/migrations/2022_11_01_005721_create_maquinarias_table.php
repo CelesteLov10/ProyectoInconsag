@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombreMaquinaria');
             $table->string('modelo');
-            $table->string('placa');
+            $table->string('placa')->unique();
             $table->integer('cantidadMaquinaria');
             $table->string('descripcion')->nullable();
             $table->string('fechaAdquisicion');

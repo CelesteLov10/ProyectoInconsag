@@ -77,8 +77,8 @@
           <label class="col-sm-3 col-form-label">Placa:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('placa') is-invalid @enderror" 
-            placeholder="Ingrese el número de placa. Ejem. 'H" 
-            name="placa" value="{{old('placa')}}" maxlength="8">
+            placeholder="Ingrese el número de placa. Ejem. 'AAA0000'" 
+            name="placa" value="{{old('placa')}}" maxlength="7">
             @error('placa')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -164,7 +164,7 @@
             <div class="col-sm-5">
                 <input type="number" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
                 placeholder="Ingrese la cantidad de hora alquiladas. Ejem. 000" 
-                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada')}}" maxlength="3" oninput="calcularPago()">
+                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada')}}" maxlength="5" oninput="calcularPago()">
                     @error('cantidadHoraAlquilada')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -187,7 +187,7 @@
           <label class="col-sm-3 col-form-label">Total a pagar:</label>
           <div class="col-sm-5">
             <input id="totalPagar" type="text" class="form-control rounded-pill @error('totalPagar') is-invalid @enderror" 
-              name="totalPagar"  value="{{old('totalPagar')}}" readonly=»readonly»> 
+              name="totalPagar" placeholder="Espere que calcule el valor total a pagar." value="{{old('totalPagar')}}" readonly=»readonly»> 
                 @error('totalPagar')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
