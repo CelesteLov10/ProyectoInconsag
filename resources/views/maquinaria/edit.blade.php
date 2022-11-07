@@ -26,7 +26,7 @@
 <div>
     <div class="mb-5 m-5">
         <h2 class=" text-center" >
-            <strong id="titulo">Actualizacion de una maquinaria</strong> 
+            <strong id="titulo">Actualización de una maquinaria</strong> 
         </h2>
     </div>
 
@@ -39,7 +39,7 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 bg-success bg-gradient" >
         <div class = " card-header py-3 " >
-            <h5 class = "n-font-weight-bold text-white" >Actualizacion de maquinaria</h5> 
+            <h5 class = "n-font-weight-bold text-white" >Actualización de maquinaria</h5> 
         </div >
 
         <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
