@@ -23,7 +23,7 @@
         {{-- encabezado --}}
         <div class = " card shadow ab-4 bg-success bg-gradient" >
             <div class = " card-header py-3 " >
-                <h5 class = "n-font-weight-bold text-white">Detalles de la maquinaria {{$maquinaria->maquinaria}}</h5 > 
+                <h5 class = "n-font-weight-bold text-white">Detalle de la maquinaria {{$maquinaria->maquinaria}}</h5 > 
             </div >
 
         <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
@@ -62,10 +62,6 @@
                 <td>{{$maquinaria->fechaAdquisicion}}</td>    
             </tr>
             <tr>
-                <th scope="row">proveedor</th>
-                <td>{{$maquinaria->proveedor->nombreProveedor}}</td>    
-            </tr>
-            <tr>
                 <th scope="row">Cantidad Hora Alquilada</th>
                 <td>{{$maquinaria->cantidadHoraAlquilada}}</td>    
             </tr>
@@ -76,6 +72,10 @@
             <tr>
                 <th scope="row">total a Pagar</th>
                 <td>{{$maquinaria->totalPagar}}</td>    
+            </tr>
+            <tr>
+                <th scope="row">proveedor</th>
+                <td>{{$maquinaria->proveedor->nombreProveedor}}</td>    
             </tr>
          
         </tbody>

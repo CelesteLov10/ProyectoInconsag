@@ -77,7 +77,7 @@
             <label class="col-sm-3 col-form-label">Placa:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('placa') is-invalid @enderror" 
-                placeholder="Ingrese el número de placa. Ejem. 'H" 
+                placeholder="Ingrese el número de placa. Ejem. 'AAA0000" 
                 name="placa" value="{{old('placa', $maquinaria->placa)}}" maxlength="7">
                 @error('placa')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -169,7 +169,7 @@
             <label class="col-sm-3 col-form-label">Cantidad de horas alquiladas:</label>
             <div class="col-sm-5">
                 <input type="number" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
-                placeholder="Ingrese la cantidad de hora alquiladas. Ejem. 1.45" 
+                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 1.45" 
                     name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada', $maquinaria->cantidadHoraAlquilada)}}" maxlength="3" oninput="calcularPago()">
                     @error('cantidadHoraAlquilada')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -181,7 +181,7 @@
             <label class="col-sm-3 col-form-label">Valor por hora:</label>
             <div class="col-sm-5">
                 <input type="number" id="valorHora" class="form-control rounded-pill  @error('valorHora') is-invalid @enderror" 
-                placeholder="Ingrese la cantidad de valor por hora. Ejem. 00000" 
+                placeholder="Ingrese el precio del valor por hora. Ejem. 00000" 
                     name="valorHora" value="{{old('valorHora', $maquinaria->valorHora)}}" maxlength="5" oninput="calcularPago()">
                     @error('valorHora')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
