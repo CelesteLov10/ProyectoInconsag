@@ -49,10 +49,7 @@
                 <td>{{$maquinaria->placa}}</td>    
             </tr>
 
-            <tr>
-                <th scope="row">Cantidad de Maquinaria</th>
-                <td>{{$maquinaria->cantidadMaquinaria}}</td>    
-            </tr>
+        
             <tr>
                 <th scope="row">Descripción</th>
                 <td>{{$maquinaria->descripcion}}</td>    
@@ -62,7 +59,11 @@
                 <td>{{$maquinaria->fechaAdquisicion}}</td>    
             </tr>
             <tr>
-                <th scope="row">Cantidad Hora Alquilada</th>
+                <th scope="row">Proveedor</th>
+                <td>{{$maquinaria->proveedor->nombreProveedor}}</td>    
+            </tr>
+            <tr>
+                <th scope="row">Cantidad de Hora Alquilada</th>
                 <td>{{$maquinaria->cantidadHoraAlquilada}}</td>    
             </tr>
             <tr>
@@ -73,10 +74,7 @@
                 <th scope="row">Total a Pagar</th>
                 <td>{{$maquinaria->totalPagar}}</td>    
             </tr>
-            <tr>
-                <th scope="row">Proveedor</th>
-                <td>{{$maquinaria->proveedor->nombreProveedor}}</td>    
-            </tr>
+          
          
         </tbody>
     </table>

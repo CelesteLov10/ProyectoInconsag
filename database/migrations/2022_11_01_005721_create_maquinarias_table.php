@@ -18,15 +18,15 @@ return new class extends Migration
             $table->string('nombreMaquinaria');
             $table->string('modelo');
             $table->string('placa')->unique();
-            $table->integer('cantidadMaquinaria');
             $table->string('descripcion')->nullable();
             $table->string('fechaAdquisicion');
-            $table->enum('maquinaria', ['propia', 'alquilada'])->default('propia');
+            $table->unsignedBigInteger('proveedor_id');//Relacion con tabla proveedor
+            $table->foreign('proveedor_id')->references('id')->on('proveedores');// Restriccion llave foranea
+            $table->enum('maquinaria', ['propia', 'alquilada']);
             $table->float('cantidadHoraAlquilada')->nullable();
             $table->float('valorHora')->nullable();
             $table->float('totalPagar')->nullable();
-            $table->unsignedBigInteger('proveedor_id');//Relacion con tabla proveedor
-            $table->foreign('proveedor_id')->references('id')->on('proveedores');// Restriccion llave foranea
+        
             $table->timestamps();
         });
     }

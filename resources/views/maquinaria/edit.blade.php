@@ -85,17 +85,6 @@
             </div>
         </div>
 
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Cantidad:</label>
-        <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill @error('cantidadMaquinaria') is-invalid @enderror" 
-                placeholder="Ingrese la cantidad de maquinaria." 
-                name="cantidadMaquinaria" value="{{old('cantidadMaquinaria', $maquinaria->cantidadMaquinaria)}}" maxlength="8">
-                @error('cantidadMaquinaria')
-                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                @enderror
-            </div>
-        </div>
 
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Descripción:</label>
@@ -168,9 +157,9 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Cantidad de horas alquiladas:</label>
             <div class="col-sm-5">
-                <input type="number" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
+                <input type="text" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
                 placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 1.45" 
-                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada', $maquinaria->cantidadHoraAlquilada)}}" maxlength="3" oninput="calcularPago()">
+                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada', $maquinaria->cantidadHoraAlquilada)}}" maxlength="4" oninput="calcularPago()">
                     @error('cantidadHoraAlquilada')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -180,9 +169,9 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Valor por hora:</label>
             <div class="col-sm-5">
-                <input type="number" id="valorHora" class="form-control rounded-pill  @error('valorHora') is-invalid @enderror" 
-                placeholder="Ingrese el precio del valor por hora. Ejem. 00000" 
-                    name="valorHora" value="{{old('valorHora', $maquinaria->valorHora)}}" maxlength="5" oninput="calcularPago()">
+                <input type="text" id="valorHora" class="form-control rounded-pill  @error('valorHora') is-invalid @enderror" 
+                placeholder="Ingrese el precio del valor por hora. Ejem. 0000.00" 
+                    name="valorHora" value="{{old('valorHora', $maquinaria->valorHora)}}" maxlength="7" oninput="calcularPago()">
                     @error('valorHora')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -242,6 +231,20 @@
 
 <script>
   //Funciones para que al dar click en el otro radioBottom se oculte y muestre lo que hay en otro*/
+
+  window.onload = function(){
+    var x = document.getElementById("maquinariaAlquilada").checked;
+    var elemento = document.getElementById("mostrar");
+
+    var y = document.getElementById("maquinariaPropia").checked;
+    var elemento1 = document.getElementById("mostrarBoton");
+
+    if (x) {
+      elemento.style.display = 'block';
+      }else if(y){
+        elemento1.style.display = 'block';
+    }
+}
     document.getElementById("").addEventListener('submit', (event)=>{
     event.preventDefault();
 });

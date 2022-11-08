@@ -14,15 +14,13 @@ class Maquinaria extends Model
     'nombreMaquinaria',
     'modelo',
     'placa', 
-    'cantidadMaquinaria',
     'descripcion',
     'fechaAdquisicion',
+    'proveedor_id',
     'maquinaria',
     'cantidadHoraAlquilada',
     'valorHora',
     'totalPagar',
-    'proveedor_id',
-
    ];
 
    public function proveedor(){

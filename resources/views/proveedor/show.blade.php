@@ -37,7 +37,7 @@
     </thead>
     <tbody>
         <tr>
-            <th scope="row">Nombre del prooveedor</th>
+            <th scope="row">Nombre del proveedor</th>
             <td>{{$proveedor->nombreProveedor}}</td>    
         </tr>
         <tr>
