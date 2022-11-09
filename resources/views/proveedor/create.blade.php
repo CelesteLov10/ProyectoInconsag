@@ -107,10 +107,10 @@
         </div>
 
         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Categoria:</label>
+          <label class="col-sm-3 col-form-label">Categoría:</label>
           <div class="col-sm-5">
           <select name="categoria_id" id="" class="form-select rounded-pill @error('categoria_id') is-invalid @enderror">
-            <option value="" disabled selected>-- Seleccione una categoria --</option>
+            <option value="" disabled selected>-- Seleccione una categoría --</option>
               @foreach ($categoria as $categorias)
               <option value="{{$categorias->id}}" 
                 {{old('categoria_id' , $categorias->nombreCat)==$categorias->id ? 'selected' : ''}}>{{$categorias->nombreCat}}</option>

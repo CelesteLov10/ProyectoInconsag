@@ -34,17 +34,7 @@ class InventarioController extends Controller
     // Metodo para mostrar pdf
     public function pdf (){
 
-        $inventarios = Inventario::query()
-            ->when(request('search'), function($query){
-            return $query->where('nombreInv', 'LIKE', '%' .request('search') .'%')
-            ->orWhereHas('oficina', function($q){
-                $q->where('nombreOficina','LIKE', '%' .request('search') .'%');
-            })
-            ->orWhereHas('empleado', function($q){
-                $q->where('nombres','LIKE', '%' .request('search') .'%');
-            });
-            })->orderBy('id','desc')->paginate(100000000000000)->withQueryString(); 
-            
+        $inventarios = Inventario::all();    
         $empleado = Empleado::all();
         $oficina = Oficina::all();
 
@@ -67,7 +57,7 @@ class InventarioController extends Controller
             'nombreInv'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u',
             'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
             'precioInv'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
-            'descripcion' => 'required|regex:/^.{10,150}$/u',
+            'descripcion' => 'required|min:10|max:150',
             'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'empleado_id' => 'required',
             'oficina_id'  => 'required',
@@ -89,7 +79,8 @@ class InventarioController extends Controller
             'precioInv.regex' => 'El precio del inventario debe contener 1 o 2 cifras despues del punto (opcional).',
 
             'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
-            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
+            'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
+            'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
             'fecha.required' => 'La fecha es requerida', 
             'fecha.regex' => 'No debe agregar mas datos a la fecha seleccionada', 
@@ -141,7 +132,7 @@ class InventarioController extends Controller
             'nombreInv'   => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
             'cantidad'    => ['required','numeric','regex:/^[0-9]{1,4}+$/u'],
             'precioInv'   => ['required','numeric','max:99999','min:1.00','regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/'],
-            'descripcion' => ['required','regex:/^.{10,150}$/u'],
+            'descripcion' => ['required','min:10','max:150'],
             'fecha'       => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'empleado_id' => ['required'],
             'oficina_id'  => ['required'],
@@ -161,7 +152,8 @@ class InventarioController extends Controller
             'precioInv.regex' => 'El precio del inventario debe contener 1 o 2 cifras despues del punto (opcional).',   
 
             'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
-            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
+            'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
+            'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
             'fecha.required' => 'La fecha es requerida', 
             'fecha.regex' => 'No debe agregar más datos a la fecha seleccionada', 

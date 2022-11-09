@@ -69,7 +69,7 @@
                       <th scope="col">Nombre del proveedor</th>
                       <th scope="col">Nombre del contacto</th>
                       <th scope="col">Teléfono</th>
-                      <th scope="col">Categoria</th>
+                      <th scope="col">Categoría</th>
                       <th scope="col">Detalle</th>
                       <th scope="col">Actualizar</th>
                     </tr>

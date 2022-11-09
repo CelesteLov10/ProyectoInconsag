@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Maquinaria;
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class MaquinariaController extends Controller
 {
@@ -28,6 +29,20 @@ class MaquinariaController extends Controller
         return view('maquinaria.index', compact('maquinarias', 'proveedor'));
 
     }
+
+    // Metodo para mostrar pdf
+    public function pdf (){
+
+        $maquinarias = Maquinaria::all();
+        
+        $proveedor = Proveedor::all();
+
+        // Aqui hacemos uso de la libreria PDF para que genere el documento pdf
+        $pdf = PDF::loadView('maquinaria.pdf', compact('maquinarias', 'proveedor'));
+        return $pdf -> stream();
+        
+    }
+
     public function show($id){
         $maquinaria = Maquinaria::findOrFail($id);
         return view('maquinaria.show')->with('maquinaria', $maquinaria);
@@ -45,54 +60,56 @@ class MaquinariaController extends Controller
     public function store(Request $request){
     
         $reglas = [
-            'nombreMaquinaria'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]{1}[a-záéíóúñ]+\s{0,1}([0-9]{0,15}?))+$/u',
-            'modelo' => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]{1}[a-záéíóúñ]+\s{0,1}([0-9]{0,15}?))+$/u',
-            'placa'  => 'required|min:7|regex: /^[A-Z]{2,3}[0-9]{4,4}+$/u|unique:maquinarias',
-            'descripcion'       => 'required|regex:/^.{10,150}$/u',
+            'nombreMaquinaria'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/',
+            'modelo' => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9-.]+\s{0,1})+$/',
+            'placa'  => 'nullable|min:7|regex:/^[A-Za-z0-9]+$/u', // regex: /^[A-Z]{2,3}[0-9]{4}+$/u
+            //'cantidad' => 'required|min:1|numeric|regex:/^[0-9]{1,4}+$/',
+            'descripcion'       => 'required|min:10|max:150',
             'fechaAdquisicion'    =>'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'proveedor_id'       => 'required',
-            'cantidadHoraAlquilada' => 'numeric|min:1|nullable', 
-           'valorHora' => 'numeric|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/|min:1|nullable', 
-            'totalPagar' => 'numeric|nullable', 
-/*/[A-Z]{1}[0-9][0-9A-Z][0-9]/ */
+            'cantidadHoraAlquilada' => 'nullable|numeric|min:1|nullable|regex:/^[0-9]{1,2}+$/U', 
+            'valorHora' => 'numeric|regex:/^[0-9]{1,4}+$/|min:1|nullable', 
+            //'cantidadAlquilada' => 'nullable|min:1|numeric|regex:/^[0-9]{1,4}+$/',
+            'totalPagar' => 'numeric|nullable',
             
         ]; $mensaje = [
             
             'nombreMaquinaria.required' => 'El nombre de la maquinaria es requerido, no puede estar vacío.',
-            'nombreMaquinaria.regex' => 'En el nombre de la maquinaria solo se permite un espacio entre los nombres.',
+            'nombreMaquinaria.regex' => 'En el nombre de la maquinaria solo se permite un espacio entre los nombres y no permite caracteres especiales.',
 
-            'modelo.required' => 'El modelo de la maquinaria es requerido, no puede estar vacío.',
-            'modelo.regex' => 'En el modelo solo se permite un espacio entre cada palabra.',
+            //'modelo.required' => 'El modelo de la maquinaria es requerido, no puede estar vacío.',
+            //'modelo.regex' => 'En el modelo solo se permite un espacio entre cada palabra.',
 
 
             'placa.required' => 'El formato de la placa de maquinaria es requerido , no puede estar vacío.',
             'placa.min' => 'El formato de la placa debe contener mínimo 7 caracteres.',
            //'placa.max' => 'El formato de la placa debe contener máximo 7 caracteres.', 
-            'placa.regex' => 'El formato de la placa debe ser con 3 letras mayúsculas y 4 números.',
-            'placa.unique' => 'El formato de la placa debe ser único.',
+           'placa.regex' => 'Formato de placa incorrecto. Ejem. "AAA0000"',            'placa.unique' => 'El número de placa ya esta en uso.',
 
              
-            'cantidadMaquinaria.required' => 'Debe ingresar la cantidad de maquinaria', 
+            /*'cantidadMaquinaria.required' => 'Debe ingresar la cantidad de maquinaria', 
             'cantidadMaquinaria.numeric' => 'Solo se permiten números.',
-            'cantidadMaquinaria.min' => 'La cantidad mínima de maquinaria a ingresar es 1. ',
+            'cantidadMaquinaria.min' => 'La cantidad mínima de maquinaria a ingresar es 1. ',*/
 
 
             'descripcion.required' => 'Se necesita saber la descripción, no puede estar vacío.',
-            'descripcion.regex' => 'La descripción permite un mínimo 10 y un máximo 150 palabras.',
+            'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
+            'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
             'fechaAdquisicion.required' => 'Debe seleccionar la fecha de adquisición, no puede estar vacío.',
 
             'proveedor_id.required' => 'Debe seleccionar el nombre del proveedor, no puede estar vacío.',
 
-            'cantidadHoraAlquilada.numeric' => 'Solo se permite números; para separar la hora de los minutos debe usar "."',
-            'cantidadHoraAlquilada.min' => 'La cantidad de hora alquilada para maquinaria mínimo es 1. ',
+            'cantidadHoraAlquilada.numeric' => 'Solo se permite números enteros. Ejem. "12"',
+            'cantidadHoraAlquilada.regex' => 'El valor es incorrecto. Ejem. "12"',
+            'cantidadHoraAlquilada.min' => 'La cantidad de hora alquilada mínima es "1". ',
 
             'valorHora.numeric' => 'Solo se permite ingresar números.',
-            'valorHora.regex' => 'El precio del alquiler de la maquinaria debe contener 1 ó 2 cifras despues del punto (opcional).',
-            'valorHora.min' => 'El valor mínimo por hora alquilada es 1. ',
+            'valorHora.regex' => 'El valor por hora solo permite numeros enteros. Ejem. "1850"',
+            'valorHora.min' => 'El valor por hora alquilada mínimo es "1". ',
 
             'totalPagar.numeric' => 'Solo se permite ingresar números', 
-            'totalPagar.regex' => 'El total del alquiler de la maquinaria debe contener 1 ó 2 cifras despues del punto (opcional).',
+            'totalPagar.regex' => 'El total ha pagar debe ser un valor entero. Ejem. "12450"',
             
 
         ];
@@ -105,9 +122,9 @@ class MaquinariaController extends Controller
             'descripcion'=>$request['descripcion'],
             'fechaAdquisicion' =>$request[ 'fechaAdquisicion' ],
             'proveedor_id'=>$request['proveedor_id'], 
-          'maquinaria' =>$request['maquinaria'],
+            'maquinaria' =>$request['maquinaria'],
             'cantidadHoraAlquilada'=>$request['cantidadHoraAlquilada'], 
-           'valorHora'=>$request['valorHora'], 
+            'valorHora'=>$request['valorHora'], 
             'totalPagar'=>$request['totalPagar'], 
 
             
@@ -128,21 +145,23 @@ class MaquinariaController extends Controller
 
         $this->validate($request,[
 
-            'nombreMaquinaria' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]{1}[a-záéíóúñ]+\s{0,1}([0-9]{0,15}?))+$/u'],
-            'modelo'           => ['required', 'regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]{1}[a-záéíóúñ]+\s{0,1}([0-9]{0,15}?))+$/u'],
-            'placa'  => ['required','min:7', 'regex: /^[A-Z]{2,3}[0-9]{4,4}+$/u','unique:maquinarias,placa,'.$id.'id'],
-            'descripcion'       => ['required','regex:/^.{10,150}$/u'],
+            'nombreMaquinaria' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/'],
+            'modelo' => ['required', 'regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9-.]+\s{0,1})+$/'],
+            'placa'  => ['nullable','min:7','regex:/^[A-Za-z0-9]+$/u'],
+            //'cantidad' => 'required|min:1|numeric|regex:/^[0-9]{1,4}+$/',
+            'descripcion'       => ['required','min:10','max:150'],
             'fechaAdquisicion'  => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'proveedor_id'      => ['required'],
-           'cantidadHoraAlquilada' => ['numeric', 'nullable'], 
-            'valorHora' => ['numeric', 'regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/', 'nullable'], 
+            'cantidadHoraAlquilada' => ['numeric', 'nullable','min:1','regex:/^[0-9]{1,2}+$/U'], 
+            'valorHora' => ['numeric', 'min:1', 'regex:/^[0-9]{1,4}+$/', 'nullable'],
+            //'cantidadAlquilada' => 'nullable|min:1|numeric|regex:/^[0-9]{1,4}+$/', 
             'totalPagar' => ['numeric', 'nullable'], 
 
         ],[
 
             
             'nombreMaquinaria.required' => 'El nombre de la maquinaria es requerido, no puede estar vacío.',
-            'nombreMaquinaria.regex' => 'En el nombre de la maquinaria solo se permite un espacio entre los nombres.',
+            'nombreMaquinaria.regex' => 'En el nombre de la maquinaria solo se permite un espacio entre los nombres y no permite caracteres especiales.',
 
             'modelo.required' => 'El modelo de la maquinaria es requerido, no puede estar vacío.',
             'modelo.regex' => 'En el modelo solo se permite un espacio entre cada palabra.',
@@ -150,27 +169,31 @@ class MaquinariaController extends Controller
 
             'placa.required' => 'El formato de la maquinaria es requerido, no puede estar vacío .',
             'placa.min' => 'El formato de la placa debe contener mínimo 7 caracteres.',
-           'placa.regex' => 'El formato de la placa debe ser con 3 letras mayúsculas y 4 números.',
-           'placa.unique' => 'El formato de la placa debe ser único.',
+            'placa.regex' => 'Formato de placa incorrecto. Ejem. "AAA0000"',
+            'placa.unique' => 'El número de placa ya esta en uso.',
 
-            'cantidadMaquinaria.required' => 'Debe ingresar la cantidad de maquinaria', 
+            /*'cantidadMaquinaria.required' => 'Debe ingresar la cantidad de maquinaria', 
             'cantidadMaquinaria.numeric' => 'Solo se permiten números.',
-            'cantidadMaquinaria.min' => 'La cantidad mínima de maquinaria a ingresar es 1. ',
+            'cantidadMaquinaria.min' => 'La cantidad mínima de maquinaria a ingresar es 1. ',*/
 
             'descripcion.required' => 'Se necesita saber la descripción, no puede estar vacío.',
-            'descripcion.regex' => 'La descripción permite un mínimo 10 y un máximo 150 palabras.',
+            'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
+            'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
             'fechaAdquisicion.required' => 'Debe seleccionar la fecha de adquisición , no puede estar vacío.',
 
             'proveedor_id.required' => 'Debe seleccionar el nombre del proveedor, no puede estar vacío.',
 
-            'cantidadHoraAlquilada.numeric' => 'Solo se permite números, y para separar la hora de los minutos debe usar ".".', 
+            'cantidadHoraAlquilada.numeric' => 'Solo se permite números enteros. Ejem. "12"',
+            'cantidadHoraAlquilada.regex' => 'El valor es incorrecto. Ejem. "12"',
+            'cantidadHoraAlquilada.min' => 'La cantidad de hora alquilada mínima es "1". ',
 
             'valorHora.numeric' => 'Solo se permite ingresar números.',
-            'valorHora.regex' => 'El precio del alquiler de la maquinaria debe contener 1 ó 2 cifras despues del punto (opcional).',
+            'valorHora.regex' => 'El valor por hora solo permite numeros enteros. Ejem. "1850"',
+            'valorHora.min' => 'El valor por hora alquilada mínimo es "1". ',
 
             'totalPagar.numeric' => 'Solo se permite ingresar números', 
-            'totalPagar.regex' => 'El total del alquiler de la maquinaria debe contener 1 ó 2 cifras despues del punto (opcional).',
+            'totalPagar.regex' => 'El total ha pagar debe ser un valor entero. Ejem. "12450"',
     
         ]);
 

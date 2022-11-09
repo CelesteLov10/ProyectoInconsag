@@ -78,7 +78,7 @@
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('placa') is-invalid @enderror" 
                 placeholder="Ingrese el número de placa. Ejem. 'AAA0000" 
-                name="placa" value="{{old('placa', $maquinaria->placa)}}" maxlength="7">
+                name="placa" value="{{old('placa', $maquinaria->placa)}}" maxlength="50">
                 @error('placa')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                 @enderror
@@ -158,8 +158,8 @@
             <label class="col-sm-3 col-form-label">Cantidad de horas alquiladas:</label>
             <div class="col-sm-5">
                 <input type="text" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
-                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 1.45" 
-                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada', $maquinaria->cantidadHoraAlquilada)}}" maxlength="4" oninput="calcularPago()">
+                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 12" 
+                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada', $maquinaria->cantidadHoraAlquilada)}}" maxlength="2" oninput="calcularPago()">
                     @error('cantidadHoraAlquilada')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -170,8 +170,8 @@
             <label class="col-sm-3 col-form-label">Valor por hora:</label>
             <div class="col-sm-5">
                 <input type="text" id="valorHora" class="form-control rounded-pill  @error('valorHora') is-invalid @enderror" 
-                placeholder="Ingrese el precio del valor por hora. Ejem. 0000.00" 
-                    name="valorHora" value="{{old('valorHora', $maquinaria->valorHora)}}" maxlength="7" oninput="calcularPago()">
+                placeholder="Ingrese el precio del valor por hora. Ejem. 1850" 
+                    name="valorHora" value="{{old('valorHora', $maquinaria->valorHora)}}" maxlength="4" oninput="calcularPago()">
                     @error('valorHora')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -223,8 +223,8 @@
                     'Julio', 'Agosto', 'Septiembre',
                     'Octubre', 'Noviembre', 'Diciembre'],
                     dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-        maxDate: "2m",
-        minDate: "-2m"
+        maxDate: 0,
+        minDate: "-1m"
         });
     } );
 </script>

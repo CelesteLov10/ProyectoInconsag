@@ -48,14 +48,16 @@
                 <th scope="row">Placa</th>
                 <td>{{$maquinaria->placa}}</td>    
             </tr>
-
-        
+            {{--<tr>
+                <th scope="row">Cantidad de maquinaria</th>
+                <td>{{$maquinaria->cantidad}}</td>    
+            </tr>--}}
             <tr>
                 <th scope="row">Descripción</th>
                 <td>{{$maquinaria->descripcion}}</td>    
             </tr>
             <tr>
-                <th scope="row">Fecha de Adquisición</th>
+                <th scope="row">Fecha de adquisición</th>
                 <td>{{$maquinaria->fechaAdquisicion}}</td>    
             </tr>
             <tr>
@@ -63,25 +65,45 @@
                 <td>{{$maquinaria->proveedor->nombreProveedor}}</td>    
             </tr>
             <tr>
-                <th scope="row">Cantidad de Hora Alquilada</th>
+                <th scope="row">Cantidad de hora Alquilada</th>
                 <td>{{$maquinaria->cantidadHoraAlquilada}}</td>    
             </tr>
             <tr>
-                <th scope="row">Valor por Hora</th>
+                <th scope="row">Valor por hora</th>
                 <td>{{$maquinaria->valorHora}}</td>    
             </tr>
+            {{--<tr>
+                <th scope="row">Cantidad de maquinaria alquilada</th>
+                <td>{{$maquinaria->cantidadAlquilada}}</td>    
+            </tr>--}}
             <tr>
                 <th scope="row">Total a Pagar</th>
                 <td>{{$maquinaria->totalPagar}}</td>    
             </tr>
-          
-         
         </tbody>
     </table>
 </div>
 @endsection
         
+
 @section('js')
-{{-- plugins para el buscador jquery ui --}}
-<script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+
+<script>
+    
+    if (document.getElementById('cantidadHorasAlquiladas') == ""){
+        document.getElementById("cha").innerHTML = " ";
+    }
+    if (document.getElementById('valorHora') == ""){
+        document.getElementById("vph").innerHTML = " ";
+    }
+    //if (document.getElementById('cantidadAlquilada') == ""){
+    //    document.getElementById("cma").innerHTML = " ";
+    //}
+    if (document.getElementById('totalPagar') == ""){
+        document.getElementById("tap").innerHTML = " ";
+    }
+        
+</script>
+
 @endsection
+

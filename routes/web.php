@@ -138,4 +138,6 @@ Route::controller(MaquinariaController::class)->group(function(){
         Route::get('/maquinaria/{id}/edit', 'edit')->name('maquinaria.edit');
         //Ruta para el metodo editar
         Route::put('/maquinaria/{id}/edit', 'update')->name('maquinaria.update');
+        //Ruta para imprimir el listado de maquinaria
+        Route::get('/maquinaria/pdf', 'pdf')->name('maquinaria.pdf');
 });

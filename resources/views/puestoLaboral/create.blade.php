@@ -50,8 +50,8 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Descripción:</label>
           <div class="col-sm-5">
-            <textarea type="text" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
-            placeholder="Ingrese una descripción del puesto" name="descripcion" maxlength="150">{{old('descripcion')}}</textarea>
+            <textarea type="text" maxlength="150" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
+            placeholder="Ingrese una descripción del puesto" name="descripcion">{{old('descripcion')}}</textarea>
           @error('descripcion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror

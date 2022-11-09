@@ -26,7 +26,7 @@ class PuestoController extends Controller
         $this->validate($request, [
             'nombreCargo' => ['required','unique:puestos,nombreCargo','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
             'sueldo'      => ['required','numeric','between: 7500.00, 20000.00'], // falta averiguar cual es el salario minimo y el maximo
-            'descripcion' => ['required','regex:/^.{10,100}$/u']
+            'descripcion' => ['required','min:10','max:150']
         ], [
             'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 
             'nombreCargo.unique' => 'El nombre del puesto ingresado ya está en uso.', 
@@ -38,7 +38,8 @@ class PuestoController extends Controller
             'sueldo.between' => 'El sueldo debe tener un rango de 7500 y 20000', 
 
             'descripcion' => 'La descripción del puesto es requerida.',
-            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
+            'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
+            'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
         ]);
         $input = $request->all();
@@ -73,7 +74,7 @@ class PuestoController extends Controller
         $this->validate($request,[
             'nombreCargo' => ['required','unique:puestos,nombreCargo,'.$id.'id','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
             'sueldo'      => ['required','numeric','between: 7500, 20000'], // falta averiguar cual es el salario minimo y el maximo
-            'descripcion' => ['required','regex:/^.{10,100}$/u'],
+            'descripcion' => ['required','min:10','max:150'],
         ],[
             'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 
             'nombreCargo.unique' => 'El nombre del puesto ingresado ya está en uso.', 
@@ -85,7 +86,8 @@ class PuestoController extends Controller
             'sueldo.between' => 'El sueldo debe tener un rango de 7500.00 y 20000.00', 
 
             'descripcion' => 'La descripción del puesto es requerida.',
-            'descripcion.regex' => 'La descripción permite mínimo 10 y máximo 150 palabras.',
+            'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
+            'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
         ]);
         $puesto = Puesto::findOrFail($id);
 

@@ -16,14 +16,16 @@ return new class extends Migration
         Schema::create('maquinarias', function (Blueprint $table) {
             $table->id();
             $table->string('nombreMaquinaria');
-            $table->string('modelo');
-            $table->string('placa')->unique();
+            $table->string('modelo');;
+            $table->string('placa')->nullable();
+            //$table->integer('cantidad')->nullable();
             $table->string('descripcion')->nullable();
             $table->string('fechaAdquisicion');
             $table->unsignedBigInteger('proveedor_id');//Relacion con tabla proveedor
             $table->foreign('proveedor_id')->references('id')->on('proveedores');// Restriccion llave foranea
             $table->enum('maquinaria', ['propia', 'alquilada']);
             $table->float('cantidadHoraAlquilada')->nullable();
+            //$table->integer('cantidadAlquilada')->nullable();
             $table->float('valorHora')->nullable();
             $table->float('totalPagar')->nullable();
         

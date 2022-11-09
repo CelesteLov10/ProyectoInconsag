@@ -48,6 +48,8 @@
         @endif
 
       <div class="mb-3 text-end">
+        <a class="btn btn-outline-success text-right" href="{{route('maquinaria.pdf')}}">Imprimir <i class="bi bi-printer"></i></a>
+
           <a class="btn btn-outline-success text-right" href="{{route('maquinaria.create')}}">Nueva maquinaria <i class="bi bi-plus-square-dotted"></i></a>
       </div>
         {{-- encabezado --}}
