@@ -159,7 +159,7 @@
             <div class="col-sm-5">
                 <input type="text" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
                 placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 12" 
-                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada', $maquinaria->cantidadHoraAlquilada)}}" maxlength="2" oninput="calcularPago()">
+                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada', $maquinaria->cantidadHoraAlquilada)}}" maxlength="3" oninput="calcularPago()">
                     @error('cantidadHoraAlquilada')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror

@@ -30,13 +30,11 @@
       </h2>
   </div>
 
-
   <div class="container ">
     <div class="mb-3 text-end">
       <a class="btn btn-outline-primary" href="{{route('maquinaria.index')}}"> 
         <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
   </div>
-
 
       {{-- encabezado  --}}
       <div class = " card shadow ab-4 bg-success bg-gradient" >
@@ -46,8 +44,7 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
           <div class="col-60 bg-light p-5">
-      <form action="{{route('maquinaria.store')}}" id="form1" class="maquinaria-guardar" 
-      name="formulario1" method="POST">
+      <form action="{{route('maquinaria.store')}}" id="form1" class="maquinaria-guardar" name="formulario1" method="POST" >
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
         <div class="mb-3 row">
@@ -78,25 +75,13 @@
           <label class="col-sm-3 col-form-label">Placa:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('placa') is-invalid @enderror" 
-            placeholder="Ingrese el número de placa. Ejem. 'AAA0000'." 
-            name="placa" value="{{old('placa')}}" maxlength="50">
+            placeholder="Ingrese el número de placa. Ejem. 'AAA0000'" 
+            name="placa" value="{{old('placa')}}" maxlength="7">
             @error('placa')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
           </div>
         </div>
-
-        {{--<div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Cantidad de maquinaria:</label>
-          <div class="col-sm-5">
-              <input type="text" id="cantidad" class="form-control rounded-pill  @error('cantidad') is-invalid @enderror" 
-              placeholder="Ingrese la cantidad de maquinaria alquilada. Ejem. 0000" 
-                  name="cantidad" value="{{old('cantidad')}}" maxlength="4">
-                  @error('cantidad')
-                  <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                  @enderror
-          </div>
-        </div>--}}
 
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Descripción:</label>
@@ -140,15 +125,11 @@
       
         <div class="form-group">
             <div class="mb-2  form-check-inline">  
-                        <input class="form-check-input" type="radio" name="maquinaria" 
-                        id="maquinariaPropia" value="propia" {{ (old('maquinaria') == "propia") 
-                        ? "checked" : ""}} onclick="Desplegar('mostrarBoton'); Contraer('mostrar')">
+                        <input class="form-check-input" type="radio" name="maquinaria" id="maquinariaPropia" value="propia" {{ (old('maquinaria') == "propia") ? "checked" : ""}} onclick="Desplegar('mostrarBoton'); Contraer('mostrar')">
                         <label class="form-check-label" for="flexRadioDefault1">Maquinaria propia</label>
               </div>   
               <div class="mb-3  form-check-inline"> 
-                        <input class="form-check-input" type="radio" name="maquinaria" 
-                        id="maquinariaAlquilada" value="alquilada" {{ (old('maquinaria') == "alquilada") 
-                        ? "checked" : ""}}  onclick="Desplegar('mostrar'); Contraer('mostrarBoton')">
+                        <input class="form-check-input" type="radio" name="maquinaria" id="maquinariaAlquilada" value="alquilada" {{ (old('maquinaria') == "alquilada") ? "checked" : ""}}  onclick="Desplegar('mostrar'); Contraer('mostrarBoton')">
                         <label class="form-check-label" for="flexRadioDefault1">Maquinaria alquilada</label>
               </div>
         </div>
@@ -165,50 +146,36 @@
           <div class="col-60 bg-light p-1">
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label" id="cha">Cantidad de horas alquiladas:</label>
+            <label class="col-sm-3 col-form-label">Cantidad de horas alquiladas:</label>
             <div class="col-sm-5">
                 <input type="text" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
-                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 12" maxlength="2"
-                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada')}}" oninput="calcularPago()">
+                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 02.20" 
+                    name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada')}}" maxlength="3" oninput="calcularPago()">
                     @error('cantidadHoraAlquilada')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
+                    <div ><small class="text-danger" id="myElement" ></small></div>
             </div>
         </div>
 
         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label" id="vph">Valor por hora:</label>
+          <label class="col-sm-3 col-form-label">Valor por hora:</label>
           <div class="col-sm-5">
               <input type="text" id="valorHora" class="form-control rounded-pill  @error('valorHora') is-invalid @enderror" 
-              placeholder="Ingrese el precio del valor por hora. Ejem. 1850"
+              placeholder="Ingrese el precio del valor por hora. Ejem. 0000.00" 
                   name="valorHora" value="{{old('valorHora')}}" maxlength="4" oninput="calcularPago()">
                   @error('valorHora')
-                  <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                  <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
                   @enderror
+                  <div ><small class="text-danger" id="myElement2" ></small></div>
           </div>
         </div>
-
-        {{--<div class="mb-3 row">
-          <label class="col-sm-3 col-form-label" id="cma">Cantidad de maquinaria alquilada:</label>
-          <div class="col-sm-5">
-              <input id="cantidadAlquilada" type="number-integer" class="form-control rounded-pill  
-              @error('cantidadAlquilada') is-invalid @enderror" 
-              placeholder="Ingrese la cantidad de maquinaria alquilada. Ejem. 0000" 
-                  name="cantidadAlquilada" value="{{old('cantidadAlquilada')}}" maxlength="4"
-                  oninput="calcularPago()">
-                  @error('cantidadAlquilada')
-                  <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                  @enderror
-          </div>
-        </div>--}}
   
         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label" id="tap">Total a pagar:</label>
+          <label class="col-sm-3 col-form-label">Total a pagar:</label>
           <div class="col-sm-5">
-            <input id="totalPagar" type="text" class="form-control rounded-pill 
-            @error('totalPagar') is-invalid @enderror"
-              name="totalPagar" placeholder="Calculo automático del total a pagar."
-               value="{{old('totalPagar')}}" readonly=»readonly»> 
+            <input id="totalPagar" type="text" class="form-control rounded-pill @error('totalPagar') is-invalid @enderror" 
+              name="totalPagar" placeholder="Espere que calcule el valor total a pagar." value="{{old('totalPagar')}}" readonly=»readonly»> 
                 @error('totalPagar')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -243,33 +210,52 @@
       changeMonth: true,
       changeYear: true,
       firstDay: 0,
-					monthNamesShort: ['Enero', 'Febrero', 'Marzo',
-					'Abril', 'Mayo', 'Junio',
-					'Julio', 'Agosto', 'Septiembre',
-					'Octubre', 'Noviembre', 'Diciembre'],
-					dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-          maxDate: 0,
+          monthNamesShort: ['Enero', 'Febrero', 'Marzo',
+          'Abril', 'Mayo', 'Junio',
+          'Julio', 'Agosto', 'Septiembre',
+          'Octubre', 'Noviembre', 'Diciembre'],
+          dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+          maxDate: "0",
           minDate: "-1m"
     });
   } );
 </script>
 
-
 <script>
   //Funciones para que al dar click en el otro radioBottom se oculte y muestre lo que hay en otro/
   window.onload = function(){
     var x = document.getElementById("maquinariaAlquilada").checked;
+    var xx = document.getElementById("maquinariaAlquilada").value;
     var elemento = document.getElementById("mostrar");
 
     var y = document.getElementById("maquinariaPropia").checked;
     var elemento1 = document.getElementById("mostrarBoton");
-
+    
+    //Obtener lo valores de los dos campos cantidadHoraAlquilada y valorHora
+    var cantidadHoraAlquilada,valorHora;
+    cantidadHoraAlquilada=document.getElementById("cantidadHoraAlquilada").value;
+    valorHora=document.getElementById("valorHora").value;
+    
+    /*Condicion que al estar checkeado un radioboton, aun recargando, permanezaca visible el div seleccionado*/
     if (x) {
       elemento.style.display = 'block';
-      }else if(y){
+    //condicion que verifica si estan vacio los campos
+        if(cantidadHoraAlquilada == "") {
+          document.getElementById("cantidadHoraAlquilada").focus();
+          var el = document.getElementById("myElement");
+          el.textContent = "*La cantidad de hora alquilada es obligatoria.";}
+          
+          if(valorHora == ""){
+          document.getElementById("valorHora").focus();
+          var ell = document.getElementById("myElement2");
+          ell.textContent = "*El valor por hora alquilada es obligatorio.";}
+      
+        }else if(y){
         elemento1.style.display = 'block';
-    }
-}
+    } 
+} 
+
+//Funciones que permiten ocultar y desplegar los divs correspondientes al dar click en los radiobotones
     function Desplegar(radiosb){ 
     var ver = document.getElementById(radiosb); 
     ver.style.display = "block"; 
@@ -278,8 +264,8 @@
     var ver = document.getElementById(radiosb); 
     ver.style.display = "none"; 
     }
-</script>
 
+</script>
 
 <script>
   /*Funcion para que le salga el valor total que tendra que pagar por las horas alquiladas * el precio*/
@@ -288,17 +274,16 @@ try
   
   var cantidadHoraAlquilada = document.getElementById('cantidadHoraAlquilada').value;
   var valorHora = document.getElementById('valorHora').value;
-  //var cantidadAlquilada = document.getElementById('cantidadAlquilada').value;
   var totalPagar = document.getElementById('totalPagar');
 
-  var resultado = cantidadHoraAlquilada * valorHora; //* cantidadAlquilada;
+  var resultado = cantidadHoraAlquilada * valorHora; 
 
   totalPagar.value = resultado;
 
   }
   }catch (error) {throw error;}
 
-
 </script>
 
 @endsection
+

@@ -99,7 +99,7 @@
             </div>
 
             <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Categoria:</label>
+                <label class="col-sm-3 col-form-label">Categoría:</label>
                 <div class="col-sm-5">
                 <select name="categoria_id" id="" class="form-select rounded-pill @error('categoria_id') is-invalid @enderror">
                     {{-- se muestra el registro guardado --}}

@@ -9,10 +9,10 @@
 @section('contenido') 
 
 
-<div class="mb-5">
-    <h4 class=" text-center">
+<div class="mb-5 m-5">
+    <h2 class=" text-center">
         <strong>Detalle de proveedor</strong> 
-    </h4>   
+    </h2>   
 </div>
 
 <div class="container ">
