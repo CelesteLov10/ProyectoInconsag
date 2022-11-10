@@ -12,8 +12,8 @@
 
 <div>
   <div class="mb-5 m-5">
-      <h2 class=" text-center">
-        <strong>Registro de un nuevo proveedor</strong> 
+      <h2 class=" text-center" >
+        <strong id="titulo">Registro de un nuevo proveedor</strong> 
       </h2>
   </div>
 

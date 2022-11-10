@@ -25,7 +25,7 @@
 
 <div>
     <div class="mb-5 m-5">
-        <h2 class=" text-center" >
+        <h2 class=" text-center" id="titulo">
             <strong id="titulo">Actualización de una maquinaria</strong> 
         </h2>
     </div>

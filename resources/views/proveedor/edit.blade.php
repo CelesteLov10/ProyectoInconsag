@@ -5,8 +5,8 @@
 @section('contenido') 
 <div>
     <div class="mb-5 m-5">
-        <h2 class=" text-center">
-        <strong>Actualización del proveedor</strong> 
+        <h2 class=" text-center" >
+        <strong id="titulo">Actualización del proveedor</strong> 
         </h2>
     </div>
     <div class="container ">

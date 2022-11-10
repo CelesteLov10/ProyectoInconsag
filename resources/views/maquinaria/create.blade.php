@@ -149,7 +149,7 @@
             <label class="col-sm-3 col-form-label">Cantidad de horas alquiladas:</label>
             <div class="col-sm-5">
                 <input type="text" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
-                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 02.20" 
+                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 12" 
                     name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada')}}" maxlength="3" oninput="calcularPago()">
                     @error('cantidadHoraAlquilada')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -162,7 +162,7 @@
           <label class="col-sm-3 col-form-label">Valor por hora:</label>
           <div class="col-sm-5">
               <input type="text" id="valorHora" class="form-control rounded-pill  @error('valorHora') is-invalid @enderror" 
-              placeholder="Ingrese el precio del valor por hora. Ejem. 0000.00" 
+              placeholder="Ingrese el precio del valor por hora. Ejem. 0000" 
                   name="valorHora" value="{{old('valorHora')}}" maxlength="4" oninput="calcularPago()">
                   @error('valorHora')
                   <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>

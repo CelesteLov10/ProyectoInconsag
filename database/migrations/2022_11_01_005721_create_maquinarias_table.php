@@ -25,9 +25,8 @@ return new class extends Migration
             $table->foreign('proveedor_id')->references('id')->on('proveedores');// Restriccion llave foranea
             $table->enum('maquinaria', ['propia', 'alquilada']);
             $table->float('cantidadHoraAlquilada')->nullable();
-            //$table->integer('cantidadAlquilada')->nullable();
             $table->float('valorHora')->nullable();
-            $table->float('totalPagar')->nullable();
+            $table->bigInteger('totalPagar')->nullable();
         
             $table->timestamps();
         });

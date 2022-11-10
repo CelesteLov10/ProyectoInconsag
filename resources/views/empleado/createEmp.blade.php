@@ -16,8 +16,8 @@
 
 <div>
   <div class="mb-5 m-5">
-      <h2 class=" text-center" id="titulo">
-        <strong>Registro de un nuevo empleado</strong> 
+      <h2 class=" text-center" >
+        <strong id="titulo">Registro de un nuevo empleado</strong> 
       </h2>
   </div>
 

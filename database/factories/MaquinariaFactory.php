@@ -21,14 +21,12 @@ class MaquinariaFactory extends Factory
             'nombreMaquinaria'=>$this->faker->word(),
             'modelo'=>$this->faker->bothify('??###?'),
             'placa'=>$this->faker->bothify('???####'),
-            //'cantidad'=>$this->faker->numberBetween(1,1000),
             'descripcion'=>$this->faker->paragraph(), 
             'fechaAdquisicion'=>$this->faker->date($format = 'd-m-Y'),
             'proveedor_id'=>$this->faker->numberBetween(1,10),
             'maquinaria'=>$this->faker->randomElement(['propia', 'alquilada']),
             'cantidadHoraAlquilada' =>$this->faker->randomDigit([1,12]), 
             'valorHora'=>$this->faker->numberBetween(5, 1256), 
-            //'cantidadAlquilada'=>$this->faker->numberBetween(1,1000), 
             'totalPagar'=>$this->faker->numberBetween(1000, 9000),
          
 

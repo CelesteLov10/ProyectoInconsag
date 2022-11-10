@@ -17,10 +17,18 @@ body{
 
     opacity: 0.9;
 }
-#footer{
+footer{
     background-color:rgb(216, 207, 206);
     text-align-last: right;  
+    display: flex;
+    top: 500px;
 }
 #sinLinea{
     text-decoration-color: rgb(160, 189, 189);
+}
+
+h2 {
+    margin-top: 75px;
+    color: rgb(36, 30, 26);
+    text-align: center;
 }

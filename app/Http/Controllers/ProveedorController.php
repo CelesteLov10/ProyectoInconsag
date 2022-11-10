@@ -137,8 +137,9 @@ class ProveedorController extends Controller
             'email.required' => 'Debe ingresar el correo electrónico.',
             'email.email' => 'Debe ingresar un correo electrónico válido.',
             'email.unique' => 'El correo electrónico ya está en uso.',
+            
+            'categoria_id.required' => 'Debe seleccionar una categoría',
 
-            'categoria_id.required' => 'Debe seleccionar una categoria',
     
         ]);
         
