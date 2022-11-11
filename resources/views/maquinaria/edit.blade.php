@@ -142,7 +142,7 @@
 
         <div class="mb-3 row" id="mostrarBoton">
             <div class="offset-sm-3 col-sm-9">
-                <button type="submit" class="btn btn-outline-warning" >Actualizar </button> 
+                <button type="submit" class="btn btn-outline-warning" onclick="removeDiv();" >Actualizar </button> 
             {{-- onclick="actualizar()"  --}}
                 {{-- Boton para restablecer los valores de los campos --}}
                 <button type="reset" form="formu" class="btn btn-outline-danger">Restablecer</button> 
@@ -158,7 +158,7 @@
             <label class="col-sm-3 col-form-label">Cantidad de horas alquiladas:</label>
             <div class="col-sm-5">
                 <input type="text" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
-                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 12" 
+                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 123" 
                     name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada', $maquinaria->cantidadHoraAlquilada)}}" maxlength="3" oninput="calcularPago()">
                     @error('cantidadHoraAlquilada')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -232,22 +232,33 @@
 <script>
   //Funciones para que al dar click en el otro radioBottom se oculte y muestre lo que hay en otro*/
 
-  window.onload = function(){
+window.onload = function(){
     var x = document.getElementById("maquinariaAlquilada").checked;
     var elemento = document.getElementById("mostrar");
 
     var y = document.getElementById("maquinariaPropia").checked;
     var elemento1 = document.getElementById("mostrarBoton");
 
+    //Obtener lo valores de los dos campos cantidadHoraAlquilada y valorHora
+    var cantidadHoraAlquilada,valorHora;
+        cantidadHoraAlquilada=document.getElementById("cantidadHoraAlquilada").value;
+        valorHora=document.getElementById("valorHora").value;
+
     if (x) {
-      elemento.style.display = 'block';
-      }else if(y){
+    elemento.style.display = 'block';
+        }else if(y){
         elemento1.style.display = 'block';
     }
-}
-    document.getElementById("").addEventListener('submit', (event)=>{
-    event.preventDefault();
-});
+}  
+    /*funcion que remueve los campos ocultos cuando se actualiza de alquilada a propia*/
+    function removeDiv() {
+        const div = document.getElementById('mostrar');
+        const parent = div.parentNode;
+        parent.removeChild(div);
+    }
+        document.getElementById("").addEventListener('submit', (event)=>{
+        event.preventDefault();
+            });//no tiene funcion por ahora
 
     function Desplegar(radiosb){ 
     var ver = document.getElementById(radiosb); 

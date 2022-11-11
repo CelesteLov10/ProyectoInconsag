@@ -44,7 +44,7 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
           <div class="col-60 bg-light p-5">
-      <form action="{{route('maquinaria.store')}}" id="form1" class="maquinaria-guardar" name="formulario1" method="POST" >
+      <form action="{{route('maquinaria.store')}}" id="form1" class="maquinaria-guardar" name="formulario1" method="POST">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
         <div class="mb-3 row">
@@ -149,7 +149,7 @@
             <label class="col-sm-3 col-form-label">Cantidad de horas alquiladas:</label>
             <div class="col-sm-5">
                 <input type="text" id="cantidadHoraAlquilada" class="form-control rounded-pill  @error('cantidadHoraAlquilada') is-invalid @enderror" 
-                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 02.20" 
+                placeholder="Ingrese la cantidad de horas alquiladas. Ejem. 123" 
                     name="cantidadHoraAlquilada" value="{{old('cantidadHoraAlquilada')}}" maxlength="3" oninput="calcularPago()">
                     @error('cantidadHoraAlquilada')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -184,7 +184,7 @@
 
           <div class="mb-3 row" >
             <div class="offset-sm-3 col-sm-9">
-              <button type="submit" class="btn btn-outline-info" >Guardar</button> 
+              <button type="submit" class="btn btn-outline-info" onclick="validacion()">Guardar</button> 
             </div>
           </div>  
 
@@ -225,36 +225,50 @@
   //Funciones para que al dar click en el otro radioBottom se oculte y muestre lo que hay en otro/
   window.onload = function(){
     var x = document.getElementById("maquinariaAlquilada").checked;
-    var xx = document.getElementById("maquinariaAlquilada").value;
     var elemento = document.getElementById("mostrar");
 
     var y = document.getElementById("maquinariaPropia").checked;
     var elemento1 = document.getElementById("mostrarBoton");
     
-    //Obtener lo valores de los dos campos cantidadHoraAlquilada y valorHora
-    var cantidadHoraAlquilada,valorHora;
+    /*Condicion que al estar checkeado un radioboton, aun recargado, permanezaca visible el div seleccionado*/
+    if (x){
+      elemento.style.display = 'block';
+      }else if(y) {
+        elemento1.style.display = 'block';
+      }  
+}
+function validacion(){
+      var cantidadHoraAlquilada,valorHora;
+        cantidadHoraAlquilada=document.getElementById("cantidadHoraAlquilada").value;
+        valorHora=document.getElementById("valorHora").value;
+        
+          if(cantidadHoraAlquilada == null || cantidadHoraAlquilada.length == 0 || valorHora.length == 0) {
+          alert('Llena los campos de maquinaria alquilada');
+          document.getElementById("form1").addEventListener('submit', (event)=>{
+            event.preventDefault();   });
+          }else{
+            document.getElementById("form1").submit();
+          }
+          
+}
+
+  /* function validacion(){
+  var cantidadHoraAlquilada,valorHora;
     cantidadHoraAlquilada=document.getElementById("cantidadHoraAlquilada").value;
     valorHora=document.getElementById("valorHora").value;
-    
-    /*Condicion que al estar checkeado un radioboton, aun recargando, permanezaca visible el div seleccionado*/
-    if (x) {
-      elemento.style.display = 'block';
-    //condicion que verifica si estan vacio los campos
-        if(cantidadHoraAlquilada == "") {
-          document.getElementById("cantidadHoraAlquilada").focus();
-          var el = document.getElementById("myElement");
-          el.textContent = "*La cantidad de hora alquilada es obligatoria.";}
-          
-          if(valorHora == ""){
+  
+          if(cantidadHoraAlquilada == null || cantidadHoraAlquilada.length == 0 ) {
+        elemento.style.display = 'block';
+        document.getElementById("cantidadHoraAlquilada").focus();
+            var el = document.getElementById("myElement");
+            el.textContent = "*La cantidad de hora alquilada es obligatoria.";}
+
+          if(valorHora == null || valorHora.length == 0){
           document.getElementById("valorHora").focus();
           var ell = document.getElementById("myElement2");
           ell.textContent = "*El valor por hora alquilada es obligatorio.";}
-      
-        }else if(y){
-        elemento1.style.display = 'block';
-    } 
-} 
-
+}*/
+    
 //Funciones que permiten ocultar y desplegar los divs correspondientes al dar click en los radiobotones
     function Desplegar(radiosb){ 
     var ver = document.getElementById(radiosb); 

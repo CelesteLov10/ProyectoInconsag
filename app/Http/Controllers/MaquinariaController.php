@@ -67,7 +67,7 @@ class MaquinariaController extends Controller
             'descripcion'       => 'required|min:10|max:150',
             'fechaAdquisicion'    =>'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'proveedor_id'       => 'required',
-            'cantidadHoraAlquilada' => 'nullable|numeric|min:1|nullable|regex:/^[0-9]{1,2}+$/U', 
+            'cantidadHoraAlquilada' => 'nullable|numeric|min:1|nullable|regex:/^[0-9]{1,3}+$/U', 
             'valorHora' => 'numeric|regex:/^[0-9]{1,4}+$/|min:1|nullable', 
             //'cantidadAlquilada' => 'nullable|min:1|numeric|regex:/^[0-9]{1,4}+$/',
             'totalPagar' => 'numeric|nullable',
@@ -77,14 +77,15 @@ class MaquinariaController extends Controller
             'nombreMaquinaria.required' => 'El nombre de la maquinaria es requerido, no puede estar vacío.',
             'nombreMaquinaria.regex' => 'En el nombre de la maquinaria solo se permite un espacio entre los nombres y no permite caracteres especiales.',
 
-            //'modelo.required' => 'El modelo de la maquinaria es requerido, no puede estar vacío.',
-            //'modelo.regex' => 'En el modelo solo se permite un espacio entre cada palabra.',
+            'modelo.required' => 'El modelo de la maquinaria es requerido, no puede estar vacío.',
+            'modelo.regex' => 'En el modelo solo se permite un espacio entre cada palabra.',
 
 
             'placa.required' => 'El formato de la placa de maquinaria es requerido , no puede estar vacío.',
             'placa.min' => 'El formato de la placa debe contener mínimo 7 caracteres.',
-           //'placa.max' => 'El formato de la placa debe contener máximo 7 caracteres.', 
-           'placa.regex' => 'Formato de placa incorrecto. Ejem. "AAA0000"',            'placa.unique' => 'El número de placa ya esta en uso.',
+            //'placa.max' => 'El formato de la placa debe contener máximo 7 caracteres.', 
+            'placa.regex' => 'Formato de placa incorrecto. Ejem. "AAA0000"',            
+            'placa.unique' => 'El número de placa ya esta en uso.',
 
              
             /*'cantidadMaquinaria.required' => 'Debe ingresar la cantidad de maquinaria', 
@@ -100,8 +101,8 @@ class MaquinariaController extends Controller
 
             'proveedor_id.required' => 'Debe seleccionar el nombre del proveedor, no puede estar vacío.',
 
-            'cantidadHoraAlquilada.numeric' => 'Solo se permite números enteros. Ejem. "12"',
-            'cantidadHoraAlquilada.regex' => 'El valor es incorrecto. Ejem. "12"',
+            'cantidadHoraAlquilada.numeric' => 'Solo se permite números enteros. Ejem. "123"',
+            'cantidadHoraAlquilada.regex' => 'El valor es incorrecto. Ejem. "123"',
             'cantidadHoraAlquilada.min' => 'La cantidad de hora alquilada mínima es "1". ',
 
             'valorHora.numeric' => 'Solo se permite ingresar números.',
@@ -152,7 +153,7 @@ class MaquinariaController extends Controller
             'descripcion'       => ['required','min:10','max:150'],
             'fechaAdquisicion'  => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'proveedor_id'      => ['required'],
-            'cantidadHoraAlquilada' => ['numeric', 'nullable','min:1','regex:/^[0-9]{1,2}+$/U'], 
+            'cantidadHoraAlquilada' => ['numeric', 'nullable','min:1','regex:/^[0-9]{1,3}+$/U'], 
             'valorHora' => ['numeric', 'min:1', 'regex:/^[0-9]{1,4}+$/', 'nullable'],
             //'cantidadAlquilada' => 'nullable|min:1|numeric|regex:/^[0-9]{1,4}+$/', 
             'totalPagar' => ['numeric', 'nullable'], 
@@ -184,8 +185,8 @@ class MaquinariaController extends Controller
 
             'proveedor_id.required' => 'Debe seleccionar el nombre del proveedor, no puede estar vacío.',
 
-            'cantidadHoraAlquilada.numeric' => 'Solo se permite números enteros. Ejem. "12"',
-            'cantidadHoraAlquilada.regex' => 'El valor es incorrecto. Ejem. "12"',
+            'cantidadHoraAlquilada.numeric' => 'Solo se permite números enteros. Ejem. "123"',
+            'cantidadHoraAlquilada.regex' => 'El valor es incorrecto. Ejem. "123"',
             'cantidadHoraAlquilada.min' => 'La cantidad de hora alquilada mínima es "1". ',
 
             'valorHora.numeric' => 'Solo se permite ingresar números.',
