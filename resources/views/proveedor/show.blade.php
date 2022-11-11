@@ -11,19 +11,19 @@
 
 <div class="mb-5 m-5">
     <h2 class=" text-center">
-        <strong>Detalle de proveedor</strong> 
+        <strong id="titulo">Detalle de proveedor</strong> 
     </h2>   
 </div>
 
 <div class="container ">
-    <div class="mb-3 text-end">
+    <div class="mb-3 text-end" id="titulo">
         <a class="btn btn-outline-primary" href="{{route('proveedor.index')}}">
             <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
     </div>
     {{-- encabezado --}}
-    <div class = " card shadow ab-4 " >
+    <div class = " card shadow ab-4 bg-success bg-gradient" >
         <div class = " card-header py-3 " >
-            <h5 class = "n-font-weight-bold text-primary">Detalles de {{$proveedor->nombreProveedor}}</h5 > 
+            <h5 class = "n-font-weight-bold text-white">Detalles de {{$proveedor->nombreProveedor}}</h5 > 
         </div >
 
     <div class="vh-50 row m-0 text-left align-items-center justify-content-center">

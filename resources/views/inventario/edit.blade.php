@@ -15,7 +15,7 @@
 <div>
     <div class="mb-5 m-5">
         <h2 class=" text-center">
-        <strong>Actualización del inventario</strong> 
+        <strong id="titulo">Actualización del inventario</strong> 
         </h2>
     </div>
     <div class="container ">

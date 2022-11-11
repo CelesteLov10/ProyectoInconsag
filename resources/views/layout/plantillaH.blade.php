@@ -87,7 +87,7 @@
     </main>
 </div>
 
-      <div id="footer">
+      <div>
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 mb-0 border-top">
           <p id= "par" class="col-md-7 mb-0 text-muted ">©copyright 2022 CCFS</p>
         </footer>

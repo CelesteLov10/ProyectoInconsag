@@ -6,7 +6,7 @@
 <div>
   <div class="mb-5 m-5">
       <h2 class=" text-center">
-        <strong>Registro de un nuevo puesto laboral</strong> 
+        <strong id="titulo">Registro de un nuevo puesto laboral</strong> 
       </h2>
   </div>
   <div class="container ">

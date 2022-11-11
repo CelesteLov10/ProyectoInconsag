@@ -15,7 +15,7 @@
 <div>
   <div class="mb-5 m-5">
       <h2 class=" text-center">
-        <strong>Actualización de un empleado</strong>  
+        <strong id="titulo">Actualización de un empleado</strong>  
       </h2>
   </div>
 

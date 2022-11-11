@@ -10,8 +10,8 @@
 
 <div>
     <div class="mb-5 m-5">
-        <h2 class=" text-center">
-            <strong>Detalle de Maquinaria</strong> 
+        <h2 class=" text-center" >
+            <strong id="titulo">Detalle de Maquinaria</strong> 
         </h2>   
     </div>
 

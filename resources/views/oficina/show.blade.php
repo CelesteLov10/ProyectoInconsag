@@ -11,7 +11,7 @@
 <div>
 <div class="mb-5 m-5">
     <h2 class=" text-center">
-        <strong>Detalle de oficina</strong> 
+        <strong id="titulo">Detalle de oficina</strong> 
     </h2>   
 </div>
 
