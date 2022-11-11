@@ -134,6 +134,7 @@ Route::controller(MaquinariaController::class)->group(function(){
         //Ruta para mostrar un maquinariaes
         Route::get('/maquinaria/{id}', 'show')->name('maquinaria.show')
         ->where('id','[0-9]+');
+      
         //Ruta para editar un maquinaria
         Route::get('/maquinaria/{id}/edit', 'edit')->name('maquinaria.edit');
         //Ruta para el metodo editar

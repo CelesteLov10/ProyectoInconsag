@@ -51,6 +51,7 @@ class MaquinariaController extends Controller
         //select fecha from perfiles_evento where perfiles_evento.fecha IS NULL;
     }
 
+
     
     public function create(){   
         $proveedor = Proveedor::orderBy('nombreProveedor')->get();

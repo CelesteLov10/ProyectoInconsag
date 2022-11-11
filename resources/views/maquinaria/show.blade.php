@@ -36,50 +36,72 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">Nombre de maquinaria</th>
-                <td>{{$maquinaria->nombreMaquinaria}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Modelo</th>
-                <td>{{$maquinaria->modelo}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Placa</th>
-                <td>{{$maquinaria->placa}}</td>    
-            </tr>
-            {{--<tr>
-                <th scope="row">Cantidad de maquinaria</th>
-                <td>{{$maquinaria->cantidad}}</td>    
-            </tr>--}}
-            <tr>
-                <th scope="row">Descripción</th>
-                <td>{{$maquinaria->descripcion}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Fecha de adquisición</th>
-                <td>{{$maquinaria->fechaAdquisicion}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Proveedor</th>
-                <td>{{$maquinaria->proveedor->nombreProveedor}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Cantidad de hora Alquilada</th>
-                <td>{{$maquinaria->cantidadHoraAlquilada}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Valor por hora</th>
-                <td>{{$maquinaria->valorHora}}</td>    
-            </tr>
-            {{--<tr>
-                <th scope="row">Cantidad de maquinaria alquilada</th>
-                <td>{{$maquinaria->cantidadAlquilada}}</td>    
-            </tr>--}}
-            <tr>
-                <th scope="row">Total a Pagar</th>
-                <td>{{$maquinaria->totalPagar}}</td>    
-            </tr>
+            @if($maquinaria->cantidadHoraAlquilada == null)
+                <tr>
+                    <th scope="row">Nombre de maquinaria</th>
+                    <td>{{$maquinaria->nombreMaquinaria}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Modelo</th>
+                    <td>{{$maquinaria->modelo}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Placa</th>
+                    <td>{{$maquinaria->placa}}</td>    
+                </tr>
+            
+                <tr>
+                    <th scope="row">Descripción</th>
+                    <td>{{$maquinaria->descripcion}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Fecha de adquisición</th>
+                    <td>{{$maquinaria->fechaAdquisicion}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Proveedor</th>
+                    <td>{{$maquinaria->proveedor->nombreProveedor}}</td>    
+                </tr>
+            @else
+                <tr>
+                    <th scope="row">Nombre de maquinaria</th>
+                    <td>{{$maquinaria->nombreMaquinaria}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Modelo</th>
+                    <td>{{$maquinaria->modelo}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Placa</th>
+                    <td>{{$maquinaria->placa}}</td>    
+                </tr>
+            
+                <tr>
+                    <th scope="row">Descripción</th>
+                    <td>{{$maquinaria->descripcion}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Fecha de adquisición</th>
+                    <td>{{$maquinaria->fechaAdquisicion}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Proveedor</th>
+                    <td>{{$maquinaria->proveedor->nombreProveedor}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Cantidad de hora Alquilada</th>
+                    <td>{{$maquinaria->cantidadHoraAlquilada}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Valor por hora</th>
+                    <td>{{$maquinaria->valorHora}}</td>    
+                </tr>
+             
+                <tr>
+                    <th scope="row">Total a Pagar</th>
+                    <td>{{$maquinaria->totalPagar}}</td>    
+                </tr>
+            @endif
         </tbody>
     </table>
 </div>
