@@ -69,6 +69,8 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/proveedor', 'proveedor')->name('proveedor.search');
     //Ruta para listado maquinaria:
     Route::get('search/maquinaria', 'maquinaria')->name('maquinaria.search');
+    //Ruta para listado Bloque:
+    Route::get('search/bloque', 'bloque')->name('bloque.search');
     
 });
 
@@ -87,7 +89,7 @@ Route::controller(InventarioController::class)->group(function(){
     //Ruta para el metodo editar
     Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');
     //Ruta para imprimir el listado del inventario
-    Route::get('/inventario/pdf', 'pdf')->name('inventario.pdf');
+    Route::get('/inventario/{id}/pdf', 'pdf')->name('inventario.pdf');
 });
 
 Route::controller(OficinaController::class)->group(function(){
@@ -149,7 +151,7 @@ Route::controller(BloqueController::class)->group(function(){
     Route::get('/bloque', 'index')->name('bloque.index');
     //Ruta para crear un nuevo bloque
     Route::get('/bloque/create', 'create')->name('bloque.create');
-    //Ruta para guardar los registros del bloque
+    //Ruta para guardar los registros de bloque
     Route::post('/bloque', 'store')->name('bloque.store');
     //Ruta para mostrar un bloque
     Route::get('/bloque/{id}', 'show')->name('bloque.show')

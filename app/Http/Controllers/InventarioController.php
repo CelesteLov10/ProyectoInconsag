@@ -32,7 +32,7 @@ class InventarioController extends Controller
     }
 
     // Metodo para mostrar pdf
-    public function pdf (){
+    public function pdf (request $request){
 
         $inventarios = Inventario::all();    
         $empleado = Empleado::all();

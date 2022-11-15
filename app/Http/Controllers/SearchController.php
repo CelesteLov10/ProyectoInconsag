@@ -9,6 +9,7 @@ use App\Models\Maquinaria;
 use App\Models\Oficina;
 use App\Models\Proveedor;
 use App\Models\Puesto;
+use App\Models\Bloque;
 
 class SearchController extends Controller
 {
@@ -85,6 +86,18 @@ class SearchController extends Controller
         foreach($querys as $query){
         $data[] = [
         'label' => $query->nombreMaquinaria
+        ];
+        }
+        return $data;
+    }
+    public function bloque(Request $request){
+        $term = $request->get('term');
+        $querys = Bloque::where('nombreBloque', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->nombreBloque
         ];
         }
         return $data;
