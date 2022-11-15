@@ -7,6 +7,7 @@ use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\MaquinariaController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\BloqueController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -141,4 +142,21 @@ Route::controller(MaquinariaController::class)->group(function(){
         Route::put('/maquinaria/{id}/edit', 'update')->name('maquinaria.update');
         //Ruta para imprimir el listado de maquinaria
         Route::get('/maquinaria/pdf', 'pdf')->name('maquinaria.pdf');
+});
+
+Route::controller(BloqueController::class)->group(function(){
+    //Ruta para listado de bloque
+    Route::get('/bloque', 'index')->name('bloque.index');
+    //Ruta para crear un nuevo bloque
+    Route::get('/bloque/create', 'create')->name('bloque.create');
+    //Ruta para guardar los registros del bloque
+    Route::post('/bloque', 'store')->name('bloque.store');
+    //Ruta para mostrar un bloque
+    Route::get('/bloque/{id}', 'show')->name('bloque.show')
+    ->where('id','[0-9]+');
+  
+    //Ruta para editar un bloque
+    Route::get('/bloque/{id}/edit', 'edit')->name('bloque.edit');
+    //Ruta para el metodo editar
+    Route::put('/bloque/{id}/edit', 'update')->name('bloque.update');
 });

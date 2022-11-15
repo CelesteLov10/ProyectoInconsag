@@ -11,6 +11,7 @@ use App\Models\Maquinaria;
 use App\Models\Oficina;
 use App\Models\Proveedor;
 use App\Models\Municipio;
+use App\Models\Bloque;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -35,5 +36,6 @@ class DatabaseSeeder extends Seeder
         Inventario::factory(100)->create();
         Proveedor::factory(10)->create();
         Maquinaria::factory(30)->create();
+        Bloque::factory(30)->create();
     }
 }
