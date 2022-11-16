@@ -47,10 +47,10 @@ class BloqueController extends Controller
 
         $bloque->nombreBloque = $request->nombreBloque;
         $bloque->cantidadLotes = $request->cantidadLotes;
-        $bloque->colindancia = $request->colindancia;
-        $bloque->colindancia = $request->colindancia;
-        $bloque->colindancia = $request->colindancia;
-        $bloque->colindancia = $request->colindancia;
+        $bloque->colindanciaN = $request->colindanciaN;
+        $bloque->colindanciaS = $request->colindanciaS;
+        $bloque->colindanciaE = $request->colindanciaE;
+        $bloque->colindanciaO = $request->colindanciaO;
         $bloque->subirfoto = $request->subirfoto;
 
         $create = $bloque->save();

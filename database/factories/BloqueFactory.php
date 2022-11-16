@@ -19,7 +19,10 @@ class BloqueFactory extends Factory
         return [
             'nombreBloque'=>$this->faker->word(),                                  
             'cantidadLotes'=>$this->faker->numberBetween(1,100),
-            'colindancia'=>$this->faker->text(),
+            'colindanciaN'=>$this->faker->address(),
+            'colindanciaS'=>$this->faker->address(),
+            'colindanciaE'=>$this->faker->address(),
+            'colindanciaO'=>$this->faker->address(),
             'subirfoto'=>$this->faker->imageUrl($width = 640, $height = 480),
         ];
     }
