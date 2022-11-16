@@ -39,17 +39,17 @@ class BloqueController extends Controller
 
         $bloque->nombreBloque = $request->nombreBloque;
         $bloque->cantidadLotes = $request->cantidadLotes;
-        $bloque->colindancia = $request->colindancia;
-        $bloque->colindancia = $request->colindancia;
-        $bloque->colindancia = $request->colindancia;
-        $bloque->colindancia = $request->colindancia;
+        $bloque->colindanciaN = $request->colindanciaN;
+        $bloque->colindanciaS = $request->colindanciaS;
+        $bloque->colindanciaO = $request->colindanciaO;
+        $bloque->colindanciaE = $request->colindanciaE;
         $bloque->subirfoto = $request->subirfoto;
 
         $create = $bloque->save();
         
         if ($create){
             return redirect()->route('bloque.index')
-            ->with('mensaje', 'Se guardó el registro de la nueva oficina correctamente');
+            ->with('mensaje', 'Se guardó el registro del nuevo bloque correctamente');
         } 
     }
         

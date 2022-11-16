@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('bloques', function (Blueprint $table) {
             $table->id();
-            $table->string('nombreBloque');
+            $table->string('nombreBloque')->unique();
             $table->integer('cantidadLotes');
-            $table->string('colindancia');
+            $table->string('colindanciaN');
+            $table->string('colindanciaS');
+            $table->string('colindanciaE');
+            $table->string('colindanciaO');
             $table->string('subirfoto');
             $table->timestamps();
         });
