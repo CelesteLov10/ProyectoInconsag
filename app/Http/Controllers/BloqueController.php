@@ -9,12 +9,20 @@ class BloqueController extends Controller
 {
     
     public function index(){   
-        
+
+    $bloques = Bloque::query()
+    ->when(request('search'), function($query){
+    return $query->where('nombreBloque', 'LIKE', '%' .request('search') .'%');
+    })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+
+    return view('bloque.index', compact('bloques'));
     }
+
     public function create(){  
         //$bloque = Bloque::all(); 
         return view('bloque.create');
     }
+    
     public function show(){   
         
     }
@@ -39,10 +47,10 @@ class BloqueController extends Controller
 
         $bloque->nombreBloque = $request->nombreBloque;
         $bloque->cantidadLotes = $request->cantidadLotes;
-        $bloque->colindanciaN = $request->colindanciaN;
-        $bloque->colindanciaS = $request->colindanciaS;
-        $bloque->colindanciaO = $request->colindanciaO;
-        $bloque->colindanciaE = $request->colindanciaE;
+        $bloque->colindancia = $request->colindancia;
+        $bloque->colindancia = $request->colindancia;
+        $bloque->colindancia = $request->colindancia;
+        $bloque->colindancia = $request->colindancia;
         $bloque->subirfoto = $request->subirfoto;
 
         $create = $bloque->save();

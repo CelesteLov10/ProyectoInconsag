@@ -157,8 +157,5 @@ Route::controller(BloqueController::class)->group(function(){
     Route::get('/bloque/{id}', 'show')->name('bloque.show')
     ->where('id','[0-9]+');
   
-    //Ruta para editar un bloque
-    Route::get('/bloque/{id}/edit', 'edit')->name('bloque.edit');
-    //Ruta para el metodo editar
-    Route::put('/bloque/{id}/edit', 'update')->name('bloque.update');
+   
 });
