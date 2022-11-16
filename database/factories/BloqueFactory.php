@@ -17,7 +17,7 @@ class BloqueFactory extends Factory
     public function definition()
     {
         return [
-            'nombreBloque'=>$this->faker->word(),                                  
+            'nombreBloque'=>$this->faker->unique()->word(),                                  
             'cantidadLotes'=>$this->faker->numberBetween(1,100),
             'colindanciaN'=>$this->faker->address(),
             'colindanciaS'=>$this->faker->address(),

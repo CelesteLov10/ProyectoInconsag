@@ -32,10 +32,10 @@ class BloqueController extends Controller
         /*Bloque::create([
             'nombreBloque'=>$request ['nombreBloque'],
             'cantidadLotes'=>$request ['cantidadLotes'],
-            'colindancia'=>$request ['colindancia'],
-            'colindancia'=>$request ['colindancia'],
-            'colindancia'=>$request ['colindancia'],
-            'colindancia'=>$request ['colindancia'],
+            'colindanciaN'=>$request ['colindanciaN'],
+            'colindanciaS'=>$request ['colindanciaS'],
+            'colindanciaE'=>$request ['colindanciaE'],
+            'colindanciaO'=>$request ['colindanciaO'],
             'subirfoto'=>$request ['subirfoto'],
              
             
