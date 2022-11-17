@@ -52,9 +52,9 @@
                         @error('cantidadLotes')
                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                         @enderror
-                        <div ><small class="text-danger" id="myElement" ></small></div>
                 </div>
             </div>
+
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Colindancia Norte:</label>
                 <div class="col-sm-5">
@@ -64,47 +64,45 @@
                         @error('colindanciaN')
                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                         @enderror
-                        <div ><small class="text-danger" id="myElement" ></small></div>
-                        <br>
-                    </div>
-                    <div class="mb-3 row">
+              </div>
+
+              <div class="mb-3 row">
                       <label class="col-sm-3 col-form-label">Colindancia Sur:</label>
-                     <div class="col-sm-5">
-                       <textarea type="text" id="colindanciaS" class="form-control rounded-pill  @error('colindanciaS') is-invalid @enderror" 
-                         placeholder="Ingrese la colindancia sur del bloque." 
+                    <div class="col-sm-5">
+                      <textarea type="text" id="colindanciaS" class="form-control rounded-pill  @error('colindanciaS') is-invalid @enderror" 
+                          placeholder="Ingrese la colindancia sur del bloque." 
                           name="colindanciaS" value="{{old('colindanciaS')}}" maxlength="150"></textarea>
                           @error('colindanciaS')
-                             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                           @enderror
-                           <div ><small class="text-danger" id="myElement" ></small></div>
+                            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                          @enderror
                     </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Colindancia Este:</label>
+                <div class="col-sm-5">
+                  <textarea type="text" id="colindanciaE" class="form-control rounded-pill  @error('colindanciaE') is-invalid @enderror" 
+                  placeholder="Ingrese la colindancia este del bloque. " 
+                      name="colindanciaE" value="{{old('colindanciaE')}}" maxlength="150"></textarea>
+                      @error('colindanciaE')
+                      <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                      @enderror
                   </div>
-                <div class="mb-3 row">
-               <label class="col-sm-3 col-form-label">Colindancia Este:</label>
-               <div class="col-sm-5">
-                <textarea type="text" id="colindanciaE" class="form-control rounded-pill  @error('colindanciaE') is-invalid @enderror" 
-                placeholder="Ingrese la colindancia este del bloque. " 
-                    name="colindanciaE" value="{{old('colindanciaE')}}" maxlength="150"></textarea>
-                    @error('colindanciaE')
-                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-                    <div ><small class="text-danger" id="myElement" ></small></div>
-             </div>
               </div>
-             </div>
-             <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Colindancia Oeste:</label>
-             <div class="col-sm-5">
-             <textarea type="text" id="colindanciaO" class="form-control rounded-pill  @error('colindanciaO') is-invalid @enderror" 
-              placeholder="Ingrese la colindancia oeste del bloque" 
-              name="colindanciaO" value="{{old('colindanciaO')}}" maxlength="150"></textarea>
-              @error('colindanciaO')
-              <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-              @enderror
-              <div ><small class="text-danger" id="myElement" ></small></div>
-              </div>
-              </div>
-                 <div class="mb-3 row">
+
+              <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">Colindancia Oeste:</label>
+                <div class="col-sm-5">
+                <textarea type="text" id="colindanciaO" class="form-control rounded-pill  @error('colindanciaO') is-invalid @enderror" 
+                  placeholder="Ingrese la colindancia oeste del bloque" 
+                  name="colindanciaO" value="{{old('colindanciaO')}}" maxlength="150"></textarea>
+                  @error('colindanciaO')
+                  <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                  @enderror
+                  </div>
+            </div>
+
+            <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Subir Foto:</label>
                 <div class="col-sm-5">
                     <input accept="image/*" type="file" id="subirfoto" class="form-control rounded-pill  @error('subirfoto') is-invalid @enderror" 
@@ -115,11 +113,12 @@
                         <div ><small class="text-danger" id="myElement" ></small></div>
                 </div>
             </div>
+
             <div class="mb-3 row">
               <div class="offset-sm-3 col-sm-9">
                 <button type="submit" class="btn btn-outline-info">Guardar</button> 
-              </div>
-        </div>  
+            </div>
+          </div>  
         </form>
             </div>
         </div>

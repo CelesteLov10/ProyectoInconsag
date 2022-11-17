@@ -13,25 +13,47 @@
 
 @section('contenido') 
 
-<div>
-    {{-- Campo de busqueda  --}}
-    <form method="GET" action="">
-      <div class="container">
-          <div class="vh-50 row m-5 text-center align-items-center justify-content-center">
-              <div class="col-7 p-2">
-                  <div class="input-group">
-                        <input type="text" name="search" id="search"  class="form-control"
-                        placeholder="Buscar por nombre de proveedor, nombre del contacto y categoria" 
-                        value="{{request('search')}}"/> {{-- busca por nombre de proveedor, nombre del contacto y categoria --}}
-                      <button type="submit" class="btn btn-outline-primary">
-                        <i class="bi bi-search"></i>
-                      </button>
-                    </div>
+<div> 
+    <header class="blog-header py-3 mt-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-14 text-center">
+            <h3 class="blog-header-logo text-dark">Listado de proveedores</h3>
+          <hr>
+        </div>
+      </div>
+    </header>
+  
+    <div class="mb-3 text-end">
+      <p style="display: inline">
+        <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <i class="bi bi-search"></i>
+        </button>
+      </p>
+      <a class="btn btn-outline-success text-right" href="{{route('proveedor.create')}}">Nuevo proveedor  <i class="bi bi-person-plus"></i></a>
+    </div>
+    <div class="collapse mb-3 mt-3" id="collapseExample">
+      <div class="card card-body p-2">
+            {{-- Campo de busqueda  --}}
+        <form method="GET" action="">
+          <div class="container">
+              <div class="vh-50 row text-center align-items-center justify-content-center">
+                  <div class="col-8 p-1">
+                      <div class="input-group">
+                            <input type="text" name="search" id="search"  class="form-control"
+                            placeholder="Buscar por nombre de proveedor, nombre del contacto y categoria" 
+                            value="{{request('search')}}"/> 
+                          <button type="submit" class="btn btn-outline-primary">
+                            <i class="bi bi-search"></i> Buscar
+                          </button>
+                        </div>
+                      </div>
                   </div>
               </div>
-          </div>
-      </div>    
-    </form>  
+          </div>    
+        </form> 
+      </div>
+    </div>
+
   <div class="container">
 
         {{-- alerta de mensaje cuando se guardo correctamente --}}
@@ -50,9 +72,6 @@
           </div>
           @endif
 
-      <div class="mb-3 text-end">
-          <a class="btn btn-outline-success text-right" href="{{route('proveedor.create')}}">Nuevo proveedor  <i class="bi bi-person-plus"></i></a>
-      </div>
         {{-- encabezado style="text-decoration:none"--}}
         <div class = " card shadow ab-4 bg-success bg-gradient " >
           <div class = " card-header py-3 " >

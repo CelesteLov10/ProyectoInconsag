@@ -36,14 +36,12 @@ class BloqueController extends Controller
             'colindanciaS'=>$request ['colindanciaS'],
             'colindanciaE'=>$request ['colindanciaE'],
             'colindanciaO'=>$request ['colindanciaO'],
-            'subirfoto'=>$request ['subirfoto'],
-             
-            
+            'subirfoto'=>$request ['subirfoto'],  
         ]);
             return redirect()->route('bloque.index')
             ->with('mensaje', 'Se guardó un nuevo bloque correctamente');*/
 
-            $bloque = new bloque();
+        $bloque = new bloque();
 
         $bloque->nombreBloque = $request->nombreBloque;
         $bloque->cantidadLotes = $request->cantidadLotes;

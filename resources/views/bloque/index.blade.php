@@ -12,22 +12,45 @@
 @section('contenido') 
 
 <div>
-      {{-- Campo de busqueda  --}}
-      <form method="GET" action="">
-        <div class="container">
-            <div class="vh-50 row m-5 text-center align-items-center justify-content-center">
-                <div class="col-7 p-2">
-                    <div class="input-group">
-                          <input type="text" name="search" id="search"  class="form-control"
-                          placeholder="Buscar por nombre del bloque" value="{{request('search')}}"/> {{-- busca por nombre del bloque --}}
-                        <button type="submit" class="btn btn-outline-primary">
-                          <i class="bi bi-search"></i></button>
-                      </div>
+      <header class="blog-header py-3 mt-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-14 text-center">
+              <h3 class="blog-header-logo text-dark">Listado de terrenos</h3>
+            <hr>
+          </div>
+        </div>
+      </header>
+    
+      <div class="mb-3 text-end">
+        <p style="display: inline">
+          <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <i class="bi bi-search"></i>
+          </button>
+        </p>
+        <a class="btn btn-outline-success text-right" href="{{route('bloque.create')}}">Nuevo bloque <i class="bi bi-plus-square-dotted"></i></a>
+      </div>
+      <div class="collapse mb-3 mt-3" id="collapseExample">
+        <div class="card card-body p-2">
+              {{-- Campo de busqueda  --}}
+          <form method="GET" action="">
+            <div class="container">
+                <div class="vh-50 row text-center align-items-center justify-content-center">
+                    <div class="col-8 p-1">
+                        <div class="input-group">
+                              <input type="text" name="search" id="search"  class="form-control"
+                              placeholder="Buscar por nombre del bloque" 
+                              value="{{request('search')}}"/> {{-- busca por identidad nombre empleado y nombre cargo --}}
+                            <button type="submit" class="btn btn-outline-primary">
+                              <i class="bi bi-search"></i> Buscar
+                            </button>
+                          </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>    
-      </form>
+            </div>    
+          </form> 
+        </div>
+      </div>
 
   <div class="container">
 
@@ -47,9 +70,6 @@
         </div>
         @endif
 
-      <div class="mb-3 text-end">
-          <a class="btn btn-outline-success text-right" href="{{route('bloque.create')}}">Nuevo bloque <i class="bi bi-plus-square-dotted"></i></a>
-      </div>
         {{-- encabezado style="text-decoration:none"--}}
         <div class = " card shadow ab-4 bg-success bg-gradient" >
           <div class = " card-header py-3 " >

@@ -89,7 +89,7 @@ Route::controller(InventarioController::class)->group(function(){
     //Ruta para el metodo editar
     Route::put('/inventario/{id}/edit', 'update')->name('inventario.update');
     //Ruta para imprimir el listado del inventario
-    Route::get('/inventario/{id}/pdf', 'pdf')->name('inventario.pdf');
+    Route::get('/inventario/pdf', 'pdf')->name('inventario.pdf');
 });
 
 Route::controller(OficinaController::class)->group(function(){
