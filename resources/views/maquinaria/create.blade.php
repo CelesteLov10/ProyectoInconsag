@@ -44,7 +44,7 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
           <div class="col-60 bg-light p-5">
-      <form action="{{route('maquinaria.store')}}" id="form1" class="maquinaria-guardar" name="formulario1" method="POST">
+      <form action="{{route('maquinaria.store')}}" id="form1" class="maquinaria-guardar" name="formulario1" method="POST" autocomplete="off">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
         <div class="mb-3 row">
@@ -243,7 +243,7 @@ function validacion(){
         valorHora=document.getElementById("valorHora").value;
         
           if(cantidadHoraAlquilada == null || cantidadHoraAlquilada.length == 0 || valorHora.length == 0) {
-          alert('Llena los campos de maquinaria alquilada');
+          Swal.fire('Llena los campos de maquinaria alquilada!');
           document.getElementById("form1").addEventListener('submit', (event)=>{
             event.preventDefault();   });
           }else{

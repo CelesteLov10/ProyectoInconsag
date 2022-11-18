@@ -10,7 +10,9 @@
     esto es para que todas las plantillas tengan el mismo estilo-->
     {{-- ICONS BOOTSTRAP --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
+    {{-- ALERTS SWEET --}}
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <title>@yield('titulo')</title>
     {{-- cdn para los select dependientes --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

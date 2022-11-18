@@ -23,7 +23,7 @@
       </div >
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
       <div class="col-60 bg-light p-5">   
-    <form action="{{route('oficina.update', $oficina)}}" id="form1" class="oficina-actualizar" method="POST">
+    <form action="{{route('oficina.update', $oficina)}}" id="form1" class="oficina-actualizar" method="POST" autocomplete="off">
         <!-- metodo put para que guarde los cambios en la base de datos-->
         @method('put')
 

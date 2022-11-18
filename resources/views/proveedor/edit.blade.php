@@ -22,7 +22,7 @@
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
         <div class="col-60 bg-light p-5">
-        <form action="{{route('proveedor.update', $proveedor)}}" id="formu"  method="POST">
+        <form action="{{route('proveedor.update', $proveedor)}}" id="formu"  method="POST" autocomplete="off">
             @method('put')
             @csrf {{-- TOKEN INPUT OCULTO --}}
 

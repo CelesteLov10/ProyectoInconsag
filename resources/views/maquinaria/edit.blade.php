@@ -44,7 +44,7 @@
 
         <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
             <div class="col-60 bg-light p-5">
-    <form action="{{route('maquinaria.update', $maquinaria)}}" id="formu" class="maquinaria-guardar" name="formulario1" method="POST">
+    <form action="{{route('maquinaria.update', $maquinaria)}}" id="formu" class="maquinaria-guardar" name="formulario1" method="POST" autocomplete="off">
          <!-- metodo put para que guarde los cambios en la base de datos-->
         @method('put')    
         @csrf {{-- TOKEN INPUT OCULTO --}}
@@ -191,7 +191,7 @@
 
         <div class="mb-3 row">
             <div class="offset-sm-3 col-sm-9">
-              <button type="submit" class="btn btn-outline-warning" >Actualizar </button> 
+              <button type="submit" class="btn btn-outline-warning" onclick="validacion()">Actualizar </button> 
           {{-- onclick="actualizar()"  --}}
               {{-- Boton para restablecer los valores de los campos --}}
               <button type="reset" form="formu" class="btn btn-outline-danger">Restablecer</button> 
@@ -250,6 +250,20 @@ window.onload = function(){
         elemento1.style.display = 'block';
     }
 }  
+function validacion(){
+      var cantidadHoraAlquilada,valorHora;
+        cantidadHoraAlquilada=document.getElementById("cantidadHoraAlquilada").value;
+        valorHora=document.getElementById("valorHora").value;
+        
+          if(cantidadHoraAlquilada == null || cantidadHoraAlquilada.length == 0 || valorHora.length == 0) {
+          Swal.fire('Llena los campos de maquinaria alquilada!');
+          document.getElementById("formu").addEventListener('submit', (event)=>{
+            event.preventDefault();   });
+          }else{
+            document.getElementById("formu").submit();
+          }
+          
+}
     /*funcion que remueve los campos ocultos cuando se actualiza de alquilada a propia*/
     function removeDiv() {
         const div = document.getElementById('mostrar');

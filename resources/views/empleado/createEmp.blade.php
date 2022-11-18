@@ -37,7 +37,7 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
           <div class="col-60 bg-light p-5">
-      <form action="{{route('empleado.storeEmp')}}" id="p" class="empleado-guardar" method="POST">
+      <form action="{{route('empleado.storeEmp')}}" id="p" class="empleado-guardar" method="POST" autocomplete="off">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
         <div class="mb-3 row">

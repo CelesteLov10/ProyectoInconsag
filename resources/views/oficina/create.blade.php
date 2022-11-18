@@ -31,7 +31,7 @@
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
         <div class="col-60 bg-light p-5">
-    <form action="{{route('oficina.store')}}" class="puesto-guardar" method="POST">
+    <form action="{{route('oficina.store')}}" class="puesto-guardar" method="POST" autocomplete="off">
         @csrf {{-- TOKEN INPUT OCULTO --}}
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre de la oficina:</label>

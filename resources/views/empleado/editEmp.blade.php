@@ -32,7 +32,7 @@
         </div >
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
         <div class="col-60 bg-light p-5">   
-      <form action="{{route('empleado.update', $empleado)}}" id="formu" class="empleado-actualizar" method="POST">
+      <form action="{{route('empleado.update', $empleado)}}" id="formu" class="empleado-actualizar" method="POST" autocomplete="off">
           <!-- metodo put para que guarde los cambios en la base de datos-->
           @method('put')
           @csrf {{-- TOKEN INPUT OCULTO --}}
