@@ -8,6 +8,7 @@ use App\Http\Controllers\MaquinariaController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\BloqueController;
+use App\Http\Controllers\LoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -158,4 +159,14 @@ Route::controller(BloqueController::class)->group(function(){
     ->where('id','[0-9]+');
   
    
+});
+//Ruta para bloques
+Route::controller(LoteController::class)->group(function(){
+
+    //Ruta para crear un "nuevo lote"
+    Route::get('/lote/create', 'create')->name('lote.create');
+    //Ruta para guardar los registros del lote
+    Route::post('/lote', 'store')->name('lote.store');
+  
+
 });

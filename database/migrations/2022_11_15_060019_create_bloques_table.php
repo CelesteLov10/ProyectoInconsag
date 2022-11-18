@@ -17,10 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('nombreBloque')->unique();
             $table->integer('cantidadLotes');
-            $table->string('colindanciaN');
-            $table->string('colindanciaS');
-            $table->string('colindanciaE');
-            $table->string('colindanciaO');
             $table->string('subirfoto');
             $table->timestamps();
         });
