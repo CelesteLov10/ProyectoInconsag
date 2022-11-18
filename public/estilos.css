@@ -51,4 +51,23 @@ h3 {
     box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
 }
 
+table {
+    width: 100%;
+  }
+  
+  th {
+    height: 70px;
+  }
+  tr:hover {background-color: rgb(9, 172, 4);}
+
+  .title{
+    background-color: rgb(11, 143, 99);
+    text-align: center;
+  }
+
+  #lotess{
+    height: 50vh;
+    overflow-y: scroll;
+  }
+
 

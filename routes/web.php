@@ -168,6 +168,8 @@ Route::controller(LoteController::class)->group(function(){
     Route::get('/lote/create', 'create')->name('lote.create');
     //Ruta para guardar los registros del lote
     Route::post('/lote', 'store')->name('lote.store');
+    Route::post('/getLotes', 'getLotes');
+    Route::get('/getLotes', 'getLotes');
 
 });
 

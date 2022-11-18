@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bloque;
 use App\Models\Lote;
 use Illuminate\Http\Request;
+use mysqli;
 
 class LoteController extends Controller
 {
@@ -36,4 +37,29 @@ public function store(Request $request){
         ->with('mensaje', 'Se registrarón los lotes correctamente');
     } 
 }
+
+public function getLotes(){
+    $lotes = json_decode($_POST['json'],true);
+    //echo var_dump($lotes);
+    require 'conexion.php';
+    foreach ($lotes as $lote){
+        $numLote = $lote['numLote'];
+        $medidaLateralR = $lote['medidaLateralR'];
+        $medidaLateralL = $lote['medidaLateralL'];
+        $medidaEnfrente = $lote['medidaEnfrente'];
+        $medidaAtras = $lote['medidaAtras'];
+        $colindanciaN = $lote['colindanciaN'];
+        $colindanciaS = $lote['colindanciaS'];
+        $colindanciaE = $lote['colindanciaE'];
+        $colindanciaO = $lote['colindanciaO'];
+
+        $guardar = mysqli_query($con,"INSERT INTO lotes (
+            numLote, medidaLateralR, medidaLateralL, medidaEnfrente, medidaAtras,
+            colindanciaN, colindanciaS, colindanciaE, colindanciaO 
+        ) VALUES('$numLote', '$medidaLateralR', '$medidaLateralL', '$medidaEnfrente', '$medidaAtras',
+            '$colindanciaN', '$colindanciaS', '$colindanciaE', '$colindanciaO' )" );
+    }
+}
+
+
 }
