@@ -8,6 +8,7 @@ use App\Http\Controllers\MaquinariaController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\BloqueController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\LoteController;
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +73,8 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/maquinaria', 'maquinaria')->name('maquinaria.search');
     //Ruta para listado Bloque:
     Route::get('search/bloque', 'bloque')->name('bloque.search');
+    //Ruta para listado cliente
+    Route::get('search/cliente', 'cliente')->name('cliente.search');
     
 });
 
@@ -129,22 +132,21 @@ Route::controller(ProveedorController::class)->group(function(){
 });
 
 Route::controller(MaquinariaController::class)->group(function(){
-        //Ruta para listado de proveedores
-        Route::get('/maquinaria', 'index')->name('maquinaria.index');
-        //Ruta para crear un nuevo maquinaria
-        Route::get('/maquinaria/create', 'create')->name('maquinaria.create');
-        //Ruta para guardar los registros del maquinaria
-        Route::post('/maquinaria', 'store')->name('maquinaria.store');
-        //Ruta para mostrar un maquinariaes
-        Route::get('/maquinaria/{id}', 'show')->name('maquinaria.show')
-        ->where('id','[0-9]+');
-      
-        //Ruta para editar un maquinaria
-        Route::get('/maquinaria/{id}/edit', 'edit')->name('maquinaria.edit');
-        //Ruta para el metodo editar
-        Route::put('/maquinaria/{id}/edit', 'update')->name('maquinaria.update');
-        //Ruta para imprimir el listado de maquinaria
-        Route::get('/maquinaria/pdf', 'pdf')->name('maquinaria.pdf');
+    //Ruta para listado de proveedores
+    Route::get('/maquinaria', 'index')->name('maquinaria.index');
+    //Ruta para crear un nuevo maquinaria
+    Route::get('/maquinaria/create', 'create')->name('maquinaria.create');
+    //Ruta para guardar los registros del maquinaria
+    Route::post('/maquinaria', 'store')->name('maquinaria.store');
+    //Ruta para mostrar un maquinariaes
+    Route::get('/maquinaria/{id}', 'show')->name('maquinaria.show')
+    ->where('id','[0-9]+');
+    //Ruta para editar un maquinaria
+    Route::get('/maquinaria/{id}/edit', 'edit')->name('maquinaria.edit');
+    //Ruta para el metodo editar
+    Route::put('/maquinaria/{id}/edit', 'update')->name('maquinaria.update');
+    //Ruta para imprimir el listado de maquinaria
+    Route::get('/maquinaria/pdf', 'pdf')->name('maquinaria.pdf');
 });
 
 Route::controller(BloqueController::class)->group(function(){
@@ -157,9 +159,8 @@ Route::controller(BloqueController::class)->group(function(){
     //Ruta para mostrar un bloque
     Route::get('/bloque/{id}', 'show')->name('bloque.show')
     ->where('id','[0-9]+');
-  
-   
 });
+
 //Ruta para bloques
 Route::controller(LoteController::class)->group(function(){
 
@@ -167,6 +168,25 @@ Route::controller(LoteController::class)->group(function(){
     Route::get('/lote/create', 'create')->name('lote.create');
     //Ruta para guardar los registros del lote
     Route::post('/lote', 'store')->name('lote.store');
-  
+
+});
+
+//Ruta para cliente
+Route::controller(ClienteController::class)->group(function(){
+    //Ruta para listado de cliente
+    Route::get('/cliente', 'index')->name('cliente.index');
+    //Ruta para crear un nuevo cliente
+    Route::get('/cliente/create', 'create')->name('cliente.create');
+    //Ruta para guardar los registros del cliente
+    Route::post('/cliente', 'store')->name('cliente.store');
+    //Ruta para mostrar un clientees
+    Route::get('/cliente/{id}', 'show')->name('cliente.show')
+    ->where('id','[0-9]+');
+    //Ruta para editar un cliente
+    Route::get('/cliente/{id}/edit', 'edit')->name('cliente.edit');
+    //Ruta para el metodo editar
+    Route::put('/cliente/{id}/edit', 'update')->name('cliente.update');
+    //Ruta para imprimir el listado de cliente
+    Route::get('/cliente/pdf', 'pdf')->name('cliente.pdf');
 
 });

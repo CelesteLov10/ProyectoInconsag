@@ -10,6 +10,7 @@ use App\Models\Oficina;
 use App\Models\Proveedor;
 use App\Models\Puesto;
 use App\Models\Bloque;
+use App\Models\Cliente;
 
 class SearchController extends Controller
 {
@@ -103,4 +104,16 @@ class SearchController extends Controller
         return $data;
     }
     
+    public function cliente(Request $request){
+        $term = $request->get('term');
+        $querys = Cliente::where('nombreCompleto', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->nombreCompleto
+        ];
+        }
+        return $data;
+    }
 }

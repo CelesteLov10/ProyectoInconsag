@@ -71,6 +71,12 @@
                 Terrenos
             </a>
             </li>
+            <li>
+            <a href="{{route('cliente.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+                <span class="p-2"><i class="bi bi-person-fill text-light"></i></span>
+                Clientes
+            </a>
+            </li>
       </ul>
       <hr>
       <div class="dropdown">
