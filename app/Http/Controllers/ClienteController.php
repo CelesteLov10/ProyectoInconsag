@@ -89,7 +89,7 @@ class ClienteController extends Controller
          $input = $request->all();
          
           Cliente::create($input);
-             return redirect()->route('empleado.indexEmp')
+             return redirect()->route('cliente.index')
              ->with('mensaje', 'Se guardó un nuevo cliente correctamente');
          
          /** redireciona una vez enviado  */

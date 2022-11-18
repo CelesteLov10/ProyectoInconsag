@@ -76,7 +76,7 @@
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
-              <a href="{{route('empleado.indexEmp')}}" id="sinLinea">
+              <a href="{{route('cliente.index')}}" id="sinLinea">
                 <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Lista de clientes</h5 ></a> 
           </div >
 
