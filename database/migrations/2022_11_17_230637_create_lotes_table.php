@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('lotes', function (Blueprint $table) {
             $table->id();
-            $table->integer('numLote');
-            $table->double('medidaLateralR');
-            $table->double('medidaLateralL');
-            $table->double('medidaEnfrente');
+            $table->float('numLote');
+            $table->float('medidaLateralR');
+            $table->float('medidaLateralL');
+            $table->float('medidaEnfrente');
             $table->double('medidaAtras');
             $table->string('colindanciaN');
             $table->string('colindanciaS');
