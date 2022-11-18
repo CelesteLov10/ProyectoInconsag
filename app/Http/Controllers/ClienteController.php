@@ -57,32 +57,32 @@ class ClienteController extends Controller
              'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
              'descripcion'       => ['required','min:10','max:150'],
          ],[
-             'identidad.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
-             'identidad.digits' => 'El número de identidad debe tener 13 dígitos. ',
-             'identidad.unique' => 'El número de identidad debe ser único.',
-             'identidad.numeric' => 'En la identidad sólo se permiten números ',
-             'identidad.regex' => 'El formato para el número de identidad no es válido.',
- 
-             'nombres.required' => 'El nombre no puede ir vacío.',
-             'nombres.alpha' => 'En el nombre sólo se permite letras.',
-             'nombres.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
- 
-             'apellidos.required' => 'El apellido no puede ir vacío.',
-             'apellidos.alpha' => 'El apellido sólo permite letras.',
-             'apellidos.regex' => 'El apellido debe iniciar con mayúscula y sólo permite un espacio entre ellos.',
- 
-             'telefono.required' => 'El teléfono no puede ir vacío.',
-             'telefono.numeric' => 'El teléfono debe contener sólo números.',
-             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
-             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
-             'telefono.unique' => 'El número de teléfono ya está en uso.',
- 
-             'fechaNacimiento.required' => 'La fecha de nacimiento no puede ir vacío.',
-             'fechaNacimiento.regex' => 'Debe ser mayor de edad.',
- 
-             'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
-             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
-             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
+            'identidadC.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
+            'identidadC.digits' => 'El número de identidad debe tener 13 dígitos. ',
+            'identidadC.unique' => 'El número de identidad debe ser único.',
+            'identidadC.numeric' => 'En la identidad sólo se permiten números ',
+            'identidadC.regex' => 'El formato para el número de identidad no es válido.',
+
+            'nombreCompleto.required' => 'El nombre no puede ir vacío.',
+            'nombreCompleto.alpha' => 'En el nombre sólo se permite letras.',
+            'nombreCompleto.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+
+            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.numeric' => 'El teléfono debe contener sólo números.',
+            'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
+            'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
+            'telefono.unique' => 'El número de teléfono ya está en uso.',
+
+            'fechaNacimiento.required' => 'La fecha de nacimiento no puede ir vacío.',
+            'fechaNacimiento.regex' => 'Debe ser mayor de edad.',
+
+            'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
+            'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
+            'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
+
+            'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
+            'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
+            'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
              
  
          ]);
@@ -113,9 +113,10 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+        $clientes = Cliente::findOrFail($id);
+        return view('cliente.edit', compact('clientes'))
+        ->with('cliente', $clientes);
     }
 
     /**
@@ -125,19 +126,64 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update(Request $request, $id){
+        //variable para establecer si es mayor de edad o se coloca otro numero ->format("Y-m-d") date_format:DD-MM-YYYY
+        $dt = new Carbon();
+        $before = $dt->subYears(18);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $this->validate($request,[
+            'identidadC' => ['numeric','required','unique:clientes,identidadC,'.$id.'id'
+            ,'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
+            'nombreCompleto'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
+            'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes,telefono,'.$id.'id'],
+            'direccion'       => ['required','min:10','max:150'],
+            'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
+            'descripcion'       => ['required','min:10','max:150'],
+        ],[
+            'identidadC.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
+            'identidadC.digits' => 'El número de identidad debe tener 13 dígitos. ',
+            'identidadC.unique' => 'El número de identidad debe ser único.',
+            'identidadC.numeric' => 'En la identidad sólo se permiten números ',
+            'identidadC.regex' => 'El formato para el número de identidad no es válido.',
+
+            'nombreCompleto.required' => 'El nombre no puede ir vacío.',
+            'nombreCompleto.alpha' => 'En el nombre sólo se permite letras.',
+            'nombreCompleto.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+
+            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.numeric' => 'El teléfono debe contener sólo números.',
+            'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
+            'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
+            'telefono.unique' => 'El número de teléfono ya está en uso.',
+
+            'fechaNacimiento.required' => 'La fecha de nacimiento no puede ir vacío.',
+            'fechaNacimiento.regex' => 'Debe ser mayor de edad.',
+
+            'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
+            'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
+            'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
+
+            'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
+            'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
+            'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
+        
+        ]);
+   
+        $clientes = Cliente::findOrFail($id);
+
+        $clientes->identidadC = $request->input('identidadC');
+        $clientes->nombreCompleto = $request->input('nombreCompleto');
+        $clientes->telefono = $request->input('telefono');
+        $clientes->direccion = $request->input('direccion');
+        $clientes->fechaNacimiento = $request->fechaNacimiento;
+        $clientes->descripcion = $request->input('descripcion');
+        
+        
+        $update = $clientes->save();
+        
+        if ($update){
+            return redirect()->route('cliente.index')
+            ->with('mensajeW', 'Se actualizó el cliente correctamente');
+        } 
     }
 }

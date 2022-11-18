@@ -29,7 +29,7 @@
           <i class="bi bi-search"></i>
         </button>
       </p>
-      <a class="btn btn-outline-success text-right" href="{{route('proveedor.create')}}">Nuevo proveedor  <i class="bi bi-person-plus"></i></a>
+      <a class="btn btn-outline-primary" href="{{route('proveedor.create')}}">Nuevo proveedor  <i class="bi bi-person-plus"></i></a>
     </div>
     <div class="collapse mb-3 mt-3" id="collapseExample">
       <div class="card card-body p-2">
@@ -37,7 +37,7 @@
         <form method="GET" action="">
           <div class="container">
               <div class="vh-50 row text-center align-items-center justify-content-center">
-                  <div class="col-8 p-1">
+                  <div class="col-8 p-1 buscar">
                       <div class="input-group">
                             <input type="text" name="search" id="search"  class="form-control"
                             placeholder="Buscar por nombre de proveedor, nombre del contacto y categoria" 
@@ -72,8 +72,8 @@
           </div>
           @endif
 
-        {{-- encabezado style="text-decoration:none"--}}
-        <div class = " card shadow ab-4 bg-success bg-gradient " >
+        {{-- encabezado --}}
+        <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
               <a href="{{route('proveedor.index')}}" id="sinLinea">
                 <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros" id="titulo">Lista de proveedores</h5 ></a> 
