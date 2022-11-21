@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //Campo busqueda
@@ -25,38 +20,27 @@ class ClienteController extends Controller
         return view('cliente.index', compact('clientes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $cliente = Cliente::all();
         return view('cliente.create', compact('cliente'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
          //variable para establecer si es mayor de edad o se coloca otro numero ->format("Y-m-d") date_format:DD-MM-YYYY
-         $dt = new Carbon();
-         $before = $dt->subYears(18);
- 
-         $this->validate($request,[
-             'identidadC' => ['required','numeric','unique:clientes',
-             'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
-             'nombreCompleto'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
-             'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes'],
-             'direccion'       => ['required','min:10','max:150'],
-             'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
-             'descripcion'       => ['required','min:10','max:150'],
-         ],[
+            $dt = new Carbon();
+            $before = $dt->subYears(18);
+    
+            $this->validate($request,[
+                'identidadC' => ['required','numeric','unique:clientes',
+                'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
+                'nombreCompleto'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
+                'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes'],
+                'direccion'       => ['required','min:10','max:150'],
+                'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
+                'descripcion'       => ['required','min:10','max:150'],
+            ],[
             'identidadC.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
             'identidadC.digits' => 'El número de identidad debe tener 13 dígitos. ',
             'identidadC.unique' => 'El número de identidad debe ser único.',
@@ -83,49 +67,29 @@ class ClienteController extends Controller
             'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
-             
- 
-         ]);
-         $input = $request->all();
-         
-          Cliente::create($input);
-             return redirect()->route('cliente.index')
-             ->with('mensaje', 'Se guardó un nuevo cliente correctamente');
-         
+
+            ]);
+            $input = $request->all();
+            
+            Cliente::create($input);
+                return redirect()->route('cliente.index')
+                ->with('mensaje', 'Se guardó un nuevo cliente correctamente');
+            
          /** redireciona una vez enviado  */
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $cliente = Cliente::findOrFail($id);
         return view('cliente.show')->with('cliente', $cliente);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id){
         $clientes = Cliente::findOrFail($id);
         return view('cliente.edit', compact('clientes'))
         ->with('cliente', $clientes);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id){
         //variable para establecer si es mayor de edad o se coloca otro numero ->format("Y-m-d") date_format:DD-MM-YYYY
         $dt = new Carbon();
@@ -168,7 +132,7 @@ class ClienteController extends Controller
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
         
         ]);
-   
+
         $clientes = Cliente::findOrFail($id);
 
         $clientes->identidadC = $request->input('identidadC');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BeneficiarioController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\SearchController;
@@ -181,7 +182,7 @@ Route::controller(ClienteController::class)->group(function(){
     Route::get('/cliente/create', 'create')->name('cliente.create');
     //Ruta para guardar los registros del cliente
     Route::post('/cliente', 'store')->name('cliente.store');
-    //Ruta para mostrar un clientees
+    //Ruta para mostrar un cliente
     Route::get('/cliente/{id}', 'show')->name('cliente.show')
     ->where('id','[0-9]+');
     //Ruta para editar un cliente
@@ -190,5 +191,25 @@ Route::controller(ClienteController::class)->group(function(){
     Route::put('/cliente/{id}/edit', 'update')->name('cliente.update');
     //Ruta para imprimir el listado de cliente
     Route::get('/cliente/pdf', 'pdf')->name('cliente.pdf');
+
+});
+
+//Ruta para beneficiario
+Route::controller(BeneficiarioController::class)->group(function(){
+    //Ruta para listado de beneficiario
+    Route::get('/beneficiario', 'index')->name('beneficiario.index');
+    //Ruta para crear un nuevo beneficiario
+    Route::get('/beneficiario/create', 'create')->name('beneficiario.create');
+    //Ruta para guardar los registros del beneficiario
+    Route::post('/beneficiario', 'store')->name('beneficiario.store');
+    //Ruta para mostrar un beneficiarioes
+    Route::get('/beneficiario/{id}', 'show')->name('beneficiario.show')
+    ->where('id','[0-9]+');
+    //Ruta para editar un beneficiario
+    Route::get('/beneficiario/{id}/edit', 'edit')->name('beneficiario.edit');
+    //Ruta para el metodo editar
+    Route::put('/beneficiario/{id}/edit', 'update')->name('beneficiario.update');
+    //Ruta para imprimir el listado de beneficiario
+    Route::get('/beneficiario/pdf', 'pdf')->name('beneficiario.pdf');
 
 });

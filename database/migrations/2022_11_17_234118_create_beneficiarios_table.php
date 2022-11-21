@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('beneficiarios', function (Blueprint $table) {
             $table->id();
+            $table->string('identidadBen')->unique();
+            $table->string('nombreCompletoBen');
+            $table->string('telefonoBen');
+            $table->string('direccionBen');
+            $table->unsignedBigInteger('cliente_id');//Relacion con tabla proveedor
+            $table->foreign('cliente_id')->references('id')->on('clientes');// Restriccion llave foranea
             $table->timestamps();
         });
     }
