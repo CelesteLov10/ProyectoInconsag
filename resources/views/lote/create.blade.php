@@ -24,9 +24,37 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
           <div class="col-60 bg-light p-5">
-      <form action="{{route('lote.store')}}" class="lote-guardar" method="POST">
+            {{-- onsubmit="event.preventDefault(); return saved()" --}}
+      <form action="{{route('lote.store')}}" id="lotescrear"  class="lote-guardar" method="POST"  >
           @csrf {{-- TOKEN INPUT OCULTO --}}
           
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Bloque:</label>
+            <div class="col-sm-5">
+            <select name="bloque_id" id="bloque" class="form-select rounded-pill @error('bloque_id') is-invalid @enderror">
+              <option value="" disabled selected>-- Selecione un bloque --</option>
+                @foreach ($bloque as $bloques)
+                <option value="{{$bloques->id}}" 
+                  {{old('bloque_id' , $bloques->nombreBloque)==$bloques->id ? 'selected' : ''}}>{{$bloques->nombreBloque}}</option>
+                @endforeach
+            </select> 
+            @error('bloque_id')
+              <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+            @enderror
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="cantidadLotes" class="col-sm-3 col-form-label">Cantidad de Lotes:</label>
+            <div class="col-sm-5">
+
+                <input type="text" id="cantidadLotes" name="cantidadLotes" value="{{old('cantidadLotes' , $lote->bloque->cantidadLotes)}}" class="form-control rounded-pill @error('bloque_id') is-invalid @enderror" readonly=»readonly»>
+                @error('bloque_id')
+                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+              @enderror
+            </div>
+          </div>
+
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Número de lote:</label>
           <div class="col-sm-5">
@@ -136,8 +164,7 @@
       
         <div class="mb-3 row">
           <div class="offset-sm-3 col-sm-9">
-            <button type="button" id="agregar" class="btn btn-outline-info">Agregar</button> 
-            <button type="button" id="guardar" class="btn btn-outline-info">Guardar</button> 
+            <button type="submit" id="guardar" class="btn btn-outline-info">Guardar</button> 
 
           </div>
         </div>  
@@ -149,104 +176,35 @@
 
 
 
-<div class="col-12 m-5" id="lotess">
-  <div class="title">Registro lotes</div>
-  <table class="table table-bordered" id="lista">
-     <tr>
-      <td>Lote #</td>
-      <td>Derecha</td>
-      <td>Izquierda</td>
-      <td>Enfrente</td>
-      <td>Trasera</td>
-      <td>Norte</td>
-      <td>Sur</td>
-      <td>Este</td>
-      <td>Oeste</td>
-     </tr>
-  </table>
-</div>
+
 
 @endsection
 
 @section('js')
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-  /*Script para tener el*/
-  var boton = document.getElementById('agregar');
-  var guardar = document.getElementById('guardar');
-  var lista = document.getElementById('lista');
-  var cantlotes = document.getElementById('cantidadLotes');
-  var data=[];
-  /*cuenta cuantos se han ingresados*/
-  var cant = 0;
+     <!-- <script>
+        var boton = document.getElementById('bloque');
+           boton.addEventListener("click", pasarValor);
+      
+      try
+        {function pasarValor(){
+        
+        }
+        }catch (error) {throw error;}
+      
+      </script>-->
 
-  boton.addEventListener("click", agregar);
-  guardar.addEventListener("click", save);
- 
-  /*No tiene parametros por eso va vacio (no se que significa)*/
-  function agregar(){
-    var numLote = parseFloat(document.getElementById('numLote').value);
-    var medidaLateralR = parseFloat(document.getElementById('medidaLateralR').value);
-    var medidaLateralL = parseFloat(document.getElementById('medidaLateralL').value);
-    var medidaEnfrente = parseFloat(document.getElementById('medidaEnfrente').value);
-    var medidaAtras = parseFloat(document.getElementById('medidaAtras').value);
-    var colindanciaN = document.getElementById('colindanciaN').value;
-    var colindanciaS = document.getElementById('colindanciaS').value;
-    var colindanciaE = document.getElementById('colindanciaE').value;
-    var colindanciaO = document.getElementById('colindanciaO').value;
+      <script>
+        $(function(){
+          $("lote").autocomplete({
+            
+          })
+        })
+      </script>
 
-    //agregar ese elemento al arreglo
-    data.push(
-      {
-      "id":cant,
-      "numLote":numLote,
-      "medidaLateralR":medidaLateralR,
-      "medidaLateralL":medidaLateralL,
-      "medidaEnfrente":medidaEnfrente,
-      "medidaAtras":medidaAtras,
-      "colindanciaN":colindanciaN,
-      "colindanciaS":colindanciaS,
-      "colindanciaE":colindanciaE,
-      "colindanciaO":colindanciaO
-       }
-    );
-    var id_row = 'row'+cant;
-    var fila = '<tr id=' + id_row +'><td>'+ numLote +'</td><td>'+ medidaLateralR + ' </td><td>'+ medidaLateralL + '</td><td>' + medidaEnfrente + '</td><td>' + medidaAtras + '</td><td>' + colindanciaN + '</td><td>' + colindanciaS + '</td><td>' + colindanciaE + '</td><td>' +colindanciaO + '</td></tr>';
-            //JQuery
-            //agregar a la tabla
-            $("#lista").append(fila);
-            //si no hay nada en la lista que muestre vacio
-            $("#numLote").val('');
-            $("#medidaLateralR").val('');
-            $("#medidaLateralL").val('');
-            $("#medidaEnfrente").val('');
-            $("#medidaAtras").val('');
-            $("#colindanciaN").val('');
-            $("#colindanciaS").val('');
-            $("#colindanciaE").val('');
-            $("#colindanciaO").val('');
-            $("#numLote").focus();
-            //cant controla la cantidad de lotes que se van a gregando
-            cant++; 
 
-  }
+     
 
-  /*funcion para guardar todo lo que se esta haciendo en la vista*/
-  function save(){
-    var json=JSON.stringify(data);
-    $.ajax({
-      type:"POST",
-      url: "/getLotes",
-      data: "json=" +json,
-      success:function(resp){
-        //una vez que se envio hace que la pagina se recargue
-       location.reload();
-       console.log(resp);
-      }
-    });
-    console.log(json);
-  }
 
-</script>
 @endsection

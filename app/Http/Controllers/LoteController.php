@@ -6,6 +6,7 @@ use App\Models\Bloque;
 use App\Models\Lote;
 use Illuminate\Http\Request;
 use mysqli;
+use App\Http\Requests\crearLotesRequest;
 
 class LoteController extends Controller
 {
@@ -15,9 +16,12 @@ class LoteController extends Controller
         $lote = Lote::all();
         return view('lote.create', compact('lote', 'bloque'));
     }
-public function store(Request $request){
+public function store(crearLotesRequest $request){
 
-        $lote = new Lote();
+   // dd($request);
+
+   // $create = Lote::create($request->all());
+      $lote = new Lote();
 
     $lote->numLote = $request->numLote;
     $lote->medidaLateralR = $request->medidaLateralR;
@@ -33,12 +37,15 @@ public function store(Request $request){
     $create = $lote->save();
     
     if ($create){
-        return redirect()->route('bloque.index')
-        ->with('mensaje', 'Se registrarón los lotes correctamente');
+       return redirect()->route('bloque.index')
+        ->with('mensaje', 'Se registró el lote correctamente');
+       // return response()->json($create);
     } 
+    //si esta mal, lo regresara atras con lo que habia ingresado
+   // return response()->json('No se pudieron ingresar los registros ');
 }
 
-public function getLotes(){
+/*public function getLotes(){
     $lotes = json_decode($_POST['json'],true);
     //echo var_dump($lotes);
     require 'conexion.php';
@@ -59,7 +66,7 @@ public function getLotes(){
         ) VALUES('$numLote', '$medidaLateralR', '$medidaLateralL', '$medidaEnfrente', '$medidaAtras',
             '$colindanciaN', '$colindanciaS', '$colindanciaE', '$colindanciaO' )" );
     }
-}
+}*/
 
 
 }

@@ -9,8 +9,8 @@ class Bloque extends Model
 {
     use HasFactory;
     
-    public function bloque(){
-        return $this->hasMany(Bloque::class);
+    public function lote(){
+        return $this->hasMany(Lote::class);
     }
 
 }

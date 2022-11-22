@@ -18,6 +18,7 @@ class Lote extends Model
             'colindanciaS',
             'colindanciaE',
             'colindanciaO',
+            'bloque_id'
            ];
     public function bloque(){
         return $this->belongsTo(Bloque::class);
