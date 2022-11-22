@@ -69,7 +69,6 @@
                 <th scope="col">Colindancia Sur:</th>
                 <th scope="col">Colindancia Este:</th>
                 <th scope="col">Colindancia Oeste:</th>
-                <th scope="col">id bloque:</th>
             </tr>
         </thead>
         <tbody>
@@ -88,7 +87,6 @@
                     <td>{{$lote->colindanciaS}}</td>
                     <td>{{$lote->colindanciaE}}</td>
                     <td>{{$lote->colindanciaO}}</td>
-                    <td>{{$lote->bloque_id}}</td>
                         @csrf
                 </tr>
                 @endif
