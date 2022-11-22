@@ -41,6 +41,11 @@ h3 {
     box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
 }
 
+.btauraOpac {
+    background-image: linear-gradient(to right, #1c6f9280, #40e49580, #25a9e17a, #2bb67373);
+    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+}
+
 .bgblue {
     background-image: linear-gradient(to right, #1c6e92, #2bb673);
     box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);

@@ -28,7 +28,7 @@
         </div >
         <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
           <div class="col-60 bg-light p-5">
-      <form action="{{route('bloque.store')}}" class="bloque-guardar" method="POST">
+      <form action="{{route('bloque.store')}}" class="bloque-guardar" method="POST" enctype="multipart/form-data">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
             <div class="mb-3 row">

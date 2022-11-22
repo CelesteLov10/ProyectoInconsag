@@ -44,17 +44,7 @@
             </div>
           </div>
 
-          <div class="mb-3 row">
-            <label for="cantidadLotes" class="col-sm-3 col-form-label">Cantidad de Lotes:</label>
-            <div class="col-sm-5">
-
-                <input type="text" id="cantidadLotes" name="cantidadLotes" value="{{old('cantidadLotes' , $lote->bloque->cantidadLotes)}}" class="form-control rounded-pill @error('bloque_id') is-invalid @enderror" readonly=»readonly»>
-                @error('bloque_id')
-                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-              @enderror
-            </div>
-          </div>
-
+      
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Número de lote:</label>
           <div class="col-sm-5">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bloque;
+use App\Models\Lote;
 use Illuminate\Http\Request;
 
 class BloqueController extends Controller
@@ -23,8 +24,10 @@ class BloqueController extends Controller
         return view('bloque.create');
     }
     
-    public function show(){   
-        
+    public function show($id){   
+        $bloque = Bloque::findOrFail($id);
+        $lotes = Lote::all();
+        return view('bloque.show', compact('lotes'))->with('bloque', $bloque);
     }
 
     public function store(Request $request){
@@ -42,12 +45,17 @@ class BloqueController extends Controller
             ->with('mensaje', 'Se guardó un nuevo bloque correctamente');*/
 
         $bloque = new bloque();
-
+        if($request->hasFile('subirfoto') ){
+            $file = $request->file('subirfoto');
+            $destinationPath = 'public/imagenes/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('subirfoto')->move($destinationPath, $filename);
+            $bloque->subirfoto = $destinationPath . $filename;
+        };
         $bloque->nombreBloque = $request->nombreBloque;
         $bloque->cantidadLotes = $request->cantidadLotes;
-        $bloque->subirfoto = $request->subirfoto;
 
-        $create = $bloque->save();
+        $create = $bloque->save(); 
         
         if ($create){
             return redirect()->route('bloque.index')

@@ -99,9 +99,11 @@
                         <i class="bi bi-file-earmark-plus"></i>                     
                        </a>
                       </td>
-                      <td><a class="btn btn-outline-primary" 
-                        href="">
-                        <i class="bi bi-eye"></i></a></td>
+                      <td><a class="btn btn-outline-warning" 
+                        href="{{route('bloque.show', ['id' => $bloque->id])}}">
+                        <i class="bi bi-pencil-square"></i>
+                      </a>
+                      </td>
                      
                           @csrf
                     </tr>
