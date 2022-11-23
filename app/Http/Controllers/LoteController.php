@@ -20,14 +20,13 @@ public function store(Request $request){
 
     $reglas = [
 
-        'nombreBloque'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9]+\s{0,1})+$/u',
 
-        'Bloque'   => 'required',
+        'bloque_id'   => 'required',
+        'numLote'    => 'required|numeric|min:1|regex:/^[0-9]{1,2}+$/u',
         'medidaLateralR'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'medidaLateralL'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'medidaEnfrente'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'medidaAtras'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
-        'numLote'    => 'required|numeric|min:10|regex:/^[0-9]{1,2}+$/u',
         'colindanciaN'    => 'required',
         'colindanciaS'    => 'required',
         'colindanciaE'    => 'required',
@@ -36,7 +35,7 @@ public function store(Request $request){
     
     ];
     $mensaje =[
-        'Bloque.required' => 'El bloque es requerido, no puede estar vacío. ',
+        'bloque_id.required' => 'El bloque es requerido, no puede estar vacío. ',
         'medidaLateralR.required' => 'La medida lateral derecha es requerida, no puede estar vacío. ',
         'medidaLateralL.required' => 'La medida lateral izquierda es requerida, no puede estar vacío. ',
         'medidaEnfrente.required' => 'La medida de enfrente es requerida, no puede estar vacío. ',
@@ -61,6 +60,7 @@ public function store(Request $request){
    // $create = Lote::create($request->all());
       $lote = new Lote();
 
+    $lote->bloque_id = $request->bloque_id;
     $lote->numLote = $request->numLote;
     $lote->medidaLateralR = $request->medidaLateralR;
     $lote->medidaLateralL = $request->medidaLateralL;
@@ -70,7 +70,6 @@ public function store(Request $request){
     $lote->colindanciaS = $request->colindanciaS;
     $lote->colindanciaE = $request->colindanciaE;
     $lote->colindanciaO = $request->colindanciaO;
-    $lote->bloque_id = $request->bloque_id;
 
     $create = $lote->save();
     
