@@ -54,18 +54,6 @@ class BloqueController extends Controller
         ];
         $this->validate($request, $reglas, $mensaje);
 
-        Bloque::create([
-            'nombreBloque'=>$request ['nombreBloque'],
-            'cantidadLotes'=>$request ['cantidadLotes'],
-            'colindanciaN'=>$request ['colindanciaN'],
-            'colindanciaS'=>$request ['colindanciaS'],
-            'colindanciaE'=>$request ['colindanciaE'],
-            'colindanciaO'=>$request ['colindanciaO'],
-            'subirfoto'=>$request ['subirfoto'],  
-        ]);
-            return redirect()->route('bloque.index')
-            ->with('mensaje', 'Se guardó un nuevo bloque correctamente');
-
         $bloque = new bloque();
         if($request->hasFile('subirfoto') ){
             $file = $request->file('subirfoto');
