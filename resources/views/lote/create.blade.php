@@ -12,7 +12,7 @@
   <div class="container ">
     <div class="mb-3 text-end">
       <a class="btn btn-outline-primary" href="{{route('bloque.index')}}">
-        <i class="bi bi-box-arrow-in-left"></i>Atrás "este no"</a>
+        <i class="bi bi-box-arrow-in-left"></i>Atrás</a>
     </div>
     
 
@@ -27,12 +27,14 @@
             {{-- onsubmit="event.preventDefault(); return saved()" --}}
       <form action="{{route('lote.store')}}" id="lotescrear"  class="lote-guardar" method="POST"  >
           @csrf {{-- TOKEN INPUT OCULTO --}}
-          
+            
+                
+           
           <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Bloque:</label>
             <div class="col-sm-5">
-            <select name="bloque_id" id="bloque" class="form-select rounded-pill @error('bloque_id') is-invalid @enderror">
-              <option value="" disabled selected>-- Selecione un bloque --</option>
+            <select name="bloque_id" id="bloque" class="form-select rounded-pill @error('bloque_id') is-invalid @enderror" onchange="llenar()">
+              <option value="" disabled selected>-- Seleccione un bloque --</option>
                 @foreach ($bloque as $bloques)
                 <option value="{{$bloques->id}}" 
                   {{old('bloque_id' , $bloques->nombreBloque)==$bloques->id ? 'selected' : ''}}>{{$bloques->nombreBloque}}</option>
@@ -43,8 +45,25 @@
             @enderror
             </div>
           </div>
+          
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Cantidad de lotes:</label>
+            <div class="col-sm-5">
+              <select id="cantidad" class="mi-selector form-select rounded-pill"
+            data-show-subtext="true" data-live-search="true">
+            @if(old('bloque'))
+                    @foreach ($bloque as $p)
+                        @if (old('bloque') == $p->id)
+                            <option value="{{$bloques->id}}">{{$bloques->cantidadLotes}}</option>
+                        @endif
+                    @endforeach
+                    @else
+                    <option style="display:none" value="">cantidad lotes</option>
+                @endif
+              </select>
+            </div>
+          </div>
 
-      
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Número de lote:</label>
           <div class="col-sm-5">
@@ -173,9 +192,9 @@
 @section('js')
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-     <!-- <script>
+      <!-- <script>
         var boton = document.getElementById('bloque');
-           boton.addEventListener("click", pasarValor);
+          boton.addEventListener("click", pasarValor);
       
       try
         {function pasarValor(){
@@ -186,15 +205,24 @@
       </script>-->
 
       <script>
-        $(function(){
-          $("lote").autocomplete({
-            
-          })
-        })
-      </script>
-
-
-     
-
+        function llenar() {
+            $("#cantidad").find('option').not(':first').remove();
+            var select = document.getElementById("bloque");
+            var valor = select.value;
+            var selectnw = document.getElementById("cantidad");
+            @foreach($bloque as $p)
+            if ({{$p -> id}} == valor) {
+                // creando la nueva option
+                var opt = document.createElement('option');
+                // Añadiendo texto al elemento (opt)
+                opt.innerHTML = "{{ $p->cantidadLotes }}";
+                //Añadiendo un valor al elemento (opt)
+                opt.value = "{{ $bloques->id }}";
+                // Añadiendo opt al final del selector (sel)
+                selectnw.appendChild(opt);
+            }
+            @endforeach
+        }
+    </script>
 
 @endsection

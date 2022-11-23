@@ -28,6 +28,7 @@
           </button>
         </p>
         <a class="btn btn-outline-primary" href="{{route('bloque.create')}}">Nuevo bloque <i class="bi bi-plus-square-dotted"></i></a>
+        <a class="btn btn-outline-primary" href="{{route('lote.create')}}">Agregar lote <i class="bi bi-plus-square-dotted"></i></a>
       </div>
       <div class="collapse mb-3 mt-3" id="collapseExample">
         <div class="card card-body p-2">
@@ -85,7 +86,7 @@
                       <th scope="col">#</th>
                       <th scope="col">Nombre del bloque</th>
                       <th scope="col">Cantidad de lotes</th>
-                      <th scope="col">Agregar lotes</th>
+                      {{-- <th scope="col">Agregar lotes</th> --}}
                       <th scope="col">Detalle bloque</th>
                     </tr>
                   </thead>
@@ -95,10 +96,10 @@
                       <td>{{$bloque->id}}</td>
                       <td>{{$bloque->nombreBloque}}</td>
                       <td>{{$bloque->cantidadLotes}}</td>
-                      <td><a class="btn btn-outline-success" href="{{route('lote.create', ['id'=> $bloque->id])}}">
+                      {{-- <td><a class="btn btn-outline-success" href="{{route('lote.create', ['id'=> $bloque->id])}}">
                         <i class="bi bi-file-earmark-plus"></i>                     
                        </a>
-                      </td>
+                      </td> --}}
                       <td><a class="btn btn-outline-warning" 
                         href="{{route('bloque.show', ['id' => $bloque->id])}}">
                         <i class="bi bi-pencil-square"></i>

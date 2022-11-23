@@ -77,7 +77,7 @@
             @if($bloque->id == $lote->bloque_id)
                 <tr>
                     <td>{{$lote->id}}</td>
-                    <td>{{$lote->nombreBloque}}</td>
+                    <td>{{$lote->bloque->nombreBloque}}</td>
                     <td>{{$lote->numLote}}</td>
                     <td>{{$lote->medidaLateralR}}</td>
                     <td>{{$lote->medidaLateralL}}</td>
