@@ -14,5 +14,8 @@ class Beneficiario extends Model
     'telefonoBen',
     'direccionBen', 
     'cliente_id',];
-    use HasFactory;
+   
+    public function cliente(){
+        return $this->hasMany(Cliente::class);
+    }
 }
