@@ -58,7 +58,7 @@
                         @endif
                     @endforeach
                     @else
-                    <option style="display:none" value="">cantidad lotes</option>
+                    <option style="display:none" value="">Cantidad lotes</option>
                 @endif
               </select>
             </div>
@@ -174,7 +174,6 @@
         <div class="mb-3 row">
           <div class="offset-sm-3 col-sm-9">
             <button type="submit" id="guardar" class="btn btn-outline-info">Guardar</button> 
-
           </div>
         </div>  
       </form>

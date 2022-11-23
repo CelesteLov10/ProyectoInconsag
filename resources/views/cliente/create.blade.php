@@ -140,8 +140,8 @@
                       <label class="col-sm-4 col-form-label">Identidad:</label>
                       <div class="col-sm-7">
                         <input type="text" class="form-control rounded-pill @error('identidadBen') is-invalid @enderror" 
-                          placeholder="Ingrese la identidad del cliente" 
-                          name="identidadBen" value="{{old('identidadBen')}}"
+                          placeholder="0000000000000" 
+                          name="identidadBen" value="{{old('identidadBen')}}" required='required'
                           title="Ingrese un numero de identidad válido" maxlength="13">
                           @error('identidadBen')
                           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -153,7 +153,7 @@
                       <label class="col-sm-4 col-form-label">Nombre completo:</label>
                       <div class="col-sm-7">
                         <input type="text" class="form-control rounded-pill @error('nombreCompletoBen') is-invalid @enderror" 
-                        placeholder="Ingrese el nombre completo (ejem. Pablo Jose Ramos Mendoza)" 
+                        placeholder="Ingrese el nombre completo (ejem. Pablo Jose Ramos Mendoza)" required='required'
                         name="nombreCompletoBen" value="{{old('nombreCompletoBen')}}" maxlength="30">
                         @error('nombreCompletoBen')
                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -165,7 +165,7 @@
                     <label class="col-sm-4 col-form-label">Teléfono:</label>
                     <div class="col-sm-7">
                       <input type="text" class="form-control rounded-pill @error('telefonoBen') is-invalid @enderror" 
-                      placeholder="Ingrese el numero de teléfono"
+                      placeholder="00000000" required='required'
                       name="telefonoBen" value="{{old('telefonoBen')}}" maxlength="8">
                     @error('telefonoBen')
                       <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -177,7 +177,7 @@
                     <label class="col-sm-4 col-form-label">Dirección:</label>
                     <div class="col-sm-7">
                       <textarea type="text" class="form-control rounded-pill @error('direccionBen') is-invalid @enderror" 
-                      maxlength="150" placeholder="Ingrese la dirección"
+                      maxlength="150" placeholder="Ingrese la dirección" required='required'
                       name="direccionBen" value="">{{old('direccionBen')}}</textarea>
                     @error('direccionBen')
                       <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -188,7 +188,7 @@
                   <div class="mb-3 row">
                     <label class="col-sm-4 col-form-label">Nombre del cliente relacionado:</label>
                     <div class="col-sm-7">
-                    <select name="cliente_id" id="" class="form-select rounded-pill @error('cliente_id') is-invalid @enderror">
+                    <select name="cliente_id" id="" class="form-select rounded-pill @error('cliente_id') is-invalid @enderror" required='required'>
                         <option value="" disabled selected>-- Seleccione un cliente --</option>
                         @foreach ($cliente as $clientes)
                           <option value="{{$clientes->id}}" 

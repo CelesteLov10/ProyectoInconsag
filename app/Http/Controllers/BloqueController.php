@@ -34,7 +34,7 @@ class BloqueController extends Controller
 
         $reglas = [
 
-            'nombreBloque'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9]+\s{0,1})+$/u',
+            'nombreBloque'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9]+\s{0,1})+$/u|unique:bloques',
             'cantidadLotes'    => 'required|numeric|min:10|regex:/^[0-9]{1,2}+$/u',
             'subirfoto'    => 'required',
             
@@ -43,6 +43,7 @@ class BloqueController extends Controller
         $mensaje =[
             'nombreBloque.required' => 'El nombre del bloque es requerido, no puede estar vacío. ',
             'nombreBloque.regex' => 'El nombre del bloque solo permite un espacio entre los nombres.',
+            'nombreBloque.unique' => 'El nombre del bloque debe ser único.',
 
             'cantidadLotes.required' => 'La cantidad de lotes es requerida.', 
             'cantidadLotes.numeric' => 'La cantidad de lotes no permite letras.',
