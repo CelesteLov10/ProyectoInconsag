@@ -16,7 +16,45 @@ class LoteController extends Controller
         $lote = Lote::all();
         return view('lote.create', compact('lote', 'bloque'));
     }
-public function store(crearLotesRequest $request){
+public function store(Request $request){
+
+    $reglas = [
+
+        'nombreBloque'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9]+\s{0,1})+$/u',
+
+        'Bloque'   => 'required',
+        'medidaLateralR'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
+        'medidaLateralL'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
+        'medidaEnfrente'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
+        'medidaAtras'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
+        'numLote'    => 'required|numeric|min:10|regex:/^[0-9]{1,2}+$/u',
+        'colindanciaN'    => 'required',
+        'colindanciaS'    => 'required',
+        'colindanciaE'    => 'required',
+        'colindanciaO'    => 'required',
+        
+    
+    ];
+    $mensaje =[
+        'Bloque.required' => 'El bloque es requerido, no puede estar vacío. ',
+        'medidaLateralR.required' => 'La medida lateral derecha es requerida, no puede estar vacío. ',
+        'medidaLateralL.required' => 'La medida lateral izquierda es requerida, no puede estar vacío. ',
+        'medidaEnfrente.required' => 'La medida de enfrente es requerida, no puede estar vacío. ',
+        'medidaAtras.required' => 'La medida de atras es requerida, no puede estar vacío. ',
+        'medidaLateralR.numeric' => 'La medida lateral derecha solo permite numeros.',
+        'medidaLateralL.numeric' => 'La medida lateral izquierda solo permite numeros.',
+        'medidaEnfrente.numeric' => 'La medida de enfrente solo permite numeros.',
+        'medidaAtras.numeric' => 'La medida de atras solo permite numeros.',
+        'numLote.numeric' => 'El numero de lote solo permite numeros.',
+        'numLote.required' => 'El numero de lote es requerido, no puede estar vacío. ',
+
+        'colindanciaN.required'    => 'La colindancia norte es requerida, no puede estar vacío. ',
+        'colindanciaS.required'    => 'La colindancia sur es requerida, no puede estar vacío. ',
+        'colindanciaE.required'    => 'La colindancia este es requerida, no puede estar vacío. ',
+        'colindanciaO.required'    => 'La colindancia oeste es requerida, no puede estar vacío. ',
+
+    ];
+    $this->validate($request, $reglas, $mensaje);
 
    // dd($request);
 
