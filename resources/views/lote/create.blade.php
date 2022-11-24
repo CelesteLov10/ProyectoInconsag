@@ -14,22 +14,19 @@
       <a class="btn btn-outline-primary" href="{{route('bloque.index')}}">
         <i class="bi bi-box-arrow-in-left"></i>Atrás</a>
     </div>
-    
 
       {{-- encabezado  --}}
       <div class = " card shadow ab-4 bg-success bg-gradient" >
         <div class = " card-header py-3 " >
             <h5 class = "n-font-weight-bold text-white" >Registro de lotes </h5 > 
-        </div >
+        </div>
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
           <div class="col-60 bg-light p-5">
             {{-- onsubmit="event.preventDefault(); return saved()" --}}
       <form action="{{route('lote.store')}}" id="lotescrear"  class="lote-guardar" method="POST"  >
           @csrf {{-- TOKEN INPUT OCULTO --}}
-            
-                
-           
+
           <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Bloque:</label>
             <div class="col-sm-5">
@@ -75,8 +72,14 @@
           </div>
         </div>
 
+        <div class="m-3">
+          <h4 class=" text-center">
+            <strong id="titulo">Medidas en metros</strong> 
+          </h4>
+        </div>
+
         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Medida lateral derecha:</label>
+          <label class="col-sm-3 col-form-label">Lateral derecha:</label>
           <div class="col-sm-5">
             <input type="number" id="medidaLateralR" class="form-control rounded-pill @error('medidaLateralR') is-invalid @enderror" 
             placeholder="0.00" name="medidaLateralR" value="{{old('medidaLateralR')}}" maxlength="5" >
@@ -87,7 +90,7 @@
         </div>
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Medida lateral izquierda:</label>
+            <label class="col-sm-3 col-form-label">Lateral izquierda:</label>
             <div class="col-sm-5">
               <input type="number" id="medidaLateralL" class="form-control rounded-pill @error('medidaLateralL') is-invalid @enderror" 
               placeholder="0.00" name="medidaLateralL" value="{{old('medidaLateralL')}}" maxlength="5" >
@@ -98,7 +101,7 @@
           </div>
 
           <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Medida lateral enfrente:</label>
+            <label class="col-sm-3 col-form-label">Lateral enfrente:</label>
             <div class="col-sm-5">
               <input type="number" id="medidaEnfrente" class="form-control rounded-pill @error('medidaEnfrente') is-invalid @enderror" 
               placeholder="0.00" name="medidaEnfrente" value="{{old('medidaEnfrente')}}" maxlength="5">
@@ -109,7 +112,7 @@
           </div>
 
           <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Medida lateral trasera:</label>
+            <label class="col-sm-3 col-form-label">Lateral trasera:</label>
             <div class="col-sm-5">
               <input type="number" id="medidaAtras" class="form-control rounded-pill @error('medidaAtras') is-invalid @enderror" 
               placeholder="0.00" name="medidaAtras" value="{{old('medidaAtras')}}" maxlength="5" >
@@ -119,61 +122,64 @@
             </div>
           </div>
 
-      
+          <div class="m-3">
+            <h4 class=" text-center">
+              <strong id="titulo">Colindancias</strong> 
+            </h4>
+          </div>
 
           <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Colindancia Norte:</label>
+            <label class="col-sm-3 col-form-label">Norte:</label>
             <div class="col-sm-5">
                 <textarea type="text" id="colindanciaN" class="form-control rounded-pill  @error('colindanciaN') is-invalid @enderror" 
                 placeholder="Ingrese la colindancia norte del bloque." 
-                    name="colindanciaN" value="{{old('colindanciaN')}}" maxlength="150"></textarea>
+                    name="colindanciaN" value="" maxlength="150">{{old('colindanciaN')}}</textarea>
                     @error('colindanciaN')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
-                  </div>
                 </div>
-
-                <div class="mb-3 row">
-                  <label class="col-sm-3 col-form-label">Colindancia Sur:</label>
-                 <div class="col-sm-5">
-                   <textarea type="text" id="colindanciaS" class="form-control rounded-pill  @error('colindanciaS') is-invalid @enderror" 
-                     placeholder="Ingrese la colindancia sur del bloque." 
-                      name="colindanciaS" value="{{old('colindanciaS')}}" maxlength="150"></textarea>
-                      @error('colindanciaS')
-                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                       @enderror
-                      
-                </div>
-              </div>
+          </div>
 
             <div class="mb-3 row">
-           <label class="col-sm-3 col-form-label">Colindancia Este:</label>
-           <div class="col-sm-5">
-            <textarea type="text" id="colindanciaE" class="form-control rounded-pill  @error('colindanciaE') is-invalid @enderror" 
-            placeholder="Ingrese la colindancia este del bloque. " 
-                name="colindanciaE" value="{{old('colindanciaE')}}" maxlength="150"></textarea>
+                  <label class="col-sm-3 col-form-label">Sur:</label>
+                  <div class="col-sm-5">
+                  <textarea type="text" id="colindanciaS" class="form-control rounded-pill  @error('colindanciaS') is-invalid @enderror" 
+                    placeholder="Ingrese la colindancia sur del bloque." 
+                      name="colindanciaS" value="" maxlength="150">{{old('colindanciaS')}}</textarea>
+                    @error('colindanciaS')
+                      <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                    @enderror
+                      
+                </div>
+            </div>
+
+        <div class="mb-3 row">
+          <label class="col-sm-3 col-form-label">Este:</label>
+          <div class="col-sm-5">
+              <textarea type="text" id="colindanciaE" class="form-control rounded-pill  @error('colindanciaE') is-invalid @enderror" 
+              placeholder="Ingrese la colindancia este del bloque. " 
+                name="colindanciaE" value="" maxlength="150">{{old('colindanciaE')}}</textarea>
                 @error('colindanciaE')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                 @enderror
-         </div>
-         </div>
-
-         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Colindancia Oeste:</label>
-         <div class="col-sm-5">
-         <textarea type="text" id="colindanciaO" class="form-control rounded-pill  @error('colindanciaO') is-invalid @enderror" 
-          placeholder="Ingrese la colindancia oeste del bloque" 
-          name="colindanciaO" value="{{old('colindanciaO')}}" maxlength="150"></textarea>
-          @error('colindanciaO')
-          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-          @enderror
           </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label class="col-sm-3 col-form-label">Oeste:</label>
+          <div class="col-sm-5">
+            <textarea type="text" id="colindanciaO" class="form-control rounded-pill  @error('colindanciaO') is-invalid @enderror" 
+              placeholder="Ingrese la colindancia oeste del bloque" 
+              name="colindanciaO" value="" maxlength="150">{{old('colindanciaO')}}</textarea>
+              @error('colindanciaO')
+              <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+              @enderror
+            </div>
           </div>
 
-      
         <div class="mb-3 row">
           <div class="offset-sm-3 col-sm-9">
-            <button type="submit" id="guardar" class="btn btn-outline-info">Guardar</button> 
+            <button type="submit" id="guardar" class="btn btn-outline-info">Guardar</button>
           </div>
         </div>  
       </form>
@@ -181,10 +187,6 @@
       </div>
     </div>
 </div>
-
-
-
-
 
 @endsection
 

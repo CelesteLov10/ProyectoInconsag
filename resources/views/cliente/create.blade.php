@@ -57,7 +57,7 @@
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('nombreCompleto') is-invalid @enderror" 
             placeholder="Ingrese el nombre completo (ejem. Pablo Jose Ramos Mendoza)" 
-            name="nombreCompleto" value="{{old('nombreCompleto')}}" maxlength="30">
+            name="nombreCompleto" value="{{old('nombreCompleto')}}" maxlength="80">
             @error('nombreCompleto')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -154,7 +154,7 @@
                       <div class="col-sm-7">
                         <input type="text" class="form-control rounded-pill @error('nombreCompletoBen') is-invalid @enderror" 
                         placeholder="Ingrese el nombre completo (ejem. Pablo Jose Ramos Mendoza)" required='required'
-                        name="nombreCompletoBen" value="{{old('nombreCompletoBen')}}" maxlength="30">
+                        name="nombreCompletoBen" value="{{old('nombreCompletoBen')}}" maxlength="80">
                         @error('nombreCompletoBen')
                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                         @enderror

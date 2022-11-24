@@ -15,13 +15,13 @@
       <header class="blog-header py-3 mt-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-14 text-center">
-              <h3 class="blog-header-logo text-dark">Listado de terrenos</h3>
+              <h3 class="blog-header-logo text-dark">Listado de bloques</h3>
             <hr>
           </div>
         </div>
       </header>
     
-      <div class="mb-3 text-end">
+      <div class="me-5 mb-3 text-end">
         <p style="display: inline">
           <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="bi bi-search"></i>
@@ -78,7 +78,7 @@
               <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros"> Lista de bloques</h5 ></a> 
           </div >
 
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
+      <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
           <div class="col-60 bg-light p-5">
               <table class="table border border-2 rounded-pill">
                   <thead class="thead-dark">

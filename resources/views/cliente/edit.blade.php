@@ -53,7 +53,7 @@
           <label class="col-sm-3 col-form-label">Nombre completo:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('nombreCompleto') is-invalid @enderror" 
-            maxlength="30" placeholder="Ingrese los nombres" name="nombreCompleto"
+            maxlength="80" placeholder="Ingrese los nombres" name="nombreCompleto"
             value="{{old('nombreCompleto', $cliente->nombreCompleto)}}" >
             @error('nombreCompleto')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -88,7 +88,7 @@
           <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Fecha de nacimiento:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill @error('fechaNacimieno') is-invalid @enderror" 
+                <input type="text" class="form-control rounded-pill @error('fechaNacimiento') is-invalid @enderror" 
                 maxlength="10" placeholder="Seleccione la fecha de nacimiento"
                 name="fechaNacimiento" id="datepicker" autocomplete="off" value="{{old('fechaNacimiento', $cliente->fechaNacimiento)}}">
             @error('fechaNacimiento')
