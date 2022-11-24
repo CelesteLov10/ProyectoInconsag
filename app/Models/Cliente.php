@@ -6,12 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
-{   protected $fillable =['id',
+{   use HasFactory;
+     protected $fillable =['id',
     'identidadC',
     'nombreCompleto', 
     'telefono',
     'direccion', 
     'fechaNacimiento',
     'descripcion',];
-    use HasFactory;
+
+    public function beneficiario(){
+        return $this->belongsTo(Beneficiario::class);
+    }
+   
 }

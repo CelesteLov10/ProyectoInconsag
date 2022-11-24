@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Beneficiario;
 use App\Models\Cliente;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class ClienteController extends Controller
                 'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes'],
                 'direccion'       => ['required','min:10','max:150'],
                 'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
-                'descripcion'       => ['required','min:10','max:150'],
+                'descripcion'       => ['required','min:10'],
             ],[
             'identidadC.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
             'identidadC.digits' => 'El número de identidad debe tener 13 dígitos. ',
@@ -47,20 +48,20 @@ class ClienteController extends Controller
             'identidadC.numeric' => 'En la identidad sólo se permiten números ',
             'identidadC.regex' => 'El formato para el número de identidad no es válido.',
 
-            'nombreCompleto.required' => 'El nombre no puede ir vacío.',
+            'nombreCompleto.required' => 'El nombre no puede estar vacío.',
             'nombreCompleto.alpha' => 'En el nombre sólo se permite letras.',
             'nombreCompleto.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
-            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.required' => 'El teléfono no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
             'telefono.unique' => 'El número de teléfono ya está en uso.',
 
-            'fechaNacimiento.required' => 'La fecha de nacimiento no puede ir vacío.',
+            'fechaNacimiento.required' => 'La fecha de nacimiento no puede estar vacío.',
             'fechaNacimiento.regex' => 'Debe ser mayor de edad.',
 
-            'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
+            'direccion.required' => 'Se necesita saber la dirección, no puede estar vacío.',
             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
 
@@ -80,6 +81,7 @@ class ClienteController extends Controller
 
     public function show($id)
     {
+        $beneficiario = Beneficiario::all();
         $cliente = Cliente::findOrFail($id);
         return view('cliente.show')->with('cliente', $cliente);
     }
@@ -110,20 +112,20 @@ class ClienteController extends Controller
             'identidadC.numeric' => 'En la identidad sólo se permiten números ',
             'identidadC.regex' => 'El formato para el número de identidad no es válido.',
 
-            'nombreCompleto.required' => 'El nombre no puede ir vacío.',
+            'nombreCompleto.required' => 'El nombre no puede estar vacío.',
             'nombreCompleto.alpha' => 'En el nombre sólo se permite letras.',
             'nombreCompleto.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
-            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.required' => 'El teléfono no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
             'telefono.unique' => 'El número de teléfono ya está en uso.',
 
-            'fechaNacimiento.required' => 'La fecha de nacimiento no puede ir vacío.',
+            'fechaNacimiento.required' => 'La fecha de nacimiento no puede estar vacío.',
             'fechaNacimiento.regex' => 'Debe ser mayor de edad.',
 
-            'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
+            'direccion.required' => 'Se necesita saber la dirección, no puede estar vacío.',
             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
 
