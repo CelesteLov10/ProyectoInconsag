@@ -11,6 +11,7 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\BloqueController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\LoteController;
+use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -210,5 +211,28 @@ Route::controller(BeneficiarioController::class)->group(function(){
     Route::put('/beneficiario/{id}/edit', 'update')->name('beneficiario.update');
     //Ruta para imprimir el listado de beneficiario
     Route::get('/beneficiario/pdf', 'pdf')->name('beneficiario.pdf');
+
+});
+
+Route::controller(VentaController::class)->group(function(){
+    //Ruta para listado de beneficiario
+    Route::get('/venta', 'index')->name('venta.index');
+    //Ruta para crear un nuevo venta
+    Route::get('/venta/create', 'create')->name('venta.create');
+    //Ruta para guardar los registros del venta
+    Route::post('/venta', 'store')->name('venta.store');
+    //Ruta para mostrar un ventaes
+    Route::get('/venta/{id}', 'show')->name('venta.show')
+    ->where('id','[0-9]+');
+    //Ruta para editar un venta
+    Route::get('/venta/{id}/edit', 'edit')->name('venta.edit');
+    //Ruta para el metodo editar
+    Route::put('/venta/{id}/edit', 'update')->name('venta.update');
+    //Ruta para imprimir el listado de venta
+    Route::get('/venta/pdf', 'pdf')->name('venta.pdf');
+    //ruta para los select anidados
+    Route::post('/getLotes/{id}', 'getLotes');
+    
+    Route::get('/getLotes/{id}', 'getLotes');
 
 });

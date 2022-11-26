@@ -56,10 +56,6 @@
                 <th scope="row">Fecha de nacimiento</th>
                 <td>{{$cliente->fechaNacimiento}}</td>    
             </tr>
-            <tr>
-                <th scope="row">Descripción</th>
-                <td>{{$cliente->descripcion}}</td>    
-            </tr>
         </tbody>
     </table>
 </div>

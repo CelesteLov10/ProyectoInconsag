@@ -40,7 +40,6 @@ class ClienteController extends Controller
                 'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes'],
                 'direccion'       => ['required','min:10','max:150'],
                 'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
-                'descripcion'       => ['required','min:10'],
             ],[
             'identidadC.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
             'identidadC.digits' => 'El número de identidad debe tener 13 dígitos. ',
@@ -64,10 +63,6 @@ class ClienteController extends Controller
             'direccion.required' => 'Se necesita saber la dirección, no puede estar vacío.',
             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
-
-            'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
-            'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
-            'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
             ]);
             $input = $request->all();
@@ -104,7 +99,6 @@ class ClienteController extends Controller
             'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes,telefono,'.$id.'id'],
             'direccion'       => ['required','min:10','max:150'],
             'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
-            'descripcion'       => ['required','min:10','max:150'],
         ],[
             'identidadC.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
             'identidadC.digits' => 'El número de identidad debe tener 13 dígitos. ',
@@ -128,10 +122,6 @@ class ClienteController extends Controller
             'direccion.required' => 'Se necesita saber la dirección, no puede estar vacío.',
             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
-
-            'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
-            'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
-            'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
         
         ]);
 
@@ -142,7 +132,6 @@ class ClienteController extends Controller
         $clientes->telefono = $request->input('telefono');
         $clientes->direccion = $request->input('direccion');
         $clientes->fechaNacimiento = $request->fechaNacimiento;
-        $clientes->descripcion = $request->input('descripcion');
         
         
         $update = $clientes->save();

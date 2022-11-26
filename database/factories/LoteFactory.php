@@ -27,7 +27,7 @@ class LoteFactory extends Factory
             'colindanciaS'=>$this->faker->address(),
             'colindanciaE'=>$this->faker->address(),
             'colindanciaO'=>$this->faker->address(),
-            'bloque_id' =>$this->faker->randomElement([1,20]),
+            'bloque_id' =>$this->faker->randomElement([1,5]),
         ];
     }
 }

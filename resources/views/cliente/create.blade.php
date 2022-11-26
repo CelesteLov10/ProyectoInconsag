@@ -101,18 +101,6 @@
         </div>
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Descripción:</label>
-            <div class="col-sm-5">
-              <textarea type="text" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
-              maxlength="150" placeholder="Ingrese la descripción"
-              name="descripcion" value="">{{old('descripcion')}}</textarea>
-            @error('descripcion')
-              <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-            @enderror
-            </div>
-          </div>
-
-        <div class="mb-3 row">
           <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-outline-info">Guardar</button> 
             {{-- Boton parte del modal --}}

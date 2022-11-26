@@ -12,6 +12,8 @@ use App\Models\Oficina;
 use App\Models\Proveedor;
 use App\Models\Municipio;
 use App\Models\Bloque;
+use App\Models\Cliente;
+use App\Models\Lote;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -33,9 +35,11 @@ class DatabaseSeeder extends Seeder
         Puesto::factory(30)->create();
         Oficina::factory(10)->create();
         Empleado::factory(50)->create();
-        Inventario::factory(100)->create();
+        Inventario::factory(50)->create();
         Proveedor::factory(10)->create();
         Maquinaria::factory(30)->create();
-        Bloque::factory(30)->create();
+        Cliente::factory(30)->create();
+        Bloque::factory(5)->create();
+        Lote::factory(25)->create();
     }
 }

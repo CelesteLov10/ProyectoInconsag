@@ -243,7 +243,7 @@ function validacion(){
         valorHora=document.getElementById("valorHora").value;
         
           if(cantidadHoraAlquilada == null || cantidadHoraAlquilada.length == 0 || valorHora.length == 0) {
-          Swal.fire('Llena los campos de maquinaria alquilada!');
+          Swal.fire('¡Llena los campos de maquinaria alquilada!');
           document.getElementById("form1").addEventListener('submit', (event)=>{
             event.preventDefault();   });
           }else{
