@@ -77,6 +77,8 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/bloque', 'bloque')->name('bloque.search');
     //Ruta para listado cliente
     Route::get('search/cliente', 'cliente')->name('cliente.search');
+    //Ruta para listado venta
+    Route::get('search/venta', 'venta')->name('venta.search');
     
 });
 
@@ -215,13 +217,13 @@ Route::controller(BeneficiarioController::class)->group(function(){
 });
 
 Route::controller(VentaController::class)->group(function(){
-    //Ruta para listado de beneficiario
+    //Ruta para listado de venta
     Route::get('/venta', 'index')->name('venta.index');
     //Ruta para crear un nuevo venta
     Route::get('/venta/create', 'create')->name('venta.create');
     //Ruta para guardar los registros del venta
     Route::post('/venta', 'store')->name('venta.store');
-    //Ruta para mostrar un ventaes
+    //Ruta para mostrar las ventas
     Route::get('/venta/{id}', 'show')->name('venta.show')
     ->where('id','[0-9]+');
     //Ruta para editar un venta

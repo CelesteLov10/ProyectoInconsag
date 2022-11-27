@@ -34,7 +34,7 @@
 
     <div class="container ">
         <div class="mb-3 text-end">
-        <a class="btn btn-outline-primary" href="{{route('maquinaria.index')}}"> 
+        <a class="btn btn-outline-primary" href="{{route('venta.index')}}"> 
             <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
     </div>
 
