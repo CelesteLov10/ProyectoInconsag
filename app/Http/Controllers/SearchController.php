@@ -11,6 +11,7 @@ use App\Models\Proveedor;
 use App\Models\Puesto;
 use App\Models\Bloque;
 use App\Models\Cliente;
+use App\Models\Venta;
 
 class SearchController extends Controller
 {
@@ -112,6 +113,18 @@ class SearchController extends Controller
         foreach($querys as $query){
         $data[] = [
         'label' => $query->nombreCompleto
+        ];
+        }
+        return $data;
+    }
+    public function venta(Request $request){
+        $term = $request->get('term');
+        $querys = Venta::where('nombreCliente', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->nombreCliente
         ];
         }
         return $data;

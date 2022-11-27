@@ -11,9 +11,21 @@ use Illuminate\Http\Request;
 
 class VentaController extends Controller
 {
+    public function index(){
+        //Campo busqueda
+        $ventas = Venta::query()
+            ->when(request('search'), function($query){
+            return $query->where('nombreCliente', 'LIKE', '%' .request('search') .'%')
+            ->orWhere('formaVenta', 'LIKE', '%' .request('search') .'%')
+            ->orWhere('fechaVenta', 'LIKE', '%' .request('search') .'%');
+            })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+
+        return view('venta.index', compact('ventas'));
+    }
+
     public function create(){ 
 
-        $venta = Venta::all();
+        $ventas = Venta::all();
         $cliente = Cliente::all();
         $bloques = Bloque::all();
         $lotes = Lote::all();

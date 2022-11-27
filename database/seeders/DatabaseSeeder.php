@@ -14,6 +14,7 @@ use App\Models\Municipio;
 use App\Models\Bloque;
 use App\Models\Cliente;
 use App\Models\Lote;
+use App\Models\Venta;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -41,5 +42,6 @@ class DatabaseSeeder extends Seeder
         Cliente::factory(30)->create();
         Bloque::factory(5)->create();
         Lote::factory(25)->create();
+        Venta::factory(25)->create();
     }
 }
