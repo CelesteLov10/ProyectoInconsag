@@ -20,12 +20,14 @@ class VentaController extends Controller
             ->orWhere('fechaVenta', 'LIKE', '%' .request('search') .'%');
             })->orderBy('id','desc')->paginate(10)->withQueryString(); 
 
-        return view('venta.index', compact('ventas'));
+            $cliente = Cliente::all();
+
+        return view('venta.index', compact('ventas', 'cliente'));
     }
 
     public function create(){ 
 
-        $ventas = Venta::all();
+        $venta = Venta::all();
         $cliente = Cliente::all();
         $bloques = Bloque::all();
         $lotes = Lote::all();
@@ -69,7 +71,7 @@ class VentaController extends Controller
         $input = $request->all();
         
         Venta::create($input);
-            return redirect()->route('venta.create')
+            return redirect()->route('venta.index')
             ->with('mensaje', 'Se guardó una nueva venta correctamente');
         
         /** redireciona una vez enviado  */

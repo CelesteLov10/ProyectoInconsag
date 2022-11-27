@@ -30,7 +30,7 @@
       </button>
     </p>
     <a class="btn btn-outline-primary" href="{{route('venta.pdf')}}" title="Imprimir PDF">PDF <i class="bi bi-printer"></i></a>
-      <a class="btn btn-outline-primary" href="{{route('venta.create')}}">Nuevo venta<i class="bi bi-person-plus"></i></a>
+      <a class="btn btn-outline-primary" href="{{route('venta.create')}}">Nueva venta<i class="bi bi-person-plus"></i></a>
   </div>
   <div class="collapse mb-3 mt-3" id="collapseExample">
     <div class="card card-body p-2">
@@ -78,7 +78,7 @@
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
               <a href="{{route('venta.index')}}" id="sinLinea">
-                <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Lista de todas las ventas</h5 ></a> 
+                <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Lista las ventas</h5 ></a> 
           </div >
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
@@ -88,8 +88,8 @@
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Nombre del cliente</th>
-                      <th scope="col">Forma de Venta</th>
-                      <th scope="col">Fecha de Venta</th>
+                      <th scope="col">Forma de venta</th>
+                      <th scope="col">Fecha de venta</th>
                       <th scope="col">Detalle</th>
                       <th scope="col">Actualizar</th>
                     </tr>
@@ -98,7 +98,7 @@
                   @forelse($ventas as $venta)
                     <tr>
                       <td>{{$venta->id}}</td>
-                      <td>{{$venta->nombreCliente}}</td>
+                      <td>{{$venta->cliente->nombreCompleto}}</td>
                       <td>{{$venta->formaVenta}}</td>
                       <td>{{$venta->fechaVenta}}</td>
 

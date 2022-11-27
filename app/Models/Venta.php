@@ -19,4 +19,8 @@ class Venta extends Model
     'valorCuotas',
     'valorRestantePagar'];
     use HasFactory;
+    
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
+    }
 }

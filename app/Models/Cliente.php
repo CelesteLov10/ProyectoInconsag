@@ -19,4 +19,7 @@ class Cliente extends Model
         return $this->belongsTo(Beneficiario::class);
     }
    
+    public function venta(){
+        return $this->hasMany(venta::class);
+    }
 }
