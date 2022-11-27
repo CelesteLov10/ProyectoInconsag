@@ -23,11 +23,11 @@
 
   <div class="me-5 mb-3 text-end">
     <p style="display: inline">
-      <button class="btn btn-outline-primary" id="sea" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <button class="btn glow-on-hover-main text-BLACK" id="sea" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         <i class="bi bi-search"></i>
       </button>
     </p>
-    <a class="btn btn-outline-primary" href="{{route('puestoLaboral.create')}}">Nuevo puesto <i class="bi bi-plus-square-dotted"></i></a>
+    <a class="btn glow-on-hover-main text-BLACK" href="{{route('puestoLaboral.create')}}">Nuevo puesto <i class="bi bi-plus-square-dotted"></i></a>
   </div>
 
       <div class="collapse mb-3 mt-3" id="collapseExample">

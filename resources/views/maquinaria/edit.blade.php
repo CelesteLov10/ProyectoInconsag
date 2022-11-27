@@ -23,12 +23,12 @@
     
 @section('contenido') 
 
-<div>
-    <div class="mb-5 m-5">
-        <h2 class=" text-center" id="titulo">
-            <strong id="titulo">Actualización de una maquinaria</strong> 
-        </h2>
-    </div>
+<div class="mb-5 m-5">
+    <h3 class=" text-center">
+        Actualización de la maquinaria
+    </h3>
+    <hr>
+  </div>
 
     <div class="container ">
         <div class="mb-3 text-end">
@@ -37,9 +37,9 @@
     </div>
 
     {{-- encabezado  --}}
-    <div class = " card shadow ab-4 bg-success bg-gradient" >
+    <div class = " card shadow ab-4 btaura">
         <div class = " card-header py-3 " >
-            <h5 class = "n-font-weight-bold text-white" >Actualización de maquinaria</h5> 
+            <h5 class = "n-font-weight-bold text-white" >Actualización de la maquinaria</h5> 
         </div >
 
         <div class="vh-50 row m-0 text-center align-items-center justify-content-center">

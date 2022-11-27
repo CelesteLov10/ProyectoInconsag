@@ -1,78 +1,261 @@
-
-
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Times New Roman' ;
-    color: rgb(14, 17, 15);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman' ;
+  color: rgb(14, 17, 15);
 }
 body{
-    max-height: 1200px;
-    background-image: url(./imagenes/fondo3.png);
-    /*background-attachment: fixed;*/
-    background-position: center center;
-    background-size: cover;
-    justify-content: center;
-    align-items: center;
-    background-repeat: no-repeat;
-
-    opacity: 0.8;
+  max-height: 100%;
+  max-width: 100%;
+  background-image: url(./imagenes/fondo3.png);
+  /*background-attachment: fixed;*/
+  background-position: cover;
+  background-size: cover;
+  justify-content: center;
+  opacity: 0.75;
 }
+
 footer{
-    background-color:rgb(216, 207, 206);
-    text-align-last: right;  
-    display: flex;
-    top: 500px;
+  background-color:rgb(9, 15, 19);
+  text-align-last: right;  
+  box-shadow: 0 4px 15px 0 rgba(223, 223, 223, 0.75);
 }
 #sinLinea{
-    text-decoration-color: rgb(160, 189, 189);
+  text-decoration-color: rgb(160, 189, 189);
 }
 
-h3 {
-    margin-top: 75px;
-    color: rgb(36, 30, 26);
-    text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+/*PARA LETRAS NEON*/
+.neonText {
+  color: #fff;
+  text-shadow:
+    0 0 20px #fff,
+    0 0 40px #fff,
+    0 0 60px #0fa,
+    0 0 80px #0fa,
+    0 0 100px #0fa,
+    0 0 120px #0fa,
+    0 0 140px #0fa,
+    0 0 160px #0fa;
 }
 
+
+
+h3{
+  /*background-color:rgba(0, 0, 0, 0.178);*/
+  /*box-shadow: 0 4px 15px 0 rgba(223, 223, 223, 0.75);*/
+  color: rgb(36, 30, 26);
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/*FONDO DEGRADADO*/
 .btaura {
-    background-image: linear-gradient(to right, #1c6e92, #40e495, #25aae1, #2bb673);
-    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+  background-image: linear-gradient(to right, #1c6e92, #40e495, #25aae1, #2bb673);
+  box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
 }
 
-.btauraOpac {
-    background-image: linear-gradient(to right, #1c6f9280, #40e49580, #25a9e17a, #2bb67373);
-    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
-}
+.contorno-azul {
+  box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+  }
 
 .bgblue {
-    background-image: linear-gradient(to right, #1c6e92, #2bb673);
-    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+  background-image: linear-gradient(to right, #1c6e92, #2bb673);
+  box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
 }
 
+/*BUSCADOR*/
 .buscar {
-    background-image: linear-gradient(to right, #1c6e92);
-    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+  box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+}
+
+.div{
+  max-width: 100%;
+  max-height: 10%;
 }
 
 table {
-    width: 100%;
-  }
-  
-  th {
-    height: 45px;
-  }
-  tr:hover {background-color: rgb(9, 172, 4);}
+  width: 100%;
+}
 
-  .title{
-    background-color: rgb(11, 143, 99);
-    text-align: center;
-  }
+th {
+  height: 45px;
+}
 
-  #lotess{
-    height: 50vh;
-    overflow-y: scroll;
-  }
+/*DEGRADADO OPACO*/
+tr:hover {
+  background-image: linear-gradient(to right, #1c6f9244, #40e4953f, #25a9e14e, #2bb67349);
+}
 
+.title{
+  background-color: rgb(11, 143, 99);
+  text-align: center;
+}
 
+#lotess{
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+/*****************SECCION DE BOTONES****************/
+
+.buttons {
+  margin: 1%;
+  text-align: center;
+}
+
+.btn-hover {
+  width: 180px;
+  font-size: 20px;
+  font-weight: auto;
+  color: #fff;
+  cursor: pointer;
+  margin: 1px;
+  height: auto;
+  text-align:center;
+  border: none;
+  background-size: 200% 50%;
+
+  border-radius: 50px;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+  background-position: 100% 0;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+  outline: none;
+}
+
+.btn-hover.color-oscuro {
+  background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
+}
+
+/*OTRO BOTON*/
+.glow-on-hover {
+  width: 170px;
+  height: 40px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+/*******BOTONES DEL MAIN************/
+.glow-on-hover-main {
+  width: auto;
+  height: 40px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover-main:before {
+  content: '';
+  background: linear-gradient(45deg, #1c6e92, #40e495, #25aae1, #2bb673);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover-main:active {
+  color: #000
+}
+
+.glow-on-hover-main:active:after {
+  background: transparent;
+}
+
+.glow-on-hover-main:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover-main:after {
+  border: 1px solid black;
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(255, 255, 255);
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}

@@ -10,9 +10,10 @@
 
 <div>
     <div class="mb-5 m-5">
-        <h2 class=" text-center">
-            <strong id="titulo">Detalle de bloque</strong> 
-        </h2>   
+        <h3 class=" text-center">
+        Detalle del bloque
+        </h3>
+        <hr>
     </div>
 
     <div class="container ">
@@ -21,7 +22,7 @@
                 <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
         </div>
         {{-- encabezado --}}
-        <div class = " card shadow ab-4 bg-success bg-gradient " >
+        <div class = " card shadow ab-4 btaura" >
             <div class = " card-header py-3 " >
                 <h5 class = "n-font-weight-bold text-white">Detalles de {{$bloque->nombreBloque}} </h5> 
             </div >

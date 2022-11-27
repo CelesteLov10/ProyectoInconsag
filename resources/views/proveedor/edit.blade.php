@@ -4,18 +4,21 @@
 
 @section('contenido') 
 <div>
+    
     <div class="mb-5 m-5">
-        <h2 class=" text-center" >
-        <strong id="titulo">Actualización del proveedor</strong> 
-        </h2>
-    </div>
+        <h3 class=" text-center">
+            Actualización del proveedor
+        </h3>
+        <hr>
+      </div>
+
     <div class="container ">
         <div class="mb-3 text-end">
             <a class="btn btn-outline-primary" href="{{route('proveedor.index')}}">
                 <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
         </div>
         {{-- encabezado  --}}
-        <div class = " card shadow ab-4 bg-success bg-gradient " >
+        <div class = " card shadow ab-4 btaura">
             <div class = " card-header py-3 " >
             <h5 class = "n-font-weight-bold text-white">Actualización del proveedor </h5 > 
         </div >

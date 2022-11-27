@@ -16,13 +16,24 @@
     <title>@yield('titulo')</title>
   
     @yield('css')
+
+    <style>
+    /*MODO OSCURO*/
+  
+
+    .dark-mode{
+    background-color: black;
+    color: white;
+    
+}
+    </style>
 </head>
 
 <body>
 
-  <div class="d-flex justify-content-between ">                                                                                   {{-- ancho y alto de menu vertical --}}
-    <div class="d-flex flex-column flex-shrink-0  justify-content-between p-3 m-0 text-white bg-dark bg-gradient rounded-end" style="width: 275px; height: 1350px">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-4 me-md-auto text-white text-decoration-none">
+  <div class="d-flex justify-content-between">                                                                                   {{-- ancho y alto de menu vertical --}}
+    <div class="d-flex flex-column flex-shrink-0  justify-content-between p-3 m-0 text-white bg-dark rounded-end" style="width: 15%; height: auto">
+      <a href="/" class="d-flex align-items-center text-white text-decoration-none">
           <span class="m-2"><i class="bi bi-house-fill text-light"></i></span>
           <span class="fs-5 text-light">Menú principal</span>
       </a>
@@ -37,7 +48,7 @@
           </li>
           <li>
           <a href="{{route('oficina.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-              <span class="p-2"><i class="bi bi-building text-light"></i></span>
+              <span class="p-2"><i class="bi bi-building text-white"></i></span>
               Oficina
           </a>
           </li>
@@ -50,35 +61,36 @@
             </li>
           <li>
           <a href="{{route('inventario.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-              <span class="p-2"><i class="bi bi-stack text-light"></i></span>
+              <span class="p-2"><i class="bi bi-stack text-white"></i></span>
               Inventario
           </a>
           </li>
           <li>
           <a href="{{route('proveedor.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-              <span class="p-2"><i class="bi bi-bag-dash-fill text-light"></i></span>
+              <span class="p-2"><i class="bi bi-bag-dash-fill text-white"></i></span>
               Proveedor
           </a>
           </li>
           <li>
           <a href="{{route('maquinaria.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-              <span class="p-2"><i class="bi bi-truck-front-fill text-light"></i></span>
+              <span class="p-2"><i class="bi bi-truck-front-fill text-white"></i></span>
               Maquinaria
           </a>
           </li>
           <li>
             <a href="{{route('bloque.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-                <span class="p-2"><i class="bi bi-x-diamond text-light"></i></span>
-                Lotes
+                <span class="p-2"><i class="bi bi-x-diamond text-white"></i></span>
+                Bloques y lotes
             </a>
             </li>
             <li>
             <a href="{{route('cliente.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-                <span class="p-2"><i class="bi bi-person-fill text-light"></i></span>
+                <span class="p-2"><i class="bi bi-person-fill text-white"></i></span>
                 Clientes
             </a>
             </li>
       </ul>
+      <button class="btn-hover glow-on-hover" onclick="darkMode()">Modo oscuro</button>
       <hr>
       <div class="dropdown">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -94,15 +106,15 @@
       </ul>
       </div>
   </div>
-                                                                                                                                {{-- ancho y alto del div de todas las vistas --}}
-    <main class="d-flex flex-column flex-shrink-0  justify-content-start p-0 m-0  text-white bg-light bg-gradient rounded" style="width: 85%; height: 70%">
+                                      {{-- ancho y alto del div de todas las vistas --}}
+    <main class="text-white bg-light" style="width: 85%; height: cover">
       @yield('contenido')
     </main>
 </div>
 
       <div>
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 mb-0 border-top">
-          <p id= "par" class="col-md-7 mb-0 text-muted ">©copyright 2022 CCFS</p>
+        <footer class="align-items-center py-3 my-4 mb-0 border-top">
+          <p id= "par" class="col-md-7 mb-0 text-muted">©copyright 2022 CCFS</p>
         </footer>
       </div>
       
@@ -118,6 +130,12 @@
       
       @yield('js')
 
+      <script>
+        function darkMode() {
+          var element = document.div;
+          element.classList.toggle("dark-mode");
+        }
+      </script>
       
 </body>
 </html>

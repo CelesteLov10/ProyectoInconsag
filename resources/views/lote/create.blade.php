@@ -4,11 +4,14 @@
     
 @section('contenido') 
 <div>
+  
   <div class="mb-5 m-5">
-      <h2 class=" text-center">
-        <strong id="titulo">Registro de lotes para el bloque</strong> 
-      </h2>
+    <h3 class=" text-center">
+      Registro de lotes para el bloque
+    </h3>
+    <hr>
   </div>
+
   <div class="container ">
     <div class="mb-3 text-end">
       <a class="btn btn-outline-primary" href="{{route('bloque.index')}}">
@@ -16,7 +19,7 @@
     </div>
 
       {{-- encabezado  --}}
-      <div class = " card shadow ab-4 bg-success bg-gradient" >
+      <div class = " card shadow ab-4 btaura" >
         <div class = " card-header py-3 " >
             <h5 class = "n-font-weight-bold text-white" >Registro de lotes </h5 > 
         </div>
@@ -71,12 +74,14 @@
               @enderror
           </div>
         </div>
+        <br>
+        
+        <hr>
 
-        <div class="m-3">
-          <h4 class=" text-center">
-            <strong id="titulo">Medidas en metros</strong> 
-          </h4>
-        </div>
+        <h4>
+          <label class="text-muted" id="titulo">Medidas en metros</label> 
+        </h4>
+        <br>
 
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Lateral derecha:</label>
@@ -121,12 +126,14 @@
               @enderror
             </div>
           </div>
+          <br>
 
-          <div class="m-3">
-            <h4 class=" text-center">
-              <strong id="titulo">Colindancias</strong> 
-            </h4>
-          </div>
+          <hr> 
+
+          <h4>
+            <label class="text-muted" id="titulo">Colindancias</label> 
+          </h4>
+          <br>
 
           <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Norte:</label>
@@ -176,6 +183,8 @@
               @enderror
             </div>
           </div>
+
+          <hr>
 
         <div class="mb-3 row">
           <div class="offset-sm-3 col-sm-9">

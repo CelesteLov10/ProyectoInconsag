@@ -5,10 +5,12 @@
 @section('contenido') 
 <div>
   <div class="mb-5 m-5">
-      <h2 class=" text-center">
-        <strong id="titulo">Registro de un nuevo puesto laboral</strong> 
-      </h2>
+    <h3 class=" text-center">
+      Registro de un nuevo puesto laboral
+    </h3>
+    <hr>
   </div>
+
   <div class="container ">
     <div class="mb-3 text-end">
       <a class="btn btn-outline-primary" href="{{route('puestoLaboral.index')}}">
@@ -16,7 +18,7 @@
     </div>
 
       {{-- encabezado  --}}
-      <div class = " card shadow ab-4 bg-success bg-gradient" >
+      <div class = " card shadow ab-4 btaura">
         <div class = " card-header py-3 " >
             <h5 class = "n-font-weight-bold text-white" >Creación puesto </h5 > 
         </div >

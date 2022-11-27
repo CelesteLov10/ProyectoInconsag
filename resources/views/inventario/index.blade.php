@@ -11,23 +11,23 @@
 @section('contenido') 
 
 <div> 
-  <header class="blog-header py-3 mt-3">
+  <header class="blog-header py-2 mt-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-14 text-center">
-          <h3 class="blog-header-logo text-dark">Listado de inventarios</h3>
-        <hr>
+          <h3 class="blog-header-logo">Listado de inventarios</h3>
+      <hr>
       </div>
     </div>
   </header>
 
   <div class="me-5 mb-3 text-end">
     <p style="display: inline">
-      <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        <i class="bi bi-search"></i>
+      <button class="btn glow-on-hover-main text-BLACK" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <i class="bi bi-search text-BLACK"></i>
       </button>
     </p>
-      <a class="btn btn-outline-primary" href="{{route('inventario.pdf')}}" title="Imprimir PDF">PDF <i class="bi bi-printer"></i></a>
-      <a class="btn btn-outline-primary" href="{{route('inventario.create')}}">Nuevo inventario <i class="bi bi-plus-square-dotted"></i></a>
+      <a class="btn glow-on-hover-main text-BLACK" href="{{route('inventario.pdf')}}" title="Imprimir PDF">PDF <i class="bi bi-printer text-BLACK"></i></a>
+      <a class="btn glow-on-hover-main text-BLACK" href="{{route('inventario.create')}}">Nuevo inventario <i class="bi bi-plus-square-dotted text-BLACK"></i></a>
   </div>
   <div class="collapse mb-3 mt-3" id="collapseExample">
     <div class="card card-body p-2">
@@ -35,7 +35,7 @@
       <form method="GET" action="">
         <div class="container">
             <div class="vh-50 row text-center align-items-center justify-content-center">
-                <div class="col-8 p-1 buscar">
+                <div class="col-8 p-1 contorno-azul">
                     <div class="input-group">
                           <input type="text" name="search" id="search"  class="form-control"
                           placeholder="Buscar por inventario, oficina o empleado" 
@@ -79,7 +79,7 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
           <div class="col-60 bg-light p-5">
-              <table class="table border border-2 rounded-pill">
+              <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">#</th>

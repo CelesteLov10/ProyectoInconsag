@@ -25,11 +25,11 @@
 
   <div class="me-5 mb-3 text-end">
     <p style="display: inline">
-      <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <button class="btn glow-on-hover-main text-BLACK" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         <i class="bi bi-search"></i>
       </button>
     </p>
-      <a class="btn btn-outline-primary" href="{{route('empleado.createEmp')}}">Nuevo empleado  <i class="bi bi-person-plus"></i></a>
+      <a class="btn glow-on-hover-main text-BLACK" href="{{route('empleado.createEmp')}}">Nuevo empleado  <i class="bi bi-person-plus"></i></a>
   </div>
   <div class="collapse mb-3 mt-3" id="collapseExample">
     <div class="card card-body p-2">

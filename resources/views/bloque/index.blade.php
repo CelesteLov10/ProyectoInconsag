@@ -23,12 +23,12 @@
     
       <div class="me-5 mb-3 text-end">
         <p style="display: inline">
-          <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <button class="btn glow-on-hover-main text-BLACK" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="bi bi-search"></i>
           </button>
         </p>
-        <a class="btn btn-outline-primary" href="{{route('bloque.create')}}">Nuevo bloque <i class="bi bi-plus-square-dotted"></i></a>
-        <a class="btn btn-outline-primary" href="{{route('lote.create')}}">Agregar lote <i class="bi bi-plus-square-dotted"></i></a>
+        <a class="btn glow-on-hover-main text-BLACK" href="{{route('bloque.create')}}">Nuevo bloque <i class="bi bi-plus-square-dotted"></i></a>
+        <a class="btn glow-on-hover-main text-BLACK" href="{{route('lote.create')}}">Agregar lote <i class="bi bi-plus-square-dotted"></i></a>
       </div>
       <div class="collapse mb-3 mt-3" id="collapseExample">
         <div class="card card-body p-2">
@@ -100,9 +100,9 @@
                         <i class="bi bi-file-earmark-plus"></i>                     
                        </a>
                       </td> --}}
-                      <td><a class="btn btn-outline-warning" 
+                      <td><a class="btn btn-outline-primary" 
                         href="{{route('bloque.show', ['id' => $bloque->id])}}">
-                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-eye"></i>
                       </a>
                       </td>
                      

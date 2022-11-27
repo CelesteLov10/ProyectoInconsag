@@ -6,6 +6,8 @@ use App\Models\Empleado;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
 use App\Models\Oficina;
+use Illuminate\Support\Facades\DB;
+Barryvdh\DomPDF\ServiceProvider::class;
 
 // Importamos la libreria PDF de esta manera
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
@@ -31,19 +33,48 @@ class InventarioController extends Controller
         return view('inventario.index', compact('inventarios', 'empleado', 'oficina'));
     }
 
-    // Metodo para mostrar pdf
-    public function pdf (request $request){
+    /*public function sear(Request $request){
+        $sear=trim($request->get('search'));
+        $otra=$request->all();
+        $inventarios=DB::table('inventarios')
+        ->where('nombreInv', 'LIKE', '%' .$sear.'%')
+        ->orWhere('oficina','nombreOficina','LIKE', '%' .request('search') .'%')
+        ->orWhere('empleado','nombres','LIKE', '%' .request('search') .'%')
+        ->orderBy('id','desc')->paginate(10)->appends($otra);
 
-        $inventarios = Inventario::all();    
+        return view('inventario.index')->with('inventarios', $inventarios);
+    }*/
+
+    // Metodo para mostrar pdf
+    public function pdf (request $id){
+
+        // prueba con find
+        //$inventarios = Inventario::find($id);
+
+
+        // prueba atravez de una consulta sql que reciba el valor de la busqeuda
+
+        /*$dato = $_GET['search'];
+        $sql = "select * from inventarios, oficinas, empleados where 
+            nombreInv = $dato or nombreOficina = $dato or nombres = $dato";
+        $resultado = $conn->query($sql);
+        $inventarios = $resultado->fetch_assoc();*/
+        
+        
+        /*$dato = $_GET['search'];
+        $inventarios = DB::select("select * from inventarios, oficinas, empleados where 
+            nombreInv = $dato or nombreOficina = $dato or nombres = $dato");*/
+        // Con esto imprime todos los registros de ese modelo "all()"
+        $inventarios = Inventario::all();
         $empleado = Empleado::all();
-        $oficina = Oficina::all();
+        $oficina = Oficina::all();    
 
         // Aqui hacemos uso de la libreria PDF para que genere el documento pdf
         $pdf = PDF::loadView('inventario.pdf', compact('inventarios', 'empleado', 'oficina'));
         return $pdf -> stream();
         
     }
-
+ 
     public function create(){   
         $empleado = Empleado::orderBy('nombres')->get();
         $oficina = Oficina::orderBy('nombreOficina')->get();

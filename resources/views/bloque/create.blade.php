@@ -11,9 +11,10 @@
 @section('contenido') 
 <div>
     <div class="mb-5 m-5">
-        <h2 class=" text-center">
-        <strong id="titulo">Registro de nuevo bloque</strong> 
-        </h2>
+        <h3 class=" text-center">
+        Registro de un nuevo bloque
+        </h3>
+        <hr>
     </div>
     <div class="container ">
         <div class="mb-3 text-end">
@@ -22,7 +23,7 @@
         </div>
 
         {{-- encabezado  --}}
-        <div class = " card shadow ab-4 bg-success bg-gradient" >
+        <div class = " card shadow ab-4 btaura" >
             <div class = " card-header py-3 " >
             <h5 class = "n-font-weight-bold text-white" >Creación nuevo bloque</h5 > 
         </div >

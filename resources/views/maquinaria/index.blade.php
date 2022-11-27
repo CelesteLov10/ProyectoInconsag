@@ -22,12 +22,12 @@
 
   <div class="me-5 mb-3 text-end">
     <p style="display: inline">
-      <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <button class="btn glow-on-hover-main text-BLACK" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         <i class="bi bi-search"></i>
       </button>
     </p>
-    <a class="btn btn-outline-primary" href="{{route('maquinaria.pdf')}}" title="Imprimir PDF">PDF<i class="bi bi-printer"></i></a>
-    <a class="btn btn-outline-primary" href="{{route('maquinaria.create')}}">Nueva maquinaria <i class="bi bi-plus-square-dotted"></i></a>
+    <a class="btn glow-on-hover-main text-BLACK" href="{{route('maquinaria.pdf')}}" title="Imprimir PDF">PDF<i class="bi bi-printer"></i></a>
+    <a class="btn glow-on-hover-main text-BLACK" href="{{route('maquinaria.create')}}">Nueva maquinaria <i class="bi bi-plus-square-dotted"></i></a>
   </div>
   <div class="collapse mb-3 mt-3" id="collapseExample">
     <div class="card card-body p-2">
