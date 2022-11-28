@@ -16,5 +16,8 @@ class Bloque extends Model
     public function lote(){
         return $this->hasMany(Lote::class);
     }
+    public function venta(){
+        return $this->hasMany(Venta::class);
+    }
 
 }

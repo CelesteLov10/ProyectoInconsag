@@ -20,7 +20,16 @@ class Venta extends Model
     'valorRestantePagar'];
     use HasFactory;
     
+    //una venta pertnece a un solo cliente
     public function cliente(){
         return $this->belongsTo(Cliente::class);
     }
+    public function bloque(){
+        return $this->belongsTo(Bloque::class);
+    }
+    public function lote(){
+        return $this->belongsTo(Lote::class);
+    }
+
 }
+

@@ -25,6 +25,13 @@ class VentaController extends Controller
         return view('venta.index', compact('ventas', 'cliente'));
     }
 
+    public function show($id){
+     $bloques = Bloque::all();
+     $lotes = Lote::all();
+        $venta = Venta::findOrFail($id);
+        return view('venta.show', compact('bloques', 'lotes'))->with('venta', $venta);
+    }
+
     public function create(){ 
 
         $venta = Venta::all();

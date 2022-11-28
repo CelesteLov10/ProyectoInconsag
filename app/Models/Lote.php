@@ -23,4 +23,8 @@ class Lote extends Model
     public function bloque(){
         return $this->belongsTo(Bloque::class);
     }
+
+    public function venta(){
+        return $this->hasOne(Venta::class);
+    }
 }
