@@ -23,9 +23,9 @@ public function store(Request $request){
 
         'bloque_id'   => 'required',
         'numLote'    => 'required|numeric|min:1|regex:/^[0-9]{1,2}+$/u',
-        'medidaLateralR'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
-        'medidaLateralL'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
-        'medidaEnfrente'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
+        'medidaLateralR'   => 'required|numeric|min:1.00|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
+        'medidaLateralL'   => 'required|numeric|min:1.00|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
+        'medidaEnfrente'   => 'required|numeric|min:1.00|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'medidaAtras'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'colindanciaN'    => 'required',
         'colindanciaS'    => 'required',
@@ -37,9 +37,13 @@ public function store(Request $request){
     $mensaje =[
         'bloque_id.required' => 'El bloque es requerido, no puede estar vacío. ',
         'medidaLateralR.required' => 'La medida lateral derecha es requerida, no puede estar vacío. ',
+
         'medidaLateralL.required' => 'La medida lateral izquierda es requerida, no puede estar vacío. ',
+
         'medidaEnfrente.required' => 'La medida de enfrente es requerida, no puede estar vacío. ',
+
         'medidaAtras.required' => 'La medida de atras es requerida, no puede estar vacío. ',
+
         'medidaLateralR.numeric' => 'La medida lateral derecha solo permite numeros.',
         'medidaLateralL.numeric' => 'La medida lateral izquierda solo permite numeros.',
         'medidaEnfrente.numeric' => 'La medida de enfrente solo permite numeros.',

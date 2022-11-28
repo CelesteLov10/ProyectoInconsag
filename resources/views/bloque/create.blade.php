@@ -1,6 +1,6 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Nuevo Bloque')
+@section('titulo', 'Nuevo bloque')
 
 @section('css')
 <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
@@ -45,10 +45,10 @@
             </div>
     
             <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Cantidad de Lotes:</label>
+                <label class="col-sm-3 col-form-label">Cantidad de lotes:</label>
                 <div class="col-sm-5">
                     <input type="number" id="cantidadLotes" class="form-control rounded-pill  @error('cantidadLotes') is-invalid @enderror" 
-                    placeholder="Ingrese la cantidad de Lotes. Ejem. 1" 
+                    placeholder="Ingrese la cantidad de lotes. Ejem. 1" 
                         name="cantidadLotes" value="{{old('cantidadLotes')}}" maxlength="4">
                         @error('cantidadLotes')
                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -59,7 +59,7 @@
            
 
             <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Subir Foto:</label>
+                <label class="col-sm-3 col-form-label">Subir foto:</label>
                 <div class="col-sm-5">
                     <input accept="image/*" type="file" id="subirfoto" class="form-control rounded-pill  @error('subirfoto') is-invalid @enderror" 
                         name="subirfoto" value="{{old('subirfoto')}}" >

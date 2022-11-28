@@ -67,8 +67,8 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Número de lote:</label>
           <div class="col-sm-5">
-            <input type="number" id="numLote" class="form-control rounded-pill @error('numLote') is-invalid @enderror" 
-            placeholder="Ingrese el número de lote" name="numLote" maxlength="1" value="{{old('numLote')}}">
+            <input type="text" id="numLote" class="form-control rounded-pill @error('numLote') is-invalid @enderror" 
+            placeholder="Ingrese el número de lote" name="numLote" maxlength="2" value="{{old('numLote')}}">
               @error('numLote')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
               @enderror
@@ -86,7 +86,7 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Lateral derecha:</label>
           <div class="col-sm-5">
-            <input type="number" id="medidaLateralR" class="form-control rounded-pill @error('medidaLateralR') is-invalid @enderror" 
+            <input type="text" id="medidaLateralR" class="form-control rounded-pill @error('medidaLateralR') is-invalid @enderror" 
             placeholder="0.00" name="medidaLateralR" value="{{old('medidaLateralR')}}" maxlength="5" >
             @error('medidaLateralR')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -97,7 +97,7 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Lateral izquierda:</label>
             <div class="col-sm-5">
-              <input type="number" id="medidaLateralL" class="form-control rounded-pill @error('medidaLateralL') is-invalid @enderror" 
+              <input type="text" id="medidaLateralL" class="form-control rounded-pill @error('medidaLateralL') is-invalid @enderror" 
               placeholder="0.00" name="medidaLateralL" value="{{old('medidaLateralL')}}" maxlength="5" >
               @error('medidaLateralL')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -108,7 +108,7 @@
           <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Lateral enfrente:</label>
             <div class="col-sm-5">
-              <input type="number" id="medidaEnfrente" class="form-control rounded-pill @error('medidaEnfrente') is-invalid @enderror" 
+              <input type="text" id="medidaEnfrente" class="form-control rounded-pill @error('medidaEnfrente') is-invalid @enderror" 
               placeholder="0.00" name="medidaEnfrente" value="{{old('medidaEnfrente')}}" maxlength="5">
               @error('medidaEnfrente')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -119,7 +119,7 @@
           <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Lateral trasera:</label>
             <div class="col-sm-5">
-              <input type="number" id="medidaAtras" class="form-control rounded-pill @error('medidaAtras') is-invalid @enderror" 
+              <input type="text" id="medidaAtras" class="form-control rounded-pill @error('medidaAtras') is-invalid @enderror" 
               placeholder="0.00" name="medidaAtras" value="{{old('medidaAtras')}}" maxlength="5" >
               @error('medidaAtras')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>

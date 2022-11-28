@@ -145,8 +145,8 @@
             <label class="col-sm-3 col-form-label">Valor de la prima:</label>
             <div class="col-sm-5">
                 <input type="text" id="valorPrima" class="form-control rounded-pill  @error('valorPrima') is-invalid @enderror"
-                placeholder="Ingrese el valor de la prima. Ejem. 123" 
-                    name="valorPrima" value="{{old('valorPrima')}}" maxlength="9" oninput="calcularPago()">
+                placeholder="Ingrese el valor de la prima. Ejem. 123456" 
+                    name="valorPrima" value="{{old('valorPrima')}}" maxlength="6" oninput="calcularPago()">
                     @error('valorPrima')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -159,7 +159,7 @@
             <div class="col-sm-5">
                 <input type="text" id="cantidadCuotas" class="form-control rounded-pill  @error('cantidadCuotas') is-invalid @enderror"
                 placeholder="Ingrese la cantidad de cuotas. Ejem. 0000" 
-                name="cantidadCuotas" value="{{old('cantidadCuotas')}}" maxlength="9" oninput="calcularPago()">
+                name="cantidadCuotas" value="{{old('cantidadCuotas')}}" maxlength="4" oninput="calcularPago()">
                 @error('cantidadCuotas')
                     <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
                 @enderror
@@ -171,8 +171,8 @@
             <label class="col-sm-3 col-form-label">Valor de cuotas:</label>
             <div class="col-sm-5">
                 <input type="text" id="valorCuotas" class="form-control rounded-pill  @error('valorCuotas') is-invalid @enderror" 
-                placeholder="Ingrese el valor de cuotas. Ejem. 0000" 
-                    name="valorCuotas" value="{{old('valorCuotas')}}" maxlength="9" oninput="calcularPago()">
+                placeholder="Ingrese el valor de cuotas. Ejem. 00000" 
+                    name="valorCuotas" value="{{old('valorCuotas')}}" maxlength="5" oninput="calcularPago()">
                     @error('valorCuotas')
                     <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -341,7 +341,7 @@ try
             }
             function agregarSelect(lote){
             $('#lote').empty();
-            $('#lote').append("<option selected disabled value=''>Seleccione un lote</option>"); 
+            $('#lote').append("<option selected disabled value=''>-- Seleccione un lote --</option>"); 
             for (let i = 0; i < lote.length; i++) {
             $('#lote').append("<option value='"+ lote[i].id+"'>"+lote[i].numLote+"</option>"); 
         

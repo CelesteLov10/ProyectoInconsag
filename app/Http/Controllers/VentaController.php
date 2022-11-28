@@ -26,8 +26,8 @@ class VentaController extends Controller
     }
 
     public function show($id){
-     $bloques = Bloque::all();
-     $lotes = Lote::all();
+        $bloques = Bloque::all();
+        $lotes = Lote::all();
         $venta = Venta::findOrFail($id);
         return view('venta.show', compact('bloques', 'lotes'))->with('venta', $venta);
     }
@@ -50,7 +50,7 @@ class VentaController extends Controller
             'fechaVenta' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',],
             'valorTerreno' => ['numeric', 'min:1', 'regex:/^[0-9]{1,8}+$/'],
             'valorPrima' => ['numeric', 'min:1', 'regex:/^[0-9]{1,6}+$/', 'nullable'],
-            'cantidadCuotas' => ['numeric', 'min:1', 'regex:/^[0-9]{1,5}+$/', 'nullable'],
+            'cantidadCuotas' => ['numeric', 'min:1', 'regex:/^[0-9]{1,4}+$/', 'nullable'],
             'valorCuotas' => ['numeric', 'min:1', 'regex:/^[0-9]{1,5}+$/', 'nullable'],
             'valorRestantePagar' => ['numeric', 'min:1', 'nullable'],
 
