@@ -48,7 +48,6 @@ class VentaController extends Controller
             'bloque_id'       => ['required'],
             'lote_id'       => ['required'],
             'fechaVenta' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',],
-            'valorTerreno' => ['numeric', 'min:1', 'regex:/^[0-9]{1,8}+$/'],
             'valorPrima' => ['numeric', 'min:1', 'regex:/^[0-9]{1,6}+$/', 'nullable'],
             'cantidadCuotas' => ['numeric', 'min:1', 'regex:/^[0-9]{1,4}+$/', 'nullable'],
             'valorCuotas' => ['numeric', 'min:1', 'regex:/^[0-9]{1,5}+$/', 'nullable'],

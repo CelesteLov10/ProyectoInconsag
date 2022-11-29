@@ -66,6 +66,7 @@
                 <th scope="col">Medida lateral izquierda:</th>
                 <th scope="col">Medida lateral enfrente:</th>
                 <th scope="col">Medida lateral trasera:</th>
+                <th scope="col">Valor terreno:</th>
                 <th scope="col">Colindancia Norte:</th>
                 <th scope="col">Colindancia Sur:</th>
                 <th scope="col">Colindancia Este:</th>
@@ -84,6 +85,7 @@
                     <td>{{$lote->medidaLateralL}}</td>
                     <td>{{$lote->medidaEnfrente}}</td>
                     <td>{{$lote->medidaAtras}}</td>
+                    <td>{{$lote->valorTerreno}}</td>
                     <td>{{$lote->colindanciaN}}</td>
                     <td>{{$lote->colindanciaS}}</td>
                     <td>{{$lote->colindanciaE}}</td>

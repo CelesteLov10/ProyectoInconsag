@@ -27,6 +27,7 @@ public function store(Request $request){
         'medidaLateralL'   => 'required|numeric|min:1.00|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'medidaEnfrente'   => 'required|numeric|min:1.00|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'medidaAtras'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
+        'valorTerreno' => 'required|numeric|min:1|regex:/^[0-9]{1,8}+$/',
         'colindanciaN'    => 'required',
         'colindanciaS'    => 'required',
         'colindanciaE'    => 'required',
@@ -51,6 +52,11 @@ public function store(Request $request){
         'numLote.numeric' => 'El numero de lote solo permite numeros.',
         'numLote.required' => 'El numero de lote es requerido, no puede estar vacío. ',
 
+        'valorTerreno.required' => 'El valor del terreno es requerido, no puede estar vacío.',
+        'valorTerreno.numeric' => 'Solo se permite números enteros. Ejem. "12345678"',
+        'valorTerreno.regex' => 'El valor es incorrecto. Ejem. "123"',
+        'valorTerreno.min' => 'El valor mínimo del terreno es  "1". ',
+
         'colindanciaN.required'    => 'La colindancia norte es requerida, no puede estar vacío. ',
         'colindanciaS.required'    => 'La colindancia sur es requerida, no puede estar vacío. ',
         'colindanciaE.required'    => 'La colindancia este es requerida, no puede estar vacío. ',
@@ -70,6 +76,7 @@ public function store(Request $request){
     $lote->medidaLateralL = $request->medidaLateralL;
     $lote->medidaEnfrente = $request->medidaEnfrente;
     $lote->medidaAtras = $request->medidaAtras;
+    $lote->valorTerreno = $request->valorTerreno;
     $lote->colindanciaN = $request->colindanciaN;
     $lote->colindanciaS = $request->colindanciaS;
     $lote->colindanciaE = $request->colindanciaE;

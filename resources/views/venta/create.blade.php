@@ -107,17 +107,7 @@
             </div>
         </div>
 
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Valor del terreno:</label>
-            <div class="col-sm-5">
-                <input type="text" id="valorTerreno" class="form-control rounded-pill  @error('valorTerreno') is-invalid @enderror" 
-                placeholder="Ingrese el valor del terreno. Ejem. 1000000" 
-                    name="valorTerreno" value="{{old('valorTerreno')}}" maxlength="8" oninput="calcularPago()">
-                    @error('valorTerreno')
-                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
-        </div>
+    
 
         <div class="form-group">
             <div class="mb-2  form-check-inline">  

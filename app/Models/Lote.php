@@ -14,6 +14,7 @@ class Lote extends Model
            'medidaLateralL',
            'medidaEnfrente',
            'medidaAtras',
+           'valorTerreno',
             'colindanciaN',
             'colindanciaS',
             'colindanciaE',
