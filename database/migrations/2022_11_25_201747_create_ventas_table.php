@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreign('lote_id')->references('id')->on('lotes');
             $table->string('fechaVenta');
             $table->enum('formaVenta', ['contado', 'credito']);
+            $table->integer('diaPago')->nullable();
             $table->float('valorPrima')->nullable();
             $table->float('cantidadCuotas')->nullable();
             $table->float('valorCuotas')->nullable();

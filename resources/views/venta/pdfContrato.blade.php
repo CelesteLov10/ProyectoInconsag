@@ -49,7 +49,7 @@ EL ARRENDADOR se compromete a devolver el depósito en garantía a EL ARRENDATAR
 <p>
     <h4>Cláusula 4:  RENTA </h4>
     
-a)	EL ARRENDATARIO se compromete y se obliga a pagar a EL ARRENDADOR por concepto de renta la cantidad de $ <u>{{$venta->valorCuotas}}</u> mensuales, pagaderos al día _____ de cada mes y por medio de:
+a)	EL ARRENDATARIO se compromete y se obliga a pagar a EL ARRENDADOR por concepto de renta la cantidad de $ <u>{{$venta->valorCuotas}}</u> mensuales, pagaderos al día <u>{{$venta->diaPago}}</u> de cada mes y por medio de:
 •	Transferencia o depósito bancario a la cuenta número <u>4562823874</u>, del banco <u>Atlantida</u>, a nombre de <u>Darwin Sauceda</u> o en su defecto por medio de pago físico en efectivo o cheque en el domicilio <u>Barrio el centro, media cuadra abajo de la iglesia Católica</u>.
 
 b)	Por su parte EL ARRENDATARIO, y una vez conforme con la entrega del monto de renta, se compromete a entregar el recibo o factura correspondiente a EL ARRENDADOR por concepto del pago de renta mensual, estableciendo así que se encuentra solvente  en el pago de la renta.
@@ -69,7 +69,7 @@ Las mejoras realizadas al bien para poder cumplir el objeto del contrato correr�
 <p>
     <h4>Cláusula 7: IMPUNTUALIDAD E INCUMPLIMIENTO EN EL PAGO DE LA RENTA </h4>
     
-a)	En caso de que EL ARRENDATARIO incurra en algún retraso en el pago de la renta a EL ARRENDADOR, el primero se obliga a pagar un __% extra al pago de un mes de renta.
+a)	En caso de que EL ARRENDATARIO incurra en algún retraso en el pago de la renta a EL ARRENDADOR, el primero se obliga a pagar un <u>15%</u> extra al pago de un mes de renta.
 b)	En caso de que la renta no sea cubierta en su totalidad en un plazo no mayor a 90 días después de la fecha original estipulada en la Cláusula 4, se procederá a la rescisión de este contrato, sin necesidad de la intervención de alguna autoridad judicial.
 c)	Si EL ARRENDATARIO realiza el pago de la renta con un cheque y este no tuviese fondos para cubrir el monto, por cualquier causa, se considerará que el pago de la renta no ha sido cubierto, quedando la obligación a EL ARRENDATARIO el pago de la penalización descrita en esta cláusula inciso a), además de otros gastos generados por la inconveniencia presentada, incluyendo el 20% del valor del cheque como se estipula en el artículo 193 de la Ley General de Títulos y Operaciones de Crédito.
 

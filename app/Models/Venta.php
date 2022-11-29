@@ -14,6 +14,7 @@ class Venta extends Model
     'fechaVenta',
     'valorTerreno',
     'formaVenta',
+    'diaPago',
     'valorPrima',
     'cantidadCuotas',
     'valorCuotas',

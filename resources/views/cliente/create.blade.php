@@ -104,101 +104,10 @@
         <div class="mb-3 row">
           <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-outline-info">Guardar</button> 
-            {{-- Boton parte del modal --}}
-            <button type="button" class="btn btn-outline-warning" id="agregar" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Agregar beneficiario
-            </button>
+            
           </div>
         </div>  
       </form>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registro de beneficiario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                
-                  <form action="{{route('beneficiario.store')}}" id="p" class="beneficiario-guardar" method="POST" autocomplete="off">
-                      @csrf {{-- TOKEN INPUT OCULTO --}}
-                      
-                    <div class="mb-3 row">
-                      <label class="col-sm-4 col-form-label">Identidad:</label>
-                      <div class="col-sm-7">
-                        <input type="text" class="form-control rounded-pill @error('identidadBen') is-invalid @enderror" 
-                          placeholder="0000000000000" 
-                          name="identidadBen" value="{{old('identidadBen')}}" required='required'
-                          title="Ingrese un numero de identidad válido" maxlength="13">
-                          @error('identidadBen')
-                          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                          @enderror
-                      </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                      <label class="col-sm-4 col-form-label">Nombre completo:</label>
-                      <div class="col-sm-7">
-                        <input type="text" class="form-control rounded-pill @error('nombreCompletoBen') is-invalid @enderror" 
-                        placeholder="Ingrese el nombre completo (ejem. Pablo Jose Ramos Mendoza)" required='required'
-                        name="nombreCompletoBen" value="{{old('nombreCompletoBen')}}" maxlength="80">
-                        @error('nombreCompletoBen')
-                        <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                        @enderror
-                      </div>
-                    </div>
-
-                  <div class="mb-3 row">
-                    <label class="col-sm-4 col-form-label">Teléfono:</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control rounded-pill @error('telefonoBen') is-invalid @enderror" 
-                      placeholder="00000000" required='required'
-                      name="telefonoBen" value="{{old('telefonoBen')}}" maxlength="8">
-                    @error('telefonoBen')
-                      <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-                    </div>
-                  </div>
-
-                    <div class="mb-3 row">
-                    <label class="col-sm-4 col-form-label">Dirección:</label>
-                    <div class="col-sm-7">
-                      <textarea type="text" class="form-control rounded-pill @error('direccionBen') is-invalid @enderror" 
-                      maxlength="150" placeholder="Ingrese la dirección" required='required'
-                      name="direccionBen" value="">{{old('direccionBen')}}</textarea>
-                    @error('direccionBen')
-                      <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-                    </div>
-                  </div>
-
-                  <div class="mb-3 row">
-                    <label class="col-sm-4 col-form-label">Nombre del cliente relacionado:</label>
-                    <div class="col-sm-7">
-                    <select name="cliente_id" id="" class="form-select rounded-pill @error('cliente_id') is-invalid @enderror" required='required'>
-                        <option value="" disabled selected>-- Seleccione un cliente --</option>
-                        @foreach ($cliente as $clientes)
-                          <option value="{{$clientes->id}}" 
-                              {{old('cliente_id' , $clientes->nombreCompleto)==$clientes->id ? 'selected' : ''}}>{{$clientes->nombreCompleto}}</option>
-                          @endforeach
-                      </select>
-                    @error('cliente_id')
-                        <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-                    </div>
-                  </div>
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                  </form>
-                  </div>
-                </div>
-              </div>
-            </div> {{-- cierre modal --}}
 
         </div>
       </div>
@@ -230,20 +139,5 @@
     });
   } );
 </script>
-<script>
-  //Scrip necesario para el modal
-    window.onload = function(){
-    var myModal = document.getElementById('modalBene').;
-    var myInput = document.getElementById('identidadBen');
-    /*
-    var boton = document.getElementById('agregar');
-    boton.addEventListener("click", agregar);
-    */
 
-    myModal.addEventListener('shown.bs.modal', function () {
-      myInput.focus()
-      event.stopPropagation();
-    }); 
-}
-</script>
 @endsection

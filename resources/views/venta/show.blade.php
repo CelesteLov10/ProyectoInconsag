@@ -17,6 +17,9 @@
 
     <div class="container ">
         <div class="mb-3 text-end">
+            <a class="btn btn-outline-warning" id="agregar" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        href="{{route('beneficiario.edit', ['id' => $venta->id])}}">Editar beneficiario
+                        <i class="bi bi-pencil-square"></i></a>
             <a class="btn btn-outline-primary" href="{{route('venta.index')}}">
                 <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
         </div>
@@ -52,7 +55,7 @@
             
                 <tr>
                     <th scope="row">Valor del terreno:</th>
-                    <td>{{$venta->valorTerreno}}</td>    
+                    <td>{{$venta->lote->valorTerreno}}</td>    
                 </tr>
                 <tr>
                     <th scope="row">Fecha venta:</th>
@@ -75,11 +78,15 @@
             
                 <tr>
                     <th scope="row">Valor del terreno:</th>
-                    <td>{{$venta->valorTerreno}}</td>    
+                    <td>{{$venta->lote->valorTerreno}}</td>    
                 </tr>
                 <tr>
                     <th scope="row">Fecha venta:</th>
                     <td>{{$venta->fechaVenta}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Día pago:</th>
+                    <td>{{$venta->diaPago}}</td>    
                 </tr>
                 <tr>
                     <th scope="row">Valor prima:</th>
@@ -93,7 +100,7 @@
                     <th scope="row">Valor cuota:</th>
                     <td>{{$venta->valorCuotas}}</td>    
                 </tr>
-             
+                
                 <tr>
                     <th scope="row">Valor restante a pagar:</th>
                     <td>{{$venta->valorRestantePagar}}</td>    
@@ -101,7 +108,47 @@
             @endif
         </tbody>
     </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Registro de beneficiario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+        
+            <form action="{{route('beneficiario.store')}}" id="p" class="beneficiario-guardar" method="POST" autocomplete="off">
+                @csrf {{-- TOKEN INPUT OCULTO --}}
+                
+            <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label">Identidad:</label>
+                <div class="col-sm-7">
+                <input type="text" class="form-control rounded-pill @error('identidadBen') is-invalid @enderror" 
+                    placeholder="0000000000000" 
+                    name="identidadBen" value="{{old('identidadBen')}}" required='required'
+                    title="Ingrese un numero de identidad válido" maxlength="13">
+                    @error('identidadBen')
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                    @enderror
+                </div>
+            </div>
+
+            
+
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div> {{-- cierre modal --}}
+
 </div>
+
 @endsection
         
 

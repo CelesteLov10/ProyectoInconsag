@@ -28,6 +28,7 @@ class LoteFactory extends Factory
             'colindanciaS'=>$this->faker->address(),
             'colindanciaE'=>$this->faker->address(),
             'colindanciaO'=>$this->faker->address(),
+            'valorTerreno'=>$this->faker->numberBetween(50000, 1000125),
             'bloque_id' =>$this->faker->numberBetween(1,5),
         ];
     }

@@ -49,8 +49,9 @@ class VentaController extends Controller
             'bloque_id'       => ['required'],
             'lote_id'       => ['required'],
             'fechaVenta' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',],
+            'diaPago' => ['numeric', 'min:1','max:31' ,'regex:/^[0-9]{1,2}+$/', 'nullable'],
             'valorPrima' => ['numeric', 'min:1', 'regex:/^[0-9]{1,6}+$/', 'nullable'],
-            'cantidadCuotas' => ['numeric', 'min:1', 'regex:/^[0-9]{1,4}+$/', 'nullable'],
+            'cantidadCuotas' => ['numeric', 'min:1','regex:/^[0-9]{1,4}+$/', 'nullable'],
             'valorCuotas' => ['numeric', 'min:1', 'regex:/^[0-9]{1,5}+$/', 'nullable'],
             'valorRestantePagar' => ['numeric', 'min:1', 'nullable'],
 
@@ -64,6 +65,9 @@ class VentaController extends Controller
             'valorTerreno.min' => 'La cantidad de hora alquilada mínima es "1". ',
 
             'valorPrima.numeric' => 'Solo se permite números enteros. Ejem. "123456"',
+
+            'diaPago.numeric' => 'Solo se permite números enteros. Ejem. "1 o 31"',
+            'diaPago.min' => 'El dia de pago mínimo es "1". ',
 
             'cantidadCuotas.numeric' => 'Solo se permite números enteros. Ejem. "12345"',
 

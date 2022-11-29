@@ -22,6 +22,7 @@ class VentaFactory extends Factory
             'lote_id'=>$this->faker->numberBetween(1,25),
             'fechaVenta'=>$this->faker->date($format = 'd-m-Y'),
             'formaVenta'=>$this->faker->randomElement(['contado', 'credito']),
+            'diaPago'=>$this->faker->numberBetween(1, 31),
             'valorPrima'=>$this->faker->numberBetween(5000, 10125),
             'cantidadCuotas'=>$this->faker->numberBetween(10,20),
             'valorCuotas'=>$this->faker->randomDigit([2500, 1500]),
