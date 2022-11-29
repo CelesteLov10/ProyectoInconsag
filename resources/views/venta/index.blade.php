@@ -29,7 +29,7 @@
         <i class="bi bi-search"></i>
       </button>
     </p>
-    <a class="btn btn-outline-primary" href="{{route('venta.pdf')}}" title="Imprimir PDF">PDF <i class="bi bi-printer"></i></a>
+    <a class="btn btn-outline-primary" href="{{route('venta.index')}}" title="Imprimir PDF">PDF <i class="bi bi-printer"></i></a>
       <a class="btn btn-outline-primary" href="{{route('venta.create')}}">Nueva venta<i class="bi bi-person-plus"></i></a>
   </div>
   <div class="collapse mb-3 mt-3" id="collapseExample">
@@ -91,7 +91,7 @@
                       <th scope="col">Forma de venta</th>
                       <th scope="col">Fecha de venta</th>
                       <th scope="col">Detalle</th>
-                      <th scope="col">Actualizar</th>
+                      <th scope="col">Reemprimir contrato</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -102,16 +102,16 @@
                       <td>{{$venta->formaVenta}}</td>
                       <td>{{$venta->fechaVenta}}</td>
 
-                      <td><a class="btn btn-outline-primary" href="{{route('venta.show', ['id'=>$venta->id])}}">
+                      <td><a class="btn btn-outline-primary" 
+                        href="{{route('venta.show', ['id'=>$venta->id])}}">
                         <i class="bi bi-eye"></i> 
                       </a></td>
-
                       <td><a class="btn btn-outline-warning" 
-                        href="{{route('venta.edit', ['id' =>$venta->id])}}">
-                        <i class="bi bi-pencil-square"></i>
+                        href="{{route('venta.contrato', ['id' =>$venta->id])}}">
+                        <i class="bi bi-clipboard-minus-fill"></i>
                       </a>
                       </td>
-                      @csrf
+                      @csrf 
                     </tr>
                     @empty
                     <tr>

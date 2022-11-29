@@ -80,7 +80,7 @@
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
         <div class="col-60 bg-light p-5">
-            <table class="table border border-2 rounded-pill">
+            <table class="table border border-2 contorno-azul">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>

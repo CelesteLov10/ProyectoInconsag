@@ -172,7 +172,6 @@ Route::controller(LoteController::class)->group(function(){
     Route::get('/lote/create', 'create')->name('lote.create');
     //Ruta para guardar los registros del lote
     Route::post('/lote', 'store')->name('lote.store');
-   
 
 });
 
@@ -226,12 +225,9 @@ Route::controller(VentaController::class)->group(function(){
     //Ruta para mostrar las ventas
     Route::get('/venta/{id}', 'show')->name('venta.show')
     ->where('id','[0-9]+');
-    //Ruta para editar un venta
-    Route::get('/venta/{id}/edit', 'edit')->name('venta.edit');
-    //Ruta para el metodo editar
-    Route::put('/venta/{id}/edit', 'update')->name('venta.update');
     //Ruta para imprimir el listado de venta
-    Route::get('/venta/pdf', 'pdf')->name('venta.pdf');
+    Route::get('/venta/{id}/pdf', 'contrato')->name('venta.contrato')
+    ->where('id','[0-9]+');
     //ruta para los select anidados
     Route::post('/getLotes/{id}', 'getLotes');
     

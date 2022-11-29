@@ -6,8 +6,9 @@ use App\Models\Bloque;
 use App\Models\Cliente;
 use App\Models\Lote;
 use App\Models\Venta;
-
 use Illuminate\Http\Request;
+Barryvdh\DomPDF\ServiceProvider::class;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class VentaController extends Controller
 {
@@ -82,6 +83,14 @@ class VentaController extends Controller
         
         /** redireciona una vez enviado  */
     }
+    
+    public function contrato($id){
+        $bloques = Bloque::all();
+        $lotes = Lote::all();
+        $venta = Venta::findOrFail($id);
+        $pdf = PDF::loadView('venta.pdfContrato', compact('bloques','lotes','venta'));
+        return $pdf -> stream();
+    }
 
     public function getLotes($id){
         $lotes = Lote::where('bloque_id', '=', $id)->get();
@@ -92,4 +101,5 @@ class VentaController extends Controller
         $lotes = Lote::where('bloque_id', '=', $id)->get();
         return $lotes;
     }
+
 }
