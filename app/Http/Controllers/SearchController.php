@@ -119,12 +119,12 @@ class SearchController extends Controller
     }
     public function venta(Request $request){
         $term = $request->get('term');
-        $querys = Venta::where('nombreCliente', 'LIKE', '%'. $term . '%')->get();
+        $querys = Venta::where('nombreCompleto', 'LIKE', '%'. $term . '%')->get();
         
         $data =[];
         foreach($querys as $query){
         $data[] = [
-        'label' => $query->nombreCliente
+        'label' => $query->nombreCompleto
         ];
         }
         return $data;

@@ -17,15 +17,19 @@ class VentaController extends Controller
         //Campo busqueda
         $ventas = Venta::query()
             ->when(request('search'), function($query){
-            return $query->where('nombreCliente', 'LIKE', '%' .request('search') .'%')
-            ->orWhere('formaVenta', 'LIKE', '%' .request('search') .'%')
-            ->orWhere('fechaVenta', 'LIKE', '%' .request('search') .'%');
-            })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+            return $query->where('formaVenta', 'LIKE', '%' .request('search') .'%')
+            ->orWhere('fechaVenta', 'LIKE', '%' .request('search') .'%')
+            ->orWhereHas('cliente', function($q){
+                $q->where('nombreCompleto','LIKE', '%' .request('search') .'%');
+        });
+        })->orderBy('id','desc')->paginate(10)->withQueryString();
 
-            $cliente = Cliente::all();
+        $cliente = Cliente::all();
+        return view('venta.index', compact('ventas','cliente'));
+    
+    //
+}
 
-        return view('venta.index', compact('ventas', 'cliente'));
-    }
 
     public function show($id){
         $bloques = Bloque::all();
