@@ -100,6 +100,22 @@
         </div>
 
         <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Nombre beneficiario:</label>
+            <div class="col-sm-5">
+            <select name="beneficiario_id" id="" class="form-select rounded-pill @error('beneficiario_id') is-invalid @enderror" >
+                <option value="" disabled selected>-- Seleccione un beneficiario --</option>
+                @foreach ($beneficiarios as $beneficiario)
+                    <option value="{{$beneficiario->id}}" 
+                        {{old('beneficiario_id' , $beneficiario->nombreCompletoBen)==$beneficiario->id ? 'selected' : ''}}>{{$beneficiario->nombreCompletoBen}}</option>
+                    @endforeach
+                </select>
+            @error('beneficiario_id')
+                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+            @enderror
+            </div>
+        </div>
+
+        <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Fecha de venta:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('fechaVenta') is-invalid @enderror" 
@@ -184,17 +200,6 @@
                     <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
                     @enderror
                     <div ><small class="text-danger" id="myElement2" ></small></div>
-            </div>
-        </div>
-
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Valor restante a pagar:</label>
-            <div class="col-sm-5">
-                <input id="valorRestantePagar" type="text" class="form-control rounded-pill @error('valorRestantePagar') is-invalid @enderror" 
-                name="valorRestantePagar" placeholder="Espere que calcule el valor restante a pagar." value="{{old('valorRestantePagar')}}" readonly=»readonly»> 
-                @error('valorRestantePagar')
-                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                @enderror
             </div>
         </div>
 

@@ -18,4 +18,8 @@ class Beneficiario extends Model
     public function cliente(){
         return $this->hasMany(Cliente::class);
     }
+
+    public function venta(){
+        return $this->hasMany(Venta::class);
+    }
 }

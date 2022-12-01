@@ -117,7 +117,7 @@ class BeneficiarioController extends Controller
         $update = $beneficiario->save();
         
         if ($update){
-            return redirect()->route('cliente.index')
+            return redirect()->route('venta.index')
             ->with('mensajeW', 'Se actualizó el beneficiario correctamente');
         } 
     }

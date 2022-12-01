@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Beneficiario;
 use App\Models\Bloque;
 use App\Models\Cliente;
 use App\Models\Lote;
@@ -30,7 +31,9 @@ class VentaController extends Controller
         $bloques = Bloque::all();
         $lotes = Lote::all();
         $venta = Venta::findOrFail($id);
-        return view('venta.show', compact('bloques', 'lotes'))->with('venta', $venta);
+        $beneficiario = Beneficiario::all();
+        $cliente = Cliente::all();
+        return view('venta.show', compact('bloques', 'lotes','beneficiario','cliente'))->with('venta', $venta);
     }
 
     public function create(){ 
@@ -39,7 +42,8 @@ class VentaController extends Controller
         $cliente = Cliente::all();
         $bloques = Bloque::all();
         $lotes = Lote::all();
-        return view('venta.create', compact('venta','cliente','bloques','lotes'));
+        $beneficiarios = Beneficiario::all();
+        return view('venta.create', compact('venta','cliente','bloques','lotes','beneficiarios'));
     }
 
     public function store(Request $request){

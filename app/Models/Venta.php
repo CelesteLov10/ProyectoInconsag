@@ -11,14 +11,14 @@ class Venta extends Model
     'cliente_id',
     'bloque_id', 
     'lote_id',
+    'beneficiario_id',
     'fechaVenta',
-    'valorTerreno',
     'formaVenta',
     'diaPago',
     'valorPrima',
     'cantidadCuotas',
     'valorCuotas',
-    'valorRestantePagar'];
+    ];
     use HasFactory;
     
     //una venta pertnece a un solo cliente
@@ -32,5 +32,8 @@ class Venta extends Model
         return $this->belongsTo(Lote::class);
     }
 
+    public function beneficiario(){
+        return $this->belongsTo(Beneficiario::class);
+    }
 }
 
