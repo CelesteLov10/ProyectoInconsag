@@ -29,12 +29,12 @@
 
   <div class="me-5 mb-3 text-end">
     <p style="display: inline">
-      <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <button class="btn glow-on-hover-main text-BLACK" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         <i class="bi bi-search"></i>
       </button>
     </p>
   
-      <a class="btn btn-outline-primary" href="{{route('venta.create')}}">Nueva venta<i class="bi bi-person-plus"></i></a>
+      <a class="btn glow-on-hover-main text-BLACK" href="{{route('venta.create')}}">Nueva venta<i class="bi bi-person-plus"></i></a>
   </div>
   <div class="collapse mb-3 mt-3" id="collapseExample">
     <div class="card card-body p-2">
@@ -47,7 +47,7 @@
                           <input type="text" name="search" id="search"  class="form-control"
                           placeholder="Buscar por nombre del cliente, forma de la venta o fecha de la venta" 
                           value="{{request('search')}}"/> {{-- Buscar por nombre del cliente, forma de la venta o fecha de la venta --}}
-                        <button type="submit" class="btn btn-outline-primary">
+                        <button type="submit" class="btn glow-on-hover-main text-BLACK">
                           <i class="bi bi-search"></i> Buscar
                         </button>
                       </div>
@@ -87,7 +87,7 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
           <div class="col-60 bg-light p-5">
-              <table class="table border border-2 rounded-pill">
+              <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">#</th>

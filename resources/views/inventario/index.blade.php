@@ -40,7 +40,7 @@
                           <input type="text" name="search" id="search"  class="form-control"
                           placeholder="Buscar por inventario, oficina o empleado" 
                           value="{{request('search')}}"/> 
-                        <button type="submit" class="btn btn-outline-primary">
+                        <button type="submit" class="btn glow-on-hover-main text-BLACK">
                           <i class="bi bi-search"></i> Buscar
                         </button>
                       </div>

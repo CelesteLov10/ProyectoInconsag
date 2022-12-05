@@ -96,7 +96,20 @@
                     Ventas
                 </a>
              </li>
-          <li class="nav-item">
+             <li>
+                <a href="{{route('report.reports_day')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+                    <span class="p-2"><i class="bi bi-calendar2-minus text-light"></i></span>
+                    Reportes por día
+                </a>
+             </li>
+             <li>
+                <a href="{{route('reports.reports_date')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+                    <span class="p-2"><i class="bi bi-calendar2-minus text-light"></i></span>
+                    Reportes por fecha
+                </a>
+             </li>
+             {{-- 
+                <li class="nav-item">
               <a class="nav-link link-light list-group-item list-group-item-action list-group-item-dark " 
               data-toggle="collapse" href="#page-layouts1" aria-expanded="false"
               aria-controls="page-layouts">
@@ -107,17 +120,19 @@
                 @can('reports.day')
                 <li class="nav-item ">
                     
-                    <a class="nav-link" href="{{route('reports.day')}}">Reportes por día</a>
+                    <a class="nav-link" href="{{route('report.reports_day')}}">Reportes por día</a>
                 </li>
                 @endcan
                 @can('reports.date')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('reports.date')}}">Reportes por fecha</a>
+                    <a class="nav-link" href="{{route('reports.reports_date')}}">Reportes por fecha</a>
                 </li>
                 @endcan
-             </ul>
-            </div>
-        </li> 
+                </ul>
+                </div>
+            </li>             
+                --}}
+
       </ul>
       
       <button class="btn-hover glow-on-hover" onclick="darkMode()">Modo oscuro</button>

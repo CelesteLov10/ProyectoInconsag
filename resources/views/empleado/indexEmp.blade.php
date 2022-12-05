@@ -42,7 +42,7 @@
                           <input type="text" name="search" id="search"  class="form-control"
                           placeholder="Buscar por identidad, nombre o nombre del cargo" 
                           value="{{request('search')}}"/> {{-- busca por identidad nombre empleado y nombre cargo --}}
-                        <button type="submit" class="btn btn-outline-primary">
+                        <button type="submit" class="btn glow-on-hover-main text-BLACK">
                           <i class="bi bi-search"></i> Buscar
                         </button>
                       </div>
@@ -82,7 +82,7 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
           <div class="col-60 bg-light p-5">
-              <table class="table border border-2 rounded-pill">
+              <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">#</th>
