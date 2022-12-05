@@ -100,7 +100,7 @@
         </div>
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Nombre beneficiario:</label>
+            <label class="col-sm-3 col-form-label">Nombre del beneficiario:</label>
             <div class="col-sm-5">
             <select name="beneficiario_id" id="" class="form-select rounded-pill @error('beneficiario_id') is-invalid @enderror" >
                 <option value="" disabled selected>-- Seleccione un beneficiario --</option>
@@ -152,7 +152,7 @@
             <div class="col-60 bg-light p-1">
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Día pago:</label>
+            <label class="col-sm-3 col-form-label">Día de pago:</label>
             <div class="col-sm-5">
                 <input type="text" id="diaPago" class="form-control rounded-pill  @error('diaPago') is-invalid @enderror"
                 placeholder="Ingrese el día establecido. Ejem. 1 al 31" 
@@ -191,7 +191,7 @@
         </div>
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Valor de cuotas:</label>
+            <label class="col-sm-3 col-form-label">Valor de la cuota:</label>
             <div class="col-sm-5">
                 <input type="text" id="valorCuotas" class="form-control rounded-pill  @error('valorCuotas') is-invalid @enderror" 
                 placeholder="Ingrese el valor de cuotas. Ejem. 00000" 
