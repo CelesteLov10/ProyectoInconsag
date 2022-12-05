@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     {{-- css --}}
     <link rel="stylesheet" type="text/css" href="{{asset('estilos.css')}}"> <!--El asset es un archivo que se encuentra en la web que puede ser utilizado
     esto es para que todas las plantillas tengan el mismo estilo-->
     {{-- ICONS BOOTSTRAP --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
     {{-- ALERTS SWEET --}}
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -94,8 +95,31 @@
                     <span class="p-2"><i class="bi bi-save-fill text-light"></i></span>
                     Ventas
                 </a>
+             </li>
+          <li class="nav-item">
+              <a class="nav-link link-light list-group-item list-group-item-action list-group-item-dark " 
+              data-toggle="collapse" href="#page-layouts1" aria-expanded="false"
+              aria-controls="page-layouts">
+              <span class="p-2"><i class="bi bi-calendar2-minus text-light"></i></span> Reportes
+              </a>
+             <div class="collapse" id="page-layouts1">
+              <ul class="nav flex-column sub-menu">
+                @can('reports.day')
+                <li class="nav-item ">
+                    
+                    <a class="nav-link" href="{{route('reports.day')}}">Reportes por día</a>
                 </li>
+                @endcan
+                @can('reports.date')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('reports.date')}}">Reportes por fecha</a>
+                </li>
+                @endcan
+             </ul>
+            </div>
+        </li> 
       </ul>
+      
       <button class="btn-hover glow-on-hover" onclick="darkMode()">Modo oscuro</button>
       <hr>
       <div class="dropdown">

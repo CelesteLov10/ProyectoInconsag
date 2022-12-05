@@ -23,13 +23,17 @@
     </div>
   </header>
 
+
+
+
+
   <div class="me-5 mb-3 text-end">
     <p style="display: inline">
       <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         <i class="bi bi-search"></i>
       </button>
     </p>
-    <a class="btn btn-outline-primary" href="{{route('venta.index')}}" title="Imprimir PDF">PDF <i class="bi bi-printer"></i></a>
+  
       <a class="btn btn-outline-primary" href="{{route('venta.create')}}">Nueva venta<i class="bi bi-person-plus"></i></a>
   </div>
   <div class="collapse mb-3 mt-3" id="collapseExample">
@@ -126,6 +130,9 @@
       </div>
   </div>
 </div>
+
+
+
 @endsection
 
 @section('js')
