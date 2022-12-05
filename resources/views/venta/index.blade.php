@@ -95,7 +95,7 @@
                       <th scope="col">Forma de venta</th>
                       <th scope="col">Fecha de venta</th>
                       <th scope="col">Detalle</th>
-                      <th scope="col">Reemprimir contrato</th>
+                      <th scope="col">Imprimir contrato</th>
                     </tr>
                   </thead>
                   <tbody>

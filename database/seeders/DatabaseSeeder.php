@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Beneficiario;
 use App\Models\Puesto;
 use App\Models\Empleado;
 use App\Models\Inventario;
@@ -40,6 +41,7 @@ class DatabaseSeeder extends Seeder
         Proveedor::factory(10)->create();
         Maquinaria::factory(30)->create();
         Cliente::factory(30)->create();
+        Beneficiario::factory(10)->create();
         Bloque::factory(5)->create();
         Lote::factory(25)->create();
         Venta::factory(25)->create();
