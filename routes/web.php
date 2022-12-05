@@ -236,25 +236,25 @@ Route::controller(VentaController::class)->group(function(){
     
     Route::get('/getLotes/{id}', 'getLotes');
     
-
-
 });
+
 Route::controller(PagoController::class)->group(function(){
     //Ruta para listado de pago
     Route::get('/pago', 'index')->name('pago.index');
     //Ruta para crear un nuevo pago
     Route::get('/pago/create', 'create')->name('pago.create');
     //Ruta para guardar los registros del pago
-   Route::post('/pago', 'store')->name('pago.store');
-   Route::post('/getLotes/{id}', 'getLotes');
-    
-   Route::get('/getLotes/{id}', 'getLotes');
-   Route::get('/pago/create/busquedaCli', 'buscarCli')->name('pago.buscarCli');
-   Route::post('/pago/create/busquedaCli', 'buscarCli')->name('pago.buscarCli');
+    Route::post('/pago', 'store')->name('pago.store');
+    //Route::post('/getLotes/{id}', 'getLotes');
+    //Route::get('/getLotes/{id}', 'getLotes');
+    Route::get('/pago/create/busquedaCli', 'buscarCli')->name('pago.buscarCli');
+    Route::post('/pago/create/busquedaCli', 'buscarCli')->name('pago.buscarCli');
 
 });
-//Reporte de ventas por fecha
+
+
 Route::controller(ReportController::class)->group(function(){
+    //Reporte de ventas por fecha
 Route::get('reports_day', 'reportsDay')->name('report.reports_day');
 Route::get('reports_date','reportsDate')->name('reports.reports_date');
 Route::post('report_results','reportResults')->name('report.report_results');

@@ -8,11 +8,56 @@
     @if($venta->diaPago == null)
 
     <h2>CONTRATO DE ARRENDAMIENTO DE TERRENO AL CONTADO</h2>
-    bloque <u>{{$venta->bloque->cantidadLotes}}</u>
-    lote <u>{{$venta->lote->colindanciaN}}</u>
-    VALOR TERRENO  <u>{{$venta->lote->valorTerreno}}</u>
-    
 
+    <p>
+        Celebrado entre <u>INCONSAG</u>, quien a los fines de este contrato y en lo sucesivo y para fines de este contrato se denominará “EL ARRENDADOR”; y <u>{{$venta->cliente->nombreCompleto}}</u> a quien en lo sucesivo se le denominará “EL ARRENDATARIO”. Ambas partes declaran sujetarse a las siguientes declaraciones y clausulas.
+        <br>
+        DECLARACIONES
+        I.  EL ARRENDADOR DECLARA:
+        <br>
+        a)  Estar amplia y legalmente facultado para el inmueble en los términos y condiciones que establece este contrato.
+        b)  Ser propietario único y legítimo de (el inmueble ) según consta en la escritura o certificado de propiedad que se adjunta a este Contrato como Anexo número 1, y que su voluntad es darlo en arrendamiento en favor del Arrendatario.
+        c)  Tener la facultad legal para ceder el (bien a arrendar) en arrendamiento bajo las condiciones y términos estipulados en este contrato.
+        </p>
+        <p>
+            II. POR SU PARTE EL ARRENDATARIO DECLARA:
+            <br>
+            a)  Ser una persona física de nombre <u>{{$venta->cliente->nombreCompleto}}</u>, quien tiene las facultades y recursos económicos para cumplir las obligaciones derivadas de la firma de este contrato; y
+            b)  Estar inscrito en el Registro Federal de Contribuyentes bajo el numero <u>0704</u>; con clave única de población (ID) <u>{{$venta->cliente->identidadC}}</u>.
+            c)  Que es su voluntad arrendar el inmueble, y encontrarse en plena satisfacción con las condiciones del mismo.
+            d)  Tener su domicilio en:  <u>{{$venta->cliente->direccion}}</u>.
+        </p>
+        <p>
+            PRIMERO: EL ARRENDADOR es propietario único y exclusivo de un PREDIO RURAL denominado ubicado en el FUNDO SAN PEDRO DEL CASERÍO SANTO TOMÁS
+             de la provincia y departamento de , quien otorga en venta a favor de <u>{{$venta->cliente->nombreCompleto}}</u> 
+             encerrado dentro de la linderación siguiente: Por el NORTE: <u>{{$venta->lote->colindanciaN}}</u>; por el SUR: <u>{{$venta->lote->colindanciaS}}</u>; por el ESTE: <u>{{$venta->lote->colindanciaE}}</u>,
+              por el OESTE: <u>{{$venta->lote->colindanciaO}}</u>. Así mismo declaran que el mencionado predio rural, ha sido destinado LOTE SOLAR para construcción de casa habitación
+        </p>
+        <p>
+            SEGUNDO: EL ARRENDADOR con este antecedente y por el presente contrato haciendo uso de susderechos civiles; y encontrándose en perfectas condiciones físicas como mentales;
+            transfiere en venta real y enajenación perpetua a favor de EL ARRENDATARIO el inmueble descrito en la cláusula primero.
+        </p>
+        <p>
+            TERCERO: EL ARRENDATARIO por el LOTE DE TERRENO RURAL que le transfieren a su favor, cancela la suma de L.<u>{{$venta->lote->valorTerreno}}</u> 
+            que recibe EL ARRENDADOR a su entera y completa satisfacción, declarando que el precio es justo y equitativo. Quien a partir de la fecha adquiere la posesión, conducción y propiedad del LOTE DE TERRENO RURAL en mención. 
+        </p>
+        <p>
+            CUARTO: En la venta por el precio pactado se incluye su suelo, subsuelo, aires, entradas, salidas, usos,costumbres 
+            y todo cuanto por hecho, por derecho, sea anexo e inherente al inmueble materia de venta. Libre de carga, deuda, embargo, gravamen, hipoteca y de toda medida judicial y/o extrajudicialque en cualquier forma limite 
+            o restrinja su libre y completo dominio, no obstante EL ARRENDADOR, se obliga a la evicción y saneamiento según Ley.
+        </p>
+        <p>
+            QUINTO: LOS CONTRATANTES declaran que para la celebración del presente contrato no ha mediado ningún acto de dolo, error, fuerza, violencia, intimidación, simulación, y ni ningún otro tipo, 
+            por lo querenuncian a cualquier acción que pretenda invalidar los efectos del presente.
+        </p>
+
+        <div>
+
+            EL ARRENDATARIO <u>{{$venta->cliente->nombreCompleto}}</u> 
+            <span>
+                EL ARRENDADOR <u>INCONSAG</u>
+                </span>    
+            <div>
     @else
 
     <h2>CONTRATO DE ARRENDAMIENTO DE TERRENO AL CRÉDITO</h2>
