@@ -53,21 +53,25 @@
             <form action="{{route('venta.store')}}" id="form1" class="venta-guardar" name="formulario1" method="POST" autocomplete="off">
             @csrf {{-- TOKEN INPUT OCULTO --}}
 
+    
+
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Nombre del cliente:</label>
+            <label class="col-sm-3 col-form-label" for="cliente_id">Cliente</label>
             <div class="col-sm-5">
-            <select name="cliente_id" id="" class="form-select rounded-pill @error('cliente_id') is-invalid @enderror" >
-                <option value="" disabled selected>-- Seleccione un cliente --</option>
+            <select class="form-control selectpicker clienteB @error('cliente_id') is-invalid @enderror" data-live-search="true" name="cliente_id" id="cliente_id" >
+                lang="es">
+                <option value="" data-icon="fas fa-user-tie" disabled selected>Buscar cliente</option>
                 @foreach ($cliente as $clientes)
-                    <option value="{{$clientes->id}}" 
-                        {{old('cliente_id' , $clientes->nombreCompleto)==$clientes->id ? 'selected' : ''}}>{{$clientes->nombreCompleto}}</option>
-                    @endforeach
-                </select>
+                    <option value="{{ $clientes->id }}"  {{old('cliente_id' , $clientes->nombreCompleto)==$clientes->id ? 'selected' : ''}}>{{ $clientes->nombreCompleto }}</option>
+                @endforeach
+            </select>
             @error('cliente_id')
-                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-            @enderror
-            </div>
+            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+        @enderror
         </div>
+    </div>
+
+
 
         <div class="mb-3 row">
             <label for="bloque" class="col-sm-3 col-form-label">Bloque:</label>
