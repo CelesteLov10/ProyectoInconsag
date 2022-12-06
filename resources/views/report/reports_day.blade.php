@@ -24,13 +24,10 @@
   </header>
   </div>
 
-  <div class="me-5 mb-3 text-end">
-
-    <a class="btn glow-on-hover-main text-BLACK" href="{{route('reports.pdfReportDia')}}" title="Imprimir PDF">PDF<i class="bi bi-printer"></i></a>
-  </div>
-  
   <div class="container">
-    
+    <div class="mb-3 text-end">
+      <a class="btn glow-on-hover-main text-BLACK" href="{{route('reports.pdfReportDia')}}" title="Imprimir PDF">PDF<i class="bi bi-printer"></i></a>
+    </div>
     <div class="row">
       <div class="col-12 col-md-4 text-center">
           <span>Fecha de consulta: <b></b></span>
@@ -70,7 +67,7 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
           <div class="col-60 bg-light p-5">
-              <table class="table border border-2 rounded-pill">
+              <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
                       <th >#</th>

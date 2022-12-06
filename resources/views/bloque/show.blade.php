@@ -55,8 +55,9 @@
             </tr>
         </tbody>
     </table>
+    
         {{-- TABLA NO RESPONSIVA... MUESTRA LOS LOTES DE UN BLOQUE --}}
-    <table class="table border border-2 rounded-pill">
+    <table class="table border border-2 contorno-azul">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -73,8 +74,8 @@
                 <th scope="col">Colindancia Oeste:</th>
             </tr>
         </thead>
+
         <tbody>
-        
         @forelse($lotes as $lote)
             @if($bloque->id == $lote->bloque_id)
                 <tr>
@@ -104,6 +105,7 @@
         
         </tbody>
     </table>
+    </div>
 </div>
 @endsection
         

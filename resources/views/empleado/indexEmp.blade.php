@@ -23,39 +23,26 @@
     </div>
   </header>
 
-  <div class="me-5 mb-3 text-end">
-    <p style="display: inline">
-      <button class="btn glow-on-hover-main text-BLACK" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        <i class="bi bi-search"></i>
-      </button>
-    </p>
-      <a class="btn glow-on-hover-main text-BLACK" href="{{route('empleado.createEmp')}}">Nuevo empleado  <i class="bi bi-person-plus"></i></a>
-  </div>
-  <div class="collapse mb-3 mt-3" id="collapseExample">
-    <div class="card card-body p-2">
-          {{-- Campo de busqueda  --}}
-      <form method="GET" action="">
-        <div class="container">
-            <div class="vh-50 row text-center align-items-center justify-content-center">
-                <div class="col-8 p-1 buscar">
-                    <div class="input-group">
-                          <input type="text" name="search" id="search"  class="form-control"
-                          placeholder="Buscar por identidad, nombre o nombre del cargo" 
-                          value="{{request('search')}}"/> {{-- busca por identidad nombre empleado y nombre cargo --}}
-                        <button type="submit" class="btn glow-on-hover-main text-BLACK">
-                          <i class="bi bi-search"></i> Buscar
-                        </button>
-                      </div>
-                    </div>
+{{-- Campo de busqueda  --}}
+  <form method="GET" action="">
+    <div class="container">
+        <div class="vh-50 row text-center align-items-center justify-content-center">
+            <div class="col-5 p-1 contorno-azul">
+                <div class="input-group">
+                      <input type="text" name="search" id="search"  class="form-control"
+                      placeholder="Buscar por identidad, nombre o nombre del cargo" value="{{request('search')}}"/>
+                    <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
+                  </div>
                 </div>
             </div>
-        </div>    
-      </form> 
-    </div>
-  </div>
-  
-  <div class="container">
+        </div>
+    </div>    
+  </form>
 
+  <div class="container">
+ <div class="mb-3 text-end">
+      <a class="btn glow-on-hover-main text-BLACK" href="{{route('empleado.createEmp')}}">Nuevo empleado  <i class="bi bi-person-plus"></i></a>
+  </div>
         {{-- alerta de mensaje cuando se guardo correctamente --}}
         @if (session('mensaje'))
           <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >

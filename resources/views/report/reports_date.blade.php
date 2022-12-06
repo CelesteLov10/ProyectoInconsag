@@ -25,13 +25,9 @@
   </div>
   
   <div class="container">
-
-    <div class="me-5 mb-3 text-end">
-
+    <div class="mb-3 text-end">
       <a class="btn glow-on-hover-main text-BLACK" href="{{route('reports.pdfReportFecha')}}" title="Imprimir PDF">PDF<i class="bi bi-printer"></i></a>
     </div>
-
-      
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
@@ -78,7 +74,7 @@
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
           <div class="col-60 bg-light p-5">
-              <table class="table border border-2 rounded-pill">
+              <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
                       <th >#</th>

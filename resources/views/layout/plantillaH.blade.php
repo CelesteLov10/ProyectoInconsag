@@ -141,7 +141,7 @@
 
       </ul>
       
-      <button class="btn-hover glow-on-hover" onclick="darkMode()">Modo oscuro</button>
+      {{--<button class="btn-hover glow-on-hover" onclick="darkMode()">Modo oscuro</button>--}}
       <hr>
       <div class="dropdown">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
