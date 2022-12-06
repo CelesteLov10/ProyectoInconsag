@@ -9,6 +9,12 @@ class Constructora extends Model
 {
     use HasFactory;
     //
+    protected $fillable =['id',
+    'nombreConstructora',
+    'direccion', 
+    'telefono',
+    'email',
+    'fechaContrato',];
     public function constructora(){
         return $this->hasMany(Constuctora::class);
     }

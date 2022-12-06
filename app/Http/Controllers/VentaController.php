@@ -56,6 +56,7 @@ class VentaController extends Controller
             'cliente_id'       => ['required'],
             'bloque_id'       => ['required'],
             'lote_id'       => ['required'],
+            'beneficiario_id'       => ['required'],
             'fechaVenta' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',],
             'diaPago' => ['numeric', 'min:1','max:31' ,'regex:/^[0-9]{1,2}+$/', 'nullable'],
             'valorPrima' => ['numeric', 'min:1', 'regex:/^[0-9]{1,6}+$/', 'nullable'],
@@ -67,6 +68,7 @@ class VentaController extends Controller
             'cliente_id.required'=>'Debe seleccionar un cliente, no puede estar vacío.',
             'bloque_id.required'=>'Debe seleccionar un bloque, no puede estar vacío.',
             'lote_id.required'=>'Debe seleccionar un lote, no puede estar vacío.',
+            'beneficiario_id.required'=>'Debe seleccionar un beneficiario, no puede estar vacío.',
 
             'valorTerreno.numeric' => 'Solo se permite números enteros. Ejem. "12345678"',
             'valorTerreno.regex' => 'El valor es incorrecto. Ejem. "123"',
