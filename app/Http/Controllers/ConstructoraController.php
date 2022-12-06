@@ -21,10 +21,11 @@ class ConstructoraController extends Controller
     public function store(Request $request)
     {
             $this->validate($request,[
-                'nombreConstructora'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
-                'direccion'       => ['required','min:10','max:150'],
-                'telefonot'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:beneficiarios'],
-                
+                'nombreConstructora' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
+                'direccion' => ['required','min:10','max:150'],
+                'telefonot' => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:beneficiarios'],
+                'email' => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:constructoras'],
+                'fechaContrato' =>'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             ],[
 
             'nombreConstructora.required' => 'El nombre no puede ir vacío.',
@@ -40,6 +41,12 @@ class ConstructoraController extends Controller
             'telefonot.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefonot.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
             'telefonot.unique' => 'El número de teléfono ya está en uso.',
+
+            'email.required' => 'Debe ingresar el correo electrónico.',
+            'email.email' => 'Debe ingresar un correo electrónico válido.',
+            'email.unique' => 'El correo electrónico ya está en uso.',
+
+            'fechaAdquisicion.required' => 'Debe seleccionar la fecha de adquisición, no puede estar vacío.',
 
             
 
@@ -60,13 +67,13 @@ class ConstructoraController extends Controller
     }
 
     public function update(Request $request, $id){
-        //variable para establecer si es mayor de edad o se coloca otro numero ->format("Y-m-d") date_format:DD-MM-YYYY
-
+        
         $this->validate($request,[
             'nombreConstructora'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'direccion'       => ['required','min:10','max:150'],
             'telefonot'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes,telefono,'.$id.'id'],
-            
+            'email'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:constructoras'],
+            'fechaContrato'  => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
         ],[
             'nombreConstructora.required' => 'El nombre no puede ir vacío.',
             'nombreConstructora.alpha' => 'En el nombre sólo se permite letras.',
@@ -81,6 +88,12 @@ class ConstructoraController extends Controller
             'telefonot.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefonot.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
             'telefonot.unique' => 'El número de teléfono ya está en uso.',
+
+            'email.required' => 'Debe ingresar el correo electrónico.',
+            'email.email' => 'Debe ingresar un correo electrónico válido.',
+            'email.unique' => 'El correo electrónico ya está en uso.',
+
+            'fechaAdquisicion.required' => 'Debe seleccionar la fecha de adquisición, no puede estar vacío.',
 
             
         
