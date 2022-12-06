@@ -94,8 +94,14 @@
             <div class="mb-3 row">
             <label for="lote" class="col-sm-3 col-form-label">Lote:</label>
             <div class="col-sm-5">
-                <select id="lote" name="lote_id"  class="form-select rounded-pill @error('lote_id') is-invalid @enderror"
-                >
+                <select name="lote_id" id="lote"
+                        class="form-select rounded-pill @error('lote_id') is-invalid @enderror"
+                        onchange="f_obtener_lotes()">
+                    <option value="" disabled selected>-- Seleccione un lote --</option>
+                    @foreach ($lotes as $lote)
+                        <option
+                            value="{{ $lote->id }}" {{ old('lote_id') == $lote->id ? 'selected' : '' }}>{{$lote['nombreLote']}}</option>
+                    @endforeach
                 </select>
             @error('lote_id')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -105,12 +111,18 @@
 
 
         <div class="mb-3 row">
-            <label  class="col-sm-3 col-form-label" for="valorTerreno">Precio del lote</label>
+            <label  class="col-sm-3 col-form-label" for="valorTerreno">Valor del lote</label>
             <div class="col-sm-5">
-                <input type="number" class="form-control rounded-pill" name="valorTerreno" id="valorTerreno" aria-describedby="helpId"
-                    disabled>
+                <input type="text" class="form-control rounded-pill" name="valorTerreno" id="valorTerreno" aria-describedby="helpId"
+                autocomplete="valorTerreno"
+                value="{{ old('valorTerreno')}}" required
+                autofocus readonly
+                style="background-color: white"
+                >
             </div>
         </div>
+
+        
 
 
         <div class="mb-3 row">
@@ -328,6 +340,20 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script>
+
+function f_obtener_lotes() {
+                    var select = document.getElementById("lote");
+                    var valor = select.value;
+
+                    @foreach ($lotes as $lote)
+                    if (valor == {{$lote->id}}) {
+                        var input = document.getElementById("valorTerreno");
+                        input.value = "{{$lote->valorTerreno}}";
+                    }
+                    @endforeach
+
+                }
+
     $( function() {
         $( "#datepicker" ).datepicker({
         dateFormat: "dd-mm-yy",
@@ -460,7 +486,7 @@ try
             $('#lote').empty();
             $('#lote').append("<option selected disabled value=''>-- Seleccione un lote --</option>"); 
             for (let i = 0; i < lote.length; i++) {
-            $('#lote').append("<option value='"+ lote[i].id+"'>"+lote[i].numLote+"</option>"); 
+            $('#lote').append("<option value='"+ lote[i].id+"'>"+lote[i].nombreLote+"</option>"); 
 
         
             }

@@ -49,8 +49,8 @@
                     <td>{{$venta->bloque->nombreBloque}}</td>    
                 </tr>
                 <tr>
-                    <th scope="row">Número del lote:</th>
-                    <td>{{$venta->lote->numLote}}</td>    
+                    <th scope="row">Nombre del lote:</th>
+                    <td>{{$venta->lote->nombreLote}}</td>    
                 </tr>
             
                 <tr>
@@ -87,8 +87,8 @@
                     <td>{{$venta->bloque->nombreBloque}}</td>       
                 </tr>
                 <tr>
-                    <th scope="row">Número del lote:</th>
-                    <td>{{$venta->lote->numLote}}</td>     
+                    <th scope="row">Nombre del lote:</th>
+                    <td>{{$venta->lote->nombreLote}}</td>     
                 </tr>
             
                 <tr>

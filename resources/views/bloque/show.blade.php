@@ -62,7 +62,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre del bloque</th>
-                <th scope="col">Número de lote</th>
+                <th scope="col">Nombre de lote</th>
                 <th scope="col">Medida lateral derecha:</th>
                 <th scope="col">Medida lateral izquierda:</th>
                 <th scope="col">Medida lateral enfrente:</th>
@@ -81,7 +81,7 @@
                 <tr>
                     <td>{{$lote->id}}</td>
                     <td>{{$lote->bloque->nombreBloque}}</td>
-                    <td>{{$lote->numLote}}</td>
+                    <td>{{$lote->nombreLote}}</td>
                     <td>{{$lote->medidaLateralR}}</td>
                     <td>{{$lote->medidaLateralL}}</td>
                     <td>{{$lote->medidaEnfrente}}</td>
