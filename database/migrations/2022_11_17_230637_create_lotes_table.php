@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('lotes', function (Blueprint $table) {
             $table->id();
-            $table->float('numLote');
+            $table->string('nombreLote');
             $table->float('medidaLateralR');
             $table->float('medidaLateralL');
             $table->float('medidaEnfrente');
