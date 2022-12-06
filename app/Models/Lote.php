@@ -9,7 +9,7 @@ class Lote extends Model
 {
     use HasFactory;
     protected $fillable = ['id', 
-    'numLote',
+   
            'medidaLateralR',
            'medidaLateralL',
            'medidaEnfrente',
