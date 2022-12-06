@@ -33,32 +33,22 @@
             <a class="btn btn-outline-primary" href="{{route('lote.create')}}">Agregar lote <i
                     class="bi bi-plus-square-dotted"></i></a>
         </div>
-      </header>
-    
-      <div class="me-5 mb-3 text-end">
-        <p style="display: inline">
-          <button class="btn glow-on-hover-main text-BLACK" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <i class="bi bi-search"></i>
-          </button>
-        </p>
-        <a class="btn glow-on-hover-main text-BLACK" href="{{route('bloque.create')}}">Nuevo bloque <i class="bi bi-plus-square-dotted"></i></a>
-        <a class="btn glow-on-hover-main text-BLACK" href="{{route('lote.create')}}">Agregar lote <i class="bi bi-plus-square-dotted"></i></a>
-      </div>
-      <div class="collapse mb-3 mt-3" id="collapseExample">
-        <div class="card card-body p-2">
-              {{-- Campo de busqueda  --}}
-          <form method="GET" action="">
-            <div class="container">
-                <div class="vh-50 row text-center align-items-center justify-content-center">
-                    <div class="col-8 p-1 buscar">
-                        <div class="input-group">
-                              <input type="text" name="search" id="search"  class="form-control"
-                              placeholder="Buscar por nombre del bloque" 
-                              value="{{request('search')}}"/> {{-- busca por identidad nombre empleado y nombre cargo --}}
-                            <button type="submit" class="btn glow-on-hover-main text-BLACK">
-                              <i class="bi bi-search"></i> Buscar
-                            </button>
-                          </div>
+        <div class="collapse mb-3 mt-3" id="collapseExample">
+            <div class="card card-body p-2">
+                {{-- Campo de busqueda  --}}
+                <form method="GET" action="">
+                    <div class="container">
+                        <div class="vh-50 row text-center align-items-center justify-content-center">
+                            <div class="col-8 p-1 buscar">
+                                <div class="input-group">
+                                    <input type="text" name="search" id="search" class="form-control"
+                                           placeholder="Buscar por nombre del bloque"
+                                           value="{{request('search')}}"/> {{-- busca por identidad nombre empleado y nombre cargo --}}
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        <i class="bi bi-search"></i> Buscar
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
             </div>
@@ -92,49 +82,62 @@
                         bloques</h5></a>
             </div>
 
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
-          <div class="col-60 bg-light p-5">
-              <table class="table border border-2 contorno-azul">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Nombre del bloque</th>
-                      <th scope="col">Cantidad de lotes</th>
-                      {{-- <th scope="col">Agregar lotes</th> --}}
-                      <th scope="col">Detalle bloque</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  @forelse($bloques as $bloque)
-                    <tr>
-                      <td>{{$bloque->id}}</td>
-                      <td>{{$bloque->nombreBloque}}</td>
-                      <td>{{$bloque->cantidadLotes}}</td>
-                      {{-- <td><a class="btn btn-outline-success" href="{{route('lote.create', ['id'=> $bloque->id])}}">
-                        <i class="bi bi-file-earmark-plus"></i>                     
-                       </a>
-                      </td> --}}
-                      <td><a class="btn btn-outline-primary" 
-                        href="{{route('bloque.show', ['id' => $bloque->id])}}">
-                        <i class="bi bi-eye"></i>
-                      </a>
-                      </td>
-                     
-                          @csrf
-                    </tr>
-                    @empty
-                    <tr>
-                      <td col-span="4">No hay registros</td>
-                    </tr>
-                  @endforelse
-                    
-                  </tbody>
-                </table>
-                {{$bloques->links()}}
-          </div>
-      </div>
-  </div>
-</div>
+            <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
+                <div class="col-60 bg-light p-5">
+                    <table class="table border border-2 rounded-pill">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre del bloque</th>
+                            <th scope="col">Lotes Maximos</th>
+                            <th scope="col">Lotes Asignados</th>
+                            <th scope="col">Detalle bloque</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @forelse($bloques as $bloque)
+                            @if($bloque->cantidadLotes == $bloque->lote()->count())
+                                <td>{{$bloque->id}}</td>
+                                <td>{{$bloque->nombreBloque}}</td>
+                                <td>{{$bloque->cantidadLotes}}</td>
+                                <td>{{$bloque->lote()->count()}}</td>
+                                <td>
+                                    <a class="btn btn-outline-warning"
+                                       href="{{route('bloque.show', ['id' => $bloque->id])}}">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                </td>
+                            @else
+                                <tr>
+                                    <td>{{$bloque->id}}</td>
+                                    <td>{{$bloque->nombreBloque}}</td>
+                                    <td>{{$bloque->cantidadLotes}}</td>
+                                    <td>{{$bloque->lote()->count()}}</td>
+                                    {{-- <td><a class="btn btn-outline-success" href="{{route('lote.create', ['id'=> $bloque->id])}}">
+                                        <i class="bi bi-file-earmark-plus"></i>
+                                    </a>
+                                    </td> --}}
+                                    <td>
+                                        <a class="btn btn-outline-warning"
+                                           href="{{route('bloque.show', ['id' => $bloque->id])}}">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @empty
+                            <tr>
+                                <td col-span="4">No hay registros</td>
+                            </tr>
+                        @endforelse
+
+                        </tbody>
+                    </table>
+                    {{$bloques->links()}}
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
