@@ -18,7 +18,7 @@ class LoteFactory extends Factory
     {
         return [
             //
-            'numLote' =>$this->faker->randomDigit(1,40),
+            'nombreLote' =>$this->faker->word(),
             'medidaLateralR' =>$this->faker->numberBetween(12,10),
             'medidaLateralL' =>$this->faker->numberBetween(12,10), 
             'medidaEnfrente' =>$this->faker->numberBetween(12,10),

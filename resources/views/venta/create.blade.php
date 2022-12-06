@@ -58,7 +58,7 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label" for="cliente_id">Cliente</label>
             <div class="col-sm-5">
-            <select class="form-control selectpicker clienteB @error('cliente_id') is-invalid @enderror" data-live-search="true" name="cliente_id" id="cliente_id" >
+            <select class="form-select rounded-pill @error('cliente_id') is-invalid @enderror" data-live-search="true" name="cliente_id" id="cliente_id" >
                 lang="es">
                 <option value="" data-icon="fas fa-user-tie" disabled selected>Buscar cliente</option>
                 @foreach ($cliente as $clientes)
@@ -102,6 +102,16 @@
             @enderror
             </div>
         </div>
+
+
+        <div class="mb-3 row">
+            <label  class="col-sm-3 col-form-label" for="valorTerreno">Precio del lote</label>
+            <div class="col-sm-5">
+                <input type="number" class="form-control rounded-pill" name="valorTerreno" id="valorTerreno" aria-describedby="helpId"
+                    disabled>
+            </div>
+        </div>
+
 
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre del beneficiario:</label>
@@ -435,7 +445,8 @@ try
                 alert('')
             } else {
                 agregarSelect(lote); 
-                $('#lote').val(idlot);           
+                $('#lote').val(idlot); 
+                $('#valorTerreno').val(lote.valorTerreno);          
             }
             },
             });
@@ -450,6 +461,7 @@ try
             $('#lote').append("<option selected disabled value=''>-- Seleccione un lote --</option>"); 
             for (let i = 0; i < lote.length; i++) {
             $('#lote').append("<option value='"+ lote[i].id+"'>"+lote[i].numLote+"</option>"); 
+
         
             }
         }
