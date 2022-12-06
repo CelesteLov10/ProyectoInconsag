@@ -43,7 +43,7 @@ class VentaController extends Controller
     public function create(){ 
 
         $venta = Venta::all();
-        $cliente = Cliente::all();
+        $cliente = Cliente::get();
         $bloques = Bloque::all();
         $lotes = Lote::all();
         $beneficiarios = Beneficiario::all();
