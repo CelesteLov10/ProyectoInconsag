@@ -132,6 +132,12 @@
                 </div>
             </li>             
                 --}}
+                <li>
+                    <a href="{{route('constructora.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+                        <span class="p-2"><i class="bi bi-archive-fill text-light"></i></span>
+                        Constructoras
+                    </a>
+                 </li>
 
       </ul>
       

@@ -10,6 +10,7 @@ use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\BloqueController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ConstructoraController;
 use App\Http\Controllers\LoteController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\ReportController;
@@ -260,4 +261,21 @@ Route::get('reports_date','reportsDate')->name('reports.reports_date');
 Route::post('report_results','reportResults')->name('report.report_results');
 Route::get('pdfReportDia', 'pdfDia')->name('reports.pdfReportDia');
 Route::get('pdfReportFecha', 'pdfFecha')->name('reports.pdfReportFecha');
+});
+//Ruta para Constructora
+Route::controller(ConstructoraController::class)->group(function(){
+    //Ruta para listado de Constructora
+    Route::get('/constructora', 'index')->name('constructora.index');
+    //Ruta para crear un nuevo Constructora
+    Route::get('/constructora/create', 'create')->name('constructora.create');
+    //Ruta para guardar los registros del Constructora
+    Route::post('/constructora', 'store')->name('constructora.store');
+    //Ruta para mostrar un Constructoraes
+    Route::get('/constructora/{id}', 'show')->name('constructora.show')
+    ->where('id','[0-9]+');
+    //Ruta para editar un Constructora
+    Route::get('/constructora/{id}/edit', 'edit')->name('constructora.edit');
+    //Ruta para el metodo editar
+    Route::put('/constructora/{id}/edit', 'update')->name('constructora.update');
+    //Ruta para imprimir el listado de Constructora
 });
