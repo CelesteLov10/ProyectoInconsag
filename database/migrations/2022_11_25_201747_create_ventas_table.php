@@ -25,7 +25,6 @@ return new class extends Migration
             $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
             $table->string('fechaVenta');
             $table->enum('formaVenta', ['contado', 'credito']);
-            $table->integer('diaPago')->nullable();
             $table->float('valorPrima')->nullable();
             $table->float('cantidadCuotas')->nullable();
             $table->float('valorCuotas')->nullable();

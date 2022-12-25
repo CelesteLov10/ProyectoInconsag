@@ -73,7 +73,7 @@
         </div>
 
         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Email:</label>
+          <label class="col-sm-3 col-form-label">Correo:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('email') is-invalid @enderror" 
             placeholder="Ingrese el correo electrónico. Ejem. 'john.smith@example.com'"
@@ -84,7 +84,7 @@
           </div>
         </div>
         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Fecha de Constructora:</label>
+          <label class="col-sm-3 col-form-label">Fecha de contrato:</label>
           <div class="col-sm-5">
               <input type="text" class="form-control rounded-pill @error('fechaContrato') is-invalid @enderror" 
               maxlength="10" placeholder="Seleccione la fecha del contrato de la constructora."

@@ -58,9 +58,8 @@ class VentaController extends Controller
             'lote_id'       => ['required'],
             'beneficiario_id'       => ['required'],
             'fechaVenta' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',],
-            'diaPago' => ['numeric', 'min:1','max:31' ,'regex:/^[0-9]{1,2}+$/', 'nullable'],
             'valorPrima' => ['numeric', 'min:1', 'regex:/^[0-9]{1,6}+$/', 'nullable'],
-            'cantidadCuotas' => ['numeric', 'min:1','regex:/^[0-9]{1,4}+$/', 'nullable'],
+            'cantidadCuotas' => ['numeric', 'min:10', 'max:240','regex:/^[0-9]{1,4}+$/', 'nullable'],
             'valorCuotas' => ['numeric', 'min:1', 'regex:/^[0-9]{1,5}+$/', 'nullable'],
             'valorRestantePagar' => ['numeric', 'min:1', 'nullable'],
 
@@ -80,6 +79,8 @@ class VentaController extends Controller
             'diaPago.min' => 'El dia de pago mínimo es "1". ',
 
             'cantidadCuotas.numeric' => 'Solo se permite números enteros. Ejem. "12345"',
+            'cantidadCuotas.min' => 'La cantidad de cuotas mínima es "120 meses". ',
+            'cantidadCuotas.max' => 'La cantidad de cuotas máxima es "240 meses" ',
 
             'valorCuotas.numeric' => 'Solo se permite números enteros. Ejem. "12345"',
 

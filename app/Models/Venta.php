@@ -14,7 +14,6 @@ class Venta extends Model
     'beneficiario_id',
     'fechaVenta',
     'formaVenta',
-    'diaPago',
     'valorPrima',
     'cantidadCuotas',
     'valorCuotas',

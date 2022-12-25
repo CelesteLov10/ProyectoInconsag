@@ -56,6 +56,7 @@
                                            id="cantidadLotes"
                                            name="cantidadLotes" value="{{ old('cantidadLotes') }}" required
                                            autocomplete="cantidadLotes"
+                                           placeholder="Lotes totales"
                                            autofocus readonly
                                            style="background-color: white">
                                 </div>

@@ -114,7 +114,7 @@
             <label  class="col-sm-3 col-form-label" for="valorTerreno">Valor del lote</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill" name="valorTerreno" id="valorTerreno" aria-describedby="helpId"
-                autocomplete="valorTerreno"
+                autocomplete="valorTerreno" placeholder="Precio del lote"
                 value="{{ old('valorTerreno')}}" required
                 autofocus readonly
                 style="background-color: white"
@@ -178,19 +178,6 @@
             <div class="col-60 bg-light p-1">
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Día de pago:</label>
-            <div class="col-sm-5">
-                <input type="text" id="diaPago" class="form-control rounded-pill  @error('diaPago') is-invalid @enderror"
-                placeholder="Ingrese el día establecido. Ejem. 1 al 31" 
-                    name="diaPago" value="{{old('diaPago')}}" maxlength="2" oninput="calcularPago()">
-                    @error('diaPago')
-                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-                    <div ><small class="text-danger" id="myElement" ></small></div>
-            </div>
-        </div>
-
-        <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Valor de la prima:</label>
             <div class="col-sm-5">
                 <input type="text" id="valorPrima" class="form-control rounded-pill  @error('valorPrima') is-invalid @enderror"
@@ -207,8 +194,8 @@
             <label class="col-sm-3 col-form-label">Cantidad de cuotas:</label>
             <div class="col-sm-5">
                 <input type="text" id="cantidadCuotas" class="form-control rounded-pill  @error('cantidadCuotas') is-invalid @enderror"
-                placeholder="Ingrese la cantidad de cuotas. Ejem. 0000" 
-                name="cantidadCuotas" value="{{old('cantidadCuotas')}}" maxlength="4" oninput="calcularPago()">
+                placeholder="Ingrese la cantidad de cuotas. Ejem. 000" 
+                name="cantidadCuotas" value="{{old('cantidadCuotas')}}" maxlength="3" oninput="calcularPago()">
                 @error('cantidadCuotas')
                     <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
                 @enderror

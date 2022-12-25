@@ -24,7 +24,7 @@
   <form method="GET" action="">
     <div class="container">
         <div class="vh-50 row text-center align-items-center justify-content-center">
-            <div class="col-5 p-1 contorno-azul">
+            <div class="col-7 p-1 contorno-azul">
                 <div class="input-group">
                       <input type="text" name="search" id="search"  class="form-control"
                       placeholder="Buscar por inventario, oficina o empleado" value="{{request('search')}}"/>
