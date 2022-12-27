@@ -47,7 +47,7 @@ class VentaController extends Controller
         $bloques = Bloque::all();
         $lotes = Lote::all();
         $beneficiarios = Beneficiario::all();
-        return view('venta.create', compact('venta','cliente','bloques','lotes','beneficiarios'));
+        return view('venta.create', compact('venta','cliente','bloques','lotes','beneficiarios'))->with('venta', $venta);
     }
 
     public function store(Request $request){

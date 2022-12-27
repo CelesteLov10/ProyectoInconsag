@@ -100,10 +100,6 @@
                     <td>{{$venta->fechaVenta}}</td>    
                 </tr>
                 <tr>
-                    <th scope="row">Día pago:</th>
-                    <td>{{$venta->diaPago}}</td>    
-                </tr>
-                <tr>
                     <th scope="row">Valor prima:</th>
                     <td>{{$venta->valorPrima}}</td>    
                 </tr>
@@ -114,6 +110,10 @@
                 <tr>
                     <th scope="row">Valor cuota:</th>
                     <td>{{$venta->valorCuotas}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Valor restante a pagar:</th>
+                    <td>{{$venta->valorRestantePagar}}</td>    
                 </tr>
                 <tr>
                     <th scope="row">Identidad beneficiario:</th>

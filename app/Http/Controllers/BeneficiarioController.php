@@ -57,7 +57,7 @@ class BeneficiarioController extends Controller
             $input = $request->all();
             
             Beneficiario::create($input);
-                return redirect()->route('venta.index')
+                return redirect()->route('venta.create')
                 ->with('mensaje', 'Se guardó un nuevo beneficiario correctamente');
             
          /** redireciona una vez enviado  */

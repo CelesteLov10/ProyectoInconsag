@@ -30,13 +30,14 @@
             Registro de una venta
         </h3>
         <hr>
-      </div>
+    </div>
 
     <div class="container ">
+        
         <div class="mb-3 text-end">
             {{-- Boton parte del modal --}}
             <button type="button" class="btn btn-outline-warning" id="agregar" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Agregar beneficiario
+                Agregar beneficiario
             </button>
         <a class="btn btn-outline-primary" href="{{route('venta.index')}}"> 
             <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
@@ -53,8 +54,6 @@
             <form action="{{route('venta.store')}}" id="form1" class="venta-guardar" name="formulario1" method="POST" autocomplete="off">
             @csrf {{-- TOKEN INPUT OCULTO --}}
 
-    
-
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label" for="cliente_id">Cliente</label>
             <div class="col-sm-5">
@@ -70,8 +69,6 @@
         @enderror
         </div>
     </div>
-
-
 
         <div class="mb-3 row">
             <label for="bloque" class="col-sm-3 col-form-label">Bloque:</label>
@@ -109,25 +106,14 @@
             </div>
         </div>
 
-
         <div class="mb-3 row">
             <label  class="col-sm-3 col-form-label" for="valorTerreno">Valor del lote</label>
             <div class="col-sm-5">
-                <input type="text"
-                class="form-control  rounded-pill @error('valorTerreno') is-invalid @enderror" required
-                name="valorTerreno" 
-                id="valorTerreno" 
-                autocomplete="valorTerreno" 
-                placeholder="Precio del lote"
-                value="{{old('valorTerreno')}}" 
-                readonly
-                style="background-color: white"
-                >
+                <input type="text" class="form-control  rounded-pill @error('valorTerreno') is-invalid @enderror" required
+                    name="valorTerreno" id="valorTerreno" autocomplete="valorTerreno" placeholder="Precio del lote"
+                value="{{old('valorTerreno')}}" readonly style="background-color: white">
             </div>
         </div>
-
-        
-
 
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre del beneficiario:</label>
@@ -156,8 +142,6 @@
             @enderror
             </div>
         </div>
-
-    
 
         <div class="form-group">
             <div class="mb-2  form-check-inline">  
@@ -340,7 +324,6 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script>
-
     $( function() {
         $( "#datepicker" ).datepicker({
         dateFormat: "dd-mm-yy",
@@ -385,7 +368,6 @@ window.onload = function(){
     var ver = document.getElementById(radiosb); 
     ver.style.display = "none"; 
     }
-
 </script>
 
 <script>
@@ -407,7 +389,6 @@ try
 
     }
     }catch (error) {throw error;}
-
 </script>
 
 <script>
