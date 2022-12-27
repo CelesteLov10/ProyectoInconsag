@@ -113,10 +113,14 @@
         <div class="mb-3 row">
             <label  class="col-sm-3 col-form-label" for="valorTerreno">Valor del lote</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill" name="valorTerreno" id="valorTerreno" aria-describedby="helpId"
-                autocomplete="valorTerreno" placeholder="Precio del lote"
-                value="{{ old('valorTerreno')}}" required
-                autofocus readonly
+                <input type="text"
+                class="form-control  rounded-pill @error('valorTerreno') is-invalid @enderror" required
+                name="valorTerreno" 
+                id="valorTerreno" 
+                autocomplete="valorTerreno" 
+                placeholder="Precio del lote"
+                value="{{old('valorTerreno')}}" 
+                readonly
                 style="background-color: white"
                 >
             </div>
@@ -186,7 +190,6 @@
                     @error('valorPrima')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
-                    <div ><small class="text-danger" id="myElement" ></small></div>
             </div>
         </div>
 
@@ -199,7 +202,6 @@
                 @error('cantidadCuotas')
                     <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
                 @enderror
-                <div ><small class="text-danger" id="myElement2" ></small></div>
             </div>
         </div>
 
@@ -207,12 +209,23 @@
             <label class="col-sm-3 col-form-label">Valor de la cuota:</label>
             <div class="col-sm-5">
                 <input type="text" id="valorCuotas" class="form-control rounded-pill  @error('valorCuotas') is-invalid @enderror" 
-                placeholder="Ingrese el valor de cuotas. Ejem. 00000" 
-                    name="valorCuotas" value="{{old('valorCuotas')}}" maxlength="5" oninput="calcularPago()">
+                placeholder="Valor de las cuotas." 
+                    name="valorCuotas" value="{{old('valorCuotas')}}" maxlength="5" readonly=»readonly»>
                     @error('valorCuotas')
                     <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
                     @enderror
-                    <div ><small class="text-danger" id="myElement2" ></small></div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Valor restante a pagar:</label>
+            <div class="col-sm-5">
+                <input type="text" id="valorRestantePagar" class="form-control rounded-pill  @error('valorRestantePagar') is-invalid @enderror" 
+                placeholder="Valor restante a pagar" 
+                    name="valorRestantePagar" value="{{old('valorRestantePagar')}}" maxlength="6" readonly=»readonly»>
+                    @error('valorRestantePagar')
+                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
+                    @enderror
             </div>
         </div>
 
@@ -328,19 +341,6 @@
 
 <script>
 
-function f_obtener_lotes() {
-                    var select = document.getElementById("lote");
-                    var valor = select.value;
-
-                    @foreach ($lotes as $lote)
-                    if (valor == {{$lote->id}}) {
-                        var input = document.getElementById("valorTerreno");
-                        input.value = "{{$lote->valorTerreno}}";
-                    }
-                    @endforeach
-
-                }
-
     $( function() {
         $( "#datepicker" ).datepicker({
         dateFormat: "dd-mm-yy",
@@ -375,22 +375,6 @@ window.onload = function(){
         elemento1.style.display = 'block';
         }  
 }
-function validacion(){
-        var a,b,c;
-            a=document.getElementById("valorPrima").value;
-            b=document.getElementById("cantidadCuotas").value;
-            c=document.getElementById("valorCuotas").value;
-            d=document.getElementById("diaPago").value;
-            
-            if( a.length == 0 || b.length == 0 || c.length == 0 || d.length == 0 ) {
-            Swal.fire('¡Llena los campos de venta al crédito!');
-            document.getElementById("form1").addEventListener('submit', (event)=>{
-                event.preventDefault();   });
-            }else{
-                document.getElementById("form1").submit();
-            }
-            
-}
     
 //Funciones que permiten ocultar y desplegar los divs correspondientes al dar click en los radiobotones
     function Desplegar(radiosb){ 
@@ -411,11 +395,15 @@ try
     
     var valorTerreno = document.getElementById('valorTerreno').value;
     var valorPrima = document.getElementById('valorPrima').value;
+    var cantidadCuotas = document.getElementById('cantidadCuotas').value;
     var valorRestantePagar = document.getElementById('valorRestantePagar');
+    var valorCuotas = document.getElementById('valorCuotas');
 
     var resultado = valorTerreno - valorPrima; 
-
     valorRestantePagar.value = resultado;
+
+    var resultado2 =  resultado/cantidadCuotas; 
+    valorCuotas.value = resultado2;
 
     }
     }catch (error) {throw error;}
@@ -459,7 +447,7 @@ try
             } else {
                 agregarSelect(lote); 
                 $('#lote').val(idlot); 
-                $('#valorTerreno').val(lote.valorTerreno);          
+               // $('#valorTerreno').val(lote.valorTerreno); NO ME DABAEL OLD EN Valorterreno         
             }
             },
             });
@@ -481,7 +469,22 @@ try
 
             $(document).ready(function(){
             cargarselectmunicipio($('#bloque').val(),$('#prueba').val())
-                });      
+                });  
+                
+</script>
+<script>
+    function f_obtener_lotes() {
+                    var select = document.getElementById("lote");
+                    var valor = select.value;
+
+                    @foreach ($lotes as $lote)
+                    if (valor == {{$lote->id}}) {
+                        var input = document.getElementById("valorTerreno");
+                        input.value = "{{$lote->valorTerreno}}";
+                    }
+                    @endforeach
+
+                }
 </script>
 <script>
     //Scrip necesario para el modal

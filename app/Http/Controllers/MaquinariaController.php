@@ -67,10 +67,10 @@ class MaquinariaController extends Controller
             'descripcion'       => 'required|min:10|max:150',
             'fechaAdquisicion'    =>'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'proveedor_id'       => 'required',
-            'cantidadHoraAlquilada' => 'nullable|numeric|min:1|nullable|regex:/^[0-9]{1,3}+$/U', 
-            'valorHora' => 'numeric|regex:/^[0-9]{1,4}+$/|min:1|nullable', 
+            'cantidadHoraAlquilada' => 'required_if:maquinaria,alquilada','nullable|numeric|min:1|nullable|regex:/^[0-9]{1,3}+$/U', 
+            'valorHora' => 'required_if:maquinaria,alquilada','numeric|regex:/^[0-9]{1,4}+$/|min:1|nullable', 
             //'cantidadAlquilada' => 'nullable|min:1|numeric|regex:/^[0-9]{1,4}+$/',
-            'totalPagar' => 'nullable',
+            'totalPagar' => 'required_if:maquinaria,alquilada','nullable',
             
         ]; $mensaje = [
             

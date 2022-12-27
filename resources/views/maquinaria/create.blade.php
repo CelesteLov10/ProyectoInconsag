@@ -237,7 +237,7 @@
         elemento1.style.display = 'block';
       }  
 }
-function validacion(){
+/*function validacion(){
       var cantidadHoraAlquilada,valorHora;
         cantidadHoraAlquilada=document.getElementById("cantidadHoraAlquilada").value;
         valorHora=document.getElementById("valorHora").value;
@@ -252,7 +252,7 @@ function validacion(){
           
 }
 
-  /* function validacion(){
+   function validacion(){
   var cantidadHoraAlquilada,valorHora;
     cantidadHoraAlquilada=document.getElementById("cantidadHoraAlquilada").value;
     valorHora=document.getElementById("valorHora").value;

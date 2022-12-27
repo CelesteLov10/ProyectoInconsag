@@ -56,11 +56,12 @@ class VentaController extends Controller
             'cliente_id'       => ['required'],
             'bloque_id'       => ['required'],
             'lote_id'       => ['required'],
+            'valorTerreno'       => ['required'],
             'beneficiario_id'       => ['required'],
             'fechaVenta' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',],
-            'valorPrima' => ['numeric', 'min:1', 'regex:/^[0-9]{1,6}+$/', 'nullable'],
-            'cantidadCuotas' => ['numeric', 'min:10', 'max:240','regex:/^[0-9]{1,4}+$/', 'nullable'],
-            'valorCuotas' => ['numeric', 'min:1', 'regex:/^[0-9]{1,5}+$/', 'nullable'],
+            'valorPrima' => ['required_if:formaVenta,credito','numeric','max:valorTerreno' ,'regex:/^[0-9]{1,6}+$/', 'nullable'],
+            'cantidadCuotas' => ['required_if:formaVenta,credito','numeric', 'min:10', 'max:240','regex:/^[0-9]{1,4}+$/', 'nullable'],
+            'valorCuotas' => ['required_if:formaVenta,credito','numeric', 'min:1', 'nullable'],
             'valorRestantePagar' => ['numeric', 'min:1', 'nullable'],
 
         ],[
@@ -74,6 +75,7 @@ class VentaController extends Controller
             'valorTerreno.min' => 'La cantidad de hora alquilada mínima es "1". ',
 
             'valorPrima.numeric' => 'Solo se permite números enteros. Ejem. "123456"',
+            'valorPrima.max' => 'El valor de la prima no debe exceder el valor del terreno". ',
 
             'diaPago.numeric' => 'Solo se permite números enteros. Ejem. "1 o 31"',
             'diaPago.min' => 'El dia de pago mínimo es "1". ',

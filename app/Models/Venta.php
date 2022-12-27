@@ -11,12 +11,14 @@ class Venta extends Model
     'cliente_id',
     'bloque_id', 
     'lote_id',
+    'valorTerreno',
     'beneficiario_id',
     'fechaVenta',
     'formaVenta',
     'valorPrima',
     'cantidadCuotas',
     'valorCuotas',
+    'valorRestantePagar'
     ];
     use HasFactory;
     

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('bloque_id')->references('id')->on('bloques');// Restriccion llave foranea
             $table->unsignedBigInteger('lote_id');//Relacion con tabla lote
             $table->foreign('lote_id')->references('id')->on('lotes');
+            $table->bigInteger('valorTerreno'); 
             $table->unsignedBigInteger('beneficiario_id');//Relacion con tabla beneficiario
             $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
             $table->string('fechaVenta');
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->float('valorPrima')->nullable();
             $table->float('cantidadCuotas')->nullable();
             $table->float('valorCuotas')->nullable();
+            $table->bigInteger('valorRestantePagar');
             $table->timestamps();
         });
     }
