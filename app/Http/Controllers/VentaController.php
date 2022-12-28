@@ -62,7 +62,7 @@ class VentaController extends Controller
             'valorPrima' => ['required_if:formaVenta,credito','numeric','max:valorTerreno' ,'regex:/^[0-9]{1,6}+$/', 'nullable'],
             'cantidadCuotas' => ['required_if:formaVenta,credito','numeric', 'min:10', 'max:240','regex:/^[0-9]{1,4}+$/', 'nullable'],
             'valorCuotas' => ['required_if:formaVenta,credito','numeric', 'min:1', 'nullable'],
-            'valorRestantePagar' => ['numeric', 'min:1', 'nullable'],
+            'valorRestantePagar' => ['required_if:formaVenta,credito','numeric', 'min:1', 'nullable'],
 
         ],[
             'cliente_id.required'=>'Debe seleccionar un cliente, no puede estar vacío.',

@@ -5,7 +5,7 @@
 </head>
 <body>
 
-    @if($venta->diaPago == null)
+    @if($venta->valorPrima == null)
 
     <h2>CONTRATO DE ARRENDAMIENTO DE TERRENO AL CONTADO</h2>
 
@@ -38,7 +38,7 @@
             transfiere en venta real y enajenación perpetua a favor de EL ARRENDATARIO el inmueble descrito en la cláusula primero.
         </p>
         <p>
-            TERCERO: EL ARRENDATARIO por el LOTE DE TERRENO RURAL que le transfieren a su favor, cancela la suma de L.<u>{{$venta->lote->valorTerreno}}</u> 
+            TERCERO: EL ARRENDATARIO por el LOTE DE TERRENO RURAL que le transfieren a su favor, cancela la suma de L.<u>{{$venta->valorTerreno}}</u> 
             que recibe EL ARRENDADOR a su entera y completa satisfacción, declarando que el precio es justo y equitativo. Quien a partir de la fecha adquiere la posesión, conducción y propiedad del LOTE DE TERRENO RURAL en mención. 
         </p>
         <p>
@@ -97,13 +97,13 @@ El ARRENDATARIO recibe de conformidad el bien objeto del arrendamiento, y expres
 </p>
 <p>
     <h4>Cláusula 3:  EL DEPÓSITO</h4>
-Ambas partes reconocen que al momento de la firma de este contrato, EL ARRENDATARIO ha hecho entrega de la cantidad de $ <u>{{$venta->valorPrima}}</u> a EL ARRENDADOR para cubrir el depósito en garantía, cuyo fin es el de cubrir todas y cada una de las obligaciones derivadas de este contrato, así como  a cobertura de algún adeudo generado por servicios básicos y/o daños al bien arrendado al momento de terminación de este contrato.
-EL ARRENDADOR se compromete a devolver el depósito en garantía a EL ARRENDATARIO al término de este contrato, siempre y cuando no exista cargo alguno en su contra derivado del incumplimiento de las obligaciones pactadas en este contrato. En caso contrario se realizarán las deducciones correspondientes y se devolverá el remanente en caso de existir alguno.
+Ambas partes reconocen que al momento de la firma de este contrato, EL ARRENDATARIO ha hecho entrega de la cantidad de L. <u>{{$venta->valorPrima}}</u> a EL ARRENDADOR para cubrir el depósito en garantía, cuyo fin es el de cubrir todas y cada una de las obligaciones derivadas de este contrato, así como  a cobertura de algún adeudo generado por servicios básicos y/o daños al bien arrendado al momento de terminación de este contrato.
+EL ARRENDADOR se compromete a devolver el depósito en garantía a EL ARRENDATARIO al término de este contrato, siempre y cuando no exista cargo alguno en su contra derivado del incumplimiento de las obligaciones siendo el valor del lote L.<u>{{$venta->valorTerreno}}</u> pactadas en este contrato que a la fecha debe el valor de L.<u>{{$venta->valorRestantePagar}}</u>. En caso contrario se realizarán las deducciones correspondientes y se devolverá el remanente en caso de existir alguno.
 </p>
 <p>
     <h4>Cláusula 4:  RENTA </h4>
     
-a)  EL ARRENDATARIO se compromete y se obliga a pagar a EL ARRENDADOR por concepto de renta la cantidad de $ <u>{{$venta->valorCuotas}}</u> mensuales, pagaderos al día <u>{{$venta->diaPago}}</u> de cada mes y por medio de:
+a)  EL ARRENDATARIO se compromete y se obliga a pagar a EL ARRENDADOR por concepto de renta la cantidad de L. <u>{{$venta->valorCuotas}}</u> mensuales, pagaderos al día <u>{{$venta->fechaVenta}}</u> de cada mes y por medio de:
 •   Transferencia o depósito bancario a la cuenta número <u>4562823874</u>, del banco <u>Atlantida</u>, a nombre de <u>Darwin Sauceda</u> o en su defecto por medio de pago físico en efectivo o cheque en el domicilio <u>Barrio el centro, media cuadra abajo de la iglesia Católica</u>.
 
 b)  Por su parte EL ARRENDATARIO, y una vez conforme con la entrega del monto de renta, se compromete a entregar el recibo o factura correspondiente a EL ARRENDADOR por concepto del pago de renta mensual, estableciendo así que se encuentra solvente  en el pago de la renta.

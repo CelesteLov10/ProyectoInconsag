@@ -29,7 +29,7 @@ return new class extends Migration
             $table->float('valorPrima')->nullable();
             $table->float('cantidadCuotas')->nullable();
             $table->float('valorCuotas')->nullable();
-            $table->bigInteger('valorRestantePagar');
+            $table->bigInteger('valorRestantePagar')->nullable();
             $table->timestamps();
         });
     }
