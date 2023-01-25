@@ -26,12 +26,12 @@
   
   <div class="container">
     <div class="mb-3 text-end">
-      <a class="btn glow-on-hover-main text-BLACK" href="{{route('reports.pdfReportFecha')}}" title="Imprimir PDF">PDF<i class="bi bi-printer"></i></a>
+      <a class="btn glow-on-hover-main text-BLACK" href="{{route('reports.pdfReportFecha')}}" title="Imprimir PDF">Imprimir reporte <i class="bi bi-printer"></i></a>
     </div>
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
-             {{--  <a href="{{route('venta.index')}}" id="sinLinea"> --}}
+             <a href="{{route('venta.index')}}" id="sinLinea">
                 <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Reporte de ventas</h5 ></a> 
           </div >
 
@@ -42,25 +42,25 @@
                       <form action="{{route('report.report_results')}}" method="POST">
                         @csrf
                         <div class="row ">
-                            <div class="col-12 col-md-3">
-                                <span>Fecha inicial</span>
+                            <div class="col-12 col-md-3 text-center">
+                                <span>Fecha inicial: </span>
                                 <div class="form-group">
-                                    <input class="form-control" type="date" 
+                                    <input class="btn glow-on-hover-main text-BLACK" type="date" 
                                     value="{{old('fecha_ini')}}" 
                                     name="fecha_ini" id="fecha_ini">
                                 </div>
                             </div>
-                            <div class="col-12 col-md-3">
-                                <span>Fecha final</span>
+                            <div class="col-12 col-md-2 text-center">
+                                <span>Fecha final: </span>
                                 <div class="form-group">
-                                    <input class="form-control" type="date" 
+                                    <input class="btn glow-on-hover-main text-BLACK" type="date" 
                                     value="{{old('fecha_fin')}}" 
                                     name="fecha_fin" id="fecha_fin">
                                 </div>
                             </div>
-                            <div class="col-12 col-md-3 text-center mt-4">
+                            <div class="col-12 col-md-2 text-center mt-4">
                                 <div class="form-group">
-                                   <button type="submit" class="btn btn-primary btn-sm">Consultar</button>
+                                   <button type="submit" class="btn glow-on-hover-main text-BLACK">Consultar</button>
                                 </div>
                             </div>
                             <div class="col-12 col-md-3 text-center">

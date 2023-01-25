@@ -45,7 +45,8 @@ class VentaController extends Controller
         $venta = Venta::all();
         $cliente = Cliente::get();
         $bloques = Bloque::all();
-        $lotes = Lote::all();
+        $lotes = Lote::where('status', 'Disponible')->get();
+        //$lotes = Lote::where('(SELECT * FROM lotes WHERE status LIKE %Disponible)')->get();
         $beneficiarios = Beneficiario::all();
         return view('venta.create', compact('venta','cliente','bloques','lotes','beneficiarios'))->with('venta', $venta);
     }
@@ -86,7 +87,8 @@ class VentaController extends Controller
 
             'valorCuotas.numeric' => 'Solo se permite números enteros. Ejem. "12345"',
 
-            'valorRestantePaga.numeric' => 'Solo se permite números enteros. Ejem. "12345678"',
+            'valorRestantePagar.numeric' => 'Solo se permite números enteros. Ejem. "12345678"',
+            'valorRestantePagar.min' => 'El valor de la prima no debe exceder el valor del terreno',
 
             'fechaVenta.required' => 'La fecha de venta no puede ir vacío.',
             'fechaVenta.regex' => 'Debe ser mayor de edad.',
@@ -117,6 +119,17 @@ class VentaController extends Controller
     public function getLotess($id){
         $lotes = Lote::where('bloque_id', '=', $id)->get();
         return $lotes;
+    }
+
+    public function change_status(Venta $venta)
+    {
+        if ($venta->status == 'Pagando') {
+            $venta->update(['status'=>'Cancelando']);
+            return redirect()->back()->with('toast_success', '¡Estado cambiado con éxito!');
+        } else {
+            $venta->update(['status'=>'Pagando']);
+            return redirect()->back()->with('toast_success', '¡Estado cambiado con éxito!');
+        } 
     }
 
 }

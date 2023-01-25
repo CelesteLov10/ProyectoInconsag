@@ -88,6 +88,9 @@
         </div>
     
         <input type="hidden" value="{{ old('lote_id') }}" id="prueba">
+       
+            
+     
             <div class="mb-3 row">
             <label for="lote" class="col-sm-3 col-form-label">Lote:</label>
             <div class="col-sm-5">
@@ -95,10 +98,12 @@
                         class="form-select rounded-pill @error('lote_id') is-invalid @enderror"
                         onchange="f_obtener_lotes()">
                     <option value="" disabled selected>-- Seleccione un lote --</option>
+                   
                     @foreach ($lotes as $lote)
                         <option
                             value="{{ $lote->id }}" {{ old('lote_id') == $lote->id ? 'selected' : '' }}>{{$lote['nombreLote']}}</option>
                     @endforeach
+                
                 </select>
             @error('lote_id')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -371,6 +376,7 @@ window.onload = function(){
 </script>
 
 <script>
+    //esta funcion le hace falta *******************
   /*Funcion para que le salga el valor total que tendra que pagar por las horas alquiladas * el precio*/
 try
     {function calcularPago(){
@@ -440,12 +446,17 @@ try
             }
             function agregarSelect(lote){
             $('#lote').empty();
+            //PROBAR
+           
             $('#lote').append("<option selected disabled value=''>-- Seleccione un lote --</option>"); 
             for (let i = 0; i < lote.length; i++) {
-            $('#lote').append("<option value='"+ lote[i].id+"'>"+lote[i].nombreLote+"</option>"); 
-
         
-            }
+
+            $('#lote').append("<option value='"+ lote[i].id+"'>"+lote[i].nombreLote+"</option>"); 
+          
+        }
+        
+            
         }
 
             $(document).ready(function(){
@@ -483,4 +494,6 @@ try
         }); 
     }
 </script>
+
+
 @endsection

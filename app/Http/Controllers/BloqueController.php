@@ -27,6 +27,7 @@ class BloqueController extends Controller
     public function show($id){
         $bloque = Bloque::findOrFail($id);
         $lotes = Lote::all();
+      
         return view('bloque.show', compact('lotes'))->with('bloque', $bloque);
     }
 

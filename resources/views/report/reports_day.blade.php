@@ -26,41 +26,41 @@
 
   <div class="container">
     <div class="mb-3 text-end">
-      <a class="btn glow-on-hover-main text-BLACK" href="{{route('reports.pdfReportDia')}}" title="Imprimir PDF">PDF<i class="bi bi-printer"></i></a>
+      <a class="btn glow-on-hover-main text-BLACK" href="{{route('reports.pdfReportDia')}}" title="Imprimir PDF">Imprimir reporte <i class="bi bi-printer"></i></a>
     </div>
     <div class="row">
-      <div class="col-12 col-md-4 text-center">
+      <div class="col-12 col-md-3 text-center">
           <span>Fecha de consulta: <b></b></span>
           <div class="form-group">
               <strong>{{\Carbon\Carbon::today()->format('d/m/Y')}}</strong>
           </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-12 col-md-4 text-center">
+
+      <div  class="col-12 col-md-3 text-center">
           <span>Cantidad de registros: <b></b></span>
           <div class="form-group">
               <strong>{{$ventas->count()}}</strong>
           </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12 col-md-4 text-center">
-          <span>Total de ingresos por prima: <b></b></span>
+    
+      <div  class="col-12 col-md-3 text-center">
+          <span>Total de ingresos por prima: </span>
           <div class="form-group">
               <strong>{{$valorPrima}}</strong>
           </div>
       </div>
+   
+
     </div>
+    
     
 
       
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
-             {{--  <a href="{{route('venta.index')}}" id="sinLinea"> --}}
+             <a href="{{route('venta.index')}}" id="sinLinea">
                 <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Reporte de ventas</h5 ></a> 
           </div >
 

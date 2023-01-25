@@ -19,5 +19,6 @@ class Bloque extends Model
     public function venta(){
         return $this->hasMany(Venta::class);
     }
-
+   
+ 
 }

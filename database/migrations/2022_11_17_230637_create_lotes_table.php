@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('lotes', function (Blueprint $table) {
             $table->id();
             $table->string('nombreLote');
+            $table->enum('status',['Vendido','Disponible'])->default('Disponible'); 
             $table->float('medidaLateralR');
             $table->float('medidaLateralL');
             $table->float('medidaEnfrente');
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->bigInteger('valorTerreno');           
             $table->unsignedBigInteger('bloque_id')->nullable();//Relacion con tabla bloque
             $table->foreign('bloque_id')->references('id')->on('bloques');
+          
             $table->timestamps();
         });
     }

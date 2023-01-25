@@ -95,6 +95,11 @@
                     <th scope="row">Valor del terreno:</th>
                     <td>{{$venta->lote->valorTerreno}}</td>    
                 </tr>
+
+                <tr>
+                    <th scope="row">Estado de la venta:</th>
+                    <td>{{$venta->status}}</td>    
+                </tr>
                 <tr>
                     <th scope="row">Fecha venta:</th>
                     <td>{{$venta->fechaVenta}}</td>    

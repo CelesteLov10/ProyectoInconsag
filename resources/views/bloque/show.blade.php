@@ -38,7 +38,7 @@
         </thead>
         <tbody>
             <tr>
-                <th scope="row">Nombre del boque</th>
+                <th scope="row">Nombre del bloque</th>
                 <td>{{$bloque->nombreBloque}}</td>    
             </tr>
             <tr>
@@ -63,6 +63,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nombre del bloque</th>
                 <th scope="col">Nombre de lote</th>
+                <th scope="col">Estado</th>
                 <th scope="col">Medida lateral derecha:</th>
                 <th scope="col">Medida lateral izquierda:</th>
                 <th scope="col">Medida lateral enfrente:</th>
@@ -82,6 +83,26 @@
                     <td>{{$lote->id}}</td>
                     <td>{{$lote->bloque->nombreBloque}}</td>
                     <td>{{$lote->nombreLote}}</td>
+                    @if ($lote->status == 'Disponible')
+                    <td>
+                        <a href="{{route('change.status.lotes', $lote)}}" class="jsgrid-button btn btn-success">
+                           Disponible<i class="bi bi-check2-square"></i>
+                        </a>
+                        </td>  
+                       {{-- comment  @if ($lote->status == 'Pagando')
+                        <a href="{ {route('change.status.lotes', $lote)}}" class="jsgrid-button btn btn-info">
+                            Pagando<i class="bi bi-check2-square"></i>
+                         </a>
+                         @endif--}}
+                    @else
+                    <td>
+                    <a href="{{route('change.status.lotes', $lote)}}" class="jsgrid-button btn btn-danger">
+                        Cancelado<i class="bi bi-check2-square"></i>
+                     </a>
+                    </td>
+                    @endif
+                   
+
                     <td>{{$lote->medidaLateralR}}</td>
                     <td>{{$lote->medidaLateralL}}</td>
                     <td>{{$lote->medidaEnfrente}}</td>

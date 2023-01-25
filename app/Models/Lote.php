@@ -9,7 +9,7 @@ class Lote extends Model
 {
     use HasFactory;
     protected $fillable = ['id', 
-   
+   'status',
            'medidaLateralR',
            'medidaLateralL',
            'medidaEnfrente',
@@ -19,7 +19,8 @@ class Lote extends Model
             'colindanciaS',
             'colindanciaE',
             'colindanciaO',
-            'bloque_id'
+            'bloque_id',
+            
            ];
     public function bloque(){
         return $this->belongsTo(Bloque::class);
@@ -28,4 +29,5 @@ class Lote extends Model
     public function venta(){
         return $this->hasOne(Venta::class);
     }
+  
 }

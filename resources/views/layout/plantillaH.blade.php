@@ -96,18 +96,19 @@
                     Ventas
                 </a>
              </li>
-             <li>
-                <a href="{{route('report.reports_day')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+           <!--  <li>
+                <a href="{ {route('report.reports_day')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
                     <span class="p-2"><i class="bi bi-calendar2-minus text-light"></i></span>
                     Reportes por día
                 </a>
              </li>
              <li>
-                <a href="{{route('reports.reports_date')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+                <a href="{ {route('reports.reports_date')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
                     <span class="p-2"><i class="bi bi-calendar2-minus text-light"></i></span>
                     Reportes por fecha
                 </a>
              </li>
+            -->
              {{-- 
                 <li class="nav-item">
               <a class="nav-link link-light list-group-item list-group-item-action list-group-item-dark " 

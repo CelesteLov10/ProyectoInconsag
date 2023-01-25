@@ -14,13 +14,17 @@ class LoteController extends Controller
     public function create(){
         $bloques = Bloque::whereRaw('(SELECT COUNT(*) FROM lotes WHERE bloque_id = bloques.id) < cantidadLotes')->get();
         $lotes = Lote::all();
+      
+
         return view('lote.create')->with('bloques', $bloques)->with('lotes', $lotes);
     }
+    
 
     public function store(Request $request){
     $reglas = [
         'bloque_id'   => 'required',
         'nombreLote' => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9]+\s{0,1})+$/u',
+        'status'    => 'required',
         'medidaLateralR'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'medidaLateralL'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'medidaEnfrente'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
@@ -36,6 +40,8 @@ class LoteController extends Controller
         'nombreLote.required' => 'El nombre del lote es requerido, no puede estar vacío. ',
         'nombreLote.regex' => 'El nombre del lote solo permite un espacio entre los nombres.',
         'nombreLote.unique' => 'El nombre del lote debe ser único.',
+
+        'status' => 'El estado del lote es requerido',
 
         'bloque_id.required' => 'El bloque es requerido, no puede estar vacío. ',
         'medidaLateralR.required' => 'La medida lateral derecha es requerida, no puede estar vacío. ',
@@ -67,6 +73,7 @@ class LoteController extends Controller
 
     $lote->bloque_id = $request->bloque_id;
     $lote->nombreLote = $request->nombreLote;
+    $lote->status = $request->status;
     $lote->valorTerreno = $request->valorTerreno;
     $lote->medidaLateralR = $request->medidaLateralR;
     $lote->medidaLateralL = $request->medidaLateralL;
@@ -88,28 +95,16 @@ class LoteController extends Controller
    // return response()->json('No se pudieron ingresar los registros ');
 }
 
-/*public function getLotes(){
-    $lotes = json_decode($_POST['json'],true);
-    //echo var_dump($lotes);
-    require 'conexion.php';
-    foreach ($lotes as $lote){
-        $numLote = $lote['numLote'];
-        $medidaLateralR = $lote['medidaLateralR'];
-        $medidaLateralL = $lote['medidaLateralL'];
-        $medidaEnfrente = $lote['medidaEnfrente'];
-        $medidaAtras = $lote['medidaAtras'];
-        $colindanciaN = $lote['colindanciaN'];
-        $colindanciaS = $lote['colindanciaS'];
-        $colindanciaE = $lote['colindanciaE'];
-        $colindanciaO = $lote['colindanciaO'];
-
-        $guardar = mysqli_query($con,"INSERT INTO lotes (
-            numLote, medidaLateralR, medidaLateralL, medidaEnfrente, medidaAtras,
-            colindanciaN, colindanciaS, colindanciaE, colindanciaO
-        ) VALUES('$numLote', '$medidaLateralR', '$medidaLateralL', '$medidaEnfrente', '$medidaAtras',
-            '$colindanciaN', '$colindanciaS', '$colindanciaE', '$colindanciaO' )" );
-    }
-}*/
+public function change_status(Lote $lote)
+{
+    if ($lote->status == 'Disponible') {
+        $lote->update(['status'=>'Vendido']);
+        return redirect()->back();
+    } else {
+        $lote->update(['status'=>'Disponible']);
+        return redirect()->back();
+    } 
+}
 
 
 }

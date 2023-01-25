@@ -279,3 +279,8 @@ Route::controller(ConstructoraController::class)->group(function(){
     Route::put('/constructora/{id}/edit', 'update')->name('constructora.update');
     //Ruta para imprimir el listado de Constructora
 });
+
+// Cambio de estado en lote y venta
+//creo que en venta no iria
+Route::get('change_status/lotes/{lote}', [LoteController::class, 'change_status'])->name('change.status.lotes');
+Route::get('change_status/ventas/{venta}', [VentaController::class, 'change_status'])->name('change.status.ventas');

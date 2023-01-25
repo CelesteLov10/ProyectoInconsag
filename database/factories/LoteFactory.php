@@ -19,6 +19,8 @@ class LoteFactory extends Factory
         return [
             //
             'nombreLote' =>$this->faker->word(),
+            //'status' =>$this->faker->randomElements(['Disponible', 'Vendido', 'Pagando']),
+            'status'=>$this->faker->randomElement(['Disponible', 'Vendido']),
             'medidaLateralR' =>$this->faker->numberBetween(12,10),
             'medidaLateralL' =>$this->faker->numberBetween(12,10), 
             'medidaEnfrente' =>$this->faker->numberBetween(12,10),
@@ -30,6 +32,7 @@ class LoteFactory extends Factory
             'colindanciaO'=>$this->faker->address(),
             'valorTerreno'=>$this->faker->numberBetween(50000, 1000125),
             'bloque_id' =>$this->faker->numberBetween(1,5),
+           
         ];
     }
 }
