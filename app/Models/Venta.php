@@ -12,7 +12,6 @@ class Venta extends Model
     'bloque_id', 
     'lote_id',
     'valorTerreno',
-    'beneficiario_id',
     'fechaVenta',
     'formaVenta',
     'valorPrima',

@@ -88,9 +88,6 @@
         </div>
     
         <input type="hidden" value="{{ old('lote_id') }}" id="prueba">
-       
-            
-     
             <div class="mb-3 row">
             <label for="lote" class="col-sm-3 col-form-label">Lote:</label>
             <div class="col-sm-5">
@@ -98,12 +95,10 @@
                         class="form-select rounded-pill @error('lote_id') is-invalid @enderror"
                         onchange="f_obtener_lotes()">
                     <option value="" disabled selected>-- Seleccione un lote --</option>
-                   
                     @foreach ($lotes as $lote)
-                        <option
-                            value="{{ $lote->id }}" {{ old('lote_id') == $lote->id ? 'selected' : '' }}>{{$lote['nombreLote']}}</option>
+                        {{-- <option value="{{ $lote->id }}" {{ old('lote_id') == $lote->id ? 'selected' : '' }}>{{$lote['nombreLote']}}</option> --}}
                     @endforeach
-                
+                    
                 </select>
             @error('lote_id')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -120,6 +115,7 @@
             </div>
         </div>
 
+        {{-- 
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre del beneficiario:</label>
             <div class="col-sm-5">
@@ -134,7 +130,7 @@
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
-        </div>
+        </div>   --}}
 
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Fecha de venta:</label>
@@ -183,7 +179,7 @@
         </div>
 
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Cantidad de cuotas:</label>
+            <label class="col-sm-3 col-form-label">Cantidad de cuotas (meses):</label>
             <div class="col-sm-5">
                 <input type="text" id="cantidadCuotas" class="form-control rounded-pill  @error('cantidadCuotas') is-invalid @enderror"
                 placeholder="Ingrese la cantidad de cuotas. Ejem. 000" 
@@ -440,25 +436,21 @@ try
             });
                 }
         }
-        /* Metodo para mandar a llamar los municipios*/
+        /* Metodo para mandar a llamar los LOTES*/
         function cambiolote(id_bloque){
             peticion(id_bloque);
             }
             function agregarSelect(lote){
             $('#lote').empty();
             //PROBAR
-           
             $('#lote').append("<option selected disabled value=''>-- Seleccione un lote --</option>"); 
-            for (let i = 0; i < lote.length; i++) {
-        
-
-            $('#lote').append("<option value='"+ lote[i].id+"'>"+lote[i].nombreLote+"</option>"); 
-          
-        }
-        
             
+            for (let i = 0; i < lote.length; i++) {
+                if(lote[i].status == "Disponible"){ //CONDICION PARA QUE MUESTRE LOS LOTES DISPONIBLES
+            $('#lote').append("<option value='"+ lote[i].id+"'>"+lote[i].nombreLote+"</option>"); 
+                }
+            }    
         }
-
             $(document).ready(function(){
             cargarselectmunicipio($('#bloque').val(),$('#prueba').val())
                 });  

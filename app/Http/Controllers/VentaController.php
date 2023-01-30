@@ -30,7 +30,6 @@ class VentaController extends Controller
     //
 }
 
-
     public function show($id){
         $bloques = Bloque::all();
         $lotes = Lote::all();
@@ -45,11 +44,24 @@ class VentaController extends Controller
         $venta = Venta::all();
         $cliente = Cliente::get();
         $bloques = Bloque::all();
-        $lotes = Lote::where('status', 'Disponible')->get();
+        $lotes = Lote::all();
+        //$lotes = Lote::where('status', 'Disponible')->get();
         //$lotes = Lote::where('(SELECT * FROM lotes WHERE status LIKE %Disponible)')->get();
+        /*$lotes = Lote::whereHas('lotes', function($query) use ($status){
+            $query->where('status', $status)->where('status', 'Disponible');
+        })->get();*/
+        //$lotes = Lote::whereRaw('(SELECT * FROM lotes WHERE status = "Disponible")')->get();
         $beneficiarios = Beneficiario::all();
-        return view('venta.create', compact('venta','cliente','bloques','lotes','beneficiarios'))->with('venta', $venta);
+        return view('venta.create',compact('venta','cliente','bloques','lotes','beneficiarios'))->with('venta', $venta);
     }
+
+    /*public function status($status)
+    {
+        $lotes = Lote::whereHas('lotes', function ($query) use ($status) {
+        $query->where('status', $status)->where('status','Disponible');
+        })->get();
+        return view('venta.create', ['lotes' => $lotes], compact('lotes'));
+    }*/
 
     public function store(Request $request){
 
@@ -58,7 +70,6 @@ class VentaController extends Controller
             'bloque_id'       => ['required'],
             'lote_id'       => ['required'],
             'valorTerreno'       => ['required'],
-            'beneficiario_id'       => ['required'],
             'fechaVenta' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',],
             'valorPrima' => ['required_if:formaVenta,credito','numeric','max:valorTerreno' ,'regex:/^[0-9]{1,6}+$/', 'nullable'],
             'cantidadCuotas' => ['required_if:formaVenta,credito','numeric', 'min:10', 'max:240','regex:/^[0-9]{1,4}+$/', 'nullable'],
@@ -99,7 +110,6 @@ class VentaController extends Controller
         Venta::create($input);
             return redirect()->route('venta.index')
             ->with('mensaje', 'Se guardó una nueva venta correctamente');
-        
         /** redireciona una vez enviado  */
     }
     

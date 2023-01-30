@@ -22,8 +22,6 @@ return new class extends Migration
             $table->unsignedBigInteger('lote_id');//Relacion con tabla lote
             $table->foreign('lote_id')->references('id')->on('lotes');
             $table->bigInteger('valorTerreno'); 
-            $table->unsignedBigInteger('beneficiario_id');//Relacion con tabla beneficiario
-            $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
             $table->string('fechaVenta');
             $table->enum('formaVenta', ['contado', 'credito']);
             $table->float('valorPrima')->nullable();

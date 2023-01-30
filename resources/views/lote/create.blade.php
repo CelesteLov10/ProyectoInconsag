@@ -72,16 +72,15 @@
                                     @enderror
                                 </div>
                               </div>
+                              
                               <div class="mb-3 row form-group">
                                 <label class="col-sm-3 col-form-label">Estado:</label>
                                 <div class="col-sm-5 form">
                                   <select class="form-control form-select rounded-pill @error('status') is-invalid @enderror" name="status">
-                                    <option value="" disabled selected>-- Selecione un estado --</option>
+                                    <option value="" disabled selected>-- Seleccione un estado --</option>
                                     {{--  {{old('status' , $status->nombreE)==$status->id ? 'selected' : ''}} --}}
-                                    @foreach ($lotes as $lote)
-                                        <option value="{{$lote->status}}" 
-                                        >{{$lote->status}}</option>
-                                    @endforeach
+                                        <option value="Disponible">Disponible</option>
+                                        <option value="Vendido">Vendido</option>
                                   </select>
                                 @error('status')
                                   <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
