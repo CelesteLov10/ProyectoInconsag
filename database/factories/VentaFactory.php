@@ -20,6 +20,7 @@ class VentaFactory extends Factory
             'cliente_id'=>$this->faker->numberBetween(1,30),
             'bloque_id'=>$this->faker->numberBetween(1,5),   
             'lote_id'=>$this->faker->numberBetween(1,25),
+            'beneficiario_id'=>$this->faker->numberBetween(1,10),
             'valorTerreno'=>$this->faker->numberBetween(50000, 1000125),
             //Carbon::now()
             'fechaVenta'=>$this->faker->date($format = 'd-m-Y'),

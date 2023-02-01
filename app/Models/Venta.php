@@ -11,6 +11,7 @@ class Venta extends Model
     'cliente_id',
     'bloque_id', 
     'lote_id',
+    'beneficiario_id',
     'valorTerreno',
     'fechaVenta',
     'formaVenta',

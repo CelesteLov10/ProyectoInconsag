@@ -16,7 +16,7 @@ class Cliente extends Model
     'descripcion',];
 
     public function beneficiario(){
-        return $this->belongsTo(Beneficiario::class);
+        return $this->hasMany(Beneficiario::class);
     }
     //un cliente puede tener muchas ventas
     public function venta(){

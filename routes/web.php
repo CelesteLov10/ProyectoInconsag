@@ -237,6 +237,11 @@ Route::controller(VentaController::class)->group(function(){
     
     Route::get('/getLotes/{id}', 'getLotes');
     
+    //ruta para los select anidados
+    Route::post('/getBeneficiarios/{id}', 'getBeneficiarios');
+    
+    Route::get('/getBeneficiarios/{id}', 'getBeneficiarios');
+    
 });
 
 Route::controller(PagoController::class)->group(function(){
