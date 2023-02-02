@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
         Proveedor::factory(10)->create();
         Maquinaria::factory(30)->create();
         Cliente::factory(30)->create();
-        Beneficiario::factory(10)->create();
+        Beneficiario::factory(80)->create();
         Bloque::factory(5)->create();
         Lote::factory(25)->create();
         Venta::factory(25)->create();

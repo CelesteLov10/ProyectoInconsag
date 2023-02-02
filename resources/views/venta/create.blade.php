@@ -23,6 +23,7 @@
     
 @section('contenido') 
 @inject('bloques', 'App\Services\Bloques')
+@inject('clientes', 'App\Services\Clientes')
 <div>
 
     <div class="mb-5 m-5">
@@ -54,7 +55,7 @@
             <form action="{{route('venta.store')}}" id="form1" class="venta-guardar" name="formulario1" method="POST" autocomplete="off">
             @csrf {{-- TOKEN INPUT OCULTO --}}
 
-        <div class="mb-3 row">
+        {{--<div class="mb-3 row">
             <label class="col-sm-3 col-form-label" for="cliente_id">Cliente</label>
             <div class="col-sm-5">
             <select class="form-select rounded-pill @error('cliente_id') is-invalid @enderror" data-live-search="true" name="cliente_id" id="cliente_id" >
@@ -68,7 +69,42 @@
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
         </div>
+    </div>--}}
+
+    <div class="mb-3 row">
+        <label for="cliente" class="col-sm-3 col-form-label">Nombre cliente:</label>
+        <div class="col-sm-5">
+        <select id="cliente" name="cliente_id" class="form-select rounded-pill @error('cliente_id') is-invalid @enderror"
+            onchange="cambiocliente(this.value)">
+            @foreach ($clientes->get() as $index => $clientes)
+            <option value="{{$index}}" 
+                {{old('cliente_id') == $index ? 'selected' : '' }}>  {{ $clientes}}
+            </option>
+            @endforeach
+        </select> 
+        @error('cliente_id')
+            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+        @enderror
+        </div>
     </div>
+
+    <input type="hidden" value="{{ old('beneficiario_id') }}" id="prueba1">
+    <div class="mb-3 row">
+    <label for="beneficiario" class="col-sm-3 col-form-label">beneficiario:</label>
+    <div class="col-sm-5">
+        <select name="beneficiario_id" id="beneficiario"
+                class="form-select rounded-pill @error('beneficiario_id') is-invalid @enderror">
+            <option value="" disabled selected>-- Seleccione un beneficiario --</option>
+            @foreach ($beneficiarios as $beneficiario)
+                {{-- <option value="{{ $lote->id }}" {{ old('lote_id') == $lote->id ? 'selected' : '' }}>{{$lote['nombreLote']}}</option> --}}
+            @endforeach
+            
+        </select>
+    @error('beneficiario_id')
+        <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+    @enderror
+    </div>
+</div>
 
         <div class="mb-3 row">
             <label for="bloque" class="col-sm-3 col-form-label">Bloque:</label>
@@ -115,8 +151,9 @@
             </div>
         </div>
 
-        {{-- 
-        <div class="mb-3 row">
+       
+
+       {{-- <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre del beneficiario:</label>
             <div class="col-sm-5">
             <select name="beneficiario_id" id="" class="form-select rounded-pill @error('beneficiario_id') is-invalid @enderror" >
@@ -394,82 +431,145 @@ try
 </script>
 
 <script>
-        /*Peticion segun la ruta*/
-        function peticion(id){
-        let _token= "{{ csrf_token() }}";
-        $.ajax({
-        type: "POST",
-        url: "/getLotes/"+id,
-        data: {
-        _token: _token},
-        success: function(lote) {
-            if ((lote.errors)) {
-                alert('')
-            } else {
-                agregarSelect(lote);            
-            }
+    /*Peticion segun la ruta*/
+    function peticion(id){
+    let _token= "{{ csrf_token() }}";
+    $.ajax({
+    type: "POST",
+    url: "/getLotes/"+id,
+    data: {
+    _token: _token},
+    success: function(lote) {
+        if ((lote.errors)) {
+            alert('')
+        } else {
+            agregarSelect(lote);            
+        }
+    },
+    });
+    }
+
+    function cargarselectmunicipio(idbloq, idlot){
+    if (idlot===null) {
+    
+    } else {
+    
+
+    let _token= "{{ csrf_token() }}";
+    $.ajax({
+    type: "POST",
+    url: "/getLotes/"+idbloq,
+    data: {
+    _token: _token},
+    success: function(lote) {
+        if ((lote.errors)) {
+            alert('')
+        } else {
+            agregarSelect(lote); 
+            $('#lote').val(idlot); 
+           // $('#valorTerreno').val(lote.valorTerreno); NO ME DABAEL OLD EN Valorterreno         
+        }
         },
         });
-        }
-
-        function cargarselectmunicipio(idbloq, idlot){
-        if (idlot===null) {
-        
-        } else {
-        
-
-        let _token= "{{ csrf_token() }}";
-        $.ajax({
-        type: "POST",
-        url: "/getLotes/"+idbloq,
-        data: {
-        _token: _token},
-        success: function(lote) {
-            if ((lote.errors)) {
-                alert('')
-            } else {
-                agregarSelect(lote); 
-                $('#lote').val(idlot); 
-               // $('#valorTerreno').val(lote.valorTerreno); NO ME DABAEL OLD EN Valorterreno         
             }
-            },
-            });
-                }
+    }
+    /* Metodo para mandar a llamar los LOTES*/
+    function cambiolote(id_bloque){
+        peticion(id_bloque);
         }
-        /* Metodo para mandar a llamar los LOTES*/
-        function cambiolote(id_bloque){
-            peticion(id_bloque);
+        function agregarSelect(lote){
+        $('#lote').empty();
+        //PROBAR
+        $('#lote').append("<option selected disabled value=''>-- Seleccione un lote --</option>"); 
+        
+        for (let i = 0; i < lote.length; i++) {
+            if(lote[i].status == "Disponible"){ //CONDICION PARA QUE MUESTRE LOS LOTES DISPONIBLES
+        $('#lote').append("<option value='"+ lote[i].id+"'>"+lote[i].nombreLote+"</option>"); 
             }
-            function agregarSelect(lote){
-            $('#lote').empty();
-            //PROBAR
-            $('#lote').append("<option selected disabled value=''>-- Seleccione un lote --</option>"); 
+        }    
+    }
+        $(document).ready(function(){
+        cargarselectmunicipio($('#bloque').val(),$('#prueba').val())
+            });  
             
-            for (let i = 0; i < lote.length; i++) {
-                if(lote[i].status == "Disponible"){ //CONDICION PARA QUE MUESTRE LOS LOTES DISPONIBLES
-            $('#lote').append("<option value='"+ lote[i].id+"'>"+lote[i].nombreLote+"</option>"); 
-                }
-            }    
-        }
-            $(document).ready(function(){
-            cargarselectmunicipio($('#bloque').val(),$('#prueba').val())
-                });  
-                
 </script>
 <script>
-    function f_obtener_lotes() {
-                    var select = document.getElementById("lote");
-                    var valor = select.value;
+function f_obtener_lotes() {
+                var select = document.getElementById("lote");
+                var valor = select.value;
 
-                    @foreach ($lotes as $lote)
-                    if (valor == {{$lote->id}}) {
-                        var input = document.getElementById("valorTerreno");
-                        input.value = "{{$lote->valorTerreno}}";
-                    }
-                    @endforeach
-
+                @foreach ($lotes as $lote)
+                if (valor == {{$lote->id}}) {
+                    var input = document.getElementById("valorTerreno");
+                    input.value = "{{$lote->valorTerreno}}";
                 }
+                @endforeach
+
+            }
 </script>
+
+<script>
+    /*Peticion segun la ruta*/
+    function peticionn(id){
+    let _token= "{{ csrf_token() }}";
+    $.ajax({
+    type: "POST",
+    url: "/getBeneficiarios/"+id,
+    data: {
+    _token: _token},
+    success: function(beneficiario) {
+        if ((beneficiario.errors)) {
+            alert('')
+        } else {
+            agregarSelec(beneficiario);            
+        }
+    },
+    });
+    }
+
+    function cargarselectbene(idc, idbene){
+    if (idbene===null) {
+    
+    } else {
+    
+
+    let _token= "{{ csrf_token() }}";
+    $.ajax({
+    type: "POST",
+    url: "/getBeneficiarios/"+idc,
+    data: {
+    _token: _token},
+    success: function(beneficiario) {
+        if ((beneficiario.errors)) {
+            alert('')
+        } else {
+            agregarSelec(beneficiario); 
+            $('#beneficiario').val(idbene);        
+        }
+        },
+        });
+            }
+    }
+    /* Metodo para mandar a llamar los Clientes*/
+    function cambiocliente(id_cliente){
+        peticionn(id_cliente);
+        }
+        function agregarSelec(beneficiario){
+        $('#beneficiario').empty();
+        //PROBAR
+        $('#beneficiario').append("<option selected disabled value=''>-- Seleccione un beneficiario --</option>"); 
+        
+        for (let i = 0; i < beneficiario.length; i++) {
+        $('#beneficiario').append("<option value='"+ beneficiario[i].id+"'>"+beneficiario[i].nombreCompletoBen+"</option>"); 
+            
+        }    
+    }
+        $(document).ready(function(){
+        cargarselectbene($('#cliente').val(),$('#prueba1').val())
+            });  
+            
+</script>
+
 <script>
     //Scrip necesario para el modal
         window.onload = function(){

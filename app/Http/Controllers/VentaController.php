@@ -69,6 +69,7 @@ class VentaController extends Controller
             'cliente_id'       => ['required'],
             'bloque_id'       => ['required'],
             'lote_id'       => ['required'],
+            'beneficiario_id'       => ['required'],
             'valorTerreno'       => ['required'],
             'fechaVenta' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',],
             'valorPrima' => ['required_if:formaVenta,credito','numeric','max:valorTerreno' ,'regex:/^[0-9]{1,6}+$/', 'nullable'],
@@ -129,6 +130,16 @@ class VentaController extends Controller
     public function getLotess($id){
         $lotes = Lote::where('bloque_id', '=', $id)->get();
         return $lotes;
+    }
+
+    public function getBeneficiarios($id){
+        $beneficiarios = Beneficiario::where('cliente_id', '=', $id)->get();
+        return response()->json($beneficiarios);
+    }
+
+    public function getBeneficiarioss($id){
+        $beneficiarios = Beneficiario::where('cliente_id', '=', $id)->get();
+        return $beneficiarios;
     }
 
     public function change_status(Venta $venta)
