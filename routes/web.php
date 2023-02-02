@@ -83,6 +83,8 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/cliente', 'cliente')->name('cliente.search');
     //Ruta para listado venta
     Route::get('search/venta', 'venta')->name('venta.search');
+    //Ruta para listado constructora
+    Route::get('search/constructora', 'constructora')->name('constructora.search');
     
 });
 
@@ -264,13 +266,13 @@ Route::get('pdfReportFecha', 'pdfFecha')->name('reports.pdfReportFecha');
 });
 //Ruta para Constructora
 Route::controller(ConstructoraController::class)->group(function(){
-    //Ruta para listado de Constructora
+    //Ruta para listado de Constructoras
     Route::get('/constructora', 'index')->name('constructora.index');
     //Ruta para crear un nuevo Constructora
     Route::get('/constructora/create', 'create')->name('constructora.create');
-    //Ruta para guardar los registros del Constructora
+    //Ruta para guardar los registros del Constructoras
     Route::post('/constructora', 'store')->name('constructora.store');
-    //Ruta para mostrar un Constructoraes
+    //Ruta para mostrar un Constructoras
     Route::get('/constructora/{id}', 'show')->name('constructora.show')
     ->where('id','[0-9]+');
     //Ruta para editar un Constructora

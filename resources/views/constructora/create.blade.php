@@ -22,7 +22,7 @@
 
   <div class="container ">
     <div class="mb-3 text-end">
-      <a class="btn btn-outline-primary" href="{{route('venta.index')}}">
+      <a class="btn btn-outline-primary" href="{{route('constructora.index')}}">
         <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
   </div>
 
@@ -73,10 +73,10 @@
         </div>
 
         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Correo:</label>
+          <label class="col-sm-3 col-form-label">Email:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('email') is-invalid @enderror" 
-            placeholder="Ingrese el correo electrónico. Ejem. 'john.smith@example.com'"
+            placeholder="Ingrese el correo electrónico. Ejem. 'Peter.Brown@example.com'"
             name="email" value="{{old('email')}}" maxlength="50">
           @error('email')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
