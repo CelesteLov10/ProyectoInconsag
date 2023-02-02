@@ -98,7 +98,7 @@
 
                 <tr>
                     <th scope="row">Estado de la venta:</th>
-                    <td>{{$venta->lotes->status}}</td>    
+                    <td>{{$venta->lote->status}}</td>    
                 </tr>
                 <tr>
                     <th scope="row">Fecha venta:</th>
