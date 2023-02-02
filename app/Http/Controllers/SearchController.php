@@ -12,6 +12,7 @@ use App\Models\Puesto;
 use App\Models\Bloque;
 use App\Models\Cliente;
 use App\Models\Venta;
+use App\Models\Constructora;
 
 class SearchController extends Controller
 {
@@ -125,6 +126,18 @@ class SearchController extends Controller
         foreach($querys as $query){
         $data[] = [
         'label' => $query->nombreCompleto
+        ];
+        }
+        return $data;
+    }
+    public function constructora(Request $request){
+        $term = $request->get('term');
+        $querys = Venta::where('nombreConstructora', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->nombreConstructora
         ];
         }
         return $data;

@@ -1,6 +1,6 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Nueva constructora')
+@section('titulo', 'Nueva Constructora')
 
 @section('css')
 <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
@@ -22,7 +22,7 @@
 
   <div class="container ">
     <div class="mb-3 text-end">
-      <a class="btn btn-outline-primary" href="{{route('venta.index')}}">
+      <a class="btn btn-outline-primary" href="{{route('constructora.index')}}">
         <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
   </div>
 
@@ -40,7 +40,7 @@
           <label class="col-sm-3 col-form-label">Nombre de la constructora:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('nombreConstructora') is-invalid @enderror" 
-            placeholder="Ingrese el nombre de la constructora. Ejem. 'Rios Larios S.A'" 
+            placeholder="Ingrese el nombre de la constructora. Ejem. 'Campo Edén'" 
             name="nombreConstructora" value="{{old('nombreConstructora')}}" maxlength="50">
             @error('nombreConstructora')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -73,10 +73,10 @@
         </div>
 
         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Correo:</label>
+          <label class="col-sm-3 col-form-label">Email:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('email') is-invalid @enderror" 
-            placeholder="Ingrese el correo electrónico. Ejem. 'john.smith@example.com'"
+            placeholder="Ingrese el correo electrónico. Ejem. 'Peter.Brown@example.com'"
             name="email" value="{{old('email')}}" maxlength="50">
           @error('email')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
