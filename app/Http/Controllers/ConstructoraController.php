@@ -21,7 +21,7 @@ class ConstructoraController extends Controller
 
     public function create()
     {
-       $constructoras=Constructora::all();
+        $constructoras=Constructora::all();
        return view('constructora.create');
     }
 
@@ -54,14 +54,11 @@ class ConstructoraController extends Controller
             'email.unique' => 'El correo electrónico ya está en uso.',
 
             'fechaContrato.required' => 'Debe seleccionar la fecha de adquisición, no puede estar vacío.',
-
-            
-
             ]);
             $input = $request->all();
             
             Constructora::create($input);
-                return redirect()->route('constructora.create')
+                return redirect()->route('constructora.index')
                 ->with('mensaje', 'Se guardó el registro de la nueva constructora correctamente');
             
          /** redireciona una vez enviado  */

@@ -16,7 +16,7 @@ class Constructora extends Model
     'email',
     'fechaContrato',];
     public function constructora(){
-        return $this->hasMany(Constuctora::class);
+        return $this->hasMany(Constructora::class);
     }
 
 }

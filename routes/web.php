@@ -275,7 +275,7 @@ Route::controller(ConstructoraController::class)->group(function(){
     Route::get('/constructora', 'index')->name('constructora.index');
     //Ruta para crear un nuevo Constructora
     Route::get('/constructora/create', 'create')->name('constructora.create');
-    //Ruta para guardar los registros del Constructoras
+    //Ruta para guardar los registros de la Constructora
     Route::post('/constructora', 'store')->name('constructora.store');
     //Ruta para mostrar un Constructoras
     Route::get('/constructora/{id}', 'show')->name('constructora.show')
