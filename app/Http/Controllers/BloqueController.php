@@ -26,8 +26,10 @@ class BloqueController extends Controller
 
     public function show($id){
         $bloque = Bloque::findOrFail($id);
-        $lotes = Lote::all();
-      
+        $lotes = Lote::query()
+    ->when(request('search'), function($query){
+    return $query->where('nombreLote', 'LIKE', '%' .request('search') .'%');
+    })->orderBy('id','desc')->paginate(10000000)->withQueryString();
         return view('bloque.show', compact('lotes'))->with('bloque', $bloque);
     }
 

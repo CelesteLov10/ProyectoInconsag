@@ -37,8 +37,11 @@
     </div>    
   </form>
 
+  <br><br>
     <div class="container">
         <div class="mb-3 text-end">
+            {{--<a class="btn glow-on-hover-main" href="{{route('lotevendido.index2')}}">Lotes vendidos <i
+                class="bi bi-pencil-square"></i></a>--}}
             <a class="btn glow-on-hover-main" href="{{route('bloque.create')}}">Nuevo bloque <i
                     class="bi bi-plus-square-dotted"></i></a>
             <a class="btn glow-on-hover-main" href="{{route('lote.create')}}">Agregar lote <i

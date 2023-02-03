@@ -12,6 +12,7 @@ use App\Http\Controllers\BloqueController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ConstructoraController;
 use App\Http\Controllers\LoteController;
+use App\Http\Controllers\LoteVendidoController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\VentaController;
@@ -169,6 +170,11 @@ Route::controller(BloqueController::class)->group(function(){
     //Ruta para mostrar un bloque
     Route::get('/bloque/{id}', 'show')->name('bloque.show')
     ->where('id','[0-9]+');
+});
+
+Route::controller(LoteVendidoController::class)->group(function(){
+    //Ruta para listado de lotes vendidos
+    Route::get('/lotevendido', 'index2')->name('lotevendido.index2');
 });
 
 //Ruta para bloques

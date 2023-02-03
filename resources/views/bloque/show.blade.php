@@ -56,6 +56,7 @@
         </tbody>
     </table>
     
+    <br>
         {{-- TABLA NO RESPONSIVA... MUESTRA LOS LOTES DE UN BLOQUE --}}
     <table class="table border border-2 contorno-azul">
         <thead class="thead-dark">
@@ -97,7 +98,7 @@
                     @else
                     <td>
                     <a href="{{route('change.status.lotes', $lote)}}" class="jsgrid-button btn btn-danger">
-                        Cancelado<i class="bi bi-check2-square"></i>
+                        Vendido<i class="bi bi-check2-square"></i>
                      </a>
                     </td>
                     @endif
