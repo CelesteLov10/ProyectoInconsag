@@ -17,7 +17,7 @@
 
 
             {{-- encabezado  --}}
-            <div class=" card shadow ab-4 bg-success bg-gradient">
+            <div class=" card shadow ab-4 btaura">
                 <div class=" card-header py-3 ">
                     <h5 class="n-font-weight-bold text-white">Registro de lotes </h5>
                 </div>
