@@ -14,6 +14,7 @@ use App\Models\Cliente;
 use App\Models\Venta;
 use App\Models\Constructora;
 
+
 class SearchController extends Controller
 {
     public function empleado(Request $request){
@@ -132,7 +133,7 @@ class SearchController extends Controller
     }
     public function constructora(Request $request){
         $term = $request->get('term');
-        $querys = Venta::where('nombreConstructora', 'LIKE', '%'. $term . '%')->get();
+        $querys = Constructora::where('nombreConstructora', 'LIKE', '%'. $term . '%')->get();
         
         $data =[];
         foreach($querys as $query){

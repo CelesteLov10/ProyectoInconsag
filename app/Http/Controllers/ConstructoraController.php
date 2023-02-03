@@ -12,7 +12,6 @@ class ConstructoraController extends Controller
     $constructoras = Constructora::query()
     ->when(request('search'), function($query){
     return $query->where('nombreConstructora', 'LIKE', '%' .request('search') .'%')
-    ->orWhere('telefono', 'LIKE', '%' .request('search') .'%')
     ->orWhere('fechaContrato', 'LIKE', '%' .request('search') .'%');
     })->orderBy('id','desc')->paginate(10)->withQueryString();
 
@@ -31,7 +30,7 @@ class ConstructoraController extends Controller
                 'nombreConstructora' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
                 'direccion' => ['required','min:10','max:150'],
                 'telefono' => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:constructoras'],
-                'email' => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:constructoras'],
+                'email' => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#'],
                 'fechaContrato' =>'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             ],[
 
@@ -51,7 +50,7 @@ class ConstructoraController extends Controller
 
             'email.required' => 'Debe ingresar el correo electrónico.',
             'email.email' => 'Debe ingresar un correo electrónico válido.',
-            'email.unique' => 'El correo electrónico ya está en uso.',
+            
 
             'fechaContrato.required' => 'Debe seleccionar la fecha de adquisición, no puede estar vacío.',
             ]);
@@ -83,7 +82,7 @@ class ConstructoraController extends Controller
             'nombreConstructora'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'direccion'       => ['required','min:10','max:150'],
             'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes,telefono,'.$id.'id'],
-            'email'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:constructoras'],
+            'email'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#'],
             'fechaContrato'  => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
         ],[
             'nombreConstructora.required' => 'El nombre no puede ir vacío.',
@@ -102,7 +101,7 @@ class ConstructoraController extends Controller
 
             'email.required' => 'Debe ingresar el correo electrónico.',
             'email.email' => 'Debe ingresar un correo electrónico válido.',
-            'email.unique' => 'El correo electrónico ya está en uso.',
+            
 
             'fechaAdquisicion.required' => 'Debe seleccionar la fecha de adquisición, no puede estar vacío.',
 

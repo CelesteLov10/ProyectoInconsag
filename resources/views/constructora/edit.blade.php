@@ -76,7 +76,7 @@
             <label class="col-sm-3 col-form-label">Email:</label>
             <div class="col-sm-5">
               <input type="text" class="form-control rounded-pill @error('email') is-invalid @enderror" 
-              maxlength="50" placeholder="Ingrese el correo electronico" name="email"
+              maxlength="50" placeholder="Ingrese el correo electrónico" name="email"
               value="{{old('email', $constructoras->email)}}" >
               @error('email')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>

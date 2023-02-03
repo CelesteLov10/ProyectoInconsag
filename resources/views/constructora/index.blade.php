@@ -30,7 +30,7 @@
             <div class="col-7 p-1 contorno-azul">
                 <div class="input-group">
                       <input type="text" name="search" id="search"  class="form-control"
-                      placeholder="Buscar por nombre de la Constructora, telefono y fecha contrato" value="{{request('search')}}"/>
+                      placeholder="Buscar por el nombre de la Constructora y fecha contrato" value="{{request('search')}}"/>
                     <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
                   </div>
                 </div>
@@ -65,7 +65,7 @@
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
               <a href="{{route('constructora.index')}}" id="sinLinea">
-                <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Listado de constructoras </h5 ></a> 
+                <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Listado de constructoras</h5 ></a> 
           </div >
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
@@ -75,7 +75,6 @@
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Nombre Constructora</th>
-                      <th scope="col">Teléfono</th>
                       <th scope="col">Fecha Contrato</th>
                       <th scope="col">Detalle</th>
                       <th scope="col">Actualizar</th>
@@ -86,7 +85,6 @@
                     <tr>
                       <td>{{$constructora->id}}</td>
                       <td>{{$constructora->nombreConstructora}}</td>
-                      <td>{{$constructora->telefono}}</td>
                       <td>{{$constructora->fechaContrato}}</td>
 
                       <td><a class="btn btn-outline-primary" href="{{route('constructora.show', ['id'=>$constructora->id])}}">
