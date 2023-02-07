@@ -27,8 +27,7 @@ return new class extends Migration
             $table->string('colindanciaO');
             $table->bigInteger('valorTerreno');           
             $table->unsignedBigInteger('bloque_id')->nullable();//Relacion con tabla bloque
-            $table->foreign('bloque_id')->references('id')->on('bloques');
-          
+            $table->foreign('bloque_id')->references('id')->on('bloques');    
             $table->timestamps();
         });
     }

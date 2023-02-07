@@ -6,6 +6,7 @@ use App\Models\Beneficiario;
 use App\Models\Bloque;
 use App\Models\Cliente;
 use App\Models\Lote;
+use App\Models\Pago;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 Barryvdh\DomPDF\ServiceProvider::class;
@@ -30,14 +31,18 @@ class VentaController extends Controller
     //
 }
 
+
     public function show($id){
         $bloques = Bloque::all();
-        $lotes = Lote::all();
+        $lotes = Lote::where('status', 'vendido');
         $venta = Venta::findOrFail($id);
         $beneficiario = Beneficiario::all();
         $cliente = Cliente::all();
         return view('venta.show', compact('bloques', 'lotes','beneficiario','cliente'))->with('venta', $venta);
     }
+
+   
+  
 
     public function create(){ 
 

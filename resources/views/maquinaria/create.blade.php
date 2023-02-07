@@ -237,37 +237,7 @@
         elemento1.style.display = 'block';
       }  
 }
-/*function validacion(){
-      var cantidadHoraAlquilada,valorHora;
-        cantidadHoraAlquilada=document.getElementById("cantidadHoraAlquilada").value;
-        valorHora=document.getElementById("valorHora").value;
-        
-          if(cantidadHoraAlquilada == null || cantidadHoraAlquilada.length == 0 || valorHora.length == 0) {
-          Swal.fire('¡Llena los campos de maquinaria alquilada!');
-          document.getElementById("form1").addEventListener('submit', (event)=>{
-            event.preventDefault();   });
-          }else{
-            document.getElementById("form1").submit();
-          }
-          
-}
 
-   function validacion(){
-  var cantidadHoraAlquilada,valorHora;
-    cantidadHoraAlquilada=document.getElementById("cantidadHoraAlquilada").value;
-    valorHora=document.getElementById("valorHora").value;
-  
-          if(cantidadHoraAlquilada == null || cantidadHoraAlquilada.length == 0 ) {
-        elemento.style.display = 'block';
-        document.getElementById("cantidadHoraAlquilada").focus();
-            var el = document.getElementById("myElement");
-            el.textContent = "*La cantidad de hora alquilada es obligatoria.";}
-
-          if(valorHora == null || valorHora.length == 0){
-          document.getElementById("valorHora").focus();
-          var ell = document.getElementById("myElement2");
-          ell.textContent = "*El valor por hora alquilada es obligatorio.";}
-}*/
     
 //Funciones que permiten ocultar y desplegar los divs correspondientes al dar click en los radiobotones
     function Desplegar(radiosb){ 

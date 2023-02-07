@@ -22,6 +22,15 @@ class Cliente extends Model
     public function venta(){
         return $this->hasMany(venta::class);
     }
+     //un cliente puede hacer muchos pagos
+     public function pago(){
+        return $this->hasMany(Pago::class);
+    }
+    // un cliente puede tener muchos lotes
+    public function lote(){
+        return $this->hasMany(Lote::class);
+    }
+   
    
 
 }

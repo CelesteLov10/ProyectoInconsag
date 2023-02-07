@@ -108,9 +108,9 @@
                                     </a>
                                     </td> --}}
                                     <td>
-                                        <a class="btn btn-outline-warning"
+                                        <a class="btn btn-outline-primary"
                                            href="{{route('bloque.show', ['id' => $bloque->id])}}">
-                                            <i class="bi bi-pencil-square"></i>
+                                            <i class="bi bi-eye"></i>
                                         </a>
                                     </td>
                                 </tr>

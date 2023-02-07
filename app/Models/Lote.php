@@ -20,6 +20,7 @@ class Lote extends Model
             'colindanciaE',
             'colindanciaO',
             'bloque_id',
+            'cliente_id'
             
            ];
     public function bloque(){
@@ -30,4 +31,11 @@ class Lote extends Model
         return $this->hasOne(Venta::class);
     }
   
+      // muchos pagos para un lote
+      public function pago(){
+        return $this->belongsToMany(Pago::class);
+    }
+    public function cliente(){
+        return $this->hasOne(cliente::class);
+    }
 }

@@ -22,6 +22,7 @@ class ClienteFactory extends Factory
             'telefono'=>$this->faker->unique()->phoneNumber(),
             'direccion'=>$this->faker->address(),
             'fechaNacimiento'=>$this->faker->date($format = 'd-m-Y',$max = 2001),
+            
         ];
     }
 }

@@ -26,6 +26,8 @@ class Venta extends Model
     public function cliente(){
         return $this->belongsTo(Cliente::class);
     }
+    //de un bloque pueden salir muchas ventas
+    //pero solo se puede con belongsTo
     public function bloque(){
         return $this->belongsTo(Bloque::class);
     }
@@ -35,6 +37,9 @@ class Venta extends Model
 
     public function beneficiario(){
         return $this->belongsTo(Beneficiario::class);
+    }
+    public function pago(){
+        return $this->belongsToMany(Pago::class); 
     }
 }
 

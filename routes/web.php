@@ -175,6 +175,10 @@ Route::controller(BloqueController::class)->group(function(){
 Route::controller(LoteVendidoController::class)->group(function(){
     //Ruta para listado de lotes vendidos
     Route::get('/lotevendido', 'index2')->name('lotevendido.index2');
+     //el show de lotes pagados
+     Route::get('/lotevendido/{id}', 'show2')->name('lotevendido.show2')
+     ->where('id','[0-9]+');
+  
 });
 
 //Ruta para bloques
@@ -184,6 +188,9 @@ Route::controller(LoteController::class)->group(function(){
     Route::get('/lote/create', 'create')->name('lote.create');
     //Ruta para guardar los registros del lote
     Route::post('/lote', 'store')->name('lote.store');
+    //
+    
+
 
 });
 
@@ -237,9 +244,9 @@ Route::controller(VentaController::class)->group(function(){
     //Ruta para mostrar las ventas
     Route::get('/venta/{id}', 'show')->name('venta.show')
     ->where('id','[0-9]+');
-    //Ruta para imprimir el listado de venta
     Route::get('/venta/{id}/pdf', 'contrato')->name('venta.contrato')
     ->where('id','[0-9]+');
+    
     //ruta para los select anidados
     Route::post('/getLotes/{id}', 'getLotes');
     
@@ -249,20 +256,31 @@ Route::controller(VentaController::class)->group(function(){
     Route::post('/getBeneficiarios/{id}', 'getBeneficiarios');
     
     Route::get('/getBeneficiarios/{id}', 'getBeneficiarios');
+    // 
+     
+    
     
 });
 
 Route::controller(PagoController::class)->group(function(){
-    //Ruta para listado de pago
-    Route::get('/pago', 'index')->name('pago.index');
+       //Ruta para listado de lotes vendidos
+       Route::get('/pago', 'index')->name('pago.index');
+       //el show de lotes pagados
+       Route::get('/pago/{id}', 'show')->name('pago.show')
+       ->where('id','[0-9]+');
     //Ruta para crear un nuevo pago
     Route::get('/pago/create', 'create')->name('pago.create');
     //Ruta para guardar los registros del pago
     Route::post('/pago', 'store')->name('pago.store');
     //Route::post('/getLotes/{id}', 'getLotes');
     //Route::get('/getLotes/{id}', 'getLotes');
-    Route::get('/pago/create/busquedaCli', 'buscarCli')->name('pago.buscarCli');
-    Route::post('/pago/create/busquedaCli', 'buscarCli')->name('pago.buscarCli');
+
+
+    //
+      
+
+  
+   
 
 });
 

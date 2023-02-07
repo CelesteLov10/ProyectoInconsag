@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Bloque;
 use App\Models\Lote;
+use App\Models\Pago;
+use App\Models\Venta;
 use Illuminate\Http\Request;
 
 class BloqueController extends Controller
@@ -26,6 +28,8 @@ class BloqueController extends Controller
 
     public function show($id){
         $bloque = Bloque::findOrFail($id);
+        $pago = Pago::all();
+        $venta = Venta::all();
         $lotes = Lote::query()
     ->when(request('search'), function($query){
     return $query->where('nombreLote', 'LIKE', '%' .request('search') .'%');

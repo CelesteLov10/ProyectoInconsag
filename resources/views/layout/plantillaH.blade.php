@@ -85,8 +85,8 @@
             </a>
             </li>
             <li>
-                <a href="{{route('lotevendido.index2')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-                    <span class="p-2"><i class="bi bi-x-diamond text-white"></i></span>
+                <a href="{{route('pago.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+                    <span class="p-2"><i class="bi bi-clipboard-data text-white"></i></span>
                     Lotes vendidos
                 </a>
                 </li>

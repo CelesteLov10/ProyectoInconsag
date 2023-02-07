@@ -84,17 +84,14 @@
                     <td>{{$lote->id}}</td>
                     <td>{{$lote->bloque->nombreBloque}}</td>
                     <td>{{$lote->nombreLote}}</td>
+                    {{-- para cambiar el estado del lote --}}
                     @if ($lote->status == 'Disponible')
                     <td>
                         <a href="{{route('change.status.lotes', $lote)}}" class="jsgrid-button btn btn-success">
                            Disponible<i class="bi bi-check2-square"></i>
                         </a>
                         </td>  
-                       {{-- comment  @if ($lote->status == 'Pagando')
-                        <a href="{ {route('change.status.lotes', $lote)}}" class="jsgrid-button btn btn-info">
-                            Pagando<i class="bi bi-check2-square"></i>
-                         </a>
-                         @endif--}}
+                    
                     @else
                     <td>
                     <a href="{{route('change.status.lotes', $lote)}}" class="jsgrid-button btn btn-danger">
