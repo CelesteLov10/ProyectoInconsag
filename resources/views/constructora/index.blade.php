@@ -30,7 +30,7 @@
             <div class="col-7 p-1 contorno-azul">
                 <div class="input-group">
                       <input type="text" name="search" id="search"  class="form-control"
-                      placeholder="Buscar por el nombre de la Constructora y fecha contrato" value="{{request('search')}}"/>
+                      placeholder="Buscar por el nombre de la constructora y fecha contrato" value="{{request('search')}}"/>
                     <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
                   </div>
                 </div>
