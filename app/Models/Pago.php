@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Pago extends Model
 {
     use HasFactory;
+    protected $fillable =['id',
+    'venta_id', 
+    'cliente_id',
+    'lote_id',
+    'fechaPago',
+    'cantidadCuotasPagar',
+    'cuotaPagar',
+    'valorTerrenoPagar',
+    'saldoEnCuotas',
+    'nuevoSaldo',
+    ];
 
         // un cliente puede hacer muchos pagos
         public function cliente(){
@@ -20,12 +31,12 @@ class Pago extends Model
         }
          // un bloque puede recibir muchos pagos
          //no se pero por si acaso
-         public function bloque(){
+        public function bloque(){
             return $this->hasMany(Bloque::class);
         }
          // de una venta pueden surgir muchos pagos de mensualidades
          //tampoco se si va
-         public function venta(){
+        public function venta(){
             return $this->hasMany(Venta::class);
         }
 }

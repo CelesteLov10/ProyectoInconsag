@@ -39,7 +39,7 @@ class Venta extends Model
         return $this->belongsTo(Beneficiario::class);
     }
     public function pago(){
-        return $this->belongsToMany(Pago::class); 
+        return $this->hasMany(Pago::class); 
     }
 }
 

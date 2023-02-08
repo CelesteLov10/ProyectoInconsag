@@ -18,7 +18,7 @@
 
     <div class="container ">
         <div class="mb-3 text-end">
-            <a class="btn g btn-outline-success" href=""><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
+            <a class="btn g btn-outline-success" href="{{route('pago.create', ['id'=>$venta->id])}}"><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
 
             <a class="btn btn-outline-primary" href="{{route('pago.index')}}">
                 <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
@@ -39,14 +39,10 @@
             </tr>
         </thead>
         <tbody>
-          
             <tr>
                 <th scope="row">Nombre del lote</th>
                 <td>{{$venta->lote->nombreLote}}</td>
-                 
             </tr>
-           
-            
             <tr>
                 <th scope="row">Valor del lote</th>
                 <td>{{$venta->lote->valorTerreno}}</td>
@@ -59,10 +55,6 @@
                 <th scope="row">Saldo anterior</th>
                 <td oninput="calcularSaldo()" id="valorRestantePagar">{{$venta->valorRestantePagar}}</td>
             </tr>
-        
-        
-          
-
         </tbody>
     </table>
     
@@ -78,9 +70,8 @@
                 <th scope="col" id="nuevoSaldo">Nuevo saldo</th>
             </tr>
         </thead>
-      
         
-       
+        
     </table>
 
     </div>
@@ -92,10 +83,10 @@
 @section('js')
 {{-- plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
-@endsection
+
 <script>
     try
-  {function calcularSaldo(){
+    {function calcularSaldo(){
     var valorRestantePagar  = document.getElementById('valorRestantePagar').value;
     var cuotasPagadas = document.getElementById('cuotasPagadas').value;
     var nuevoSaldo = document.getElementById('nuevoSaldo');
@@ -103,6 +94,7 @@
     var resultado = valorRestantePagar - cuotasPagadas;
 
     nuevoSaldo.value = resultado;
-}
-  }catch (error) {throw error;}
+        }
+    }catch (error) {throw error;}
 </script>
+@endsection

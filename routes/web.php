@@ -176,9 +176,8 @@ Route::controller(LoteVendidoController::class)->group(function(){
     //Ruta para listado de lotes vendidos
     Route::get('/lotevendido', 'index2')->name('lotevendido.index2');
      //el show de lotes pagados
-     Route::get('/lotevendido/{id}', 'show2')->name('lotevendido.show2')
-     ->where('id','[0-9]+');
-  
+    Route::get('/lotevendido/{id}', 'show2')->name('lotevendido.show2')
+    ->where('id','[0-9]+');
 });
 
 //Ruta para bloques
@@ -245,54 +244,41 @@ Route::controller(VentaController::class)->group(function(){
     Route::get('/venta/{id}', 'show')->name('venta.show')
     ->where('id','[0-9]+');
     Route::get('/venta/{id}/pdf', 'contrato')->name('venta.contrato')
-    ->where('id','[0-9]+');
-    
+    ->where('id','[0-9]+'); 
     //ruta para los select anidados
-    Route::post('/getLotes/{id}', 'getLotes');
-    
+    Route::post('/getLotes/{id}', 'getLotes'); 
     Route::get('/getLotes/{id}', 'getLotes');
-    
     //ruta para los select anidados
-    Route::post('/getBeneficiarios/{id}', 'getBeneficiarios');
-    
-    Route::get('/getBeneficiarios/{id}', 'getBeneficiarios');
-    // 
-     
-    
-    
+    Route::post('/getBeneficiarios/{id}', 'getBeneficiarios'); 
+    Route::get('/getBeneficiarios/{id}', 'getBeneficiarios'); 
 });
 
 Route::controller(PagoController::class)->group(function(){
        //Ruta para listado de lotes vendidos
-       Route::get('/pago', 'index')->name('pago.index');
+    Route::get('/pago', 'index')->name('pago.index');
        //el show de lotes pagados
-       Route::get('/pago/{id}', 'show')->name('pago.show')
-       ->where('id','[0-9]+');
+    Route::get('/pago/{id}', 'show')->name('pago.show')
+    ->where('id','[0-9]+');
     //Ruta para crear un nuevo pago
-    Route::get('/pago/create', 'create')->name('pago.create');
+    Route::get('/pago/create/{id}', 'create')->name('pago.create');
     //Ruta para guardar los registros del pago
     Route::post('/pago', 'store')->name('pago.store');
     //Route::post('/getLotes/{id}', 'getLotes');
     //Route::get('/getLotes/{id}', 'getLotes');
-
-
-    //
-      
-
-  
-   
-
+    //Ruta para imprimir comprobante de pago
+    Route::get('/pago/imprimir/{id}', 'print')->name('pago.print');
 });
 
 
 Route::controller(ReportController::class)->group(function(){
-    //Reporte de ventas por fecha
+//Reporte de ventas por fecha
 Route::get('reports_day', 'reportsDay')->name('report.reports_day');
 Route::get('reports_date','reportsDate')->name('reports.reports_date');
 Route::post('report_results','reportResults')->name('report.report_results');
 Route::get('pdfReportDia', 'pdfDia')->name('reports.pdfReportDia');
 Route::get('pdfReportFecha', 'pdfFecha')->name('reports.pdfReportFecha');
 });
+
 //Ruta para Constructora
 Route::controller(ConstructoraController::class)->group(function(){
     //Ruta para listado de Constructoras
@@ -311,7 +297,7 @@ Route::controller(ConstructoraController::class)->group(function(){
     //Ruta para imprimir el listado de Constructora
 });
 
-// Cambio de estado en lote y venta
+//Cambio de estado en lote y venta
 //creo que en venta no iria
 Route::get('change_status/lotes/{lote}', [LoteController::class, 'change_status'])->name('change.status.lotes');
 Route::get('change_status/ventas/{venta}', [VentaController::class, 'change_status'])->name('change.status.ventas');

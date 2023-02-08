@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreign('lote_id')->references('id')->on('lotes');// Restriccion llave foranea
             $table->string('fechaPago');
             $table->integer('cantidadCuotasPagar');
+            $table->integer('cuotaPagar');
+            $table->integer('valorTerrenoPagar');
             $table->integer('saldoEnCuotas');
             $table->bigInteger('nuevoSaldo');
             $table->timestamps();
