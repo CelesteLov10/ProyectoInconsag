@@ -17,7 +17,7 @@ class Pago extends Model
     'cuotaPagar',
     'valorTerrenoPagar',
     'saldoEnCuotas',
-    'nuevoSaldo',
+    //'nuevoSaldo',
     ];
 
         // un cliente puede hacer muchos pagos

@@ -69,7 +69,7 @@ class PagoController extends Controller
             'cuotaPagar' => 'required',
             'valorTerrenoPagar' => 'required',
             'saldoEnCuotas' => 'required',
-            'nuevoSaldo' => 'required',
+            //'nuevoSaldo' => 'required',
     
         ];
         $mensaje =[
@@ -112,12 +112,33 @@ class PagoController extends Controller
                 'cuotaPagar' =>$request[ 'cuotaPagar' ],
                 'valorTerrenoPagar'=>$request['valorTerrenoPagar'], 
                 'saldoEnCuotas'=>$request['saldoEnCuotas'], 
-                'nuevoSaldo'=>$request['nuevoSaldo'], 
+                //'nuevoSaldo'=>$request['nuevoSaldo'], 
             ]);
-            
+
+            /*$pay = new Pago();
+            $pay->venta_id= $request->input('venta_id');
+            $pay->pago= $request->input('valorTerrenoPagar');
+
+            $venta=Venta::where('id',$id)->first();
+            $venta->valorRestantePagar-=$request->input('valorTerrenoPagar');
+            $venta->save();
+            $pay->save();*/
+
             return redirect()->route('pago.index')
             //return view('pago.print', ['data' => $request->all()]);redirect()->route('pago.index');
             ->with('mensaje', 'Se guardó un nuevo registro de pago correctamente');
+    }
+
+    public function resta(Request $request, $id)
+    {
+        $pay = new Pago();
+            $pay->venta_id= $request->input('venta_id');
+            $pay->pago= $request->input('valorTerrenoPagar');
+
+            $venta=Venta::where('id',$id)->first();
+            $venta->valorRestantePagar-=$request->input('valorTerrenoPagar');
+            $venta->save();
+            $pay->save();
     }
 
     public function print($id){

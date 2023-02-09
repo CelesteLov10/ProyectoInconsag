@@ -17,16 +17,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('venta_id');//Relacion con tabla bloque
             $table->foreign('venta_id')->references('id')->on('ventas');// Restriccion llave foranea
-             $table->unsignedBigInteger('cliente_id');//Relacion con tabla bloque
+            $table->unsignedBigInteger('cliente_id');//Relacion con tabla bloque
             $table->foreign('cliente_id')->references('id')->on('clientes');// Restriccion llave foranea
-             $table->unsignedBigInteger('lote_id');//Relacion con tabla bloque
+            $table->unsignedBigInteger('lote_id');//Relacion con tabla bloque
             $table->foreign('lote_id')->references('id')->on('lotes');// Restriccion llave foranea
             $table->string('fechaPago');
             $table->integer('cantidadCuotasPagar');
             $table->integer('cuotaPagar');
             $table->integer('valorTerrenoPagar');
             $table->integer('saldoEnCuotas');
-            $table->bigInteger('nuevoSaldo');
+           //$table->bigInteger('nuevoSaldo');
             $table->timestamps();
         });
     }

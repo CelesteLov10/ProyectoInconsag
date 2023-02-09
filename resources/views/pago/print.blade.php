@@ -1,18 +1,96 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recibo pdf</title>
+    
+    <style>
+      body{
+         font-family: 'Times New Roman', Times, serif;
+      }
 
+      #container{
+         width: auto;
+         height: 750px;
+         margin: 0px;
+         border: 2px solid black;
+         padding: 15px;
+      }
+
+     #caja1{
+        width:100%;
+        height:100px;
+        border: 1px solid black;
+     }
+     #caja2{
+      float: right;
+        width:150px;
+        height:25px;
+        border: 1px solid black;
+        text-align: end;
+     }
+
+     .derecha{
+      float: right;
+      margin-right: 10px;
+     }
+
+     .caja3{
+        width:350px;
+        height:25px;
+        border: 1px solid black;
+        text-align: justify;
+     }
+     .caja4{
+        width:350px;
+        height:60px;
+        border: 1px solid black;
+        text-align: justify;
+     }
+
+     #firmas{
+      float: right;
+      margin-right: 5%;
+     }
+
+     .clearboth{
+      list-style: none;
+     }
+
+    </style>
 </head>
 <body>
+    <div id="container">
 
-    <h2>RECIBO DE PAGO</h2>
+        <div id="caja1"></div>
 
+        <hr>
+
+            <div class="clearboth"></div>
+            <h5 class="derecha">L. <u>{{$pago->saldoEnCuotas}}</u><div id="caja2"></div></h5>
+
+            <h2>Recibo de pago</h2>
+            <br>
+
+            <form>
+               <p>Recibimos de <u>{{$venta->cliente->nombreCompleto}}</u> <br><br>
+                  La cantidad de <u>{{$pago->saldoEnCuotas}}</u></p>
+                  <br>
+                  <p>En concepto de pago lote <div class="caja4" id="caja4"><u>{{$venta->lote->nombreLote}}</u></div></p>
+                  <p>Y en contraprestación de (opcional)<div class="caja4" id="caja4"></div></p>
+            </form>
+            
+            <aside id="firmas">
+            <h4>Firma y saluda atentamente el <br><br>
+               , <u>{{$pago->fechaPago}}</u></h4>
+               <br>
+               <h4><u>Inconsag</u> <br>
+               (Firma y aclaración)</h4>
+            </aside>
+    </div>
     
-    <h3>id: {{$venta->cliente->nombreCompleto}}</h3>
-    <h3>id: {{$pago->id}}</h3>
-    <h3>Fecha: {{$pago->fechaPago}}</h3>
-    <h3>cuotaPagar: {{$pago->cuotaPagar}}</h3>
-    <h3>aldoEnCuotas {{$pago->saldoEnCuotas}}</h3>
-    <h3>alorTerrenoPagar {{$pago->valorTerrenoPagar}}</h3>
-    <h3>uevoSaldo {{$pago->nuevoSaldo}}</h3>
+</body>
 </html>
