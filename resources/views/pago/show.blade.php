@@ -11,7 +11,7 @@
 <div>
     <div class="mb-5 m-5">
         <h3 class=" text-center">
-        Detalle de pago del lote
+        Listado de pago del lote
         </h3>
         <hr>
     </div>
@@ -26,7 +26,7 @@
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
             <div class = " card-header py-3 " >
-                <h5 class = "n-font-weight-bold text-white">Detalles de {{$venta->lote->nombreLote}} </h5> 
+                <h5 class = "n-font-weight-bold text-white">Listado de pago del {{$venta->lote->nombreLote}} </h5> 
             </div >
         
         <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
@@ -52,9 +52,10 @@
                 <td>{{$venta->cliente->nombreCompleto}}</td>
             </tr>
             <tr>
-                <th scope="row">Saldo anterior</th>
-                <td oninput="calcularSaldo()" id="valorRestantePagar">{{$venta->valorRestantePagar}}</td>
+                <th scope="row">Saldo despues de prima</th>
+                <td  id="valorRestantePagar" oninput="calcularSaldo()">{{$venta->valorRestantePagar}}</td>
             </tr>
+        
         </tbody>
     </table>
     
@@ -63,20 +64,54 @@
     <table class="table border border-2 contorno-azul">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Fecha pago:</th>
                 <th scope="col">Cantidad cuotas pagadas:</th>
-                <th oninput="calcularSaldo()" scope="col" id="cuotasPagadas">Total de cuotas pagadas:</th>    
-                <th scope="col" id="nuevoSaldo">Nuevo saldo</th>
+                <th>Total en cuotas</th>
+                <th >Nuevo saldo</th>
+                <th scope="col">Imprimir comprobante</th>
             </tr>
         </thead>
+        <tbody>
+            @foreach ($pago as $pagos)
+            @if ($venta->id == $pagos->venta_id)
+            <tr>
+                <td>{{$pagos->fechaPago}}</td>
+                <td>{{$pagos->cantidadCuotasPagar}}</td>
+                <td id="saldoEnCuotas">{{$pagos->saldoEnCuotas}}</td>
+                <td  id="nuevoSaldo2" oninput="calcularSaldo2()">{{$pagos->nuevoSaldo}}</td>
+                <td ><a href="" class="btn btn-outline-warning"><i class="bi bi-filetype-pdf"></i></a></td>
+            </tr>
+               
+          
+           
+           
+            @endif
+          
+            @endforeach
+        </tbody>
+        <tr>
+            <th scope="col" class="col-md-4">Total pagando o que queda debiendo</th>
+            <td>Hola</td>
+        </tr>
         
-        
+    </table>
+    <table>
+        {{--     <div  class="col-12 col-md-3 text-center">
+                <span>Total de ingresos por cuota: </span>
+                <div class="form-group">
+                    <strong>{{$saldoEnCuotas}}</strong>
+                </div>
+            </div> --}}
+      
+         
+    
     </table>
 
     </div>
+   
     
 </div>
+
 
 @endsection
         
@@ -87,14 +122,28 @@
 <script>
     try
     {function calcularSaldo(){
-    var valorRestantePagar  = document.getElementById('valorRestantePagar').value;
-    var cuotasPagadas = document.getElementById('cuotasPagadas').value;
-    var nuevoSaldo = document.getElementById('nuevoSaldo');
+    var saldoEnCuotas  = document.getElementById('saldoEnCuotas').value;
+    var valorRestantePagar = document.getElementById('valorRestantePagar').value;
 
-    var resultado = valorRestantePagar - cuotasPagadas;
+    var resultado =  valorRestantePagar - saldoEnCuotas;
 
-    nuevoSaldo.value = resultado;
+    valorRestantePagar.value = resultado;
         }
     }catch (error) {throw error;}
 </script>
+<script>
+    try{
+        function calcularSaldo2(){
+            var saldoEnCuotas = document.getElementById('saldoEnCuotas').value;
+            var nuevoSaldo = document.getElementById('nuevoSaldo2');
+
+            var resul = nuevoSaldo - saldoEnCuotas;
+
+            nuevoSaldo.value = resul;
+        }
+    }catch (error){
+        throw error;
+    }
+</script>
+<script></script>
 @endsection

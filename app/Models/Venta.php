@@ -38,8 +38,9 @@ class Venta extends Model
     public function beneficiario(){
         return $this->belongsTo(Beneficiario::class);
     }
+    //de venta pueden salir muchos pagos
     public function pago(){
-        return $this->hasMany(Pago::class); 
+        return $this->belongsTo(Pago::class); 
     }
 }
 
