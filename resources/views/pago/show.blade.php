@@ -79,7 +79,7 @@
                 <td>{{$pagos->cantidadCuotasPagar}}</td>
                 <td id="saldoEnCuotas">{{$pagos->saldoEnCuotas}}</td>
                 <td  id="nuevoSaldo2" oninput="calcularSaldo2()">{{$pagos->nuevoSaldo}}</td>
-                <td ><a href="" class="btn btn-outline-warning"><i class="bi bi-filetype-pdf"></i></a></td>
+                <td ><a href="{{route('pago.print', ['id'=>$pago1->id])}}" class="btn btn-outline-warning"><i class="bi bi-filetype-pdf"></i></a></td>
             </tr>
                
           

@@ -41,10 +41,11 @@ class PagoController extends Controller
       //$lotes = Lote::all();
         $cliente = Cliente::all();
         $pago = Pago::all();
+        $pago1 = Pago::findOrFail($id);
         $venta = Venta::findOrFail($id);
         $lote = Lote::all();
         $nuevoSaldo = $pago->sum('saldoEnCuotas');
-        return view('pago.show', compact('bloques','cliente', 'pago', 'venta'))->with('lote', $lote);
+        return view('pago.show', compact('bloques','cliente', 'pago', 'venta','pago1'))->with('lote', $lote);
 
     }
 
@@ -67,8 +68,8 @@ class PagoController extends Controller
             'fechaPago' =>'required',
             'cantidadCuotasPagar' => 'required',
             'cuotaPagar' => 'required',
-            'valorTerrenoPagar' => 'required',
             'saldoEnCuotas' => 'required',
+            'valorTerrenoPagar' => 'required',
             //'nuevoSaldo' => 'required',
     
         ];

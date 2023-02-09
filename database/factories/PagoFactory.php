@@ -24,8 +24,8 @@ class PagoFactory extends Factory
             'fechaPago' =>$this->faker->date($format = 'd-m-Y'),
             'cantidadCuotasPagar' =>$this->faker->randomDigit([1,12]),
             'cuotaPagar' =>$this->faker->numberBetween(2500, 30000),
-            'valorTerrenoPagar' =>$this->faker->numberBetween(250000, 3000000),
             'saldoEnCuotas' =>$this->faker->numberBetween(2500, 30000),
+            'valorTerrenoPagar' =>$this->faker->numberBetween(250000, 3000000),
             //'nuevoSaldo'=>$this->faker->numberBetween(2500,245000 ),
 
 

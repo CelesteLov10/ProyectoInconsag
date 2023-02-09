@@ -15,8 +15,8 @@ class Pago extends Model
     'fechaPago',
     'cantidadCuotasPagar',
     'cuotaPagar',
-    'valorRestantePagar',
     'saldoEnCuotas',
+    'valorTerrenoPagar',
     //'nuevoSaldo',
     ];
 

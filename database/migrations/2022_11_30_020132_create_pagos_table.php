@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('fechaPago');
             $table->integer('cantidadCuotasPagar');
             $table->integer('cuotaPagar');
-            $table->integer('valorTerrenoPagar');
             $table->integer('saldoEnCuotas');
+            $table->integer('valorTerrenoPagar');
            //$table->bigInteger('nuevoSaldo');
             $table->timestamps();
         });
