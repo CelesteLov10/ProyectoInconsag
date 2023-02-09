@@ -40,7 +40,7 @@ class PagoController extends Controller
         $bloques = Bloque::all();
       //$lotes = Lote::all();
         $cliente = Cliente::all();
-        $pago = Pago::findOrFail($id);
+        $pago = Pago::all();
         $venta = Venta::findOrFail($id);
         $lote = Lote::all();
         $nuevoSaldo = $pago->sum('saldoEnCuotas');

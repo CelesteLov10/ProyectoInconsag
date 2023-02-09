@@ -15,7 +15,7 @@ class Pago extends Model
     'fechaPago',
     'cantidadCuotasPagar',
     'cuotaPagar',
-    'valorTerrenoPagar',
+    'valorRestantePagar',
     'saldoEnCuotas',
     //'nuevoSaldo',
     ];
@@ -36,7 +36,11 @@ class Pago extends Model
         }
          // de una venta pueden surgir muchos pagos de mensualidades
          //tampoco se si va
-        public function venta(){
+        public function ventad(){
             return $this->hasMany(Venta::class);
         }
+        //se pueden realizar muchos pagos (a la inversa)
+        public function pruebaPagos(){
+            return $this->belongsToMany(Pago::class);
+        }       
 }
