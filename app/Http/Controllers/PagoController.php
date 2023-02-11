@@ -45,7 +45,7 @@ class PagoController extends Controller
         $venta = Venta::findOrFail($id);
         $lote = Lote::all();
         $nuevoSaldo = $pago->sum('saldoEnCuotas');
-        return view('pago.show', compact('bloques','cliente', 'pago', 'venta','pago1'))->with('lote', $lote);
+        return view('pago.show', compact('bloques','cliente', 'venta','pago1','lote'))->with('pago', $pago);
 
     }
 
@@ -53,10 +53,17 @@ class PagoController extends Controller
     {
         $bloques = Bloque::all();
         $cliente = Cliente::all();
-        $pago = Pago::all();
+        $pago = Pago::findOrFail($id);
         $venta = Venta::findOrFail($id);
         $lote = Lote::all(); 
-        return view('pago.create',compact('bloques','cliente', 'pago', 'venta'))->with('lote', $lote);
+        /*if ($create) {
+            $pago = Pago::find($pago->id);
+            $pago->valorTerrenoPagar = $pago->valorTerrenoPagar - $pago->saldoEnCuotas;
+            $pago->saveOrFail();
+            }*/
+        //poner una condicion donde me diga que el id de venta sea igual al de pago sea igual al id
+        $ventas = Venta::whereRaw('(SELECT sum(cantidadCuotasPagar) FROM pagos WHERE venta_id = ventas.id)')->get();
+        return view('pago.create',compact('bloques','cliente', 'venta','lote','ventas'))->with('pago', $pago);
     }
 
     public function store(Request $request){
@@ -66,7 +73,7 @@ class PagoController extends Controller
             'cliente_id' => 'required',
             'lote_id' => 'required',
             'fechaPago' =>'required',
-            'cantidadCuotasPagar' => 'required',
+            'cantidadCuotasPagar' => 'required|numeric|min:1|max:12|regex:/^[0-9]{1,2}+$/u',
             'cuotaPagar' => 'required',
             'saldoEnCuotas' => 'required',
             'valorTerrenoPagar' => 'required',
@@ -74,32 +81,13 @@ class PagoController extends Controller
     
         ];
         $mensaje =[
-            'nombreProveedor.required' => 'El nombre del proveedor es requerido, no puede estar vacío. ',
-            'nombreProveedor.regex' => 'El nombre del proveedor solo permite un espacio entre los nombres
-            y no se admiten números o caracteres especiales.',
-            'nombreProveedor.unique' => 'El nombre del proveedor ya está en uso.',
 
-            'nombreContacto.required' => 'El nombre del contacto es requerido, no puede estar vacío. ',
-            'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
-
-            'cargoContacto.required' => 'El cargo del contacto es requerido, no puede estar vacío. ',
-            'cargoContacto.regex' => 'El cargo del contacto solo permite un espacio entre los nombres y no permite números.',
-
-            'direccion' => 'La direccion es requerido, no puede estar vacío. ',
-            'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
-            'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
-
-            'telefono.required' => 'El teléfono no puede ir vacío.',
-            'telefono.numeric' => 'El teléfono debe contener sólo números.',
-            'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
-            'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
-            'telefono.unique' => 'El número de teléfono ya está en uso.',
-
-            'email.required' => 'Debe ingresar el correo electrónico.',
-            'email.email' => 'Debe ingresar un correo electrónico válido.',
-            'email.unique' => 'El correo electrónico ya está en uso.',
-
-            'categoria_id.required' => 'Debe seleccionar una categoría',
+            'cantidadCuotasPagar.required' => 'La cantidad de cuotas no puede ir vacío.',
+            'cantidadCuotasPagar.numeric' => 'La cantidad de cuotas debe contener sólo números.',
+            'cantidadCuotasPagar.digits' => 'La cantidad de cuotas debe contener 8 dígitos.',
+            'cantidadCuotasPagar.regex' => 'La cantidad ',
+            'cantidadCuotasPagar.min' => 'La cantidad de cuotas debe ser 1 como minimo.',
+            'cantidadCuotasPagar.max' => 'La cantidad de cuotas debe ser 12 como máximo.',
 
         ];
             $this->validate($request, $reglas, $mensaje);
@@ -128,7 +116,8 @@ class PagoController extends Controller
             return redirect()->route('pago.index')
             //return view('pago.print', ['data' => $request->all()]);redirect()->route('pago.index');
             ->with('mensaje', 'Se guardó un nuevo registro de pago correctamente');
-    }
+    }   
+
 
     public function resta(Request $request, $id)
     {
@@ -146,9 +135,9 @@ class PagoController extends Controller
         $bloques = Bloque::all();
         $cliente = Cliente::all();
         $pago = Pago::findOrFail($id);
-        $venta = Venta::findOrFail($id);
+        $venta = Venta::all();
         $lote = Lote::all(); 
-        $pdf = PDF::loadView('pago.print', compact('bloques','cliente', 'pago','venta'));
+        $pdf = PDF::loadView('pago.print', compact('bloques','cliente', 'pago','venta','lote'));
         return $pdf -> stream();
     }
 

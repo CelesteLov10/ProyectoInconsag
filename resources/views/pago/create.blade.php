@@ -12,7 +12,7 @@
 
     <div class="mb-5 m-5">
         <h3 class=" text-center">
-            Nuevo pago de lote <strong>{{$venta->lote->nombreLote}}</strong>
+            Pago de lote <strong>{{$venta->lote->nombreLote}}</strong>
         </h3>
         <hr>
     </div>
@@ -26,7 +26,7 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 btaura" >
         <div class = " card-header py-3 " >
-            <h5 class = "n-font-weight-bold text-white">Registro pago</h5 > 
+            <h5 class = "n-font-weight-bold text-white">Nuevo pago</h5 > 
     </div >
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
@@ -37,9 +37,9 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Número de venta:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill @error('venta_id') is-invalid @enderror" 
+                <input type="text" class="border border-0 form-control rounded-pill  @error('venta_id') is-invalid @enderror " 
                     placeholder="Ingrese el nuevo nombre de proveedor" 
-                    name="venta_id" value="{{old('venta_id', $venta->id)}}" maxlength="50" >
+                    name="venta_id" value="{{old('venta_id', $venta->id)}}" maxlength="50" style="background-color: rgba(206, 206, 206, 0)">
                     @error('venta_id')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
@@ -49,7 +49,8 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre de cliente:</label>
             <div class="col-sm-5">
-            <select name="cliente_id" id="" class="form-control rounded-pill @error('cliente_id') is-invalid @enderror">
+            <select name="cliente_id" id="" class="border border-0 form-control rounded-pill @error('cliente_id') is-invalid @enderror"
+            style="background-color: rgba(206, 206, 206, 0)">
                 {{-- se muestra el registro guardado --}}
                 <option value="{{$venta->cliente->id}}" 
                 {{old('cliente_id' , $venta->cliente->nombreCompleto)==$venta->cliente->id ? 'selected' : ''}}>{{$venta->cliente->nombreCompleto}}</option>
@@ -63,7 +64,8 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre de lote:</label>
             <div class="col-sm-5">
-            <select name="lote_id" id="" class="form-control rounded-pill @error('lote_id') is-invalid @enderror">
+            <select name="lote_id" id="" class="border border-0 form-control rounded-pill @error('lote_id') is-invalid @enderror"
+            style="background-color: rgba(206, 206, 206, 0)">
                 {{-- se muestra el registro guardado --}}
                 <option value="{{$venta->lote->id}}" 
                 {{old('lote_id' , $venta->lote->nombreLote)==$venta->lote->id ? 'selected' : ''}} readonly=»readonly»>{{$venta->lote->nombreLote}}</option>
@@ -77,9 +79,9 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Fecha de pago:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill @error('fechaPago') is-invalid @enderror" 
+                <input type="text" class="border border-0 form-control rounded-pill @error('fechaPago') is-invalid @enderror" 
                 maxlength="10" placeholder="Fecha actual"
-                name="fechaPago" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly=»readonly» > 
+                name="fechaPago" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)" > 
                     @error('fechaPago')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror

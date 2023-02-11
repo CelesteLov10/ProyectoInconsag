@@ -76,16 +76,16 @@
             <br>
 
             <form>
-               <p>Recibimos de <u>{{$venta->cliente->nombreCompleto}}</u> <br><br>
+               <p>Recibimos de <u>{{$pago->venta->cliente->nombreCompleto}}</u> <br><br>
                   La cantidad de <u>{{$pago->saldoEnCuotas}}</u></p>
                   <br>
-                  <p>En concepto de pago lote <div class="caja4" id="caja4"><u>{{$venta->lote->nombreLote}}</u></div></p>
+                  <p>En concepto de pago lote <div class="caja4" id="caja4"><u>{{$pago->venta->lote->nombreLote}}</u></u></div></p>
                   <p>Y en contraprestación de (opcional)<div class="caja4" id="caja4"></div></p>
             </form>
             
             <aside id="firmas">
             <h4>Firma y saluda atentamente el <br><br>
-               , <u>{{$pago->fechaPago}}</u></h4>
+               <u>{{$pago->fechaPago}}</u></h4>
                <br>
                <h4><u>Inconsag</u> <br>
                (Firma y aclaración)</h4>

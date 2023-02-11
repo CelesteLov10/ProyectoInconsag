@@ -18,7 +18,7 @@
 
     <div class="container ">
         <div class="mb-3 text-end">
-            <a class="btn g btn-outline-success" href="{{route('pago.create', ['id'=>$venta->id])}}"><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
+            <a class="btn g btn-outline-success" href="{{route('pago.create', ['id'=>$pago1->id])}}"><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
 
             <a class="btn btn-outline-primary" href="{{route('pago.index')}}">
                 <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
@@ -78,15 +78,11 @@
                 <td>{{$pagos->fechaPago}}</td>
                 <td>{{$pagos->cantidadCuotasPagar}}</td>
                 <td id="saldoEnCuotas">{{$pagos->saldoEnCuotas}}</td>
-                <td  id="nuevoSaldo2" oninput="calcularSaldo2()">{{$pagos->nuevoSaldo}}</td>
-                <td ><a href="{{route('pago.print', ['id'=>$pago1->id])}}" class="btn btn-outline-warning"><i class="bi bi-filetype-pdf"></i></a></td>
+                <td  id="nuevoSaldo2" oninput="calcularSaldo2()">{{$pagos->valorTerrenoPagar}}</td>
+                <td ><a href="{{route('pago.print', ['id'=>$pagos->id])}}" class="btn btn-outline-warning"><i class="bi bi-filetype-pdf"></i></a></td>
             </tr>
-               
-          
-           
-           
+
             @endif
-          
             @endforeach
         </tbody>
         <tr>
@@ -102,13 +98,9 @@
                     <strong>{{$saldoEnCuotas}}</strong>
                 </div>
             </div> --}}
-      
-         
-    
     </table>
 
     </div>
-   
     
 </div>
 
@@ -118,6 +110,7 @@
 @section('js')
 {{-- plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+
 
 <script>
     try

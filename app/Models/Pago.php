@@ -36,11 +36,11 @@ class Pago extends Model
         }
          // de una venta pueden surgir muchos pagos de mensualidades
          //tampoco se si va
-        public function ventad(){
-            return $this->hasMany(Venta::class);
+        public function venta(){
+            return $this->belongsTo(Venta::class);//tenia hasmany
         }
         //se pueden realizar muchos pagos (a la inversa)
-        public function pruebaPagos(){
+        /*public function pruebaPagos(){
             return $this->belongsToMany(Pago::class);
-        }       
+        }   */    
 }

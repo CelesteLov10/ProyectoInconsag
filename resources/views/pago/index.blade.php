@@ -91,15 +91,14 @@
                                     <td>{{$ventas->cliente->nombreCompleto}}</td>
                                     <td>{{$ventas->lote->status}}</td>
                                 
-                                 
+                                    @if ($ventas->formaVenta == 'credito'){{-- condicion que muestra el boton de pagos solo a los lotes vendidos al credito --}}
                                     <td><a class="btn glow-on-hover-main text-BLACK"
                                         href="{{route('pago.show', ['id'=>$ventas->id])}}">
-                                        <i class="bi bi-file-earmark-zip"></i>
-                                      </a>
-                                      </td>
-                                  
-                                   
-                
+                                        <i class="bi bi-file-earmark-zip"></i></a></td>
+                                            
+                                        @else
+                                            <td>Pago al contado</td>
+                                        @endif
                                         @csrf
                                 </tr>
                                 

@@ -40,7 +40,7 @@ class Venta extends Model
     }
     //de venta pueden salir muchos pagos
     public function pago(){
-        return $this->belongsTo(Pago::class); 
+        return $this->hasMany(Pago::class); //tenia belongTo
     }
 }
 
