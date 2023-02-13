@@ -1,6 +1,6 @@
 @extends('layout.plantillaH')
 
-@section('titulo', 'Detalle de bloque')
+@section('titulo', 'Listado de pago del lote')
 
 @section('css')
 <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
@@ -18,7 +18,11 @@
 
     <div class="container ">
         <div class="mb-3 text-end">
-            <a class="btn g btn-outline-success" href="{{route('pago.create', ['id'=>$pago1->id])}}"><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
+            @if ($pago1->valorTerrenoPagar <= 0)
+            <a class="btn g btn-outline-success" href="{{route('pago.create', ['id'=>$pago1->id])}}" ><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
+            @else
+            <button class="btn g btn-outline-success" disabled><i class="bi bi-currency-dollar"></i>Nuevo pago</button>
+            @endif
 
             <a class="btn btn-outline-primary" href="{{route('pago.index')}}">
                 <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
@@ -26,7 +30,7 @@
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
             <div class = " card-header py-3 " >
-                <h5 class = "n-font-weight-bold text-white">Listado de pago del {{$venta->lote->nombreLote}} </h5> 
+                <h5 class = "n-font-weight-bold text-white">Listado de pago de {{$venta->lote->nombreLote}} </h5> 
             </div >
         
         <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
@@ -45,7 +49,7 @@
             </tr>
             <tr>
                 <th scope="row">Valor del lote</th>
-                <td>{{$venta->lote->valorTerreno}}</td>
+                <td>L. {{number_format($venta->lote->valorTerreno , 2)}}</td>
             </tr> 
             <tr>
                 <th scope="row">Nombre del cliente</th>
@@ -53,7 +57,7 @@
             </tr>
             <tr>
                 <th scope="row">Saldo despues de prima</th>
-                <td  id="valorRestantePagar" oninput="calcularSaldo()">{{$venta->valorRestantePagar}}</td>
+                <td  id="valorRestantePagar" oninput="calcularSaldo()">L. {{number_format($venta->valorRestantePagar , 2)}}</td>
             </tr>
         
         </tbody>
@@ -66,19 +70,23 @@
             <tr>
                 <th scope="col">Fecha pago:</th>
                 <th scope="col">Cantidad cuotas pagadas:</th>
-                <th>Total en cuotas</th>
-                <th >Nuevo saldo</th>
+                <th scope="col">Total en cuotas</th>
+                <th scope="col">Nuevo saldo</th>
                 <th scope="col">Imprimir comprobante</th>
             </tr>
         </thead>
         <tbody>
+            <?php $total = 0?> {{-- Se define la variable total--}}
+            <?php $cantCuotas = 0?>
             @foreach ($pago as $pagos)
             @if ($venta->id == $pagos->venta_id)
             <tr>
                 <td>{{$pagos->fechaPago}}</td>
                 <td>{{$pagos->cantidadCuotasPagar}}</td>
-                <td id="saldoEnCuotas">{{$pagos->saldoEnCuotas}}</td>
-                <td  id="nuevoSaldo2" oninput="calcularSaldo2()">{{$pagos->valorTerrenoPagar}}</td>
+                <td id="saldoEnCuotas">{{number_format($pagos->saldoEnCuotas, 2)}}</td>
+                <?php $total = $total + $pagos->saldoEnCuotas ?>
+                <?php $cantCuotas = $cantCuotas + $pagos->cantidadCuotasPagar?>
+                <td  id="nuevoSaldo2" oninput="calcularSaldo2()">{{number_format($pagos->valorTerrenoPagar, 2)}}</td>
                 <td ><a href="{{route('pago.print', ['id'=>$pagos->id])}}" class="btn btn-outline-warning"><i class="bi bi-filetype-pdf"></i></a></td>
             </tr>
 
@@ -86,18 +94,17 @@
             @endforeach
         </tbody>
         <tr>
-            <th scope="col" class="col-md-4">Total pagando o que queda debiendo</th>
-            <td>Hola</td>
+            <th scope="col" class="col-md-4">Total:</th>
+            <td>{{number_format($cantCuotas , 2)}}</td>
+            <td>L. {{number_format($total , 2)}}</td>
+        </tr>
+        <tr>
+            <th scope="col" class="col-md-4">Saldo Pendiente</th>
+            <td>L. {{number_format($venta->valorRestantePagar - $total, 2)}}</td>
         </tr>
         
     </table>
     <table>
-        {{--     <div  class="col-12 col-md-3 text-center">
-                <span>Total de ingresos por cuota: </span>
-                <div class="form-group">
-                    <strong>{{$saldoEnCuotas}}</strong>
-                </div>
-            </div> --}}
     </table>
 
     </div>
@@ -108,9 +115,8 @@
 @endsection
         
 @section('js')
-{{-- plugins para el buscador jquery ui --}}
+ {{--plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
-
 
 <script>
     try

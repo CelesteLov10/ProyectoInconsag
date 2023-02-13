@@ -38,7 +38,6 @@ class PagoController extends Controller
 
     public function show($id){
         $bloques = Bloque::all();
-      //$lotes = Lote::all();
         $cliente = Cliente::all();
         $pago = Pago::all();
         $pago1 = Pago::findOrFail($id);
@@ -53,17 +52,15 @@ class PagoController extends Controller
     {
         $bloques = Bloque::all();
         $cliente = Cliente::all();
+        $pago2 = Pago::all();
         $pago = Pago::findOrFail($id);
         $venta = Venta::findOrFail($id);
         $lote = Lote::all(); 
-        /*if ($create) {
-            $pago = Pago::find($pago->id);
-            $pago->valorTerrenoPagar = $pago->valorTerrenoPagar - $pago->saldoEnCuotas;
-            $pago->saveOrFail();
-            }*/
-        //poner una condicion donde me diga que el id de venta sea igual al de pago sea igual al id
         $ventas = Venta::whereRaw('(SELECT sum(cantidadCuotasPagar) FROM pagos WHERE venta_id = ventas.id)')->get();
-        return view('pago.create',compact('bloques','cliente', 'venta','lote','ventas'))->with('pago', $pago);
+        
+        //poner una condicion donde me diga que el id de venta sea igual al de pago sea igual al id
+
+        return view('pago.create',compact('bloques','cliente', 'venta','lote','ventas','pago2'))->with('pago', $pago);
     }
 
     public function store(Request $request){
@@ -73,7 +70,7 @@ class PagoController extends Controller
             'cliente_id' => 'required',
             'lote_id' => 'required',
             'fechaPago' =>'required',
-            'cantidadCuotasPagar' => 'required|numeric|min:1|max:12|regex:/^[0-9]{1,2}+$/u',
+            'cantidadCuotasPagar' => 'required|numeric|min:1|max:6|regex:/^[0-9]{1,2}+$/u',
             'cuotaPagar' => 'required',
             'saldoEnCuotas' => 'required',
             'valorTerrenoPagar' => 'required',
@@ -87,7 +84,7 @@ class PagoController extends Controller
             'cantidadCuotasPagar.digits' => 'La cantidad de cuotas debe contener 8 dígitos.',
             'cantidadCuotasPagar.regex' => 'La cantidad ',
             'cantidadCuotasPagar.min' => 'La cantidad de cuotas debe ser 1 como minimo.',
-            'cantidadCuotasPagar.max' => 'La cantidad de cuotas debe ser 12 como máximo.',
+            'cantidadCuotasPagar.max' => 'La cantidad de cuotas debe ser 6 como máximo.',
 
         ];
             $this->validate($request, $reglas, $mensaje);
@@ -104,15 +101,6 @@ class PagoController extends Controller
                 //'nuevoSaldo'=>$request['nuevoSaldo'], 
             ]);
 
-            /*$pay = new Pago();
-            $pay->venta_id= $request->input('venta_id');
-            $pay->pago= $request->input('valorTerrenoPagar');
-
-            $venta=Venta::where('id',$id)->first();
-            $venta->valorRestantePagar-=$request->input('valorTerrenoPagar');
-            $venta->save();
-            $pay->save();*/
-
             return redirect()->route('pago.index')
             //return view('pago.print', ['data' => $request->all()]);redirect()->route('pago.index');
             ->with('mensaje', 'Se guardó un nuevo registro de pago correctamente');
@@ -121,14 +109,19 @@ class PagoController extends Controller
 
     public function resta(Request $request, $id)
     {
-        $pay = new Pago();
+        $pago = Pago::findOrFail($id);
+        $pago1 = Pago::find($pago->id);
+        $pago1->valorTerrenoPagar -= $pago1->saldoEnCuotas;
+        $pago1->saveOrFail();
+
+        /*$pay = new Pago();
             $pay->venta_id= $request->input('venta_id');
             $pay->pago= $request->input('valorTerrenoPagar');
 
             $venta=Venta::where('id',$id)->first();
             $venta->valorRestantePagar-=$request->input('valorTerrenoPagar');
             $venta->save();
-            $pay->save();
+            $pay->save();*/
     }
 
     public function print($id){

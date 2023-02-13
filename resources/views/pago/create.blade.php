@@ -155,6 +155,16 @@
             </div>
         </div>  
     </form>
+    <?php $cantCuotas = 0?>
+    @foreach ($pago2 as $pagos) {{-- CREO QUE YA ME FUNCIONOOO --}}
+        @if ($venta->id == $pagos->venta_id)
+
+        <?php $cantCuotas = $cantCuotas + $pagos->cantidadCuotasPagar ?>
+
+    @endif
+    @endforeach
+        <td>{{$cantCuotas}}</td>
+
             </div>
         </div>
     </div>
@@ -180,8 +190,8 @@ try
     var resultado = cantidadCuotasPagar * cuotaPagar; 
     saldoEnCuotas.value = resultado;
 
-    valorTerren -= resultado; 
-    valorTerrenoPagar.value = valorTerren;
+    var restant = (valorTerren - cuotaPagar * {{$cantCuotas}}) - resultado; //Ahora si toma el valor insertado.
+    valorTerrenoPagar.value = restant;
     //document.getElementById('valorTerrenoPagar').innerHTML = valorTerrenoPagar;
     //document.querySelector("#valorTerrenoPagar").value = nuevoSaldo;
 
