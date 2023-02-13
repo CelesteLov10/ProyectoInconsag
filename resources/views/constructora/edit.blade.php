@@ -73,7 +73,7 @@
           </div>
         </div>
         <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Email:</label>
+            <label class="col-sm-3 col-form-label">Correo electrónico:</label>
             <div class="col-sm-5">
               <input type="text" class="form-control rounded-pill @error('email') is-invalid @enderror" 
               maxlength="50" placeholder="Ingrese el correo electrónico" name="email"
@@ -131,9 +131,7 @@
 					'Julio', 'Agosto', 'Septiembre',
 					'Octubre', 'Noviembre', 'Diciembre'],
 					dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-          yearRange: "-122:-18",
-          maxDate: "-18Y",
-          minDate: "-80Y"
+          
     });
   } );
 </script>
@@ -150,9 +148,7 @@
                   'Julio', 'Agosto', 'Septiembre',
                   'Octubre', 'Noviembre', 'Diciembre'],
                   dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'], 
-                  yearRange: "-80:-18",
-                  maxDate: "-18Y",
-                  minDate: "-80Y"
+                  
             });
           } );
         </script>

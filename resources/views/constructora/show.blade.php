@@ -49,7 +49,7 @@
                 <td>{{$constructora->telefono}}</td>    
             </tr>
             <tr>
-                <th scope="row">Email</th>
+                <th scope="row">Correo electrónico</th>
                 <td>{{$constructora->email}}</td>    
             </tr>
             <tr>

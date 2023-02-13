@@ -73,7 +73,7 @@
         </div>
 
         <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Email:</label>
+          <label class="col-sm-3 col-form-label">Correo electrónico:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('email') is-invalid @enderror" 
             placeholder="Ingrese el correo electrónico. Ejem. 'Peter.Brown@example.com'"
@@ -124,8 +124,8 @@ $( function() {
 				'Julio', 'Agosto', 'Septiembre',
 				'Octubre', 'Noviembre', 'Diciembre'],
 		dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-        maxDate: "2m",
-        minDate: "-2m",
+        maxDate: "1m",
+        minDate: "-1m",
     });
     } );
 </script>
