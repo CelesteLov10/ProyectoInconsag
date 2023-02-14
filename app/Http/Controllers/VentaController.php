@@ -113,30 +113,13 @@ class VentaController extends Controller
             'fechaVenta.regex' => 'Debe ser mayor de edad.',
 
         ]);
-   // dd($request);
-
-   // $create = Lote::create($request->all());
-        $venta = new Venta();
-
-    $venta->valorTerreno = $request->valorTerreno;
-    $venta->fechaVenta = $request->fechaVenta;
-    $venta->valorPrima = $request->valorPrima;
-    $venta->cantidadCuotas = $request->cantidadCuotas;
-    $venta->valorCuotas = $request->valorCuotas;
-    $venta->valorRestantePagar = $request->valorRestantePagar;
-    $venta->valorPrima = $request->valorPrima;
-    $venta->lote_id = $request->lote_id;
-    $venta->beneficiario_id = $request->beneficiario_id;
-    $venta->bloque_id = $request->bloque_id;
-    $venta->cliente_id = $request->cliente_id;
-    
-    $create = $venta->save();
-
-    if ($create){
-       return redirect()->route('venta.index')
-        ->with('mensaje', 'Se guardó una nueva venta correctamente');
-       // return response()->json($create);
-    }
+   $input = $request->all();
+        
+        Venta::create($input);
+            return redirect()->route('venta.create')
+            ->with('mensaje', 'Se guardó una nueva venta correctamente');
+        
+        /** redireciona una vez enviado  */
 }
     
     public function contrato($id){
