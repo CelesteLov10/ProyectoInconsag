@@ -28,7 +28,7 @@
         <div class="vh-50 row text-center align-items-center justify-content-center">
             <div class="col-8 p-1 contorno-azul">
                 <div class="input-group">
-                      <input type="text" name="search" id="search"  class="form-control"
+                      <input type="text" name="search" id="search"  class="form-control" autofocus
                       placeholder="Buscar por nombre del cliente, forma de la venta o fecha de la venta" value="{{request('search')}}"/>
                     <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
                     <a href="{{route('report.reports_day')}}" class="btn glow-on-hover-main text-BLACK">

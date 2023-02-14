@@ -85,7 +85,7 @@ class PagoController extends Controller
             'cantidadCuotasPagar' => 'required|numeric|min:1|max:6|regex:/^[0-9]{1,2}+$/u',
             'cuotaPagar' => 'required',
             'saldoEnCuotas' => 'required',
-            'valorTerrenoPagar' => 'required',
+            'valorTerrenoPagar' => 'required|min:1|regex:/^[0-9]{1,20}+$/u',
             //'nuevoSaldo' => 'required',
     
         ];
@@ -94,9 +94,12 @@ class PagoController extends Controller
             'cantidadCuotasPagar.required' => 'La cantidad de cuotas no puede ir vacío.',
             'cantidadCuotasPagar.numeric' => 'La cantidad de cuotas debe contener sólo números.',
             'cantidadCuotasPagar.digits' => 'La cantidad de cuotas debe contener 8 dígitos.',
-            'cantidadCuotasPagar.regex' => 'La cantidad ',
             'cantidadCuotasPagar.min' => 'La cantidad de cuotas debe ser 1 como minimo.',
             'cantidadCuotasPagar.max' => 'La cantidad de cuotas debe ser 6 como máximo.',
+            'saldoEnCuotas.required' => 'El saldo en cuotas no puede ir vacío.',
+            'saldoEnCuotas.required' => 'El saldo en cuotas no puede ir vacío.',
+            'valorTerrenoPagar.min' => 'El saldo pendiente debe ser 1 como minimo.',
+            'valorTerrenoPagar.regex' => 'El saldo pendiente no debe ser negativo.',
 
         ];
             $this->validate($request, $reglas, $mensaje);

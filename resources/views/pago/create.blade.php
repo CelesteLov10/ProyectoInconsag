@@ -91,7 +91,7 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Cantidad de cuotas:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill @error('cantidadCuotasPagar') is-invalid @enderror" 
+                <input type="text" class="form-control rounded-pill @error('cantidadCuotasPagar') is-invalid @enderror" autofocus
                 maxlength="2" placeholder="Ingrese la cantidad de cuotas." id="cantidadCuotasPagar"
                 name="cantidadCuotasPagar" autocomplete="off" value="{{old('cantidadCuotasPagar')}}" oninput="calcularPago1()" > 
                     @error('cantidadCuotasPagar')
@@ -124,12 +124,20 @@
             </div>
         </div>
 
+        <div class="mb-3 row" hidden>
+            <label class="col-sm-3 col-form-label">Saldo pendiente:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control rounded-pill" id="valorTe"
+                 value="{{old('valorTerrenoPagar', $venta->valorRestantePagar)}}" readonly=»readonly» oninput="calcularPago1()"> 
+            </div>
+        </div>
+
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Saldo pendiente:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('valorTerrenoPagar') is-invalid @enderror" 
                 maxlength="10" placeholder="Ingrese la cantidad de cuotas." id="valorTerrenoPagar"
-                name="valorTerrenoPagar" autocomplete="off" value="{{old('valorTerrenoPagar', $venta->valorRestantePagar)}}" readonly=»readonly» oninput="calcularPago1()"> 
+                name="valorTerrenoPagar" autocomplete="off" value="{{old('valorTerrenoPagar')}}" readonly=»readonly» oninput="calcularPago1()"> 
                     @error('valorTerrenoPagar')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -183,9 +191,9 @@ try
     var cuotaPagar = document.getElementById('cuotaPagar').value;
     var saldoEnCuotas = document.getElementById('saldoEnCuotas');
     var valorTerrenoPagar = document.getElementById('valorTerrenoPagar');
-    var valorTerren = valorTerrenoPagar.value;
-    var nuevoSaldo = document.getElementById('nuevoSaldo');
-
+    var valorTe = document.getElementById('valorTe');
+    var valorTerren = valorTe.value;
+    
     var resultado = cantidadCuotasPagar * cuotaPagar; 
     saldoEnCuotas.value = resultado;
 

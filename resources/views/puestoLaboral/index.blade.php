@@ -27,7 +27,7 @@
         <div class="vh-50 row text-center align-items-center justify-content-center">
             <div class="col-7 p-1 contorno-azul">
                 <div class="input-group">
-                      <input type="text" name="search" id="search"  class="form-control"
+                      <input type="text" name="search" id="search"  class="form-control" autofocus
                       placeholder="Buscar por nombre del cargo" value="{{request('search')}}"/>
                     <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
                   </div>
