@@ -34,7 +34,19 @@ class PagoController extends Controller
         return view('pago.index', compact('lote', 'pago', 'venta', 'bloques', 'cliente'));
     
     }
-    //
+
+    // Metodo para mostrar pdf
+    public function pdf ($id){
+        $bloques = Bloque::all();
+        $cliente = Cliente::all();
+        $pago = Pago::all();
+        $pago1 = Pago::findOrFail($id);
+        $venta = Venta::findOrFail($id);
+        $lote = Lote::all();
+        $nuevoSaldo = $pago->sum('saldoEnCuotas');
+        $pdf = PDF::loadView('pago.pdf', compact('bloques','cliente', 'venta','pago1','lote', 'pago'));
+        return $pdf -> stream();
+    }
 
     public function show($id){
         $bloques = Bloque::all();

@@ -92,6 +92,8 @@ class VentaController extends Controller
             'valorTerreno.regex' => 'El valor es incorrecto. Ejem. "123"',
             'valorTerreno.min' => 'La cantidad de hora alquilada mínima es "1". ',
 
+            'status.required' => 'El estado del lote es requerido',
+
             'valorPrima.numeric' => 'Solo se permite números enteros. Ejem. "123456"',
             'valorPrima.max' => 'El valor de la prima no debe exceder el valor del terreno". ',
 
@@ -111,13 +113,14 @@ class VentaController extends Controller
             'fechaVenta.regex' => 'Debe ser mayor de edad.',
 
         ]);
-        $input = $request->all();
+   $input = $request->all();
         
         Venta::create($input);
-            return redirect()->route('venta.index')
+            return redirect()->route('venta.create')
             ->with('mensaje', 'Se guardó una nueva venta correctamente');
+        
         /** redireciona una vez enviado  */
-    }
+}
     
     public function contrato($id){
         $bloques = Bloque::all();

@@ -163,7 +163,6 @@
 
     @endif
     @endforeach
-        <td>{{$cantCuotas}}</td>
 
             </div>
         </div>

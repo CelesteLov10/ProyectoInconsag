@@ -15,17 +15,25 @@
         </h3>
         <hr>
     </div>
+    <?php $cantidadCu = 0?>
 
     <div class="container ">
         <div class="mb-3 text-end">
-            @if ($pago1->valorTerrenoPagar <= 0)
-            <a class="btn g btn-outline-success" href="{{route('pago.create', ['id'=>$pago1->id])}}" ><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
-            @else
-            <button class="btn g btn-outline-success" disabled><i class="bi bi-currency-dollar"></i>Nuevo pago</button>
-            @endif
 
-            <a class="btn btn-outline-primary" href="{{route('pago.index')}}">
-                <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
+            {{-- Condicion para que muestre el boton deshabilitado en caso de cumplir todos los meses --}}
+            @foreach ($pago as $pagos)
+                @if ($venta->id == $pagos->venta_id)
+                    <?php $cantidadCu = $cantidadCu + $pagos->cantidadCuotasPagar?>
+                @endif
+            @endforeach
+
+            @if ($cantidadCu == $venta->cantidadCuotas)
+                    <button class="btn g btn-outline-success" disabled><i class="bi bi-currency-dollar"></i>Nuevo pago</button>
+                @else
+                    <a class="btn g btn-outline-success" href="{{route('pago.create', ['id'=>$pago1->id])}}" ><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
+            @endif
+            <a class="btn btn-outline-primary" href="{{route('pago.index')}}"><i class="bi bi-box-arrow-in-left"></i> Atrás</a>
+
         </div>
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
@@ -59,7 +67,10 @@
                 <th scope="row">Saldo despues de prima</th>
                 <td  id="valorRestantePagar" oninput="calcularSaldo()">L. {{number_format($venta->valorRestantePagar , 2)}}</td>
             </tr>
-        
+            <tr>
+                <th scope="row">Imprimir pagos</th>
+                <td><a class="btn glow-on-hover-main text-BLACK" href="{{route('pago.pdf', ['id'=>$pago1->id])}}" value="imprimir" title="Imprimir PDF"><i class="bi bi-printer text-BLACK"></i></a></td>
+            </tr>
         </tbody>
     </table>
     
@@ -69,7 +80,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Fecha pago:</th>
-                <th scope="col">Cantidad cuotas pagadas:</th>
+                <th scope="col">Cant. cuotas pagadas (meses):</th>
                 <th scope="col">Total en cuotas</th>
                 <th scope="col">Nuevo saldo</th>
                 <th scope="col">Imprimir comprobante</th>
@@ -95,7 +106,7 @@
         </tbody>
         <tr>
             <th scope="col" class="col-md-4">Total:</th>
-            <td>{{number_format($cantCuotas , 2)}}</td>
+            <td>{{number_format($cantCuotas )}} / {{$venta->cantidadCuotas}}</td>
             <td>L. {{number_format($total , 2)}}</td>
         </tr>
         <tr>
@@ -115,7 +126,7 @@
 @endsection
         
 @section('js')
- {{--plugins para el buscador jquery ui --}}
+{{--plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
 
 <script>
