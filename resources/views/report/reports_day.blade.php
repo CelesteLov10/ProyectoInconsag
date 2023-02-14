@@ -61,7 +61,7 @@
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
              <a href="{{route('venta.index')}}" id="sinLinea">
-                <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Reporte de ventas</h5 ></a> 
+                <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Ventas por día</h5 ></a> 
           </div >
 
 

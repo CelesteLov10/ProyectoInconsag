@@ -68,12 +68,12 @@
                     <table class="table border border-2 contorno-azul">
                         <thead class="thead-dark">
                             <tr>
+                                <th>#</th>
                                 <th scope="col">No. de bloque</th>
                                 <th scope="col">Nombre del bloque</th>
                                 <th scope="col">No. de lote</th>
                                 <th scope="col">Nombre de lote</th>
                                 <th scope="col">Nombre cliente</th>
-                                <th scope="col">Estado</th>
                                 <th scope="col">Pagos</th>
                         
                             </tr>
@@ -84,12 +84,12 @@
                             @if ($ventas->lote->status == 'Vendido')
                                 
                                 <tr>
+                                    <td>{{$ventas->id}}</td>
                                     <td>{{$ventas->bloque->id}}</td>
                                     <td>{{$ventas->bloque->nombreBloque}}</td>
                                     <td>{{$ventas->lote->id}}</td>
                                     <td>{{$ventas->lote->nombreLote}}</td>
                                     <td>{{$ventas->cliente->nombreCompleto}}</td>
-                                    <td>{{$ventas->lote->status}}</td>
                                 
                                     @if ($ventas->formaVenta == 'credito'){{-- condicion que muestra el boton de pagos solo a los lotes vendidos al credito --}}
                                     <td><a class="btn glow-on-hover-main text-BLACK"

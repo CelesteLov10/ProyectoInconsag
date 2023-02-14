@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,6 +22,13 @@ class Venta extends Model
     'valorRestantePagar'
     ];
     use HasFactory;
+    //convertir a fecha carbon
+    protected $dates = [
+        'fechaVenta'
+    ];
+    public function setFechaVenta($date){
+        $this->attributes['fechaVenta'] = Carbon::parse($date);
+    }
     
     //una venta pertnece a un solo cliente
     public function cliente(){

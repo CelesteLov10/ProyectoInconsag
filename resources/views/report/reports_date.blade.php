@@ -45,7 +45,7 @@
                             <div class="col-12 col-md-3 text-center">
                                 <span>Fecha inicial: </span>
                                 <div class="form-group">
-                                    <input class="btn glow-on-hover-main text-BLACK" type="date" 
+                                    <input name="fecha_ini" id="fecha_ini" class="btn glow-on-hover-main text-BLACK" type="date" 
                                     value="{{old('fecha_ini')}}" 
                                     name="fecha_ini" id="fecha_ini">
                                 </div>
@@ -53,11 +53,35 @@
                             <div class="col-12 col-md-2 text-center">
                                 <span>Fecha final: </span>
                                 <div class="form-group">
-                                    <input class="btn glow-on-hover-main text-BLACK" type="date" 
+                                    <input  name="fecha_fin" id="fecha_fin" class="btn glow-on-hover-main text-BLACK" type="date" 
                                     value="{{old('fecha_fin')}}" 
                                     name="fecha_fin" id="fecha_fin">
                                 </div>
                             </div>
+                            {{-- <div class="input-daterange datepicker row align-items-center" data-date-format="d-m-y">
+                              <div class="col">
+                                  <div class="form-group">
+                                      <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                          </div>
+                                          <input class="form-control" placeholder="Fecha de inicio"
+                                           type="text" value="{{ $start }}">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col">
+                                  <div class="form-group">
+                                      <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                          </div>
+                                          <input class="form-control" placeholder="Fecha final" 
+                                          type="text" value="{{$end}}">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div> --}}
                             <div class="col-12 col-md-2 text-center mt-4">
                                 <div class="form-group">
                                    <button type="submit" class="btn glow-on-hover-main text-BLACK">Consultar</button>

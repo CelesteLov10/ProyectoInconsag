@@ -30,8 +30,8 @@ class PagoController extends Controller
         ->orWhereHas('cliente', function($q){
             $q->where('nombreCompleto','LIKE', '%' .request('search') .'%');
     });
-    })->orderBy('id','desc')->paginate(10)->withQueryString();
-        return view('pago.index', compact('lote', 'pago', 'venta'))->with('bloques', $bloques);
+    })->orderBy('id','desc')->paginate(30)->withQueryString();
+        return view('pago.index', compact('lote', 'pago', 'venta', 'bloques', 'cliente'));
     
     }
     //
@@ -134,4 +134,23 @@ class PagoController extends Controller
         return $pdf -> stream();
     }
 
+    public function change_status(Pago $pago)
+{
+    switch ($pago->statusPago) {
+        case 'Al día':
+            $pago->update(['statusPago'=>'Pago atrasado']);
+            return redirect()->back();
+            break;
+        case 'Pago atrasado':
+            $pago->update(['statusPago'=>'Peligro']);
+            return redirect()->back();
+        default:
+            # code...
+            $pago->update(['status'=>'Al día']);
+            return redirect()->back();
+            break;
+    }
+
+
+}
 }
