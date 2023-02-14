@@ -76,19 +76,18 @@
                               <div class="mb-3 row form-group">
                                 <label class="col-sm-3 col-form-label">Estado:</label>
                                 <div class="col-sm-5 form">
+                                    {{--<input disabled="true" value="Disponible" class="form-control rounded-pill @error('status') is-invalid @enderror" name="status">--}}
                                   <select class="form-control form-select rounded-pill @error('status') is-invalid @enderror" name="status">
-                                    <option value="" disabled selected>-- Seleccione un estado --</option>
+                                    {{-- <option  value="" disabled selected>-- Seleccione un estado --</option> --}}
                                     {{--  {{old('status' , $status->nombreE)==$status->id ? 'selected' : ''}} --}}
-                                        <option value="Disponible">Disponible</option>
-                                        <option value="Vendido">Vendido</option>
+                                        <option selected="selected" value="Disponible">Disponible</option>
+                                        {{-- <option value="Vendido">Vendido</option> --}}
                                   </select>
                                 @error('status')
                                   <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                                 @enderror
                                 </div>
                               </div>
-                      
-
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">Valor del terreno:</label>
                                 <div class="col-sm-5">
@@ -100,7 +99,10 @@
                                         @enderror
                                 </div>
                             </div>
-                              <br>
+
+                            <br>
+                            <hr>
+                            <br>
 
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">Medida lateral derecha:</label>
@@ -154,6 +156,9 @@
                                 </div>
                             </div>
 
+                            <br>
+                            <hr>
+                            <br>
 
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">Colindancia Norte:</label>

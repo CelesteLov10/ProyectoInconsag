@@ -67,7 +67,10 @@
                 <th scope="row">Saldo despues de prima</th>
                 <td  id="valorRestantePagar" oninput="calcularSaldo()">L. {{number_format($venta->valorRestantePagar , 2)}}</td>
             </tr>
-        
+            <tr>
+                <th scope="row">Imprimir pagos</th>
+                <td><a class="btn glow-on-hover-main text-BLACK" href="{{route('pago.pdf', ['id'=>$pago1->id])}}" value="imprimir" title="Imprimir PDF"><i class="bi bi-printer text-BLACK"></i></a></td>
+            </tr>
         </tbody>
     </table>
     
