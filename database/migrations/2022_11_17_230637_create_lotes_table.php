@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('lotes', function (Blueprint $table) {
             $table->id();
             $table->string('nombreLote');
-            $table->enum('status',['Vendido','Disponible'])->default('Disponible'); 
+            $table->enum('status',['Vendido','Disponible'])->default('Disponible')->nullable(); 
             $table->float('medidaLateralR');
             $table->float('medidaLateralL');
             $table->float('medidaEnfrente');

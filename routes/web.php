@@ -268,6 +268,8 @@ Route::controller(PagoController::class)->group(function(){
     //Route::get('/getLotes/{id}', 'getLotes');
     //Ruta para imprimir comprobante de pago
     Route::get('/pago/imprimir/{id}', 'print')->name('pago.print');
+    // Ruta para imprimir los pagos
+    Route::get('/pago/pdf/{id}', 'pdf')->name('pago.pdf');
 });
 
 
