@@ -80,7 +80,7 @@
                   La cantidad de <u>{{$pago->saldoEnCuotas}}</u></p>
                   <br>
                   <p>En concepto de pago lote <div class="caja4" id="caja4"><u>{{$pago->venta->lote->nombreLote}}</u></u></div></p>
-                  <p>Y en contraprestación de (opcional)<div class="caja4" id="caja4"></div></p>
+                  <p>Saldo pendiente<div class="caja4" id="caja4">{{$pago->valorTerrenoPagar}}</div></p>
             </form>
             
             <aside id="firmas">
