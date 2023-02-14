@@ -73,7 +73,6 @@
                                 <th scope="col">No. de lote</th>
                                 <th scope="col">Nombre de lote</th>
                                 <th scope="col">Nombre cliente</th>
-                                <th scope="col">Estado</th>
                                 <th scope="col">Pagos</th>
                         
                             </tr>
@@ -89,15 +88,17 @@
                                     <td>{{$ventas->lote->id}}</td>
                                     <td>{{$ventas->lote->nombreLote}}</td>
                                     <td>{{$ventas->cliente->nombreCompleto}}</td>
-                                    <td>{{$ventas->lote->status}}</td>
                                 
                                     @if ($ventas->formaVenta == 'credito'){{-- condicion que muestra el boton de pagos solo a los lotes vendidos al credito --}}
-                                    <td><a class="btn glow-on-hover-main text-BLACK"
+                                    <td><a class="btn glow-on-main text-BLACK" id="borsi"
                                         href="{{route('pago.show', ['id'=>$ventas->id])}}">
-                                        <i class="bi bi-file-earmark-zip"></i></a></td>
-                                            
+                                        <i class="bi bi-file-earmark-zip" id="siCredit"></i></a></td>
                                         @else
-                                            <td>Pago al contado</td>
+                                        <td>
+                                            <button class="btn glow-on-main text-BLACK" id="borno" disabled="true">
+                                            <i class="bi-file-earmark-zip" id="noCredit"></i>
+                                            </button>
+                                            </td>
                                         @endif
                                         @csrf
                                 </tr>

@@ -45,7 +45,7 @@
                 <td>{{$constructora->direccion}}</td>    
             </tr>
             <tr>
-                <th scope="row">Telefono</th>
+                <th scope="row">Teléfono</th>
                 <td>{{$constructora->telefono}}</td>    
             </tr>
             <tr>

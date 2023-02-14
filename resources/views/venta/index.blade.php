@@ -33,11 +33,11 @@
                     <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
                     <a href="{{route('report.reports_day')}}" class="btn glow-on-hover-main text-BLACK">
                       <i class="bi bi-calendar2-minus text-BLACK"></i>
-                      Reporte por día
+                      Ventas por día
                   </a>
                   <a href="{{route('reports.reports_date')}}" class="btn glow-on-hover-main text-BLACK">
                   <i class="bi bi-calendar2-minus text-BLACK"></i>
-                    Reportes por fecha
+                   Ventas por fecha
                 </a>
 
                   </div>

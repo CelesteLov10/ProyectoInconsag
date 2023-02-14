@@ -88,7 +88,7 @@
           <div class="col-sm-5">
               <input type="text" class="form-control rounded-pill @error('fechaContrato') is-invalid @enderror" 
               maxlength="10" placeholder="Seleccione la fecha del contrato de la constructora."
-              name="fechaContrato" autocomplete="off" value="{{old('fechaContrato')}}" id="datepicker"> 
+              name="fechaContrato" autocomplete="off" value="<?php echo date("Y-m-d");?>"> 
                 @error('fechaContrato')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -112,7 +112,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-<script>
+{{-- <script>
 $( function() {
     $( "#datepicker" ).datepicker({
         dateFormat: "dd-mm-yy",
@@ -128,5 +128,21 @@ $( function() {
         minDate: "-1m",
     });
     } );
-</script>
+</script> --}}
+{{-- <script>
+  window.onload = function(){
+    var fecha = new fecha Date ();
+    var mes = fecha.getMonth()+1;
+    var dia = fecha.getDate();
+    var ano = fecha.getFullYear();
+
+    if(dia<10)
+    dia = '0' + dia;
+    if(mes<10)
+    mes = '0' = mes;
+    document.getElementById('fechaActual').value= ano+"-"+mes+"-"+dia;
+
+  }
+</script> --}}
 @endsection
+

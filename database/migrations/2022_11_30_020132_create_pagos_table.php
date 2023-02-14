@@ -26,6 +26,7 @@ return new class extends Migration
             $table->double('cuotaPagar', 2);
             $table->double('saldoEnCuotas', 2);
             $table->double('valorTerrenoPagar', 2);
+            $table->enum('statusPagos',['Al día','Pago atrasado', 'Peligro'])->default('Al día')->nullable(); 
            //$table->bigInteger('nuevoSaldo');
             $table->timestamps();
         });
