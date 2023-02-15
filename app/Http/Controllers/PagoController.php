@@ -85,7 +85,7 @@ class PagoController extends Controller
             'cantidadCuotasPagar' => 'required|numeric|min:1|max:6|regex:/^[0-9]{1,2}+$/u',
             'cuotaPagar' => 'required',
             'saldoEnCuotas' => 'required',
-            'valorTerrenoPagar' => 'required|min:1|regex:/^[0-9]{1,20}+$/u',
+            'valorTerrenoPagar' => 'required|min:1|regex:/^[0-9]{1,40}/u',
             //'nuevoSaldo' => 'required',
     
         ];

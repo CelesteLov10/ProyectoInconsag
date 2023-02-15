@@ -10,6 +10,15 @@
     
 @section('contenido') 
 
+        <?php $cantCuotas = 0?>
+        @foreach ($pago2 as $pagos) {{-- CREO QUE YA ME FUNCIONOOO --}}
+            @if ($venta->id == $pagos->venta_id)
+
+            <?php $cantCuotas = $cantCuotas + $pagos->cantidadCuotasPagar ?>
+
+        @endif
+        @endforeach
+
     <div class="mb-5 m-5">
         <h3 class=" text-center">
             Pago de lote <strong>{{$venta->lote->nombreLote}}</strong>
@@ -93,7 +102,7 @@
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('cantidadCuotasPagar') is-invalid @enderror" autofocus
                 maxlength="2" placeholder="Ingrese la cantidad de cuotas." id="cantidadCuotasPagar"
-                name="cantidadCuotasPagar" autocomplete="off" value="{{old('cantidadCuotasPagar')}}" oninput="calcularPago1()" > 
+                name="cantidadCuotasPagar" autocomplete="off" value="{{old('cantidadCuotasPagar')}}" oninput="calcularPago1()" ><div class="col-sm-18 text-end">{{$cantCuotas}}/{{$venta->cantidadCuotas}}</div>
                     @error('cantidadCuotasPagar')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -128,7 +137,7 @@
             <label class="col-sm-3 col-form-label">Saldo pendiente:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill" id="valorTe"
-                 value="{{old('valorTerrenoPagar', $venta->valorRestantePagar)}}" readonly=»readonly» oninput="calcularPago1()"> 
+                value="{{old('valorTerrenoPagar', $venta->valorRestantePagar)}}" readonly=»readonly» oninput="calcularPago1()"> 
             </div>
         </div>
 
@@ -163,14 +172,7 @@
             </div>
         </div>  
     </form>
-    <?php $cantCuotas = 0?>
-    @foreach ($pago2 as $pagos) {{-- CREO QUE YA ME FUNCIONOOO --}}
-        @if ($venta->id == $pagos->venta_id)
 
-        <?php $cantCuotas = $cantCuotas + $pagos->cantidadCuotasPagar ?>
-
-    @endif
-    @endforeach
 
             </div>
         </div>
@@ -184,6 +186,7 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script>
+    
 try
     {function calcularPago1(){
     
@@ -196,14 +199,19 @@ try
     
     var resultado = cantidadCuotasPagar * cuotaPagar; 
     saldoEnCuotas.value = resultado;
-
+    
+    if (cantidadCuotasPagar > {{$cantCuotas}}) { 
+        //alert('NO DEBE SER MAYOR QUE {{$cantCuotas}}');
+    }
+    
     var restant = (valorTerren - cuotaPagar * {{$cantCuotas}}) - resultado; //Ahora si toma el valor insertado.
     valorTerrenoPagar.value = restant;
     //document.getElementById('valorTerrenoPagar').innerHTML = valorTerrenoPagar;
     //document.querySelector("#valorTerrenoPagar").value = nuevoSaldo;
-
-    }
+        }
     }catch (error) {throw error;}
+
+    
 </script>
 
 {{-- comment 
