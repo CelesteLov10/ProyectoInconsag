@@ -84,7 +84,7 @@
             </form>
             
             <aside id="firmas">
-            <h4>Firma y saluda atentamente el <br><br>
+            <h4>Firma y saluda atentamente en la fecha:<br><br>
                <u>{{$pago->fechaPago}}</u></h4>
                <br>
                <h4><u>Inconsag</u> <br>

@@ -39,12 +39,25 @@
                     <td>{{$pagos->fechaPago}}</td>
                     <td>{{$pagos->cantidadCuotasPagar}}</td>
                     <td>{{$pagos->saldoEnCuotas}}</td>
-                    <td>{{$pagos->valorTerrenoPagar}}</td>                
+                    <td>{{$pagos->valorTerrenoPagar}}</td>  
                 </tr>
                 @endif
                 @endforeach
-                
             </tbody>
+        </table>
+        <br>
+        <table>
+            <tr>
+                {{-- <?php $venta->total = $venta->total + $pagos->saldoEnCuotas ?>
+                <?php $venta->cantCuotas = $venta->cantCuotas + $pagos->cantidadCuotasPagar?> --}}
+                <th scope="col" class="col-md-4">Cantidad de cuotas:</th>
+                <td>{{number_format($venta->cantidadCuotas)}}</td>
+            </tr>
+            <tr>
+                <th scope="col" class="col-md-4">Saldo Pendiente</th>
+                {{--arreglar el valor anterior para mostrar el valor verdadero--}}
+                <td>L. {{number_format($venta->valorRestantePagar - $pagos->saldoEnCuotas), 2}}</td>
+            </tr>
         </table>
         <br>
     </div>
