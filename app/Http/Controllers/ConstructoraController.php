@@ -9,19 +9,19 @@ class ConstructoraController extends Controller
 {
     public function index()
     {
-    $constructoras = Constructora::query()
-    ->when(request('search'), function($query){
-    return $query->where('nombreConstructora', 'LIKE', '%' .request('search') .'%')
-    ->orWhere('fechaContrato', 'LIKE', '%' .request('search') .'%');
-    })->orderBy('id','desc')->paginate(10)->withQueryString();
+        $constructoras = Constructora::query()
+        ->when(request('search'), function($query){
+        return $query->where('nombreConstructora', 'LIKE', '%' .request('search') .'%')
+        ->orWhere('fechaContrato', 'LIKE', '%' .request('search') .'%');
+        })->orderBy('id','desc')->paginate(10)->withQueryString();
 
-    return view('constructora.index', compact('constructoras'));
+        return view('constructora.index', compact('constructoras'));
     }
 
     public function create()
     {
         $constructoras=Constructora::all();
-       return view('constructora.create');
+        return view('constructora.create');
     }
 
     public function store(Request $request)
@@ -51,15 +51,13 @@ class ConstructoraController extends Controller
             'email.required' => 'Debe ingresar el correo electrónico.',
             'email.email' => 'Debe ingresar un correo electrónico válido.',
             
-
             'fechaContrato.required' => 'Debe seleccionar la fecha de adquisición, no puede estar vacío.',
             ]);
             $input = $request->all();
             
             Constructora::create($input);
                 return redirect()->route('constructora.index')
-                ->with('mensaje', 'Se guardó el registro de la nueva constructora correctamente');
-            
+                ->with('mensaje', 'Se guardó el registro de la nueva constructora correctamente');         
          /** redireciona una vez enviado  */
     }
 
@@ -75,7 +73,7 @@ class ConstructoraController extends Controller
         return view('constructora.edit', compact('constructoras'))
         ->with('constructora', $constructoras);//es con es
     }
-      
+
     public function update(Request $request, $id){
         
         $this->validate($request,[
@@ -103,11 +101,6 @@ class ConstructoraController extends Controller
             'email.email' => 'Debe ingresar un correo electrónico válido.',
             'email.unique' => 'El correo electrónico ya existe.',
             
-
-            'fechaAdquisicion.required' => 'Debe seleccionar la fecha de adquisición, no puede estar vacío.',
-
-            
-        
         ]);
 
         $constructoras = Constructora::findOrFail($id);
@@ -117,9 +110,7 @@ class ConstructoraController extends Controller
         $constructoras->telefono = $request->input('telefono');
         $constructoras->email = $request->input('email');
         $constructoras->fechaContrato = $request->input('fechaContrato');
-       
-        
-        
+
         $update = $constructoras->save();
         
         if ($update){

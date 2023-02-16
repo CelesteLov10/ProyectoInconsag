@@ -9,6 +9,7 @@ use App\Http\Controllers\MaquinariaController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\BloqueController;
+use App\Http\Controllers\CasaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ConstructoraController;
 use App\Http\Controllers\LoteController;
@@ -87,6 +88,8 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/venta', 'venta')->name('venta.search');
     //Ruta para listado constructora
     Route::get('search/constructora', 'constructora')->name('constructora.search');
+     //Ruta para listado casas modelos
+    Route::get('search/casa', 'casa')->name('casa.search');
     
 });
 
@@ -183,7 +186,6 @@ Route::controller(PruebaPagosController::class)->group(function(){
 
 //Ruta para bloques
 Route::controller(LoteController::class)->group(function(){
-
     //Ruta para crear un "nuevo lote"
     Route::get('/lote/create', 'create')->name('lote.create');
     //Ruta para guardar los registros del lote
@@ -305,3 +307,21 @@ Route::get('change_status/lotes/{lote}', [LoteController::class, 'change_status'
 
 //cambio de estado de pago y
 Route::get('change_status/pagos/{pago}', [PagoController::class, 'change_status'])->name('change.status.pagos');
+
+//Ruta para casas
+Route::controller(CasaController::class)->group(function(){
+    //Ruta para listado de casass
+    Route::get('/casa', 'index')->name('casa.index');
+    //Ruta para crear un nuevo casa
+    Route::get('/casa/create', 'create')->name('casa.create');
+    //Ruta para guardar los registros de la casa
+    Route::post('/casa', 'store')->name('casa.store');
+    //Ruta para mostrar un casas
+    Route::get('/casa/{id}', 'show')->name('casa.show')
+    ->where('id','[0-9]+');
+    //Ruta para editar un casa
+    Route::get('/casa/{id}/edit', 'edit')->name('casa.edit');
+    //Ruta para el metodo editar
+    Route::put('/casa/{id}/edit', 'update')->name('casa.update');
+    //Ruta para imprimir el listado de casas
+});
