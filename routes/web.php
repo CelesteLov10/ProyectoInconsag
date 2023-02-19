@@ -305,3 +305,20 @@ Route::controller(ConstructoraController::class)->group(function(){
 //Cambio de estado en lote y venta
 Route::get('change_status/lotes/{lote}', [LoteController::class, 'change_status'])->name('change.status.lotes');
 
+//Ruta para casas
+Route::controller(CasaController::class)->group(function(){
+    //Ruta para listado de casass
+    Route::get('/casa', 'index')->name('casa.index');
+    //Ruta para crear un nuevo casa
+    Route::get('/casa/create', 'create')->name('casa.create');
+    //Ruta para guardar los registros de la casa
+    Route::post('/casa', 'store')->name('casa.store');
+    //Ruta para mostrar un casas
+    Route::get('/casa/{id}', 'show')->name('casa.show')
+    ->where('id','[0-9]+');
+    //Ruta para editar un casa
+    Route::get('/casa/{id}/edit', 'edit')->name('casa.edit');
+    //Ruta para el metodo editar
+    Route::put('/casa/{id}/edit', 'update')->name('casa.update');
+    //Ruta para imprimir el listado de casas
+});

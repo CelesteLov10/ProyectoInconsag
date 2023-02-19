@@ -79,5 +79,11 @@ class CasaController extends Controller
                 ->with('mensaje', 'Se guardó el registro de la nueva casa modelo correctamente');         
          /** redireciona una vez enviado  */
     }
+    public function show($id)
+    {
+       
+        $casa = Casa::findOrFail($id);
+        return view('casa.show', compact('casa'));
+    }
 
 }
