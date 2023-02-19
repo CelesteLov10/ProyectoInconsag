@@ -10,6 +10,7 @@ use App\Models\Oficina;
 use App\Models\Proveedor;
 use App\Models\Puesto;
 use App\Models\Bloque;
+use App\Models\Casa;
 use App\Models\Cliente;
 use App\Models\Venta;
 use App\Models\Constructora;
@@ -139,6 +140,19 @@ class SearchController extends Controller
         foreach($querys as $query){
         $data[] = [
         'label' => $query->nombreConstructora
+        ];
+        }
+        return $data;
+    }
+
+    public function casa(Request $request){
+        $term = $request->get('term');
+        $querys = Casa::where('claseCasa', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->claseCasa
         ];
         }
         return $data;

@@ -15,8 +15,10 @@ class Constructora extends Model
     'telefono',
     'email',
     'fechaContrato',];
-    public function constructora(){
-        return $this->hasMany(Constructora::class);
+
+    //Una constructor puede construir muchas casas
+    public function casa(){
+        return $this->hasMany(Casa::class);
     }
 
 }

@@ -201,12 +201,14 @@ try
     var resultado = cantidadCuotasPagar * cuotaPagar; 
     saldoEnCuotas.value = resultado;
     
-    if (cantidadCuotasPagar > {{$cantCuotas}}) { 
-        //alert('NO DEBE SER MAYOR QUE {{$cantCuotas}}');
-    }
+        var restant = (valorTerren - cuotaPagar * {{$cantCuotas}}) - resultado; //Ahora si toma el valor insertado.
+        valorTerrenoPagar.value = restant;
+        
+        if (restant < 0) {
+            valorTerrenoPagar.value = 0;
+            
+        }
     
-    var restant = (valorTerren - cuotaPagar * {{$cantCuotas}}) - resultado; //Ahora si toma el valor insertado.
-    valorTerrenoPagar.value = restant;
     //document.getElementById('valorTerrenoPagar').innerHTML = valorTerrenoPagar;
     //document.querySelector("#valorTerrenoPagar").value = nuevoSaldo;
         }

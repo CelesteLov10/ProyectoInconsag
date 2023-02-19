@@ -13,6 +13,7 @@ use App\Models\Oficina;
 use App\Models\Proveedor;
 use App\Models\Municipio;
 use App\Models\Bloque;
+use App\Models\Casa;
 use App\Models\Cliente;
 use App\Models\Constructora;
 use App\Models\Lote;
@@ -49,5 +50,6 @@ class DatabaseSeeder extends Seeder
         Venta::factory(40)->create();
         Constructora::factory(25)->create();
        Pago::factory(150)->create();
+        Casa::factory(10)->create();
     }
 }

@@ -145,6 +145,12 @@
                         Constructoras
                     </a>
                  </li>
+                 <li>
+                    <a href="{{route('casa.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+                        <span class="p-2"><i class="bi bi-house-fill text-light"></i></span>
+                        Casas modelos
+                    </a>
+                 </li>
 
       </ul>
       

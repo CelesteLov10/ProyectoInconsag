@@ -27,8 +27,6 @@ class VentaController extends Controller
 
         $cliente = Cliente::all();
         return view('venta.index', compact('ventas','cliente'));
-    
-    //
 }
 
 
@@ -40,9 +38,6 @@ class VentaController extends Controller
         $cliente = Cliente::all();
         return view('venta.show', compact('bloques', 'lotes','beneficiario','cliente'))->with('venta', $venta);
     }
-
-   
-  
 
     public function create(){ 
 
@@ -113,7 +108,7 @@ class VentaController extends Controller
             'fechaVenta.regex' => 'Debe ser mayor de edad.',
 
         ]);
-   $input = $request->all();
+        $input = $request->all();
         
         Venta::create($input);
             return redirect()->route('venta.index')

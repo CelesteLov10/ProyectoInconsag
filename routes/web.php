@@ -9,6 +9,7 @@ use App\Http\Controllers\MaquinariaController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\BloqueController;
+use App\Http\Controllers\CasaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ConstructoraController;
 use App\Http\Controllers\LoteController;
@@ -87,6 +88,8 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/venta', 'venta')->name('venta.search');
     //Ruta para listado constructora
     Route::get('search/constructora', 'constructora')->name('constructora.search');
+     //Ruta para listado casas modelos
+    Route::get('search/casa', 'casa')->name('casa.search');
     
 });
 
@@ -183,7 +186,6 @@ Route::controller(PruebaPagosController::class)->group(function(){
 
 //Ruta para bloques
 Route::controller(LoteController::class)->group(function(){
-
     //Ruta para crear un "nuevo lote"
     Route::get('/lote/create', 'create')->name('lote.create');
     //Ruta para guardar los registros del lote
