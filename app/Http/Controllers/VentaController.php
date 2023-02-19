@@ -116,7 +116,7 @@ class VentaController extends Controller
    $input = $request->all();
         
         Venta::create($input);
-            return redirect()->route('venta.create')
+            return redirect()->route('venta.index')
             ->with('mensaje', 'Se guardó una nueva venta correctamente');
         
         /** redireciona una vez enviado  */

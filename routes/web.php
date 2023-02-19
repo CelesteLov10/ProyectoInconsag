@@ -303,5 +303,3 @@ Route::controller(ConstructoraController::class)->group(function(){
 //Cambio de estado en lote y venta
 Route::get('change_status/lotes/{lote}', [LoteController::class, 'change_status'])->name('change.status.lotes');
 
-//cambio de estado de pago y
-Route::get('change_status/pagos/{pago}', [PagoController::class, 'change_status'])->name('change.status.pagos');
