@@ -40,10 +40,10 @@
 
     <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
         <div class="col-60 bg-light p-5">
-    <form action="{{route('pago.store')}}" class="proveedor-guardar" method="POST" autocomplete="off">
+    <form action="{{route('pago.store')}}" class="proveedor-guardar" id="form1" method="POST" autocomplete="off">
         @csrf {{-- TOKEN INPUT OCULTO --}}
 
-        <div class="mb-3 row">
+        <div class="mb-3 row" hidden>
             <label class="col-sm-3 col-form-label">Número de venta:</label>
             <div class="col-sm-5">
                 <input type="text" class="border border-0 form-control rounded-pill  @error('venta_id') is-invalid @enderror " 
@@ -145,8 +145,8 @@
             <label class="col-sm-3 col-form-label">Saldo pendiente:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('valorTerrenoPagar') is-invalid @enderror" 
-                maxlength="10" placeholder="Ingrese la cantidad de cuotas." id="valorTerrenoPagar"
-                name="valorTerrenoPagar" autocomplete="off" value="{{old('valorTerrenoPagar')}}" readonly=»readonly» oninput="calcularPago1()"> 
+                maxlength="10" placeholder="Saldo pendiente." id="valorTerrenoPagar"
+                name="valorTerrenoPagar" autocomplete="off" value="{{old('valorTerrenoPagar', $venta->valorTerrenoPagar)}}" readonly=»readonly» oninput="calcularPago1()"> 
                     @error('valorTerrenoPagar')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -194,24 +194,28 @@ try
     var cuotaPagar = document.getElementById('cuotaPagar').value;
     var saldoEnCuotas = document.getElementById('saldoEnCuotas');
     var valorTerrenoPagar = document.getElementById('valorTerrenoPagar');
-    var valorTe = document.getElementById('valorTe');
-    var valorTerren = valorTe.value;
-    
-    var resultado = cantidadCuotasPagar * cuotaPagar; 
-    saldoEnCuotas.value = resultado;
-    
-        var restant = (valorTerren - cuotaPagar * {{$cantCuotas}}) - resultado; //Ahora si toma el valor insertado.
-        valorTerrenoPagar.value = restant;
+    var valorTe = document.getElementById('valorTe').value;
         
-        if (restant < 0) {
+        if (cantidadCuotasPagar === "") {
             valorTerrenoPagar.value = 0;
+            saldoEnCuotas.value = 0;
+            cantidadCuotasPagar.value = 0;
             
+        }else{
+            valorTerrenoPagar.value = 0;
+            saldoEnCuotas.value = 0;
+            var resultado = cantidadCuotasPagar * cuotaPagar; 
+            saldoEnCuotas.value = resultado;
+
+            var restant = (valorTe - cuotaPagar * {{$cantCuotas}}) - resultado; //Ahora si toma el valor insertado.
+            valorTerrenoPagar.value = restant;
         }
     
     //document.getElementById('valorTerrenoPagar').innerHTML = valorTerrenoPagar;
     //document.querySelector("#valorTerrenoPagar").value = nuevoSaldo;
         }
-    }catch (error) {throw error;}
+    }catch (error) {
+        throw error;}
 
     
 </script>
