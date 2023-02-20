@@ -67,8 +67,8 @@
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('cantHabitacion') is-invalid @enderror" 
             placeholder="Ingrese la cantidad de habitaciones" name="cantHabitacion"
-            value="{{old('cantHabitacion')}}" maxlength="3">
-            @error('cantHabitacion', $casa->cantHabitacion)
+            value="{{old('cantHabitacion', $casa->cantHabitacion)}}" maxlength="3">
+            @error('cantHabitacion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
           </div>
@@ -90,10 +90,12 @@
             <label class="col-sm-3 col-form-label">Nombre de la constructora:</label>
             <div class="col-sm-5">
             <select name="constructora_id" id="" class="form-select rounded-pill @error('constructora_id') is-invalid @enderror">
-              <option value="" disabled selected>-- Seleccione una constructora --</option>
+              <option value="{{$casa->constructora_id}}" 
+                {{old('constructora_id' , $casa->constructora->nombres)==$casa->constructora->id ? 'selected' : ''}}>{{$casa->constructora->nombreConstructora}}</option>
+                {{-- para que enliste los nombres del cargo --}}
                 @foreach ($constructora as $constructoras)
-                <option value="{{$constructoras->id}}" 
-                  {{old('constructora_id' , $constructoras->nombreConstructora)==$constructoras->id ? 'selected' : ''}}>{{$constructoras->nombreConstructora}}</option>
+                <option value="{{old('constructora_id', $constructoras->id)}}"
+                {{old('constructora_id' , $constructoras->nombreConstructora)==$constructoras->id ? 'selected' : ''}}>{{$constructoras->nombreConstructora}}</option>
                 @endforeach
             </select> 
             @error('constructora_id')
@@ -106,9 +108,9 @@
             <label class="col-sm-3 col-form-label">Subir foto de casa modelo:</label>
             <div class="col-sm-5">
               <input accept="image/*" type="file" class="form-control rounded-pill @error('subirCasa') is-invalid @enderror" 
-               placeholder="Ingrese la imagen de la casa" name="subirCasa"
-              value="">{{old('subirCasa')}}</textarea>
-              @error('subirCasa', $casa->subirCasa)
+              placeholder="Ingrese la imagen de la casa" name="subirCasa"
+              value="{{old('subirCasa', $casa->subirCasa)}}">
+              @error('subirCasa')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
               @enderror
             </div>

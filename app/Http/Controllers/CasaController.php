@@ -80,9 +80,9 @@ class CasaController extends Controller
         return view('casa.show', compact('casa'));
     }
     public function edit($id){
-        $casa = Casa::all();
+        $casa = Casa::findOrFail($id);
         $constructora = Constructora::all();
-        return view('casa.create', compact('constructora'))->with('casa', $casa);
+        return view('casa.edit', compact('constructora'))->with('casa', $casa);
     }
     public function update(Request $request, $id){
         $this->validate($request,[
