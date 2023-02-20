@@ -93,7 +93,7 @@
                       </a></td>
 
                       <td><a class="btn btn-outline-warning" 
-                        href="{{route('cliente.edit', ['id' => $casas->id])}}">
+                        href="{{route('casa.edit', ['id' => $casas->id])}}">
                         <i class="bi bi-pencil-square"></i>
                       </a>
                       </td>

@@ -22,14 +22,14 @@
 
   <div class="container ">
     <div class="mb-3 text-end">
-      <a class="btn btn-outline-primary" href="{{route('constructora.index')}}">
+      <a class="btn btn-outline-primary" href="{{route('casa.index')}}">
         <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
   </div>
 
       {{-- encabezado  --}}
       <div class = " card shadow ab-4 btaura" >
         <div class = " card-header py-3 " >
-            <h5 class = "n-font-weight-bold text-white">Creación de una casa modelo</h5 > 
+            <h5 class = "n-font-weight-bold text-white">actulizacion de una casa modelo</h5 > 
         </div >
 
         <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
