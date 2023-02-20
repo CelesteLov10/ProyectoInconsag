@@ -37,6 +37,7 @@
     </div>    
   </form>
 
+
     <div class="container">
         <br>
         {{-- alerta de mensaje cuando se guardo correctamente --}}
@@ -73,30 +74,57 @@
                                 <th scope="col">No. de lote</th>
                                 <th scope="col">Nombre de lote</th>
                                 <th scope="col">Nombre cliente</th>
+                                <th scope="col">Estado del pago</th>
                                 <th scope="col">Pagos</th>
+
                         
                             </tr>
                         </thead>
                 
                         <tbody>
                         @forelse($venta as $ventas)
-                            @if ($ventas->lote->status == 'Vendido')
+                            @if ($ventas->status == 'Vendido')
                                 
                                 <tr>
-                                    <td>{{$ventas->bloque->id}}</td>
-                                    <td>{{$ventas->bloque->nombreBloque}}</td>
-                                    <td>{{$ventas->lote->id}}</td>
-                                    <td>{{$ventas->lote->nombreLote}}</td>
-                                    <td>{{$ventas->cliente->nombreCompleto}}</td>
+                                    <td>{{$ventas->idbloque}}</td>
+                                    <td>{{$ventas->nombreBloque}}</td>
+                                    <td>{{$ventas->idlote}}</td>
+                                    <td>{{$ventas->nombreLote}}</td>
+                                    <td>{{$ventas->nombreCompleto}}</td>
+
+
+                                @if ($ventas->validacion>=3)
+                                  <td>
+                                   <a class="btn glow-on-main text-BLACK" id="borno">
+                                    <i id="noCredit" class="bi bi-battery"></i></a>
+                                    </td>
+                                @endif
+
+                                @if($ventas->validacion==1 || $ventas->validacion==2)
+                                <td>
+                                    <a class="btn glow-on-main text-BLACK" id="botonEstado1">
+                                     <i id="Medio" class="bi bi-battery-half"></i></a>
+                                 </td>
+
+                                 @endif
+
+                                 @if($ventas->validacion==0)
+                                 <td>
+                                     <a class="btn glow-on-main text-BLACK" id="borsi">
+                                      <i id="siCredit" class="bi bi-battery-charging"></i></a>
+                                  </td>
+ 
+                                  @endif
+
                                 
                                     @if ($ventas->formaVenta == 'credito'){{-- condicion que muestra el boton de pagos solo a los lotes vendidos al credito --}}
                                     <td><a class="btn glow-on-main text-BLACK" id="borsi"
-                                        href="{{route('pago.show', ['id'=>$ventas->id])}}">
+                                        href="{{route('pago.show', ['id'=>$ventas->identificador])}}">
                                         <i class="bi bi-file-earmark-zip" id="siCredit"></i></a></td>
                                         @else
                                         <td>
                                             <button class="btn glow-on-main text-BLACK" id="borno" disabled="true">
-                                            <i class="bi-file-earmark-zip" id="noCredit"></i>
+                                            <i class="bi bi-file-lock" id="noCredit"></i>
                                             </button>
                                             </td>
                                         @endif
@@ -108,7 +136,7 @@
                         @empty
                         
                             <tr>
-                                <td col-span="4">No hay registros</td>
+                                <td col-span="4">No hay registros</td> 
                             </tr>
                         
                          
@@ -116,7 +144,7 @@
                         
                         </tbody>
                     </table>
-            {{$venta->links()}}
+           {{--   { {$venta->links()}}--}}
                     </div>
                 </div>
                 @endsection

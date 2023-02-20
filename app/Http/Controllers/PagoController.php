@@ -9,16 +9,30 @@ use App\Models\Pago;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Illuminate\Support\Facades\DB;
 
 class PagoController extends Controller
 {
 
-    public function index(){
-        $bloques = Bloque::all();
+    public function index(Request $request){
+       $busqueda= $request->search;
+       $busqueda="";
+         $bloques = Bloque::all();
         $pago = Pago::all();
         $lote = Lote::all();
         $cliente = Cliente::all();
-        $venta = Venta::query()
+        $venta = DB::select('call MostrarVentas(
+            :nombrelote
+            ,:bloque
+            ,:cliente)', [
+
+                "nombrelote" => $busqueda,
+                 "bloque" => $busqueda, 
+                 "cliente" => $busqueda
+
+            ]);
+
+      /*  $ventas = Venta::query()
     ->when(request('search'), function($query){
     return $query->where('formaVenta', 'LIKE', '%' .request('search') .'%')
     ->orWhereHas('lote', function($q){
@@ -30,7 +44,7 @@ class PagoController extends Controller
         ->orWhereHas('cliente', function($q){
             $q->where('nombreCompleto','LIKE', '%' .request('search') .'%');
     });
-    })->orderBy('id','desc')->paginate(30)->withQueryString();
+    })->orderBy('id','desc')->paginate(30)->withQueryString();*/
         return view('pago.index', compact('lote', 'pago', 'venta', 'bloques', 'cliente'));
     
     }
@@ -149,23 +163,5 @@ class PagoController extends Controller
         return $pdf -> stream();
     }
 
-    public function change_status(Pago $pago)
-{
-    switch ($pago->statusPago) {
-        case 'Al día':
-            $pago->update(['statusPago'=>'Pago atrasado']);
-            return redirect()->back();
-            break;
-        case 'Pago atrasado':
-            $pago->update(['statusPago'=>'Peligro']);
-            return redirect()->back();
-        default:
-            # code...
-            $pago->update(['status'=>'Al día']);
-            return redirect()->back();
-            break;
-    }
-
-
-}
+  
 }

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('cliente_id')->references('id')->on('clientes');// Restriccion llave foranea
             $table->unsignedBigInteger('lote_id');//Relacion con tabla bloque
             $table->foreign('lote_id')->references('id')->on('lotes');// Restriccion llave foranea
-            $table->string('fechaPago');
+            $table->date('fechaPago')->format('d-m-Y'); //si lo dejo como dato string no me trae las fechas
             $table->integer('cantidadCuotasPagar');
             $table->double('cuotaPagar',10, 2);
             $table->double('saldoEnCuotas',10, 2);
