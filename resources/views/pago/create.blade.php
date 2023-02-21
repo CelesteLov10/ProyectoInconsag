@@ -191,29 +191,34 @@
 try
     {function calcularPago1(){
     
-    var cantidadCuotasPagar = document.getElementById('cantidadCuotasPagar').value;
-    var cuotaPagar = document.getElementById('cuotaPagar').value;
-    var saldoEnCuotas = document.getElementById('saldoEnCuotas');
-    var valorTerrenoPagar = document.getElementById('valorTerrenoPagar');
-    var valorTe = document.getElementById('valorTe').value;
+    let cantidadCuotasPagar = document.getElementById('cantidadCuotasPagar').value;
+    let cuotaPagar = document.getElementById('cuotaPagar').value;
+    let saldoEnCuotas = document.getElementById('saldoEnCuotas');
+    let valorTerrenoPagar = document.getElementById('valorTerrenoPagar');
+    let valorTe = document.getElementById('valorTe').value;
+    let resultado = 0;
+            let restant = 0;
         
         if (cantidadCuotasPagar === "") {
             valorTerrenoPagar.value = 0;
             saldoEnCuotas.value = 0;
-            cantidadCuotasPagar.value = 0;
-            
-        }else{
-            valorTerrenoPagar.value = 0;
-            saldoEnCuotas.value = 0;
-            var resultado = cantidadCuotasPagar * cuotaPagar; 
-            saldoEnCuotas.value = resultado;
+            location.reload();//Funcion para que refresque la pagina y elimine los datos de las variables almacenadas
 
-            var restant = (valorTe - cuotaPagar * {{$cantCuotas}}) - resultado; //Ahora si toma el valor insertado.
+        }else{
+            
+            resultado = cantidadCuotasPagar * cuotaPagar; 
+            saldoEnCuotas.value = resultado;
+            
+            restant = (valorTe - (cuotaPagar * {{$cantCuotas}})) - resultado; //Ahora si toma el valor insertado.
             valorTerrenoPagar.value = restant;
         }
     
     //document.getElementById('valorTerrenoPagar').innerHTML = valorTerrenoPagar;
     //document.querySelector("#valorTerrenoPagar").value = nuevoSaldo;
+    // let refresh = document.getElementById('refresh');
+    //         refresh.addEventListener('click', => {
+    //             location.reload();
+    //         })
         }
     }catch (error) {
         throw error;}
