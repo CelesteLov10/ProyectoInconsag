@@ -15,9 +15,9 @@ class PagoController extends Controller
 {
 
     public function index(Request $request){
-       $busqueda= $request->search;
-       $busqueda="";
-         $bloques = Bloque::all();
+        $busqueda= $request->search;
+        $busqueda="";
+        $bloques = Bloque::all();
         $pago = Pago::all();
         $lote = Lote::all();
         $cliente = Cliente::all();
@@ -26,13 +26,12 @@ class PagoController extends Controller
             ,:bloque
             ,:cliente)', [
 
-                "nombrelote" => $busqueda,
-                 "bloque" => $busqueda, 
-                 "cliente" => $busqueda
+            "nombrelote" => $busqueda,
+            "bloque" => $busqueda, 
+            "cliente" => $busqueda
+        ]);
 
-            ]);
-
-      /*  $ventas = Venta::query()
+    /*  $ventas = Venta::query()
     ->when(request('search'), function($query){
     return $query->where('formaVenta', 'LIKE', '%' .request('search') .'%')
     ->orWhereHas('lote', function($q){

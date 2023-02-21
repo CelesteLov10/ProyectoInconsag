@@ -22,20 +22,20 @@
         </header>
 
         {{-- Campo de busqueda  --}}
-  <form method="GET" action="">
+<form method="GET" action="">
     <div class="container">
         <div class="vh-50 row text-center align-items-center justify-content-center">
             <div class="col-7 p-1 contorno-azul">
                 <div class="input-group">
-                      <input type="text" name="search" id="search" class="form-control" autofocus
-                      placeholder="Buscar por nombre del bloque, nombre del lote ó nombre del cliente" value="{{request('search')}}"/>
+                        <input type="text" name="search" id="search" class="form-control" autofocus
+                        placeholder="Buscar por nombre del bloque, nombre del lote ó nombre del cliente" value="{{request('search')}}"/>
                     <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
-                  </div>
+                </div>
                 </div>
             </div>
         </div>
     </div>    
-  </form>
+</form>
 
 
     <div class="container">
@@ -94,27 +94,27 @@
 
 
                                 @if ($ventas->validacion>=3)
-                                  <td>
-                                   <a class="btn glow-on-main text-BLACK" id="borno">
+                                <td>
+                                    <a class="btn glow-on-main text-BLACK" id="borno">
                                     <i id="noCredit" class="bi bi-battery"></i></a>
-                                    </td>
+                                </td>
                                 @endif
 
                                 @if($ventas->validacion==1 || $ventas->validacion==2)
                                 <td>
                                     <a class="btn glow-on-main text-BLACK" id="botonEstado1">
-                                     <i id="Medio" class="bi bi-battery-half"></i></a>
-                                 </td>
+                                    <i id="Medio" class="bi bi-battery-half"></i></a>
+                                </td>
 
-                                 @endif
+                                @endif
 
-                                 @if($ventas->validacion==0)
-                                 <td>
-                                     <a class="btn glow-on-main text-BLACK" id="borsi">
-                                      <i id="siCredit" class="bi bi-battery-charging"></i></a>
-                                  </td>
- 
-                                  @endif
+                                @if($ventas->validacion==0)
+                                <td>
+                                    <a class="btn glow-on-main text-BLACK" id="borsi">
+                                    <i id="siCredit" class="bi bi-battery-charging"></i></a>
+                                </td>
+
+                                @endif
 
                                 
                                     @if ($ventas->formaVenta == 'credito'){{-- condicion que muestra el boton de pagos solo a los lotes vendidos al credito --}}
@@ -139,17 +139,16 @@
                                 <td col-span="4">No hay registros</td> 
                             </tr>
                         
-                         
+                        
                         @endforelse
                         
                         </tbody>
                     </table>
-           {{--   { {$venta->links()}}--}}
+                {{--   {{$ventas->links()}}--}}
                     </div>
                 </div>
-                @endsection
-                        
-                @section('js')
-                {{-- plugins para el buscador jquery ui --}}
-                <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
-                @endsection
+@endsection
+@section('js')
+{{-- plugins para el buscador jquery ui --}}
+<script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+@endsection

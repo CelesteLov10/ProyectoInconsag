@@ -64,7 +64,7 @@
           <label class="col-sm-3 col-form-label">Teléfono:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('telefono') is-invalid @enderror" 
-            placeholder="Ingrese el numero de teléfono. Ejem. 00000000"
+            placeholder="Ingrese el número de teléfono. Ejem. 00000000"
             name="telefono" value="{{old('telefono')}}" maxlength="8">
           @error('telefono')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
