@@ -30,7 +30,7 @@ class CasaController extends Controller
     public function store(Request $request)
     {
             $this->validate($request,[
-                'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ][a-záéíóúñ]+\s{0,1})+$/u'],
+                'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
                 'valorCasa' => ['required','min:1', 'numeric'],
                 'cantHabitacion' => ['required','numeric','max:5','regex:/^[0-9]{1,5}/u'],
                 'descripcion' => ['required', 'min:10','max:150'],
@@ -40,7 +40,7 @@ class CasaController extends Controller
             ],[
 
             'claseCasa.required' => 'El nombre del modelo no puede ir vacío.',
-            'claseCasa.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'claseCasa.regex' => 'El nombre de la casa no permite números.',
 
             'valorCasa.required' => 'El valor de la casa no puede ir vacío.',
             'valorCasa.numeric' => 'El valor de la casa debe contener sólo números.',
@@ -86,7 +86,7 @@ class CasaController extends Controller
     }
     public function update(Request $request, $id){
         $this->validate($request,[
-            'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ][a-záéíóúñ]+\s{0,1})+$/u'],
+            'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
             'valorCasa' => ['required','min:1', 'numeric'],
             'cantHabitacion' => ['required','numeric','max:3','regex:/^[0-9]{1,3}/u'],
             'descripcion' => ['required', 'min:10','max:150'],
@@ -94,7 +94,7 @@ class CasaController extends Controller
             'subirCasa'=>['required'],
         ],[
             'claseCasa.required' => 'El nombre del modelo no puede ir vacío.',
-            'claseCasa.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'claseCasa.regex' => 'El nombre de la casa no permite números.',
 
             'valorCasa.required' => 'El valor de la casa no puede ir vacío.',
             'valorCasa.numeric' => 'El valor de la casa debe contener sólo números.',

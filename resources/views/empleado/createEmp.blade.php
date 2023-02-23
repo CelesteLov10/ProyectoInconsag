@@ -92,7 +92,7 @@
           <label class="col-sm-3 col-form-label">Estado:</label>
           <div class="col-sm-5 form">
             <select class="form-control form-select rounded-pill @error('estado') is-invalid @enderror" name="estado">
-              <option value="" disabled selected>-- Selecione un estado --</option>
+              <option value="" disabled selected>-- Seleccione un estado --</option>
               {{--  {{old('estado' , $estado->nombreE)==$estado->id ? 'selected' : ''}} --}}
               @foreach ($estados as $estado)
                   <option value="{{$estado->nombreE}}" 
