@@ -40,7 +40,7 @@
   
   <div class="container">
     <div class="mb-3 text-end">
-      <a class="btn glow-on-hover-main text-BLACK" href="{{route('casa.create')}}">Nueva casa<i class="bi bi-house-fill"></i></a>
+      <a class="btn glow-on-hover-main text-BLACK" href="{{route('casa.create')}}">Nueva casa <i class="bi bi-house-fill"></i></a>
   </div>
 
         {{-- alerta de mensaje cuando se guardo correctamente --}}

@@ -37,9 +37,13 @@
     </div>    
 </form>
 
+<br>
 
     <div class="container">
-        <br>
+        <div class="mb-3 text-end">
+            <a class="btn glow-on-hover-main text-BLACK" href="{{route('liberado.index')}}">Ver lotes liberados <i class="bi bi-check-circle"></i></a>
+          </div>
+
         {{-- alerta de mensaje cuando se guardo correctamente --}}
         @if (session('mensaje'))
             <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert">
@@ -76,6 +80,7 @@
                                 <th scope="col">Nombre cliente</th>
                                 <th scope="col">Estado del pago</th>
                                 <th scope="col">Pagos</th>
+                                <th scope="col">Liberar lote</th>
 
                         
                             </tr>
@@ -111,7 +116,7 @@
                                 @if($ventas->validacion==0)
                                 <td>
                                     <a class="btn glow-on-main text-BLACK" id="borsi">
-                                    <i id="siCredit" class="bi bi-battery-charging"></i></a>
+                                    <i id="siCredit" class="bi bi-battery-full"></i></a>
                                 </td>
 
                                 @endif
@@ -128,6 +133,14 @@
                                             </button>
                                             </td>
                                         @endif
+                                
+                                    {{-- Boton para liberar lote (SOLO ES EL DISEÑO) --}}
+                                        <td>
+                                            <a class="btn glow-on-hover-lib text-BLACK">
+                                            <i id="textnegro" class="bi bi-key-fill">
+                                            <i id="textnegro" class="bi bi-unlock-fill"></i></i></a>
+                                        </td>
+                                        
                                         @csrf
                                 </tr>
                                 
