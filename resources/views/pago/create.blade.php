@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
 <!-- Font Awesome CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<style>
+    #cantC{
+        color: blue
+    }
+</style>
 @endsection
     
 @section('contenido') 
@@ -102,8 +107,8 @@
             <label class="col-sm-3 col-form-label">Cantidad de cuotas:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('cantidadCuotasPagar') is-invalid @enderror" autofocus
-                maxlength="2" placeholder="Ingrese la cantidad de cuotas." id="cantidadCuotasPagar"
-                name="cantidadCuotasPagar" autocomplete="off" value="{{old('cantidadCuotasPagar')}}" oninput="calcularPago1()" ><div class="col-sm-18 text-end">{{$cantCuotas}}/{{$venta->cantidadCuotas}}</div>
+                maxlength="1" placeholder="Ingrese la cantidad de cuotas." id="cantidadCuotasPagar"
+                name="cantidadCuotasPagar" autocomplete="off" value="{{old('cantidadCuotasPagar')}}" oninput="calcularPago1()" ><div id="cantC" class="col-sm-18 text-end">{{$cantCuotas}}/{{$venta->cantidadCuotas}}</div>
                     @error('cantidadCuotasPagar')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -197,13 +202,14 @@ try
     let valorTerrenoPagar = document.getElementById('valorTerrenoPagar');
     let valorTe = document.getElementById('valorTe').value;
     let resultado = 0;
-            let restant = 0;
+    let restant = 0;
+    
         
         if (cantidadCuotasPagar === "") {
             valorTerrenoPagar.value = 0;
             saldoEnCuotas.value = 0;
             location.reload();//Funcion para que refresque la pagina y elimine los datos de las variables almacenadas
-
+            
         }else{
             
             resultado = cantidadCuotasPagar * cuotaPagar; 
@@ -212,6 +218,22 @@ try
             restant = (valorTe - (cuotaPagar * {{$cantCuotas}})) - resultado; //Ahora si toma el valor insertado.
             valorTerrenoPagar.value = restant;
         }
+
+        // $('submit-and-print').click(function (event) {
+        // event.preventDefault();
+        
+        // let cantidadCuotasPagar = document.getElementById('cantidadCuotasPagar').value;
+        //cantidadCuotasPagar = parseInt(cantidadCuotasPagar);
+        // cantidadCuotasPagar = parseInt(cantidadCuotasPagar);
+        // var sumaCuotas = ({{$cantCuotas}} + cantidadCuotasPagar);
+
+        // if(sumaCuotas >= {{$cantCuotas}}){
+        //     alert('kjnjhdpppppppppppppppppppppppppppppppppppppppppppppppppppppn');
+        // }
+    
+    
+        
+
     
     //document.getElementById('valorTerrenoPagar').innerHTML = valorTerrenoPagar;
     //document.querySelector("#valorTerrenoPagar").value = nuevoSaldo;
@@ -223,9 +245,10 @@ try
     }catch (error) {
         throw error;}
 
+</script>
+<script>
     
 </script>
-
 {{-- comment 
 <script>
     document.getElementById('submit-and-print').addEventListener('click', function (event) {
@@ -233,5 +256,14 @@ try
         document.forms[0].submit();
         window.open('{{route('pago.print', ['id' =>$venta->id])}}', '_blank');
     });
-</script>--}}
+</script>
+else{
+            $(document).ready(function() {
+            $('form1').submit();
+        });
+        }
+
+        var ver = document.getElementById('cantC'); 
+            ver.style.color= "red"; 
+        --}}
 @endsection
