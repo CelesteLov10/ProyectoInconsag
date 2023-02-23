@@ -28,6 +28,8 @@ class CreateTrigger extends Migration {
             INSERT INTO liberados (fecha)
             VALUES (CURDATE());
 
+            update lotes set status = "Disponible" where id= new.lote_id;
+
             END
         ');
     }
