@@ -26,14 +26,14 @@
         <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
     </div>
 
-      {{-- encabezado  --}}
+      {{-- encabezado  /images/{{$img->image}}--}}
       <div class = " card shadow ab-4 btaura" >
         <div class = " card-header py-3 " >
           <h5 class = "n-font-weight-bold text-white">Actualización de la casa modelo</h5 > 
         </div>
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
         <div class="col-60 bg-light p-5">   
-      <form action="{{route('casa.update', $casa)}}" id="formu" class="casa-actualizar" method="POST" autocomplete="off">
+      <form action="{{route('casa.update', $casa)}}" id="formu" class="casa-actualizar" method="POST" autocomplete="off" enctype="multipart/form-data">
           <!-- metodo put para que guarde los cambios en la base de datos-->
           @method('put')
           @csrf {{-- TOKEN INPUT OCULTO --}}
@@ -78,7 +78,7 @@
           <label class="col-sm-3 col-form-label">Descripción:</label>
           <div class="col-sm-5">
             <textarea type="text" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
-            maxlength="150" placeholder="Ingrese la descripción" name="direccion"
+            maxlength="150" placeholder="Ingrese la descripción" name="descripcion"
             value="">{{old('descripcion', $casa->descripcion)}}</textarea>
             @error('descripcion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -107,15 +107,15 @@
           <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Subir foto de casa modelo:</label>
             <div class="col-sm-5">
-              <input accept="image/*" type="file" class="form-control rounded-pill @error('subirCasa') is-invalid @enderror" 
-              placeholder="Ingrese la imagen de la casa" name="subirCasa"
-              value="{{old('subirCasa', $casa->subirCasa)}}">
-              @error('subirCasa')
-              <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-              @enderror
+                <input accept="image/*" type="file" id="image" class="form-control rounded-pill  @error('image') is-invalid @enderror" 
+                    name="images[]" multiple>
+                    @error('image')
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                    @enderror
+                    <div ><small class="text-danger" id="myElement" ></small></div>
             </div>
-          </div>
-        
+        </div>
+
         <div class="mb-3 row">
           <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-outline-warning" >Actualizar</button> 
@@ -125,6 +125,23 @@
           </div>
         </div>   
       </form>
+      
+        <div class=" float-right">
+            <div class="float-right ms-auto mb-2 mb-lg-0">
+                @if (count($casa->images)>0)
+                <h2>Imágenes</h2>
+                @foreach ($casa->images as $img)
+                <form action="/deleteimage/{{$img->id}}" method="post">
+                  <button class="btn text-danger">X</button>
+                    @csrf
+                    @method('delete')
+                </form>
+                <img src="/images/{{$img->image}}" class="img-responsive" style="max-height: 100px; max-width:100px" alt="" srcset="">
+                @endforeach
+                @endif
+            </div>
+        </div>
+
         </div>
       </div>
     </div>

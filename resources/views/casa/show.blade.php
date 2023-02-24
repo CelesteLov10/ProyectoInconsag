@@ -60,10 +60,19 @@
             <tr>
                 <th scope="row">Foto de la casa:</th>
                 <td>
-                   
-                        <img src="{{asset($casa->subirCasa)}}" alt="foto"
-                         class="img-fluid" width="395px" height="150px">
-                  
+                    
+                    <div class="container" style="margin-top: 50px;">
+                        <div class="mb-3 row">
+                            <div class="col-sm-5">
+                                @if (count($casa->images)>0)
+                                @foreach ($casa->images as $img)
+                                <img src="/images/{{$img->image}}" class="img-responsive mt-2" style="max-height: 400px; max-width:800px" alt="" srcset="">
+                                @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                
                 </td>    
             </tr>
         </tbody>

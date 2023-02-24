@@ -317,7 +317,8 @@ Route::controller(CasaController::class)->group(function(){
     Route::get('/casa/{id}/edit', 'edit')->name('casa.edit');
     //Ruta para el metodo editar
     Route::put('/casa/{id}/edit', 'update')->name('casa.update');
-    //Ruta para imprimir el listado de casas
+    //Ruta para eliminar una foto en update delete image
+    Route::delete('/deleteimage/{id}', 'deleteimage');
 });
 
 //Ruta para lotes liberados

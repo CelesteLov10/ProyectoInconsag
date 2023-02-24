@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('descripcion');
             $table->unsignedBigInteger('constructora_id');//Relacion con tabla constructora
             $table->foreign('constructora_id')->references('id')->on('constructoras');// Restriccion llave foranea
-            $table->string('subirCasa');
             $table->timestamps();
         });
     }

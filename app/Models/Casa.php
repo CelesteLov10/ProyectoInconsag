@@ -13,12 +13,16 @@ class Casa extends Model
     'valorCasa', 
     'cantHabitacion',
     'descripcion',
-    'constructora_id',
-    'subirCasa'];
+    'constructora_id',];
 
     //Un casa solo la puede construir una constructora
     public function constructora()
     {
         return $this->belongsTo(Constructora::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 }

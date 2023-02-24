@@ -22,7 +22,6 @@ class CasaFactory extends Factory
             'cantHabitacion'=>$this->faker->numberBetween(1, 3),
             'descripcion'=>$this->faker->word(),                             
             'constructora_id'=>$this->faker->numberBetween(1,25),
-            'subirCasa'=>$this->faker->imageUrl($width = 640, $height = 480),
         ];
     }
 }
