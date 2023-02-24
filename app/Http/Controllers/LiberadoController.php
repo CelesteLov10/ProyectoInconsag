@@ -16,25 +16,50 @@ class LiberadoController extends Controller
 {
     public function index(Request $request){
 
-        // $fecha = Carbon::now()->timestamp;
-        // $fecha = now();
-
         $liberado = Liberado::all();
         $venta = Venta::all();
         $bloques = Bloque::all();
         $cliente = Cliente::all();
         $pago =Pago::all();
-        $lote = Lote::query()
-    ->when(request('search'), function($query){
-    return $query->where('nombreLote','LIKE', '%' .request('search') .'%')
-    ->orWhereHas('bloque', function($q){
-        $q->where('nombreBloque','LIKE', '%' .request('search') .'%');
-    })
-        ->orWhereHas('cliente', function($q){
-            $q->where('nombreCompleto','LIKE', '%' .request('search') .'%');
-    });
-    })->orderBy('id','desc')->paginate(10)->withQueryString();
+        $lote = Lote::all();
+
         return view('liberado.index', compact('lote', 'cliente', 'venta', 'pago', 'bloques', 'liberado'));
+    }
+
+    public function create($id){
+        $liberado = Liberado::all();
+        $venta = Venta::findOrFail($id);
+        $bloques = Bloque::all();
+        $cliente = Cliente::all();
+        $pago =Pago::all();
+        $lote = Lote::all();
+
+        return view('liberado.create', compact('lote', 'pago', 'cliente', 'bloques', 'liberado'))->with('venta', $venta);
+    }
     
+
+    public function store(Request $request){
+    $this->validate($request,[
+        'nomBloque'       => ['required'],
+        'nomLote'       => ['required'],
+        'nomCliente'       => ['required'],
+        'fecha'       => ['required'],
+        'descripcion'       => ['required','min: 7', 'max: 255'],
+    ],[
+        'nomBloque.required' => 'El nombre del bloque es requerido, no puede estar vacío.',
+        'nomLote.required' => 'El nombre del lote es requerido, no puede estar vacío.',
+        'nomCliente.required' => 'El nombre del cliente es requerido, no puede estar vacío.',
+        'fecha.required' => 'La fecha es requerida, no puede estar vacía.',
+
+        'descripcion.required' => 'La descripción es requerida, no puede estar vacía.',
+        'descripcion.min' => 'La descripción debe tener al menos 7 caracteres.',
+        'descripcion.max' => 'La descripción no puede tener mas de 255 caracteres.',
+
+    ]);
+    $input = $request->all();
+    
+        Liberado::create($input);
+        return redirect()->route('liberado.index')
+        ->with('mensaje', 'Se ha liberado el lote correctamente');
     }
 }

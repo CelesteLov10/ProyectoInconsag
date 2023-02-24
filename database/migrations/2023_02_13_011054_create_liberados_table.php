@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('nomLote');
             $table->string('nomCliente');
             $table->string('fecha');
+            $table->string('descripcion');
+            // $table->unsignedBigInteger('lote_id');//Relacion con tabla lote
+            // $table->foreign('lote_id')->references('id')->on('lotes');
             $table->timestamps();
         });
     }

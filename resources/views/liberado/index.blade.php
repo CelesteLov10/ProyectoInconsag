@@ -61,23 +61,23 @@
                                 <th scope="col">Nombre de lote</th>
                                 <th scope="col">Nombre cliente</th>
                                 <th scope="col">Fecha en que se libero</th>
+                                <th scope="col">Descripción</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($liberado as $liberados)
-                            {{-- @if ($liberado->statusPagos == 'Peligro') --}}
                              <tr>
                                  <td>{{$liberados->nomBloque}}</td>
                                  <td>{{$liberados->nomLote}}</td>
                                  <td>{{$liberados->nomCliente}}</td>
                                  <td>{{$liberados->fecha}}</td>
+                                 <td>{{$liberados->descripcion}}</td>
                              </tr>
                     
                              @empty
                              <tr>
                              <td col-span="4">No hay registros</td>
                              </tr>
-                             {{-- @endif --}}
                          @endforelse
                         </tbody>
                     </table>
