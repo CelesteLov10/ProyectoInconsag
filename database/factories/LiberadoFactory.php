@@ -21,6 +21,8 @@ class LiberadoFactory extends Factory
             'nomLote' =>$this->faker->word(),
             'nomCliente' =>$this->faker->name(),
             'fecha'=>$this->faker->date($format = 'd-m-Y'),
+            'descripcion' =>$this->faker->text(),
+            // 'lote_id'=>$this->faker->numberBetween(1,25),
         ];
     }
 }

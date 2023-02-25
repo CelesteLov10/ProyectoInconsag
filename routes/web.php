@@ -324,4 +324,8 @@ Route::controller(CasaController::class)->group(function(){
 //Ruta para lotes liberados
 Route::controller(LiberadoController::class)->group(function(){
     Route::get('/liberado', 'index')->name('liberado.index');
+    //Ruta para registrar el lote liberado
+    Route::get('/liberado/create/{id}', 'create')->name('liberado.create');
+    //Ruta para guardar el lote liberado
+    Route::post('/liberado', 'store')->name('liberado.store');
 });

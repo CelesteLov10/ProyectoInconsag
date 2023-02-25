@@ -134,9 +134,9 @@
                                             </td>
                                         @endif
                                 
-                                    {{-- Boton para liberar lote (SOLO ES EL DISEÑO) --}}
+                                    {{-- Boton para liberar lote --}}
                                         <td>
-                                            <a class="btn glow-on-hover-lib text-BLACK">
+                                            <a class="btn glow-on-hover-lib text-BLACK" href="{{route('liberado.create', ['id'=>$ventas->identificador])}}">
                                             <i id="textnegro" class="bi bi-key-fill">
                                             <i id="textnegro" class="bi bi-unlock-fill"></i></i></a>
                                         </td>

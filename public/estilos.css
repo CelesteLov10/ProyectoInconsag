@@ -25,6 +25,11 @@ footer{
   text-decoration-color: rgb(160, 189, 189);
 }
 
+#canCuo{
+margin-top: 7px;
+margin-left: 15%;
+}
+
 /*PARA LETRAS NEON*/
 .neonText {
   color: #fff;
@@ -38,8 +43,6 @@ footer{
     0 0 140px #0fa,
     0 0 160px #0fa;
 }
-
-
 
 h3{
   /*background-color:rgba(0, 0, 0, 0.178);*/

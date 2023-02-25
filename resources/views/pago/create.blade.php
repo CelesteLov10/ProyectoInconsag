@@ -106,13 +106,14 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Cantidad de cuotas:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control rounded-pill @error('cantidadCuotasPagar') is-invalid @enderror" autofocus
-                maxlength="1" placeholder="Ingrese la cantidad de cuotas." id="cantidadCuotasPagar"
-                name="cantidadCuotasPagar" autocomplete="off" value="{{old('cantidadCuotasPagar')}}" oninput="calcularPago1()" ><div id="cantC" class="col-sm-18 text-end">{{$cantCuotas}}/{{$venta->cantidadCuotas}}</div>
+                <input style="position: relative" type="text" class="form-control rounded-pill @error('cantidadCuotasPagar') is-invalid @enderror" autofocus
+                maxlength="2" placeholder="Ingrese la cantidad de cuotas." id="cantidadCuotasPagar"
+                name="cantidadCuotasPagar" autocomplete="off" value="{{old('cantidadCuotasPagar')}}" oninput="calcularPago1()">
                     @error('cantidadCuotasPagar')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
+            <p id="canCuo" style="position: absolute">{{$cantCuotas}}/{{$venta->cantidadCuotas}}</p>
         </div>
 
         <div class="mb-3 row">

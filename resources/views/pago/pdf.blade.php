@@ -7,22 +7,30 @@
     <title>pagos pdf</title>
     
     <style>
+        
         table,td,th {
         border: 1px solid rgb(99, 99, 99);
         border-spacing: auto;
         border-collapse: collapse;
         table-layout: auto;
-        margin: auto;
+        margin-left: 17%;
         text-align: center;
         }
     
         h2 {
         text-align: center;
         }
+
+        p{
+            margin-left: 17%;
+        }
     </style>
 </head>
 <body>
-    <h2>Listado de pagos de {{$venta->lote->nombreLote}} </h2>
+    <h2>Listado de pagos del lote {{$venta->lote->nombreLote}} </h2>
+    <p>Nombre del cliente: {{$venta->cliente->nombreCompleto}}
+    <br>Valor del lote: L. {{number_format($venta->lote->valorTerreno , 2)}}</p>
+
     <div class="container">
         <table>
             <tr>
