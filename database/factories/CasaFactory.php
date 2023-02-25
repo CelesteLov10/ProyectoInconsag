@@ -17,7 +17,7 @@ class CasaFactory extends Factory
     public function definition()
     {
         return [
-            'claseCasa'=>$this->faker->randomElement(['A','B','C']),   
+            'claseCasa'=>$this->faker->word(),   
             'valorCasa'=>$this->faker->numberBetween(5000, 10125),  
             'cantHabitacion'=>$this->faker->numberBetween(1, 3),
             'descripcion'=>$this->faker->word(),                             

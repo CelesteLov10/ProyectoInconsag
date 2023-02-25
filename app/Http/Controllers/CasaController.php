@@ -29,7 +29,7 @@ class CasaController extends Controller
 
     public function store(Request $request){
             $this->validate($request,[
-                'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
+                'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u','unique:casas'],
                 'valorCasa' => ['required','min:1', 'numeric'],
                 'cantHabitacion' => ['required','numeric','max:5','regex:/^[0-9]{1,5}/u'],
                 'descripcion' => ['required', 'min:10','max:150'],
@@ -106,9 +106,9 @@ class CasaController extends Controller
 
     public function update(Request $request, $id){
         $this->validate($request,[
-            'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
+            'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u','unique:casas,claseCasa,'.$id.'id'],
             'valorCasa' => ['required','min:1', 'numeric'],
-            'cantHabitacion' => ['required','numeric','max:5','regex:/^[0-9]{1,3}/u'],
+            'cantHabitacion' => ['required','numeric','max:5','regex:/^[0-9]{1,5}/u'],
             'descripcion' => ['required', 'min:10','max:150'],
             'constructora_id' => ['required'],
         ],[

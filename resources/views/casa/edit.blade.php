@@ -43,7 +43,7 @@
           <div class="col-sm-5">
             <input type="text" autofocus class="form-control rounded-pill @error('claseCasa') is-invalid @enderror" 
             placeholder="Ingrese el tipo de la clase de casa" name="claseCasa"
-            value="{{old('claseCasa', $casa->claseCasa)}}"  maxlength="13">
+            value="{{old('claseCasa', $casa->claseCasa)}}"  maxlength="50">
               @error('claseCasa')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
               @enderror
@@ -54,7 +54,7 @@
           <label class="col-sm-3 col-form-label">Valor de casa modelo:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('valorCasa') is-invalid @enderror" 
-            maxlength="80" placeholder="Ingrese el valor de la casa" name="valorCasa"
+            maxlength="8" placeholder="Ingrese el valor de la casa" name="valorCasa"
             value="{{old('valorCasa', $casa->valorCasa)}}" >
             @error('valorCasa')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -67,7 +67,7 @@
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('cantHabitacion') is-invalid @enderror" 
             placeholder="Ingrese la cantidad de habitaciones" name="cantHabitacion"
-            value="{{old('cantHabitacion', $casa->cantHabitacion)}}" maxlength="3">
+            value="{{old('cantHabitacion', $casa->cantHabitacion)}}" maxlength="2">
             @error('cantHabitacion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
