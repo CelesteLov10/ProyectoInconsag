@@ -57,13 +57,14 @@
                 <th>Nombre constructora:</th>
                 <td>{{$casa->constructora->nombreConstructora}}</td>
             </tr>
-            <tr>
-                <th scope="row">Foto de la casa:</th>
+            
+                <th scope="row">Foto de la casa</th>
                 <td>
-                   
-                        <img src="{{asset($casa->subirCasa)}}" alt="foto"
-                         class="img-fluid" width="395px" height="150px">
-                  
+                    <div class="card-columns">
+                        <div class="card">
+                            <img class="card-img-top" src="{{asset($casa->url)}}" alt="photo">
+                        </div>
+                    </div>
                 </td>    
             </tr>
         </tbody>
