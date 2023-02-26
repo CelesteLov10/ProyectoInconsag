@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Casa;
+use App\Models\Image;
 use App\Models\Constructora;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\File;
 
 class CasaController extends Controller
 {
-    public function index()
-    {
+    public function index(){
     $casa = Casa::query()
     ->when(request('search'), function($query){
     return $query->where('claseCasa', 'LIKE', '%' .request('search') .'%');
@@ -20,27 +21,24 @@ class CasaController extends Controller
     return view('casa.index', compact('casa', 'constructora'));
     }
 
-    public function create()
-    {
+    public function create(){
         $casa = Casa::all();
         $constructora = Constructora::all();
         return view('casa.create', compact('constructora'))->with('casa', $casa);
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
             $this->validate($request,[
-                'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ][a-záéíóúñ]+\s{0,1})+$/u'],
+                'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u','unique:casas'],
                 'valorCasa' => ['required','min:1', 'numeric'],
                 'cantHabitacion' => ['required','numeric','max:5','regex:/^[0-9]{1,5}/u'],
                 'descripcion' => ['required', 'min:10','max:150'],
                 'constructora_id' => ['required'],
-                'subirCasa'=>['required'],
-               
+            
             ],[
 
             'claseCasa.required' => 'El nombre del modelo no puede ir vacío.',
-            'claseCasa.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'claseCasa.regex' => 'El nombre de la casa no permite números.',
 
             'valorCasa.required' => 'El valor de la casa no puede ir vacío.',
             'valorCasa.numeric' => 'El valor de la casa debe contener sólo números.',
@@ -59,42 +57,63 @@ class CasaController extends Controller
             'subirCasa.required'=> 'La foto de la casa modelo no puede ir vacio',
             ]);
             $input = $request->all();
-            $casa = new Casa();
-            if($request->hasFile('subirCasa') ){
-                $file = $request->file('subirCasa');
-                $destinationPath = 'public/imagenes/';
-                $filename = time() . '-' . $file->getClientOriginalName();
-                $uploadSuccess = $request->file('subirCasa')->move($destinationPath, $filename);
-                $casa->subirCasa = $destinationPath . $filename;
-            };
+            // $casa = new Casa();
+            // if($request->hasFile('subirCasa') ){
+            //     $file = $request->file('subirCasa');
+            //     $destinationPath = 'public/imagenes/';
+            //     $filename = time() . '-' . $file->getClientOriginalName();
+            //     $uploadSuccess = $request->file('subirCasa')->move($destinationPath, $filename);
+            //     $casa->subirCasa = $destinationPath . $filename;
+            // };
+
+            $casa = new Casa([
+                "claseCasa"=>$request->claseCasa,
+                "valorCasa"=>$request->valorCasa,
+                "cantHabitacion"=>$request->cantHabitacion,
+                "descripcion"=>$request->descripcion,
+                "constructora_id"=>$request->constructora_id,
+            ]);
+            $casa->save();
+
+            if ($request->hasFile("images")) {
+                $files=$request->file("images");
+                foreach($files as $file){
+                    $imageName=time().'_'.$file->getClientOriginalName();
+                    $request['casa_id']=$casa->id;
+                    $request['image']=$imageName;
+                    $file->move(\public_path('/images'), $imageName);
+                    Image::create($request->all());
+                }
+            }
             
-            Casa::create($input);
+            //Casa::create($input);
                 return redirect()->route('casa.index')
                 ->with('mensaje', 'Se guardó el registro de la nueva casa modelo correctamente');         
          /** redireciona una vez enviado  */
     }
-    public function show($id)
-    {
-       
+    
+    public function show($id){
         $casa = Casa::findOrFail($id);
         return view('casa.show', compact('casa'));
     }
+
     public function edit($id){
         $casa = Casa::findOrFail($id);
         $constructora = Constructora::all();
-        return view('casa.edit', compact('constructora'))->with('casa', $casa);
+        $images = Image::findOrFail($id);
+        return view('casa.edit', compact('constructora','images'))->with('casa', $casa);
     }
+
     public function update(Request $request, $id){
         $this->validate($request,[
-            'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ][a-záéíóúñ]+\s{0,1})+$/u'],
+            'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u','unique:casas,claseCasa,'.$id.'id'],
             'valorCasa' => ['required','min:1', 'numeric'],
-            'cantHabitacion' => ['required','numeric','max:3','regex:/^[0-9]{1,3}/u'],
+            'cantHabitacion' => ['required','numeric','max:5','regex:/^[0-9]{1,5}/u'],
             'descripcion' => ['required', 'min:10','max:150'],
             'constructora_id' => ['required'],
-            'subirCasa'=>['required'],
         ],[
             'claseCasa.required' => 'El nombre del modelo no puede ir vacío.',
-            'claseCasa.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'claseCasa.regex' => 'El nombre de la casa no permite números.',
 
             'valorCasa.required' => 'El valor de la casa no puede ir vacío.',
             'valorCasa.numeric' => 'El valor de la casa debe contener sólo números.',
@@ -111,7 +130,39 @@ class CasaController extends Controller
             'contructora_id.required'=> 'La contructora no puede ir vacio',
             'subirCasa.required'=> 'La foto de la casa modelo no puede ir vacio',
         ]);
+
+        $casa = Casa::findOrFail($id);
+
+        $casa->claseCasa = $request->input('claseCasa');
+        $casa->valorCasa = $request->input('valorCasa');
+        $casa->cantHabitacion = $request->input('cantHabitacion');
+        $casa->descripcion = $request->input('descripcion');
+        $casa->constructora_id = $request->input('constructora_id');
         
+
+        if($request->hasFile("images")){
+            $files=$request->file("images");
+            foreach($files as $file){
+                $imageName=time().'_'.$file->getClientOriginalName();
+                $request["casa_id"]=$id;
+                $request["image"]=$imageName;
+                $file->move(\public_path("images"),$imageName);
+                Image::create($request->all());
+            }
+        }
+        $casa->save();
+
+        return redirect()->route('casa.index')
+            ->with('mensajeW', 'Se actualizó la casa correctamente');
+    }
+
+    public function deleteimage($id){
+        $images = Image::findOrFail($id);
+        if(File::exists("images/".$images->image)){
+            File::delete("images/".$images->image);
+        }
+        Image::find($id)->delete();
+        return back();
     }
 
 }

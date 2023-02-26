@@ -60,11 +60,19 @@
             
                 <th scope="row">Foto de la casa</th>
                 <td>
-                    <div class="card-columns">
-                        <div class="card">
-                            <img class="card-img-top" src="{{asset($casa->url)}}" alt="photo">
+                    
+                    <div class="container" style="margin-top: 50px;">
+                        <div class="mb-3 row">
+                            <div class="col-sm-5">
+                                @if (count($casa->images)>0)
+                                @foreach ($casa->images as $img)
+                                <img src="/images/{{$img->image}}" class="img-responsive mt-2" style="max-height: 400px; max-width:800px" alt="" srcset="">
+                                @endforeach
+                                @endif
+                            </div>
                         </div>
                     </div>
+                
                 </td>    
             </tr>
         </tbody>

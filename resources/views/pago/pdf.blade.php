@@ -7,22 +7,30 @@
     <title>pagos pdf</title>
     
     <style>
+        
         table,td,th {
         border: 1px solid rgb(99, 99, 99);
         border-spacing: auto;
         border-collapse: collapse;
         table-layout: auto;
-        margin: auto;
+        margin-left: 17%;
         text-align: center;
         }
     
         h2 {
         text-align: center;
         }
+
+        p{
+            margin-left: 17%;
+        }
     </style>
 </head>
 <body>
-    <h2>Listado de pagos </h2>
+    <h2>Listado de pagos del lote {{$venta->lote->nombreLote}} </h2>
+    <p>Nombre del cliente: {{$venta->cliente->nombreCompleto}}
+    <br>Valor del lote: L. {{number_format($venta->lote->valorTerreno , 2)}}</p>
+
     <div class="container">
         <table>
             <tr>
@@ -32,14 +40,17 @@
                 <th >Nuevo saldo</th>
             </tr>
             <tbody>
-                
-                @foreach ($pago as $pagos)
+            <?php $total = 0?>
+            <?php $cantCuotas = 0?>
+            @foreach ($pago as $pagos)
             @if ($venta->id == $pagos->venta_id)
                 <tr>
                     <td>{{$pagos->fechaPago}}</td>
-                    <td>{{$pagos->cantidadCuotasPagar}}</td>
-                    <td>{{$pagos->saldoEnCuotas}}</td>
-                    <td>{{$pagos->valorTerrenoPagar}}</td>  
+                <td>{{$pagos->cantidadCuotasPagar}}</td>
+                <td id="saldoEnCuotas">{{number_format($pagos->saldoEnCuotas, 2)}}</td>
+                <?php $total = $total + $pagos->saldoEnCuotas ?>
+                <?php $cantCuotas = $cantCuotas + $pagos->cantidadCuotasPagar?>
+                <td  id="nuevoSaldo2" oninput="calcularSaldo2()">{{number_format($pagos->valorTerrenoPagar, 2)}}</td>  
                 </tr>
                 @endif
                 @endforeach
@@ -48,15 +59,16 @@
         <br>
         <table>
             <tr>
-                {{-- <?php $venta->total = $venta->total + $pagos->saldoEnCuotas ?>
-                <?php $venta->cantCuotas = $venta->cantCuotas + $pagos->cantidadCuotasPagar?> --}}
-                <th scope="col" class="col-md-4">Cantidad de cuotas:</th>
-                <td>{{number_format($venta->cantidadCuotas)}}</td>
+                <th scope="col" class="col-md-4" style="text-align: left">Cantidad de cuotas pagadas:</th>
+                <td style="text-align: right">{{number_format($cantCuotas )}} / {{$venta->cantidadCuotas}}</td>
             </tr>
             <tr>
-                <th scope="col" class="col-md-4">Saldo Pendiente</th>
-                {{--arreglar el valor anterior para mostrar el valor verdadero--}}
-                <td>L. {{number_format($venta->valorRestantePagar - $pagos->saldoEnCuotas), 2}}</td>
+                <th scope="col" class="col-md-4" style="text-align: left">Total de cuotas pagadas:</th>
+                <td style="text-align: right">L. {{number_format($total , 2)}}</td>
+            </tr>
+            <tr>
+                <th scope="col" class="col-md-4" style="text-align: left">Saldo Pendiente</th>
+                <td style="text-align: right">L. {{number_format($venta->valorRestantePagar - $total, 2)}}</td>
             </tr>
         </table>
         <br>

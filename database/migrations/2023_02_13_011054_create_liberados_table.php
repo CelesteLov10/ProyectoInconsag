@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('casas', function (Blueprint $table) {
+        Schema::create('liberados', function (Blueprint $table) {
             $table->id();
-            $table->string('claseCasa');
-            $table->string('valorCasa');
-            $table->string('cantHabitacion');
+            $table->string('nomBloque');
+            $table->string('nomLote');
+            $table->string('nomCliente');
+            $table->string('fecha');
             $table->string('descripcion');
-            $table->unsignedBigInteger('constructora_id');//Relacion con tabla constructora
-            $table->foreign('constructora_id')->references('id')->on('constructoras');// Restriccion llave foranea
+            // $table->unsignedBigInteger('lote_id');//Relacion con tabla lote
+            // $table->foreign('lote_id')->references('id')->on('lotes');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('casas');
+        Schema::dropIfExists('liberados');
     }
 };

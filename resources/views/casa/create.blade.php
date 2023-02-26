@@ -34,7 +34,7 @@
 
         <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
           <div class="col-60 bg-light p-5">
-      <form action="{{route('casa.store')}}" id="d" class="casa-guardar" method="POST" autocomplete="off">
+      <form action="{{route('casa.store')}}" id="d" class="casa-guardar" method="POST" autocomplete="off" enctype="multipart/form-data">
           @csrf {{-- TOKEN INPUT OCULTO --}}
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Clase de casa:</label>
@@ -103,9 +103,9 @@
           <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Subir foto de casa modelo:</label>
             <div class="col-sm-5">
-                <input accept="image/*" type="file" id="subirCasa" class="form-control rounded-pill  @error('subirCasa') is-invalid @enderror" 
-                    name="subirCasa" value="{{old('subirCasa')}}" >
-                    @error('subirCasa')
+                <input accept="image/*" type="file" id="image" class="form-control rounded-pill  @error('image') is-invalid @enderror" 
+                    name="images[]" multiple>
+                    @error('image')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
                     <div ><small class="text-danger" id="myElement" ></small></div>

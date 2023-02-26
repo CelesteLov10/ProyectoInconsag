@@ -13,11 +13,11 @@ use App\Http\Controllers\CasaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ConstructoraController;
 use App\Http\Controllers\LoteController;
-use App\Http\Controllers\LoteVendidoController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PruebaPagosController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\LiberadoController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -184,16 +184,13 @@ Route::controller(PruebaPagosController::class)->group(function(){
     ->where('id','[0-9]+');
 });
 
-//Ruta para bloques
+//Ruta para lotes
 Route::controller(LoteController::class)->group(function(){
     //Ruta para crear un "nuevo lote"
     Route::get('/lote/create', 'create')->name('lote.create');
     //Ruta para guardar los registros del lote
     Route::post('/lote', 'store')->name('lote.store');
     //
-    
-
-
 });
 
 //Ruta para cliente
@@ -320,5 +317,15 @@ Route::controller(CasaController::class)->group(function(){
     Route::get('/casa/{id}/edit', 'edit')->name('casa.edit');
     //Ruta para el metodo editar
     Route::put('/casa/{id}/edit', 'update')->name('casa.update');
-    //Ruta para imprimir el listado de casas
+    //Ruta para eliminar una foto en update delete image
+    Route::delete('/deleteimage/{id}', 'deleteimage');
+});
+
+//Ruta para lotes liberados
+Route::controller(LiberadoController::class)->group(function(){
+    Route::get('/liberado', 'index')->name('liberado.index');
+    //Ruta para registrar el lote liberado
+    Route::get('/liberado/create/{id}', 'create')->name('liberado.create');
+    //Ruta para guardar el lote liberado
+    Route::post('/liberado', 'store')->name('liberado.store');
 });
