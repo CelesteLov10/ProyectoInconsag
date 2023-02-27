@@ -44,7 +44,7 @@ class PagoController extends Controller
             $q->where('nombreCompleto','LIKE', '%' .request('search') .'%');
     });
     })->orderBy('id','desc')->paginate(30)->withQueryString();*/
-        return view('pago.index', compact('lote', 'pago', 'venta', 'bloques', 'cliente'));
+        return view('pago.index', compact('lote', 'pago', 'venta', 'bloques', 'cliente', 'busqueda', 'request'));
     
     }
 

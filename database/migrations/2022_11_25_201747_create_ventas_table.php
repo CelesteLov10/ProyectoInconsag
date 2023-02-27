@@ -26,10 +26,10 @@ return new class extends Migration
             $table->bigInteger('valorTerreno'); 
             $table->string('fechaVenta');
             $table->enum('formaVenta', ['contado', 'credito']);
-            $table->double('valorPrima',20,2)->nullable();
-            $table->double('cantidadCuotas',10,2)->nullable();
-            $table->double('valorCuotas',10,2)->nullable();
-            $table->double('valorRestantePagar',20,2)->nullable();
+            $table->double('valorPrima',10,1)->nullable();
+            $table->double('cantidadCuotas',10,1)->nullable();
+            $table->double('valorCuotas', 10,1)->nullable();
+            $table->double('valorRestantePagar', 10,1)->nullable();
             $table->timestamps();
         });
     }

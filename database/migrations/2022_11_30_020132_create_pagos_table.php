@@ -23,9 +23,9 @@ return new class extends Migration
             $table->foreign('lote_id')->references('id')->on('lotes');// Restriccion llave foranea
             $table->date('fechaPago')->format('d-m-Y'); //si lo dejo como dato string no me trae las fechas
             $table->integer('cantidadCuotasPagar');
-            $table->double('cuotaPagar',10, 2);
-            $table->double('saldoEnCuotas',10, 2);
-            $table->double('valorTerrenoPagar',20, 2);
+            $table->double('cuotaPagar', 10,1);
+            $table->double('saldoEnCuotas', 10,1);
+            $table->double('valorTerrenoPagar',10,1);
             $table->enum('statusPagos',['Al día','Pago atrasado', 'Peligro'])->default('Al día')->nullable(); 
            //$table->bigInteger('nuevoSaldo');
             $table->timestamps();

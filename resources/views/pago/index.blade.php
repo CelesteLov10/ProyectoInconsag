@@ -164,4 +164,12 @@
 @section('js')
 {{-- plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+
+  {{-- Codigo para que el mensaje se cierre luego de 2 segundos pasar id al div --}}
+  <script>
+    $('#alert').fadeIn();     
+    setTimeout(function() {
+        $("#alert").fadeOut();           
+    },2000);
+  </script>
 @endsection
