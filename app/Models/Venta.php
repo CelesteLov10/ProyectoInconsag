@@ -55,7 +55,7 @@ class Venta extends Model
 
     //un estilo de casa pertenece a muchas ventas
     public function casa(){
-        return $this->hasMany(Casa::class);
+        return $this->belongsTo(Casa::class);
     }
 }
 

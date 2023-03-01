@@ -25,4 +25,8 @@ class Casa extends Model
     {
         return $this->hasMany(Image::class);
     }
+    
+    public function venta(){
+        return $this->hasMany(Venta::class);
+    }
 }

@@ -26,7 +26,7 @@ class PagoController extends Controller
         /**condicion, si no hay nada en el campo de busqueda deberia traer todos los campos */
         #si le quitan un igual le aparece todos los campos en la vista, pero no les realizara la busqueda
         #si lo dejan como esta no mostrara los datos en el index, pero si las busquedas
-        if ($busqueda == "") {
+        if ($busqueda = "") {
            // $venta = Venta::orderBy('id','desc')->paginate(30)->withQueryString();
            $venta = DB::select('call MostrarVentas(
             :nombrelote

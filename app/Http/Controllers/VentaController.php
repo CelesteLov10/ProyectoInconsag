@@ -63,7 +63,7 @@ class VentaController extends Controller
             'valorTerreno'       => ['required'],
 
             'casa_id'       => ['nullable'],
-            'valorCasa'       => ['nullable'],
+          //  'valorCasa'       => ['nullable'],
             'total'       => ['required'],
 
             'fechaVenta' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',],
