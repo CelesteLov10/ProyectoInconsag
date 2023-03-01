@@ -30,7 +30,7 @@ class CasaController extends Controller
     public function store(Request $request){
             $this->validate($request,[
                 'claseCasa' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u','unique:casas'],
-                'valorCasa' => ['required','min:10000', 'numeric'],
+                'valorCasa' => ['required','min:100000', 'numeric'],
                 'cantHabitacion' => ['required','numeric','min:1','max:5','regex:/^[0-9]{1,5}/u'],
                 'descripcion' => ['required', 'min:10','max:150'],
                 'constructora_id' => ['required'],
@@ -42,7 +42,7 @@ class CasaController extends Controller
 
             'valorCasa.required' => 'El valor de la casa no puede ir vacío.',
             'valorCasa.numeric' => 'El valor de la casa debe contener sólo números.',
-            'valorCasa.min' => 'El valor de la casa no debe ser menor de 10,000.',
+            'valorCasa.min' => 'El valor de la casa no debe ser menor de 100,000.',
 
             'cantHabitacion.required' => 'La cantidad de habitaciones no puede ir vacío.',
             'cantHabitacion.numeric' => 'El valor de la casa debe contener sólo números.',
@@ -118,7 +118,7 @@ class CasaController extends Controller
 
             'valorCasa.required' => 'El valor de la casa no puede ir vacío.',
             'valorCasa.numeric' => 'El valor de la casa debe contener sólo números.',
-            'valorCasa.min' => 'El valor de la casa no debe ser menor de 10,000.',
+            'valorCasa.min' => 'El valor de la casa no debe ser menor de 100,000.',
 
             'cantHabitacion.required' => 'La cantidad de habitaciones no puede ir vacío.',
             'cantHabitacion.numeric' => 'El valor de la casa debe contener sólo números.',
