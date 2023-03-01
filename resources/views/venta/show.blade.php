@@ -57,6 +57,27 @@
                     <th scope="row">Valor del terreno:</th>
                     <td>{{$venta->lote->valorTerreno}}</td>    
                 </tr>
+
+
+
+                {{-- 
+                    correjir estos campos
+                    <tr>
+                    <th scope="row">Estilo de la casa:</th>
+                    <td>{{$venta->casa->claseCasa}}</td>    
+                </tr>                
+                <tr>
+                    <th scope="row">Valor de la casa:</th>
+                    <td>{{$venta->casa->valorCasa}}</td>    
+                </tr> --}}
+                
+
+                <tr>
+                    <th scope="row">Total a pagar:</th>
+                    <td>{{$venta->total}}</td>    
+                </tr> 
+
+
                 <tr>
                     <th scope="row">Fecha venta:</th>
                     <td>{{$venta->fechaVenta}}</td>    
@@ -90,11 +111,25 @@
                     <th scope="row">Nombre del lote:</th>
                     <td>{{$venta->lote->nombreLote}}</td>     
                 </tr>
-            
                 <tr>
                     <th scope="row">Valor del terreno:</th>
                     <td>{{$venta->lote->valorTerreno}}</td>    
                 </tr>
+
+
+                
+                {{-- 
+                    correjir estos campos
+                    <tr>
+                    <th scope="row">Estilo de la casa:</th>
+                    <td>{{$venta->casa->claseCasa}}</td>    
+                </tr>                
+                <tr>
+                    <th scope="row">Valor de la casa:</th>
+                    <td>{{$venta->casa->valorCasa}}</td>    
+                </tr> --}}
+
+
 
                 <tr>
                     <th scope="row">Estado de la venta:</th>

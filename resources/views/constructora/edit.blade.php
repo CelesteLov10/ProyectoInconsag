@@ -116,25 +116,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-  <script>
-    var maximaFechaInicio = new Date();
-    var minimoFechaInicio = new Date(maximaFechaInicio.getFullYear(), 
-    maximaFechaInicio.getMonth(), maximaFechaInicio.getDate() -1000);
-  $( function() {
-    $( "#datepicker" ).datepicker({
-      dateFormat: "dd-mm-yy",
-      changeMonth: true,
-      changeYear: true,
-      firstDay: 0,
-					monthNamesShort: ['Enero', 'Febrero', 'Marzo',
-					'Abril', 'Mayo', 'Junio',
-					'Julio', 'Agosto', 'Septiembre',
-					'Octubre', 'Noviembre', 'Diciembre'],
-					dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-          
-    });
-  } );
-</script>
+
         {{-- calendario del segundo campo de fecha ingreso showOn: "both", buttonText: " " --}}
         <script>
           $( function() {

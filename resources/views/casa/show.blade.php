@@ -57,8 +57,8 @@
                 <th>Nombre constructora:</th>
                 <td>{{$casa->constructora->nombreConstructora}}</td>
             </tr>
-            <tr>
-                <th scope="row">Foto de la casa:</th>
+            
+                <th scope="row">Foto de la casa</th>
                 <td>
                     
                     <div class="container" style="margin-top: 50px;">

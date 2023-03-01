@@ -9,11 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class Venta extends Model
 {
     protected $fillable =['id',
+    'casa_id',
     'cliente_id',
     'bloque_id', 
     'lote_id',
     'beneficiario_id',
     'valorTerreno',
+    'total',
     'fechaVenta',
     'formaVenta',
     'valorPrima',
@@ -49,6 +51,11 @@ class Venta extends Model
     //de venta pueden salir muchos pagos
     public function pago(){
         return $this->hasMany(Pago::class); //tenia belongTo
+    }
+
+    //un estilo de casa pertenece a muchas ventas
+    public function casa(){
+        return $this->hasMany(Casa::class);
     }
 }
 
