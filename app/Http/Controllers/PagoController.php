@@ -10,26 +10,48 @@ use App\Models\Venta;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
 class PagoController extends Controller
 {
 
     public function index(Request $request){
+      /** con esto se llama al nombre del boton para buscar en el index */
         $busqueda= $request->search;
-        $busqueda="";
+       //$busqueda="";
         $bloques = Bloque::all();
         $pago = Pago::all();
         $lote = Lote::all();
         $cliente = Cliente::all();
-        $venta = DB::select('call MostrarVentas(
+        /**condicion, si no hay nada en el campo de busqueda deberia traer todos los campos */
+        #si le quitan un igual le aparece todos los campos en la vista, pero no les realizara la busqueda
+        #si lo dejan como esta no mostrara los datos en el index, pero si las busquedas
+        if ($busqueda == "") {
+           // $venta = Venta::orderBy('id','desc')->paginate(30)->withQueryString();
+           $venta = DB::select('call MostrarVentas(
             :nombrelote
             ,:bloque
             ,:cliente)', [
 
-            "nombrelote" => $busqueda,
-            "bloque" => $busqueda, 
-            "cliente" => $busqueda
+            "nombrelote",
+            "bloque" , 
+            "cliente"
         ]);
+        } else {
+            # si se realiza una busqueda traera todos esos datos relacionados con la busqueda
+            $venta = DB::select('call MostrarVentas(
+                :nombrelote
+                ,:bloque
+                ,:cliente)', [
+    
+                "nombrelote" => $busqueda,
+                "bloque" => $busqueda, 
+                "cliente" => $busqueda
+            ]);
+    
+        }
+        
+      
 
     /*  $ventas = Venta::query()
     ->when(request('search'), function($query){
@@ -44,7 +66,8 @@ class PagoController extends Controller
             $q->where('nombreCompleto','LIKE', '%' .request('search') .'%');
     });
     })->orderBy('id','desc')->paginate(30)->withQueryString();*/
-        return view('pago.index', compact('lote', 'pago', 'venta', 'bloques', 'cliente', 'busqueda', 'request'));
+        return view('pago.index', compact('lote', 'pago', 'venta', 'bloques', 'cliente',));
+     //  dd($busqueda);
     
     }
 
