@@ -65,7 +65,7 @@
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('cantHabitacion') is-invalid @enderror" 
             placeholder="Ingrese la cantidad de habitaciones. "
-            name="cantHabitacion" value="{{old('cantHabitacion')}}" maxlength="2">
+            name="cantHabitacion" value="{{old('cantHabitacion')}}" maxlength="1">
           @error('cantHabitacion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
