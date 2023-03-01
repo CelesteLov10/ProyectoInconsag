@@ -90,7 +90,7 @@
 
     <input type="hidden" value="{{ old('beneficiario_id') }}" id="prueba1">
     <div class="mb-3 row">
-    <label for="beneficiario" class="col-sm-3 col-form-label">beneficiario:</label>
+    <label for="beneficiario" class="col-sm-3 col-form-label">Beneficiario:</label>
     <div class="col-sm-5">
         <select name="beneficiario_id" id="beneficiario"
                 class="form-select rounded-pill @error('beneficiario_id') is-invalid @enderror">
@@ -98,7 +98,6 @@
             @foreach ($beneficiarios as $beneficiario)
                 {{-- <option value="{{ $lote->id }}" {{ old('lote_id') == $lote->id ? 'selected' : '' }}>{{$lote['nombreLote']}}</option> --}}
             @endforeach
-            
         </select>
     @error('beneficiario_id')
         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -134,7 +133,6 @@
                     @foreach ($lotes as $lote)
                         {{-- <option value="{{ $lote->id }}" {{ old('lote_id') == $lote->id ? 'selected' : '' }}>{{$lote['nombreLote']}}</option> --}}
                     @endforeach
-                    
                 </select>
             @error('lote_id')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -151,23 +149,48 @@
             </div>
         </div>
 
-       
-
-       {{-- <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Nombre del beneficiario:</label>
-            <div class="col-sm-5">
-            <select name="beneficiario_id" id="" class="form-select rounded-pill @error('beneficiario_id') is-invalid @enderror" >
-                <option value="" disabled selected>-- Seleccione un beneficiario --</option>
-                @foreach ($beneficiarios as $beneficiario)
-                    <option value="{{$beneficiario->id}}" 
-                        {{old('beneficiario_id' , $beneficiario->nombreCompletoBen)==$beneficiario->id ? 'selected' : ''}}>{{$beneficiario->nombreCompletoBen}}</option>
-                    @endforeach
-                </select>
-            @error('beneficiario_id')
-                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+             <div class="mb-3 row form-group">
+            <label class="col-sm-3 col-form-label">Estilo de casa:</label>
+            <div class="col-sm-5 form">
+              <select name="casa_id" id="casa" 
+                        class="form-select rounded-pill @error('casa_id') is-invalid @enderror" 
+                        onchange="f_obtener_casas()">
+                <option value="" disabled selected>-- Seleccione el estilo de casa (opcional) --</option>
+                @foreach ($casa as $casas)
+                <option value="{{ $casas->id }}" {{ old('casa_id') == $casas->id ? 'selected' : '' }}>{{$casas['claseCasa']}}</option>
+                @endforeach
+              </select>
+            @error('casa')
+              <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
-        </div>   --}}
+            <a class="col-sm-2 col-form-label btn rainbow-button" href="{{route('casa.index')}}"> 
+                <i class="bi bi-house" style="color: hsl(0, 0%, 0%);"></i> Ver casas</a>
+          </div>
+
+          
+            <div class="mb-3 row">
+                <label  class="col-sm-3 col-form-label" for="valorCasa">Valor de la casa:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control  rounded-pill @error('valorCasa') is-invalid @enderror" required
+                        name="valorCasa" id="valorCasa" autocomplete="valorCasa" placeholder="Precio de la casa"
+                    value="{{old('valorCasa')}}" readonly style="background-color: white">
+                </div>
+            </div>
+    
+            <div class="mb-3 row">
+                <label  class="col-sm-3 col-form-label" for="total">Total:</label>
+                <div class="col-sm-5">
+                    <input type="text" id="total" class="form-control  rounded-pill @error('total') is-invalid @enderror"
+                        placeholder="Total a pagar" style="background-color: white" 
+                        name="total" value="{{old('total')}}" maxlength="6" readonly=»readonly»>
+                        @error('total')
+                        <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                    @enderror
+                </div>
+                <a class="col-sm-2 col-form-label btn rainbow-button" onclick="calcularTotal()"> 
+                    <i class="bi bi-currency-dollar" style="color:hsl(0, 0%, 0%);"></i> Calcular</a>
+            </div>
 
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Fecha de venta:</label>
@@ -409,18 +432,43 @@ window.onload = function(){
 </script>
 
 <script>
+    // funcion para calcular el total de la casa y el lote
+    function calcularTotal(){
+    try {
+
+        var a = parseFloat(document.getElementById('valorTerreno').value) || 0;
+        var b = parseFloat(document.getElementById('valorCasa').value) || 0;
+        var total = document.getElementById('total');
+
+        if (b == null){ 
+            total.value = a;
+        }
+        else {
+            var resultado = a+b; 
+            total.value = resultado;
+        }
+
+    } catch (error) {
+        
+    }
+    
+    }
+
+</script>
+
+<script>
     //esta funcion le hace falta *******************
   /*Funcion para que le salga el valor total que tendra que pagar por las horas alquiladas * el precio*/
 try
     {function calcularPago(){
     
-    var valorTerreno = document.getElementById('valorTerreno').value;
+    var total = document.getElementById('total').value;
     var valorPrima = document.getElementById('valorPrima').value;
     var cantidadCuotas = document.getElementById('cantidadCuotas').value;
     var valorRestantePagar = document.getElementById('valorRestantePagar');
     var valorCuotas = document.getElementById('valorCuotas');
 
-    var resultado = valorTerreno - valorPrima; 
+    var resultado = total - valorPrima; 
     valorRestantePagar.value = resultado;
 
     var resultado2 =  resultado/cantidadCuotas; 
@@ -507,6 +555,19 @@ function f_obtener_lotes() {
 
             }
 </script>
+<script>
+    function f_obtener_casas() {
+                    var select = document.getElementById("casa");
+                    var valorCasa = select.value;
+    
+                    @foreach ($casa as $casas)
+                    if (valorCasa == {{$casas->id}}) {
+                        var inputCasa = document.getElementById("valorCasa");
+                        inputCasa.value = "{{$casas->valorCasa}}";
+                    }
+                    @endforeach
+                }
+    </script>
 
 <script>
     /*Peticion segun la ruta*/

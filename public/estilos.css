@@ -102,6 +102,16 @@ tr:hover {
 
 /*****************SECCION DE BOTONES****************/
 
+/*SIN MARCOS*/
+.btn-hover-simple {
+  width: auto;
+  height: auto;
+  color: #ffffff;
+  background: #007e8a;
+  position: relative;
+  border-radius: 10px;
+}
+
 .buttons {
   margin: 1%;
   text-align: center;
@@ -403,4 +413,36 @@ border: green solid 1px;
   0% { background-position: 0 0; }
   50% { background-position: 400% 0; }
   100% { background-position: 0 0; }
+}
+
+
+/*OTRO ESTILO*/
+.rainbow-button {
+  width: 10%;
+  height: 3%;
+  color: rgb(0, 0, 0);
+  background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 49%);
+  border: 1px solid black;
+  border-radius:10px;
+
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+}
+.rainbow-button:before {
+  content:attr(alt);
+  width:10%;
+  height:3%;
+  background-color:#191919;
+  align-items:center;
+  justify-content:center;
+}
+.rainbow-button:hover {
+  animation:slidebg 4s linear infinite;
+}
+
+@keyframes slidebg {
+  to {
+    background-position:20vw;
+  }
 }

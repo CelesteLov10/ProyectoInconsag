@@ -21,9 +21,14 @@ return new class extends Migration
             $table->foreign('bloque_id')->references('id')->on('bloques');// Restriccion llave foranea
             $table->unsignedBigInteger('lote_id');//Relacion con tabla lote
             $table->foreign('lote_id')->references('id')->on('lotes');
+            $table->unsignedBigInteger('casa_id')->nullable();//Relacion con la tabla de casas
+            $table->foreign('casa_id')->references('id')->on('casas');
             $table->unsignedBigInteger('beneficiario_id');//Relacion con tabla beneficiario
             $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
             $table->bigInteger('valorTerreno'); 
+
+            $table->double('total')->unsigned();
+
             $table->string('fechaVenta');
             $table->enum('formaVenta', ['contado', 'credito']);
             $table->double('valorPrima',10,1)->nullable();

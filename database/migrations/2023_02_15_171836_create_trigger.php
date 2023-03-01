@@ -18,22 +18,12 @@ class CreateTrigger extends Migration {
 
         // AUN NO FUNCIONA CORRECTAMENTE
         DB::unprepared('
-        CREATE TRIGGER liberarLote AFTER INSERT ON `liberados` FOR EACH ROW
+        CREATE TRIGGER liberarLote BEFORE INSERT ON `liberados` FOR EACH ROW
         BEGIN
-        
+        update lotes set status = "Disponible" where status = "Vendido";
         END
         ');
     }
-
-    /* 
-    EL TRIGGER QUE SE DEBE DE USAR PARA PODER ACTUALIZAR EL STATUS EN LOTES
-    CUANDO SE INSERTE UN NUEVO REGISTRO EN LA TABLA LIBERADOS ES EL SIGUIENTE
-
-    CREATE TRIGGER liberarLote AFTER INSERT ON `liberados` FOR EACH ROW
-    BEGIN
-    update lotes set status = "Disponible" where id= new.lote_id;
-    END 
-    */
 
     public function down()
     {
