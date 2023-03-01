@@ -18,12 +18,23 @@ class CreateTrigger extends Migration {
 
         // AUN NO FUNCIONA CORRECTAMENTE
         DB::unprepared('
-        CREATE TRIGGER liberarLote BEFORE INSERT ON `liberados` FOR EACH ROW
+        CREATE TRIGGER liberarLote AFTER INSERT ON `liberados` FOR EACH ROW
         BEGIN
-        update lotes set status = "Disponible" where status = "Vendido";
+        
         END
         ');
     }
+//update lotes set status = "Disponible" where id= idlote;
+    
+
+// trigger de ventas de productos descontar stock 
+// DELIMITER //
+// CREATE TRIGGER tr_updStockventa AFTER INSERT ON detalle_venta
+//  FOR EACH ROW BEGIN
+//  UPDATE producto SET stock = stock - NEW.cantidad 
+//  WHERE producto.id = NEW.idproducto;
+// END
+// DELIMITER ;
 
     public function down()
     {

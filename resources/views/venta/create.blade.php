@@ -128,7 +128,7 @@
             <div class="col-sm-5">
                 <select name="lote_id" id="lote"
                         class="form-select rounded-pill @error('lote_id') is-invalid @enderror"
-                        onchange="f_obtener_lotes()">
+                        onchange="f_obtener_lotes()" onclick="calcularTotal()">
                     <option value="" disabled selected>-- Seleccione un lote --</option>
                     @foreach ($lotes as $lote)
                         {{-- <option value="{{ $lote->id }}" {{ old('lote_id') == $lote->id ? 'selected' : '' }}>{{$lote['nombreLote']}}</option> --}}
@@ -154,7 +154,7 @@
             <div class="col-sm-5 form">
               <select name="casa_id" id="casa" 
                         class="form-select rounded-pill @error('casa_id') is-invalid @enderror" 
-                        onchange="f_obtener_casas()">
+                        onchange="f_obtener_casas()" onclick="calcularTotal()">
                 <option value="" disabled selected>-- Seleccione el estilo de casa (opcional) --</option>
                 @foreach ($casa as $casas)
                 <option value="{{ $casas->id }}" {{ old('casa_id') == $casas->id ? 'selected' : '' }}>{{$casas['claseCasa']}}</option>
@@ -164,8 +164,6 @@
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
             </div>
-            <a class="col-sm-2 col-form-label btn rainbow-button" href="{{route('casa.index')}}"> 
-                <i class="bi bi-house" style="color: hsl(0, 0%, 0%);"></i> Ver casas</a>
           </div>
 
           
@@ -188,8 +186,6 @@
                         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
                 </div>
-                <a class="col-sm-2 col-form-label btn rainbow-button" onclick="calcularTotal()"> 
-                    <i class="bi bi-currency-dollar" style="color:hsl(0, 0%, 0%);"></i> Calcular</a>
             </div>
 
         <div class="mb-3 row">
