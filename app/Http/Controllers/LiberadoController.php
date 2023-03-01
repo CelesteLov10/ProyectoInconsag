@@ -16,12 +16,17 @@ class LiberadoController extends Controller
 {
     public function index(Request $request){
 
-        $liberado = Liberado::all();
+        $cliente = Cliente::all();
+        $pago = Pago::all();
+        $lote = Lote::all();
         $venta = Venta::all();
         $bloques = Bloque::all();
-        $cliente = Cliente::all();
-        $pago =Pago::all();
-        $lote = Lote::all();
+        $liberado = Liberado::query()
+        ->when(request('search'), function($query){
+        return $query->where('nomBloque', 'LIKE', '%' .request('search') .'%');
+        })->orderBy('id','desc')->paginate(10)->withQueryString();
+        
+        
 
         return view('liberado.index', compact('lote', 'cliente', 'venta', 'pago', 'bloques', 'liberado'));
     }
