@@ -27,7 +27,7 @@
                 @endif
             @endforeach
 
-            @if ($cantidadCu == $venta->cantidadCuotas)
+            @if ($cantidadCu >= $venta->cantidadCuotas)
                     <button class="btn g btn-outline-success" disabled><i class="bi bi-currency-dollar"></i>Nuevo pago</button>
                 @else
                     <a class="btn g btn-outline-success" href="{{route('pago.create', ['id'=>$pago1->id])}}" ><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
