@@ -126,21 +126,26 @@
                                     <td><a class="btn glow-on-main text-BLACK" id="borsi"
                                         href="{{route('pago.show', ['id'=>$ventas->identificador])}}">
                                         <i class="bi bi-file-earmark-zip" id="siCredit"></i></a></td>
+                                        {{-- Boton para liberar lote --}}
+                                        <td>
+                                            <a class="btn glow-on-hover-lib text-BLACK" href="{{route('liberado.create', ['id'=>$ventas->identificador])}}">
+                                            <i id="textnegro" class="bi bi-key-fill">
+                                            <i id="textnegro" class="bi bi-unlock-fill"></i></i></a>
+                                        </td>
                                         @else
                                         <td>
                                             <button class="btn glow-on-main text-BLACK" id="borno" disabled="true">
                                             <i class="bi bi-file-lock" id="noCredit"></i>
                                             </button>
                                             </td>
-                                        @endif
-                                
-                                    {{-- Boton para liberar lote --}}
+                                            {{-- Boton para liberar lote --}}
                                         <td>
-                                            <a class="btn glow-on-hover-lib text-BLACK" href="{{route('liberado.create', ['id'=>$ventas->identificador])}}">
-                                            <i id="textnegro" class="bi bi-key-fill">
-                                            <i id="textnegro" class="bi bi-unlock-fill"></i></i></a>
+                                            <button class="btn glow-on-hover-lib text-BLACK" disabled href="{{route('liberado.create', ['id'=>$ventas->identificador])}}">
+                                            <i id="textnegro" class="bi bi-key-fill" disabled>
+                                            <i id="textnegro" class="bi bi-unlock-fill" disabled></i></i></button>
                                         </td>
-                                        
+                                        @endif
+
                                         @csrf
                                 </tr>
                                 

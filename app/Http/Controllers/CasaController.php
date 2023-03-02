@@ -57,7 +57,7 @@ class CasaController extends Controller
 
             'subirCasa.required'=> 'La foto de la casa modelo no puede ir vacio',
             ]);
-            
+
             $input = $request->all();
             // $casa = new Casa();
             // if($request->hasFile('subirCasa') ){

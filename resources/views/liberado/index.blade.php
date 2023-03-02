@@ -28,7 +28,7 @@
             <div class="col-7 p-1 contorno-azul">
                 <div class="input-group">
                       <input type="text" name="search" id="search" class="form-control" autofocus
-                      placeholder="Buscar por nombre del bloque, nombre del lote ó nombre del cliente" value="{{request('search')}}"/>
+                      placeholder="Buscar por nombre del bloque, nombre del lote ó fecha que se liberó" value="{{request('search')}}"/>
                     <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
                   </div>
                 </div>
@@ -60,7 +60,7 @@
                                 <th scope="col">Nombre del bloque</th>
                                 <th scope="col">Nombre de lote</th>
                                 <th scope="col">Nombre cliente</th>
-                                <th scope="col">Fecha en que se libero</th>
+                                <th scope="col">Fecha en que se liberó</th>
                                 <th scope="col">Descripción</th>
                             </tr>
                         </thead>
