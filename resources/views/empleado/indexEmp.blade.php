@@ -72,7 +72,6 @@
               <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">Identidad</th>
                       <th scope="col">Nombres</th>
                       <th scope="col">Apellidos</th>
@@ -85,7 +84,6 @@
                   <tbody>
                   @forelse($empleados as $empleado)
                     <tr>
-                      <td>{{$empleado->id}}</td>
                       <td>{{$empleado->identidad}}</td>
                       <td>{{$empleado->nombres}}</td>
                       <td>{{$empleado->apellidos}}</td>

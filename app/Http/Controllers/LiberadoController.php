@@ -23,8 +23,12 @@ class LiberadoController extends Controller
         $bloques = Bloque::all();
         $liberado = Liberado::query()
         ->when(request('search'), function($query){
-        return $query->where('nomBloque', 'LIKE', '%' .request('search') .'%');
-        })->orderBy('id','desc')->paginate(10)->withQueryString();
+        return $query->where('nomBloque', 'LIKE', '%' .request('search') .'%')
+        ->orWhere('nomLote', 'LIKE', '%' .request('search') .'%')
+        ->orWhere('fecha', 'LIKE', '%' .request('search') .'%')
+        ;
+        })
+        ->orderBy('id','desc')->paginate(10)->withQueryString();
         
         
 

@@ -77,7 +77,6 @@
                     <table class="table border border-2 contorno-azul">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Nombre del bloque</th>
                             <th scope="col">Lotes Maximos</th>
                             <th scope="col">Lotes Asignados</th>
@@ -99,7 +98,6 @@
                                 </td>
                             @else
                                 <tr>
-                                    <td>{{$bloque->id}}</td>
                                     <td>{{$bloque->nombreBloque}}</td>
                                     <td>{{$bloque->cantidadLotes}}</td>
                                     <td>{{$bloque->lote()->count()}}</td>

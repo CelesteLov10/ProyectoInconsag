@@ -49,13 +49,13 @@ class CasaController extends Controller
             'cantHabitacion.min' => 'El mínimo de habitaciones es 1.',
             'cantHabitacion.max' => 'La cantidad de habitaciones no debe de exceder de 5.',
 
-            'descripcion.required' => 'La descripción no puede ir vacío.',
+            'descripcion.required' => 'La descripción no puede estar vacío.',
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
-            'constructora_id.required'=> 'La contructora no puede ir vacio',
+            'constructora_id.required'=> 'La contructora no puede estar vacío.',
 
-            'subirCasa.required'=> 'La foto de la casa modelo no puede ir vacio',
+            'subirCasa.required'=> 'La foto de la casa modelo no puede estar  vacío.',
             ]);
 
             $input = $request->all();

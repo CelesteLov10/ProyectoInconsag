@@ -52,6 +52,6 @@ class DatabaseSeeder extends Seeder
      //  Casa::factory(10)->create();
        // Venta::factory(40)->create();
       //  Pago::factory(150)->create();
-        Liberado::factory(10)->create();
+    // Liberado::factory(10)->create();
     }
 }

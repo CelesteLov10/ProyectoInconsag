@@ -68,7 +68,6 @@
               <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">Nombre del cargo</th>
                       <th scope="col">Sueldo</th>
                       <th scope="col">Actualizar</th>
@@ -77,7 +76,6 @@
                   <tbody>
                   @forelse($puestos as $puesto)
                     <tr>
-                      <td>{{$puesto->id}}</td>
                       <td>{{$puesto->nombreCargo}}</td>
                       <td>{{$puesto->sueldo}}</td>
                       <td><a class="btn btn-outline-warning" 

@@ -69,7 +69,6 @@
               <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">Nombre</th>
                       <th scope="col">Cantidad</th>
                       <th scope="col">Oficina</th>
@@ -81,7 +80,6 @@
                   <tbody>
                   @forelse($inventarios as $inventario)
                     <tr>
-                      <td>{{$inventario->id}}</td>
                       <td>{{$inventario->nombreInv}}</td> 
                       <td>{{$inventario->cantidad}}</td>   
                       <td>{{$inventario->oficina->nombreOficina}}</td> 

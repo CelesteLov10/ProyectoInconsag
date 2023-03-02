@@ -66,7 +66,7 @@ class VentaController extends Controller
           //  'valorCasa'       => ['nullable'],
             'total'       => ['required'],
 
-            'fechaVenta' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',],
+            'fechaVenta' => ['required'],
             'valorPrima' => ['required_if:formaVenta,credito','numeric','max:valorTerreno' ,'regex:/^[0-9]{1,6}+$/', 'nullable'],
             'cantidadCuotas' => ['required_if:formaVenta,credito','numeric', 'min:10', 'max:240','regex:/^[0-9]{1,4}+$/', 'nullable'],
             'valorCuotas' => ['required_if:formaVenta,credito','numeric', 'min:1', 'nullable'],
@@ -103,7 +103,6 @@ class VentaController extends Controller
             'valorRestantePagar.min' => 'El valor de la prima no debe exceder el valor del terreno',
 
             'fechaVenta.required' => 'La fecha de venta no puede ir vacío.',
-            'fechaVenta.regex' => 'Debe ser mayor de edad.',
 
         ]);
         $input = $request->all();

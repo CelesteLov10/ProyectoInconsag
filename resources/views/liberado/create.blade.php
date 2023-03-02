@@ -59,13 +59,15 @@
             <label class="col-sm-3 col-form-label">Fecha:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('fecha') is-invalid @enderror" 
-                maxlength="10"
-                name="fecha" autocomplete="off" value="<?php echo date("Y-m-d");?>"> 
+                maxlength="10" placeholder="Fecha actual"
+                name="fecha" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)"> 
                   @error('fecha')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
               @enderror
             </div>
         </div>
+        
+
 
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Descripción:</label>

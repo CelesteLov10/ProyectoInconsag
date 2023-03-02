@@ -85,7 +85,6 @@
               <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">Nombre del cliente</th>
                       <th scope="col">Forma de venta</th>
                       <th scope="col">Fecha de venta</th>
@@ -96,7 +95,6 @@
                   <tbody>
                   @forelse($ventas as $venta)
                     <tr>
-                      <td>{{$venta->id}}</td>
                       <td>{{$venta->cliente->nombreCompleto}}</td>
                       <td>{{$venta->formaVenta}}</td>
                       <td>{{$venta->fechaVenta}}</td>

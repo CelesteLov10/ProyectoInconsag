@@ -70,7 +70,6 @@
             <table class="table border border-2 contorno-azul">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Nombre de oficina</th>
                     <th scope="col">Nombre de municipio</th>
                     <th scope="col">Detalle</th>
@@ -80,7 +79,6 @@
                 <tbody>
                 @forelse($oficinas as $oficina)
                   <tr>
-                    <td>{{$oficina->id}}</td>
                     <td>{{$oficina->nombreOficina}}</td>
                     <td>{{$oficina->municipio->nombreM}}</td>
                     <td><a class="btn btn-outline-primary" href="{{route('oficina.show', ['id'=>$oficina->id])}}">

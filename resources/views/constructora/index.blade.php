@@ -73,7 +73,6 @@
               <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">Nombre Constructora</th>
                       <th scope="col">Teléfono</th>
                       <th scope="col">Fecha Contrato</th>
@@ -84,7 +83,6 @@
                   <tbody>
                   @forelse($constructoras as $constructora)
                     <tr>
-                      <td>{{$constructora->id}}</td>
                       <td>{{$constructora->nombreConstructora}}</td>
                       <td>{{$constructora->telefono}}</td>
                       <td>{{$constructora->fechaContrato}}</td>

@@ -73,7 +73,6 @@
               <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">Identidad</th>
                       <th scope="col">Nombre completo</th>
                       <th scope="col">Teléfono</th>
@@ -84,7 +83,6 @@
                   <tbody>
                   @forelse($clientes as $cliente)
                     <tr>
-                      <td>{{$cliente->id}}</td>
                       <td>{{$cliente->identidadC}}</td>
                       <td>{{$cliente->nombreCompleto}}</td>
                       <td>{{$cliente->telefono}}</td>

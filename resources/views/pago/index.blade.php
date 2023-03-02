@@ -73,9 +73,7 @@
                     <table class="table border border-2 contorno-azul">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">No. de bloque</th>
                                 <th scope="col">Nombre del bloque</th>
-                                <th scope="col">No. de lote</th>
                                 <th scope="col">Nombre de lote</th>
                                 <th scope="col">Nombre cliente</th>
                                 <th scope="col">Estado del pago</th>
@@ -91,9 +89,7 @@
                             @if ($ventas->status == 'Vendido')
                                 
                                 <tr>
-                                    <td>{{$ventas->idbloque}}</td>
                                     <td>{{$ventas->nombreBloque}}</td>
-                                    <td>{{$ventas->idlote}}</td>
                                     <td>{{$ventas->nombreLote}}</td>
                                     <td>{{$ventas->nombreCompleto}}</td>
 

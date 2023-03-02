@@ -72,7 +72,6 @@
               <table class="table border border-2 contorno-azul">
                   <thead class="thead-dark">
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">Clase de casa</th>
                       <th scope="col">Cantidad de habitaciones</th>
                       <th scope="col">Nombre de la constructora</th>
@@ -83,7 +82,6 @@
                   <tbody>
                   @forelse($casa as $casas)
                     <tr>
-                      <td>{{$casas->id}}</td>
                       <td>{{$casas->claseCasa}}</td>
                       <td>{{$casas->cantHabitacion}}</td>
                       <td>{{$casas->constructora->nombreConstructora}}</td>
