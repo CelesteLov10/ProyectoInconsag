@@ -53,10 +53,11 @@ class CasaController extends Controller
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
-            'contructora_id.required'=> 'La contructora no puede ir vacio',
+            'constructora_id.required'=> 'La contructora no puede ir vacio',
 
             'subirCasa.required'=> 'La foto de la casa modelo no puede ir vacio',
             ]);
+            
             $input = $request->all();
             // $casa = new Casa();
             // if($request->hasFile('subirCasa') ){
@@ -129,7 +130,7 @@ class CasaController extends Controller
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
-            'contructora_id.required'=> 'La contructora no puede ir vacio',
+            'constructora_id.required'=> 'La contructora no puede ir vacio',
             'subirCasa.required'=> 'La foto de la casa modelo no puede ir vacio',
         ]);
 
