@@ -22,7 +22,7 @@ class VentaFactory extends Factory
             'lote_id'=>$this->faker->numberBetween(1,25),
             'beneficiario_id'=>$this->faker->numberBetween(1,10),
             'valorTerreno'=>$this->faker->numberBetween(50000, 1000125),
-            'casa_id'=>$this->faker->numberBetween(1,10),
+            //'casa_id'=>$this->faker->numberBetween(1,10),
 
             'total'=>$this->faker->numberBetween(50000, 1000125),
 

@@ -25,9 +25,9 @@ class ReportController extends Controller
 
 
     public function reportsDay(Request $request){
-       // se puso con "created_at" porque si coloco fechaVenta no me trae los registros
+       // se puso con "fechaVenta" porque si coloco fechaVenta no me trae los registros
        //puse fecha de mexico, no me daba con la de Honduras
-        $ventas = Venta::WhereDate('created_at', Carbon::today('America/Mexico_City'))->get();
+        $ventas = Venta::WhereDate('fechaVenta', Carbon::today('America/Mexico_City'))->get();
      
         
         $valorPrima = $ventas->sum('valorPrima');
@@ -36,7 +36,7 @@ class ReportController extends Controller
       
     }
     public function reportsDate(){
-      $ventas = Venta::whereDate('created_at', Carbon::today('America/Mexico_City')->format('d-m-Y'))->get();
+      $ventas = Venta::whereDate('fechaVenta', Carbon::today('America/Mexico_City')->format('d-m-Y'))->get();
         $valorPrima = $ventas->sum('valorPrima');
         return view('report.reports_date', compact('ventas', 'valorPrima'));
   
@@ -44,50 +44,39 @@ class ReportController extends Controller
     public function reportResults(Request $request){
       $fi = $request->fecha_ini. ' 00:00:00';
       $ff = $request->fecha_fin. ' 23:59:59';
-      $ventas = Venta::whereBetween('created_at', [$fi, $ff])->get();
+      $ventas = Venta::whereBetween('fechaVenta', [$fi, $ff])->get();
       $valorPrima = $ventas->sum('valorPrima');
      return view('report.reports_date', compact('ventas', 'valorPrima'));
-       /* $now = Carbon::now();
-        $end = $now->format('d-m-y');
-        $start = $now->subYear()->format('d-m-y');
-
-      /*  $fi = $request->input('fecha_ini');
-        $ff = $request->input('fecha_fin');
-        $ventas = Venta::where('fechaVenta', '>=', $fi)
-        ->where('fechaVenta', '<=', $ff)->get();*/
-    //   $valorPrima = $ventas->sum('valorPrima');
-    //  return view('report.reports_date', compact('ventas', 'valorPrima'));
-      //dd($now);
-     // return view('report.reports_date', compact('end', 'start'));
+      
    
     }
         // Metodo para mostrar pdf por dia
-        public function pdfDia (){
-            $ventas = Venta::WhereDate('created_at', Carbon::today('America/Mexico_City'))->get();
+    public function pdfDia (){
+        $ventas = Venta::WhereDate('fechaVenta', Carbon::today('America/Mexico_City'))->get();
             // Aqui hacemos uso de la libreria PDF para que genere el documento pdf
-            $pdf = PDF::loadView('report.pdfReportDia', compact('ventas'));
+        $pdf = PDF::loadView('report.pdfReportDia', compact('ventas'));
             //download('reporte_del_dia.pdf');
-            return $pdf -> stream();
+        return $pdf -> stream();
             
-        }
+  }
             // Metodo para mostrar pdf por fecha
    public function pdfFecha (Request $request){
   //consulta pa traer los datos seleccionados
- /* $fi = $request->input('fecha_ini'). ' 00:00:00';
+  $fi = $request->input('fecha_ini'). ' 00:00:00';
   $ff = $request->input('fecha_fin'). ' 23:59:59';
-  $ventas = Venta::whereBetween('created_at', [$fi, $ff])->get();
+  $ventas = Venta::whereBetween('fechaVenta', [$fi, $ff])->get();
     // $ventas = Venta::WhereDate('fechaVenta', Carbon::today('America/Mexico_City'))->get();
 
         // Aqui hacemos uso de la libreria PDF para que genere el documento pdf
         $pdf = PDF::loadView('report.pdfReportFecha', compact('ventas'));
-        return $pdf -> stream();*/
-        $ventas = Venta::WhereDate('created_at', Carbon::today('America/Mexico_City'))->get();
+        return $pdf -> stream();
+       // $ventas = Venta::WhereDate('fechaVenta', Carbon::today('America/Mexico_City'))->get();
 
 
 
         // Aqui hacemos uso de la libreria PDF para que genere el documento pdf
-        $pdf = PDF::loadView('report.pdfReportFecha', compact('ventas'));
-        return $pdf -> stream();
+       // $pdf = PDF::loadView('report.pdfReportFecha', compact('ventas'));
+       // return $pdf -> stream();
         
     }
 

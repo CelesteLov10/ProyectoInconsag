@@ -27,7 +27,7 @@
         <div class = " card shadow ab-4 btaura">
             <div class = " card-header py-3 " >
                 <h5 class = "n-font-weight-bold text-white">Detalle de venta {{$venta->formaVenta}}</h5 > 
-            </div >
+            </div>
 
         <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
             <div class="col-60 bg-light p-5">
@@ -39,57 +39,80 @@
             </tr>
         </thead>
         <tbody>
+            
             {{-- si se vendio un lote al contado y sin casa --}}
             @if ($venta->casa_id == null)
             @if($venta->valorPrima == null)
             <tr>
-                <th scope="row">Nombre del cliente:</th>
-                <td>{{$venta->cliente->nombreCompleto}}</td>    
+                <th scope="row">Identidad del cliente:</th>
+                <td>{{$venta->cliente->identidadC}}</td>    
             </tr>
+                <tr>
+                    <th scope="row">Nombre del cliente:</th>
+                    <td>{{$venta->cliente->nombreCompleto}}</td>   
+                </tr>
+                <tr>
+                    <th scope="row">Teléfono del cliente:</th>
+                    <td>{{$venta->cliente->telefono}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Identidad del beneficiario:</th>
+                    <td>{{$venta->beneficiario->identidadBen}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Nombre del beneficiario:</th>
+                    <td>{{$venta->beneficiario->nombreCompletoBen}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Teléfono del beneficiario:</th>
+                    <td>{{$venta->beneficiario->telefonoBen}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Nombre del bloque:</th>
+                    <td>{{$venta->bloque->nombreBloque}}</td>       
+                </tr>
+                <tr>
+                    <th scope="row">Nombre del lote:</th>
+                    <td>{{$venta->lote->nombreLote}}</td>     
+                </tr>
+                <tr>
+                    <th scope="row">Valor del terreno:</th>
+                    <td>{{$venta->lote->valorTerreno}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Fecha venta:</th>
+                    <td>{{$venta->fechaVenta}}</td>    
+                </tr>
             <tr>
-                <th scope="row">Nombre del bloque:</th>
-                <td>{{$venta->bloque->nombreBloque}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Nombre del lote:</th>
-                <td>{{$venta->lote->nombreLote}}</td>    
-            </tr>
-        
-            <tr>
-                <th scope="row">Valor del terreno:</th>
-                <td>{{$venta->lote->valorTerreno}}</td>    
-            </tr>
-
-
-            <tr>
-                <th scope="row">Total a pagar:</th>
+                <th scope="row">Total pagado:</th>
                 <td>{{$venta->total}}</td>    
             </tr> 
-            <tr>
-                <th scope="row">Fecha venta:</th>
-                <td>{{$venta->fechaVenta}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Identidad beneficiario:</th>
-                <td>{{$venta->beneficiario->identidadBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Nombre beneficiario:</th>
-                <td>{{$venta->beneficiario->nombreCompletoBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Teléfono beneficiario:</th>
-                <td>{{$venta->beneficiario->telefonoBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Dirección beneficiario:</th>
-                <td>{{$venta->beneficiario->direccionBen}}</td>    
-            </tr>
+          
             {{-- si se vendio un lote al credito y sin casa --}}
         @else
+        <tr>
+            <th scope="row">Identidad del cliente:</th>
+            <td>{{$venta->cliente->identidadC}}</td>    
+        </tr>
             <tr>
                 <th scope="row">Nombre del cliente:</th>
                 <td>{{$venta->cliente->nombreCompleto}}</td>   
+            </tr>
+            <tr>
+                <th scope="row">Teléfono del cliente:</th>
+                <td>{{$venta->cliente->telefono}}</td>    
+            </tr>
+            <tr>
+                <th scope="row">Identidad del beneficiario:</th>
+                <td>{{$venta->beneficiario->identidadBen}}</td>    
+            </tr>
+            <tr>
+                <th scope="row">Nombre del beneficiario:</th>
+                <td>{{$venta->beneficiario->nombreCompletoBen}}</td>    
+            </tr>
+            <tr>
+                <th scope="row">Teléfono del beneficiario:</th>
+                <td>{{$venta->beneficiario->telefonoBen}}</td>    
             </tr>
             <tr>
                 <th scope="row">Nombre del bloque:</th>
@@ -100,17 +123,14 @@
                 <td>{{$venta->lote->nombreLote}}</td>     
             </tr>
             <tr>
-                <th scope="row">Valor del terreno:</th>
-                <td>{{$venta->lote->valorTerreno}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Estado de la venta:</th>
-                <td>{{$venta->lote->status}}</td>    
-            </tr>
-            <tr>
                 <th scope="row">Fecha venta:</th>
                 <td>{{$venta->fechaVenta}}</td>    
             </tr>
+            <tr>
+                <th scope="row">Valor del terreno:</th>
+                <td>{{$venta->lote->valorTerreno}}</td>    
+            </tr>
+          
             <tr>
                 <th scope="row">Valor prima:</th>
                 <td>{{$venta->valorPrima}}</td>    
@@ -127,84 +147,93 @@
                 <th scope="row">Valor restante a pagar:</th>
                 <td>{{$venta->valorRestantePagar}}</td>    
             </tr>
-            <tr>
-                <th scope="row">Identidad beneficiario:</th>
-                <td>{{$venta->beneficiario->identidadBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Nombre beneficiario:</th>
-                <td>{{$venta->beneficiario->nombreCompletoBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Teléfono beneficiario:</th>
-                <td>{{$venta->beneficiario->telefonoBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Dirección beneficiario:</th>
-                <td>{{$venta->beneficiario->direccionBen}}</td>    
-            </tr>
+  
         @endif 
         {{-- si se vendio un lote al contado y con casa --}}
             @else
             @if($venta->valorPrima == null)
             <tr>
-                <th scope="row">Nombre del cliente:</th>
-                <td>{{$venta->cliente->nombreCompleto}}</td>    
+                <th scope="row">Identidad del cliente:</th>
+                <td>{{$venta->cliente->identidadC}}</td>    
             </tr>
-            <tr>
-                <th scope="row">Nombre del bloque:</th>
-                <td>{{$venta->bloque->nombreBloque}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Nombre del lote:</th>
-                <td>{{$venta->lote->nombreLote}}</td>    
-            </tr>
-        
-            <tr>
-                <th scope="row">Valor del terreno:</th>
-                <td>{{$venta->lote->valorTerreno}}</td>    
-            </tr>
+                <tr>
+                    <th scope="row">Nombre del cliente:</th>
+                    <td>{{$venta->cliente->nombreCompleto}}</td>   
+                </tr>
+                <tr>
+                    <th scope="row">Teléfono del cliente:</th>
+                    <td>{{$venta->cliente->telefono}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Identidad del beneficiario:</th>
+                    <td>{{$venta->beneficiario->identidadBen}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Nombre del beneficiario:</th>
+                    <td>{{$venta->beneficiario->nombreCompletoBen}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Teléfono del beneficiario:</th>
+                    <td>{{$venta->beneficiario->telefonoBen}}</td>    
+                </tr>
+                <tr>
+                    <th scope="row">Nombre del bloque:</th>
+                    <td>{{$venta->bloque->nombreBloque}}</td>       
+                </tr>
+                <tr>
+                    <th scope="row">Nombre del lote:</th>
+                    <td>{{$venta->lote->nombreLote}}</td>     
+                </tr>
+                <tr>
+                    <th scope="row">Valor del terreno:</th>
+                    <td>{{$venta->lote->valorTerreno}}</td>    
+                </tr>
+                <tr>
+                    <th>Estilo de casa:</th>
+                    <td>{{$venta->casa->claseCasa}}</td>
+                </tr>
+                <tr>
+                    <th>Valor de la casa:</th>
+                    <td>{{$venta->casa->valorCasa}}</td>
+                </tr>
+                <tr>
+                    <th>Cantidad de habitaciones:</th>
+                    <td>{{$venta->casa->cantHabitacion}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Fecha venta:</th>
+                    <td>{{$venta->fechaVenta}}</td>    
+                </tr>
             <tr>
                 <th scope="row">Total a pagar:</th>
                 <td>{{$venta->total}}</td>    
             </tr> 
-            <tr>
-                <th scope="row">Fecha venta:</th>
-                <td>{{$venta->fechaVenta}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Identidad beneficiario:</th>
-                <td>{{$venta->beneficiario->identidadBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Nombre beneficiario:</th>
-                <td>{{$venta->beneficiario->nombreCompletoBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Teléfono beneficiario:</th>
-                <td>{{$venta->beneficiario->telefonoBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Dirección beneficiario:</th>
-                <td>{{$venta->beneficiario->direccionBen}}</td>    
-            </tr>
-            <tr>
-                <th>Estilo de casa:</th>
-                <td>{{$venta->casa->claseCasa}}</td>
-            </tr>
-            <tr>
-                <th>Valor de la casa:</th>
-                <td>{{$venta->casa->valorCasa}}</td>
-            </tr>
-            <tr>
-                <th>Cantidad de habitaciones:</th>
-                <td>{{$venta->casa->cantHabitacion}}</td>
-            </tr>
+
            {{-- si se vendio un lote al credito y con casa --}}
         @else
+        <tr>
+            <th scope="row">Identidad del cliente:</th>
+            <td>{{$venta->cliente->identidadC}}</td>    
+        </tr>
             <tr>
                 <th scope="row">Nombre del cliente:</th>
                 <td>{{$venta->cliente->nombreCompleto}}</td>   
+            </tr>
+            <tr>
+                <th scope="row">Teléfono del cliente:</th>
+                <td>{{$venta->cliente->telefono}}</td>    
+            </tr>
+            <tr>
+                <th scope="row">Identidad del beneficiario:</th>
+                <td>{{$venta->beneficiario->identidadBen}}</td>    
+            </tr>
+            <tr>
+                <th scope="row">Nombre del beneficiario:</th>
+                <td>{{$venta->beneficiario->nombreCompletoBen}}</td>    
+            </tr>
+            <tr>
+                <th scope="row">Teléfono del beneficiario:</th>
+                <td>{{$venta->beneficiario->telefonoBen}}</td>    
             </tr>
             <tr>
                 <th scope="row">Nombre del bloque:</th>
@@ -218,10 +247,17 @@
                 <th scope="row">Valor del terreno:</th>
                 <td>{{$venta->lote->valorTerreno}}</td>    
             </tr>
-
             <tr>
-                <th scope="row">Estado de la venta:</th>
-                <td>{{$venta->lote->status}}</td>    
+                <th>Estilo de casa:</th>
+                <td>{{$venta->casa->claseCasa}}</td>
+            </tr>
+            <tr>
+                <th>Valor de la casa:</th>
+                <td>{{$venta->casa->valorCasa}}</td>
+            </tr>
+            <tr>
+                <th>Cantidad de habitaciones:</th>
+                <td>{{$venta->casa->cantHabitacion}}</td>
             </tr>
             <tr>
                 <th scope="row">Fecha venta:</th>
@@ -243,38 +279,6 @@
                 <th scope="row">Valor restante a pagar:</th>
                 <td>{{$venta->valorRestantePagar}}</td>    
             </tr>
-            <tr>
-                <th scope="row">Identidad beneficiario:</th>
-                <td>{{$venta->beneficiario->identidadBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Nombre beneficiario:</th>
-                <td>{{$venta->beneficiario->nombreCompletoBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Teléfono beneficiario:</th>
-                <td>{{$venta->beneficiario->telefonoBen}}</td>    
-            </tr>
-            <tr>
-                <th scope="row">Dirección beneficiario:</th>
-                <td>{{$venta->beneficiario->direccionBen}}</td>    
-            </tr>
-            <tr>
-                <th>Estilo de casa:</th>
-                <td>{{$venta->casa->claseCasa}}</td>
-            </tr>
-            <tr>
-                <th>Valor de la casa:</th>
-                <td>{{$venta->casa->valorCasa}}</td>
-            </tr>
-            <tr>
-                <th>Cantidad de habitaciones:</th>
-                <td>{{$venta->casa->cantHabitacion}}</td>
-            </tr>
-          {{--    <tr>
-                <th>Total a pagar:</th>
-                <td>{{$venta->total}}</td>
-            </tr>--}}
         @endif
             @endif
           
