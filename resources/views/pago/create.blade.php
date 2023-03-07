@@ -104,6 +104,7 @@
                 <input style="position: relative" type="text" class="form-control rounded-pill @error('cantidadCuotasPagar') is-invalid @enderror" autofocus
                 maxlength="1" placeholder="Ingrese la cantidad de cuotas." id="cantidadCuotasPagar"
                 name="cantidadCuotasPagar" autocomplete="off" value="{{old('cantidadCuotasPagar')}}" oninput="calcularPago1()">
+                <small id="error1" style="color: red; display: none;">El número de teléfono no es válido.</small>
                     @error('cantidadCuotasPagar')
                 <small id="error1" class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -201,19 +202,20 @@ try
     let restant = 0;
     
         
-        if (cantidadCuotasPagar === "") {
-            valorTerrenoPagar.value = 0;
-            saldoEnCuotas.value = 0;
-            location.reload();//Funcion para que refresque la pagina y elimine los datos de las variables almacenadas
+        // if (cantidadCuotasPagar === "") {
+        //     valorTerrenoPagar.value = 0;
+        //     saldoEnCuotas.value = 0;
+        //     location.reload();//Funcion para que refresque la pagina y elimine los datos de las variables almacenadas
             
-        }else{
+        // }else
+        
             
             resultado = cantidadCuotasPagar * cuotaPagar; 
             saldoEnCuotas.value = resultado;
             
             restant = (valorTe - (cuotaPagar * {{$cantCuotas}})) - resultado; //Ahora si toma el valor insertado.
             valorTerrenoPagar.value = restant;
-        }
+        
 
         // $('submit-and-print').click(function (event) {
         // event.preventDefault();
@@ -236,6 +238,50 @@ try
     }catch (error) {
         throw error;}
 
+</script>
+
+<script>
+    // Validación del número de teléfono
+const input = document.getElementById("cantidadCuotasPagar");
+
+if (input) {
+    input.addEventListener("input", function (e) {
+        // Elimina todo lo que no sea números
+        let numbers = e.target.value.replace(/\D/g, "");
+
+        let cantidadCuotasPagar = document.getElementById('cantidadCuotasPagar').value;
+        cantidadCuotasPagar = parseInt(cantidadCuotasPagar);
+        var sumaCuotas = ({{$cantCuotas}} + cantidadCuotasPagar);
+
+        // Valida que el primer dígito sea 3, 8 o 9
+        if (!/^[123456]/.test(numbers.charAt(0))) {
+            numbers = numbers.slice(1);
+            location.reload();
+        }
+    });
+}
+
+// Validación del formulario para que no se envien cuando este autorrellenado incorectamente el input PEDIDOS
+let form = document.getElementById("form1");
+let submitBtn = document.getElementById("submit-and-print");
+let small = document.getElementById("error1");
+
+if (form && submitBtn) {
+    form.addEventListener("submit", function (e) {
+        let input = document.getElementById("cantidadCuotasPagar");
+        if (input) {
+            let numbers = input.value.replace(/\D/g, "");
+
+            // Valida que el número de teléfono cumpla con las condiciones
+            if (!/^[123456]/.test(numbers.charAt(0))) {
+                alert();
+                e.preventDefault(); // Previene el envío del formulario
+                small.innerHTML = "La cantidad de cuotas excede de las ya z.";
+                small.style.display = "block";
+            }
+        }
+    });
+}
 </script>
 
 {{-- comment 

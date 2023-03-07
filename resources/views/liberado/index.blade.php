@@ -42,7 +42,23 @@
     <div class="container">
         <div class="mb-3 text-end">
             <a class="btn glow-on-hover-main text-BLACK" href="{{route('pago.index')}}">Volver a lotes vendidos <i class="bi bi-reply"></i></a>
-          </div>
+        </div>
+
+            {{-- alerta de mensaje cuando se guardo correctamente --}}
+        @if (session('mensaje'))
+            <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
+            {{ session('mensaje')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        {{-- alerta de mensaje cuando se actualice un dato correctamente --}}
+        @if (session('mensajeW'))
+            <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert" >
+                {{ session('mensajeW')}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
         {{-- encabezado --}}
         <div class=" card shadow ab-4 btaura">
@@ -84,9 +100,16 @@
            {{--   { {$venta->links()}}--}}
                     </div>
                 </div>
-                @endsection
+@endsection
                         
-                @section('js')
-                {{-- plugins para el buscador jquery ui --}}
-                <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
-                @endsection
+@section('js')
+{{-- plugins para el buscador jquery ui --}}
+<script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+{{-- Codigo para que el mensaje se cierre luego de 2 segundos pasar id al div --}}
+<script>
+    $('#alert').fadeIn();     
+    setTimeout(function() {
+        $("#alert").fadeOut();           
+    },2000);
+</script>
+@endsection
