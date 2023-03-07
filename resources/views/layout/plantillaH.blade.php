@@ -80,7 +80,7 @@
           </li>
           <li>
             <a href="{{route('bloque.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
-                <span class="p-2"><i class="bi bi-x-diamond text-white"></i></span>
+                <span class="p-2"><i class="bi bi-bricks text-white"></i></span>
                 Bloques y lotes
             </a>
             </li>
@@ -152,6 +152,12 @@
                     </a>
                  </li>
 
+                 <li>
+                    <a href="{{route('gasto.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+                        <span class="p-2"><i class="bi bi-cart4 text-light"></i></span>
+                        Gastos j
+                    </a>
+                 </li>
       </ul>
       
       {{--<button class="btn-hover glow-on-hover" onclick="darkMode()">Modo oscuro</button>--}}

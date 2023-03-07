@@ -28,7 +28,8 @@
             <div class="col-7 p-1 contorno-azul">
                 <div class="input-group">
                         <input type="text" name="search" id="search" class="form-control" autofocus
-                        placeholder="Buscar por nombre del bloque, nombre del lote ó nombre del cliente" value="{{request('search')}}"/>
+                        placeholder="Buscar por nombre del bloque, nombre del lote ó nombre del cliente"
+                         value="{{request('search')}}"/>
                     <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
                 </div>
                 </div>
@@ -68,7 +69,7 @@
                         </h5></a>
             </div>
 
-            <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
+            <div class="vh-50 row m-0 text-center align-items-center justify-content-center container" >
                 <div class="col-60 bg-light p-5">
                     <table class="table border border-2 contorno-azul">
                         <thead class="thead-dark">
@@ -79,17 +80,14 @@
                                 <th scope="col">Estado del pago</th>
                                 <th scope="col">Pagos</th>
                                 <th scope="col">Liberar lote</th>
-
-                        
                             </tr>
                         </thead>
-                
                         <tbody>
                         @forelse($venta as $ventas)
                             @if ($ventas->status == 'Vendido')
                                 
                                 <tr>
-                                    <td>{{$ventas->nombreBloque}}</td>
+                                    <td>{{$ventas->nombreBloque}} </td>
                                     <td>{{$ventas->nombreLote}}</td>
                                     <td>{{$ventas->nombreCompleto}}</td>
 
@@ -163,8 +161,6 @@
                 </div>
 @endsection
 @section('js')
-{{-- plugins para el buscador jquery ui --}}
-<script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
 
   {{-- Codigo para que el mensaje se cierre luego de 2 segundos pasar id al div --}}
   <script>
