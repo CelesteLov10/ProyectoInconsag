@@ -14,7 +14,7 @@
   <header class="blog-header py-2 mt-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-14 text-center">
-          <h3 class="blog-header-logo">Listado de inventarios</h3>
+          <h3 class="blog-header-logo">Listado de gastos</h3>
       <hr>
       </div>
     </div>
@@ -84,9 +84,13 @@
                       <td>{{$gasto->nombreEmpresa}}</td>   
                       <td>{{$gasto->fechaGastos}}</td> 
                       <td>{{$gasto->empleado->nombres}}</td>     {{-- aqui vista show --}}
-                      <td><a class="btn btn-outline-primary">
-                        <i class="bi bi-eye"></i> </a></td>
-                     
+                      <td>
+                        <a class="btn btn-outline-primary"
+                          href="{{route('gasto.show', ['id' => $gasto->id])}}">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                    </td>
+                    
                     @empty
                     <tr>
                       <td col-span="4">No hay registros</td>
@@ -95,7 +99,7 @@
                     
                   </tbody>
                 </table>
-               {{-- {{$gasto->links()}} --}} 
+                {{-- {{$gasto->links()}} --}} 
           </div>
       </div>
   </div>

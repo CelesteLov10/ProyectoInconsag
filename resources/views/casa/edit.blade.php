@@ -136,7 +136,7 @@
                     @csrf
                     @method('delete')
                 </form>
-                <img src="/images/{{$img->image}}" class="img-responsive" style="max-height: 100px; max-width:100px" alt="" srcset="">
+                <img src="/images/{{$img->image}}" class="img-responsive" style="max-height: 300px; max-width:300px" alt="" srcset="">
                 @endforeach
                 @endif
             </div>

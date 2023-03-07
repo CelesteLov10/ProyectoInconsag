@@ -65,7 +65,7 @@
           <label class="col-sm-3 col-form-label">Nombre de la empresa:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('nombreEmpresa') is-invalid @enderror" 
-            placeholder="Ingrese la cantidad de habitaciones. "
+            placeholder="Ingrese el nombre de la empresa. "
             name="nombreEmpresa" value="{{old('nombreEmpresa')}}" maxlength="50">
           @error('nombreEmpresa')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -90,7 +90,7 @@
           <label class="col-sm-3 col-form-label">Descripción:</label>
           <div class="col-sm-5">
             <textarea type="text" class="form-control rounded-pill  @error('descripcion') is-invalid @enderror" 
-            maxlength="150" placeholder="Ingrese la descripción de la casa"
+            maxlength="150" placeholder="Ingrese la descripción del gasto"
             name="descripcion" value="">{{old('descripcion')}}</textarea>
           @error('descripcion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -102,7 +102,7 @@
             <label class="col-sm-3 col-form-label">Nombre del empleado encargado:</label>
             <div class="col-sm-5">
             <select name="empleado_id" id="" class="form-select rounded-pill  @error('empleado_id') is-invalid @enderror">
-                <option value="" disabled selected>-- Selecione un nombre de empleado --</option>
+                <option value="" disabled selected>-- Seleccione un nombre de empleado --</option>
                 @foreach ($empleado as $empleados)
                 <option value="{{$empleados->id}}" 
                     {{old('empleado_id' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}}</option>
@@ -116,7 +116,7 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Subir foto del recibo:</label>
             <div class="col-sm-5">
-                <input accept="image/*" type="file" id="subirfoto" class="form-control rounded-pill  @error('baucherRecibo') is-invalid @enderror" 
+                <input accept="image/*" type="file" id="baucherRecibo" class="form-control rounded-pill  @error('baucherRecibo') is-invalid @enderror" 
                     name="baucherRecibo" value="{{old('baucherRecibo')}}" >
                     @error('baucherRecibo')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>

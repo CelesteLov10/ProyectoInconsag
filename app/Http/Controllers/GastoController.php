@@ -33,24 +33,46 @@ class GastoController extends Controller
     
         public function store(Request $request){
             $reglas = [
-                'nombreGastos'   => 'required',
-                'montoGastos' => 'required', 
-                'nombreEmpresa' => 'required', 
+                'nombreGastos'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u',
+                'montoGastos' => 'required|min:1|numeric', 
+                'nombreEmpresa' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u', 
                 'fechaGastos' => 'required', 
-                'descripcion' => 'required', 
+                'descripcion' => 'required|min:10|max:150', 
                 'empleado_id' => 'required', 
                 'baucherRecibo'    => 'required',
             ];
             $mensaje =[
-                'nombreGastos.required' => 'El nombre del bloque es requerido, no puede estar vacío. ',
-               
-    
+                'nombreGastos.required' => 'El nombre del gasto es requerido, no puede estar vacío. ',
+                'nombreGastos.regex' => 'El nombre del gasto no permite números y un espacio entre palabras.',
+
+                'montoGastos.required' => 'El monto del gasto es requerido, no puede estar vacío. ',
+                'montoGastos.numeric' => 'El monto del gasto debe contener sólo números.',
+                'montoGastos.min' => 'El monto del gasto no debe ser menor que 1.',
+
+                'nombreEmpresa.required' => 'El nombre de la empresa es requerido, no puede estar vacío. ',
+                'nombreEmpresa.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+
+                'fechaGastos.required' => 'La fecha de gasto es requerido, no puede estar vacío. ',
+
+                'descripcion.required' => 'La descripción del gasto es requerido, no puede estar vacío. ',
+                'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
+                'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
+
+                'empleado_id.required' => 'El empleado es requerido, no puede estar vacío. ',
+
                 'baucherRecibo.required' => 'Debe seleccionar una imagen. ',
     
             ];
             $this->validate($request, $reglas, $mensaje);
     
             $gasto = new Gasto();
+            $gasto->nombreGastos = $request->nombreGastos;
+            $gasto->montoGastos = $request->montoGastos;
+            $gasto->nombreEmpresa = $request->nombreEmpresa;
+            $gasto->fechaGastos = $request->fechaGastos;
+            $gasto->descripcion = $request->descripcion;
+            $gasto->empleado_id = $request->empleado_id;
+
             if($request->hasFile('baucherRecibo') ){
                 $file = $request->file('baucherRecibo');
                 $destinationPath = 'public/imagenesGastos/';
@@ -58,13 +80,6 @@ class GastoController extends Controller
                 $uploadSuccess = $request->file('baucherRecibo')->move($destinationPath, $filename);
                 $gasto->baucherRecibo = $destinationPath . $filename;
             };
-            $gasto->nombreGastos = $request->nombreGastos;
-            $gasto->montoGastos = $request->montoGastos;
-            $gasto->nombreEmpresa = $request->nombreEmpresa;
-            $gasto->fechaGastos = $request->fechaGastos;
-            $gasto->descripcion = $request->descripcion;
-            $gasto->empleado_id = $request->empleado_id;
-            $gasto->baucherRecibo = $request->baucherRecibo;
     
             $create = $gasto->save();
     
@@ -73,15 +88,11 @@ class GastoController extends Controller
                 ->with('mensaje', 'Se guardó el registro del nuevo gasto correctamente');
             }
         }
+
         public function show($id){
-            /*  $bloque = Bloque::findOrFail($id);
-              $pago = Pago::all();
-              $venta = Venta::all();
-              $lotes = Lote::query()
-          ->when(request('search'), function($query){
-          return $query->where('nombreLote', 'LIKE', '%' .request('search') .'%');
-          })->orderBy('id','desc')->paginate(10000000)->withQueryString();
-              return view('bloque.show', compact('lotes'))->with('bloque', $bloque);*/
-          }
+            $gasto = Gasto::findOrFail($id);
+            $empleado = Empleado::all();
+            return view('gasto.show', compact('empleado'))->with('gasto', $gasto);
+        }
     
 }

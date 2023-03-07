@@ -86,12 +86,13 @@
                       <td>{{$casas->cantHabitacion}}</td>
                       <td>{{$casas->constructora->nombreConstructora}}</td>
 
-                      <td><a class="btn btn-outline-primary" href="{{route('casa.show', ['id'=>$casas->id])}}">
+                      <td><a class="btn btn-outline-primary" 
+                        href="{{route('casa.show', ['id'=>$casas->id])}}">
                         <i class="bi bi-eye"></i> 
                       </a></td>
 
                       <td><a class="btn btn-outline-warning" 
-                        href="{{route('casa.edit', ['id' => $casas->id])}}">
+                        href="{{route('casa.edit', ['id'=>$casas->id])}}">
                         <i class="bi bi-pencil-square"></i>
                       </a>
                       </td>

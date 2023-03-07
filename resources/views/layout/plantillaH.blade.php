@@ -155,7 +155,7 @@
                  <li>
                     <a href="{{route('gasto.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
                         <span class="p-2"><i class="bi bi-cart4 text-light"></i></span>
-                        Gastos j
+                        Gastos
                     </a>
                  </li>
       </ul>

@@ -17,7 +17,7 @@
   <header class="blog-header py-3 mt-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-14 text-center">
-          <h3 class="blog-header-logo text-dark">Listado de Constructora</h3>
+          <h3 class="blog-header-logo text-dark">Listado de constructora</h3>
         <hr>
       </div>
     </div>
