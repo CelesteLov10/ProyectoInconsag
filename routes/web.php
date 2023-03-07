@@ -12,6 +12,7 @@ use App\Http\Controllers\BloqueController;
 use App\Http\Controllers\CasaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ConstructoraController;
+use App\Http\Controllers\GastoController;
 use App\Http\Controllers\LoteController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PruebaPagosController;
@@ -299,8 +300,8 @@ Route::controller(ConstructoraController::class)->group(function(){
     //Ruta para imprimir el listado de Constructora
 });
 
-//Cambio de estado en lote y venta
-Route::get('change_status/lotes/{lote}', [LoteController::class, 'change_status'])->name('change.status.lotes');
+//Cambio de estado en lote y venta YA NO SE NECESITA
+//Route::get('change_status/lotes/{lote}', [LoteController::class, 'change_status'])->name('change.status.lotes');
 
 //Ruta para casas
 Route::controller(CasaController::class)->group(function(){
@@ -328,4 +329,17 @@ Route::controller(LiberadoController::class)->group(function(){
     Route::get('/liberado/create/{id}', 'create')->name('liberado.create');
     //Ruta para guardar el lote liberado
     Route::post('/liberado', 'store')->name('liberado.store');
+});
+
+//Ruta para gastos
+Route::controller(GastoController::class)->group(function(){
+    //Ruta para listado de casass
+    Route::get('/gasto', 'index')->name('gasto.index');
+    //Ruta para crear un nuevo gasto
+    Route::get('/gasto/create', 'create')->name('gasto.create');
+    //Ruta para guardar los registros de la gasto
+    Route::post('/gasto', 'store')->name('gasto.store');
+    //Ruta para mostrar un gastos
+    Route::get('/gasto/{id}', 'show')->name('gasto.show')
+    ->where('id','[0-9]+');
 });

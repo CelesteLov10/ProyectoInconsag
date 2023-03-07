@@ -95,6 +95,7 @@ class LoteController extends Controller
    // return response()->json('No se pudieron ingresar los registros ');
 }
 
+/* YA NO SE NECESITA, PORQUE SE HACE CON EL TRIGGUER
 public function change_status(Lote $lote)
 {
     if ($lote->status == 'Disponible') {
@@ -104,7 +105,7 @@ public function change_status(Lote $lote)
         $lote->update(['status'=>'Disponible']);
         return redirect()->back();
     } 
-}
+}*/
 
 
 }

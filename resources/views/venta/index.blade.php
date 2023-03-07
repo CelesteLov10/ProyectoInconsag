@@ -36,7 +36,7 @@
                       Ventas por día
                   </a>
                   <a href="{{route('reports.reports_date')}}" class="btn glow-on-hover-main text-BLACK">
-                  <i class="bi bi-calendar2-minus text-BLACK"></i>
+                    <i class="bi bi-calendar3-range text-BLACK"></i>
                    Ventas por fecha
                 </a>
 
