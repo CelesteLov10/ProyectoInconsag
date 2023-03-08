@@ -120,23 +120,34 @@
                                     <td><a class="btn glow-on-main text-BLACK" id="borsi"
                                         href="{{route('pago.show', ['id'=>$ventas->identificador])}}">
                                         <i class="bi bi-file-earmark-zip" id="siCredit"></i></a></td>
-                                        {{-- Boton para liberar lote --}}
+                                     {{-- aqui debe llevar la condicion de que si se pago por completo el lote, no debe aparecer la opcion
+                                             de liberar lotes --}}
+                                         @if ('valorTe' == 0)
+                                         <td>
+                                            <button class="btn glow-on-main text-BLACK"  disabled="true">
+                                                <i  id="textnegro" class="bi bi-lock-fill"></i>
+                                            </button>
+                                        </td> 
+                                          
+                                         @else
+                                         {{-- Boton para liberar lote, si se esta pagando al credito  --}}
                                         <td>
                                             <a class="btn glow-on-hover-lib text-BLACK" href="{{route('liberado.create', ['id'=>$ventas->identificador])}}">
-                                            <i id="textnegro" class="bi bi-key-fill">
                                             <i id="textnegro" class="bi bi-unlock-fill"></i></i></a>
                                         </td>
+                                         @endif                                       
+                                        {{-- si la venta fue al contado --}}
                                         @else
                                         <td>
                                             <button class="btn glow-on-main text-BLACK" id="borno" disabled="true">
                                             <i class="bi bi-file-lock" id="noCredit"></i>
                                             </button>
                                             </td>
-                                            {{-- Boton para liberar lote --}}
+                                            {{-- Boton para liberar lote desabilitado, si la venta fue al contado --}}
                                         <td>
-                                            <button class="btn glow-on-hover-lib text-BLACK" disabled href="{{route('liberado.create', ['id'=>$ventas->identificador])}}">
-                                            <i id="textnegro" class="bi bi-key-fill" disabled>
-                                            <i id="textnegro" class="bi bi-unlock-fill" disabled></i></i></button>
+                                            <button class="btn glow-on-main text-BLACK"  disabled="true">
+                                                <i  id="textnegro" class="bi bi-lock-fill"></i>
+                                            </button>
                                         </td>
                                         @endif
 

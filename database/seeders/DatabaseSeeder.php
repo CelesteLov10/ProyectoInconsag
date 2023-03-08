@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
         Bloque::factory(5)->create();
         Lote::factory(25)->create();
         Constructora::factory(25)->create();
-        Casa::factory(10)->create();
+      //  Casa::factory(10)->create();
         Venta::factory(40)->create();
         Pago::factory(150)->create();
         //Liberado::factory(10)->create();
