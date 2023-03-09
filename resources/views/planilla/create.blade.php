@@ -152,8 +152,10 @@
                         </thead>
                         <tbody>
                           <?php $totale = 0;?>
+                          <?php $cantidadEmpleados = 0;?>
                         @foreach($planillas as $planilla)
                         <?php $totale = $totale + $planilla->total;?>
+                        <?php $cantidadEmpleados = $planilla->id?>
                             <tr>
                                 <td>{{$planilla->id}}</td>
                                 <td>{{$planilla->empleado->identidad}}</td>
@@ -169,7 +171,7 @@
                         </tr>
                         <tr>
                           <th scope="col">Total empleados:</th>
-                          <td>{{$planilla->id}}</td>
+                          <td>{{$cantidadEmpleados}}</td>
                         </tr>
                         </tbody>
                     </table>

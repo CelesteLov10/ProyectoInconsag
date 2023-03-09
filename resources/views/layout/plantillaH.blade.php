@@ -33,7 +33,7 @@
 <body>
 
   <div class="d-flex justify-content-between">                                                                                   {{-- ancho y alto de menu vertical --}}
-    <div class="d-flex flex-column flex-shrink-0  justify-content-between p-3 m-0 text-white rounded-end" style="width: 15%; height: auto; background-color: rgb(0, 0, 0)">
+    <div class="d-flex flex-column flex-shrink-0  justify-content-between p-3 m-0 text-white bg-dark rounded-end" style="width: 15%; height: auto">
       <a href="/" class="d-flex align-items-center text-white text-decoration-none">
           <span class="m-2"><i class="bi bi-house-fill text-light"></i></span>
           <span class="fs-5 text-light">Menú principal</span>
