@@ -3,17 +3,20 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Times New Roman' ;
-  color: rgb(14, 17, 15);
+  color: rgb(0, 0, 0);
 }
+
 body{
   max-height: 100%;
   max-width: 100%;
-  background-image: url(./imagenes/fondo3.png);
+  background-image: url(./imagenes/inconsag.svg);
   /*background-attachment: fixed;*/
-  background-position: cover;
+  /* background-image: linear-gradient(to right, #1c6e92, #000000, #33393e); */
+  background-position: center;
   background-size: cover;
   justify-content: center;
-  opacity: 0.75;
+  /* animation: glowing 90s linear infinite; */
+  /*opacity: 0.75;*/
 }
 
 footer{

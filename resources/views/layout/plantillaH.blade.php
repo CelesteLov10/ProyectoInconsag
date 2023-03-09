@@ -33,7 +33,7 @@
 <body>
 
   <div class="d-flex justify-content-between">                                                                                   {{-- ancho y alto de menu vertical --}}
-    <div class="d-flex flex-column flex-shrink-0  justify-content-between p-3 m-0 text-white bg-dark rounded-end" style="width: 15%; height: auto">
+    <div class="d-flex flex-column flex-shrink-0  justify-content-between p-3 m-0 text-white rounded-end" style="width: 15%; height: auto; background-color: rgb(0, 0, 0)">
       <a href="/" class="d-flex align-items-center text-white text-decoration-none">
           <span class="m-2"><i class="bi bi-house-fill text-light"></i></span>
           <span class="fs-5 text-light">Menú principal</span>
@@ -158,15 +158,20 @@
                         Gastos
                     </a>
                  </li>
+                 <li>
+                    <a href="{{route('planilla.index')}}" class="nav-link link-light list-group-item list-group-item-action list-group-item-dark">
+                        <span class="p-2"><i class="bi bi-file-spreadsheet text-light"></i></span> 
+                        Planillas
+                    </a>
+                 </li>
       </ul>
       
       {{--<button class="btn-hover glow-on-hover" onclick="darkMode()">Modo oscuro</button>--}}
       <hr>
       <div class="dropdown">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="./imagenes/inconsag.svg" alt="" width="32" height="32" class="rounded-circle me-2">
-          <strong class="text-light">Login</strong>
-          </a>
+        {{-- <img src="./imagenes/inconsag.svg" alt="" width="32" height="32" class="rounded-circle me-2"> --}}
+        <strong class=" bi bi-person-fill text-light" style="margin-left: 10%"> Login</strong>          </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
           <li><a class="dropdown-item" href="#">New project...</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -177,8 +182,8 @@
       </div>
   </div>
                                       {{-- ancho y alto del div de todas las vistas --}}
-    <main class="text-white bg-light" style="width: 85%; height: cover">
-      @yield('contenido')
+    <main class="text-white bg-light" style="width: 85%; height: cover; opacity: 0.75">      
+        @yield('contenido')
     </main>
 </div>
 

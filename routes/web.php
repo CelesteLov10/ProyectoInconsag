@@ -19,6 +19,7 @@ use App\Http\Controllers\PruebaPagosController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\LiberadoController;
+use App\Http\Controllers\PlanillaController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -342,4 +343,11 @@ Route::controller(GastoController::class)->group(function(){
     //Ruta para mostrar un gastos
     Route::get('/gasto/{id}', 'show')->name('gasto.show')
     ->where('id','[0-9]+');
+});
+
+//Ruta para planillas
+Route::controller(PlanillaController::class)->group(function(){
+    Route::get('/planilla', 'index')->name('planilla.index');
+    Route::get('/planilla/create', 'create')->name('planilla.create');
+    Route::post('/planilla', 'store')->name('planilla.store');
 });
