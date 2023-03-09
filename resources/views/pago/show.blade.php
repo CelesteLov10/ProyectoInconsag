@@ -27,11 +27,25 @@
                 @endif
             @endforeach
 
+            {{-- condicion --}}
             @if ($cantidadCu >= $venta->cantidadCuotas)
+            {{-- si el lote, se termino de pagar. se activara este boton para que ya no lo deje seguir pagando cuotas --}}
                     <button class="btn g btn-outline-success" disabled><i class="bi bi-currency-dollar"></i>Nuevo pago</button>
-                @else
+                    {{-- si se termino de pagar, el boton de liberar lote estara desactivado --}}
+                    <td>
+                        <button class="btn btn-outline-danger text-BLACK"  disabled="true">
+                           Liberar lote <i  id="textnegro" class="bi bi-lock-fill"></i>
+                        </button>
+                    </td>
+                    @else
+                    {{-- si no se ha terminado de pagar el lote, aparecera el boton de 'nuevo pago' --}}
                     <a class="btn g btn-outline-success" href="{{route('pago.create', ['id'=>$pago1->id])}}" ><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
-            @endif
+                    {{-- si el cliente ya no quiere pagar el lote entonces se puede liberar.
+                        o si no ha pagado el lote por mas de 3 meses entonces se podra liberar --}}
+                    <td>
+                        <a class="btn btn-outline-danger text-BLACK" href="{{route('liberado.create', ['id'=>$pago1->id])}}"><i class="bi bi-unlock-fill"></i> Liberar lote</a>
+                    </td>
+                    @endif
             <a class="btn btn-outline-primary" href="{{route('pago.index')}}"><i class="bi bi-box-arrow-in-left"></i> Atrás</a>
 
         </div>
