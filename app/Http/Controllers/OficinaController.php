@@ -51,7 +51,7 @@ class OficinaController extends Controller
     
         ];
         $mensaje = [
-            'nombreOficina.required' =>'Debe escoger un nombre para la oficina, no puede estar vacío.',
+            'nombreOficina.required' =>'El nombre de la oficina es obligatorio, no puede estar vacío.',
             'nombreOficina.regex' =>'El nombre de la oficina solo permite un espacio entre los nombres.',
 
             'direccion.required' =>'La dirección es obligatoria, no puede estar vacío.', 
@@ -61,13 +61,14 @@ class OficinaController extends Controller
             'nombreGerente.required' =>'El nombre del gerente es obligatorio, no puede estar vacío.', 
             'nombreGerente.regex' =>'Debe iniciar con mayúscula cada nombre, solo permite un espacio entre los nombres y no se admiten números.',
 
-            'telefono.required' =>'El teléfono es obligatorio, no puede estar vacío.',
+            'telefono.required' =>'El teléfono de la oficina es obligatorio, no puede estar vacío.',
             'telefono.numeric' =>'El teléfono no puede contener letras.',
             'telefono.digits' =>'El teléfono debe contener 8 dígitos.',
             'telefono.regex' =>'El teléfono solo puede iniciar con los siguientes dígitos: 2, 3, 8 ó 9. ',
 
             'departamento_id.required' => 'Debe seleccionar un departamento, no puede estar vacío.',
             'departamento_id.exists'=> 'El departamento seleccionado no existe', 
+
             'municipio_id.required' => 'Debe seleccionar un municipio, no puede estar vacío.', 
             'municipio_id.exists'=> 'El municipio seleccionado no forma parte del departamento seleccionado.', 
 
@@ -126,7 +127,7 @@ class OficinaController extends Controller
             'departamento_id'=> ['required','exists:departamentos,id'],
             'municipio_id'=> ['required','exists:municipios,id'],
         ],[
-            'nombreOficina.required' => 'Debe escoger un nombre para la oficina, no puede estar vacío.',
+            'nombreOficina.required' =>'El nombre de la oficina es obligatorio, no puede estar vacío.',
             'nombreOficina.regex' =>'El nombre de la oficina solo permite un espacio entre los nombres.',
 
 
@@ -137,13 +138,14 @@ class OficinaController extends Controller
             'nombreGerente.required' => 'El nombre del gerente es obligatorio, no puede estar vacío.', 
             'nombreGerente.regex' => 'Debe iniciar con mayúscula cada nombre, solo permite un espacio entre los nombres y no se admiten números.',
 
-            'telefono.required' =>  'El teléfono es obligatorio, no puede estar vacío.',
+            'telefono.required' =>'El teléfono de la oficina es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono no puede contener letras.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono solo puede iniciar con los siguientes dígitos: 2, 3, 8 ó 9. ',
 
             'departamento_id.required' => 'Debe seleccionar un departamento, no puede estar vacío.',
             'departamento_id.exists'=> 'El departamento seleccionado no existe', 
+            
             'municipio_id.required' => 'Debe seleccionar un municipio, no puede estar vacío.',
             'municipio_id.exists'=> 'El municipio seleccionado no forma parte del departamento seleccionado.', 
 

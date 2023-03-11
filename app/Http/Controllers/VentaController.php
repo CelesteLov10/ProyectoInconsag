@@ -74,10 +74,13 @@ class VentaController extends Controller
 
         ],[            
 
-            'cliente_id.required'=>'Debe seleccionar un cliente, no puede estar vacío.',
-            'bloque_id.required'=>'Debe seleccionar un bloque, no puede estar vacío.',
-            'lote_id.required'=>'Debe seleccionar un lote, no puede estar vacío.',
-            'beneficiario_id.required'=>'Debe seleccionar un beneficiario, no puede estar vacío.',
+            'cliente_id.required'=>'El nombre del cliente es obligatorio, no puede estar vacío.',
+
+            'bloque_id.required'=>'El nombre del bloque es obligatorio, no puede estar vacío.',
+
+            'lote_id.required'=>'El nombre del lote es obligatorio, no puede estar vacío.',
+
+            'beneficiario_id.required'=>'El nombre del beneficiario es obligatorio, no puede estar vacío.',
 
             'valorTerreno.numeric' => 'Solo se permite números enteros. Ejem. "12345678"',
             'valorTerreno.regex' => 'El valor es incorrecto. Ejem. "123"',
@@ -102,7 +105,7 @@ class VentaController extends Controller
             'valorRestantePagar.numeric' => 'Solo se permite números enteros. Ejem. "12345678"',
             'valorRestantePagar.min' => 'El valor de la prima no debe exceder el valor del terreno',
 
-            'fechaVenta.required' => 'La fecha de venta no puede ir vacío.',
+            'fechaVenta.required' => 'La fecha de venta  es obligatoria, no puede estar vacío.',
 
         ]);
         $input = $request->all();

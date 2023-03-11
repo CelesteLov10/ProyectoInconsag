@@ -74,14 +74,14 @@ class MaquinariaController extends Controller
             
         ]; $mensaje = [
             
-            'nombreMaquinaria.required' => 'El nombre de la maquinaria es requerido, no puede estar vacío.',
+            'nombreMaquinaria.required' => 'El nombre de la maquinaria es obligatorio, no puede estar vacío.',
             'nombreMaquinaria.regex' => 'En el nombre de la maquinaria solo se permite un espacio entre los nombres y no permite caracteres especiales.',
 
-            'modelo.required' => 'El modelo de la maquinaria es requerido, no puede estar vacío.',
+            'modelo.required' => 'El modelo de la maquinaria es obligatorio, no puede estar vacío.',
             'modelo.regex' => 'En el modelo solo se permite un espacio entre cada palabra.',
 
 
-            'placa.required' => 'El formato de la placa de maquinaria es requerido , no puede estar vacío.',
+            'placa.required' => 'El formato de la placa de maquinaria es obligatorio, no puede estar vacío.',
             'placa.min' => 'El formato de la placa debe contener mínimo 7 caracteres.',
             //'placa.max' => 'El formato de la placa debe contener máximo 7 caracteres.', 
             'placa.regex' => 'Formato de placa incorrecto. Ejem. "AAA0000"',            
@@ -93,11 +93,11 @@ class MaquinariaController extends Controller
             'cantidadMaquinaria.min' => 'La cantidad mínima de maquinaria a ingresar es 1. ',*/
 
 
-            'descripcion.required' => 'Se necesita saber la descripción, no puede estar vacío.',
+            'descripcion.required' => 'La descripción de la maquinaria es obligatoria, no puede estar vacío.',
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
-            'fechaAdquisicion.required' => 'Debe seleccionar la fecha de adquisición, no puede estar vacío.',
+            'fechaAdquisicion.required' => 'La fecha de adquisición es obligatoria, no puede estar vacío.',
 
             'proveedor_id.required' => 'Debe seleccionar el nombre del proveedor, no puede estar vacío.',
 
@@ -161,14 +161,14 @@ class MaquinariaController extends Controller
         ],[
 
             
-            'nombreMaquinaria.required' => 'El nombre de la maquinaria es requerido, no puede estar vacío.',
+            'nombreMaquinaria.required' => 'El nombre de la maquinaria es obligatorio, no puede estar vacío.',
             'nombreMaquinaria.regex' => 'En el nombre de la maquinaria solo se permite un espacio entre los nombres y no permite caracteres especiales.',
 
-            'modelo.required' => 'El modelo de la maquinaria es requerido, no puede estar vacío.',
+            'modelo.required' => 'El modelo de la maquinaria es obligatorio, no puede estar vacío.',
             'modelo.regex' => 'En el modelo solo se permite un espacio entre cada palabra.',
 
 
-            'placa.required' => 'El formato de la maquinaria es requerido, no puede estar vacío .',
+            'placa.required' => 'El formato de la placa de maquinaria es obligatorio, no puede estar vacío.',
             'placa.min' => 'El formato de la placa debe contener mínimo 7 caracteres.',
             'placa.regex' => 'Formato de placa incorrecto. Ejem. "AAA0000"',
             'placa.unique' => 'El número de placa ya esta en uso.',
@@ -177,11 +177,11 @@ class MaquinariaController extends Controller
             'cantidadMaquinaria.numeric' => 'Solo se permiten números.',
             'cantidadMaquinaria.min' => 'La cantidad mínima de maquinaria a ingresar es 1. ',*/
 
-            'descripcion.required' => 'Se necesita saber la descripción, no puede estar vacío.',
+            'descripcion.required' => 'La descripción de la maquinaria es obligatoria, no puede estar vacío.',
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
-            'fechaAdquisicion.required' => 'Debe seleccionar la fecha de adquisición , no puede estar vacío.',
+            'fechaAdquisicion.required' => 'La fecha de adquisición es obligatoria, no puede estar vacío.',
 
             'proveedor_id.required' => 'Debe seleccionar el nombre del proveedor, no puede estar vacío.',
 

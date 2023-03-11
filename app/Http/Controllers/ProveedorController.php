@@ -45,22 +45,22 @@ class ProveedorController extends Controller
     
         ];
         $mensaje =[
-            'nombreProveedor.required' => 'El nombre del proveedor es requerido, no puede estar vacío. ',
+            'nombreProveedor.required' => 'El nombre del proveedor es obligatorio, no puede estar vacío. ',
             'nombreProveedor.regex' => 'El nombre del proveedor solo permite un espacio entre los nombres
              y no se admiten números o caracteres especiales.',
             'nombreProveedor.unique' => 'El nombre del proveedor ya está en uso.',
 
-            'nombreContacto.required' => 'El nombre del contacto es requerido, no puede estar vacío. ',
+            'nombreContacto.required' => 'El nombre del contacto es obligatorio, no puede estar vacío. ',
             'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
 
-            'cargoContacto.required' => 'El cargo del contacto es requerido, no puede estar vacío. ',
+            'cargoContacto.required' => 'El cargo del contacto es obligatorio, no puede estar vacío. ',
             'cargoContacto.regex' => 'El cargo del contacto solo permite un espacio entre los nombres y no permite números.',
 
-            'direccion' => 'La direccion es requerido, no puede estar vacío. ',
+            'direccion' => 'La dirección del proveedor es obligatorio, no puede estar vacío. ',
             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
 
-            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.required' => 'El teléfono del proveedor es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
@@ -70,7 +70,7 @@ class ProveedorController extends Controller
             'email.email' => 'Debe ingresar un correo electrónico válido.',
             'email.unique' => 'El correo electrónico ya está en uso.',
 
-            'categoria_id.required' => 'Debe seleccionar una categoría',
+            'categoria_id.required' => 'Debe seleccionar una categoría.',
 
         ];
             $this->validate($request, $reglas, $mensaje);
@@ -113,22 +113,22 @@ class ProveedorController extends Controller
             'email'  => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:proveedores,email,'.$id.'id'],
             'categoria_id' => ['required'],
         ],[
-            'nombreProveedor.required' => 'El nombre del proveedor es requerido, no puede estar vacío. ',
+            'nombreProveedor.required' => 'El nombre del proveedor es obligatorio, no puede estar vacío. ',
             'nombreProveedor.regex' => 'El nombre del proveedor solo permite un espacio 
             entre los nombres y no se admiten números o caracteres especiales.',
             'nombreProveedor.unique' => 'El nombre del proveedor ya está en uso.',
 
-            'nombreContacto.required' => 'El nombre del contacto es requerido, no puede estar vacío. ',
+            'nombreContacto.required' => 'El nombre del contacto es obligatorio, no puede estar vacío. ',
             'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
 
-            'cargoContacto.required' => 'El cargo del contacto es requerido, no puede estar vacío. ',
+            'cargoContacto.required' => 'El cargo del contacto es obligatorio, no puede estar vacío. ',
             'cargoContacto.regex' => 'El cargo del contacto solo permite un espacio entre los nombres y no permite números.',
 
-            'direccion' => 'La direccion es requerido, no puede estar vacío. ',
+            'direccion' => 'La dirección del proveedor es obligatorio, no puede estar vacío. ',
             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
 
-            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.required' => 'El teléfono del proveedor es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',

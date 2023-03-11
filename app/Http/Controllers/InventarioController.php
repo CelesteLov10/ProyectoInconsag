@@ -95,30 +95,30 @@ class InventarioController extends Controller
     
         ];
         $mensaje =[
-            'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
+            'nombreInv.required' => 'El nombre del inventario es obligatorio, no puede estar vacío. ',
             'nombreInv.regex' => 'El nombre del inventario no permite numeros y solo permite un espacio entre los nombres.',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
 
-            'cantidad.required' => 'La cantidad del inventario es requerido.', 
+            'cantidad.required' => 'La cantidad del inventario es obligatoria, no puede estar vacío.', 
             'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',
             'cantidad.regex' => 'No puede ingresar mas de 9999 artículos.',
 
-            'precioInv.required' => 'El precio del inventario es requerido, no puede estar vacío.',
+            'precioInv.required' => 'El precio del inventario es obligatorio, no puede estar vacío.',
             'precioInv.numeric'=> 'No se permiten letras o espacios vacíos.',
             'precioInv.min' => 'El precio del inventario no puede ser menor a L.1.00.',
             'precioInv.max' => 'El precio del inventario no puede ser mayor a L.99999.00.',
             'precioInv.regex' => 'El precio del inventario debe contener 1 o 2 cifras despues del punto (opcional).',
 
-            'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
+            'descripcion' => 'La descripción es obligatoria, no puede estar vacío. ',
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
-            'fecha.required' => 'La fecha es requerida', 
+            'fecha.required' => 'La fecha de compra es obligatoria, no puede estar vacío.', 
             'fecha.regex' => 'No debe agregar mas datos a la fecha seleccionada', 
 
-            'empleado_id.required' => 'Debe seleccionar un empleado',
+            'empleado_id.required' => 'El nombre del empleado que compró el inventario es obligatorio, no puede estar vacío.',
 
-            'oficina_id.required' => 'Debe seleccionar una oficina'
+            'oficina_id.required' => 'El nombre de la oficina es obligatorio.'
 
 
 
@@ -168,30 +168,30 @@ class InventarioController extends Controller
             'empleado_id' => ['required'],
             'oficina_id'  => ['required'],
         ],[
-            'nombreInv.required' => 'El nombre del inventario es requerido, no puede estar vacío. ',
+            'nombreInv.required' => 'El nombre del inventario es obligatorio, no puede estar vacío. ',
             'nombreInv.alpha' => 'En el nombre del inventario sólo se permite letras.',
             'nombreInv.regex' => 'El nombre del inventario no permite numeros y solo permite un espacio entre los nombres.',
 
-            'cantidad.required' => 'La cantidad del inventario es requerido.', 
+            'cantidad.required' => 'La cantidad del inventario es obligatoria, no puede estar vacío.', 
             'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',
             'cantidad.regex' => 'No puede ingresar mas de 9999 artículos.',
 
-            'precioInv.required' => 'El precio del inventario es requerido, no puede estar vacío.',
+            'precioInv.required' => 'El precio del inventario es obligatorio, no puede estar vacío.',
             'precioInv.numeric'=> 'No se permiten letras o espacios vacíos.',
             'precioInv.min' => 'El precio del inventario no puede ser menor a L.1.00.',
             'precioInv.max' => 'El precio del inventario no puede ser mayor a L.99999.00.',
             'precioInv.regex' => 'El precio del inventario debe contener 1 o 2 cifras despues del punto (opcional).',   
 
-            'descripcion' => 'La descripción es requerido, no puede estar vacío. ',
+            'descripcion' => 'La descripción es obligatoria, no puede estar vacío. ',
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
-            'fecha.required' => 'La fecha es requerida', 
+            'fecha.required' => 'La fecha de compra es obligatoria, no puede estar vacío.', 
             'fecha.regex' => 'No debe agregar más datos a la fecha seleccionada', 
 
-            'empleado_id.required' => 'Debe seleccionar un empleado',
+            'empleado_id.required' => 'El nombre del empleado que compró el inventario es obligatorio, no puede estar vacío.',
 
-            'oficina_id.required' => 'Debe seleccionar una oficina'
+            'oficina_id.required' => 'El nombre de la oficina es obligatorio.'
 
     
         ]);
