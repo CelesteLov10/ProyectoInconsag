@@ -20,6 +20,8 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\LiberadoController;
 use App\Http\Controllers\PlanillaController;
+use App\Http\Controllers\TablaplanillaController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -350,4 +352,12 @@ Route::controller(PlanillaController::class)->group(function(){
     Route::get('/planilla', 'index')->name('planilla.index');
     Route::get('/planilla/create', 'create')->name('planilla.create');
     Route::post('/planilla', 'store')->name('planilla.store');
+    Route::post('/tablaplanilla', 'store')->name('tablaplanilla.store');
+});
+
+//Ruta para tabla planillas
+Route::controller(TablaplanillaController::class)->group(function(){
+    Route::get('/tablaplanilla', 'index')->name('tablaplanilla.index');
+    // Route::get('/tablaplanilla', 'show')->name('tablaplanilla.show');
+    Route::post('/tablaplanilla', 'store')->name('tablaplanilla.store');
 });

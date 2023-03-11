@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 use App\Models\Planilla;
 use App\Models\Puesto;
+use App\Models\Tablaplanilla;
 use Illuminate\Http\Request;
 
 class PlanillaController extends Controller
@@ -13,8 +14,8 @@ class PlanillaController extends Controller
         $planillas = Planilla::all();
         $puestos = Puesto::all();
         $empleados = Empleado::all();
-        
-        return view('planilla.index', compact('planillas', 'empleados', 'puestos'));
+        $tablaplanillas = Tablaplanilla::all();
+        return view('planilla.index', compact('planillas', 'empleados', 'puestos', 'tablaplanillas'));
     }
 
     public function create(){
@@ -26,6 +27,7 @@ class PlanillaController extends Controller
 
     public function store(Request $request){
 
+        //
         
         $input = $request->all();
          Planilla::create($input);

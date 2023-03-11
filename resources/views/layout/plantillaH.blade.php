@@ -182,7 +182,7 @@
       </div>
   </div>
                                       {{-- ancho y alto del div de todas las vistas --}}
-    <main class="text-white bg-light" style="width: 85%; height: cover; opacity: 0.75">      
+    <main class="text-white bg-light" style="width: 85%; height: cover; opacity: 0.85">      
         @yield('contenido')
     </main>
 </div>

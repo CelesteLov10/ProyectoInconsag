@@ -96,10 +96,10 @@
       </div> 
 
       <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Dias que trabajo:</label>
+        <label class="col-sm-3 col-form-label">Días que trabajo:</label>
         <div class="col-sm-5">
             <input type="text" id="dias" class="form-control rounded-pill  @error('dias') is-invalid @enderror"
-            placeholder="Ingrese la cantidad de dias" 
+            placeholder="Ingrese la cantidad de días" 
                 name="dias" value="{{old('dias')}}" maxlength="6" oninput="calcularTotal()">
                 @error('dias')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -112,7 +112,7 @@
         <div class="col-sm-5">
             <input type="text" id="total" class="form-control rounded-pill  @error('total') is-invalid @enderror" 
             placeholder="Total a pagar" 
-                name="total" value="{{old('total')}}" maxlength="6" readonly=»readonly»>
+                name="total" value="{{old('total')}}" readonly=»readonly»>
                 @error('total')
                 <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
                 @enderror
@@ -121,60 +121,116 @@
 
               <div class="mb-3 row">
                   <div class="offset-sm-3 col-sm-9">
-                  <button type="submit"  id="submit-and-print" class="btn btn-outline-info">Guardar</button> 
+                  <button type="submit"  id="submit-and-print" class="btn btn-outline-info">Agregar empleado</button> 
                   </div>
               </div> 
 
               <br>
               <hr>
 
+              <div class=" card shadow ab-4 btaura">
+                <div class=" card-header py-3 ">
+                        <h5 class="n-font-weight-bold text-white" title="Volver a todos los registros" style="text-align: left"> 
+                          Detalles de la planilla
+                            </h5>
+                            <h5 class="n-font-weight-bold text-white" title="Volver a todos los registros" style="text-align: left"> 
+                              Fecha: <?php echo date("Y-m-d");?>
+                                </h5>
+                </div>
+                      <div class="col-60 bg-light p-5">
+                          <table class="table border border-2 contorno-azul" id="tabla" style="text-align: left">
+                              <thead class="thead-dark">
+                                  <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">Identidad del empleado</th>
+                                      <th scope="col">Nombre del empleado</th>
+                                      <th scope="col">Puesto laboral</th>
+                                      <th scope="col">Sueldo</th>
+                                      <th scope="col">Dias que trabajo</th>
+                                      <th scope="col">Total</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <?php $totale = 0;?>
+                                <?php $canEmpleado = 0;?>
+                              @foreach($planillas as $planilla)
+                              <?php $totale = $totale + $planilla->total;?>
+                              <?php $canEmpleado = $planilla->id;?>
+                                  <tr>
+                                      <td>{{$planilla->id}}</td>
+                                      <td>{{$planilla->empleado->identidad}}</td>
+                                      <td>{{$planilla->empleado->nombres}}{{' '}}{{$planilla->empleado->apellidos}}</td>   
+                                      <td>{{$planilla->empleado->puesto->nombreCargo}}</td>
+                                      <td>{{$planilla->empleado->puesto->sueldo}}</td>
+                                      <td>{{$planilla->dias}}</td>
+                                      <td>{{number_format($planilla->total, 2)}}</td>
+                                      @endforeach
+                              <tr>
+                                <th scope="col">Total planilla:</th>
+                                <td>{{number_format($totale, 2)}}</td>
+                                {{-- <td>L. {{number_format($totale , 2)}}</td> --}}
+                              </tr>
+                              <tr>
+                                <th scope="col">Total empleados:</th>
+                                <td>{{$canEmpleado}}</td>
+                                {{-- <td>{{$cantidadEmpleados}}</td> --}}
+                              </tr>
+                              
+                              </tbody>
+                          </table>      
+            </form>
+            <form action="{{route('tablaplanilla.store')}}" class="tablaplanilla-guardar" method="POST" autocomplete="off">
+              @csrf {{-- TOKEN INPUT OCULTO --}} 
+            </div>
+              </div>
+
+              {{-- <br><br> --}}
+
+              {{-- Los inputs estan ocultos para que no se muestren en 
+              esta vista y su funcion solo es capturar el dato
+              y almacenarlo en los campos de la "tablaplanillas" --}}
+              
+              <div class="mb-3 row">
+                <label hidden class="col-sm-3 col-form-label">Total empleados:</label>
+                <div class="col-sm-5">
+                    <input hidden type="text" id="canEmpleados" class="form-control rounded-pill  @error('canEmpleados') is-invalid @enderror" 
+                    placeholder="Total a pagar" 
+                        name="canEmpleados" value="{{$canEmpleado}}">
+                        @error('canEmpleados')
+                        <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
+                        @enderror
                 </div>
               </div>
-              {{-- encabezado --}}
-        <div class=" card shadow ab-4 btaura">
-          <div class=" card-header py-3 ">
-                  <h5 class="n-font-weight-bold text-white" title="Volver a todos los registros" style="text-align: left"> 
-                    Detalles de la planilla
-                      </h5>
-          </div>
-                <div class="col-60 bg-light p-5">
-                    <table class="table border border-2 contorno-azul" style="text-align: left">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Identidad del empleado</th>
-                                <th scope="col">Nombre del empleado</th>
-                                <th scope="col">Puesto laboral</th>
-                                <th scope="col">Sueldo</th>
-                                <th scope="col">Dias que trabajo</th>
-                                <th scope="col">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          <?php $totale = 0;?>
-                          <?php $cantidadEmpleados = 0;?>
-                        @foreach($planillas as $planilla)
-                        <?php $totale = $totale + $planilla->total;?>
-                        <?php $cantidadEmpleados = $planilla->id?>
-                            <tr>
-                                <td>{{$planilla->id}}</td>
-                                <td>{{$planilla->empleado->identidad}}</td>
-                                <td>{{$planilla->empleado->nombres}}{{' '}}{{$planilla->empleado->apellidos}}</td>   
-                                <td>{{$planilla->empleado->puesto->nombreCargo}}</td>
-                                <td>{{$planilla->empleado->puesto->sueldo}}</td>
-                                <td>{{$planilla->dias}}</td>
-                                <td>{{number_format($planilla->total, 2)}}</td>
-                        @endforeach
-                        <tr>
-                          <th scope="col">Total planilla:</th>
-                          <td>L. {{number_format($totale , 2)}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="col">Total empleados:</th>
-                          <td>{{$cantidadEmpleados}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+              <div class="mb-3 row">
+                <label hidden class="col-sm-3 col-form-label">Total planilla:</label>
+                <div class="col-sm-5">
+                    <input hidden type="text" id="total" class="form-control rounded-pill  @error('totalp') is-invalid @enderror" 
+                    placeholder="Total a pagar" 
+                        name="totalp" value="{{$totale}}">
+                        @error('totalp')
+                        <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
+                        @enderror
+                </div>
+              </div>
+              
+              <div class="mb-3 row">
+                <label hidden class="col-sm-3 col-form-label">Fecha:</label>
+                <div class="col-sm-5">
+                    <input hidden type="text" class="form-control rounded-pill @error('fechap') is-invalid @enderror" 
+                    maxlength="10" placeholder="Fecha actual"
+                    name="fechap" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)"> 
+                      @error('fechap')
+                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                  @enderror
+                </div>
+            </div>
+                  
+              <div class="mb-3 row">
+              <div class="offset-sm-3 col-sm-9 text-end">
+                <button type="submit" id="submit-and-print" class="btn btn-outline-info">Guardar planilla</button>                      
+              </div>
+              </div> 
             </form>
           </div>
         </div>
@@ -220,5 +276,12 @@
                   @endforeach
               }
   </script>
+
+  {{-- <script>
+    function guardar_totales() {
+            var tabla = document.getElementById("tabla")
+            tabla.submit();
+        }
+  </script> --}}
 
 @endsection

@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('dias');
             $table->double('total')->unsigned();
+            // $table->double('totalp')->nullable();
+            // $table->string('numEmpleados')->nullable();
             $table->date('fecha');
-            $table->unsignedBigInteger('empleado_id');//Relacion con tabla puesto
+            $table->unsignedBigInteger('empleado_id')->unique();//Relacion con tabla puesto
             $table->foreign('empleado_id')->references('id')->on('empleados');// Restriccion llave foranea
             // $table->unsignedBigInteger('puesto_id');//Relacion con tabla puesto
             // $table->foreign('puesto_id')->references('id')->on('puestos');// Restriccion llave foranea
