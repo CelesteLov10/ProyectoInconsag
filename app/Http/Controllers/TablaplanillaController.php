@@ -29,18 +29,15 @@ class TablaplanillaController extends Controller
     public function store(Request $request){
 
         $this->validate($request,[
-            'totalp'  => ['min:1.00'],
-            'canEmpleados'  => ['min:1.00'],
-
-            /*Esta validacion en realidad la veo innecesaria pero bueno la 
-            dejo para que al volverle a dar al boton de guardar planilla 
-            no la guarde*/
-            'fechap'  => ['unique:tablaplanillas'],
+            'dias'  => ['required','numeric', 'min:1'],
+            'empleado_id' => ['required', 'unique:planillas']
         ],[
-            'totalp.min'=>'Debe de agregar al menos un empleado a la tabla',
-            'canEmpleados.min'=>'Debe de agregar al menos un empleado a la tabla',
-            'fechap.unique'=>'La planilla ya ha sido guardada',
+            'dias.required'=>'Debe ingresar la cantidad de días, no puede estar vacío.',
+            'dias.min'=>'La cantidad de días debe ser al menos de 1 día',
+            'dias.numeric'=>'Solo se permiten números',
 
+            'empleado_id.required'=>'Debe seleccionar un empleado, no puede estar vacío.',
+            'empleado_id.unique'=>'Ya se agrego este empleado a la planilla.',
         ]);
 
         $input = $request->all();
