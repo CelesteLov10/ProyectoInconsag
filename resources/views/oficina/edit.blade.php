@@ -1,15 +1,14 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Actualizar oficina')
-    
-@section('contenido') 
-<div>
-  <div class="mb-5 m-5">
-    <h3 class=" text-center">
-      Actualización de la oficina
-    </h3>
+@section('title', 'Actualizar')
+
+@section('content_header')
+    <h1>Actualización de la oficina</h1>
     <hr>
-  </div>
+@stop
+
+@section('content')
+<div>
 
 <div class="container ">
   <div class="mb-3 text-end">
@@ -22,8 +21,8 @@
       <div class = " card-header py-3 " >
           <h5 class = "n-font-weight-bold text-white" >Actualización de la oficina </h5 > 
       </div >
-    <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-      <div class="col-60 bg-light p-5">   
+    <div class="m-0 text-center align-items-center justify-content-center">
+      <div class="bg-light p-5">   
     <form action="{{route('oficina.update', $oficina)}}" id="form1" class="oficina-actualizar" method="POST" autocomplete="off">
         <!-- metodo put para que guarde los cambios en la base de datos-->
         @method('put')
@@ -83,7 +82,7 @@
       <div class="mb-3 row">
         <label for="departamento" class="col-sm-3 col-form-label">Departamento:</label>
         <div class="col-sm-5">
-        <select id="departamento" name="departamento_id" class="form-select rounded-pill @error('departamento_id') is-invalid @enderror"
+        <select id="departamento" name="departamento_id" class="form-control form-select rounded-pill @error('departamento_id') is-invalid @enderror"
           onchange="cambiomunicipio(this.value)">
            {{-- se muestra el registro guardado --}}
             <option value="{{$oficina->departamento_id}}" 
@@ -104,7 +103,7 @@
       <div class="mb-3 row">
         <label for="municipio" class="col-sm-3 col-form-label">Municipio:</label>
         <div class="col-sm-5">
-          <select id="municipio" name="municipio_id"  class="form-select rounded-pill @error('municipio_id') is-invalid @enderror">
+          <select id="municipio" name="municipio_id"  class="form-control form-select rounded-pill @error('municipio_id') is-invalid @enderror">
            {{-- se muestra el registro guardado --}}
            <option value="{{$oficina->municipio_id}}" 
             {{old('municipio_id' , $oficina->municipio->nombreM)==$oficina->municipio->id ? 'selected' : ''}}>{{$oficina->municipio->nombreM}}</option>
@@ -131,68 +130,72 @@
     </div>
   </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
 
 @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
 
-    <script>
-      /*Peticion segun la ruta*/
-function peticion(id){
-let _token= "{{ csrf_token() }}";
-$.ajax({
-type: "POST",
-url: "/getMunicipios/"+id,
-data: {
+<script>
+    /*Peticion segun la ruta*/
+  function peticion(id){
+  let _token= "{{ csrf_token() }}";
+  $.ajax({
+  type: "POST",
+  url: "/getMunicipios/"+id,
+  data: {
   _token: _token},
   success: function(municipio) {
-        if ((municipio.errors)) {
-            alert('')
-        } else {
-            agregarSelect(municipio);            
-        }
-    },
-});
-}
-
-function cargarselectmunicipio(iddpto, idmuni){
-  if (idmuni===null) {
-    
-  } else {
-let _token= "{{ csrf_token() }}";
-$.ajax({
-type: "POST",
-url: "/getMunicipios/"+iddpto,
-data: {
-  _token: _token},
-  success: function(municipio) {
-        if ((municipio.errors)) {
-            alert('')
-        } else {
-            agregarSelect(municipio); 
-            $('#municipio').val(idmuni);
-            $('#municipio').append("<option value=''></option>"); 
-           
-        }
-    },
-});
+      if ((municipio.errors)) {
+          alert('')
+      } else {
+          agregarSelect(municipio);            
+      }
+  },
+  });
   }
-}
-/* Metodo para mandar a llamar los municipios*/
-function cambiomunicipio(id_departamento){
-        peticion(id_departamento);
-        }
-function agregarSelect(municipio){
+
+  function cargarselectmunicipio(iddpto, idmuni){
+  if (idmuni===null) {
+
+  } else {
+  let _token= "{{ csrf_token() }}";
+  $.ajax({
+  type: "POST",
+  url: "/getMunicipios/"+iddpto,
+  data: {
+  _token: _token},
+  success: function(municipio) {
+      if ((municipio.errors)) {
+          alert('')
+      } else {
+          agregarSelect(municipio); 
+          $('#municipio').val(idmuni);
+          $('#municipio').append("<option value=''></option>"); 
+        
+      }
+  },
+  });
+  }
+  }
+  /* Metodo para mandar a llamar los municipios*/
+  function cambiomunicipio(id_departamento){
+      peticion(id_departamento);
+      }
+  function agregarSelect(municipio){
   $('#municipio').empty();
   $('#municipio').append("<option value='{{$oficina->municipio->id}}'>{{$oficina->municipio->nombreM}}</option>"); 
   for (let i = 0; i < municipio.length; i++) {
-    $('#municipio').append("<option value='"+ municipio[i].id+"'>"+municipio[i].nombreM+"</option>"); 
-    
-  }
-}
+  $('#municipio').append("<option value='"+ municipio[i].id+"'>"+municipio[i].nombreM+"</option>"); 
 
-      $(document).ready(function(){
-        cargarselectmunicipio($('#departamento').val(),$('#prueba').val())
-        });      
-    </script>
-@endsection
+  }
+  }
+
+    $(document).ready(function(){
+      cargarselectmunicipio($('#departamento').val(),$('#prueba').val())
+      });      
+</script>
+@stop

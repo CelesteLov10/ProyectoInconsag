@@ -1,17 +1,14 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Actualizar proveedor')
+@section('title', 'Actualizar')
 
-@section('contenido') 
+@section('content_header')
+    <h1>Actualización del proveedor</h1>
+    <hr>
+@stop
+
+@section('content')
 <div>
-    
-    <div class="mb-5 m-5">
-        <h3 class=" text-center">
-            Actualización del proveedor
-        </h3>
-        <hr>
-      </div>
-
     <div class="container ">
         <div class="mb-3 text-end">
             <a class="btn btn-outline-primary" href="{{route('proveedor.index')}}">
@@ -20,11 +17,11 @@
         {{-- encabezado  --}}
         <div class = " card shadow ab-4 btaura">
             <div class = " card-header py-3 " >
-            <h5 class = "n-font-weight-bold text-white">Actualización del proveedor </h5 > 
+            <h5 class = "n-font-weight-bold">Actualización del proveedor </h5 > 
         </div >
 
-    <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-        <div class="col-60 bg-light p-5">
+    <div class="m-0 text-center align-items-center justify-content-center">
+        <div class="bg-light p-5">
         <form action="{{route('proveedor.update', $proveedor)}}" id="formu"  method="POST" autocomplete="off">
             @method('put')
             @csrf {{-- TOKEN INPUT OCULTO --}}
@@ -104,7 +101,7 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Categoría:</label>
                 <div class="col-sm-5">
-                <select name="categoria_id" id="" class="form-select rounded-pill @error('categoria_id') is-invalid @enderror">
+                <select name="categoria_id" id="" class="form-select form-control rounded-pill @error('categoria_id') is-invalid @enderror">
                     {{-- se muestra el registro guardado --}}
                     <option value="{{$proveedor->categoria_id}}" 
                     {{old('categoria_id' , $proveedor->categoria->nombreCat)==$proveedor->categoria->id ? 'selected' : ''}}>{{$proveedor->categoria->nombreCat}}</option>
@@ -131,4 +128,12 @@
         </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

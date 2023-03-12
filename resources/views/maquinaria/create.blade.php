@@ -1,34 +1,13 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Nueva maquinaria')
+@section('title', 'Nuevo')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-{{-- plugins para el calendario --}}
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
-<style>
-    #mostrar{
-        display: none;
-    }
+@section('content_header')
+    <h1>Registro de una nueva maquinaria</h1>
+    <hr>
+@stop
 
-    #mostrarBoton{
-        display: none;
-    }
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-@endsection
-    
-@section('contenido') 
-
-<div class="mb-5 m-5">
-  <h3 class=" text-center">
-    Registro de una nueva maquinaria
-  </h3>
-  <hr>
-</div>
+@section('content')
 
   <div class="container ">
     <div class="mb-3 text-end">
@@ -42,8 +21,8 @@
             <h5 class = "n-font-weight-bold text-white" >Creación de maquinaria</h5> 
         </div >
 
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-          <div class="col-60 bg-light p-5">
+      <div class="m-0 text-center align-items-center justify-content-center">
+          <div class="bg-light p-5">
       <form action="{{route('maquinaria.store')}}" id="form1" class="maquinaria-guardar" name="formulario1" method="POST" autocomplete="off">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
@@ -110,7 +89,7 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Nombre del proveedor:</label>
           <div class="col-sm-5">
-          <select name="proveedor_id" id="" class="form-select rounded-pill @error('proveedor_id') is-invalid @enderror">
+          <select name="proveedor_id" id="" class="form-select form-control rounded-pill @error('proveedor_id') is-invalid @enderror">
             <option value="" disabled selected>-- Seleccione un proveedor --</option>
               @foreach ($proveedor as $proveedores)
               <option value="{{$proveedores->id}}" 
@@ -193,81 +172,100 @@
       </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    {{-- plugins para el calendario --}}
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+<style>
+    #mostrar{
+        display: none;
+    }
+
+    #mostrarBoton{
+        display: none;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@stop
 
 @section('js')
     {{-- plugins para el calendario fechas jquery ui 
           yearRange: "1960:2004",
           defaultDate: '01 ENE 2000',--}}
-    <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker({
-      dateFormat: "dd-mm-yy",
-      changeMonth: true,
-      changeYear: true,
-      firstDay: 0,
-          monthNamesShort: ['Enero', 'Febrero', 'Marzo',
-          'Abril', 'Mayo', 'Junio',
-          'Julio', 'Agosto', 'Septiembre',
-          'Octubre', 'Noviembre', 'Diciembre'],
-          dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-          maxDate: "0",
-          minDate: "-1m"
-    });
-  } );
-</script>
-
-<script>
-  //Funciones para que al dar click en el otro radioBottom se oculte y muestre lo que hay en otro/
-  window.onload = function(){
-    var x = document.getElementById("maquinariaAlquilada").checked;
-    var elemento = document.getElementById("mostrar");
-
-    var y = document.getElementById("maquinariaPropia").checked;
-    var elemento1 = document.getElementById("mostrarBoton");
-    
-    /*Condicion que al estar checkeado un radioboton, aun recargado, permanezaca visible el div seleccionado*/
-    if (x){
-      elemento.style.display = 'block';
-      }else if(y) {
-        elemento1.style.display = 'block';
-      }  
-}
-
-    
-//Funciones que permiten ocultar y desplegar los divs correspondientes al dar click en los radiobotones
-    function Desplegar(radiosb){ 
-    var ver = document.getElementById(radiosb); 
-    ver.style.display = "block"; 
-    }
-    function Contraer(radiosb){ 
-    var ver = document.getElementById(radiosb); 
-    ver.style.display = "none"; 
-    }
-
-</script>
-
-<script>
-  /*Funcion para que le salga el valor total que tendra que pagar por las horas alquiladas * el precio*/
-try
-  {function calcularPago(){
-  
-  var cantidadHoraAlquilada = document.getElementById('cantidadHoraAlquilada').value;
-  var valorHora = document.getElementById('valorHora').value;
-  var totalPagar = document.getElementById('totalPagar');
-
-  var resultado = cantidadHoraAlquilada * valorHora; 
-
-  totalPagar.value = resultado;
-
-  }
-  }catch (error) {throw error;}
-
-</script>
-
-@endsection
-
+          <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
+          <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+          <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+      
+      <script>
+        $( function() {
+          $( "#datepicker" ).datepicker({
+            dateFormat: "dd-mm-yy",
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 0,
+                monthNamesShort: ['Enero', 'Febrero', 'Marzo',
+                'Abril', 'Mayo', 'Junio',
+                'Julio', 'Agosto', 'Septiembre',
+                'Octubre', 'Noviembre', 'Diciembre'],
+                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                maxDate: "0",
+                minDate: "-1m"
+          });
+        } );
+      </script>
+      
+      <script>
+        //Funciones para que al dar click en el otro radioBottom se oculte y muestre lo que hay en otro/
+        window.onload = function(){
+          var x = document.getElementById("maquinariaAlquilada").checked;
+          var elemento = document.getElementById("mostrar");
+      
+          var y = document.getElementById("maquinariaPropia").checked;
+          var elemento1 = document.getElementById("mostrarBoton");
+          
+          /*Condicion que al estar checkeado un radioboton, aun recargado, permanezaca visible el div seleccionado*/
+          if (x){
+            elemento.style.display = 'block';
+            }else if(y) {
+              elemento1.style.display = 'block';
+            }  
+      }
+      
+          
+      //Funciones que permiten ocultar y desplegar los divs correspondientes al dar click en los radiobotones
+          function Desplegar(radiosb){ 
+          var ver = document.getElementById(radiosb); 
+          ver.style.display = "block"; 
+          }
+          function Contraer(radiosb){ 
+          var ver = document.getElementById(radiosb); 
+          ver.style.display = "none"; 
+          }
+      
+      </script>
+      
+      <script>
+        /*Funcion para que le salga el valor total que tendra que pagar por las horas alquiladas * el precio*/
+      try
+        {function calcularPago(){
+        
+        var cantidadHoraAlquilada = document.getElementById('cantidadHoraAlquilada').value;
+        var valorHora = document.getElementById('valorHora').value;
+        var totalPagar = document.getElementById('totalPagar');
+      
+        var resultado = cantidadHoraAlquilada * valorHora; 
+      
+        totalPagar.value = resultado;
+      
+        }
+        }catch (error) {throw error;}
+      
+      </script>
+      
+@stop

@@ -1,20 +1,14 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Listado de pago del lote')
+@section('title', 'Listado')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-@endsection
+@section('content_header')
+    <h1>Listado de pago del lote</h1>
+    <hr>
+@stop
 
-@section('contenido') 
-
+@section('content')
 <div>
-    <div class="mb-5 m-5">
-        <h3 class=" text-center">
-        Listado de pago del lote
-        </h3>
-        <hr>
-    </div>
     <?php $cantidadCu = 0?>
 
     <div class="container ">
@@ -27,11 +21,25 @@
                 @endif
             @endforeach
 
+            {{-- condicion --}}
             @if ($cantidadCu >= $venta->cantidadCuotas)
+            {{-- si el lote, se termino de pagar. se activara este boton para que ya no lo deje seguir pagando cuotas --}}
                     <button class="btn g btn-outline-success" disabled><i class="bi bi-currency-dollar"></i>Nuevo pago</button>
-                @else
+                    {{-- si se termino de pagar, el boton de liberar lote estara desactivado --}}
+                    <td>
+                        <button class="btn btn-outline-danger text-BLACK"  disabled="true">
+                            Liberar lote <i  id="textnegro" class="bi bi-lock-fill"></i>
+                        </button>
+                    </td>
+                    @else
+                    {{-- si no se ha terminado de pagar el lote, aparecera el boton de 'nuevo pago' --}}
                     <a class="btn g btn-outline-success" href="{{route('pago.create', ['id'=>$pago1->id])}}" ><i class="bi bi-currency-dollar"></i>Nuevo pago </a>
-            @endif
+                    {{-- si el cliente ya no quiere pagar el lote entonces se puede liberar.
+                        o si no ha pagado el lote por mas de 3 meses entonces se podra liberar --}}
+                    <td>
+                        <a class="btn btn-outline-danger text-BLACK" href="{{route('liberado.create', ['id'=>$pago1->id])}}"><i class="bi bi-unlock-fill"></i> Liberar lote</a>
+                    </td>
+                    @endif
             <a class="btn btn-outline-primary" href="{{route('pago.index')}}"><i class="bi bi-box-arrow-in-left"></i> Atrás</a>
 
         </div>
@@ -41,8 +49,8 @@
                 <h5 class = "n-font-weight-bold text-white">Listado de pago de {{$venta->lote->nombreLote}} </h5> 
             </div >
         
-        <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
-            <div class="col-60 bg-light p-5">
+        <div class="m-0 text-left align-items-center justify-content-center">
+            <div class="bg-light p-5">
     <table class="table">
         <thead class="table-light">
             <tr>
@@ -121,12 +129,15 @@
     </div>
     
 </div>
+@stop
 
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+@stop
 
-@endsection
-        
 @section('js')
-{{--plugins para el buscador jquery ui --}}
+    {{--plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
 
 <script>
@@ -155,5 +166,4 @@
         throw error;
     }
 </script>
-<script></script>
-@endsection
+@stop

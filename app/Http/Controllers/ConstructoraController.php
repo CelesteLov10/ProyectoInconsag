@@ -34,21 +34,21 @@ class ConstructoraController extends Controller
                 //'fechaContrato' =>'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             ],[
 
-            'nombreConstructora.required' => 'El nombre no puede ir vacío.',
+            'nombreConstructora.required' => 'El nombre de la constructora es obligatorio, no puede estar vacío.',
             'nombreConstructora.alpha' => 'En el nombre sólo se permite letras.',
             'nombreConstructora.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
-            'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
+            'direccion.required' => 'La dirección de la constructora es obligatoria, no puede estar vacío.',
             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
 
-            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.required' => 'El teléfono de la constructora es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
             'telefono.unique' => 'El número de teléfono ya está en uso.',
 
-            'email.required' => 'Debe ingresar el correo electrónico.',
+            'email.required' => 'El correo electrónico de la constructora es obligatorio, no puede estar vacío.',
             'email.email' => 'Debe ingresar un correo electrónico válido.',
             
             'fechaContrato.required' => 'Debe seleccionar la fecha de adquisición, no puede estar vacío.',
@@ -83,21 +83,21 @@ class ConstructoraController extends Controller
             'email'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:constructoras,email,'.$id.'id'],
             'fechaContrato'  => ['required',],
         ],[
-            'nombreConstructora.required' => 'El nombre no puede ir vacío.',
+            'nombreConstructora.required' => 'El nombre de la constructora es obligatorio, no puede estar vacío.',
             'nombreConstructora.alpha' => 'En el nombre sólo se permite letras.',
             'nombreConstructora.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
-            'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
+            'direccion.required' => 'La dirección de la constructora es obligatoria, no puede estar vacío.',
             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
 
-            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.required' => 'El teléfono de la constructora es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
             'telefono.unique' => 'El número de teléfono ya está en uso.',
 
-            'email.required' => 'Debe ingresar el correo electrónico.',
+            'email.required' => 'El correo electrónico de la constructora es obligatorio, no puede estar vacío.',
             'email.email' => 'Debe ingresar un correo electrónico válido.',
             'email.unique' => 'El correo electrónico ya existe.',
 

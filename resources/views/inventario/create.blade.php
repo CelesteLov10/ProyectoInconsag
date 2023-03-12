@@ -1,28 +1,14 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Nuevo inventario')
+@section('title', 'Nuevo')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-{{-- plugins para el calendario --}}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-{{-- Plugins de mascara para inputs --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-@endsection
+@section('content_header')
+    <h1>Registro de un nuevo inventario</h1>
+    <hr>
+@stop
 
-@section('contenido') 
+@section('content')
 <div>
-    <div class="mb-5 m-5">
-        <h3 class=" text-center">
-            Registro de un nuevo inventario
-        </h3>
-        <hr>
-      </div>
-
     <div class="container ">
         <div class="mb-3 text-end">
             <a class="btn btn-outline-primary" href="{{route('inventario.index')}}">
@@ -35,8 +21,8 @@
             <h5 class = "n-font-weight-bold text-white" >Creación inventario</h5 > 
         </div >
 
-        <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-            <div class="col-60 bg-light p-5">
+        <div class=" m-0 text-center align-items-center justify-content-center">
+            <div class="bg-light p-5">
         <form action="{{route('inventario.store')}}" method="POST" autocomplete="off">
             @csrf {{-- TOKEN INPUT OCULTO --}}
 
@@ -103,8 +89,8 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Nombre del empleado</label>
                 <div class="col-sm-5">
-                <select name="empleado_id" id="" class="form-select rounded-pill  @error('empleado_id') is-invalid @enderror">
-                    <option value="" disabled selected>-- Selecione un nombre de empleado --</option>
+                <select name="empleado_id" id="" class="form-select form-control rounded-pill  @error('empleado_id') is-invalid @enderror">
+                    <option value="" disabled selected>-- Seleccione un nombre de empleado --</option>
                     @foreach ($empleado as $empleados)
                     <option value="{{$empleados->id}}" 
                         {{old('empleado_id' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}}</option>
@@ -119,8 +105,8 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Nombre de la oficina</label>
                 <div class="col-sm-5">
-                <select name="oficina_id" id="" class="form-select rounded-pill  @error('oficina_id') is-invalid @enderror">
-                    <option value="" disabled selected>-- Selecione una oficina --</option>
+                <select name="oficina_id" id="" class="form-select form-control rounded-pill  @error('oficina_id') is-invalid @enderror">
+                    <option value="" disabled selected>-- Seleccione una oficina --</option>
                     @foreach ($oficina as $oficinas)
                     <option value="{{$oficinas->id}}" 
                         {{old('oficina_id' , $oficinas->nombreOficina)==$oficinas->id ? 'selected' : ''}}>{{$oficinas->nombreOficina}}</option>
@@ -141,7 +127,20 @@
         </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    {{-- plugins para el calendario --}}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    {{-- Plugins de mascara para inputs --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+@stop
 
 @section('js')
     {{-- plugins para el calendario fechas jquery ui --}}
@@ -166,4 +165,4 @@ $( function() {
     });
     } );
 </script>
-@endsection
+@stop

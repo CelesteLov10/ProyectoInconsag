@@ -1,21 +1,14 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Detalle de bloque')
+@section('title', 'Dashboard')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-@endsection
+@section('content_header')
+    <h1> Detalle del bloque</h1>
+    <hr>
+@stop
 
-@section('contenido') 
-
+@section('content')
 <div>
-    <div class="mb-5 m-5">
-        <h3 class=" text-center">
-        Detalle del bloque
-        </h3>
-        <hr>
-    </div>
-
     <div class="container ">
         <div class="mb-3 text-end">
             <a class="btn btn-outline-primary" href="{{route('bloque.index')}}">
@@ -27,8 +20,8 @@
                 <h5 class = "n-font-weight-bold text-white">Detalles de {{$bloque->nombreBloque}} </h5> 
             </div >
         
-        <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
-            <div class="col-60 bg-light p-5">
+        <div class="m-0 text-left align-items-center justify-content-center">
+            <div class="bg-light p-5">
     <table class="table">
         <thead class="table-light">
             <tr>
@@ -61,8 +54,6 @@
     <table class="table border border-2 contorno-azul">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre del bloque</th>
                 <th scope="col">Nombre de lote</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Medida lateral derecha:</th>
@@ -81,8 +72,6 @@
         @forelse($lotes as $lote)
             @if($bloque->id == $lote->bloque_id)
                 <tr>
-                    <td>{{$lote->id}}</td>
-                    <td>{{$lote->bloque->nombreBloque}}</td>
                     <td>{{$lote->nombreLote}}</td>
 
                     {{-- para cambiar el estado del lote--}}
@@ -90,13 +79,13 @@
                     <td>
                         <a class="jsgrid-button btn btn-danger">
                             Vendido<i class="bi bi-check2-square"></i>
-                         </a>
+                        </a>
                         </td>  
                     @else
                     <td>
                         <a class="jsgrid-button btn btn-success">
                             Disponible<i class="bi bi-check2-square"></i>
-                         </a>
+                        </a>
                     </td>
                     @endif
 
@@ -125,9 +114,14 @@
     </table>
     </div>
 </div>
-@endsection
-        
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">
+@stop
+
 @section('js')
-{{-- plugins para el buscador jquery ui --}}
-<script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
-@endsection
+    {{-- plugins para el buscador jquery ui --}}
+    <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+@stop

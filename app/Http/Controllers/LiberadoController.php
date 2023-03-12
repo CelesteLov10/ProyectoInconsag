@@ -55,12 +55,15 @@ class LiberadoController extends Controller
         'fecha'       => ['required'],
         'descripcion'       => ['required','min: 7', 'max: 255'],
     ],[
-        'nomBloque.required' => 'El nombre del bloque es requerido, no puede estar vacío.',
-        'nomLote.required' => 'El nombre del lote es requerido, no puede estar vacío.',
-        'nomCliente.required' => 'El nombre del cliente es requerido, no puede estar vacío.',
-        'fecha.required' => 'La fecha es requerida, no puede estar vacía.',
+        'nomBloque.required' => 'El nombre del bloque es obligatorio, no puede estar vacío.',
 
-        'descripcion.required' => 'La descripción es requerida, no puede estar vacía.',
+        'nomLote.required' => 'El nombre del lote es obligatorio, no puede estar vacío.',
+
+        'nomCliente.required' => 'El nombre del cliente es obligatorio, no puede estar vacío.',
+
+        'fecha.required' => 'La fecha de liberación del lotes es obligatoria, no puede estar vacía.',
+
+        'descripcion.required' => 'La descripción es obligatoria, no puede estar vacía.',
         'descripcion.min' => 'La descripción debe tener al menos 7 caracteres.',
         'descripcion.max' => 'La descripción no puede tener mas de 255 caracteres.',
 

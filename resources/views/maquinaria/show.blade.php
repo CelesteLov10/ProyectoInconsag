@@ -1,20 +1,14 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Detalle de Maquinaria')
+@section('title', 'Detalle')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-@endsection
-
-@section('contenido') 
-
-<div class="mb-5 m-5">
-    <h3 class=" text-center">
-        Detalles de la maquinaria
-    </h3>
+@section('content_header')
+    <h1>Detalles de la maquinaria</h1>
     <hr>
-  </div>
+@stop
 
+@section('content')
+<div class="mb-5 m-5">
     <div class="container ">
         <div class="mb-3 text-end">
             <a class="btn btn-outline-primary" href="{{route('maquinaria.index')}}">
@@ -23,11 +17,11 @@
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura">
             <div class = " card-header py-3 " >
-                <h5 class = "n-font-weight-bold text-white">Detalle de la maquinaria {{$maquinaria->maquinaria}}</h5 > 
+                <h5 class = "n-font-weight-bold text-black">Detalle de la maquinaria {{$maquinaria->maquinaria}}</h5 > 
             </div >
 
-        <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
-            <div class="col-60 bg-light p-5">
+        <div class="m-0 text-left align-items-center justify-content-center">
+            <div class="bg-light p-5">
     <table class="table">
         <thead class="table-light">
             <tr>
@@ -96,7 +90,7 @@
                     <th scope="row">Valor por hora</th>
                     <td>{{$maquinaria->valorHora}}</td>    
                 </tr>
-             
+                
                 <tr>
                     <th scope="row">Total a Pagar</th>
                     <td>{{$maquinaria->totalPagar}}</td>    
@@ -105,11 +99,15 @@
         </tbody>
     </table>
 </div>
-@endsection
-        
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+@stop
 
 @section('js')
-
+    
 <script>
     
     if (document.getElementById('cantidadHorasAlquiladas') == ""){
@@ -126,6 +124,4 @@
     }
         
 </script>
-
-@endsection
-
+@stop

@@ -1,25 +1,13 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Actualizar empleado')
+@section('title', 'Actualizar')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-{{-- plugins para el calendario --}}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-@endsection
+@section('content_header')
+    <h1>Actualización de un empleado</h1>
+    <hr>
+@stop
 
-@section('contenido') 
-
-<div class="mb-5 m-5">
-  <h3 class=" text-center">
-    Actualización de un empleado
-  </h3>
-  <hr>
-</div>
-
+@section('content')
   <div class="container ">
     <div class="mb-3 text-end">
       <a class="btn btn-outline-primary" href="{{route('empleado.indexEmp')}}">
@@ -31,8 +19,8 @@
         <div class = " card-header py-3 " >
           <h5 class = "n-font-weight-bold text-white">Actualización del empleado</h5 > 
         </div >
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-        <div class="col-60 bg-light p-5">   
+      <div class="m-0 text-center align-items-center justify-content-center">
+        <div class="bg-light p-5">   
       <form action="{{route('empleado.update', $empleado)}}" id="formu" class="empleado-actualizar" method="POST" autocomplete="off">
           <!-- metodo put para que guarde los cambios en la base de datos-->
           @method('put')
@@ -149,7 +137,7 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Nombre del cargo:</label>
           <div class="col-sm-5">
-          <select name="puesto_id" id="" class="form-select rounded-pill @error('puesto_id') is-invalid @enderror">
+          <select name="puesto_id" id="" class="form-select form-control rounded-pill @error('puesto_id') is-invalid @enderror">
               {{-- se muestra el registro guardado --}}
             <option value="{{$empleado->puesto_id}}" 
               {{old('puesto_id' , $empleado->puesto->nombreCargo)==$empleado->puesto->id ? 'selected' : ''}}>{{$empleado->puesto->nombreCargo}}</option>
@@ -168,7 +156,7 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Nombre de la oficina:</label>
           <div class="col-sm-5">
-          <select name="oficina_id" id="" class="form-select rounded-pill @error('oficina_id') is-invalid @enderror">
+          <select name="oficina_id" id="" class="form-select form-control rounded-pill @error('oficina_id') is-invalid @enderror">
               {{-- se muestra el registro guardado --}}
             <option value="{{$empleado->oficina_id}}" 
               {{old('oficina_id' , $empleado->oficina->nombreOficina)==$empleado->oficina->id ? 'selected' : ''}}>{{$empleado->oficina->nombreOficina}}</option>
@@ -197,10 +185,20 @@
       </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    {{-- plugins para el calendario --}}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+@stop
 
 @section('js')
-{{-- plugins para el calendario fechas jquery ui --}}
+    {{-- plugins para el calendario fechas jquery ui --}}
   <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -242,4 +240,4 @@
       });//.datepicker("setDate", new Date());
     } );
 </script>
-@endsection 
+@stop

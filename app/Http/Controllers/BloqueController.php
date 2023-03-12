@@ -40,17 +40,17 @@ class BloqueController extends Controller
     public function store(Request $request){
         $reglas = [
             'nombreBloque'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9]+\s{0,1})+$/u|unique:bloques',
-            'cantidadLotes'    => 'required|numeric|min:10|regex:/^[0-9]{1,2}+$/u',
+            'cantidadLotes'    => 'required|numeric|min:5|regex:/^[0-9]{1,2}+$/u',
             'subirfoto'    => 'required',
         ];
         $mensaje =[
-            'nombreBloque.required' => 'El nombre del bloque es requerido, no puede estar vacío. ',
+            'nombreBloque.required' => 'El nombre del bloque es obligatorio, no puede estar vacío. ',
             'nombreBloque.regex' => 'El nombre del bloque solo permite un espacio entre los nombres.',
             'nombreBloque.unique' => 'El nombre del bloque debe ser único.',
 
-            'cantidadLotes.required' => 'La cantidad de lotes es requerida.',
+            'cantidadLotes.required' => 'Ingresar la cantidad de lotes es obligatorio.',
             'cantidadLotes.numeric' => 'La cantidad de lotes no permite letras.',
-            'cantidadLotes.min' => 'La cantidad de lotes de un bloque debe ser al menos de 10 lotes.',
+            'cantidadLotes.min' => 'La cantidad de lotes de un bloque debe ser al menos de 5 lotes.',
 
             'subirfoto.required' => 'Debe seleccionar una imagen. ',
 

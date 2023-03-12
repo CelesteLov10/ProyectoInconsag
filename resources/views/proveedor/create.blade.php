@@ -1,22 +1,13 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Nuevo proveedor')
+@section('title', 'Nuevo')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-@endsection
-    
-@section('contenido') 
-
-  <div class="mb-5 m-5">
-    <h3 class=" text-center">
-      Registro de un nuevo proveedor
-    </h3>
+@section('content_header')
+    <h1>Registro de un nuevo proveedor</h1>
     <hr>
-  </div>
+@stop
 
+@section('content')
   <div class="container ">
     <div class="mb-3 text-end">
       <a class="btn btn-outline-primary" href="{{route('proveedor.index')}}">
@@ -29,8 +20,8 @@
             <h5 class = "n-font-weight-bold text-white">Creación de proveedor</h5 > 
         </div >
 
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-          <div class="col-60 bg-light p-5">
+      <div class="m-0 text-center align-items-center justify-content-center">
+          <div class="bg-light p-5">
       <form action="{{route('proveedor.store')}}" class="proveedor-guardar" method="POST" autocomplete="off">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
@@ -109,7 +100,7 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Categoría:</label>
           <div class="col-sm-5">
-          <select name="categoria_id" id="" class="form-select rounded-pill @error('categoria_id') is-invalid @enderror">
+          <select name="categoria_id" id="" class="form-select form-control rounded-pill @error('categoria_id') is-invalid @enderror">
             <option value="" disabled selected>-- Seleccione una categoría --</option>
               @foreach ($categoria as $categorias)
               <option value="{{$categorias->id}}" 
@@ -132,4 +123,15 @@
       </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

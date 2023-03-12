@@ -1,17 +1,14 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Actualizar puesto')
-    
-@section('contenido') 
+@section('title', 'Actualizar puesto')
 
+@section('content_header')
+        <h3 class="blog-header-logo text-dark">Actualización del puesto laboral</h3>
+      <hr>
+@stop
+
+@section('content')
 <div>
-
-  <div class="mb-5 m-5">
-    <h3 class=" text-center">
-      Actualización del puesto laboral
-    </h3>
-    <hr>
-  </div>
   
   <div class="container ">
     <div class="mb-3 text-end">
@@ -24,8 +21,8 @@
         <div class = " card-header py-3 " >
             <h5 class = "n-font-weight-bold text-white" >Actualización del puesto laboral </h5 > 
         </div >
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-        <div class="col-60 bg-light p-5">   
+      <div class="m-0 text-center align-items-center justify-content-center">
+        <div class="bg-light p-5">   
       <form action="{{route('puestoLaboral.update', $puesto)}}" id="form1" class="puesto-actualizar" method="POST" autocomplete="off">
           <!-- metodo put para que guarde los cambios en la base de datos-->
           @method('put')
@@ -89,8 +86,12 @@
       </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
 
 @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
-@endsection
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+@stop

@@ -14,7 +14,7 @@ class LoteController extends Controller
     public function create(){
         $bloques = Bloque::whereRaw('(SELECT COUNT(*) FROM lotes WHERE bloque_id = bloques.id) < cantidadLotes')->get();
         $lotes = Lote::all();
-      
+    
 
         return view('lote.create')->with('bloques', $bloques)->with('lotes', $lotes);
     }
@@ -37,28 +37,30 @@ class LoteController extends Controller
     ];
     $mensaje =[
 
-        'nombreLote.required' => 'El nombre del lote es requerido, no puede estar vacío. ',
+        'nombreLote.required' => 'El nombre del lote es obligatorio, no puede estar vacío. ',
         'nombreLote.regex' => 'El nombre del lote solo permite un espacio entre los nombres.',
         'nombreLote.unique' => 'El nombre del lote debe ser único.',
 
         'status' => 'El estado del lote es requerido',
 
-        'bloque_id.required' => 'El bloque es requerido, no puede estar vacío. ',
-        'medidaLateralR.required' => 'La medida lateral derecha es requerida, no puede estar vacío. ',
-        'medidaLateralL.required' => 'La medida lateral izquierda es requerida, no puede estar vacío. ',
-        'medidaEnfrente.required' => 'La medida de enfrente es requerida, no puede estar vacío. ',
-        'medidaAtras.required' => 'La medida de atras es requerida, no puede estar vacío. ',
+        'bloque_id.required' => 'El nombre del bloque es obligatorio, no puede estar vacío. ',
+
+        'medidaLateralR.required' => 'La medida lateral derecha es obligatoria, no puede estar vacío. ',
+        'medidaLateralL.required' => 'La medida lateral izquierda es obligatoria, no puede estar vacío. ',
+        'medidaEnfrente.required' => 'La medida de enfrente es obligatoria, no puede estar vacío. ',
+        'medidaAtras.required' => 'La medida de atras es obligatoria, no puede estar vacío. ',
+
         'medidaLateralR.numeric' => 'La medida lateral derecha solo permite numeros.',
         'medidaLateralL.numeric' => 'La medida lateral izquierda solo permite numeros.',
         'medidaEnfrente.numeric' => 'La medida de enfrente solo permite numeros.',
         'medidaAtras.numeric' => 'La medida de atras solo permite numeros.',
 
-        'colindanciaN.required'    => 'La colindancia norte es requerida, no puede estar vacío. ',
-        'colindanciaS.required'    => 'La colindancia sur es requerida, no puede estar vacío. ',
-        'colindanciaE.required'    => 'La colindancia este es requerida, no puede estar vacío. ',
-        'colindanciaO.required'    => 'La colindancia oeste es requerida, no puede estar vacío. ',
+        'colindanciaN.required'    => 'La colindancia norte es obligatoria, no puede estar vacío. ',
+        'colindanciaS.required'    => 'La colindancia sur es obligatoria, no puede estar vacío. ',
+        'colindanciaE.required'    => 'La colindancia este es obligatoria, no puede estar vacío. ',
+        'colindanciaO.required'    => 'La colindancia oeste es obligatoria, no puede estar vacío. ',
 
-        'valorTerreno.required' => 'El valor del terreno es requerido, no puede estar vacío.',
+        'valorTerreno.required' => 'El valor del terreno es obligatorio, no puede estar vacío.',
         'valorTerreno.numeric' => 'Solo se permite números enteros. Ejem. "12345678"',
         'valorTerreno.regex' => 'El valor es incorrecto. Ejem. "123"',
         'valorTerreno.min' => 'El valor mínimo del terreno es  "1". ',
@@ -87,7 +89,7 @@ class LoteController extends Controller
     $create = $lote->save();
 
     if ($create){
-       return redirect()->route('bloque.index')
+        return redirect()->route('bloque.index')
         ->with('mensaje', 'Se registró el lote correctamente');
        // return response()->json($create);
     }
@@ -109,3 +111,4 @@ public function change_status(Lote $lote)
 
 
 }
+

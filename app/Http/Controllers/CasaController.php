@@ -37,25 +37,25 @@ class CasaController extends Controller
             
             ],[
 
-            'claseCasa.required' => 'El nombre del modelo no puede ir vacío.',
+            'claseCasa.required' => 'El nombre del modelo de la casa es obligatorio, no puede estar vacío.',
             'claseCasa.regex' => 'El nombre de la casa no permite números.',
 
-            'valorCasa.required' => 'El valor de la casa no puede ir vacío.',
+            'valorCasa.required' => 'El valor de la casa es obligatorio, no puede estar vacío.',
             'valorCasa.numeric' => 'El valor de la casa debe contener sólo números.',
             'valorCasa.min' => 'El valor de la casa no debe ser menor de 100,000.',
 
-            'cantHabitacion.required' => 'La cantidad de habitaciones no puede ir vacío.',
+            'cantHabitacion.required' => 'La cantidad de habitaciones es obligatorio, no puede estar vacío.',
             'cantHabitacion.numeric' => 'El valor de la casa debe contener sólo números.',
             'cantHabitacion.min' => 'El mínimo de habitaciones es 1.',
             'cantHabitacion.max' => 'La cantidad de habitaciones no debe de exceder de 5.',
 
-            'descripcion.required' => 'La descripción no puede estar vacío.',
+            'descripcion.required' => 'La descripción es obligatoria, no puede estar vacío.',
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
-            'constructora_id.required'=> 'La contructora no puede estar vacío.',
+            'constructora_id.required'=> 'La contructora es obligatoria, no puede estar vacío.',
 
-            'subirCasa.required'=> 'La foto de la casa modelo no puede estar  vacío.',
+            'subirCasa.required'=> 'La foto de la casa modelo es obligatoria, no puede estar vacío.',
             ]);
 
             $input = $request->all();
@@ -114,24 +114,24 @@ class CasaController extends Controller
             'descripcion' => ['required', 'min:10','max:150'],
             'constructora_id' => ['required'],
         ],[
-            'claseCasa.required' => 'El nombre del modelo no puede ir vacío.',
+            'claseCasa.required' => 'El nombre del modelo de la casa es obligatorio, no puede estar vacío.',
             'claseCasa.regex' => 'El nombre de la casa no permite números.',
 
-            'valorCasa.required' => 'El valor de la casa no puede ir vacío.',
+            'valorCasa.required' => 'El valor de la casa es obligatorio, no puede estar vacío.',
             'valorCasa.numeric' => 'El valor de la casa debe contener sólo números.',
             'valorCasa.min' => 'El valor de la casa no debe ser menor de 100,000.',
 
-            'cantHabitacion.required' => 'La cantidad de habitaciones no puede ir vacío.',
+            'cantHabitacion.required' => 'La cantidad de habitaciones es obligatoria, no puede estar vacío.',
             'cantHabitacion.numeric' => 'El valor de la casa debe contener sólo números.',
             'cantHabitacion.min' => 'El mínimo de habitaciones es 1.',
             'cantHabitacion.max' => 'La cantidad de habitaciones no debe de exceder de 5.',
 
-            'descripcion.required' => 'La descripción no puede ir vacío.',
+            'descripcion.required' => 'La descripción es obligatoria, no puede estar vacío.',
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
-            'constructora_id.required'=> 'La contructora no puede ir vacio',
-            'subirCasa.required'=> 'La foto de la casa modelo no puede ir vacio',
+            'constructora_id.required'=> 'La contructora es obligatoria, no puede estar vacio',
+            'subirCasa.required'=> 'La foto de la casa modelo es obligatoria, no puede estar vacio',
         ]);
 
         $casa = Casa::findOrFail($id);
@@ -169,3 +169,4 @@ class CasaController extends Controller
     }
 
 }
+

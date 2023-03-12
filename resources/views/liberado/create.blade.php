@@ -1,16 +1,14 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Liberación del lote')
-    
-@section('contenido') 
-<div>
-  <div class="mb-5 m-5">
-    <h3 class=" text-center">
-        Liberación del lote {{$venta->lote->nombreLote}}
-    </h3>
+@section('title', 'Liberación del lote')
+
+@section('content_header')
+    <h1> Liberación del lote {{$venta->lote->nombreLote}}</h1>
     <hr>
-  </div>
+@stop
 
+@section('content')
+<div>
   <div class="container ">
     <div class="mb-3 text-end">
       <a class="btn btn-outline-primary" href="{{route('pago.index')}}">
@@ -20,11 +18,11 @@
       {{-- encabezado  --}}
       <div class = " card shadow ab-4 btaura">
         <div class = " card-header py-3 " >
-            <h5 class = "n-font-weight-bold text-white" >Liberación del lote</h5 > 
+            <h5 class = "n-font-weight-bold text-black" >Liberación del lote</h5 > 
         </div >
         
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-          <div class="col-60 bg-light p-5">
+      <div class="m-0 text-center align-items-center justify-content-center">
+          <div class="bg-light p-5">
       <form action="{{route('liberado.store')}}" class="liberado-guardar" method="POST" autocomplete="off">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
@@ -91,8 +89,12 @@
       </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
 
 @section('js')
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@endsection
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@stop

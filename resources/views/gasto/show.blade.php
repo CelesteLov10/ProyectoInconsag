@@ -1,19 +1,13 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Detalle de empleado')
+@section('title', 'Detalle')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-@endsection
+@section('content_header')
+    <h1>Detalles del gasto</h1>
+    <hr>
+@stop
 
-@section('contenido') 
-
-<div class="mb-5 m-5">
-    <h3 class=" text-center">
-        Detalles del gasto
-    </h3>
-        <hr>
-    </div>bloque
+@section('content')
 
     <div class="container ">
         <div class="mb-3 text-end">
@@ -23,7 +17,7 @@
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
             <div class = " card-header py-3 " >
-                <h5 class = "n-font-weight-bold text-white">Detalles del gasto {{$gasto->nombreGastos}} </h5 > 
+                <h5 class = "n-font-weight-bold text-black">Detalles del gasto {{$gasto->nombreGastos}} </h5 > 
             </div >
 
         <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
@@ -71,9 +65,14 @@
         </tbody>
     </table>
 </div>
-@endsection
-        
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+@stop
+
 @section('js')
-{{-- plugins para el buscador jquery ui --}}
-<script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
-@endsection
+    {{-- plugins para el buscador jquery ui --}}
+    <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+@stop

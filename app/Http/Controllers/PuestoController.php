@@ -25,19 +25,19 @@ class PuestoController extends Controller
         //validacion para cuando se agregue un puesto
         $this->validate($request, [
             'nombreCargo' => ['required','unique:puestos,nombreCargo','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
-            'sueldo'      => ['required','numeric','between: 7500.00, 20000.00'], // falta averiguar cual es el salario minimo y el maximo
+            'sueldo'      => ['required','numeric','between: 4500.00, 20000.00'], // falta averiguar cual es el salario minimo y el maximo
             'descripcion' => ['required','min:10','max:150']
         ], [
-            'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 
+            'nombreCargo.required'=> 'El nombre del cargo del puesto es obligatorio, no puede estar vacío.', 
             'nombreCargo.unique' => 'El nombre del puesto ingresado ya está en uso.', 
             'nombreCargo.regex' => 'El nombre del puesto no debe contener números y solo se permite un espacio entre palabras.' , 
             //'nombreCargo.regex' => 'El nombre del puesto no debe contener muchos espacios' , 
 
-            'sueldo.required' => 'Debe ingresar el sueldo', 
-            'sueldo.numeric' => 'El sueldo solo puede debe contener números.', 
-            'sueldo.between' => 'El sueldo debe tener un rango de 7500 y 20000', 
+            'sueldo.required' => 'El salario del puesto es obligatorio, no puede estar vacío.', 
+            'sueldo.numeric' => 'El salario solo puede debe contener números.', 
+            'sueldo.between' => 'El salario debe tener un rango de 4500 y 20000', 
 
-            'descripcion' => 'La descripción del puesto es requerida.',
+            'descripcion' => 'La descripción del puesto es obligatoria, no puede estar vacío.',
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
@@ -76,16 +76,16 @@ class PuestoController extends Controller
             'sueldo'      => ['required','numeric','between: 7500, 20000'], // falta averiguar cual es el salario minimo y el maximo
             'descripcion' => ['required','min:10','max:150'],
         ],[
-            'nombreCargo.required'=> 'El nombre del cargo del puesto es requerido, no puede estar vacío.', 
+            'nombreCargo.required'=> 'El nombre del cargo del puesto es obligatorio, no puede estar vacío.', 
             'nombreCargo.unique' => 'El nombre del puesto ingresado ya está en uso.', 
             'nombreCargo.regex' => 'El nombre del puesto no debe contener números y solo se permite un espacio entre palabras.' , 
             //'nombreCargo.regex' => 'El nombre del puesto no debe contener muchos espacios' , 
 
-            'sueldo.required' => 'Debe ingresar el sueldo', 
-            'sueldo.numeric' => 'El sueldo solo puede debe contener  números.', 
-            'sueldo.between' => 'El sueldo debe tener un rango de 7500.00 y 20000.00', 
+            'sueldo.required' => 'El salario del puesto es obligatorio, no puede estar vacío.', 
+            'sueldo.numeric' => 'El salario solo puede debe contener números.', 
+            'sueldo.between' => 'El salario debe tener un rango de 4500 y 20000',  
 
-            'descripcion' => 'La descripción del puesto es requerida.',
+            'descripcion' => 'La descripción del puesto es obligatoria, no puede estar vacío.',
             'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
             'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
         ]);

@@ -127,13 +127,14 @@ class PagoController extends Controller
         ];
         $mensaje =[
 
-            'cantidadCuotasPagar.required' => 'La cantidad de cuotas no puede ir vacío.',
+            'cantidadCuotasPagar.required' => 'La cantidad de cuotas es obligatoria, no puede estar vacío.',
             'cantidadCuotasPagar.numeric' => 'La cantidad de cuotas debe contener sólo números.',
             'cantidadCuotasPagar.digits' => 'La cantidad de cuotas debe contener 8 dígitos.',
             'cantidadCuotasPagar.min' => 'La cantidad de cuotas debe ser 1 como minimo.',
             'cantidadCuotasPagar.max' => 'La cantidad de cuotas debe ser 6 como máximo.',
-            'saldoEnCuotas.required' => 'El saldo en cuotas no puede ir vacío.',
-            'saldoEnCuotas.required' => 'El saldo en cuotas no puede ir vacío.',
+
+            'saldoEnCuotas.required' => 'El saldo en cuotas es obligatorio, no puede estar vacío.',
+            'saldoEnCuotas.required' => 'El saldo en cuotas es obligatorio, no puede estar vacío.',
             'valorTerrenoPagar.min' => 'El saldo pendiente debe ser 1 como minimo.',
             'valorTerrenoPagar.regex' => 'El saldo pendiente no debe ser negativo.',
 

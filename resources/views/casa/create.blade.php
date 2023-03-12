@@ -1,24 +1,13 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Nueva Casa modelo')
+@section('title', 'Nuevo')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-{{-- plugins para el calendario --}}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
-@endsection
-    
-@section('contenido') 
-
-  <div class="mb-5 m-5">
-    <h3 class=" text-center">
-      Registro de nueva casa modelo
-    </h3>
+@section('content_header')
+    <h1>Registro de nueva casa modelo</h1>
     <hr>
-  </div>
+@stop
+
+@section('content')
 
   <div class="container ">
     <div class="mb-3 text-end">
@@ -32,8 +21,8 @@
             <h5 class = "n-font-weight-bold text-white">Registro de una casa modelo</h5 > 
         </div >
 
-        <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-          <div class="col-60 bg-light p-5">
+        <div class="m-0 text-center align-items-center justify-content-center">
+          <div class="bg-light p-5">
       <form action="{{route('casa.store')}}" id="d" class="casa-guardar" method="POST" autocomplete="off" enctype="multipart/form-data">
           @csrf {{-- TOKEN INPUT OCULTO --}}
         <div class="mb-3 row">
@@ -87,7 +76,7 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre de la constructora:</label>
             <div class="col-sm-5">
-            <select name="constructora_id" id="" class="form-select rounded-pill @error('constructora_id') is-invalid @enderror">
+            <select name="constructora_id" id="" class="form-select form-control rounded-pill @error('constructora_id') is-invalid @enderror">
               <option value="" disabled selected>-- Seleccione una constructora --</option>
                 @foreach ($constructora as $constructoras)
                 <option value="{{$constructoras->id}}" 
@@ -122,12 +111,22 @@
       </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    {{-- plugins para el calendario --}}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+@stop
+
 @section('js')
     {{-- plugins para el calendario fechas jquery ui --}}
     <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-@endsection
+@stop
 

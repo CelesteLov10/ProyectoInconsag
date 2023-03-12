@@ -1,25 +1,13 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Nuevo empleado')
+@section('title', 'Nuevo')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-{{-- plugins para el calendario --}}
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+@section('content_header')
+    <h1>Nuevo empleado</h1>
+    <hr>
+@stop
 
-@endsection
-    
-@section('contenido') 
-
-<div class="mb-5 m-5">
-  <h3 class=" text-center">
-    Registro de un nuevo empleado
-  </h3>
-  <hr>
-</div>
+@section('content')
 
   <div class="container ">
     <div class="mb-3 text-end">
@@ -34,8 +22,8 @@
             <h5 class = "n-font-weight-bold text-white" >Creación empleado</h5> 
         </div >
 
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-          <div class="col-60 bg-light p-5">
+      <div class="m-0 text-center align-items-center justify-content-center">
+          <div class="bg-light p-5">
       <form action="{{route('empleado.storeEmp')}}" id="p" class="empleado-guardar" method="POST" autocomplete="off">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
@@ -157,7 +145,7 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Nombre del cargo:</label>
           <div class="col-sm-5">
-          <select name="puesto_id" id="" class="form-select rounded-pill @error('puesto_id') is-invalid @enderror">
+          <select name="puesto_id" id="" class="form-control form-select rounded-pill @error('puesto_id') is-invalid @enderror">
             <option value="" disabled selected>-- Selecione un cargo --</option>
               @foreach ($puesto as $puestos)
               <option value="{{$puestos->id}}" 
@@ -173,7 +161,7 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Nombre de la oficina:</label>
           <div class="col-sm-5">
-          <select name="oficina_id" id="" class="form-select rounded-pill @error('oficina_id') is-invalid @enderror">
+          <select name="oficina_id" id="" class="form-control form-select rounded-pill @error('oficina_id') is-invalid @enderror">
               <option value="" disabled selected>-- Selecione una oficina --</option>
               @foreach ($oficina as $oficinas)
               <option value="{{$oficinas->id}}" 
@@ -196,49 +184,58 @@
       </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    {{-- plugins para el calendario --}}
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+@stop
 
 @section('js')
-    {{-- plugins para el calendario fechas jquery ui 
+        {{-- plugins para el calendario fechas jquery ui 
           yearRange: "1960:2004",
           defaultDate: '01 ENE 2000',--}}
-    <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker({
-      dateFormat: "dd-mm-yy",
-      changeMonth: true,
-      changeYear: true,
-      firstDay: 0,
-					monthNamesShort: ['Enero', 'Febrero', 'Marzo',
-					'Abril', 'Mayo', 'Junio',
-					'Julio', 'Agosto', 'Septiembre',
-					'Octubre', 'Noviembre', 'Diciembre'],
-					dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'], 
-          yearRange: "-80:-18",
-          maxDate: "-18Y",
-          minDate: "-80Y"
-    });
-  } );
-</script>
-        {{-- calendario del segundo campo de fecha ingreso showOn: "both", buttonText: " " --}}
-<script>
-    $( function() {
-      $( "#datepicker2" ).datepicker({
-        dateFormat: "dd-mm-yy",
-        firstDay: 0,
-					monthNames: ['Enero', 'Febrero', 'Marzo',
-					'Abril', 'Mayo', 'Junio',
-					'Julio', 'Agosto', 'Septiembre',
-					'Octubre', 'Noviembre', 'Diciembre'],
-					dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-          maxDate: "2m",
-          minDate: 0,
-      });//.datepicker("setDate", new Date());
-    } );
-</script>
-
-@endsection
+          <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
+          <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+          <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+      
+      <script>
+        $( function() {
+          $( "#datepicker" ).datepicker({
+            dateFormat: "dd-mm-yy",
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 0,
+                monthNamesShort: ['Enero', 'Febrero', 'Marzo',
+                'Abril', 'Mayo', 'Junio',
+                'Julio', 'Agosto', 'Septiembre',
+                'Octubre', 'Noviembre', 'Diciembre'],
+                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'], 
+                yearRange: "-80:-18",
+                maxDate: "-18Y",
+                minDate: "-80Y"
+          });
+        } );
+      </script>
+              {{-- calendario del segundo campo de fecha ingreso showOn: "both", buttonText: " " --}}
+      <script>
+          $( function() {
+            $( "#datepicker2" ).datepicker({
+              dateFormat: "dd-mm-yy",
+              firstDay: 0,
+                monthNames: ['Enero', 'Febrero', 'Marzo',
+                'Abril', 'Mayo', 'Junio',
+                'Julio', 'Agosto', 'Septiembre',
+                'Octubre', 'Noviembre', 'Diciembre'],
+                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                maxDate: "2m",
+                minDate: 0,
+            });//.datepicker("setDate", new Date());
+          } );
+      </script>
+@stop

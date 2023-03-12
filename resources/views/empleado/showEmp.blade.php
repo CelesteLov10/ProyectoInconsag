@@ -1,20 +1,13 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Detalle de empleado')
+@section('title', 'Detalle')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-@endsection
-
-@section('contenido') 
-
-<div class="mb-5 m-5">
-    <h3 class=" text-center">
-      Detalles del empleado
-    </h3>
+@section('content_header')
+    <h1>Detalles del empleado</h1>
     <hr>
-  </div>
+@stop
 
+@section('content')
     <div class="container ">
         <div class="mb-3 text-end">
             <a class="btn btn-outline-primary" href="{{route('empleado.indexEmp')}}">
@@ -23,7 +16,7 @@
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
             <div class = " card-header py-3 " >
-                <h5 class = "n-font-weight-bold text-white">Detalles del empleado {{$empleado->nombres}} {{$empleado->apellidos}} </h5 > 
+                <h5 class = "n-font-weight-bold text-black">Detalles del empleado {{$empleado->nombres}} {{$empleado->apellidos}} </h5 > 
             </div >
 
         <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
@@ -92,8 +85,12 @@
                 <td>{{$empleado->oficina->nombreOficina}}</td>
             </tr>
             <tr>
+                <th scope="row">Departamento</th>
+                <td>{{$empleado->oficina->departamento->nombreD}}</td>
+            </tr>
+            <tr>
                 <th scope="row">Municipio</th>
-                <td>{{$empleado->oficina->municipio}}</td>
+                <td>{{$empleado->oficina->municipio->nombreM}}</td>
             </tr>
             <tr>
                 <th scope="row">Dirección</th>
@@ -102,9 +99,13 @@
         </tbody>
     </table>
 </div>
-@endsection
-        
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+@stop
+
 @section('js')
-{{-- plugins para el buscador jquery ui --}}
-<script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
-@endsection
+    {{-- plugins para el buscador jquery ui --}}
+    <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+@stop

@@ -35,30 +35,30 @@ class GastoController extends Controller
             $reglas = [
                 'nombreGastos'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u',
                 'montoGastos' => 'required|min:1|numeric', 
-                'nombreEmpresa' => 'required|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u', 
+                'nombreEmpresa' => 'required', #|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'
                 'fechaGastos' => 'required', 
                 'descripcion' => 'required|min:10|max:150', 
                 'empleado_id' => 'required', 
                 'baucherRecibo'    => 'required',
             ];
             $mensaje =[
-                'nombreGastos.required' => 'El nombre del gasto es requerido, no puede estar vacío. ',
+                'nombreGastos.required' => 'El nombre del gasto es obligatorio, no puede estar vacío. ',
                 'nombreGastos.regex' => 'El nombre del gasto no permite números y un espacio entre palabras.',
 
-                'montoGastos.required' => 'El monto del gasto es requerido, no puede estar vacío. ',
+                'montoGastos.required' => 'El monto del gasto es obligatorio, no puede estar vacío. ',
                 'montoGastos.numeric' => 'El monto del gasto debe contener sólo números.',
                 'montoGastos.min' => 'El monto del gasto no debe ser menor que 1.',
 
-                'nombreEmpresa.required' => 'El nombre de la empresa es requerido, no puede estar vacío. ',
+                'nombreEmpresa.required' => 'El nombre de la empresa es obligatorio, no puede estar vacío. ',
                 'nombreEmpresa.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
-                'fechaGastos.required' => 'La fecha de gasto es requerido, no puede estar vacío. ',
+                'fechaGastos.required' => 'La fecha de gasto es obligatorio, no puede estar vacío. ',
 
-                'descripcion.required' => 'La descripción del gasto es requerido, no puede estar vacío. ',
+                'descripcion.required' => 'La descripción del gasto es obligatoria, no puede estar vacío. ',
                 'descripcion.min' => 'La descripción es muy corta. Ingrese entre 10 y 150 caracteres',
                 'descripcion.max' => 'La descripción sobrepasa el límite de caracteres',
 
-                'empleado_id.required' => 'El empleado es requerido, no puede estar vacío. ',
+                'empleado_id.required' => 'El nombre del empleado que realizo el gasto es obligatorio, no puede estar vacío. ',
 
                 'baucherRecibo.required' => 'Debe seleccionar una imagen. ',
     

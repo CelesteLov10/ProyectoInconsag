@@ -1,24 +1,14 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Actualizar Casas Modelos')
+@section('title', 'Actualizar')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-{{-- plugins para el calendario --}}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-@endsection
-
-@section('contenido') 
-<div>
-  <div class="mb-5 m-5">
-    <h3 class=" text-center">
-      Actualización de casas modelos
-    </h3>
+@section('content_header')
+    <h1>Actualización de casas modelos</h1>
     <hr>
-</div>
+@stop
+
+@section('content')
+<div>
 
   <div class="container ">
     <div class="mb-3 text-end">
@@ -29,7 +19,7 @@
       {{-- encabezado  /images/{{$img->image}}--}}
       <div class = " card shadow ab-4 btaura" >
         <div class = " card-header py-3 " >
-          <h5 class = "n-font-weight-bold text-white">Actualización de la casa modelo</h5 > 
+          <h5 class = "n-font-weight-bold text-black">Actualización de la casa modelo</h5 > 
         </div>
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
         <div class="col-60 bg-light p-5">   
@@ -146,10 +136,22 @@
       </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    {{-- plugins para el calendario --}}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+@stop
 
 @section('js')
-{{-- plugins para el calendario fechas jquery ui --}}
+    {{-- plugins para el calendario fechas jquery ui --}}
   <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+@stop

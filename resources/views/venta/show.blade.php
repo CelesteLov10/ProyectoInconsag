@@ -1,19 +1,13 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Detalle de venta')
+@section('title', 'Detalle')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-@endsection
-
-@section('contenido') 
-
-<div class="mb-5 m-5">
-    <h3 class=" text-center">
-        Detalles venta
-    </h3>
+@section('content_header')
+    <h1>Detalles venta</h1>
     <hr>
-  </div>
+@stop
+
+@section('content')
 
     <div class="container ">
         <div class="mb-3 text-end">
@@ -26,11 +20,11 @@
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura">
             <div class = " card-header py-3 " >
-                <h5 class = "n-font-weight-bold text-white">Detalle de venta {{$venta->formaVenta}}</h5 > 
+                <h5 class = "n-font-weight-bold text-black">Detalle de venta {{$venta->formaVenta}}</h5 > 
             </div>
 
-        <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
-            <div class="col-60 bg-light p-5">
+        <div class="m-0 text-left align-items-center justify-content-center">
+            <div class="bg-light p-5">
     <table class="table">
         <thead class="table-light">
             <tr>
@@ -87,7 +81,6 @@
                 <th scope="row">Total pagado:</th>
                 <td>{{$venta->total}}</td>    
             </tr> 
-          
             {{-- si se vendio un lote al credito y sin casa --}}
         @else
         <tr>
@@ -130,7 +123,6 @@
                 <th scope="row">Valor del terreno:</th>
                 <td>{{$venta->lote->valorTerreno}}</td>    
             </tr>
-          
             <tr>
                 <th scope="row">Valor prima:</th>
                 <td>{{$venta->valorPrima}}</td>    
@@ -147,7 +139,7 @@
                 <th scope="row">Valor restante a pagar:</th>
                 <td>{{$venta->valorRestantePagar}}</td>    
             </tr>
-  
+
         @endif 
         {{-- si se vendio un lote al contado y con casa --}}
             @else
@@ -209,7 +201,7 @@
                 <td>{{$venta->total}}</td>    
             </tr> 
 
-           {{-- si se vendio un lote al credito y con casa --}}
+        {{-- si se vendio un lote al credito y con casa --}}
         @else
         <tr>
             <th scope="row">Identidad del cliente:</th>
@@ -281,7 +273,7 @@
             </tr>
         @endif
             @endif
-          
+            
         </tbody>
     </table>
 
@@ -351,7 +343,7 @@
             <div class="mb-3 row">
                 <label class="col-sm-4 col-form-label">Nombre del cliente relacionado:</label>
                 <div class="col-sm-7">
-                <select name="cliente_id" id="" class="form-select rounded-pill @error('cliente_id') is-invalid @enderror" >
+                <select name="cliente_id" id="" class="form-select form-control rounded-pill @error('cliente_id') is-invalid @enderror" >
                     {{-- se muestra el registro guardado --}}
                     <option value="{{$venta->beneficiario->cliente_id}}" 
                         {{old('cliente_id' , $venta->cliente->nombreCompleto)==$venta->cliente->id ? 'selected' : ''}}>{{$venta->cliente->nombreCompleto}}</option>
@@ -379,12 +371,14 @@
     </div> {{-- cierre modal --}}
 
 </div>
+@stop
 
-@endsection
-        
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+@stop
 
 @section('js')
-
 <script>
     
     if (document.getElementById('valorPrima') == ""){
@@ -404,6 +398,11 @@
     }
         
 </script>
+{{-- PARA QUE FUNCINE EL MODAL --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 
-@endsection
-
+@stop

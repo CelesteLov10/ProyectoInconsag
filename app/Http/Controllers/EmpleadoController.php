@@ -69,21 +69,21 @@ class EmpleadoController extends Controller
             'oficina_id'       => ['required'],
 
         ],[
-            'identidad.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
+            'identidad.required'=>'El número de identidad es obligatorio, no puede estar vacío.',
             'identidad.digits' => 'El número de identidad debe tener 13 dígitos. ',
             'identidad.unique' => 'El número de identidad debe ser único.',
-            'identidad.numeric' => 'En la identidad sólo se permiten números ',
+            'identidad.numeric' => 'El número de identidad sólo se permiten números.',
             'identidad.regex' => 'El formato para el número de identidad no es válido.',
 
-            'nombres.required' => 'El nombre no puede ir vacío.',
+            'nombres.required' => 'El nombre del empleado es obligatorio, no puede estar vacío.',
             'nombres.alpha' => 'En el nombre sólo se permite letras.',
             'nombres.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
-            'apellidos.required' => 'El apellido no puede ir vacío.',
+            'apellidos.required' => 'El apellido es obligatorio, no puede estar vacío.',
             'apellidos.alpha' => 'El apellido sólo permite letras.',
             'apellidos.regex' => 'El apellido debe iniciar con mayúscula y sólo permite un espacio entre ellos.',
 
-            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.required' => 'El teléfono del empleado es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
@@ -92,20 +92,22 @@ class EmpleadoController extends Controller
             'estado.required' => 'Debe seleccionar un estado.',
            // 'estado.in:activo,inactivo' => 'Solo se permite: activo o inactivo.',
 
-            'correo.required' => 'Debe ingresar el correo electrónico.',
+            'correo.required' => 'El correo electrónico es obligatorio, no puede estar vacío.',
             'correo.email' => 'Debe ingresar un correo electrónico válido.',
             'correo.unique' => 'El correo electrónico ya está en uso.',
 
-            'fechaNacimiento.required' => 'La fecha de nacimiento no puede ir vacío.',
+            'fechaNacimiento.required' => 'La fecha de nacimiento es obligatoria, no puede estar vacío.',
             'fechaNacimiento.regex' => 'Debe ser mayor de edad.',
 
-            'direccion.required' => 'Se necesita saber la dirección, no puede ir vacío.',
+            'direccion.required' => 'La dirección del empleado es obligatoria, no puede estar vacío.',
             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
 
-            'fechaIngreso.required' => 'Debe seleccionar la fecha de ingreso, no puede ir vacío.',
-            'puesto_id.required' => 'Debe seleccionar el puesto de trabajo, no puede ir vacío.',
-            'oficina_id.required'=> 'Debe seleccionar la oficina, no puede ir vacío.',
+            'fechaIngreso.required' => 'La fecha de ingreso es obligatoria, no puede estar vacío.',
+
+            'puesto_id.required' => 'Debe seleccionar el puesto de trabajo, no puede estar vacío.',
+
+            'oficina_id.required'=> 'Debe seleccionar la oficina, no puede estar vacío.',
             
             
 
@@ -152,21 +154,21 @@ class EmpleadoController extends Controller
             'oficina_id'       => ['required'],
         ], [
     
-            'identidad.required'=>'Debe ingresar el número de identidad, no puede estar vacío.',
+            'identidad.required'=>'El número de identidad es obligatorio, no puede estar vacío.',
             'identidad.digits' => 'El número de identidad debe tener 13 dígitos. ',
             'identidad.unique' => 'El número de identidad debe ser único.',
-            'identidad.numeric' => 'En la identidad sólo se permiten números.',
+            'identidad.numeric' => 'El número de identidad sólo se permiten números.',
             'identidad.regex' => 'El formato para el número de identidad no es válido.',
 
-            'nombres.required' => 'El nombre no puede ir vacío.',
+            'nombres.required' => 'El nombre del empleado es obligatorio, no puede estar vacío.',
             'nombres.alpha' => 'El nombre sólo permite letras.',
             'nombres.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
-            'apellidos.required' =>'El apellido no puede ir vacío.',
+            'apellidos.required' => 'El apellido es obligatorio, no puede estar vacío.',
             'apellidos.alpha' =>'El apellido sólo permite letras.',
             'apellidos.regex' =>'El apellido debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
-            'telefono.required' => 'El teléfono no puede ir vacío.',
+            'telefono.required' => 'El teléfono del empleado es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
@@ -174,20 +176,22 @@ class EmpleadoController extends Controller
 
             'estado.required' => 'Debe seleccionar un estado.',
 
-            'correo.required' =>'Debe ingresar el correo electrónico.',
+            'correo.required' => 'El correo electrónico es obligatorio, no puede estar vacío.',
             'correo.email' =>'Debe ingresar un correo electrónico válido.',
             'correo.unique' =>'El correo electrónico ya está en uso.',
 
-            'fechaNacimiento.required' =>'La fecha de nacimiento no puede ir vacío.',
+            'fechaNacimiento.required' => 'La fecha de nacimiento es obligatoria, no puede estar vacío.',
             'fechaNacimiento.regex' =>'Debe ser mayor de edad.',
 
-            'direccion.required' =>'Se necesita saber la dirección, no puede ir vacío.',
+            'direccion.required' => 'La dirección del empleado es obligatoria, no puede estar vacío.',
             'direccion.min' => 'La dirección es muy corta. Ingrese entre 10 y 150 caracteres',
             'direccion.max' => 'La dirección sobrepasa el límite de caracteres',
 
-            'fechaIngreso.required' =>'Debe seleccionar la fecha de ingreso, no puede ir vacío.',
-            'puesto_id.required' =>'Debe seleccionar el puesto de trabajo, no puede ir vacío.',
-            'oficina_id.required'=>'Debe seleccionar la oficina, no puede ir vacío.',
+            'fechaIngreso.required' => 'La fecha de ingreso es obligatoria, no puede estar vacío.',
+
+            'puesto_id.required' =>'El puesto de trabajo es obligatorio, no puede estar vacío.',
+
+            'oficina_id.required'=>'Debe seleccionar la oficina, no puede estar vacío.',
         
         ]);
    

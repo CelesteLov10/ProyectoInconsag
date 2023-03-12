@@ -1,25 +1,14 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Listado puesto') 
+@section('title', 'Listado')
 
-
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-@endsection
-
-@section('contenido') 
-
-<div>
-  <header class="blog-header py-3 mt-3">
-    <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-14 text-center">
+@section('content_header')
           <h3 class="blog-header-logo text-dark">Listado de puestos laborales</h3>
         <hr>
-      </div>
-    </div>
-  </header>
+@stop
+
+@section('content')
+<div>
 
   {{-- Campo de busqueda  --}}
   <form method="GET" action="">
@@ -29,7 +18,7 @@
                 <div class="input-group">
                       <input type="text" name="search" id="search"  class="form-control" autofocus
                       placeholder="Buscar por nombre del cargo" value="{{request('search')}}"/>
-                    <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
+                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
                   </div>
                 </div>
             </div>
@@ -38,7 +27,7 @@
   </form>
   <div class="container ">
     <div class="mb-3 text-end">
-      <a class="btn glow-on-hover-main text-BLACK" href="{{route('puestoLaboral.create')}}">Nuevo puesto <i class="bi bi-plus-square-dotted"></i></a>
+      <a class="btn btn-outline-primary text-BLACK" href="{{route('puestoLaboral.create')}}">Nuevo puesto <i class="bi bi-plus-square-dotted"></i></a>
     </div>
         {{-- alerta de mensaje cuando se guardo correctamente --}}
         @if (session('mensaje'))
@@ -60,7 +49,7 @@
         <div class = " card shadow ab-4 btaura">
           <div class = " card-header py-3 " >
             <a href="{{route('puestoLaboral.index')}}" id="sinLinea">
-              <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros"> Lista de los puestos laborales</h5 ></a> 
+              <h6 class = "" title="Volver a todos los registros"> Lista de los puestos laborales</h6 ></a> 
           </div >
 
       <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
@@ -80,7 +69,7 @@
                       <td>{{$puesto->sueldo}}</td>
                       <td><a class="btn btn-outline-warning" 
                         href="{{route('puestoLaboral.edit', ['id' => $puesto->id])}}">
-                        <i class="bi bi-pencil-square"></i></a></td>
+                        <i class="fa fa-clipboard"></i></a></td>
                           @csrf
                     </tr>
                     @empty
@@ -96,10 +85,18 @@
       </div>
   </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+@stop
 
 @section('js')
-{{-- plugins para el buscador jquery ui --}}
+    {{-- plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
 <script>src="https://code.jquery.com/jquery-3.5.1.js"</script>
 <script> src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"</script>
@@ -130,4 +127,4 @@
       $("#alert").fadeOut();           
   },2000);
 </script>
-@endsection
+@stop

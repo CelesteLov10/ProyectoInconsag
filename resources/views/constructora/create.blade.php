@@ -1,24 +1,13 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Nueva Constructora')
+@section('title', 'Nuevo')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-{{-- plugins para el calendario --}}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
-@endsection
-    
-@section('contenido') 
-
-  <div class="mb-5 m-5">
-    <h3 class=" text-center">
-      Registro de una nueva constructora
-    </h3>
+@section('content_header')
+    <h1>Registro de constructora</h1>
     <hr>
-  </div>
+@stop
+
+@section('content')
 
   <div class="container ">
     <div class="mb-3 text-end">
@@ -29,11 +18,11 @@
       {{-- encabezado  --}}
       <div class = " card shadow ab-4 btaura" >
         <div class = " card-header py-3 " >
-            <h5 class = "n-font-weight-bold text-white">Creación de una constructora</h5 > 
+            <h5 class = "n-font-weight-bold text-black">Creación de una constructora</h5 > 
         </div >
 
-        <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-          <div class="col-60 bg-light p-5">
+        <div class="m-0 text-center align-items-center justify-content-center">
+          <div class="bg-light p-5">
       <form action="{{route('constructora.store')}}" id="d" class="constructora-guardar" method="POST" autocomplete="off">
           @csrf {{-- TOKEN INPUT OCULTO --}}
         <div class="mb-3 row">
@@ -105,44 +94,55 @@
       </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    {{-- plugins para el calendario --}}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+@stop
+
 @section('js')
-    {{-- plugins para el calendario fechas jquery ui --}}
-    <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-{{-- <script>
-$( function() {
-    $( "#datepicker" ).datepicker({
-        dateFormat: "dd-mm-yy",
-        changeMonth: true,
-        changeYear: true,
-        firstDay: 0,
-		monthNamesShort: ['Enero', 'Febrero', 'Marzo',
-				'Abril', 'Mayo', 'Junio',
-				'Julio', 'Agosto', 'Septiembre',
-				'Octubre', 'Noviembre', 'Diciembre'],
-		dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-        maxDate: "1m",
-        minDate: "-1m",
-    });
-    } );
-</script> --}}
-{{-- <script>
-  window.onload = function(){
-    var fecha = new fecha Date ();
-    var mes = fecha.getMonth()+1;
-    var dia = fecha.getDate();
-    var ano = fecha.getFullYear();
-
-    if(dia<10)
-    dia = '0' + dia;
-    if(mes<10)
-    mes = '0' = mes;
-    document.getElementById('fechaActual').value= ano+"-"+mes+"-"+dia;
-
-  }
-</script> --}}
-@endsection
+        {{-- plugins para el calendario fechas jquery ui --}}
+        <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+    {{-- <script>
+    $( function() {
+        $( "#datepicker" ).datepicker({
+            dateFormat: "dd-mm-yy",
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 0,
+        monthNamesShort: ['Enero', 'Febrero', 'Marzo',
+            'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre',
+            'Octubre', 'Noviembre', 'Diciembre'],
+        dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            maxDate: "1m",
+            minDate: "-1m",
+        });
+        } );
+    </script> --}}
+    {{-- <script>
+      window.onload = function(){
+        var fecha = new fecha Date ();
+        var mes = fecha.getMonth()+1;
+        var dia = fecha.getDate();
+        var ano = fecha.getFullYear();
+    
+        if(dia<10)
+        dia = '0' + dia;
+        if(mes<10)
+        mes = '0' = mes;
+        document.getElementById('fechaActual').value= ano+"-"+mes+"-"+dia;
+    
+      }
+    </script> --}}
+@stop
 

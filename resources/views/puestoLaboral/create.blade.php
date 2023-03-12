@@ -1,15 +1,13 @@
-@extends('layout.plantillaH')
+@extends('adminlte::page')
 
-@section('titulo', 'Nuevo puesto')
-    
-@section('contenido') 
-<div>
-  <div class="mb-5 m-5">
-    <h3 class=" text-center">
-      Registro de un nuevo puesto laboral
-    </h3>
+@section('title', 'Nuevo puesto')
+
+@section('content_header')
+    <h1 class="blog-header-logo text-dark">Registro de un nuevo puesto laboral</h1>
     <hr>
-  </div>
+@stop
+
+@section('content')
 
   <div class="container ">
     <div class="mb-3 text-end">
@@ -23,8 +21,8 @@
             <h5 class = "n-font-weight-bold text-white" >Creación puesto </h5 > 
         </div >
 
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-          <div class="col-60 bg-light p-5">
+      <div class=" m-0 text-center align-items-center justify-content-center">
+          <div class="bg-light p-5">
       <form action="{{route('puestoLaboral.store')}}" class="puesto-guardar" method="POST" autocomplete="off">
           @csrf {{-- TOKEN INPUT OCULTO --}}
         <div class="mb-3 row">
@@ -70,8 +68,12 @@
       </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
 
 @section('js')
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@endsection
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@stop
