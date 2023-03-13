@@ -54,7 +54,7 @@
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('montoGastos') is-invalid @enderror" 
             placeholder="Ingrese el valor de la factura."
-            name="montoGastos" value="{{old('montoGastos')}}" maxlength="8">
+            name="montoGastos" value="{{old('montoGastos')}}" maxlength="4">
           @error('montoGastos')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
@@ -98,7 +98,7 @@
           </div>
         </div>
 
-        <div class="mb-3 row">
+        <div class="mb-3 row"> 
             <label class="col-sm-3 col-form-label">Nombre del empleado encargado:</label>
             <div class="col-sm-5">
             <select name="empleado_id" id="" class="form-select rounded-pill  @error('empleado_id') is-invalid @enderror">
