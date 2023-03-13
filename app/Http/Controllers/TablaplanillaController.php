@@ -12,9 +12,6 @@ class TablaplanillaController extends Controller
 {
     public function index(){
 
-        // $canEmpleados = Tablaplanilla::whereRaw('(SELECT count(id) FROM planillas WHERE id = planillas.id)')->get();
-
-
         $planillas = Planilla::all();
         $tablaplanillas = Tablaplanilla::all();
         return view('tablaplanilla.index', compact('planillas', 'tablaplanillas'));
@@ -29,14 +26,14 @@ class TablaplanillaController extends Controller
     public function store(Request $request){
 
         $this->validate($request,[
-            'totalp'  => ['min:1.00'],
-            'canEmpleados'  => ['min:1.00'],
+            'totalp'  => ['min:1'],
+            'canEmpleados'  => ['min:1'],
 
             'fechap'  => ['unique:tablaplanillas'],
         ],[
             'totalp.min'=>'Debe de agregar al menos un empleado a la tabla',
             'canEmpleados.min'=>'Debe de agregar al menos un empleado a la tabla',
-            
+
             'fechap.unique'=>'La planilla ya ha sido guardada',
 
         ]);
