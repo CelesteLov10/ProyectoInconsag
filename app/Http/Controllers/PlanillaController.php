@@ -39,7 +39,7 @@ class PlanillaController extends Controller
             'dias.numeric'=>'Solo se permiten números.',
         
             'empleado_id.required'=>'Debe seleccionar un empleado, no puede estar vacío.',
-            'empleado_id.unique'=>'Ya se agrego este empleado a la planilla.',
+            'empleado_id.unique'=>'Ya se agregó este empleado a la planilla.',
         ]);
         
         $input = $request->all();

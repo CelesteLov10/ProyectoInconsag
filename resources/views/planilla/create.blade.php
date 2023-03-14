@@ -121,9 +121,14 @@
       </div>
 
       {{-- declare las variables aqui para que conservara la ubicacion el boton --}}
-      
-      {{-- aun falta por extraer el numero de solo los empleados activos --}}
-      <?php $empactivos = count($empleado);?> 
+
+      {{-- de esta manera se puede extraer los empleados activos --}}
+      @php $empactivos = 0; @endphp
+      @foreach ($empleado as $empleados)
+      @if ($empleados->estado == 'activo')
+          <?php $empactivos = $empactivos + 1;?> 
+      @endif
+      @endforeach
                                 
       <?php $totale = 0;?>
       <?php $canEmpleado = 0;?>
