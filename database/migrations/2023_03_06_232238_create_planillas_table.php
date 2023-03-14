@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('planillas', function (Blueprint $table) {
-            $table->id();
             $table->string('dias');
             $table->double('total')->unsigned();
             // $table->double('totalp')->nullable();

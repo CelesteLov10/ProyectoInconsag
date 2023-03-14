@@ -101,7 +101,7 @@
         <div class="col-sm-5">
             <input type="text" id="dias" class="form-control rounded-pill  @error('dias') is-invalid @enderror"
             placeholder="Ingrese la cantidad de días" 
-                name="dias" value="{{old('dias')}}" maxlength="6" oninput="calcularTotal()">
+                name="dias" value="{{old('dias')}}" maxlength="2" oninput="calcularTotal()">
                 @error('dias')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                 @enderror
@@ -113,7 +113,7 @@
         <div class="col-sm-5">
             <input type="text" id="total" class="form-control rounded-pill  @error('total') is-invalid @enderror" 
             placeholder="Total a pagar" 
-                name="total" value="{{old('total')}}" readonly=»readonly»>
+                name="total" value="{{old('total')}}" maxlength="5" readonly=»readonly»>
                 @error('total')
                 <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
                 @enderror
@@ -135,7 +135,7 @@
 
       @foreach($planillas as $planilla)
       <?php $totale = $totale + $planilla->total;?>
-      <?php $canEmpleado = $planilla->id;?>
+      <?php $canEmpleado = $canEmpleado + 1?>
       @endforeach
 
       @if ($canEmpleado == $empactivos)
@@ -167,7 +167,6 @@
                           <table class="table border border-2 contorno-azul" id="tabla" style="text-align: left">
                               <thead class="thead-dark">
                                   <tr>
-                                      <th scope="col">#</th>
                                       <th scope="col">Identidad del empleado</th>
                                       <th scope="col">Nombre del empleado</th>
                                       <th scope="col">Puesto laboral</th>
@@ -177,12 +176,11 @@
                                   </tr>
                               </thead>
                               <tbody>
-                            
+                            @php
+                                $fecha = date("Y-m-d");
+                            @endphp
                               @foreach($planillas as $planilla)
-                              <?php $totale = $totale + $planilla->total;?>
-                              <?php $canEmpleado = $planilla->id;?>
                                   <tr>
-                                      <td>{{$planilla->id}}</td>
                                       <td>{{$planilla->empleado->identidad}}</td>
                                       <td>{{$planilla->empleado->nombres}}{{' '}}{{$planilla->empleado->apellidos}}</td>   
                                       <td>{{$planilla->empleado->puesto->nombreCargo}}</td>
@@ -248,7 +246,7 @@
                 <div class="col-sm-5">
                     <input hidden type="text" class="form-control rounded-pill @error('fechap') is-invalid @enderror" 
                     maxlength="10" placeholder="Fecha actual"
-                    name="fechap" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)"> 
+                    name="fechap" autocomplete="off" value="{{$fecha}}" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)"> 
                       @error('fechap')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                   @enderror
@@ -288,19 +286,26 @@
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
 
 <script>
+
   try
     {function calcularTotal(){
 
       var sueldo = parseFloat(document.getElementById('sueldo').value);
       var dias = parseInt(document.getElementById('dias').value) || 0;
       var total = document.getElementById('total');
-      
+
+      // en caso que la lic pida el mes real solo se aplica eso y en el controlador el max lo cambiamos a 31
+      /*var diass = new Date(0).getDate();
+      var resultado = sueldo / diass * dias; */
 
       var resultado = sueldo / 30 * dias; 
+      resultado = resultado.toFixed(2);
       total.value = resultado;
 
     }
     }catch (error) {throw error;}
+
+    
 </script>
 
 <script>

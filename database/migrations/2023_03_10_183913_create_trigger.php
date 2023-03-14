@@ -15,13 +15,23 @@ class CreateTrigger extends Migration {
             END
         ');
 
-
-        // AUN NO FUNCIONA CORRECTAMENTE
         DB::unprepared('
         CREATE TRIGGER liberarLote AFTER INSERT ON `liberados` FOR EACH ROW
         BEGIN
         
         update lotes set status = "Disponible" where nombreLote = new.nomLote;
+        
+        END
+        ');
+
+        // Trigger que elimina la informacion de la planilla al guardarse los 
+        // totales en tablaplanillas
+        DB::unprepared('
+        CREATE TRIGGER limpiarTabla AFTER INSERT ON `tablaplanillas` FOR EACH ROW
+        BEGIN
+        
+        DELETE FROM planillas;
+        
         
         END
         ');
