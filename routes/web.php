@@ -96,8 +96,6 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/casa', 'casa')->name('casa.search');
      //Ruta para listado totales planilla
      Route::get('search/tablaplanilla', 'tablaplanilla')->name('tablaplanilla.search');
-
-    
 });
 
 Route::controller(InventarioController::class)->group(function(){

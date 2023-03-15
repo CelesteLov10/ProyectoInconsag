@@ -31,14 +31,11 @@
         </div>
     </div>    
 
-  
-
     <div class="container ">
         <div class="mb-3 text-end">
             <a class="btn glow-on-hover-main text-BLACK" style="color: black" href="{{route('planilla.create')}}">Registrar planilla <i class="bi bi-file-plus"></i></a>
           </div>
 
-        </div>
           {{-- alerta de mensaje cuando se guardo correctamente --}}
         @if (session('mensaje'))
         <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
@@ -46,8 +43,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" id="alert" aria-label="Close"></button>
         </div>
       @endif
-        </div>
-
+        
         {{-- encabezado --}}
             <div class = " card shadow ab-4 btaura" >
                 <div class = " card-header py-3 " >
@@ -71,7 +67,7 @@
         </thead>
 
         <tbody>
-          @forelse($tablaplanillas as $tablaplanilla)
+          @foreach($tablaplanillas as $tablaplanilla)
                 <tr>
                     <td>{{$tablaplanilla->fechap}}</td>
                     <td>{{$tablaplanilla->canEmpleados}}</td>
@@ -80,11 +76,10 @@
                         href="{{route('tablaplanilla.show', ['id' => $tablaplanilla->id])}}">
                         <i class="bi bi-eye"></i></a></td> --}}
                 </tr>
-                @endforelse 
+                @endforeach
                  
         </tbody>
     </table>
-    {{$planilla->links()}}
     </div>
 </div>
 @endsection
@@ -97,7 +92,7 @@
     $('#search').autocomplete({
       source: function(request, response){
         $.ajax({
-        url: "{{route('Tablaplanilla.search')}}",
+        url: "{{route('tablaplanilla.search')}}",
         dataType:'json',
           data: {
               term: request.term
@@ -109,7 +104,7 @@
       }
     });
 </script>
-  {{-- Codigo para que el mensaje se cierre luego de 2 segundos pasar id al div --}}
+  {{-- Codigo para que el mensaje se cierre luego de 5 segundos pasar id al div --}}
 <script>
   $('#alert').fadeIn();     
   setTimeout(function() {
