@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
 use App\Models\Planilla;
 use App\Models\Tablaplanilla;
 
@@ -13,14 +14,16 @@ class TablaplanillaController extends Controller
     public function index(){
 
         $planillas = Planilla::all();
-        $tablaplanillas = Tablaplanilla::all();
+        $tablaplanillas = Tablaplanilla::all(); 
+        
         return view('tablaplanilla.index', compact('planillas', 'tablaplanillas'));
     }
 
-    public function show(){
+    public function show($id){
+        $empleados = Empleado::all();
         $planillas = Planilla::all();
-        $tablaplanillas = Tablaplanilla::all();
-        return view('tablaplanilla.show', compact('planillas', 'tablaplanillas'));
+        $tablaplanillas = Tablaplanilla::findOrFail($id);
+        return view('tablaplanilla.show', compact('planillas', 'tablaplanillas', 'empleados'));
     }
 
     public function store(Request $request){
@@ -34,11 +37,10 @@ class TablaplanillaController extends Controller
             'totalp.min'=>'Debe de agregar al menos un empleado a la tabla.',
             'canEmpleados.min'=>'Debe de agregar al menos un empleado a la tabla.',
 
-            'fechap.unique'=>'La planilla del día de hoy ya se guardo.',
+            'fechap.unique'=>'La planilla del día de hoy ya se guardó.',
             'fechap.required'=>'Se necesita la fecha.',
 
-            'fechap.regex'=>'Formato no valido.',
-
+            'fechap.regex'=>'Formato no válido.',
 
         ]);
 

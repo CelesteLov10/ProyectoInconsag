@@ -94,7 +94,7 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/constructora', 'constructora')->name('constructora.search');
      //Ruta para listado casas modelos
     Route::get('search/casa', 'casa')->name('casa.search');
-    
+
 });
 
 Route::controller(InventarioController::class)->group(function(){
@@ -352,12 +352,11 @@ Route::controller(PlanillaController::class)->group(function(){
     Route::get('/planilla', 'index')->name('planilla.index');
     Route::get('/planilla/create', 'create')->name('planilla.create');
     Route::post('/planilla', 'store')->name('planilla.store');
-    Route::post('/tablaplanilla', 'store')->name('tablaplanilla.store');
 });
 
 //Ruta para tabla planillas
 Route::controller(TablaplanillaController::class)->group(function(){
     Route::get('/tablaplanilla', 'index')->name('tablaplanilla.index');
-    // Route::get('/tablaplanilla', 'show')->name('tablaplanilla.show');
+    Route::get('/tablaplanilla/{id}', 'show')->name('tablaplanilla.show');
     Route::post('/tablaplanilla', 'store')->name('tablaplanilla.store');
 });

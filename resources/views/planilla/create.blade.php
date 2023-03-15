@@ -21,6 +21,15 @@
       <a class="btn btn-outline-primary" href="{{route('planilla.index')}}">
           <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
      </div>
+
+          {{-- alerta de mensaje cuando se guardo correctamente --}}
+          @if (session('mensaje'))
+          <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
+            {{ session('mensaje')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" id="alert" aria-label="Close"></button>
+          </div>
+        @endif
+
         {{-- encabezado --}}
         <div class = "card shadow ab-4 btaura" >
             <div class = " card-header py-3 " >
@@ -154,7 +163,7 @@
       @endif
 
               <br>
-              
+
               <div class=" card shadow ab-4 btaura">
                 <div class=" card-header py-3 ">
                         <h5 class="n-font-weight-bold text-white" title="Volver a todos los registros" style="text-align: left"> 
@@ -177,9 +186,10 @@
                                   </tr>
                               </thead>
                               <tbody>
+                                
                             @php
-                                $fecha = date("Y-m-d");
-                            @endphp
+                            $fecha = date("Y-m-d");
+                        @endphp
                               @foreach($planillas as $planilla)
                                   <tr>
                                       <td>{{$planilla->empleado->identidad}}</td>
@@ -210,7 +220,25 @@
             </div>
               </div>
 
-              {{-- <br><br> --}}
+              <br><br>
+              {{-- Condicion para que active el boton de guardar planilla --}}
+            @if ($canEmpleado == 0)
+            
+            <div class="mb-3 row">
+              <div class="offset-sm-3 col-sm-9 text-end">
+                <button type="submit" id="submit-and-print" class="btn btn-outline-info" hidden disabled="true">Guardar planilla</button>                      
+              </div>
+            </div>
+                
+                @else @if ($canEmpleado == $empactivos)
+                
+                <div class="mb-3 row">
+                  <div class="offset-sm-3 col-sm-9 text-end">
+                    <button type="submit" id="submit-and-print" class="btn btn-outline-info">Guardar planilla</button>                      
+                  </div>
+                </div>
+                @endif 
+            @endif
 
               {{-- Los inputs estan ocultos para que no se muestren en 
               esta vista y su funcion solo es capturar el dato
@@ -263,25 +291,97 @@
                 </div>
         </div> --}}
 
-            {{-- Condicion para que active el boton de guardar planilla --}}
-            @if ($canEmpleado == 0)
-            
-            <div class="mb-3 row">
-              <div class="offset-sm-3 col-sm-9 text-end">
-                <button type="submit" id="submit-and-print" class="btn btn-outline-info" hidden disabled="true">Guardar planilla</button>                      
-              </div>
+          {{-- ESTA INFORMACION SE MOSTRARA EN DETALLES --}}
+          <?php $identidad_empleado = 0;?>
+          <?php $nombre_empleado = 0;?>   
+          <?php $apellido_empleado = 0;?>    
+          <?php $sueldo_empleado = 0;?>                 
+          <?php $puesto_empleado = 0;?>                    
+          <?php $dias_empleado = 0;?>
+          
+          <?php $total_empleado = 0;?>
+          @foreach($planillas as $planilla)
+
+                            
+                            <?php $identidad_empleado = $planilla->empleado->identidad;?>
+                            <?php $nombre_empleado = $planilla->empleado->nombres;?>
+                            <?php $apellido_empleado = $planilla->empleado->apellidos;?>
+                            <?php $sueldo_empleado = $planilla->empleado->puesto->sueldo;?>
+                            <?php $puesto_empleado = $planilla->empleado->puesto->nombreCargo;?>
+                            <?php $dias_empleado = $planilla->dias;?>
+
+                            <?php $total_empleado = $sueldo_empleado / 30 * $dias_empleado ;?>
+                            @endforeach
+                            
+
+          <div class="mb-3 row">
+            <label hidden class="col-sm-3 col-form-label">identidad:</label>
+            <div class="col-sm-5">
+                <input hidden type="text" id="identidad_empleado" class="form-control rounded-pill  @error('identidad_empleado') is-invalid @enderror" 
+                    name="identidad_empleado" value="{{$identidad_empleado}}" readonly=»readonly»>
+                    @error('identidad_empleado')
+                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
+                    @enderror
             </div>
-                
-                @else @if ($canEmpleado == $empactivos)
-                    
-                
-                <div class="mb-3 row">
-                  <div class="offset-sm-3 col-sm-9 text-end">
-                    <button type="submit" id="submit-and-print" class="btn btn-outline-info">Guardar planilla</button>                      
-                  </div>
-                </div>
-                @endif 
-            @endif
+          </div>
+          
+          <div class="mb-3 row">
+            <label hidden class="col-sm-3 col-form-label">nombres:</label>
+            <div class="col-sm-5">
+                <input hidden type="text" id="nombre_empleado" class="form-control rounded-pill  @error('nombre_empleado') is-invalid @enderror" 
+                    name="nombre_empleado" value="{{$nombre_empleado}} {{$apellido_empleado}}" readonly=»readonly»>
+                    @error('nombre_empleado')
+                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
+                    @enderror
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label hidden class="col-sm-3 col-form-label">sueldo:</label>
+            <div class="col-sm-5">
+                <input hidden type="text" id="sueldo_empleado" class="form-control rounded-pill  @error('sueldo_empleado') is-invalid @enderror" 
+                    name="sueldo_empleado" value="{{$sueldo_empleado}}" readonly=»readonly»>
+                    @error('sueldo_empleado')
+                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
+                    @enderror
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label hidden class="col-sm-3 col-form-label">puesto:</label>
+            <div class="col-sm-5">
+                <input hidden type="text" id="puesto_empleado" class="form-control rounded-pill  @error('puesto_empleado') is-invalid @enderror" 
+                    name="puesto_empleado" value="{{$puesto_empleado}}" readonly=»readonly»>
+                    @error('puesto_empleado')
+                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
+                    @enderror
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label hidden class="col-sm-3 col-form-label">dias:</label>
+            <div class="col-sm-5">
+                <input hidden type="text" id="dias_empleado" class="form-control rounded-pill  @error('dias_empleado') is-invalid @enderror" 
+                placeholder="Total a pagar" 
+                    name="dias_empleado" value="{{$dias_empleado}}" readonly=»readonly»>
+                    @error('dias_empleado')
+                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
+                    @enderror
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label hidden class="col-sm-3 col-form-label">Total :</label>
+            <div class="col-sm-5">
+                <input hidden type="text" id="total_empleado" class="form-control rounded-pill  @error('total_empleado') is-invalid @enderror" 
+                placeholder="Total a pagar" 
+                    name="total_empleado" value="{{$total_empleado}}" readonly=»readonly»>
+                    @error('total_empleado')
+                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
+                    @enderror
+            </div>
+          </div>
+        
             </form>
           </div>
         </div>
@@ -361,5 +461,12 @@ $( function() {
             tabla.submit();
         }
   </script> --}}
+
+  <script>
+    $('#alert').fadeIn();     
+    setTimeout(function() {
+        $("#alert").fadeOut();           
+    },5000);
+  </script>
 
 @endsection

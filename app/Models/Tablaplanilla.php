@@ -13,10 +13,23 @@ class Tablaplanilla extends Model
     'totalp',
     'fechap',
     'canEmpleados',
-    // 'empleado_id',
+    'identidad_empleado',
+    'nombre_empleado', 
+    'sueldo_empleado',
+    'puesto_empleado',
+    'dias_empleado',
+    'total_empleado',
+    // 'dias', 
+    // 'total',
+    // 'fecha',
+    //'empleado_id',
     ];
 
-    public function planilla(){
-        return $this->belongsTo(Planilla::class);
-    }
+    // public function planilla(){
+    //     return $this->belongsTo(Planilla::class);
+    // }
+
+    // public function empleado(){
+    //     return $this->belongsTo(Empleado::class);
+    // }
 }

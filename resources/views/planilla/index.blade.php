@@ -16,19 +16,21 @@
         <hr>
     </div>
 
-        
+  
 
     <div class="container ">
         <div class="mb-3 text-end">
-            {{-- <a class="btn glow-on-hover-main text-BLACK" href="{{route('tablaplanilla.show')}}">Ver planilla <i class="bi bi-file-plus"></i></a> --}}
             <a class="btn glow-on-hover-main text-BLACK" style="color: black" href="{{route('planilla.create')}}">Registrar planilla <i class="bi bi-file-plus"></i></a>
           </div>
 
+        
+
         {{-- encabezado --}}
-        <div class = " card shadow ab-4 btaura" >
-            <div class = " card-header py-3 ">
-                <h5 class = "n-font-weight-bold text-white">Planillas guardadas</h5> 
-            </div >
+            <div class = " card shadow ab-4 btaura" >
+                <div class = " card-header py-3 " >
+                  <a href="{{route('planilla.index')}}" id="sinLinea">
+                    <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Listado de planillas</h5 ></a> 
+                </div >
         
         <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
             <div class="col-60 bg-light p-5">
@@ -40,6 +42,8 @@
                 <th scope="col">Fecha:</th>
                 <th scope="col">Número de empleados:</th>
                 <th scope="col">Total de la planilla:</th>
+                {{-- <th scope="col">Detalles de la planilla:</th> --}}
+
             </tr>
         </thead>
 
@@ -49,6 +53,9 @@
                     <td>{{$tablaplanilla->fechap}}</td>
                     <td>{{$tablaplanilla->canEmpleados}}</td>
                     <td>{{number_format($tablaplanilla->totalp, 2)}}</td>
+                    {{-- <td><a class="btn btn-outline-warning" 
+                        href="{{route('tablaplanilla.show', ['id' => $tablaplanilla->id])}}">
+                        <i class="bi bi-eye"></i></a></td> --}}
                 </tr>
                 @endforeach    
         </tbody>

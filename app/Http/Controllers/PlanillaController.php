@@ -15,6 +15,7 @@ class PlanillaController extends Controller
         $puestos = Puesto::all();
         $empleados = Empleado::all();
         $tablaplanillas = Tablaplanilla::all();
+
         return view('planilla.index', compact('planillas', 'empleados', 'puestos', 'tablaplanillas'));
     }
 
@@ -22,10 +23,11 @@ class PlanillaController extends Controller
 
         // $empactivos = Empleado::whereRaw('(SELECT count(estado) FROM empleados WHERE estado = "activo")')->get();
 
+        $tablaplanillas = Tablaplanilla::all();
         $planillas = Planilla::all();
         $empleado = Empleado::all();
         $puestos = Puesto::all();
-        return view('planilla.create', compact('empleado', 'puestos', 'planillas'));
+        return view('planilla.create', compact('empleado', 'puestos', 'planillas', 'tablaplanillas'));
     }
 
     public function store(Request $request){
