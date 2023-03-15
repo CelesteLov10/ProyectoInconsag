@@ -14,7 +14,10 @@ class PlanillaController extends Controller
         $planillas = Planilla::all();
         $puestos = Puesto::all();
         $empleados = Empleado::all();
-        $tablaplanillas = Tablaplanilla::all();
+        $tablaplanillas = Tablaplanilla::query()
+        ->when(request('search'), function($query){
+        return $query->where('fechap', 'LIKE', '%' .request('search') .'%');
+        })->orderBy('id','desc')->paginate(10)->withQueryString();
 
         return view('planilla.index', compact('planillas', 'empleados', 'puestos', 'tablaplanillas'));
     }
