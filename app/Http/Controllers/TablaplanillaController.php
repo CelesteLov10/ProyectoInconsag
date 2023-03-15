@@ -16,6 +16,7 @@ class TablaplanillaController extends Controller
         $tablaplanillas = Tablaplanilla::all();
         return view('tablaplanilla.index', compact('planillas', 'tablaplanillas'));
     }
+    }
 
     public function show(){
         $planillas = Planilla::all();

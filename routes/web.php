@@ -94,6 +94,9 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('search/constructora', 'constructora')->name('constructora.search');
      //Ruta para listado casas modelos
     Route::get('search/casa', 'casa')->name('casa.search');
+     //Ruta para listado totales planilla
+     Route::get('search/tablaplanilla', 'tablaplanilla')->name('tablaplanilla.search');
+
     
 });
 
