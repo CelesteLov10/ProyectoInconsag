@@ -38,6 +38,8 @@ class PlanillaController extends Controller
         $this->validate($request,[
             'dias'  => ['required','numeric', 'min:1', 'max:30'],
             'empleado_id' => ['required', 'unique:planillas'],
+            'total'  => ['required', 'numeric'],
+
         ],[
             'dias.required'=>'Debe ingresar la cantidad de días, no puede estar vacío.',
             'dias.min'=>'La cantidad de días debe ser al menos de 1 día.',
@@ -47,6 +49,10 @@ class PlanillaController extends Controller
         
             'empleado_id.required'=>'Debe seleccionar un empleado, no puede estar vacío.',
             'empleado_id.unique'=>'Ya se agregó este empleado a la planilla.',
+
+            'total.required'=>'El total es requerido.',
+            'total.numeric'=>'No se permite valores nulos.',
+
         ]);
         
         $input = $request->all();
