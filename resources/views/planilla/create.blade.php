@@ -138,10 +138,11 @@
       <?php $canEmpleado = $canEmpleado + 1?>
       @endforeach
 
+      {{-- Condicion para que oculte y desactive el boton de agregar empleados --}}
       @if ($canEmpleado == $empactivos)
             <div class="mb-3 row">
               <div class="offset-sm-3 col-sm-9 text-end">
-              <button type="submit"  id="submit-and-print" class="btn btn-outline-info" disabled="true">Agregar empleado</button> 
+              <button hidden type="submit"  id="submit-and-print" class="btn btn-outline-info" disabled="true">Agregar empleado</button> 
               </div>
             </div>
       @else
@@ -201,11 +202,9 @@
                               
                               </tbody>
                           </table> 
-                          
-                          {{-- Condicion para que desactive el boton de agregar empleado --}}
-                          <br>
-            
+                        <br>            
             </form>
+
             <form action="{{route('tablaplanilla.store')}}" class="tablaplanilla-guardar" method="POST" autocomplete="off">
               @csrf {{-- TOKEN INPUT OCULTO --}} 
             </div>
@@ -240,18 +239,29 @@
                         @enderror
                 </div>
               </div>
-              
-              <div class="mb-3 row">
-                <label hidden class="col-sm-3 col-form-label">Fecha:</label>
-                <div class="col-sm-5">
-                    <input hidden type="text" class="form-control rounded-pill @error('fechap') is-invalid @enderror" 
-                    maxlength="10" placeholder="Fecha actual"
-                    name="fechap" autocomplete="off" value="{{$fecha}}" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)"> 
+            
+            <div class="mb-3 row">
+              <label hidden class="col-sm-3 col-form-label">Fecha:</label>
+              <div class="col-sm-5">
+                      <input hidden type="text" class="form-control rounded-pill  @error('fechap') is-invalid @enderror" 
+                      placeholder="Input de prueba para el registro de planilla" 
+                      name="fechap" id="datepicker" autocomplete="off" value="{{$fecha}}" maxlength="10">
                       @error('fechap')
-                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                  @enderror
+                          <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                      @enderror
+                  </div>
+          </div>
+
+          {{-- <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Fecha:</label>
+            <div class="col-sm-5">
+                    <input type="text" class="form-control rounded-pill  @error('fechap') is-invalid @enderror" 
+                    name="fechap" id="datepicker" autocomplete="off" value="{{$fecha}}" maxlength="10">
+                    @error('fechap')
+                        <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                    @enderror
                 </div>
-            </div>
+        </div> --}}
 
             {{-- Condicion para que active el boton de guardar planilla --}}
             @if ($canEmpleado == 0)
@@ -284,6 +294,25 @@
 @section('js')
 {{-- plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+
+
+  <script>
+$( function() {
+    $( "#datepicker" ).datepicker({
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear: true,
+        firstDay: 0,
+		monthNamesShort: ['Enero', 'Febrero', 'Marzo',
+				'Abril', 'Mayo', 'Junio',
+				'Julio', 'Agosto', 'Septiembre',
+				'Octubre', 'Noviembre', 'Diciembre'],
+		dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        maxDate: "2m",
+        minDate: "0",
+    });
+    } );
+</script>
 
 <script>
 

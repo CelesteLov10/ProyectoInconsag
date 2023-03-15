@@ -36,7 +36,7 @@ class PlanillaController extends Controller
         ],[
             'dias.required'=>'Debe ingresar la cantidad de días, no puede estar vacío.',
             'dias.min'=>'La cantidad de días debe ser al menos de 1 día.',
-            'dias.max'=>'La cantidad de días supera el mes.',
+            'dias.max'=>'La cantidad de días supera el mes laboral.',
 
             'dias.numeric'=>'Solo se permiten números.',
         

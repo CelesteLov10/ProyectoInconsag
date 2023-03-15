@@ -29,12 +29,16 @@ class TablaplanillaController extends Controller
             'totalp'  => ['min:1'],
             'canEmpleados'  => ['min:1'],
 
-            'fechap'  => ['unique:tablaplanillas'],
+            'fechap'  => ['unique:tablaplanillas', 'required','regex:/^[0-9]{4}+-[0-9]{2}+-[0-9]{2}+$/u'], 
         ],[
-            'totalp.min'=>'Debe de agregar al menos un empleado a la tabla',
-            'canEmpleados.min'=>'Debe de agregar al menos un empleado a la tabla',
+            'totalp.min'=>'Debe de agregar al menos un empleado a la tabla.',
+            'canEmpleados.min'=>'Debe de agregar al menos un empleado a la tabla.',
 
-            'fechap.unique'=>'La planilla ya ha sido guardada',
+            'fechap.unique'=>'La planilla del día de hoy ya se guardo.',
+            'fechap.required'=>'Se necesita la fecha.',
+
+            'fechap.regex'=>'Formato no valido.',
+
 
         ]);
 
