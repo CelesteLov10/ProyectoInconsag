@@ -17,6 +17,7 @@ class BloqueFactory extends Factory
     public function definition()
     {
         return [
+            'nombreBloque'=>$this->faker->unique()->bothify('Bloque ?'),                                  
             'nombreBloque'=>$this->faker->unique()->bothify('Bloque ?'),                                
             'cantidadLotes'=>$this->faker->numberBetween(1,100),
             'subirfoto'=>$this->faker->imageUrl($width = 640, $height = 480),

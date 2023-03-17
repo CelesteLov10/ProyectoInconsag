@@ -93,7 +93,7 @@
                     <option value="" disabled selected>-- Seleccione un nombre de empleado --</option>
                     @foreach ($empleado as $empleados)
                     <option value="{{$empleados->id}}" 
-                        {{old('empleado_id' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}}</option>
+                        {{old('empleado_id' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}} {{$empleados->apellidos}}</option>
                     @endforeach
                 </select> 
                 @error('empleado_id')
