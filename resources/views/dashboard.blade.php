@@ -8,6 +8,15 @@
 
 @section('content')
     <p>Welcome to this beautiful admin panel.</p>
+    <div class="card-body">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        {{ __('Has iniciado sesion felicidades JAJA!') }}
+    </div>
 @stop
 
 @section('css')

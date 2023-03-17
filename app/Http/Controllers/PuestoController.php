@@ -12,7 +12,7 @@ class PuestoController extends Controller
         $puestos = Puesto::query()
             ->when(request('search'), function($query){
             return $query->where('nombreCargo', 'LIKE', '%' .request('search') .'%');
-            })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+            })->orderBy('id','desc')->paginate(100000)->withQueryString(); 
 
         return view('puestoLaboral.index', compact('puestos'));
     }

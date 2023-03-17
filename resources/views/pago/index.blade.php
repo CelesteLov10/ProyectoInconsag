@@ -109,7 +109,7 @@
                                     <i class="fas fa-credit-card" id="siCredit"></i></a></td>
                                     @else
                                     <td>
-                                        <button class="fas fa-fw fa-th-large text-BLACK" id="borno" disabled="true">
+                                        <button class="btn" id="borno" disabled="true">
                                         <i class="fas fa-fw fa-th-large" id="noCredit"></i>
                                         </button>
                                         </td>

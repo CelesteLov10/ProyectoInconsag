@@ -52,10 +52,10 @@
               <h6 class = "" title="Volver a todos los registros"> Lista de los puestos laborales</h6 ></a> 
           </div >
 
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
-          <div class="col-60 bg-light p-5">
-              <table class="table border border-2 contorno-azul">
-                  <thead class="thead-dark">
+      <div class="m-0 align-items-center justify-content-center ">
+          <div class=" p-5">
+              <table id="example" class="table table-striped table-bordered border-2 ">
+                  <thead class="">
                     <tr>
                       <th scope="col">Nombre del cargo</th>
                       <th scope="col">Sueldo</th>
@@ -80,7 +80,7 @@
                     
                   </tbody>
                 </table>
-                {{$puestos->links()}}
+                  {{-- {{$puestos->links()}}  --}}
           </div>
       </div>
   </div>
@@ -89,18 +89,16 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-
     <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    
 @stop
 
 @section('js')
     {{-- plugins para el buscador jquery ui --}}
-<script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
-<script>src="https://code.jquery.com/jquery-3.5.1.js"</script>
-<script> src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"</script>
-<script> src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"</script>
+    <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+    <script>src="https://code.jquery.com/jquery-3.5.1.js"</script>
+    <script> src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"</script>
+
 
 <script>
   //extraiga los datos de la BD
@@ -127,4 +125,13 @@
       $("#alert").fadeOut();           
   },2000);
 </script>
+
+{{-- Para que funcione la DATATABLE --}}
+<script>
+$(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
+
+
 @stop

@@ -16,7 +16,7 @@ return [
 
     'title' => 'Inconsag',
     'title_prefix' => '',
-    'title_postfix' => '',
+    'title_postfix' => '| Inconsag',
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +68,7 @@ return [
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'Inconsag Logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -112,8 +112,8 @@ return [
             'path' => 'vendor/adminlte/dist/img/inc.jpeg',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
-            'width' => 90,
-            'height' => 90,
+            'width' => 65,
+            'height' => 60,
         ],
     ],
 
@@ -130,8 +130,8 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
+    'usermenu_header' => true,
+    'usermenu_header_class' => 'bg-info',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -150,7 +150,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
@@ -192,7 +192,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-info elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -294,6 +294,11 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
+            'topnav_right' => false,
+        ],
+        [
+            'text' => 'Contactos',
+            'url'  => '#',
             'topnav_right' => true,
         ],
         [
@@ -302,10 +307,10 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'Buscar',
-        ],
+        // [ buscador lateral
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'Buscar',
+        // ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -319,16 +324,16 @@ return [
             'label_color' => 'success',
         ],
         ['header' => 'Elementos '],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        // [
+        //     'text' => 'profile',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-user',
+        // ],
+        // [
+        //     'text' => 'change_password',
+        //     'url'  => '/profile/update',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
         [
             'text'    => 'Puesto Laboral',
             'icon'    => 'fas fa-fw fa-address-card',
@@ -539,6 +544,34 @@ return [
                 ],
             ],
         ],
+        [
+            'text'    => 'Planillas',
+            'icon'    => 'fas fa-fw fa-file',
+            'submenu' => [
+                [
+                    'text' => 'Registro nuevo',
+                    'url'  => '/planilla/create',
+                ],
+                [
+                    'text' => 'Listado',
+                    'url'  => 'planilla',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Reservaciones',
+            'icon'    => 'fas fa-fw fa-file',
+            'submenu' => [
+                [
+                    'text' => 'Registro nuevo',
+                    'url'  => '/gasto/create',
+                ],
+                [
+                    'text' => 'Listado',
+                    'url'  => 'gasto',
+                ],
+            ],
+        ],
         
         ['header' => 'labels'],
         [
@@ -594,7 +627,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

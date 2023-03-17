@@ -23,6 +23,8 @@ use App\Http\Controllers\PruebaPagosController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\LiberadoController;
+use App\Http\Controllers\PlanillaController;
+use App\Http\Controllers\TablaplanillaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -360,3 +362,17 @@ require __DIR__.'/auth.php';
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Ruta para planillas
+Route::controller(PlanillaController::class)->group(function(){
+    Route::get('/planilla', 'index')->name('planilla.index');
+    Route::get('/planilla/create', 'create')->name('planilla.create');
+    Route::post('/planilla', 'store')->name('planilla.store');
+});
+
+//Ruta para tabla planillas
+Route::controller(TablaplanillaController::class)->group(function(){
+    Route::get('/tablaplanilla', 'index')->name('tablaplanilla.index');
+    Route::get('/tablaplanilla/{id}', 'show')->name('tablaplanilla.show');
+    Route::post('/tablaplanilla', 'store')->name('tablaplanilla.store');
+});

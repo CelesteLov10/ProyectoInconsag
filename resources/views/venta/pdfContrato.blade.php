@@ -8,7 +8,7 @@
     @if ($venta->casa_id == null)
     @if($venta->valorPrima == null)
 
-    <h2>CONTRATO DE ARRENDAMIENTO DE TERRENO AL CONTADO sin casa</h2>
+    <h2>CONTRATO DE ARRENDAMIENTO DE TERRENO AL CONTADO </h2>
 
     <p>
         Celebrado entre <u>INCONSAG</u>, quien a los fines de este contrato y en lo sucesivo y para fines de este contrato se denominará “EL ARRENDADOR”; y <u>{{$venta->cliente->nombreCompleto}}</u> a quien en lo sucesivo se le denominará “EL ARRENDATARIO”. Ambas partes declaran sujetarse a las siguientes declaraciones y clausulas.
@@ -60,8 +60,8 @@
                 </span>    
             <div>
     @else
-
-    <h2>CONTRATO DE ARRENDAMIENTO DE TERRENO AL CRÉDITO sin casa</h2>
+            {{-- al credito sin casa --}}
+    <h2>CONTRATO DE ARRENDAMIENTO DE TERRENO AL CRÉDITO</h2>
     <p>
 Celebrado entre <u>INCONSAG</u>, quien a los fines de este contrato y en lo sucesivo y para fines de este contrato se denominará “EL ARRENDADOR”; y <u>{{$venta->cliente->nombreCompleto}}</u> a quien en lo sucesivo se le denominará “EL ARRENDATARIO”. Ambas partes declaran sujetarse a las siguientes declaraciones y clausulas.
 <br>
@@ -205,7 +205,7 @@ EL ARRENDATARIO <u>{{$venta->cliente->nombreCompleto}}</u>
             transfiere en venta real y enajenación perpetua a favor de EL ARRENDATARIO el inmueble descrito en la cláusula primero.
         </p>
         <p>
-            TERCERO: EL ARRENDATARIO por el LOTE DE TERRENO RURAL que le transfieren a su favor, cancela la suma de L.<u>{{$venta->valorTerreno}}</u> 
+            TERCERO: EL ARRENDATARIO por el LOTE DE TERRENO RURAL que le transfieren a su favor, cancela la suma de L.<u>{{$venta->total}}</u> 
             que recibe EL ARRENDADOR a su entera y completa satisfacción, declarando que el precio es justo y equitativo. Quien a partir de la fecha adquiere la posesión, conducción y propiedad del LOTE DE TERRENO RURAL en mención. 
         </p>
         <p>
@@ -218,7 +218,8 @@ EL ARRENDATARIO <u>{{$venta->cliente->nombreCompleto}}</u>
             por lo querenuncian a cualquier acción que pretenda invalidar los efectos del presente.
         </p>
         <p>
-            SEXTO: El ARRENDADOR vende al EL ARRENDATARIO <u>{{$venta->cliente->nombreCompleto}}</u> la vivienda <u>{{$venta->casa->claseCasa}}</u>, con <u>{{$venta->casa->cantHabitacion}}</u> habitaciones y las siguientes especificaciones <u>{{$venta->casa->descripcion}}</u>; por la cantidad de L.<u>{{$venta->casa->valorCasa}}</u>, El EL ARRENDADOR está 
+            SEXTO: El ARRENDADOR vende al EL ARRENDATARIO <u>{{$venta->cliente->nombreCompleto}}</u> la vivienda <u>{{$venta->casa->claseCasa}}</u>, con <u>{{$venta->casa->cantHabitacion}}</u> habitaciones y las siguientes especificaciones
+            <u>{{$venta->casa->descripcion}}</u>; por la cantidad de L.<u>{{$venta->casa->valorCasa}}</u>, El EL ARRENDADOR está 
             obligado a entregar la mercancía sólo después de que se hayan liquidado los fondos, y la entrega será absoluta, de acuerdo con el contrato. El ARRENDATARIO corre con los derechos, 
             impuestos y otros gastos asociados a la compra.
         </p>
@@ -244,7 +245,7 @@ EL ARRENDATARIO <u>{{$venta->cliente->nombreCompleto}}</u>
                 EL ARRENDADOR <u>INCONSAG</u>
                 </span>    
             <div>
-    @else
+    @else {{-- venta casa al credito --}}
     <h2>CONTRATO DE ARRENDAMIENTO DE VIVIENDA AL CRÉDITO</h2>
     <p>
 Celebrado entre <u>INCONSAG</u>, quien a los fines de este contrato y en lo sucesivo y para fines de este contrato se denominará “EL ARRENDADOR”; y <u>{{$venta->cliente->nombreCompleto}}</u> a quien en lo sucesivo se le denominará “EL ARRENDATARIO”. Ambas partes declaran sujetarse a las siguientes declaraciones y clausulas.

@@ -14,6 +14,7 @@ use App\Models\Casa;
 use App\Models\Cliente;
 use App\Models\Venta;
 use App\Models\Constructora;
+use App\Models\Tablaplanilla;
 
 
 class SearchController extends Controller
@@ -153,6 +154,18 @@ class SearchController extends Controller
         foreach($querys as $query){
         $data[] = [
         'label' => $query->claseCasa
+        ];
+        }
+        return $data;
+    }
+    public function tablaplanilla(Request $request){
+        $term = $request->get('term');
+        $querys = Tablaplanilla::where('fechap', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->fechap
         ];
         }
         return $data;

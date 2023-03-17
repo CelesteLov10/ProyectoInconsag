@@ -33,9 +33,9 @@ class GastoController extends Controller
     
         public function store(Request $request){
             $reglas = [
-                'nombreGastos'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u',
-                'montoGastos' => 'required|min:1|numeric', 
-                'nombreEmpresa' => 'required', #|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'
+                'nombreGastos'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u|min:3|max:50',
+                'montoGastos' => 'required|min:1|max:9999|numeric', 
+                'nombreEmpresa' => 'required|min:2|max:50', #|regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'
                 'fechaGastos' => 'required', 
                 'descripcion' => 'required|min:10|max:150', 
                 'empleado_id' => 'required', 
@@ -44,13 +44,21 @@ class GastoController extends Controller
             $mensaje =[
                 'nombreGastos.required' => 'El nombre del gasto es obligatorio, no puede estar vacío. ',
                 'nombreGastos.regex' => 'El nombre del gasto no permite números y un espacio entre palabras.',
+                'nombreGastos.min' => 'El nombre del gasto es muy corto.',
+                'nombreGastos.max' => 'El nombre del gasto sobrepasa el límite de caracteres',
+
 
                 'montoGastos.required' => 'El monto del gasto es obligatorio, no puede estar vacío. ',
                 'montoGastos.numeric' => 'El monto del gasto debe contener sólo números.',
                 'montoGastos.min' => 'El monto del gasto no debe ser menor que 1.',
+                'montoGastos.max' => 'El monto del gasto no debe ser mayor que 9999.',
+
 
                 'nombreEmpresa.required' => 'El nombre de la empresa es obligatorio, no puede estar vacío. ',
                 'nombreEmpresa.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+                'nombreEmpresa.min' => 'El nombre de la empresa es muy corto.',
+                'nombreEmpresa.max' => 'El nombre de la empresa sobrepasa el límite de caracteres',
+
 
                 'fechaGastos.required' => 'La fecha de gasto es obligatorio, no puede estar vacío. ',
 
@@ -60,7 +68,7 @@ class GastoController extends Controller
 
                 'empleado_id.required' => 'El nombre del empleado que realizo el gasto es obligatorio, no puede estar vacío. ',
 
-                'baucherRecibo.required' => 'Debe seleccionar una imagen. ',
+                'baucherRecibo.required' => 'Debe seleccionar una imagen, no puede estar vacío. ',
     
             ];
             $this->validate($request, $reglas, $mensaje);

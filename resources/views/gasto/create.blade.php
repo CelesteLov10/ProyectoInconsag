@@ -18,7 +18,7 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 btaura" >
       <div class = " card-header py-3 " >
-          <h5 class = "n-font-weight-bold text-black">Registro de un nuevo gasto</h5 > 
+          <h5 class = "n-font-weight-bold text-white">Registro de un nuevo gasto</h5 > 
       </div >
 
       <div class="m-0 text-center align-items-center justify-content-center">
@@ -26,7 +26,7 @@
     <form action="{{route('gasto.store')}}" id="d" class="casa-guardar" method="POST" autocomplete="off"
       enctype="multipart/form-data">
         @csrf {{-- TOKEN INPUT OCULTO --}}
-      <div class="mb-3 row">
+    <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre del gasto:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill @error('nombreGastos') is-invalid @enderror" 
@@ -43,7 +43,7 @@
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill  @error('montoGastos') is-invalid @enderror" 
           placeholder="Ingrese el valor de la factura."
-          name="montoGastos" value="{{old('montoGastos')}}" maxlength="8">
+          name="montoGastos" value="{{old('montoGastos')}}" maxlength="4">
         @error('montoGastos')
           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
         @enderror
@@ -87,14 +87,14 @@
         </div>
       </div>
 
-      <div class="mb-3 row">
+      <div class="mb-3 row"> 
           <label class="col-sm-3 col-form-label">Nombre del empleado encargado:</label>
           <div class="col-sm-5">
           <select name="empleado_id" id="" class="form-select form-control rounded-pill  @error('empleado_id') is-invalid @enderror">
               <option value="" disabled selected>-- Seleccione un nombre de empleado --</option>
               @foreach ($empleado as $empleados)
               <option value="{{$empleados->id}}" 
-                  {{old('empleado_id' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}}</option>
+                  {{old('empleado_id' , $empleados->nombres)==$empleados->id ? 'selected' : ''}}>{{$empleados->nombres}} {{$empleados->apellidos}}</option>
               @endforeach
           </select> 
           @error('empleado_id')
