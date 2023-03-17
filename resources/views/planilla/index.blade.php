@@ -1,23 +1,30 @@
-@extends('adminlte::page')
+@extends('layout.plantillaH')
 
-@section('title', 'Planilla')
+@section('titulo', 'Planillas')
 
-@section('content_header')
-    <h1>Listado planilla</h1>
-@stop
+@section('css')
+<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+@endsection
 
-@section('content')
+@section('contenido') 
+
 <div>
+    <div class="mb-5 m-5">
+        <h3 class=" text-center">
+        Listado de planillas
+        </h3>
+        <hr>
+    </div>
 
      {{-- Campo de busqueda  --}}
   <form method="GET" action="">
     <div class="container">
         <div class="vh-50 row text-center align-items-center justify-content-center">
-            <div class="col-7 p-1 contorno-azul">
+            <div class="col-3 p-1 contorno-azul">
                 <div class="input-group">
-                      <input type="text" name="search" id="search"  class="form-control" autofocus
-                      placeholder="Buscar por fecha de planilla" value="{{request('search')}}"/>
-                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
+                      <input type="text" name="search" id="search" readonly onclick="encontrar()" class="form-control"
+                      placeholder="Seleccione la fecha que desea buscar" value="{{request('search')}}"/>
+                    <button type="submit" class="btn glow-on-hover-bus"><i class="bi bi-search"></i></button>
                   </div>
                 </div>
             </div>
@@ -26,7 +33,7 @@
 
     <div class="container ">
         <div class="mb-3 text-end">
-            <a class="btn btn-outline-primary text-BLACK"  href="{{route('planilla.create')}}">Registrar planilla <i class="bi bi-file-plus"></i></a>
+            <a class="btn glow-on-hover-main text-BLACK" style="color: black" href="{{route('planilla.create')}}">Registrar planilla <i class="bi bi-file-plus"></i></a>
           </div>
 
           {{-- alerta de mensaje cuando se guardo correctamente --}}
@@ -44,8 +51,8 @@
                     <h5 class = "n-font-weight-bold text-white" title="Volver a todos los registros">Listado de planillas</h5 ></a> 
                 </div >
         
-        <div class="m-0 text-left align-items-center justify-content-center">
-            <div class="bg-light p-5">
+        <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
+            <div class="col-60 bg-light p-5">
     
     <br>
     <table class="table border border-2 contorno-azul">
@@ -54,7 +61,7 @@
                 <th scope="col">Fecha:</th>
                 <th scope="col">Número de empleados:</th>
                 <th scope="col">Total de la planilla:</th>
-                {{-- <th scope="col">Detalles de la planilla:</th> --}}
+                <th scope="col">Detalles de la planilla:</th>
 
             </tr>
         </thead>
@@ -65,9 +72,9 @@
                     <td>{{$tablaplanilla->fechap}}</td>
                     <td>{{$tablaplanilla->canEmpleados}}</td>
                     <td>{{number_format($tablaplanilla->totalp, 2)}}</td>
-                    {{-- <td><a class="btn btn-outline-warning" 
+                    <td><a class="btn btn-outline-primary" 
                         href="{{route('tablaplanilla.show', ['id' => $tablaplanilla->id])}}">
-                        <i class="bi bi-eye"></i></a></td> --}}
+                        <i class="bi bi-eye"></i></a></td>
                 </tr>
                 @endforeach
                  
@@ -75,12 +82,52 @@
     </table>
     </div>
 </div>
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
+@endsection
+        
 @section('js')
-    <script> console.log('Hi!'); </script>
-@stop
+{{-- plugins para el buscador jquery ui --}}
+<script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
+<script>
+    //extraiga los datos de la BD
+    $('#search').autocomplete({
+      source: function(request, response){
+        $.ajax({
+        url: "{{route('tablaplanilla.search')}}",
+        dataType:'json',
+          data: {
+              term: request.term
+          },
+            success: function(data){
+            response(data)
+          }
+        });
+      }
+    });
+</script>
+
+<script>
+  $( function encontrar() {
+      $("#search" ).datepicker({
+          dateFormat: "yy-mm-dd",
+          changeMonth: true,
+          changeYear: true,
+          firstDay: 0,
+      monthNamesShort: ['Enero', 'Febrero', 'Marzo',
+          'Abril', 'Mayo', 'Junio',
+          'Julio', 'Agosto', 'Septiembre',
+          'Octubre', 'Noviembre', 'Diciembre'],
+      dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+          maxDate: "",
+          minDate: "",
+      });
+      } );
+  </script>
+
+  {{-- Codigo para que el mensaje se cierre luego de 5 segundos pasar id al div --}}
+<script>
+  $('#alert').fadeIn();     
+  setTimeout(function() {
+      $("#alert").fadeOut();           
+  },5000);
+</script>
+@endsection

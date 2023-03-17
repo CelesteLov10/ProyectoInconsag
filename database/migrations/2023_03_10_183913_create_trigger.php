@@ -36,11 +36,11 @@ class CreateTrigger extends Migration {
         ');
         
         // DB::unprepared('
-        // CREATE TRIGGER agregarinfo AFTER INSERT ON `planillas` FOR EACH ROW
+        // CREATE TRIGGER agregarinfo BEFORE INSERT ON `planillas` FOR EACH ROW
         // BEGIN
         
-        // INSERT INTO tablaplanillas (identidad_empleado, nombre_empleado, sueldo_empleado, puesto_empleado, total_empleado)
-        // VALUES ("0704200100156","Carlos","10000","Drummer","10000");
+        // INSERT INTO detallesplanillas
+        // SELECT * FROM planillas;
         
         // END
         // ');

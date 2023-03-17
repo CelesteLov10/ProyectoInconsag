@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('planillas', function (Blueprint $table) {
+        Schema::create('detallesplanillas', function (Blueprint $table) {
             $table->id();
             $table->string('dias');
             $table->double('total')->unsigned();
             // $table->double('totalp')->nullable();
             // $table->string('numEmpleados')->nullable();
             $table->date('fecha');
-            $table->unsignedBigInteger('empleado_id')->unique();//Relacion con tabla puesto
+            $table->unsignedBigInteger('empleado_id');//Relacion con tabla puesto
             $table->foreign('empleado_id')->references('id')->on('empleados');// Restriccion llave foranea
             // $table->unsignedBigInteger('puesto_id');//Relacion con tabla puesto
             // $table->foreign('puesto_id')->references('id')->on('puestos');// Restriccion llave foranea
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planillas');
+        Schema::dropIfExists('detallesplanillas');
     }
 };

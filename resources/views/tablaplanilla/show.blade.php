@@ -43,17 +43,18 @@
                                   </tr>
                               </thead>
                               <tbody>
-                              {{-- @foreach($tablaplanillas as $tablaplanilla) --}}
-                              
+                              @foreach($detallesplanilla as $detallesplanillas)
+                              @if ($tablaplanillas->fechap == $detallesplanillas->fecha)
                                   <tr>
-                                      <td>{{$tablaplanillas->identidad_empleado}}</td>
-                                      <td>{{$tablaplanillas->nombre_empleado}}</td>    
-                                      <td>{{$tablaplanillas->puesto_empleado}}</td>
-                                      <td>{{$tablaplanillas->sueldo_empleado}}</td>
-                                      <td>{{$tablaplanillas->dias_empleado}}</td>
-                                      {{-- <td>{{$tablaplanillas->}}</td> --}}
-                                      <td>{{number_format($tablaplanillas->total_empleado, 2)}}</td>
-                                      {{-- @endforeach --}}
+                                    <td>{{$detallesplanillas->empleado->identidad}}</td>
+                                    <td>{{$detallesplanillas->empleado->nombres}}{{' '}}{{$detallesplanillas->empleado->apellidos}}</td>   
+                                    <td>{{$detallesplanillas->empleado->puesto->nombreCargo}}</td>
+                                    <td>{{$detallesplanillas->empleado->puesto->sueldo}}</td>
+                                    <td>{{$detallesplanillas->dias}}</td>
+                                    <td>{{number_format($detallesplanillas->total, 2)}}</td>
+
+                                      @endif
+                                      @endforeach
 
                               <tr>
                                 <th scope="col">Total planilla:</th>

@@ -1,14 +1,20 @@
-@extends('adminlte::page')
+@extends('layout.plantillaH')
 
-@section('title', 'Registro')
+@section('titulo', 'Registro de planilla')
 
-@section('content_header')
-    <h1>Registro y detalles de la planilla</h1>
-    <hr>
-@stop
+@section('css')
+<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
+@endsection
 
-@section('content')
+@section('contenido') 
+
 <div>
+    <div class="mb-5 m-5">
+        <h3 class=" text-center">
+        Registro y detalles de la planilla
+        </h3>
+        <hr>
+    </div>
 
     <div class="container ">
       <div class="mb-3 text-end">
@@ -30,8 +36,8 @@
                 <h5 class = "n-font-weight-bold text-white">Registrar empleado</h5> 
             </div >
         
-            <div class="m-0 text-center align-items-center justify-content-center">
-                <div class="bg-light p-5">
+            <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
+                <div class="col-60 bg-light p-5">
             <form action="{{route('planilla.store')}}" class="planilla-guardar" method="POST" autocomplete="off">
                 @csrf {{-- TOKEN INPUT OCULTO --}}
 
@@ -40,18 +46,31 @@
                   <div class="col-sm-5">
                       <input type="text" class="form-control rounded-pill @error('fecha') is-invalid @enderror" 
                       maxlength="10" placeholder="Fecha actual"
-                      name="fecha" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)"> 
+                      name="fecha" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly style="background-color: rgba(206, 206, 206, 0)"> 
                         @error('fecha')
                       <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                     @enderror
                   </div>
               </div>
 
+              {{-- INPUT DE PRUEBA --}}
+              {{-- <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">Fecha:</label>
+                  <div class="col-sm-5">
+                      <input type="text" id="datepicker" class="form-control rounded-pill @error('fecha') is-invalid @enderror" 
+                      maxlength="10" placeholder="Fecha actual"
+                      name="fecha" autocomplete="off" value="{{old('fecha')}}" readonly style="background-color: rgba(206, 206, 206, 0)"> 
+                        @error('fecha')
+                      <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                    @enderror
+                  </div>
+              </div> --}}
+
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Nombre del empleado</label>
               <div class="col-sm-5">
               <select name="empleado_id" id="empleado" 
-              class="form-select form-control rounded-pill @error('empleado_id') is-invalid @enderror" 
+              class="form-select rounded-pill @error('empleado_id') is-invalid @enderror" 
               onchange="f_obtener_datos()" onclick="calcularTotal()">   
                   <option value="" disabled selected>-- Selecione un empleado --</option>
                   @foreach ($empleado as $empleados)
@@ -161,7 +180,7 @@
               <div class=" card shadow ab-4 btaura">
                 <div class=" card-header py-3 ">
                         <h5 class="n-font-weight-bold text-white" title="Volver a todos los registros" style="text-align: left"> 
-                          Detalles de la planilla
+                          Listado de la planilla
                             </h5>
                         <h5 class="n-font-weight-bold text-white" title="Volver a todos los registros" style="text-align: left"> 
                           Fecha: <?php echo date("Y-m-d");?>
@@ -177,6 +196,7 @@
                                       <th scope="col">Sueldo</th>
                                       <th scope="col">Dias que trabajo</th>
                                       <th scope="col">Total</th>
+                                      <th scope="col">Eliminar</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -192,6 +212,9 @@
                                       <td>{{$planilla->empleado->puesto->sueldo}}</td>
                                       <td>{{$planilla->dias}}</td>
                                       <td>{{number_format($planilla->total, 2)}}</td>
+                                      <td><a class="btn btn-outline-danger" onclick="eliminarRegistro()"
+                                        href="{{route('planilla.eliminar', ['id' => $planilla->id])}}">
+                                        <i class="bi bi-trash"></i></a></td>
                                       @endforeach
                               <tr>
                                 <th scope="col">Total planilla:</th>
@@ -208,6 +231,12 @@
                           </table> 
                         <br>            
             </form>
+
+            {{-- <div class="mb-3 row">
+              <div class="offset-sm-3 col-sm-9 text-end">
+                <button type="submit" onclick="eliminarTabla()" class="btn btn-outline-info">Limpiar tabla</button>                      
+              </div>
+            </div> --}}
 
             <form action="{{route('tablaplanilla.store')}}" class="tablaplanilla-guardar" method="POST" autocomplete="off">
               @csrf {{-- TOKEN INPUT OCULTO --}} 
@@ -261,121 +290,30 @@
                         @enderror
                 </div>
               </div>
+
+              <div class="mb-3 row">
+                <label hidden class="col-sm-3 col-form-label">Fecha:</label>
+                <div class="col-sm-5">
+                        <input hidden type="text" class="form-control rounded-pill  @error('fechap') is-invalid @enderror" 
+                        name="fechap" id="fechap" autocomplete="off" readonly value="{{$fecha}}" maxlength="10">
+                        @error('fechap')
+                            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                        @enderror
+                    </div>
+              </div>
             
-            <div class="mb-3 row">
-              <label hidden class="col-sm-3 col-form-label">Fecha:</label>
+            {{-- INPUT DE PRUEBA --}}
+            {{-- <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Fecha:</label>
               <div class="col-sm-5">
-                      <input hidden type="text" class="form-control rounded-pill  @error('fechap') is-invalid @enderror" 
+                      <input type="text" class="form-control rounded-pill  @error('fechap') is-invalid @enderror" 
                       placeholder="Input de prueba para el registro de planilla" 
-                      name="fechap" id="datepicker" autocomplete="off" value="{{$fecha}}" maxlength="10">
+                      name="fechap" id="datepicker2" autocomplete="off" value="{{$fecha}}" maxlength="10">
                       @error('fechap')
                           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                       @enderror
                   </div>
-          </div>
-
-          {{-- <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Fecha:</label>
-            <div class="col-sm-5">
-                    <input type="text" class="form-control rounded-pill  @error('fechap') is-invalid @enderror" 
-                    name="fechap" id="datepicker" autocomplete="off" value="{{$fecha}}" maxlength="10">
-                    @error('fechap')
-                        <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                    @enderror
-                </div>
-        </div> --}}
-
-          {{-- ESTA INFORMACION SE MOSTRARA EN DETALLES --}}
-          <?php $identidad_empleado = 0;?>
-          <?php $nombre_empleado = 0;?>   
-          <?php $apellido_empleado = 0;?>    
-          <?php $sueldo_empleado = 0;?>                 
-          <?php $puesto_empleado = 0;?>                    
-          <?php $dias_empleado = 0;?>
-          
-          <?php $total_empleado = 0;?>
-          @foreach($planillas as $planilla)
-
-                            
-                            <?php $identidad_empleado = $planilla->empleado->identidad;?>
-                            <?php $nombre_empleado = $planilla->empleado->nombres;?>
-                            <?php $apellido_empleado = $planilla->empleado->apellidos;?>
-                            <?php $sueldo_empleado = $planilla->empleado->puesto->sueldo;?>
-                            <?php $puesto_empleado = $planilla->empleado->puesto->nombreCargo;?>
-                            <?php $dias_empleado = $planilla->dias;?>
-
-                            <?php $total_empleado = $sueldo_empleado / 30 * $dias_empleado ;?>
-                            @endforeach
-                            
-
-          <div class="mb-3 row">
-            <label hidden class="col-sm-3 col-form-label">identidad:</label>
-            <div class="col-sm-5">
-                <input hidden type="text" id="identidad_empleado" class="form-control rounded-pill  @error('identidad_empleado') is-invalid @enderror" 
-                    name="identidad_empleado" value="{{$identidad_empleado}}" readonly=»readonly»>
-                    @error('identidad_empleado')
-                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
-          </div>
-          
-          <div class="mb-3 row">
-            <label hidden class="col-sm-3 col-form-label">nombres:</label>
-            <div class="col-sm-5">
-                <input hidden type="text" id="nombre_empleado" class="form-control rounded-pill  @error('nombre_empleado') is-invalid @enderror" 
-                    name="nombre_empleado" value="{{$nombre_empleado}} {{$apellido_empleado}}" readonly=»readonly»>
-                    @error('nombre_empleado')
-                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label hidden class="col-sm-3 col-form-label">sueldo:</label>
-            <div class="col-sm-5">
-                <input hidden type="text" id="sueldo_empleado" class="form-control rounded-pill  @error('sueldo_empleado') is-invalid @enderror" 
-                    name="sueldo_empleado" value="{{$sueldo_empleado}}" readonly=»readonly»>
-                    @error('sueldo_empleado')
-                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label hidden class="col-sm-3 col-form-label">puesto:</label>
-            <div class="col-sm-5">
-                <input hidden type="text" id="puesto_empleado" class="form-control rounded-pill  @error('puesto_empleado') is-invalid @enderror" 
-                    name="puesto_empleado" value="{{$puesto_empleado}}" readonly=»readonly»>
-                    @error('puesto_empleado')
-                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label hidden class="col-sm-3 col-form-label">dias:</label>
-            <div class="col-sm-5">
-                <input hidden type="text" id="dias_empleado" class="form-control rounded-pill  @error('dias_empleado') is-invalid @enderror" 
-                placeholder="Total a pagar" 
-                    name="dias_empleado" value="{{$dias_empleado}}" readonly=»readonly»>
-                    @error('dias_empleado')
-                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label hidden class="col-sm-3 col-form-label">Total :</label>
-            <div class="col-sm-5">
-                <input hidden type="text" id="total_empleado" class="form-control rounded-pill  @error('total_empleado') is-invalid @enderror" 
-                placeholder="Total a pagar" 
-                    name="total_empleado" value="{{$total_empleado}}" readonly=»readonly»>
-                    @error('total_empleado')
-                    <small class="text-danger invalid-feedback" ><strong>*</strong>{{$message}}</small>
-                    @enderror
-            </div>
-          </div>
-        
+          </div> --}}
             </form>
           </div>
         </div>
@@ -383,89 +321,128 @@
     </div>
   </div>
 </div>
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-@stop
-
+@endsection
+        
 @section('js')
-    {{-- plugins para el buscador jquery ui --}}
+{{-- plugins para el buscador jquery ui --}}
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
 
 
-<script>
+  <script>
 $( function() {
-  $( "#datepicker" ).datepicker({
-      dateFormat: "yy-mm-dd",
-      changeMonth: true,
-      changeYear: true,
-      firstDay: 0,
+    $( "#datepicker" ).datepicker({
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear: true,
+        firstDay: 0,
+		monthNamesShort: ['Enero', 'Febrero', 'Marzo',
+				'Abril', 'Mayo', 'Junio',
+				'Julio', 'Agosto', 'Septiembre',
+				'Octubre', 'Noviembre', 'Diciembre'],
+		dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        maxDate: "2m",
+        minDate: "0",
+    });
+    } );
+</script>
+
+<script>
+  $( function() {
+      $( "#datepicker2" ).datepicker({
+          dateFormat: "yy-mm-dd",
+          changeMonth: true,
+          changeYear: true,
+          firstDay: 0,
       monthNamesShort: ['Enero', 'Febrero', 'Marzo',
-              'Abril', 'Mayo', 'Junio',
-              'Julio', 'Agosto', 'Septiembre',
-              'Octubre', 'Noviembre', 'Diciembre'],
+          'Abril', 'Mayo', 'Junio',
+          'Julio', 'Agosto', 'Septiembre',
+          'Octubre', 'Noviembre', 'Diciembre'],
       dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-      maxDate: "2m",
-      minDate: "0",
-  });
-  } );
-</script>
+          maxDate: "2m",
+          minDate: "0",
+      });
+      } );
+  </script>
 
 <script>
 
-try
-  {function calcularTotal(){
+  try
+    {function calcularTotal(){
 
-    var sueldo = parseFloat(document.getElementById('sueldo').value);
-    var dias = parseInt(document.getElementById('dias').value) || 0;
-    var total = document.getElementById('total');
+      var sueldo = parseFloat(document.getElementById('sueldo').value);
+      var dias = parseInt(document.getElementById('dias').value) || 0;
+      var total = document.getElementById('total');
 
-    // en caso que la lic pida el mes real solo se aplica eso y en el controlador el max lo cambiamos a 31
-    /*var diass = new Date(0).getDate();
-    var resultado = sueldo / diass * dias; */
+      // en caso que la lic pida el mes real solo se aplica eso y en el controlador el max lo cambiamos a 31
+      /*var diass = new Date(0).getDate();
+      var resultado = sueldo / diass * dias; */
 
-    var resultado = sueldo / 30 * dias; 
-    resultado = resultado.toFixed(2);
-    total.value = resultado;
+      var resultado = sueldo / 30 * dias; 
+      resultado = resultado.toFixed(2);
+      total.value = resultado;
 
-  }
-  }catch (error) {throw error;}
+    }
+    }catch (error) {throw error;}
 
+    
+</script>
+
+<script>
+  function f_obtener_datos() {
+                  var select = document.getElementById("empleado");
+                  var identidad = document.getElementById("identidad");
+                  var nombreCargo = document.getElementById("nombreCargo");
+                  var sueldo = document.getElementById("sueldo");
+                  var datos = select.value;
   
-</script>
+                  @foreach ($empleado as $empleados)
+                  if (datos == {{$empleados->id}}) {
+                      identidad.value = "{{$empleados->identidad}}"; 
+                      nombreCargo.value = "{{$empleados->puesto->nombreCargo}}";
+                      sueldo.value = "{{$empleados->puesto->sueldo}}";
+                  }
+                  @endforeach
+              }
+  </script>
 
-<script>
-function f_obtener_datos() {
-                var select = document.getElementById("empleado");
-                var identidad = document.getElementById("identidad");
-                var nombreCargo = document.getElementById("nombreCargo");
-                var sueldo = document.getElementById("sueldo");
-                var datos = select.value;
+  {{-- <script>
+    function guardar_totales() {
+            var tabla = document.getElementById("tabla")
+            tabla.submit();
+        }
+  </script> --}}
 
-                @foreach ($empleado as $empleados)
-                if (datos == {{$empleados->id}}) {
-                    identidad.value = "{{$empleados->identidad}}"; 
-                    nombreCargo.value = "{{$empleados->puesto->nombreCargo}}";
-                    sueldo.value = "{{$empleados->puesto->sueldo}}";
-                }
-                @endforeach
-            }
-</script>
+  <script>
+    $('#alert').fadeIn();     
+    setTimeout(function() {
+        $("#alert").fadeOut();           
+    },5000);
+  </script>
 
 {{-- <script>
-  function guardar_totales() {
-          var tabla = document.getElementById("tabla")
-          tabla.submit();
+  function eliminarTabla() {
+      if (confirm('¿Estás seguro de que deseas eliminar toda la tabla?')) {
+          var tabla = document.getElementById('tabla');
+          while (tabla.firstChild) {
+              tabla.removeChild(tabla.firstChild);
+          }
       }
+  }
 </script> --}}
 
-<script>
-  $('#alert').fadeIn();     
-  setTimeout(function() {
-      $("#alert").fadeOut();           
-  },5000);
-</script>
+{{-- <script>
+  function eliminarRegistro() {
+      if (confirm('¿Estás seguro de que deseas eliminar todos los registros?')) {
+          fetch('{{route('planilla.eliminar', ['id'])}}', {
+              method: 'DELETE',
+              headers: {
+                  'X-CSRF-TOKEN': '{{ csrf_token() }}'
+              }
+          }).then(response => {
+              window.location.reload();
+          });
+      }
+  }
+</script> --}}
 
-@stop
+@endsection
