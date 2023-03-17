@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Detallesplanilla;
 use App\Models\Empleado;
 use App\Models\Planilla;
 use App\Models\Puesto;
@@ -39,8 +40,19 @@ class PlanillaController extends Controller
             'dias'  => ['required','numeric', 'min:1', 'max:30'],
             'empleado_id' => ['required', 'unique:planillas'],
             'total'  => ['required', 'numeric'],
+            'fecha'  => ['required','regex:/^[0-9]{4}+-[0-9]{2}+-[0-9]{2}+$/u'], 
+
+            // Validacion para que solo guarde a los empleados en el dia 28 de cada mes
+            // 'fecha'  => ['required','regex:/^[0-9]{4}+-[0-9]{2}+-[28]{2}+$/u'], 
+
+
 
         ],[
+
+            // 'fecha.regex'=>'Fecha no permitída. Los empleados se agregan a la planilla el dia 28 de cada mes',
+
+            'fecha.required'=>'Debe seleccionar una fecha',
+
             'dias.required'=>'Debe ingresar la cantidad de días, no puede estar vacío.',
             'dias.min'=>'La cantidad de días debe ser al menos de 1 día.',
             'dias.max'=>'La cantidad de días supera el mes laboral.',
@@ -56,8 +68,18 @@ class PlanillaController extends Controller
         ]);
         
         $input = $request->all();
-        Planilla::create($input);
+         Planilla::create($input);
+         Detallesplanilla::create($input);
             return redirect()->route('planilla.create')
             ->with('mensaje', 'Registro guardado');
+    }
+
+    public function eliminar($id)
+    {
+        $planillas = Planilla::findOrFail($id);
+        $planillas->delete();
+        
+        return redirect()->route('planilla.create')
+        ->with('mensaje', 'Se eliminó correctamente el registro');
     }
 }
