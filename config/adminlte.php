@@ -562,7 +562,7 @@ return [
         [
             'text'    => 'Planillas',
             'icon'    => 'fas fa-fw fa-file',
-            'can'  => 'Admin.plantilla.index',
+            'can'  => 'Admin.planilla.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',

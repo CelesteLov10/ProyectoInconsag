@@ -104,6 +104,11 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'Admin.planilla.edit'])->syncRoles([$role1]);
         Permission::create(['name' => 'Admin.planilla.show'])->syncRoles([$role1]);
 
+        Permission::create(['name' => 'Admin.tablaplanilla.index'])->syncRoles([$role1]);
+        Permission::create(['name' => 'Admin.tablaplanilla.create'])->syncRoles([$role1]);
+        Permission::create(['name' => 'Admin.tablaplanilla.edit'])->syncRoles([$role1]);
+        Permission::create(['name' => 'Admin.tablaplanilla.show'])->syncRoles([$role1]);
+
         Permission::create(['name' => 'Admin.user.index'])->syncRoles([$role1]);
         Permission::create(['name' => 'Admin.user.edit'])->syncRoles([$role1]);
 
