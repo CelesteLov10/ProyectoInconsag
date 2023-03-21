@@ -1,3 +1,4 @@
+@can('Admin.pago.create')
 @extends('adminlte::page')
 
 @section('title', 'Nuevo')
@@ -299,3 +300,4 @@ else{
             ver.style.color= "red"; 
         --}}
 @stop
+@endcan

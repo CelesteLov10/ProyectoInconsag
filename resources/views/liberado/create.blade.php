@@ -1,3 +1,4 @@
+@can('Admin.liberado.create')
 @extends('adminlte::page')
 
 @section('title', 'Liberación del lote')
@@ -98,3 +99,4 @@
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @stop
+@endcan

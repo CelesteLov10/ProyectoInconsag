@@ -1,3 +1,4 @@
+@can('Admin.maquinaria.pdf')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,3 +61,4 @@
     </div>
 </body>
 </html>
+@endcan

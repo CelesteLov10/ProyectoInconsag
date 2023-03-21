@@ -25,6 +25,8 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\LiberadoController;
 use App\Http\Controllers\PlanillaController;
 use App\Http\Controllers\TablaplanillaController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +39,7 @@ use App\Http\Controllers\TablaplanillaController;
 */
 
 /**Route::get('/principal', PrincipalController::class, 'index')->name('principal');*/
-Route::controller(PuestoController::class)->group(function(){  
+Route::controller(PuestoController::class)->middleware(['auth', 'verified'])->group(function(){  
     //Ruta para listado de cargos
     Route::get('/puesto', 'index')->name('puestoLaboral.index');
     //Ruta para crear un "nuevo puesto laboral"
@@ -50,7 +52,7 @@ Route::controller(PuestoController::class)->group(function(){
     Route::put('/puesto/{id}/edit', 'update')->name('puestoLaboral.update'); 
 }); 
 
-Route::controller(EmpleadoController::class)->group(function(){
+Route::controller(EmpleadoController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de empleados
     Route::get('/empleado', 'index')->name('empleado.indexEmp');
     //Ruta para mostrar un empleado
@@ -67,7 +69,7 @@ Route::controller(EmpleadoController::class)->group(function(){
 });
 
     //Ruta para el campo de busqueda empleado
-Route::controller(SearchController::class)->group(function(){
+Route::controller(SearchController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de empleados
     Route::get('search/empleado', 'empleado')->name('empleado.search');
     //Ruta para listado puesto
@@ -93,7 +95,7 @@ Route::controller(SearchController::class)->group(function(){
     
 });
 
-Route::controller(InventarioController::class)->group(function(){
+Route::controller(InventarioController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de inventario
     Route::get('/inventario', 'index')->name('inventario.index');
     //Ruta para mostrar un inventario
@@ -111,7 +113,7 @@ Route::controller(InventarioController::class)->group(function(){
     Route::get('/inventario/pdf', 'pdf')->name('inventario.pdf');
 });
 
-Route::controller(OficinaController::class)->group(function(){
+Route::controller(OficinaController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de oficina
     Route::get('/oficina', 'index')->name('oficina.index');
     //Ruta para mostrar un oficina
@@ -130,7 +132,7 @@ Route::controller(OficinaController::class)->group(function(){
     Route::get('/getMunicipios/{id}', 'getMunicipios');
 });
 
-Route::controller(ProveedorController::class)->group(function(){
+Route::controller(ProveedorController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de proveedores
     Route::get('/proveedor', 'index')->name('proveedor.index');
     //Ruta para crear un nuevo proveedor
@@ -146,7 +148,7 @@ Route::controller(ProveedorController::class)->group(function(){
     Route::put('/proveedor/{id}/edit', 'update')->name('proveedor.update');
 });
 
-Route::controller(MaquinariaController::class)->group(function(){
+Route::controller(MaquinariaController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de proveedores
     Route::get('/maquinaria', 'index')->name('maquinaria.index');
     //Ruta para crear un nuevo maquinaria
@@ -164,7 +166,7 @@ Route::controller(MaquinariaController::class)->group(function(){
     Route::get('/maquinaria/pdf', 'pdf')->name('maquinaria.pdf');
 });
 
-Route::controller(BloqueController::class)->group(function(){
+Route::controller(BloqueController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de bloque
     Route::get('/bloque', 'index')->name('bloque.index');
     //Ruta para crear un nuevo bloque
@@ -176,7 +178,7 @@ Route::controller(BloqueController::class)->group(function(){
     ->where('id','[0-9]+');
 });
 
-Route::controller(PruebaPagosController::class)->group(function(){
+Route::controller(PruebaPagosController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de lotes vendidos
     Route::get('/lotevendido', 'index2')->name('lotevendido.index2');
      //el show de lotes pagados la columna
@@ -185,7 +187,7 @@ Route::controller(PruebaPagosController::class)->group(function(){
 });
 
 //Ruta para lotes
-Route::controller(LoteController::class)->group(function(){
+Route::controller(LoteController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para crear un "nuevo lote"
     Route::get('/lote/create', 'create')->name('lote.create');
     //Ruta para guardar los registros del lote
@@ -194,7 +196,7 @@ Route::controller(LoteController::class)->group(function(){
 });
 
 //Ruta para cliente
-Route::controller(ClienteController::class)->group(function(){
+Route::controller(ClienteController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de cliente
     Route::get('/cliente', 'index')->name('cliente.index');
     //Ruta para crear un nuevo cliente
@@ -214,7 +216,7 @@ Route::controller(ClienteController::class)->group(function(){
 });
 
 //Ruta para beneficiario
-Route::controller(BeneficiarioController::class)->group(function(){
+Route::controller(BeneficiarioController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de beneficiario
     Route::get('/beneficiario', 'index')->name('beneficiario.index');
     //Ruta para crear un nuevo beneficiario
@@ -233,7 +235,7 @@ Route::controller(BeneficiarioController::class)->group(function(){
 
 });
 
-Route::controller(VentaController::class)->group(function(){
+Route::controller(VentaController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de venta
     Route::get('/venta', 'index')->name('venta.index');
     //Ruta para crear un nuevo venta
@@ -253,7 +255,7 @@ Route::controller(VentaController::class)->group(function(){
     Route::get('/getBeneficiarios/{id}', 'getBeneficiarios'); 
 });
 
-Route::controller(PagoController::class)->group(function(){
+Route::controller(PagoController::class)->middleware(['auth', 'verified'])->group(function(){
        //Ruta para listado de lotes vendidos
     Route::get('/pago', 'index')->name('pago.index');
        //el show de lotes pagados
@@ -272,7 +274,7 @@ Route::controller(PagoController::class)->group(function(){
 });
 
 
-Route::controller(ReportController::class)->group(function(){
+Route::controller(ReportController::class)->middleware(['auth', 'verified'])->group(function(){
 //Reporte de ventas por fecha
 Route::get('reports_day', 'reportsDay')->name('report.reports_day');
 Route::get('reports_date','reportsDate')->name('reports.reports_date');
@@ -282,7 +284,7 @@ Route::get('pdfReportFecha', 'pdfFecha')->name('reports.pdfReportFecha');
 });
 
 //Ruta para Constructora
-Route::controller(ConstructoraController::class)->group(function(){
+Route::controller(ConstructoraController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de Constructoras
     Route::get('/constructora', 'index')->name('constructora.index');
     //Ruta para crear un nuevo Constructora
@@ -303,7 +305,7 @@ Route::controller(ConstructoraController::class)->group(function(){
 //Route::get('change_status/lotes/{lote}', [LoteController::class, 'change_status'])->name('change.status.lotes');
 
 //Ruta para casas
-Route::controller(CasaController::class)->group(function(){
+Route::controller(CasaController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de casass
     Route::get('/casa', 'index')->name('casa.index');
     //Ruta para crear un nuevo casa
@@ -322,7 +324,7 @@ Route::controller(CasaController::class)->group(function(){
 });
 
 //Ruta para lotes liberados
-Route::controller(LiberadoController::class)->group(function(){
+Route::controller(LiberadoController::class)->middleware(['auth', 'verified'])->group(function(){
     Route::get('/liberado', 'index')->name('liberado.index');
     //Ruta para registrar el lote liberado
     Route::get('/liberado/create/{id}', 'create')->name('liberado.create');
@@ -331,7 +333,7 @@ Route::controller(LiberadoController::class)->group(function(){
 });
 
 //Ruta para gastos
-Route::controller(GastoController::class)->group(function(){
+Route::controller(GastoController::class)->middleware(['auth', 'verified'])->group(function(){
     //Ruta para listado de casass
     Route::get('/gasto', 'index')->name('gasto.index');
     //Ruta para crear un nuevo gasto
@@ -364,15 +366,27 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Ruta para planillas
-Route::controller(PlanillaController::class)->group(function(){
+Route::controller(PlanillaController::class)->middleware(['auth', 'verified'])->group(function(){
     Route::get('/planilla', 'index')->name('planilla.index');
     Route::get('/planilla/create', 'create')->name('planilla.create');
     Route::post('/planilla', 'store')->name('planilla.store');
 });
 
 //Ruta para tabla planillas
-Route::controller(TablaplanillaController::class)->group(function(){
+Route::controller(TablaplanillaController::class)->middleware(['auth', 'verified'])->group(function(){
     Route::get('/tablaplanilla', 'index')->name('tablaplanilla.index');
     Route::get('/tablaplanilla/{id}', 'show')->name('tablaplanilla.show');
     Route::post('/tablaplanilla', 'store')->name('tablaplanilla.store');
+});
+
+Route::controller(TablaplanillaController::class)->middleware(['auth', 'verified'])->group(function(){
+    Route::get('/tablaplanilla', 'index')->name('tablaplanilla.index');
+    Route::get('/tablaplanilla/{id}', 'show')->name('tablaplanilla.show');
+    Route::post('/tablaplanilla', 'store')->name('tablaplanilla.store');
+});
+
+Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function(){
+    Route::get('/user', 'index')->name('user.index');
+    Route::get('/user/{id}/edit', 'edit')->name('user.edit');
+    Route::put('/user/{id}/edit', 'update')->name('user.update');
 });

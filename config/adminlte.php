@@ -219,6 +219,7 @@ return [
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 300,
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -253,7 +254,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/cliente',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -288,7 +289,7 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
     */
-
+    
     'menu' => [
         // Navbar items:
         [
@@ -316,19 +317,20 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'Elementos '],
         // [
-        //     'text' => 'profile',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-user',
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
         // ],
+        ['header' => 'Elementos '],
+            [
+                'text' => 'profile',
+                'url'  => '/user',
+                'icon' => 'fas fa-fw fa-user',
+                'can'  => 'Admin.user.index',
+            ],
         // [
         //     'text' => 'change_password',
         //     'url'  => '/profile/update',
@@ -337,6 +339,7 @@ return [
         [
             'text'    => 'Puesto Laboral',
             'icon'    => 'fas fa-fw fa-address-card',
+            'can'  => 'Admin.puestoLaboral.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -375,6 +378,7 @@ return [
         [
             'text'    => 'Oficina',
             'icon'    => 'fas fa-fw fa-building',
+            'can'  => 'Admin.oficina.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -389,6 +393,7 @@ return [
         [
             'text'    => 'Empleado',
             'icon'    => 'fas fa-fw fa-users',
+            'can'  => 'Admin.empleado.indexEmp',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -403,6 +408,7 @@ return [
         [
             'text'    => 'Inventario',
             'icon'    => 'fas fa-fw fa-folder',
+            'can'  => 'Admin.inventario.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -417,6 +423,7 @@ return [
         [
             'text'    => 'Proveedor',
             'icon'    => 'fas fa-fw fa-user',
+            'can'  => 'Admin.proveedor.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -431,6 +438,7 @@ return [
         [
             'text'    => 'Maquinaria',
             'icon'    => 'fas fa-fw fa-truck',
+            'can'  => 'Admin.maquinaria.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -445,6 +453,7 @@ return [
         [
             'text'    => 'Bloques y lotes',
             'icon'    => 'fas fa-fw fa-th',
+            'can'  => 'Admin.bloque.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo bloque',
@@ -463,6 +472,7 @@ return [
         [
             'text'    => 'Lotes vendidos',
             'icon'    => 'fas fa-fw fa-th-large',
+            'can'  => 'Admin.pago.index',
             'submenu' => [
                 [
                     'text' => 'Listado lotes vendidos',
@@ -477,6 +487,7 @@ return [
         [
             'text'    => 'Cliente',
             'icon'    => 'fas fa-fw fa-address-book',
+            'can'  => 'Admin.cliente.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -491,6 +502,7 @@ return [
         [
             'text'    => 'Ventas',
             'icon'    => 'fas fa-fw fa-chevron-circle-down',
+            'can'  => 'Admin.venta.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -505,6 +517,7 @@ return [
         [
             'text'    => 'Constructora',
             'icon'    => 'fas fa-fw fa-archive',
+            'can'  => 'Admin.constructora.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -519,6 +532,7 @@ return [
         [
             'text'    => 'Casas modelos',
             'icon'    => 'fas fa-fw fa-university',
+            'can'  => 'Admin.casa.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -533,6 +547,7 @@ return [
         [
             'text'    => 'Gastos',
             'icon'    => 'fas fa-fw fa-file',
+            'can'  => 'Admin.gasto.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
@@ -547,6 +562,7 @@ return [
         [
             'text'    => 'Planillas',
             'icon'    => 'fas fa-fw fa-file',
+            'can'  => 'Admin.plantilla.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',

@@ -1,3 +1,4 @@
+@can('Admin.maquinaria.index')
 @extends('adminlte::page')
 
 @section('title', 'Nuevo')
@@ -279,3 +280,4 @@ try
 
 </script>
 @stop
+@endcan

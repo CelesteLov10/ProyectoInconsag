@@ -1,3 +1,4 @@
+@can('Admin.puestoLaboral.create')
 @extends('adminlte::page')
 
 @section('title', 'Nuevo puesto')
@@ -77,3 +78,4 @@
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @stop
+@endcan

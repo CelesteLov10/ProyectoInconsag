@@ -40,8 +40,8 @@ class DatabaseSeeder extends Seeder
 
         Puesto::factory(30)->create();
         Oficina::factory(10)->create();
-        Empleado::factory(50)->create();
-        Inventario::factory(50)->create();
+        Empleado::factory(10)->create();
+        //Inventario::factory(50)->create();
         Proveedor::factory(10)->create();
         Maquinaria::factory(30)->create();
         Cliente::factory(30)->create();
@@ -49,9 +49,12 @@ class DatabaseSeeder extends Seeder
         Bloque::factory(5)->create();
         Lote::factory(25)->create();
         Constructora::factory(25)->create();
-        Casa::factory(10)->create();
+        //Casa::factory(10)->create();
         Venta::factory(40)->create();
         Pago::factory(150)->create();
+        //Planilla::factory(20)->create();
         //Liberado::factory(10)->create();
+        $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

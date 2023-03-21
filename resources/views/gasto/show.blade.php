@@ -1,3 +1,4 @@
+@can('Admin.gasto.show')
 @extends('adminlte::page')
 
 @section('title', 'Detalle')
@@ -76,3 +77,4 @@
     {{-- plugins para el buscador jquery ui --}}
     <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
 @stop
+@endcan

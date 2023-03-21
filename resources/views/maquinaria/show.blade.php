@@ -1,3 +1,4 @@
+@can('Admin.maquinaria.show')
 @extends('adminlte::page')
 
 @section('title', 'Detalle')
@@ -125,3 +126,4 @@
         
 </script>
 @stop
+@endcan
