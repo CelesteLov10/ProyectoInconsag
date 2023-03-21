@@ -1,3 +1,4 @@
+@can('Admin.pago.show')
 @extends('adminlte::page')
 
 @section('title', 'Listado')
@@ -175,3 +176,4 @@
     }
 </script>
 @stop
+@endcan

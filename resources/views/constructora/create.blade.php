@@ -1,3 +1,4 @@
+@can('Admin.constructora.create')
 @extends('adminlte::page')
 
 @section('title', 'Nuevo')
@@ -145,4 +146,5 @@
       }
     </script> --}}
 @stop
+@endcan
 

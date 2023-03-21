@@ -1,3 +1,4 @@
+@can('Admin.pago.pdf')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,3 +76,4 @@
     </div>
 </body>
 </html>
+@endcan

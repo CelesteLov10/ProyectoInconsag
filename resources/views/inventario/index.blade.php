@@ -1,3 +1,4 @@
+@can('Admin.inventario.index')
 @extends('adminlte::page')
 
 @section('title', 'Listado')
@@ -135,3 +136,4 @@
   },2000);
 </script>
 @stop
+@endcan

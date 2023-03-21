@@ -1,3 +1,4 @@
+@can('Admin.oficina.create')
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
@@ -188,3 +189,4 @@ $('#municipio').append("<option value='"+ municipio[i].id+"'>"+municipio[i].nomb
     });      
 </script>
 @stop
+@endcan

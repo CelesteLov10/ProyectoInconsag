@@ -1,3 +1,4 @@
+@can('Admin.empleado.editEmp')
 @extends('adminlte::page')
 
 @section('title', 'Actualizar')
@@ -241,3 +242,4 @@
     } );
 </script>
 @stop
+@endcan

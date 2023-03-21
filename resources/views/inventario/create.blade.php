@@ -1,3 +1,4 @@
+@can('Admin.inventario.create')
 @extends('adminlte::page')
 
 @section('title', 'Nuevo')
@@ -166,3 +167,4 @@ $( function() {
     } );
 </script>
 @stop
+@endcan

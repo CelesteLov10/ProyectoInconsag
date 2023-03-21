@@ -20,12 +20,12 @@ return new class extends Migration
             // $table->date('fechap');
             $table->string('canEmpleados')->nullable();
 
-            $table->string('identidad_empleado')->nullable();
-            $table->string('nombre_empleado')->nullable();
-            $table->string('sueldo_empleado')->nullable();
-            $table->string('puesto_empleado')->nullable();
-            $table->string('dias_empleado')->nullable();
-            $table->string('total_empleado')->nullable();
+            // $table->string('identidad_empleado')->nullable();
+            // $table->string('nombre_empleado')->nullable();
+            // $table->string('sueldo_empleado')->nullable();
+            // $table->string('puesto_empleado')->nullable();
+            // $table->string('dias_empleado')->nullable();
+            // $table->string('total_empleado')->nullable();
 
 
             // $table->string('dias')->nullable();

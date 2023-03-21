@@ -1,3 +1,4 @@
+@can('Admin.proveedor.edit')
 @extends('adminlte::page')
 
 @section('title', 'Actualizar')
@@ -137,3 +138,4 @@
 @section('js')
     <script> console.log('Hi!'); </script>
 @stop
+@endcan

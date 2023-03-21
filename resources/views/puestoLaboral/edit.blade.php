@@ -1,3 +1,4 @@
+@can('Admin.puestoLaboral.edit')
 @extends('adminlte::page')
 
 @section('title', 'Actualizar puesto')
@@ -95,3 +96,4 @@
 @section('js')
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 @stop
+@endcan

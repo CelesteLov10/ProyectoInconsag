@@ -1,3 +1,4 @@
+@can('Admin.inventario.edit')
 @extends('adminlte::page')
 
 @section('title', 'Actualizar')
@@ -171,3 +172,4 @@ $( function() {
     } );
 </script>
 @stop
+@endcan

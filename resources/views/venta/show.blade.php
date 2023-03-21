@@ -1,3 +1,4 @@
+@can('Admin.venta.show')
 @extends('adminlte::page')
 
 @section('title', 'Detalle')

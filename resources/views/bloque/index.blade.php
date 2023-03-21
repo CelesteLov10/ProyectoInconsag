@@ -1,3 +1,4 @@
+@can('Admin.bloque.index')
 @extends('adminlte::page')
 
 @section('title', 'Listado terreno')
@@ -156,3 +157,4 @@
             }, 2000);
         </script>
 @stop
+@endcan
