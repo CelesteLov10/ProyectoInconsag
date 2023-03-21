@@ -45,7 +45,9 @@ return [
     'distinct' => 'El  :attribute tiene un valor duplicado.',
     'doesnt_end_with' => 'El :attribute no puede terminar con uno de los following: :values.',
     'doesnt_start_with' => 'El :attribute no puede comenzar con uno de los following: :values.',
-    'email'                => 'El  :attribute debe ser una dirección de correo válida.',
+    'email'                => [
+        'required'=> 'El :attribute es obligatorio.',
+        'El  :attribute debe ser una dirección de correo válida.'],
     'ends_with'            => 'El  :attribute debe finalizar con alguno de los siguientes valores: :values',
     'exists'               => 'El  :attribute seleccionado no existe.',
     'file'                 => 'El  :attribute debe ser un archivo.',
@@ -172,7 +174,9 @@ return [
         'descripcion' => 'descripción',
         'telefono' => 'teléfono',
         'direccion' => 'dirección',
-        'puesto_id' => 'nombre cargo'
+        'puesto_id' => 'nombre cargo', 
+        'email' => 'El correo electrónico', 
+        'password'=>'La contraseña'
 
         
     ],
