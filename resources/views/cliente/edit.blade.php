@@ -1,3 +1,4 @@
+@can('Admin.cliente.edit')
 @extends('adminlte::page')
 
 @section('title', 'Actualizar')
@@ -159,3 +160,4 @@
           } );
 </script>
 @stop
+@endcan

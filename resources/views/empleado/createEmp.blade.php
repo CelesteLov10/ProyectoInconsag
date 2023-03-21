@@ -1,3 +1,4 @@
+@can('Admin.empleado.createEmp')
 @extends('adminlte::page')
 
 @section('title', 'Nuevo')
@@ -239,3 +240,4 @@
           } );
       </script>
 @stop
+@endcan

@@ -1,3 +1,4 @@
+@can('Admin.bloque.create')
 @extends('adminlte::page')
 
 @section('title', 'Nuevo')
@@ -83,3 +84,4 @@
 @section('js')
     <script> console.log('Hi!'); </script>
 @stop
+@endcan

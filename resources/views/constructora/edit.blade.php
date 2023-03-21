@@ -1,3 +1,4 @@
+@can('Admin.constructora.edit')
 @extends('adminlte::page')
 
 @section('title', 'Actualizar')
@@ -135,3 +136,4 @@
           } );
         </script>
 @stop
+@endcan

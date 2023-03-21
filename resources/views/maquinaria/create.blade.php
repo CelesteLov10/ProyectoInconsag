@@ -1,3 +1,4 @@
+@can('Admin.maquinaria.create')
 @extends('adminlte::page')
 
 @section('title', 'Nuevo')
@@ -269,3 +270,4 @@
       </script>
       
 @stop
+@endcan

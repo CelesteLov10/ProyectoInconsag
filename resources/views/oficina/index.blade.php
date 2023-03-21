@@ -1,3 +1,4 @@
+@can('Admin.oficina.index')
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
@@ -133,3 +134,4 @@
   },2000);
 </script>
 @stop
+@endcan

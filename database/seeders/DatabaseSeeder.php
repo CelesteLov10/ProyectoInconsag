@@ -43,6 +43,8 @@ class DatabaseSeeder extends Seeder
         Oficina::factory(10)->create();
         Empleado::factory(5)->create();
         // Inventario::factory(50)->create();
+        Empleado::factory(10)->create();
+        //Inventario::factory(50)->create();
         Proveedor::factory(10)->create();
         Maquinaria::factory(30)->create();
         Cliente::factory(30)->create();
@@ -54,6 +56,9 @@ class DatabaseSeeder extends Seeder
         Venta::factory(40)->create();
         Pago::factory(150)->create();
         //Planilla::factory(20)->create();
+        //Planilla::factory(20)->create();
         //Liberado::factory(10)->create();
+        $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

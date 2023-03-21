@@ -26,14 +26,14 @@ class CreateTrigger extends Migration {
 
         // Trigger que elimina la informacion de la tabla que esta en el create planillas 
         // para pasarla a la tabla de "tablaplanillas"
-        DB::unprepared('
-        CREATE TRIGGER limpiarTabla AFTER INSERT ON `tablaplanillas` FOR EACH ROW
-        BEGIN
+        // DB::unprepared('
+        // CREATE TRIGGER limpiarTabla AFTER INSERT ON `tablaplanillas` FOR EACH ROW
+        // BEGIN
 
-        DELETE FROM planillas;
+        // DELETE FROM planillas;
         
-        END
-        ');
+        // END
+        // ');
         
         // DB::unprepared('
         // CREATE TRIGGER agregarinfo BEFORE INSERT ON `planillas` FOR EACH ROW

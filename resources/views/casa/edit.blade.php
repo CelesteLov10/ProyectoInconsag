@@ -1,3 +1,4 @@
+@can('Admin.casa.edit')
 @extends('adminlte::page')
 
 @section('title', 'Actualizar')
@@ -155,3 +156,4 @@
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 @stop
+@endcan

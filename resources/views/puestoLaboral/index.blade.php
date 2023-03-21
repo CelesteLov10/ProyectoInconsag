@@ -1,3 +1,4 @@
+@can('Admin.puestoLaboral.index')
 @extends('adminlte::page')
 
 @section('title', 'Listado')
@@ -135,3 +136,4 @@ $(document).ready(function () {
 
 
 @stop
+@endcan

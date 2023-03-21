@@ -1,3 +1,4 @@
+@can('Admin.maquinaria.edit')
 @extends('adminlte::page')
 
 @section('title', 'Actualizar')
@@ -301,3 +302,4 @@
     
     </script>
 @stop
+@endcan
