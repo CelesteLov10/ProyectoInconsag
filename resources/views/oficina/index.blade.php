@@ -13,7 +13,7 @@
 <div>
 
   {{-- Campo de busqueda  --}}
-  <form method="GET" action="">
+  {{-- <form method="GET" action="">
     <div class="container">
         <div class="vh-50 row text-center align-items-center justify-content-center">
             <div class="col-7 p-1 contorno-azul">
@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>    
-  </form>
+  </form> --}}
   <div class="container ">
     <div class="mb-3 text-end">
       <a class="btn btn-outline-primary text-BLACK" href="{{route('oficina.create')}}">Nueva oficina <i class="bi bi-person-plus"></i></a>
@@ -51,13 +51,13 @@
       <div class = " card shadow ab-4 btaura" >
         <div class = " card-header py-3 " >
             <a href="{{route('oficina.index')}}" id="sinLinea">
-              <h6 class = "n-font-weight-bold " title="Volver a todos los registros">Lista de las oficinas</h6></a> 
+              <h6 class = " " title="Volver a todos los registros">Lista de las oficinas</h6></a> 
         </div >
 
-    <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
-        <div class="col-60 bg-light p-5">
-            <table class="table border border-2 contorno-azul">
-                <thead class="thead-dark">
+        <div class="m-0 align-items-center justify-content-center ">
+          <div class=" p-5">
+              <table id="example" class="table table-striped table-bordered border-2 ">
+                  <thead class="">
                   <tr>
                     <th scope="col">Nombre de oficina</th>
                     <th scope="col">Nombre de municipio</th>
@@ -86,7 +86,7 @@
                   
                 </tbody>
               </table>
-              {{$oficinas->links()}}
+              {{-- {{$oficinas->links()}} --}}
         </div>
     </div>
   </div>
@@ -96,11 +96,7 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
       {{-- se necesita para el buscador --}}
-    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-    
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">     
 @stop
 
 @section('js')
@@ -108,7 +104,7 @@
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
 <script>src="https://code.jquery.com/jquery-3.5.1.js"</script>
 <script> src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"</script>
-<script> src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"</script>
+{{-- <script> src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"</script> --}}
 <script>
     //extraiga los datos de la BD
     $('#search').autocomplete({
@@ -133,5 +129,12 @@
       $("#alert").fadeOut();           
   },2000);
 </script>
+
+{{-- Para que funcione la DATATABLE --}}
+<script>
+  $(document).ready(function () {
+      $('#example').DataTable();
+  });
+  </script>
 @stop
 @endcan

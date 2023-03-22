@@ -40,7 +40,7 @@
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('fecha') is-invalid @enderror" 
                 maxlength="10" placeholder="Fecha actual"
-                name="fecha" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly style="background-color: rgba(206, 206, 206, 0)"> 
+                name="fecha" autocomplete="off" value="<?php echo date("d-m-Y");?>" readonly style="background-color: rgba(206, 206, 206, 0)"> 
                   @error('fecha')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
               @enderror
@@ -65,7 +65,7 @@
         <div class="col-sm-5">
         <select name="empleado_id" id="empleado" 
         class="form-select form-control rounded-pill @error('empleado_id') is-invalid @enderror" 
-        onchange="f_obtener_datos()" onclick="calcularTotal()">   
+        onchange="f_obtener_datos()" onclick="calcularTotal()" onchange="document.getElementById('dias').focus()">   
             <option value="" disabled selected>-- Seleccione un empleado --</option>
             @foreach ($empleado as $empleados)
             @if ($empleados->estado == 'activo')
@@ -117,7 +117,7 @@
   <div class="col-sm-5">
       <input type="text" id="dias" class="form-control rounded-pill  @error('dias') is-invalid @enderror"
       placeholder="Ingrese la cantidad de días" 
-          name="dias" value="{{old('dias')}}" maxlength="2" oninput="calcularTotal()">
+          name="dias" value="{{old('dias')}}" maxlength="2" oninput="calcularTotal()" autofocus>
           @error('dias')
           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
@@ -177,7 +177,7 @@
                     Listado de la planilla
                       </h5>
                   <h5 class="n-font-weight-bold text-white" title="Volver a todos los registros" style="text-align: left"> 
-                    Fecha: <?php echo date("Y-m-d");?>
+                    Fecha: <?php echo date("d-m-Y");?>
                   </h5>
           </div>
                 <div class="col-60 bg-light p-5">
@@ -190,13 +190,13 @@
                                 <th scope="col">Sueldo</th>
                                 <th scope="col">Dias que trabajo</th>
                                 <th scope="col">Total</th>
-                                <th scope="col">Eliminar</th>
+                                <th scope="col">Eliminar registros</th>
                             </tr>
                         </thead>
                         <tbody>
                           
                       @php
-                      $fecha = date("Y-m-d");
+                      $fecha = date("d-m-Y");
                   @endphp
                         @foreach($planillas as $planilla)
                             <tr>
@@ -208,7 +208,7 @@
                                 <td>{{number_format($planilla->total, 2)}}</td>
                                 <td><a class="btn btn-outline-danger" onclick="eliminarRegistro()"
                                   href="{{route('planilla.eliminar', ['id' => $planilla->id])}}">
-                                  <i class="bi bi-trash"></i></a></td>
+                                  Eliminar</a></td>
                                 @endforeach
                         <tr>
                           <th scope="col">Total planilla:</th>
@@ -242,7 +242,7 @@
       @if ($canEmpleado == 0)
       
       <div class="mb-3 row">
-        <div class="offset-sm-3 col-sm-9 text-end">
+        <div class="offset-sm-4 col-sm-9 text-end">
           <button type="submit" id="submit-and-print" class="btn btn-outline-info" hidden disabled="true">Guardar planilla</button>                      
         </div>
       </div>
@@ -250,7 +250,7 @@
           @else @if ($canEmpleado == $empactivos)
           
           <div class="mb-3 row">
-            <div class="offset-sm-3 col-sm-9 text-end">
+            <div class="offset-sm-4 col-sm-9 text-end">
               <button type="submit" id="submit-and-print" class="btn btn-outline-info">Guardar planilla</button>                      
             </div>
           </div>
@@ -304,10 +304,10 @@
                 placeholder="Input de prueba para el registro de planilla" 
                 name="fechap" id="datepicker2" autocomplete="off" value="{{$fecha}}" maxlength="10">
                 @error('fechap')
-                    <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                    <small class="text-danger invalid-feedback"><strong></strong>{{$message}}</small>
                 @enderror
-            </div>
-    </div> --}}
+        </div>
+      </div> --}}
       </form>
     </div>
   </div>
@@ -327,40 +327,40 @@
 <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script>
 
 <script>
-$( function() {
-  $( "#datepicker" ).datepicker({
-      dateFormat: "yy-mm-dd",
-      changeMonth: true,
-      changeYear: true,
-      firstDay: 0,
-  monthNamesShort: ['Enero', 'Febrero', 'Marzo',
-      'Abril', 'Mayo', 'Junio',
-      'Julio', 'Agosto', 'Septiembre',
-      'Octubre', 'Noviembre', 'Diciembre'],
-  dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-      maxDate: "2m",
-      minDate: "0",
-  });
-  } );
-</script>
+  $( function() {
+      $( "#datepicker" ).datepicker({
+          dateFormat: "dd-mm-yy",
+          changeMonth: true,
+          changeYear: true,
+          firstDay: 0,
+      monthNamesShort: ['Enero', 'Febrero', 'Marzo',
+          'Abril', 'Mayo', 'Junio',
+          'Julio', 'Agosto', 'Septiembre',
+          'Octubre', 'Noviembre', 'Diciembre'],
+      dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+          maxDate: "6m",
+          minDate: "0",
+      });
+      } );
+  </script>
 
 <script>
-$( function() {
-    $( "#datepicker2" ).datepicker({
-        dateFormat: "yy-mm-dd",
-        changeMonth: true,
-        changeYear: true,
-        firstDay: 0,
-    monthNamesShort: ['Enero', 'Febrero', 'Marzo',
-        'Abril', 'Mayo', 'Junio',
-        'Julio', 'Agosto', 'Septiembre',
-        'Octubre', 'Noviembre', 'Diciembre'],
-    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-        maxDate: "2m",
-        minDate: "0",
-    });
-    } );
-</script>
+  $( function() {
+      $( "#datepicker2" ).datepicker({
+          dateFormat: "dd-mm-yy",
+          changeMonth: true,
+          changeYear: true,
+          firstDay: 0,
+      monthNamesShort: ['Enero', 'Febrero', 'Marzo',
+          'Abril', 'Mayo', 'Junio',
+          'Julio', 'Agosto', 'Septiembre',
+          'Octubre', 'Noviembre', 'Diciembre'],
+      dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+          maxDate: "6m",
+          minDate: "0",
+      });
+      } );
+  </script>
 
 <script>
 
@@ -442,6 +442,5 @@ function eliminarRegistro() {
     }
 }
 </script> --}}
-
 @stop
 @endcan

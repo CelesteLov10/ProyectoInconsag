@@ -18,12 +18,13 @@
       <a class="btn btn-outline-primary" href="{{route('planilla.index')}}">
           <i class="bi bi-box-arrow-in-left"></i> Atrás</a>
       </div>
+      
             <div class=" card shadow ab-4 btaura">
               <div class=" card-header py-3 ">
-                      <h5 class="n-font-weight-bold text-white" title="Volver a todos los registros" style="text-align: left"> 
+                      <h5 class="n-font-weight-bold text-black" style="text-align: left"> 
                         Detalles de la planilla
                           </h5>
-                      <h5 class="n-font-weight-bold text-white" title="Volver a todos los registros" style="text-align: left"> 
+                      <h5 class="n-font-weight-bold text-black" style="text-align: left"> 
                         Fecha: {{$tablaplanillas->fechap}}
                       </h5>
               </div>

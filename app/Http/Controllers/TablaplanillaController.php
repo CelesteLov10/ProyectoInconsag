@@ -30,16 +30,29 @@ class TablaplanillaController extends Controller
 
     public function store(Request $request){
 
+        // Funcion que permite guardar el registro en el ultimo dia del mes (real)
+        $request->validate([
+            'fechap' => ['required', function($attribute, $value, $fail) {
+                $fecha = \DateTime::createFromFormat('d-m-Y', $value);
+                $ultimoDia = $fecha->format('t');
+    
+                if ($fecha->format('d') != $ultimoDia) {
+                    $fail('La planilla se guarda en el último día del mes');
+                }
+            }]
+        ]);
+
         $this->validate($request,[
             'totalp'  => ['min:1'],
             'canEmpleados'  => ['min:1'],
                                                                                         // Valida solamente esos numeros
             // 'fechap'  => ['unique:tablaplanillas', 'required','regex:/^[0-9]{4}+-[0-9]{2}+-(28|29|30|31)+$/u'], 
+            'fechap'  => ['unique:tablaplanillas'], 
 
             // ESTA VALIDACION PERMITE QUE SOLO GUARDE UNA VEZ AL MES EN EL DIA 28
             // 'fechap'  => ['unique:tablaplanillas', 'required','regex:/^[0-9]{4}+-[0-9]{2}+-[28]{2}+$/u'], 
             // VALIDACION PARA QUE NO GUARDE EL MISMO DIA
-            'fechap'  => ['unique:tablaplanillas', 'required','regex:/^[0-9]{4}+-[0-9]{2}+-[0-9]{2}+$/u'], 
+            // 'fechap'  => ['unique:tablaplanillas', 'required','regex:/^[0-9]{4}+-[0-9]{2}+-[0-9]{2}+$/u'], 
 
         ],[
             'totalp.min'=>'Debe de agregar al menos un empleado a la tabla.',
@@ -47,7 +60,7 @@ class TablaplanillaController extends Controller
 
             // 'fechap.unique'=>'La planilla se guarda cada 28 de cada mes.',
             'fechap.unique'=>'La planilla del día de hoy ya se guardó.',
-            // 'fechap.unique'=>'La planilla ya se guardó con esa fecha.',
+            'fechap.unique'=>'Ya existe una planilla con esa fecha.',
             'fechap.required'=>'Se necesita la fecha.',
             // 'fechap.regex'=>'Fecha no permitída. La planilla se guardar en los últimos dias del mes a partir del 28',
 

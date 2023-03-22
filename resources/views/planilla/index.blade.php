@@ -15,7 +15,7 @@
 <form method="GET" action="">
   <div class="container">
       <div class="vh-50 row text-center align-items-center justify-content-center">
-          <div class="col-3 p-1 contorno-azul">
+          <div class="col-4 p-1 contorno-azul">
               <div class="input-group">
                     <input type="text" name="search" id="search" readonly onclick="encontrar()" class="form-control"
                     placeholder="Seleccione la fecha que desea buscar" value="{{request('search')}}"/>
@@ -62,17 +62,20 @@
       </thead>
 
       <tbody>
-        @foreach($tablaplanillas as $tablaplanilla)
+        @forelse($tablaplanillas as $tablaplanilla)
               <tr>
                   <td>{{$tablaplanilla->fechap}}</td>
                   <td>{{$tablaplanilla->canEmpleados}}</td>
                   <td>{{number_format($tablaplanilla->totalp, 2)}}</td>
                   <td><a class="btn btn-outline-primary" 
                       href="{{route('tablaplanilla.show', ['id' => $tablaplanilla->id])}}">
-                      <i class="bi bi-eye"></i></a></td>
+                      Detalles</a></td>
               </tr>
-              @endforeach
-            
+              @empty
+              <tr>
+                <td col-span="4">No hay registros</td>
+              </tr>
+        @endforelse
       </tbody>
   </table>
   </div>
@@ -108,7 +111,7 @@
 <script>
   $( function encontrar() {
       $("#search" ).datepicker({
-          dateFormat: "yy-mm-dd",
+          dateFormat: "dd-mm-yy",
           changeMonth: true,
           changeYear: true,
           firstDay: 0,

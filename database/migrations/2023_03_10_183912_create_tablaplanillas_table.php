@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tablaplanillas', function (Blueprint $table) {
             $table->id();
             $table->double('totalp')->unsigned()->nullable();
-            $table->date('fechap')->unique()->nullable();
+            $table->string('fechap')->unique()->nullable();
             // $table->date('fechap');
             $table->string('canEmpleados')->nullable();
 

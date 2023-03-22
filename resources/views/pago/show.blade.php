@@ -43,12 +43,6 @@
                         <a class="btn btn-outline-danger text-BLACK" href="{{route('liberado.create', ['id'=>$pago1->id])}}"><i class="bi bi-unlock-fill"></i> Liberar lote</a>
                     </td>
                     @endif
-                    {{-- si el cliente ya no quiere pagar el lote entonces se puede liberar.
-                        o si no ha pagado el lote por mas de 3 meses entonces se podra liberar --}}
-                    <td>
-                        <a class="btn btn-outline-danger text-BLACK" href="{{route('liberado.create', ['id'=>$pago1->id])}}"><i class="bi bi-unlock-fill"></i> Liberar lote</a>
-                    </td>
-                    @endif
             <a class="btn btn-outline-primary" href="{{route('pago.index')}}"><i class="bi bi-box-arrow-in-left"></i> Atrás</a>
 
         </div>

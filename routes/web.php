@@ -370,6 +370,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::controller(PlanillaController::class)->middleware(['auth', 'verified'])->group(function(){
     Route::get('/planilla', 'index')->name('planilla.index');
     Route::get('/planilla/create', 'create')->name('planilla.create');
+    Route::get('/planilla/eliminartodo', 'eliminartodo')->name('planilla.eliminartodo');
+    Route::get('/planilla/eliminar/{id}', 'eliminar')->name('planilla.eliminar');
+    Route::get('/detalleplanillas/eliminar/{id}', 'eliminar')->name('detalleplanillas.eliminar');
     Route::post('/planilla', 'store')->name('planilla.store');
 });
 
