@@ -21,8 +21,8 @@
                 <h5 class = "n-font-weight-bold text-black">Detalles de {{$inventario->nombreInv}}</h5 > 
             </div >
 
-        <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
-            <div class="col-60 bg-light p-5">
+        <div class="m-0 text-left align-items-center justify-content-center">
+            <div class=" bg-light p-5">
     <table class="table">
         <thead class="table-light">
             <tr>
