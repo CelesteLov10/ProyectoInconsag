@@ -67,7 +67,7 @@ class VentaController extends Controller
             'total'       => ['required'],
 
             'fechaVenta' => ['required'],
-            'valorPrima' => ['required_if:formaVenta,credito','numeric','max:valorTerreno' ,'regex:/^[0-9]{1,6}+$/', 'nullable'],
+            'valorPrima' => ['required_if:formaVenta,credito','numeric','regex:/^[0-9]{1,6}+$/', 'nullable'],//'max:valorTerreno' , ESTE CODIGO DA ERROR
             'cantidadCuotas' => ['required_if:formaVenta,credito','numeric', 'min:10', 'max:240','regex:/^[0-9]{1,4}+$/', 'nullable'],
             'valorCuotas' => ['required_if:formaVenta,credito','numeric', 'min:1', 'nullable'],
             'valorRestantePagar' => ['required_if:formaVenta,credito','numeric', 'min:1', 'nullable'],
