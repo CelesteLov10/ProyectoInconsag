@@ -26,6 +26,26 @@
     </div>
 </div>    
 </form>
+<style>
+    .fa-volume-high{
+        color: rgb(42, 209, 131)
+    }
+    .fa-volume-off{
+        color: brown
+    }
+    .fa-volume-low{
+        color: goldenrod
+    }
+    .fa-file-check{
+        color: antiquewhite
+    }
+    .fa-clipboard-check{
+        color: teal
+    }
+    .fa-clipboard-list{
+        color: indianred
+    }
+</style>
 
 <br>
 
@@ -82,15 +102,15 @@
 
                             @if ($ventas->validacion>=3)
                             <td>
-                                <a class="btn text-BLACK" id="borno">
-                                <i id="noCredit" class="fas fa-fw fa-battery"></i></a>
+                              
+                                <i class="fa-solid fa-volume-off"></i>                                                          
                             </td>
                             @endif
 
                             @if($ventas->validacion==1 || $ventas->validacion==2)
                             <td>
-                                <a class="fas fa-fw fa-th-large text-BLACK" id="botonEstado1">
-                                <i id="Medio" class="fas fa-fw fa-battery-half"></i></a>
+                                
+                                <i class="fa-solid fa-volume-low"></i>                                
                             </td>
 
                             @endif
@@ -98,23 +118,28 @@
                             @if($ventas->validacion==0)
                             <td>
                                 <a class="btn text-BLACK" id="borsi">
-                                <i id="siCredit" class="fas fa-fw fa-battery-full"></i></a>
+                                    <i class="fa-solid fa-volume-high"></i>                                
+                                </a>
                             </td>
 
                             @endif
 
                             
                                 @if ($ventas->formaVenta == 'credito'){{-- condicion que muestra el boton de pagos solo a los lotes vendidos al credito --}}
-                                <td><a class="btn text-BLACK" id="borsi"
-                                    href="{{route('pago.show', ['id'=>$ventas->identificador])}}">
-                                    <i class="fas fa-credit-card" id="siCredit"></i></a></td>
+                                <td>
+                                    <a class="btn text-BLACK" id="borsi"
+                                     href="{{route('pago.show', ['id'=>$ventas->identificador])}}">
+                                    
+                                     <i class="fa-solid fa-clipboard-list"></i>                                                                          
+                                    </a>
+                                </td>
                                     @else
                                     <td>
-                                        <button class="btn" id="borno" disabled="true">
-                                        <i class="fas fa-fw fa-th-large" id="noCredit"></i>
-                                        </button>
-                                        </td>
-                                    @endif
+                                        <a class="btn text-BLACK">
+                                            <i class="fa-solid fa-clipboard-check"></i>                                        
+                                        </a>
+                                    </td>
+                                            @endif
 
                                     @csrf
                             </tr>
@@ -142,7 +167,8 @@
     <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-@stop
+    {{-- cdn para el css de los emojis de fontawesomw --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />@stop
 
 @section('js')
     
@@ -153,5 +179,8 @@
             $("#alert").fadeOut();           
         },2000);
     </script>
+    {{-- script para que funcione los emojis de fontawesome --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 @stop
 @endcan
