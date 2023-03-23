@@ -36,7 +36,7 @@
                                     <th scope="col">Nombre del empleado</th>
                                     <th scope="col">Puesto laboral</th>
                                     <th scope="col">Sueldo</th>
-                                    <th scope="col">Dias que trabajo</th>
+                                    <th scope="col">Días que trabajo</th>
                                     <th scope="col">Total</th>
                                 </tr>
                             </thead>

@@ -6,7 +6,7 @@ use App\Models\Detallesplanilla;
 use App\Models\Empleado;
 use App\Models\Planilla;
 use App\Models\Tablaplanilla;
-
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 use Illuminate\Http\Request;
 
@@ -70,5 +70,16 @@ class TablaplanillaController extends Controller
         Tablaplanilla::create($input);
            return redirect()->route('planilla.index')
            ->with('mensaje', 'Registro guardado');
+    }
+
+    // Metodo para mostrar pdf
+    public function pdf ($id){
+        $detallesplanilla = Detallesplanilla::all();
+        $tablaplanillas = Tablaplanilla::findOrFail($id);  
+
+        // Aqui hacemos uso de la libreria PDF para que genere el documento pdf
+        $pdf = PDF::loadView('tablaplanilla.pdf', compact('tablaplanillas', 'detallesplanilla'));
+        return $pdf -> stream();
+        
     }
 }

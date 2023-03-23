@@ -57,6 +57,7 @@
               <th scope="col">Número de empleados:</th>
               <th scope="col">Total de la planilla:</th>
               <th scope="col">Detalles de la planilla:</th>
+              <th scope="col">Imprimir planilla:</th>
 
           </tr>
       </thead>
@@ -70,6 +71,8 @@
                   <td><a class="btn btn-outline-primary" 
                       href="{{route('tablaplanilla.show', ['id' => $tablaplanilla->id])}}">
                       Detalles</a></td>
+                      <td><a class="btn btn-outline-warning" href="{{route('tablaplanilla.pdf', ['id' => $tablaplanilla->id])}}">
+                        Imprimir</a></td>
               </tr>
               @empty
               <tr>

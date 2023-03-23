@@ -381,12 +381,7 @@ Route::controller(TablaplanillaController::class)->middleware(['auth', 'verified
     Route::get('/tablaplanilla', 'index')->name('tablaplanilla.index');
     Route::get('/tablaplanilla/{id}', 'show')->name('tablaplanilla.show');
     Route::post('/tablaplanilla', 'store')->name('tablaplanilla.store');
-});
-
-Route::controller(TablaplanillaController::class)->middleware(['auth', 'verified'])->group(function(){
-    Route::get('/tablaplanilla', 'index')->name('tablaplanilla.index');
-    Route::get('/tablaplanilla/{id}', 'show')->name('tablaplanilla.show');
-    Route::post('/tablaplanilla', 'store')->name('tablaplanilla.store');
+    Route::get('/tablaplanilla/pdf/{id}', 'pdf')->name('tablaplanilla.pdf');
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function(){
