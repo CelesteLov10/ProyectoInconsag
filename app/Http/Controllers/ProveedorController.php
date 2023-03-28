@@ -19,7 +19,7 @@ class ProveedorController extends Controller
                 ->orWhereHas('categoria', function($q){
                     $q->where('nombreCat','LIKE', '%' .request('search') .'%');
             });
-            })->orderBy('id','desc')->paginate(10)->withQueryString();
+            })->orderBy('id','desc')->paginate(100000000000)->withQueryString();
 
             $categoria = Categoria::all();
             return view('proveedor.index', compact('proveedor','categoria'));

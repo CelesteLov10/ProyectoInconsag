@@ -13,7 +13,7 @@ class ConstructoraController extends Controller
         ->when(request('search'), function($query){
         return $query->where('nombreConstructora', 'LIKE', '%' .request('search') .'%')
         ->orWhere('fechaContrato', 'LIKE', '%' .request('search') .'%');
-        })->orderBy('id','desc')->paginate(10)->withQueryString();
+        })->orderBy('id','desc')->paginate(10000000)->withQueryString();
 
         return view('constructora.index', compact('constructoras'));
     }

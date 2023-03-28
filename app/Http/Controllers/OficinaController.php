@@ -18,7 +18,7 @@ class OficinaController extends Controller
             ->orWhereHas('municipio', function($q){
                 $q->where('nombreM','LIKE', '%' .request('search') .'%');
             });
-        })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+        })->orderBy('id','desc')->paginate(10000000000)->withQueryString(); 
         $inventario = Inventario::all();
     
 

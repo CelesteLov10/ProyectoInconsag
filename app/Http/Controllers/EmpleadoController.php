@@ -22,7 +22,7 @@ class EmpleadoController extends Controller
             ->orWhereHas('puesto', function($q){
                 $q->where('nombreCargo','LIKE', '%' .request('search') .'%');
             });
-        })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+        })->orderBy('id','desc')->paginate(1000000000)->withQueryString(); 
         $puesto = Puesto::all();
         $estado = Estado::all();
 

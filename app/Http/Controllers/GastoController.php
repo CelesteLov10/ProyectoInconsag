@@ -20,7 +20,7 @@ class GastoController extends Controller
         ->orWhereHas('empleado', function($q){
             $q->where('nombres','LIKE', '%' .request('search') .'%');
         });
-        })->orderBy('id','desc')->paginate(10)->withQueryString();
+        })->orderBy('id','desc')->paginate(10000000)->withQueryString();
     
         return view('gasto.index', compact('gasto'));
         }
