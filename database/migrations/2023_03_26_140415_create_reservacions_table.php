@@ -14,16 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reservacions', function (Blueprint $table) {
-            //$table->engine = 'InnoDB';
+             //$table->engine = 'InnoDB';
             $table->id();
             $table->string('nombreCliente');
             $table->string('identidadCliente')->unique();
-            $table->string('telefono');
+            $table->string('telefono')->unique();
             $table->string('correoCliente')->unique();
             $table->string('fechaCita');
             $table->string('horaCita');
-            //$table->unsignedBigInteger('empleado_id');//Relacion con tabla empleado
-            //$table->foreign('empleado_id')->references('id')->on('empleados');// Restriccion llave foranea
+            // $table->unsignedBigInteger('empleado_id');//Relacion con tabla empleado
+             //$table->foreign('empleado_id')->references('id')->on('empleados');// Restriccion llave foranea
             $table->timestamps();
         });
     }

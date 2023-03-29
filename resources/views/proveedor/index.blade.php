@@ -35,7 +35,7 @@
       @if (session('mensaje'))
         <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
           {{ session('mensaje')}}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
         </div>
       @endif
 
@@ -43,7 +43,7 @@
         @if (session('mensajeW'))
         <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert" >
             {{ session('mensajeW')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
         </div>
         @endif
 
@@ -106,7 +106,7 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
       {{-- se necesita para el buscador --}}
-    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">     
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">   
 @stop
 
 @section('js')
@@ -137,7 +137,7 @@
   $('#alert').fadeIn();     
   setTimeout(function() {
       $("#alert").fadeOut();           
-  },2000);
+  },5000);
 </script>
 
 {{-- script para que muestre el datables en español, y que funcione el datables --}}

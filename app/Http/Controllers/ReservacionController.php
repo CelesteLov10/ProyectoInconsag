@@ -34,11 +34,11 @@ class ReservacionController extends Controller
                 'nombreCliente'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
                 'identidadCliente' => ['required','numeric','unique:reservacions',
                 'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
-                'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/'],
+                'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:reservacions'],
                 ['regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
                 'correoCliente' =>['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:reservacions'],
                 'fechaCita' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
-                'horaCita' => ['required'],
+                'horaCita' => ['required', 'regex:/(1[0-2]|0?[1-9]):[0-5][0-9] (AM|PM)/'],
                  //'empleado_id' => ['required'],
                 
 
@@ -67,6 +67,7 @@ class ReservacionController extends Controller
             'fechaCita.regex' => 'Debe ser mayor un mes antes.',
 
             'horaCita.required' => 'La hora de reservacion de la cita es obligatorio, no puede estar vacío.',
+            'horaCita.regex' => 'El formato para el número de identidad no es válido.',
 
              //'empleado_id.required' => 'seleccione el nombre del empleado es obligatorio, no puede estar vacío.',
 
@@ -101,10 +102,10 @@ class ReservacionController extends Controller
             'nombreCliente'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'identidadCliente'    => ['required','numeric', 'unique:reservacions,identidadCliente,' .$id.'id',
             'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
-            'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/'],
+            'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/', 'unique:reservacions,telefono,' .$id.'id'],
             'correoCliente' => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:reservacions,correoCliente,' .$id.'id'],
             'fechaCita'       => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
-             //'horaCita'  => ['required', 'regex:/(1[0-2]|0?[1-9]):[0-5][0-9] (AM|PM)/'],
+             'horaCita'  => ['required', 'regex:/(1[0-2]|0?[1-9]):[0-5][0-9] (AM|PM)/'],
              'horaCita'  => ['required'],
              //'empleado_id' => ['required'],
             
