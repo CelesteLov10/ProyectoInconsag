@@ -21,7 +21,7 @@ class ConstructoraFactory extends Factory
             'direccion'=>$this->faker->address(),
             'telefono'=>$this->faker->phoneNumber(),
             'email'=>$this->faker->unique()->email(),
-            'fechaContrato'=>$this->faker->date($format = 'd-m-Y',$max = 2001),
+            'fechaContrato'=>$this->faker->date($format = 'd-m-Y'),
             
             //
         ];

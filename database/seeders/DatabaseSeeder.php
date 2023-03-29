@@ -20,6 +20,7 @@ use App\Models\Liberado;
 use App\Models\Lote;
 use App\Models\Pago;
 use App\Models\Venta;
+use App\Models\Reservacion;
 //use App\Models\Planilla;
 use Illuminate\Database\Seeder;
 
@@ -60,5 +61,6 @@ class DatabaseSeeder extends Seeder
         //Liberado::factory(10)->create();
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+        Reservacion::factory(20)->create();
     }
 }

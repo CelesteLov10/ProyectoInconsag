@@ -15,6 +15,7 @@ use App\Models\Cliente;
 use App\Models\Venta;
 use App\Models\Constructora;
 use App\Models\Tablaplanilla;
+use App\Models\Reservacion;
 
 
 class SearchController extends Controller
@@ -166,6 +167,18 @@ class SearchController extends Controller
         foreach($querys as $query){
         $data[] = [
         'label' => $query->fechap
+        ];
+        }
+        return $data;
+    }
+    public function Reservacion(Request $request){
+        $term = $request->get('term');
+        $querys = Reservacion::where('nombreCliente', 'LIKE', '%'. $term . '%')->get();
+        
+        $data =[];
+        foreach($querys as $query){
+        $data[] = [
+        'label' => $query->nombreCliente
         ];
         }
         return $data;

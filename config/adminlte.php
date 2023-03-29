@@ -580,11 +580,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
-                    'url'  => '/gasto/create',
+                    'url'  => '/reservacion/create',
                 ],
                 [
                     'text' => 'Listado',
-                    'url'  => 'gasto',
+                    'url'  => 'reservacion',
                 ],
             ],
         ],

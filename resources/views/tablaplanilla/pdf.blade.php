@@ -13,12 +13,12 @@
         border-spacing: auto;
         border-collapse: collapse;
         table-layout: auto;
-        /* margin-left: 3%; */
+        /* margin: auto; */
         align-content: center;
-        text-align: left;
-        font-size: 14px;
+        font-size: auto;
+        text-align: center;
         }
-    
+
         h3 {
         text-align: center;
         }
@@ -59,12 +59,12 @@
             <br>
             <table>
             <tbody>
-              <th scope="col">Total planilla:</th>
+              <th style="text-align: left" scope="col">Total planilla:</th>
               <td>L. {{number_format($tablaplanillas->totalp, 2)}}</td>
             </tr>
             <tr>
-              <th scope="col">Total empleados:</th>
-              <td>{{$tablaplanillas->canEmpleados}}</td>
+              <th style="text-align: left" scope="col">Total empleados:</th>
+              <td style="text-align: center">{{$tablaplanillas->canEmpleados}}</td>
             </tr>
             </tbody>
         </table>

@@ -25,6 +25,7 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\LiberadoController;
 use App\Http\Controllers\PlanillaController;
 use App\Http\Controllers\TablaplanillaController;
+use App\Http\Controllers\ReservacionController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -93,7 +94,9 @@ Route::controller(SearchController::class)->middleware(['auth', 'verified'])->gr
      //Ruta para listado casas modelos
     Route::get('search/casa', 'casa')->name('casa.search');
      //Ruta para listado totales planilla
-     Route::get('search/tablaplanilla', 'tablaplanilla')->name('tablaplanilla.search');
+    Route::get('search/tablaplanilla', 'tablaplanilla')->name('tablaplanilla.search');
+      //Ruta para listado para las reservaciones de las citas
+    Route::get('search/reservacion', 'reservacion')->name('reservacion.search');
 });
 
 Route::controller(InventarioController::class)->middleware(['auth', 'verified'])->group(function(){
@@ -388,4 +391,20 @@ Route::controller(UserController::class)->middleware(['auth', 'verified'])->grou
     Route::get('/user', 'index')->name('user.index');
     Route::get('/user/{id}/edit', 'edit')->name('user.edit');
     Route::put('/user/{id}/edit', 'update')->name('user.update');
+});
+//Ruta para reservacion de citas
+Route::controller(ReservacionController::class)->middleware(['auth', 'verified'])->group(function(){
+    //Ruta para listado de cita
+    Route::get('/reservacion', 'index')->name('reservacion.index');
+    //Ruta para crear un nuevo cita
+    Route::get('/reservacion/create', 'create')->name('reservacion.create');
+    //Ruta para guardar los registros del cita
+    Route::post('/reservacion', 'store')->name('reservacion.store');
+    //Ruta para mostrar un cita
+    Route::get('/reservacion/{id}', 'show')->name('reservacion.show')
+    ->where('id','[0-9]+');
+    //Ruta para editar un cita
+    Route::get('/reservacion/{id}/edit', 'edit')->name('reservacion.edit');
+    //Ruta para el metodo editar la cita
+    Route::put('/reservacion/{id}/edit', 'update')->name('reservacion.update');
 });
