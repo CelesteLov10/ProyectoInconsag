@@ -154,6 +154,7 @@
                 'Octubre', 'Noviembre', 'Diciembre'],
             dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
                 maxDate: "1m",
+                minDate: "0m",
                 
             });
             } );
