@@ -50,24 +50,26 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:25'],
-            'email' => ['required', 'string', 'email', 'max:60', 'unique:users',],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => ['required', 'string', 'max:25','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9_.]+\s{0,1})+$/u'],
+            'email' => ['required', 'string', 'email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#', 'max:60', 'unique:users',],
+            'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/'],
         ],[
 
             'name.required'=>'Debe ingresar el nombre, no debe ir vacío.',
             'name.string' => 'El número de identidad debe tener 13 dígitos. ',
             'name.max' => 'El número máximo de caracteres es de 25.',
+            'name.regex' => 'El nombre de usuario solo puede contener guiones bajos y puntos.',
 
             'email.required' => 'El correo es obligatorio, no debe ir vacío.',
             'email.max' => 'El máximo de caracteres es de 60.',
             'email.unique' => 'El correo electrónico ya está en uso.',
             'email.email' => 'Debe ingresar un correo electrónico válido.',
+            'email.regex' => 'Debe ingresar un correo electrónico válido.',
 
             'password.required' => 'La contraseña debe contener al menos 8 caracteres.',
-            'password.min' => 'Las contraseñas deben de coincidir.',
+            'password.min' => 'Las contraseñas debe contener minímo 8 caracteres.',
             'password.confirmed' => 'Las contraseñas deben de coincidir.',
-            'password.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
+            'password.regex' => 'La contraseña debe contener letras, números y caracteres especiales.',
             
 
         ]);

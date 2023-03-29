@@ -28,7 +28,7 @@ class LiberadoController extends Controller
         ->orWhere('fecha', 'LIKE', '%' .request('search') .'%')
         ;
         })
-        ->orderBy('id','desc')->paginate(10)->withQueryString();
+        ->orderBy('id','desc')->paginate(1000000)->withQueryString();
         
         
 

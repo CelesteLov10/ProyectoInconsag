@@ -22,8 +22,26 @@
         <div class = " card-header py-3 " >
           <h5 class = "n-font-weight-bold text-black">Actualización de la casa modelo</h5 > 
         </div>
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center">
-        <div class="col-60 bg-light p-5">   
+
+      <div class="m-0 text-center align-items-center justify-content-center">
+        <div class="bg-light p-5">
+          {{-- CODIGO PARA EDITAR LAS IMAGENES --}}   
+          <div class=" card float-right">
+            <div class=" ms-auto mb-2 mb-lg-0 p-2 ">
+                @if (count($casa->images)>0)
+                <h2 class="card-header py-3 ">Imágenes</h2>
+                @foreach ($casa->images as $img)
+                <form action="/deleteimage/{{$img->id}}" method="post">
+                  <button class="btn text-danger">X</button>
+                    @csrf
+                    @method('delete')
+                </form>
+                <img src="/images/{{$img->image}}" class="img-responsive" style="max-height: 2500px; max-width:250px" alt="" srcset="">
+                @endforeach
+                @endif
+            </div>
+        </div>{{-- ACA TERMINA EL CODIGO DE LAS IMAGES --}}
+
       <form action="{{route('casa.update', $casa)}}" id="formu" class="casa-actualizar" method="POST" autocomplete="off" enctype="multipart/form-data">
           <!-- metodo put para que guarde los cambios en la base de datos-->
           @method('put')
@@ -80,7 +98,7 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Nombre de la constructora:</label>
             <div class="col-sm-5">
-            <select name="constructora_id" id="" class="form-select rounded-pill @error('constructora_id') is-invalid @enderror">
+            <select name="constructora_id" id="" class="form-select form-control rounded-pill @error('constructora_id') is-invalid @enderror">
               <option value="{{$casa->constructora_id}}" 
                 {{old('constructora_id' , $casa->constructora->nombres)==$casa->constructora->id ? 'selected' : ''}}>{{$casa->constructora->nombreConstructora}}</option>
                 {{-- para que enliste los nombres del cargo --}}
@@ -117,21 +135,7 @@
         </div>   
       </form>
       
-        <div class=" float-right">
-            <div class="float-right ms-auto mb-2 mb-lg-0">
-                @if (count($casa->images)>0)
-                <h2>Imágenes</h2>
-                @foreach ($casa->images as $img)
-                <form action="/deleteimage/{{$img->id}}" method="post">
-                  <button class="btn text-danger">X</button>
-                    @csrf
-                    @method('delete')
-                </form>
-                <img src="/images/{{$img->image}}" class="img-responsive" style="max-height: 300px; max-width:300px" alt="" srcset="">
-                @endforeach
-                @endif
-            </div>
-        </div>
+       
 
         </div>
       </div>

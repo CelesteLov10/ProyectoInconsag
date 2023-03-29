@@ -23,12 +23,13 @@ class MaquinariaController extends Controller
             ->orWhereHas('proveedor', function($q){
                 $q->where('nombreContacto','LIKE', '%' .request('search') .'%');
             });
-            })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+            })->orderBy('id','desc')->paginate(100000)->withQueryString(); 
         $proveedor = Proveedor::all();
         
         return view('maquinaria.index', compact('maquinarias', 'proveedor'));
 
     }
+
 
     // Metodo para mostrar pdf
     public function pdf (){

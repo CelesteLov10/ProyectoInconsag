@@ -24,7 +24,7 @@ class VentaController extends Controller
             ->orWhereHas('cliente', function($q){
                 $q->where('nombreCompleto','LIKE', '%' .request('search') .'%');
         });
-        })->orderBy('id','desc')->paginate(10)->withQueryString();
+        })->orderBy('id','desc')->paginate(1000000)->withQueryString();
 
         $cliente = Cliente::all();
         return view('venta.index', compact('ventas','cliente'));

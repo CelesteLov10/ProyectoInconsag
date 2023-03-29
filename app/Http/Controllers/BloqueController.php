@@ -16,7 +16,7 @@ class BloqueController extends Controller
     $bloques = Bloque::query()
     ->when(request('search'), function($query){
     return $query->where('nombreBloque', 'LIKE', '%' .request('search') .'%');
-    })->orderBy('id','desc')->paginate(10)->withQueryString();
+    })->orderBy('id','desc')->paginate(1000000)->withQueryString();
 
     return view('bloque.index', compact('bloques'));
     }

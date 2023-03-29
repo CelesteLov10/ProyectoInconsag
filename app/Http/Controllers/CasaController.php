@@ -16,7 +16,7 @@ class CasaController extends Controller
     return $query->where('claseCasa', 'LIKE', '%' .request('search') .'%');
     })->orWhereHas('constructora', function($q){
         $q->where('nombreConstructora','LIKE', '%' .request('search') .'%');
-    })->orderBy('id','desc')->paginate(10)->withQueryString();
+    })->orderBy('id','desc')->paginate(10000000)->withQueryString();
     $constructora = Constructora::all();
     return view('casa.index', compact('casa', 'constructora'));
     }

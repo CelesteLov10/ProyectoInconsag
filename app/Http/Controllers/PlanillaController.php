@@ -18,7 +18,7 @@ class PlanillaController extends Controller
         $tablaplanillas = Tablaplanilla::query()
         ->when(request('search'), function($query){
         return $query->where('fechap', 'LIKE', '%' .request('search') .'%');
-        })->orderBy('id','desc')->paginate(10)->withQueryString();
+        })->orderBy('id','desc')->paginate(1000000000)->withQueryString();
 
         return view('planilla.index', compact('planillas', 'empleados', 'puestos', 'tablaplanillas'));
     }
