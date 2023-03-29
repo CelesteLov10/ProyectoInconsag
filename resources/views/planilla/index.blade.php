@@ -35,7 +35,7 @@
       @if (session('mensaje'))
       <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
         {{ session('mensaje')}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" id="alert" aria-label="Close"></button>
+        {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" id="alert" aria-label="Close"></button> --}}
       </div>
     @endif
       
@@ -92,7 +92,8 @@
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">
       {{-- cdn para el css de los emojis de fontawesomw --}}
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 @stop
 
