@@ -153,8 +153,8 @@
                 'Julio', 'Agosto', 'Septiembre',
                 'Octubre', 'Noviembre', 'Diciembre'],
             dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-                maxDate: "2m",
-                minDate: "-2m",
+                maxDate: "1m",
+                
             });
             } );
         </script>
