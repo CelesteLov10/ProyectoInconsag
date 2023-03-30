@@ -23,7 +23,7 @@ class InventarioFactory extends Factory
             'descripcion'=>$this->faker->paragraph(),
             'fecha'=>$this->faker->date($format = 'd-m-Y'),
             'empleado_id'=>$this->faker->numberBetween(1,5),
-            'oficina_id'=>$this->faker->numberBetween(1,100)
+            'oficina_id'=>$this->faker->numberBetween(1,10)
 
         ];
     }

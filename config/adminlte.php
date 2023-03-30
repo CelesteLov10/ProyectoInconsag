@@ -338,7 +338,7 @@ return [
         // ],
         [
             'text'    => 'Puesto Laboral',
-            'icon'    => 'fas fa-fw fa-address-card',
+            'icon'    => 'fa-solid fa-users-rectangle',
             'can'  => 'Admin.puestoLaboral.index',
             'submenu' => [
                 [
@@ -471,7 +471,7 @@ return [
         ],
         [
             'text'    => 'Lotes vendidos',
-            'icon'    => 'fas fa-fw fa-th-large',
+            'icon'    => 'fa-solid fa-hand-holding-dollar',
             'can'  => 'Admin.pago.index',
             'submenu' => [
                 [
@@ -501,7 +501,7 @@ return [
         ],
         [
             'text'    => 'Ventas',
-            'icon'    => 'fas fa-fw fa-chevron-circle-down',
+            'icon'    => 'fa-solid fa-money-bill-trend-up',
             'can'  => 'Admin.venta.index',
             'submenu' => [
                 [
@@ -516,7 +516,7 @@ return [
         ],
         [
             'text'    => 'Constructora',
-            'icon'    => 'fas fa-fw fa-archive',
+            'icon'    => 'fa-solid fa-person-digging',
             'can'  => 'Admin.constructora.index',
             'submenu' => [
                 [
@@ -546,11 +546,12 @@ return [
         ],
         [
             'text'    => 'Gastos',
-            'icon'    => 'fas fa-fw fa-file',
+            'icon'    => 'fa-solid fa-receipt',
             'can'  => 'Admin.gasto.index',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
+                    'icon' => 'fa-solid fa-file-circle-plus',
                     'url'  => '/gasto/create',
                 ],
                 [
@@ -576,7 +577,7 @@ return [
         ],
         [
             'text'    => 'Reservaciones',
-            'icon'    => 'fas fa-fw fa-file',
+            'icon'    => 'fa-solid fa-person-chalkboard',
             'submenu' => [
                 [
                     'text' => 'Registro nuevo',
