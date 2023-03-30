@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:25','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9_.]+\s{0,1})+$/u'],
             'email' => ['required', 'string', 'email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#', 'max:60', 'unique:users',],
-            'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/'],
+            'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,50}$/'],
         ],[
 
             'name.required'=>'Debe ingresar el nombre, no debe ir vacío.',
@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'password.required' => 'La contraseña debe contener al menos 8 caracteres.',
             'password.min' => 'Las contraseñas debe contener minímo 8 caracteres.',
             'password.confirmed' => 'Las contraseñas deben de coincidir.',
-            'password.regex' => 'La contraseña debe contener letras, números y caracteres especiales.',
+            'password.regex' => 'La contraseña debe contener letras mayúsculas y minúsculas, números y caracteres especiales.',
             
 
         ]);
