@@ -42,7 +42,7 @@
                     <label  class="col-sm-3 col-form-label" for="identidadCliente">Identidad:</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control  rounded-pill @error('identidadCliente') is-invalid @enderror"
-                        maxlength="13" placeholder="ingrese el numero de identidad"
+                        maxlength="13" placeholder="Ingrese el número de identidad"
                             name="identidadCliente" id="identidadCliente" autocomplete="identidadCliente"
                         value="{{old('identidadCliente')}}" style="background-color: white">
                         @error('identidadCliente')
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Fecha Cita:</label>
+                    <label class="col-sm-3 col-form-label">Fecha cita:</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control rounded-pill @error('fechaCita') is-invalid @enderror" 
                         maxlength="10" placeholder="Seleccione la fecha de cita"
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Hora Cita:</label>
+                    <label class="col-sm-3 col-form-label">Hora cita:</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control rounded-pill @error('horaCita') is-invalid @enderror" 
                         maxlength="10" placeholder="Seleccione la hora de cita"

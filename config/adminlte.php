@@ -14,9 +14,9 @@ return [
     |
     */
 
-    'title' => 'Inconsag',
+    'title' => 'INCONSAG',
     'title_prefix' => '',
-    'title_postfix' => '| Inconsag',
+    'title_postfix' => '| INCONSAG',
 
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>I</b>nconsag',
+    'logo' => '<b></b>INCONSAG',
     'logo_img' => 'vendor/adminlte/dist/img/inc.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -338,41 +338,20 @@ return [
         // ],
         [
             'text'    => 'Puesto Laboral',
-            'icon'    => 'fa-solid fa-users-rectangle',
+            'icon'    => 'fa-solid fa-people-roof',
             'can'  => 'Admin.puestoLaboral.index',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'url'  => '/puesto/create',
+                    'icon' => 'fa-sharp fa-solid fa-file-circle-plus', //si no permite un emoji usar este para los de agregar
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'puesto',
+                    'icon' => 'fa-solid fa-users-rectangle',
                 ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
+        
             ],
         ],
         [
@@ -381,12 +360,16 @@ return [
             'can'  => 'Admin.oficina.index',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'url'  => '/oficina/create',
+                    'icon' => 'fa-sharp fa-solid fa-file-circle-plus',
+                    //'icon' => 'fa-solid fa-building-circle-exclamation', no hay con el signo +
+
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'oficina',
+                    'icon' => 'fa-solid fa-building-circle-check',
                 ],
             ],
         ],
@@ -396,12 +379,14 @@ return [
             'can'  => 'Admin.empleado.indexEmp',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'url'  => '/empleado/create',
+                    'icon' => 'fa-sharp fa-solid fa-person-circle-plus',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'empleado',
+                    'icon' => 'fa-solid fa-person-booth',
                 ],
             ],
         ],
@@ -411,42 +396,14 @@ return [
             'can'  => 'Admin.inventario.index',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'url'  => '/inventario/create',
+                    'icon' => 'fa-sharp fa-solid fa-folder-plus',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'inventario',
-                ],
-            ],
-        ],
-        [
-            'text'    => 'Proveedor',
-            'icon'    => 'fas fa-fw fa-user',
-            'can'  => 'Admin.proveedor.index',
-            'submenu' => [
-                [
-                    'text' => 'Registro nuevo',
-                    'url'  => '/proveedor/create',
-                ],
-                [
-                    'text' => 'Listado',
-                    'url'  => 'proveedor',
-                ],
-            ],
-        ],
-        [
-            'text'    => 'Maquinaria',
-            'icon'    => 'fas fa-fw fa-truck',
-            'can'  => 'Admin.maquinaria.index',
-            'submenu' => [
-                [
-                    'text' => 'Registro nuevo',
-                    'url'  => '/maquinaria/create',
-                ],
-                [
-                    'text' => 'Listado',
-                    'url'  => 'maquinaria',
+                    'icon' => 'fa-solid fa-folder-open',
                 ],
             ],
         ],
@@ -456,31 +413,19 @@ return [
             'can'  => 'Admin.bloque.index',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo bloque',
+                    'text' => 'Nuevo registro de bloque',
                     'url'  => '/bloque/create',
+                    'icon' => 'fa-solid fa-cubes',
                 ],
                 [
                     'text' => 'Listado bloque',
                     'url'  => '/bloque',
+                    'icon' => 'fa-solid fa-chart-simple',
                 ],
                 [
-                    'text' => 'Registro nuevo lote',
+                    'text' => 'Nuevo registro lote',
                     'url'  => '/lote/create',
-                ],
-            ],
-        ],
-        [
-            'text'    => 'Lotes vendidos',
-            'icon'    => 'fa-solid fa-hand-holding-dollar',
-            'can'  => 'Admin.pago.index',
-            'submenu' => [
-                [
-                    'text' => 'Listado lotes vendidos',
-                    'url'  => '/pago',
-                ],
-                [
-                    'text' => 'Listado lotes liberados',
-                    'url'  => '/liberado',
+                    'icon' => 'fa-solid fa-cubes-stacked',
                 ],
             ],
         ],
@@ -490,42 +435,104 @@ return [
             'can'  => 'Admin.cliente.index',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'url'  => '/cliente/create',
+                    'icon' => 'fa-solid fa-user-plus',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'cliente',
+                    'icon' => 'fa-solid fa-users-line',
                 ],
             ],
         ],
+
         [
             'text'    => 'Ventas',
-            'icon'    => 'fa-solid fa-money-bill-trend-up',
+           'icon'    => 'fa-solid fa-money-bill-trend-up',
+          // 'icon' => 'fa-solid fa-money-check-dollar',
             'can'  => 'Admin.venta.index',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'url'  => '/venta/create',
+                    'icon' => 'fa-solid fa-money-check-dollar',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'venta',
+                    'icon' => 'fa-solid fa-money-check',
+                ],
+            ],
+        ],
+
+        [
+            'text'    => 'Lotes vendidos',
+            'icon'    => 'fa-solid fa-hand-holding-dollar',
+            'can'  => 'Admin.pago.index',
+            'submenu' => [
+                [
+                    'text' => 'Listado lotes vendidos',
+                    'url'  => '/pago',
+                    'icon' => 'fa-solid fa-clipboard-list',
+                ],
+                [
+                    'text' => 'Listado lotes liberados',
+                    'url'  => '/liberado',
+                    'icon' => 'fa-solid fa-unlock',
+                ],
+            ],
+        ],
+
+ 
+        [
+            'text'    => 'Proveedor',
+            'icon'    => 'fas fa-fw fa-user',
+            'can'  => 'Admin.proveedor.index',
+            'submenu' => [
+                [
+                    'text' => 'Nuevo registro',
+                    'url'  => '/proveedor/create',
+                    'icon' => 'fa-sharp fa-solid fa-person-circle-plus',
+                ],
+                [
+                    'text' => 'Listado',
+                    'url'  => 'proveedor',
+                    'icon' => 'fa-solid fa-clipboard-user',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Maquinaria',
+            'icon'    => 'fas fa-fw fa-truck',
+            'can'  => 'Admin.maquinaria.index',
+            'submenu' => [
+                [
+                    'text' => 'Nuevo registro',
+                    'url'  => '/maquinaria/create',
+                    'icon' => 'fa-sharp fa-solid fa-file-circle-plus',
+                ],
+                [
+                    'text' => 'Listado',
+                    'url'  => 'maquinaria',
+                    'icon' => 'fa-solid fa-sheet-plastic',
                 ],
             ],
         ],
         [
             'text'    => 'Constructora',
-            'icon'    => 'fa-solid fa-person-digging',
+            'icon'    => 'fa fa-screwdriver-wrench',
             'can'  => 'Admin.constructora.index',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'url'  => '/constructora/create',
+                    'icon' => 'fa-sharp fa-solid fa-file-circle-plus',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'constructora',
+                    'icon' => 'fa-solid fa-sheet-plastic',
                 ],
             ],
         ],
@@ -535,12 +542,14 @@ return [
             'can'  => 'Admin.casa.index',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'url'  => '/casa/create',
+                    'icon' => 'fa-sharp fa-solid fa-house-medical-flag',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'casa',
+                    'icon' => 'fa-solid fa-warehouse',
                 ],
             ],
         ],
@@ -550,47 +559,52 @@ return [
             'can'  => 'Admin.gasto.index',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'icon' => 'fa-solid fa-file-circle-plus',
                     'url'  => '/gasto/create',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'gasto',
+                    'icon' => 'fa-solid fa-file-zipper',
                 ],
             ],
         ],
         [
             'text'    => 'Planillas',
-            'icon'    => 'fas fa-fw fa-file',
+            'icon'    => 'fa-solid fa-boxes-packing',
             'can'  => 'Admin.planilla.index',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'url'  => '/planilla/create',
+                    'icon' => 'fa-solid fa-file-circle-plus',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'planilla',
+                    'icon' => 'fa-solid fa-box-archive',
                 ],
             ],
         ],
         [
             'text'    => 'Reservaciones',
-            'icon'    => 'fa-solid fa-person-chalkboard',
+            'icon'    => 'fa-solid fa-calendar-days',
             'submenu' => [
                 [
-                    'text' => 'Registro nuevo',
+                    'text' => 'Nuevo registro',
                     'url'  => '/reservacion/create',
+                    'icon' => 'fa-solid fa-calendar-plus',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'reservacion',
+                    'icon' => 'fa-solid fa-calendar',
                 ],
             ],
         ],
         
-        ['header' => 'labels'],
+    /*   ['header' => 'labels'],
         [
             'text'       => 'important',
             'icon_color' => 'red',
@@ -605,7 +619,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ],*/
     ],
 
     /*

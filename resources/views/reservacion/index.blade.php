@@ -77,7 +77,7 @@
                 href="{{route('reservacion.show', ['id'=>$reservacion->id])}}">
                 <i class="fa fa-eye"></i> </a></td> 
                 </a></td>
-                <td><a class="btn btn-outline-primary" 
+                <td><a class="btn btn-outline-warning" 
                     href="{{route('reservacion.edit', ['id'=>$reservacion->id])}}">
                     <i class="fa fa-clipboard"></i> </a></td> 
                     </a></td>
