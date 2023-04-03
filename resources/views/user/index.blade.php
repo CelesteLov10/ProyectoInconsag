@@ -90,11 +90,15 @@
     },2000);
 </script>
 
-{{-- Para que funcione la DATATABLE --}}
+{{-- script para que muestre el datables en español, y que funcione el datables --}}
 <script>
-$(document).ready(function () {
-    $('#example').DataTable();
-});
-</script>
+    $(document).ready(function() {
+    $('#example').DataTable({
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+      }
+    });
+  });
+  </script>
 @stop
 @endcan

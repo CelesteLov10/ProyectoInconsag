@@ -90,8 +90,8 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+            'expire' => 60, //cantidad de minutos que va a durar la expiracion del link
+            'throttle' => 60, //cantidad de tiempo (segundos) que debe esperar el usuario para que pueda solicitar otro link
         ],
     ],
 

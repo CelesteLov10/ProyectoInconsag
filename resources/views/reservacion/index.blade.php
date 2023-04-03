@@ -11,7 +11,7 @@
 @section('content')   
 <div> 
 
-  {{-- Campo de busqueda  --}}
+  {{-- Campo de busqueda 
   <form method="GET" action="">
     <div class="container">
         <div class="vh-50 row text-center align-items-center justify-content-center">
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>    
-  </form>
+  </form>  --}}
 
   <div class="container">
     <div class="mb-3 text-end">
@@ -55,10 +55,10 @@
               <h6 class = "n-font-weight-bold" title="Volver a todos los registros">Listado de reservaciones</h6></a> 
           </div >
 
-      <div class="vh-50 row m-0 text-center align-items-center justify-content-center container">
-          <div class="col-60 bg-light p-5">
-              <table class="table border border-2 contorno-azul">
-                  <thead class="thead-dark">
+          <div class="m-0 align-items-center justify-content-center ">
+            <div class=" p-5">
+                <table id="example" class="table table-striped table-bordered border-2 ">
+                    <thead class="">
                     <tr>
                       <th scope="col">Fecha cita</th>
                       <th scope="col">Nombre Cliente</th>
@@ -77,7 +77,7 @@
                 href="{{route('reservacion.show', ['id'=>$reservacion->id])}}">
                 <i class="fa fa-eye"></i> </a></td> 
                 </a></td>
-                <td><a class="btn btn-outline-primary" 
+                <td><a class="btn btn-outline-warning" 
                     href="{{route('reservacion.edit', ['id'=>$reservacion->id])}}">
                     <i class="fa fa-clipboard"></i> </a></td> 
                     </a></td>
@@ -99,10 +99,11 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="/css/admin_custom.css">
+<link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">
+  {{-- cdn para el css de los emojis de fontawesomw --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 @stop
 
 @section('js')
@@ -136,6 +137,17 @@
   setTimeout(function() {
       $("#alert").fadeOut();           
   },5000);
+</script>
+
+{{-- script para que muestre el datables en español, y que funcione el datables --}}
+<script>
+  $(document).ready(function() {
+  $('#example').DataTable({
+    "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+    }
+  });
+});
 </script>
 @stop
 

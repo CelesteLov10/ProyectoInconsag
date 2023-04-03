@@ -36,19 +36,19 @@
             <td>{{$reservacion->nombreCliente}}</td>    
         </tr>
         <tr>
-            <th scope="row">identidad</th>
+            <th scope="row">Identidad</th>
             <td>{{$reservacion->identidadCliente}}</td>    
         </tr>
         <tr>
-            <th scope="row">teléfono</th>
+            <th scope="row">Teléfono</th>
             <td>{{$reservacion->telefono}}</td>    
         </tr>
         <tr>
-            <th scope="row">correo electrónico</th>
+            <th scope="row">Correo electrónico</th>
             <td>{{$reservacion->correoCliente}}</td>    
         </tr>
         <tr>
-            <th scope="row">fecha de la cita</th>
+            <th scope="row">Fecha de la cita</th>
             <td>{{$reservacion->fechaCita}}</td>    
         </tr>
         <tr>
