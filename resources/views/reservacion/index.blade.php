@@ -18,7 +18,7 @@
             <div class="col-7 p-1 contorno-azul">
                 <div class="input-group">
                       <input type="text" name="search" id="search"  class="form-control" autofocus
-                      placeholder="Buscar por nombre del cliente" value="{{request('search')}}"/>
+                      placeholder="Buscar por nombre del cliente y fecha de la cita" value="{{request('search')}}"/>
                     <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
                   </div>
                 </div>

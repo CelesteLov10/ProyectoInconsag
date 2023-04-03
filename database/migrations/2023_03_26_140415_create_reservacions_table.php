@@ -18,8 +18,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombreCliente');
             $table->string('identidadCliente')->unique();
-            $table->string('telefono')->unique();
-            $table->string('correoCliente')->unique();
+            $table->string('telefono');
+            $table->string('correoCliente');
             $table->string('fechaCita');
             $table->string('horaCita');
             // $table->unsignedBigInteger('empleado_id');//Relacion con tabla empleado
