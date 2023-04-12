@@ -26,7 +26,7 @@
             body {
                
                 background: url(/imagenes/slanted-gradient.png);
-                background-size: auto;
+                background-size: 2000px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
