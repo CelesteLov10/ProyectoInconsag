@@ -15,7 +15,7 @@ class ReservacionController extends Controller
         $reservaciones = Reservacion::query()
             ->when(request('search'), function($query){
             return $query->where('nombreCliente', 'LIKE', '%' .request('search') .'%');
-        })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+        })->orderBy('id','desc')->paginate(1000000)->withQueryString(); 
         return view('reservacion.index', compact('reservaciones'));
     }
 
@@ -106,7 +106,7 @@ class ReservacionController extends Controller
             'nombreCliente'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'identidadCliente'    => ['required','numeric', 'unique:reservacions,identidadCliente,' .$id.'id',
             'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
-            'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/'],
+            'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/', 'digits:8'],
             'correoCliente' => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#'],
             'fechaCita'       => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
              //'horaCita'  => ['required', 'regex:/(1[0-2]|0?[1-9]):[0-5][0-9] (AM|PM)/'],

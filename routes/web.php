@@ -16,6 +16,7 @@ use App\Http\Controllers\BloqueController;
 use App\Http\Controllers\CasaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ConstructoraController;
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\GastoController;
 use App\Http\Controllers\LoteController;
 use App\Http\Controllers\PagoController;
@@ -407,4 +408,21 @@ Route::controller(ReservacionController::class)->middleware(['auth', 'verified']
     Route::get('/reservacion/{id}/edit', 'edit')->name('reservacion.edit');
     //Ruta para el metodo editar la cita
     Route::put('/reservacion/{id}/edit', 'update')->name('reservacion.update');
+});
+
+//Ruta para contactos
+Route::controller(ContactoController::class)->middleware(['auth', 'verified'])->group(function(){
+    //Ruta para listado de contacto
+    Route::get('/contacto', 'index')->name('contacto.index');
+    //Ruta para crear un nuevo contacto
+    Route::get('/contacto/create', 'create')->name('contacto.create');
+    //Ruta para guardar los registros del contacto
+    Route::post('/contacto', 'store')->name('contacto.store');
+    //Ruta para mostrar un contacto
+    Route::get('/contacto/{id}', 'show')->name('contacto.show')
+    ->where('id','[0-9]+');
+    //Ruta para editar un contacto
+    Route::get('/contacto/{id}/edit', 'edit')->name('contacto.edit');
+    //Ruta para el metodo editar la contacto
+    Route::put('/contacto/{id}/edit', 'update')->name('contacto.update');
 });

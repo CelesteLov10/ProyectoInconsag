@@ -299,7 +299,7 @@ return [
         ],
         [
             'text' => 'Contactos',
-            'url'  => '#',
+            'url'  => '/contacto/create',
             'topnav_right' => true,
         ],
         [
@@ -343,7 +343,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Nuevo registro',
-                    'url'  => '/puesto/create',
+                    'url'  => 'puesto/create',
                     'icon' => 'fa-sharp fa-solid fa-file-circle-plus', //si no permite un emoji usar este para los de agregar
                 ],
                 [
@@ -354,6 +354,7 @@ return [
         
             ],
         ],
+
         [
             'text'    => 'Oficina',
             'icon'    => 'fas fa-fw fa-building',
@@ -373,8 +374,9 @@ return [
                 ],
             ],
         ],
+
         [
-            'text'    => 'Empleado',
+            'text'    => 'Empleados',
             'icon'    => 'fas fa-fw fa-users',
             'can'  => 'Admin.empleado.indexEmp',
             'submenu' => [
@@ -390,6 +392,7 @@ return [
                 ],
             ],
         ],
+
         [
             'text'    => 'Inventario',
             'icon'    => 'fas fa-fw fa-folder',
@@ -407,6 +410,7 @@ return [
                 ],
             ],
         ],
+
         [
             'text'    => 'Bloques y lotes',
             'icon'    => 'fas fa-fw fa-th',
@@ -417,20 +421,24 @@ return [
                     'url'  => '/bloque/create',
                     'icon' => 'fa-solid fa-cubes',
                 ],
+
+         
+
+                [
+                    'text' => 'Nuevo registro de lote',
+                    'url'  => '/lote/create',
+                    'icon' => 'fa-solid fa-cubes-stacked',
+                ],
+
                 [
                     'text' => 'Listado bloque',
                     'url'  => '/bloque',
                     'icon' => 'fa-solid fa-chart-simple',
                 ],
-                [
-                    'text' => 'Nuevo registro lote',
-                    'url'  => '/lote/create',
-                    'icon' => 'fa-solid fa-cubes-stacked',
-                ],
             ],
         ],
         [
-            'text'    => 'Cliente',
+            'text'    => 'Clientes',
             'icon'    => 'fas fa-fw fa-address-book',
             'can'  => 'Admin.cliente.index',
             'submenu' => [
@@ -458,6 +466,7 @@ return [
                     'url'  => '/venta/create',
                     'icon' => 'fa-solid fa-money-check-dollar',
                 ],
+
                 [
                     'text' => 'Listado',
                     'url'  => 'venta',
@@ -476,6 +485,7 @@ return [
                     'url'  => '/pago',
                     'icon' => 'fa-solid fa-clipboard-list',
                 ],
+
                 [
                     'text' => 'Listado lotes liberados',
                     'url'  => '/liberado',
@@ -495,6 +505,7 @@ return [
                     'url'  => '/proveedor/create',
                     'icon' => 'fa-sharp fa-solid fa-person-circle-plus',
                 ],
+
                 [
                     'text' => 'Listado',
                     'url'  => 'proveedor',
@@ -502,6 +513,7 @@ return [
                 ],
             ],
         ],
+
         [
             'text'    => 'Maquinaria',
             'icon'    => 'fas fa-fw fa-truck',
@@ -512,6 +524,7 @@ return [
                     'url'  => '/maquinaria/create',
                     'icon' => 'fa-sharp fa-solid fa-file-circle-plus',
                 ],
+
                 [
                     'text' => 'Listado',
                     'url'  => 'maquinaria',
@@ -519,6 +532,7 @@ return [
                 ],
             ],
         ],
+
         [
             'text'    => 'Constructora',
             'icon'    => 'fa fa-screwdriver-wrench',
@@ -529,6 +543,7 @@ return [
                     'url'  => '/constructora/create',
                     'icon' => 'fa-sharp fa-solid fa-file-circle-plus',
                 ],
+
                 [
                     'text' => 'Listado',
                     'url'  => 'constructora',
@@ -536,6 +551,7 @@ return [
                 ],
             ],
         ],
+
         [
             'text'    => 'Casas modelos',
             'icon'    => 'fas fa-fw fa-university',
@@ -546,6 +562,7 @@ return [
                     'url'  => '/casa/create',
                     'icon' => 'fa-sharp fa-solid fa-house-medical-flag',
                 ],
+
                 [
                     'text' => 'Listado',
                     'url'  => 'casa',
@@ -553,6 +570,7 @@ return [
                 ],
             ],
         ],
+
         [
             'text'    => 'Gastos',
             'icon'    => 'fa-solid fa-receipt',
@@ -563,6 +581,7 @@ return [
                     'icon' => 'fa-solid fa-file-circle-plus',
                     'url'  => '/gasto/create',
                 ],
+
                 [
                     'text' => 'Listado',
                     'url'  => 'gasto',
@@ -570,6 +589,7 @@ return [
                 ],
             ],
         ],
+
         [
             'text'    => 'Planillas',
             'icon'    => 'fa-solid fa-boxes-packing',
@@ -580,6 +600,7 @@ return [
                     'url'  => '/planilla/create',
                     'icon' => 'fa-solid fa-file-circle-plus',
                 ],
+
                 [
                     'text' => 'Listado',
                     'url'  => 'planilla',
@@ -587,6 +608,7 @@ return [
                 ],
             ],
         ],
+
         [
             'text'    => 'Reservaciones',
             'icon'    => 'fa-solid fa-calendar-days',
@@ -596,10 +618,24 @@ return [
                     'url'  => '/reservacion/create',
                     'icon' => 'fa-solid fa-calendar-plus',
                 ],
+
                 [
                     'text' => 'Listado',
                     'url'  => 'reservacion',
                     'icon' => 'fa-solid fa-calendar',
+                ],
+            ],
+        ],
+        
+        [
+            'text'    => 'Contactos',
+            'icon'    => 'fa-solid fa-comment',
+            'submenu' => [
+               
+                [
+                    'text' => 'Listado',
+                    'url'  => 'contacto',
+                    'icon' => 'fa-solid fa-address-book',
                 ],
             ],
         ],
@@ -775,4 +811,7 @@ return [
     */
 
     'livewire' => false,
+
+ 
 ];
+

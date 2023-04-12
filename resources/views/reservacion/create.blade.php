@@ -42,7 +42,7 @@
                     <label  class="col-sm-3 col-form-label" for="identidadCliente">Identidad:</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control  rounded-pill @error('identidadCliente') is-invalid @enderror"
-                        maxlength="13" placeholder="ingrese el numero de identidad"
+                        maxlength="13" placeholder="ingrese el número de identidad"
                             name="identidadCliente" id="identidadCliente" autocomplete="identidadCliente"
                         value="{{old('identidadCliente')}}" style="background-color: white">
                         @error('identidadCliente')
@@ -145,6 +145,10 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+     {{-- cdn para el css de los emojis de fontawesomw --}}
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 @stop
 
 @section('js')

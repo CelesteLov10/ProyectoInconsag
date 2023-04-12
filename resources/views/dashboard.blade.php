@@ -7,6 +7,14 @@
 @stop
 
 @section('content')
+
+        {{-- alerta de mensaje cuando se guardo correctamente --}}
+        @if (session('mensajeContacto'))
+          <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
+            {{ session('mensajeContacto')}}
+          {{--  <button type="button" class="btn-close" data-bs-dismiss="alert" id="alert" aria-label="Close"></button> --}}
+          </div>
+        @endif
     <p>Bienvenid.</p>
     <div class="card-body">
         @if (session('status'))
@@ -47,8 +55,22 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 @stop
 
 @section('js')
     <script> console.log('Hi!'); </script>
+
+    
+{{-- Codigo para que el mensaje se cierre luego de 2 segundos pasar id al div --}}
+<script>
+  $('#alert').fadeIn();     
+  setTimeout(function() {
+      $("#alert").fadeOut();           
+  },5000);
+</script>
+
+
 @stop
+
