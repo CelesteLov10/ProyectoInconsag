@@ -52,6 +52,7 @@
     
     <br>
         {{-- TABLA NO RESPONSIVA... MUESTRA LOS LOTES DE UN BLOQUE --}}
+        <div class="table-responsive">
     <table class="table border border-2 contorno-azul">
         <thead class="thead-dark">
             <tr>
@@ -113,6 +114,7 @@
         
         </tbody>
     </table>
+</div>
     </div>
 </div>
 @stop

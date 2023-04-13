@@ -1,4 +1,4 @@
-
+@can('Admin.contacto.create')
 @extends('adminlte::page')
 
 @section('title', 'Nuevo')
@@ -150,8 +150,9 @@
                 
             });
             } );
-
+        </script>
 @stop
+@endcan
 
 
   

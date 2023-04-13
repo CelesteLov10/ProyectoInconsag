@@ -1,4 +1,4 @@
-
+@can('Admin.reservacion.edit')
 @extends('adminlte::page')
 
 @section('title', 'Actualizar')
@@ -251,3 +251,4 @@
         updateOptions();
           </script>
 @stop
+@endcan

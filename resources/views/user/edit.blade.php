@@ -33,7 +33,7 @@
             <label class="col-sm-3 col-form-label">Nombre de usuario:</label>
             <div class="col-sm-5">
               <input type="text" autofocus class="form-control rounded-pill @error('name') is-invalid @enderror" 
-              placeholder="Ingrese un nombre de usuario" name="name" maxlength="50"
+              placeholder="Ingrese un nombre de usuario Ejem: 'Maria007' " name="name" maxlength="50"
               value="{{old('name', $user->name)}}">
                 @error('name')
                   <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -45,7 +45,7 @@
             <label class="col-sm-3 col-form-label">Correo electrónico:</label>
             <div class="col-sm-5">
               <input type="text" class="form-control rounded-pill @error('email') is-invalid @enderror" 
-              placeholder="Ingrese un email" name="email"
+              placeholder="Ingrese un correo Ejem: 'Celestepc@gmail.com'" name="email"
               value="{{old('email', $user->email)}}" maxlength="50">
               @error('email')
               <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -59,7 +59,7 @@
             <div class="form-group">
               <select class="form-control rounded-pill" id="rol" name="rol">
                   @foreach($roles as $rol)
-                      <option value="{{ $rol->id }}" {{ $user->hasRole($rol->name) ? 'selected' : '' }}>{{ $rol->name }}</option>
+                  <option value="{{ $rol->id }}" {{ old('rol', $user->roles()->first()->id) == $rol->id ? 'selected' : '' }}>{{ $rol->name }}</option>
                   @endforeach
               </select>
               @error('rol')

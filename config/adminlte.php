@@ -298,9 +298,9 @@ return [
             'topnav_right' => false,
         ],
         [
-            'text' => 'Contactos',
+            'text' => 'Contáctanos',
             'url'  => '/contacto/create',
-            'topnav_right' => true,
+            // 'topnav_right' => true,
         ],
         [
             'type'         => 'fullscreen-widget',
@@ -612,6 +612,7 @@ return [
         [
             'text'    => 'Reservaciones',
             'icon'    => 'fa-solid fa-calendar-days',
+            'can'  => 'Admin.reservacion.index',
             'submenu' => [
                 [
                     'text' => 'Nuevo registro',
@@ -628,8 +629,9 @@ return [
         ],
         
         [
-            'text'    => 'Contactos',
+            'text'    => 'Mensajeria',
             'icon'    => 'fa-solid fa-comment',
+            'can' => 'Admin.contacto.index',
             'submenu' => [
                
                 [

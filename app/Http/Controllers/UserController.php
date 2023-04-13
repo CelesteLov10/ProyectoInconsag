@@ -21,15 +21,16 @@ class UserController extends Controller
 
     public function update($id, Request $request)
     {
-    $this->validate($request,[
-        'name' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9]+\s{0,1})+$/u',],
-        'email' => ['required','email', 'unique:users,email,'.$id.'id'],
+    $this->validate($request,[  //'regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9]+\s{0,1})+$/u'
+        'name' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9_.]+\s{0,1})+$/u'],
+        'email' => ['required','email', 'regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:users,email,'.$id.'id'],
     ],[
         'name.required' => 'El nombre del usuario es obligatorio, no puede estar vacío.',
-        'name.regex' => 'El nombre del usuario no permite ni símbolos.',
+        'name.regex' => 'El nombre de usuario solo puede contener guiones bajos, números y puntos.',
 
         'email.required' => 'El correo electrónico es obligatorio, no puede estar vacío.',
         'email.unique' => 'El correo electrónico ya está en uso.',
+        'email.email' => 'Debe ingresar un correo electrónico válido.',
     ]);
 
     $user = User::findOrFail($id);

@@ -1,4 +1,4 @@
-
+@can('Admin.reservacion.create')
 @extends('adminlte::page')
 
 @section('title', 'Nuevo')
@@ -232,7 +232,7 @@ setInterval(updateOptions, 5 * 60 * 1000);
 updateOptions();
           </script>
 @stop
-
+@endcan
 
   
 

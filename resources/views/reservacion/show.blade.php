@@ -1,4 +1,4 @@
-
+@can('Admin.reservacion.show')
 @extends('adminlte::page')
 
 @section('title', 'Detalle')
@@ -72,6 +72,7 @@
 @section('js')
     <script> console.log('Hi!'); </script>
 @stop
+@endcan
 
 
 

@@ -1,4 +1,4 @@
-
+@can('Admin.reservacion.index')
 @extends('adminlte::page')
 
 @section('title', ' Listado')
@@ -150,4 +150,5 @@
 });
 </script>
 @stop
+@endcan
 
