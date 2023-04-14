@@ -26,6 +26,8 @@
 </head>
 <body>
 
+    <img class="text-end" src="./imagenes/logo.jpg" alt="imagen1" style="margin-left:85%; opacity:0.5">
+
     <h3>Planilla del {{$tablaplanillas->fechap}}</h3>
     <div class="container">
         <table style="text-align: left">

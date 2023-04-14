@@ -1,4 +1,4 @@
-@can('Admin.reservacion.index')
+
 @extends('adminlte::page')
 
 @section('title', ' Listado')
@@ -11,21 +11,23 @@
 @section('content')   
 <div> 
 
-  {{-- Campo de busqueda 
-  <form method="GET" action="">
-    <div class="container">
-        <div class="vh-50 row text-center align-items-center justify-content-center">
-            <div class="col-7 p-1 contorno-azul">
-                <div class="input-group">
-                      <input type="text" name="search" id="search"  class="form-control" autofocus
-                      placeholder="Buscar por nombre del cliente y fecha de la cita" value="{{request('search')}}"/>
-                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
-                  </div>
+    {{-- Campo de busqueda  --}}
+<form method="GET" action="">
+  <div class="container">
+      <div class="vh-50 row text-center align-items-center justify-content-center">
+          <div class="col-4 p-1 contorno-azul">
+              <div class="input-group">
+                    <input type="text" name="search" id="search" readonly onclick="encontrar()" class="form-control"
+                    placeholder="Seleccione la fecha que desea buscar" value="{{request('search')}}"/>
+                  <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
                 </div>
-            </div>
-        </div>
-    </div>    
-  </form>  --}}
+              </div>
+          </div>
+      </div>
+  </div>    
+</form>
+
+  <br>
 
   <div class="container">
     <div class="mb-3 text-end">
@@ -149,6 +151,24 @@
   });
 });
 </script>
+
+<script>
+  $( function encontrar() {
+      $("#search" ).datepicker({
+          dateFormat: "dd-mm-yy",
+          changeMonth: true,
+          changeYear: true,
+          firstDay: 0,
+      monthNamesShort: ['Enero', 'Febrero', 'Marzo',
+          'Abril', 'Mayo', 'Junio',
+          'Julio', 'Agosto', 'Septiembre',
+          'Octubre', 'Noviembre', 'Diciembre'],
+      dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+          maxDate: "",
+          minDate: "",
+      });
+      } );
+  </script>
 @stop
-@endcan
+
 

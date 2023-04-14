@@ -61,6 +61,6 @@ class DatabaseSeeder extends Seeder
         //Liberado::factory(10)->create();
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
-        Reservacion::factory(20)->create();
+        // Reservacion::factory(20)->create();
     }
 }

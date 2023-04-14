@@ -1,4 +1,4 @@
-@can('Admin.reservacion.edit')
+
 @extends('adminlte::page')
 
 @section('title', 'Actualizar')
@@ -165,8 +165,8 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
- {{-- cdn para el css de los emojis de fontawesomw --}}
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- cdn para el css de los emojis de fontawesomw --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 @stop
 
@@ -189,7 +189,7 @@
                 'Julio', 'Agosto', 'Septiembre',
                 'Octubre', 'Noviembre', 'Diciembre'],
             dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-            maxDate: "1dd",
+            maxDate: "1m",
             minDate: "0m",
               
             });
@@ -245,10 +245,10 @@
                     }
   
   // Actualizar las opciones del select cada 5 minutos
-         setInterval(updateOptions, 5 * 60 * 1000);
+         setInterval(updateOptions, 0 * 120 * 1000);
   
   // Ejecutar la función una vez al cargar la página
         updateOptions();
           </script>
 @stop
-@endcan
+

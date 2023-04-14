@@ -14,8 +14,8 @@ class ReservacionController extends Controller
         
         $reservaciones = Reservacion::query()
             ->when(request('search'), function($query){
-            return $query->where('nombreCliente', 'LIKE', '%' .request('search') .'%');
-        })->orderBy('id','desc')->paginate(1000000)->withQueryString(); 
+            return $query->where('fechaCita', 'LIKE', '%' .request('search') .'%');
+        })->orderBy('id','desc')->paginate(10)->withQueryString(); 
         return view('reservacion.index', compact('reservaciones'));
     }
 
@@ -30,6 +30,18 @@ class ReservacionController extends Controller
     public function store(Request $request)
     {         
 
+        $fechaCita = $request->input('fechaCita');
+        $horaCita = $request->input('horaCita');
+
+        $existe = Reservacion::where('fechaCita', $fechaCita)->where('horaCita', $horaCita)->first();
+
+    if ($existe) {
+        // Mostrar un mensaje de error si la fecha con la hora existe en Reservaciones 
+        return back()->withErrors(['horaCita' => 'La hora ya esta reservada']);
+    }
+
+
+
         
             $this->validate($request,[
                 'nombreCliente'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
@@ -39,9 +51,9 @@ class ReservacionController extends Controller
                 ['regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
                 'correoCliente' =>['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#'],
                 'fechaCita' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
-                //'horaCita' => ['required|date_format:H:i|after_or_equal:'.date('H:i', strtotime('+1 hour'))],
+                  //'horaCita' => ['required|date_format:H:i|after_or_equal:'.date('H:i', strtotime('+1 hour'))],
                  //'horaCita'=> ['required','unique:reservacions'],
-                'horaCita'  => ['required', 'regex:/(1?[0-8]|2[0-11):[0-13][0-16])$/'],
+                'horaCita'  => ['required'],
                  //'empleado_id' => ['required'],
                 
 
@@ -71,7 +83,7 @@ class ReservacionController extends Controller
 
             'horaCita.required' => 'La hora de reservación de la cita es obligatorio, no puede estar vacío.',
              //'horaCita.unique' => 'Esta hora ya está reservada',
-            'horaCita.regex' => 'El formato para el número de identidad no es válido.',
+              //'horaCita.date_format' => 'La hora ya está reservada.',
 
              //'empleado_id.required' => 'seleccione el nombre del empleado es obligatorio, no puede estar vacío.',
 
@@ -101,12 +113,22 @@ class ReservacionController extends Controller
 
     public function update(Request $request, $id){
 
+        $fechaCita = $request->input('fechaCita');
+        $horaCita = $request->input('horaCita');
+
+        $existe = Reservacion::where('fechaCita', $fechaCita)->where('horaCita', $horaCita)->first();
+
+    if ($existe) {
+        // Mostrar un mensaje de error si la fecha con la hora existe en Reservaciones 
+        return back()->withErrors(['horaCita' => 'La hora ya esta reservada']);
+    }
+    
         $this->validate($request,[
 
             'nombreCliente'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'identidadCliente'    => ['required','numeric', 'unique:reservacions,identidadCliente,' .$id.'id',
             'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
-            'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/', 'digits:8'],
+            'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/'],
             'correoCliente' => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#'],
             'fechaCita'       => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
              //'horaCita'  => ['required', 'regex:/(1[0-2]|0?[1-9]):[0-5][0-9] (AM|PM)/'],

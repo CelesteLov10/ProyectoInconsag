@@ -173,12 +173,12 @@ class SearchController extends Controller
     }
     public function Reservacion(Request $request){
         $term = $request->get('term');
-        $querys = Reservacion::where('nombreCliente', 'LIKE', '%'. $term . '%')->get();
+        $querys = Reservacion::where('fechaCita', 'LIKE', '%'. $term . '%')->get();
         
         $data =[];
         foreach($querys as $query){
         $data[] = [
-        'label' => $query->nombreCliente
+        'label' => $query->fechaCita
         ];
         }
         return $data;

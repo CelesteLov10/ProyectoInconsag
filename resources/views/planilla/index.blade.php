@@ -25,6 +25,7 @@
           </div>
       </div>
   </div>    
+</form>
 
   <div class="container ">
       <div class="mb-3 text-end">
