@@ -9,6 +9,106 @@
 @stop
 
 @section('content')
+<style>
+    strong {
+   font-weight: bold;
+ }
+ 
+ 
+ table {
+   background: #f5f5f5;
+   border-collapse: separate;
+   box-shadow: inset 0 1px 0 #fff;
+   font-size: 15px;
+   line-height: 24px;
+   margin: 30px auto;
+   text-align: left;
+   width: 800px;
+ }
+ 
+ th {
+   background:
+     linear-gradient(#1f1414, #5de0bd);
+   border-left: 1px solid #555;
+   border-right: 1px solid #777;
+   border-top: 1px solid #555;
+   border-bottom: 1px solid #333;
+   box-shadow: inset 0 1px 0 #999;
+   color: #fff;
+   font-weight: bold;
+   padding: 10px 15px;
+   position: relative;
+   text-shadow: 0 1px 0 #000;
+ }
+ 
+ th:after {
+   background: linear-gradient(
+     rgba(255, 255, 255, 0),
+     rgba(255, 255, 255, 0.08)
+   );
+   content: "";
+   display: block;
+   height: 25%;
+   left: 0;
+   margin: 1px 0 0 0;
+   position: absolute;
+   top: 25%;
+   width: 100%;
+ }
+ 
+ th:first-child {
+   border-left: 1px solid #777;
+   box-shadow: inset 1px 1px 0 #999;
+ }
+ 
+ th:last-child {
+   box-shadow: inset -1px 1px 0 #999;
+ }
+ 
+ td {
+   border-right: 1px solid #fff;
+   border-left: 1px solid #e8e8e8;
+   border-top: 1px solid #fff;
+   border-bottom: 1px solid #e8e8e8;
+   padding: 10px 15px;
+   position: relative;
+   transition: all 300ms;
+ }
+ 
+ td:first-child {
+   box-shadow: inset 1px 0 0 #fff;
+ }
+ 
+ td:last-child {
+   border-right: 1px solid #e8e8e8;
+   box-shadow: inset -1px 0 0 #fff;
+ }
+ 
+ 
+ tr:last-of-type td {
+   box-shadow: inset 0 -1px 0 #fff;
+ }
+ 
+ tr:last-of-type td:first-child {
+   box-shadow: inset 1px -1px 0 #fff;
+ }
+ 
+ tr:last-of-type td:last-child {
+   box-shadow: inset -1px -1px 0 #fff;
+ }
+ 
+ tbody:hover td {
+   color: transparent;
+   text-shadow: 0 0 3px #878686;
+ }
+ 
+ tbody:hover tr:hover td {
+   color: #444;
+   text-shadow: 0 1px 0 #fff;
+ }
+ 
+ 
+ </style>
 <div>
     <?php $cantidadCu = 0?>
 
@@ -54,7 +154,7 @@
         
         <div class="m-0 text-left align-items-center justify-content-center">
             <div class="bg-light p-5">
-    <table class="table">
+    <table class="table-responsive">
         <thead class="table-light">
             <tr>
                 <th scope="col" class="col-md-4">Datos</th>
@@ -63,24 +163,24 @@
         </thead>
         <tbody>
             <tr>
-                <th scope="row">Nombre del lote</th>
+                <td scope="row"><strong>Nombre del lote</strong></td>
                 <td>{{$venta->lote->nombreLote}}</td>
             </tr>
             <tr>
-                <th scope="row">Valor del lote</th>
+                <td scope="row"><strong>Valor del lote</strong></td>
                 <td>L. {{number_format($venta->lote->valorTerreno , 2)}}</td>
             </tr> 
             <tr>
-                <th scope="row">Nombre del cliente</th>
+                <td scope="row"><strong>Nombre del cliente</strong></td>
                 <td>{{$venta->cliente->nombreCompleto}}</td>
             </tr>
             <tr>
-                <th scope="row">Saldo despues de prima</th>
+                <td scope="row"><strong>Saldo despues de prima</strong></td>
                 <td  id="valorRestantePagar" oninput="calcularSaldo()">L. {{number_format($venta->valorRestantePagar , 2)}}</td>
             </tr>
             <tr>
-                <th scope="row">Imprimir pagos</th>
-                <td><a class="btn glow-on-hover-main text-BLACK" href="{{route('pago.pdf', ['id'=>$pago1->id])}}" value="imprimir" title="Imprimir PDF"><i class="bi bi-printer text-BLACK"></i></a></td>
+                <td scope="row"><strong>Imprimir pagos</strong></td>
+                <td><a class="btn glow-on-hover-main text-BLACK" href="{{route('pago.pdf', ['id'=>$pago1->id])}}" value="imprimir" title="Imprimir PDF"><i class="fa-solid fa-file-pdf"></i></a></td>
             </tr>
         </tbody>
     </table>
@@ -109,19 +209,19 @@
                 <?php $total = $total + $pagos->saldoEnCuotas ?>
                 <?php $cantCuotas = $cantCuotas + $pagos->cantidadCuotasPagar?>
                 <td  id="nuevoSaldo2" oninput="calcularSaldo2()">{{number_format($pagos->valorTerrenoPagar, 2)}}</td>
-                <td ><a href="{{route('pago.print', ['id'=>$pagos->id])}}" class="btn btn-outline-warning"><i class="bi bi-filetype-pdf"></i></a></td>
+                <td ><a href="{{route('pago.print', ['id'=>$pagos->id])}}" class="btn btn-outline-warning"><i class="fa-solid fa-file-pdf"></i></i></a></td>
             </tr>
 
             @endif
             @endforeach
         </tbody>
         <tr>
-            <th scope="col" class="col-md-4">Total:</th>
+            <td scope="col" class="col-md-4">Total:</td>
             <td>{{number_format($cantCuotas )}} / {{$venta->cantidadCuotas}}</td>
             <td>L. {{number_format($total , 2)}}</td>
         </tr>
         <tr>
-            <th scope="col" class="col-md-4">Saldo Pendiente</th>
+            <td scope="col" class="col-md-4">Saldo Pendiente</td>
             <td>L. {{number_format($venta->valorRestantePagar - $total, 2)}}</td>
         </tr>
         

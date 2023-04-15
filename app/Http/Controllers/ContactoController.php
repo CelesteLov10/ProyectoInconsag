@@ -39,7 +39,7 @@ class ContactoController extends Controller
                 'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/', 'digits:8'],
                 ['regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
                 'correo' =>['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#'],
-                'mensaje'       => ['required','min:10','max:250'], 
+                'mensaje'       => ['required','min:10','max:255'], 
                 'fecha' => ['required']
 
               

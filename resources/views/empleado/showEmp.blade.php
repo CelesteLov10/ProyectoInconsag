@@ -9,6 +9,106 @@
 @stop
 
 @section('content')
+<style>
+    strong {
+   font-weight: bold;
+ }
+ 
+ 
+ table {
+   background: #f5f5f5;
+   border-collapse: separate;
+   box-shadow: inset 0 1px 0 #fff;
+   font-size: 15px;
+   line-height: 24px;
+   margin: 30px auto;
+   text-align: left;
+   width: 800px;
+ }
+ 
+ th {
+   background:
+     linear-gradient(#1f1414, #5de0bd);
+   border-left: 1px solid #555;
+   border-right: 1px solid #777;
+   border-top: 1px solid #555;
+   border-bottom: 1px solid #333;
+   box-shadow: inset 0 1px 0 #999;
+   color: #fff;
+   font-weight: bold;
+   padding: 10px 15px;
+   position: relative;
+   text-shadow: 0 1px 0 #000;
+ }
+ 
+ th:after {
+   background: linear-gradient(
+     rgba(255, 255, 255, 0),
+     rgba(255, 255, 255, 0.08)
+   );
+   content: "";
+   display: block;
+   height: 25%;
+   left: 0;
+   margin: 1px 0 0 0;
+   position: absolute;
+   top: 25%;
+   width: 100%;
+ }
+ 
+ th:first-child {
+   border-left: 1px solid #777;
+   box-shadow: inset 1px 1px 0 #999;
+ }
+ 
+ th:last-child {
+   box-shadow: inset -1px 1px 0 #999;
+ }
+ 
+ td {
+   border-right: 1px solid #fff;
+   border-left: 1px solid #e8e8e8;
+   border-top: 1px solid #fff;
+   border-bottom: 1px solid #e8e8e8;
+   padding: 10px 15px;
+   position: relative;
+   transition: all 300ms;
+ }
+ 
+ td:first-child {
+   box-shadow: inset 1px 0 0 #fff;
+ }
+ 
+ td:last-child {
+   border-right: 1px solid #e8e8e8;
+   box-shadow: inset -1px 0 0 #fff;
+ }
+ 
+ 
+ tr:last-of-type td {
+   box-shadow: inset 0 -1px 0 #fff;
+ }
+ 
+ tr:last-of-type td:first-child {
+   box-shadow: inset 1px -1px 0 #fff;
+ }
+ 
+ tr:last-of-type td:last-child {
+   box-shadow: inset -1px -1px 0 #fff;
+ }
+ 
+ tbody:hover td {
+   color: transparent;
+   text-shadow: 0 0 3px #878686;
+ }
+ 
+ tbody:hover tr:hover td {
+   color: #444;
+   text-shadow: 0 1px 0 #fff;
+ }
+ 
+ 
+ </style>
     <div class="container ">
         <div class="mb-3 text-end">
             <a class="btn btn-outline-primary" href="{{route('empleado.indexEmp')}}">
@@ -20,9 +120,9 @@
                 <h5 class = "n-font-weight-bold text-black">Detalles del empleado {{$empleado->nombres}} {{$empleado->apellidos}} </h5 > 
             </div >
 
-        <div class="vh-50 row m-0 text-left align-items-center justify-content-center">
+        <div class="m-0 text-left align-items-center justify-content-center">
             <div class="col-60 bg-light p-5">
-    <table class="table">
+    <table class="table-responsive">
         <thead class="table-light">
             <tr>
                 <th scope="col" class="col-md-4">Datos</th>
@@ -31,70 +131,70 @@
         </thead>
         <tbody>
             <tr>
-                <th scope="row">Identidad</th>
+                <td scope="row"><strong>Identidad</strong> </td>
                 <td>{{$empleado->identidad}}</td>    
             </tr>
             <tr>
-                <th scope="row">Nombres</th>
+                <td scope="row"><strong>Nombres</strong></td>
                 <td>{{$empleado->nombres}}</td>    
             </tr>
             <tr>
-                <th scope="row">Apellidos</th>
+                <td scope="row"><strong>Apellidos</strong></td>
                 <td>{{$empleado->apellidos}}</td>    
             </tr>
             <tr>
-                <th scope="row">Teléfono</th>
+                <td scope="row"><strong>Teléfono</strong></td>
                 <td>{{$empleado->telefono}}</td>    
             </tr>
             <tr>
-                <th scope="row">Estado</th>
+                <td scope="row"><strong>Estado</strong></td>
                 <td>{{$empleado->estado}}</td>    
             </tr>
             <tr>
-                <th scope="row">Correo</th>
+                <td scope="row"><strong>Correo</strong></td>
                 <td>{{$empleado->correo}}</td>    
             </tr>
             <tr>
-                <th scope="row">Fecha de nacimiento</th>
+                <td scope="row"><strong>Fecha de nacimiento</strong></td>
                 <td>{{$empleado->fechaNacimiento}}</td>    
             </tr>
             <tr>
-                <th scope="row">Dirección</th>
+                <td scope="row"><strong>Dirección</strong></td>
                 <td>{{$empleado->direccion}}</td>    
             </tr>
             <tr>
-                <th scope="row">Fecha de ingreso</th>
+                <td scope="row"><strong>Fecha de ingreso</strong></td>
                 <td>{{$empleado->fechaIngreso}}</td>    
             </tr>
             
             <tr>
-                <th scope="row">Puesto</th>
+                <td scope="row"><strong>Puesto</strong></td>
                 <td>{{$empleado->puesto->nombreCargo}}</td>
                 
             </tr>
             <tr>
-                <th scope="row">Sueldo</th>
+                <td scope="row"><strong>Sueldo</strong></td>
                 <td>{{$empleado->puesto->sueldo}}</td>
                 
             </tr>
             <tr>
-                <th scope="row">Descripción</th>
+                <td scope="row"><strong>Descripción</strong></td>
                 <td>{{$empleado->puesto->descripcion}}</td>
             </tr> 
             <tr>
-                <th scope="row">Oficina a la que pertenece</th>
+                <td scope="row"><strong>Oficina a la que pertenece</strong></td>
                 <td>{{$empleado->oficina->nombreOficina}}</td>
             </tr>
             <tr>
-                <th scope="row">Departamento</th>
+                <td scope="row"><strong>Departamento</strong></td>
                 <td>{{$empleado->oficina->departamento->nombreD}}</td>
             </tr>
             <tr>
-                <th scope="row">Municipio</th>
+                <td scope="row"><strong>Municipio</strong></td>
                 <td>{{$empleado->oficina->municipio->nombreM}}</td>
             </tr>
             <tr>
-                <th scope="row">Dirección</th>
+                <td scope="row"><strong>Dirección</strong></td>
                 <td>{{$empleado->oficina->direccion}}</td>
             </tr>
         </tbody>

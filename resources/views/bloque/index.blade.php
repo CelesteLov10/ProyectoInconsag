@@ -75,14 +75,13 @@
                     <tbody>
                     @forelse($bloques as $bloque)
                         @if($bloque->cantidadLotes == $bloque->lote()->count())
-                            <td>{{$bloque->id}}</td>
                             <td>{{$bloque->nombreBloque}}</td>
                             <td>{{$bloque->cantidadLotes}}</td>
                             <td>{{$bloque->lote()->count()}}</td>
                             <td>
-                                <a class="btn btn-outline-warning"
+                                <a class="btn btn-outline-primary"
                                     href="{{route('bloque.show', ['id' => $bloque->id])}}">
-                                    <i class="fa fa-clipboard"></i>
+                                    <i class="fa fa-eye"></i>
                                 </a>
                             </td>
                         @else

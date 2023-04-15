@@ -20,7 +20,7 @@ class CasaFactory extends Factory
             'claseCasa'=>$this->faker->word(),   
             'valorCasa'=>$this->faker->numberBetween(5000, 10125),  
             'cantHabitacion'=>$this->faker->numberBetween(1, 3),
-            'descripcion'=>$this->faker->word(),                             
+            'descripcion'=>$this->faker->paragraph(),                             
             'constructora_id'=>$this->faker->numberBetween(1,25),
         ];
     }

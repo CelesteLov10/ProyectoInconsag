@@ -18,7 +18,7 @@ class ConstructoraFactory extends Factory
     {
         return [
             'nombreConstructora'=>$this->faker->word(),
-            'direccion'=>$this->faker->address(),
+            'direccion'=>$this->faker->paragraph(),
             'telefono'=>$this->faker->phoneNumber(),
             'email'=>$this->faker->unique()->email(),
             'fechaContrato'=>$this->faker->date($format = 'd-m-Y'),

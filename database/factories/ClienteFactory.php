@@ -20,7 +20,7 @@ class ClienteFactory extends Factory
             'identidadC'=>$this->faker->unique()->numerify('#############'),
             'nombreCompleto'=>$this->faker->name(),
             'telefono'=>$this->faker->unique()->phoneNumber(),
-            'direccion'=>$this->faker->address(),
+            'direccion'=>$this->faker->paragraph(),
             'fechaNacimiento'=>$this->faker->date($format = 'd-m-Y',$max = 2001),
             
         ];
