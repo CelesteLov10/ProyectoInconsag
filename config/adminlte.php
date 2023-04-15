@@ -289,7 +289,7 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
     */
-    
+
     'menu' => [
         // Navbar items:
         [
@@ -298,7 +298,12 @@ return [
             'topnav_right' => false,
         ],
         [
-            'text' => 'Contáctanos',
+            'text' => 'Nosotros',
+            'url'  => '/dashboard',
+            // 'topnav_right' => true,
+        ],
+        [
+            'text' => 'Mensajería',
             'url'  => '/contacto/create',
             // 'topnav_right' => true,
         ],
@@ -324,7 +329,8 @@ return [
         //     'label'       => 4,
         //     'label_color' => 'success',
         // ],
-        ['header' => 'Elementos '],
+        ['header' => 'Elementos ',
+         'can'  => 'Admin.inventario.index'],
             [
                 'text' => 'profile',
                 'url'  => '/user',
