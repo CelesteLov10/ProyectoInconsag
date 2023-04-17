@@ -301,11 +301,13 @@ return [
             'text' => 'Nosotros',
             'url'  => '/dashboard',
             // 'topnav_right' => true,
+            'icon' =>'fa-solid fa-house',
         ],
         [
             'text' => 'Mensajería',
             'url'  => '/contacto/create',
             // 'topnav_right' => true,
+            'icon' => 'fa-solid fa-comment-dots',
         ],
         [
             'type'         => 'fullscreen-widget',
