@@ -305,6 +305,7 @@ return [
         [
             'text' => 'Mensajería',
             'url'  => '/contacto/create',
+            'can' => 'Admin.contacto.create',
             // 'topnav_right' => true,
         ],
         [
@@ -330,7 +331,7 @@ return [
         //     'label_color' => 'success',
         // ],
         ['header' => 'Elementos ',
-         'can'  => 'Admin.inventario.index'],
+            'can'  => 'Admin.inventario.index'],
             [
                 'text' => 'profile',
                 'url'  => '/user',

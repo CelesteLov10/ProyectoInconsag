@@ -52,7 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:25','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9_.]+\s{0,1})+$/u'],
+            'name' => ['required', 'string', 'max:25','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'email' => ['required', 'string', 'email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#', 'max:60', 'unique:users',],
             'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,50}$/'],
         ],[
@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'name.required'=>'Debe ingresar el nombre, no debe ir vacío.',
             'name.string' => 'El número de identidad debe tener 13 dígitos. ',
             'name.max' => 'El número máximo de caracteres es de 25.',
-            'name.regex' => 'El nombre de usuario solo puede contener guiones bajos y puntos.',
+            'name.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
 
             'email.required' => 'El correo es obligatorio, no debe ir vacío.',
             'email.max' => 'El máximo de caracteres es de 60.',

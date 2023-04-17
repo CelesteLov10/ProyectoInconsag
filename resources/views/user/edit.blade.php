@@ -30,10 +30,10 @@
   
             @csrf {{-- TOKEN INPUT OCULTO --}}
           <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Nombre de usuario:</label>
+            <label class="col-sm-3 col-form-label">Nombre completo:</label>
             <div class="col-sm-5">
               <input type="text" autofocus class="form-control rounded-pill @error('name') is-invalid @enderror" 
-              placeholder="Ingrese un nombre de usuario Ejem: 'Maria007' " name="name" maxlength="50"
+              placeholder="Ingrese un nombre de usuario Ejem: 'Maria Lovo' " name="name" maxlength="50"
               value="{{old('name', $user->name)}}">
                 @error('name')
                   <small class="text-danger"><strong>*</strong>{{$message}}</small>
