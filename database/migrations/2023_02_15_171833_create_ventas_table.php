@@ -29,7 +29,7 @@ return new class extends Migration
 
             $table->double('total')->unsigned();
 
-            $table->date('fechaVenta')->format('d-m-Y'); //si lo dejo como dato string no me trae las fechas
+            $table->string('fechaVenta'); //si lo dejo como dato string no me trae las fechas
             $table->enum('formaVenta', ['contado', 'credito']);
             $table->double('valorPrima',10,1)->nullable();
             $table->double('cantidadCuotas',10,1)->nullable();

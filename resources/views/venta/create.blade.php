@@ -169,13 +169,12 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Fecha de venta:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="border border-0 form-control rounded-pill @error('fechaVenta') is-invalid @enderror" 
-                    maxlength="10" placeholder="Fecha actual"
-                    {{-- Intente cambiarle el formato pero no me lo acepto porque le cambie el valor de la fecha a date y le quite el string --}}
-                    name="fechaVenta" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)" > 
-                        @error('fechaVenta')
+                    <input type="text" class="form-control rounded-pill @error('fechaVenta') is-invalid @enderror" 
+                    maxlength="10" placeholder="fecha de la venta"
+                    name="fechaVenta" autocomplete="off" value="<?php echo date("d-m-Y");?>" readonly style="background-color: rgba(206, 206, 206, 0)"> 
+                      @error('fechaVenta')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
-                @enderror
+                  @enderror
                 </div>
             </div>
 

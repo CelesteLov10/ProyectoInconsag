@@ -26,7 +26,7 @@ class VentaFactory extends Factory
 
             'total'=>$this->faker->numberBetween(50000, 1000125),
 
-            'fechaVenta'=>$this->faker->date($format = 'd-m-Y'),
+            'fechaVenta'=>$this->faker->date(),
             'formaVenta'=>$this->faker->randomElement(['contado', 'credito']),
             'valorPrima'=>$this->faker->numberBetween(5000, 10125),
             'cantidadCuotas'=>$this->faker->numberBetween(10,20),

@@ -286,6 +286,8 @@ Route::get('reports_date','reportsDate')->name('reports.reports_date');
 Route::post('report_results','reportResults')->name('report.report_results');
 Route::get('pdfReportDia', 'pdfDia')->name('reports.pdfReportDia');
 Route::get('pdfReportFecha', 'pdfFecha')->name('reports.pdfReportFecha');
+//Route::get('/search/report/{start_date}/{end_date}', 'SearchController@generateSearchReportPDF');
+
 });
 
 //Ruta para Constructora

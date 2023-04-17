@@ -7,6 +7,10 @@
     <title>Reporte por fecha</title>
     
     <style>
+        table{
+            width: 100%;
+        border-collapse: collapse; 
+        }
         table,td,th {
         border: 1px solid rgb(99, 99, 99);
         border-spacing: auto;
@@ -15,11 +19,31 @@
         margin: auto;
         text-align: center;
         }
+        th, td {
+        padding: 5px;
+        text-align: center;
+    }
     
         h2 {
         text-align: center;
         }
     </style>
+
+{{--<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    table, th, td {
+        border: 1px solid black;
+    }
+    
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+</style>--}}
 </head>
 <body>
     <h2>Reporte por fecha </h2>
@@ -29,7 +53,6 @@
                 <th scope="row">Nombre del cliente</th>
                 <th scope="col">Forma de venta</th>
                 <th scope="row">Fecha de venta</th>
-                <th scope="row">Valor prima</th>
                 </tr>
             <tbody>
             @forelse($ventas as $venta)
@@ -37,7 +60,6 @@
                     <td>{{$venta->cliente->nombreCompleto}}</td>
                     <td>{{$venta->formaVenta}}</td>
                     <td>{{$venta->fechaVenta}}</td>
-                    <td>{{$venta->valorPrima}}</td>
                 @csrf
                 </tr>
                 @empty

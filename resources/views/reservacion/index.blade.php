@@ -38,7 +38,6 @@
         @if (session('mensaje'))
           <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
             {{ session('mensaje')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" id="alert" aria-label="Close"></button>
           </div>
         @endif
 
@@ -46,7 +45,6 @@
         @if (session('mensajeW'))
         <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert" >
           {{ session('mensajeW')}}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
 

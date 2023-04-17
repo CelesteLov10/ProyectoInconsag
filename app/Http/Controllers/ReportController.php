@@ -47,6 +47,8 @@ class ReportController extends Controller
       $ventas = Venta::whereBetween('fechaVenta', [$fi, $ff])->get();
       $valorPrima = $ventas->sum('valorPrima');
      return view('report.reports_date', compact('ventas', 'valorPrima'));
+
+     
       
    
     }
@@ -57,19 +59,20 @@ class ReportController extends Controller
         $pdf = PDF::loadView('report.pdfReportDia', compact('ventas'));
             //download('reporte_del_dia.pdf');
         return $pdf -> stream();
+        
             
   }
             // Metodo para mostrar pdf por fecha
    public function pdfFecha (Request $request){
   //consulta pa traer los datos seleccionados
-  $fi = $request->input('fecha_ini'). ' 00:00:00';
+  /*$fi = $request->input('fecha_ini'). ' 00:00:00';
   $ff = $request->input('fecha_fin'). ' 23:59:59';
   $ventas = Venta::whereBetween('fechaVenta', [$fi, $ff])->get();
     // $ventas = Venta::WhereDate('fechaVenta', Carbon::today('America/Mexico_City'))->get();
 
         // Aqui hacemos uso de la libreria PDF para que genere el documento pdf
         $pdf = PDF::loadView('report.pdfReportFecha', compact('ventas'));
-        return $pdf -> stream();
+        return $pdf -> stream();*/
        // $ventas = Venta::WhereDate('fechaVenta', Carbon::today('America/Mexico_City'))->get();
 
 
@@ -78,6 +81,31 @@ class ReportController extends Controller
        // $pdf = PDF::loadView('report.pdfReportFecha', compact('ventas'));
        // return $pdf -> stream();
         
+       //probando si este funciona
+      $fecha_ini = $request->input('fecha_ini');
+       $fecha_fin = $request->input('fecha_fin');
+       
+       $ventas = Venta::whereBetween('fechaVenta', [$fecha_ini, $fecha_fin])->get();
+       $data = [
+        'ventas' => $ventas
+    ];
+       
+       $pdf = PDF::loadView('report.pdfReportFecha', $data);
+       
+       return $pdf->stream('reporte-busquedas.pdf');
+
+       //PRUEBA FINAL
+
+         // Query the database for search records during the given date range
+ /* $ventas = Venta::whereBetween('created_at', [$fecha_ini, $fecha_fin])->get();
+
+  // Create a new Dompdf object and generate the PDF
+  $pdf = new PDF();
+  $pdf->loadHtml(view('report.pdfReportFecha', ['ventas' => $ventas]));
+  $pdf->render();
+
+  // Return the PDF file as a download
+  return $pdf->stream('reportFecha.pdf');*/
     }
 
  

@@ -21,7 +21,6 @@
                 @if (session('mensaje'))
                     <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
                     {{ session('mensaje')}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
         
@@ -29,7 +28,6 @@
                 @if (session('mensajeW'))
                 <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert" >
                     {{ session('mensajeW')}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
         
@@ -48,7 +46,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Correo electrónico</th>
-                                <th scope="col">Asignar rol</th>
+                                <th scope="col">Actualizar usuario</th>
                             </tr>
                             </thead>
                             <tbody>

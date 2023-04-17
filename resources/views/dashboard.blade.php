@@ -298,7 +298,7 @@
           <p style="color:rgb(255, 255, 255); font-size:20px">WhatsApp 
             <a type="submit" id="submit-and-print" href="https://wa.link/y2rtgb" 
               class="btn btn-outline-success" style="height:37px; width:40px">
-              <i class="fa fa-whatsapp success"></i>
+              <i class="fa-brands fa-whatsapp"></i>
             </a>                      
           </p>
         </div>
@@ -309,7 +309,7 @@
             <a type="submit" id="submit-and-print" 
               href="https://www.facebook.com/profile.php?id=100090029844815&mibextid=ZbWKwL" 
               class="btn btn-outline-info" style="height:37px; width:40px">
-              <i class="fa fa-facebook info"></i>
+              <i class="fa-brands fa-facebook"></i>
             </a>                      
           </p>
         </div>

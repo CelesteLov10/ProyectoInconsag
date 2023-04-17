@@ -4,7 +4,7 @@
 @section('title', 'Detalles')
 
 @section('content_header')
-    <h1>Detalles del cliente</h1>
+    <h1>Detalles de mensajería</h1>
     <hr>
 @stop
 
@@ -117,7 +117,7 @@
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
             <div class = " card-header py-3 " >
-                <h5 class = "n-font-weight-bold text-white">Detalles del contacto </h5> 
+                <h5 class = "n-font-weight-bold text-white">Detalles de mensajería </h5> 
             </div >
 
         <div class="m-0 text-left align-items-center justify-content-center">
@@ -131,27 +131,27 @@
         </thead>
         <tbody>                                                  
             <tr>
-                <th scope="row"><strong>Nombre(s)</strong></th>
+                <td scope="row"><strong>Nombre(s)</strong></td>
                 <td>{{$contacto->nombre}}</td>    
             </tr>
             <tr>
-                <th scope="row"><strong>Apellido(s)</strong></th>
+                <td scope="row"><strong>Apellido(s)</strong></td>
                 <td>{{$contacto->apellido}}</td>    
             </tr>
             <tr>
-                <th scope="row"><strong>Teléfono</strong></th>
+                <td scope="row"><strong>Teléfono</strong></td>
                 <td>{{$contacto->telefono}}</td>    
             </tr>
             <tr>
-                <th scope="row"><strong>Correo electrónico</strong></th>
+                <td scope="row"><strong>Correo electrónico</strong></td>
                 <td>{{$contacto->correo}}</td>    
             </tr>
             <tr>
-                <th scope="row"><strong>Mensaje</strong></th>
+                <td scope="row"><strong>Mensaje</strong></td>
                 <td>{{$contacto->mensaje}}</td>    
             </tr>
             <tr>
-                <th scope="row"><strong>Fecha de registro</strong></th>
+                <td scope="row"><strong>Fecha de registro</strong></td>
                 <td>{{$contacto->fecha}}</td>    
             </tr>
         </tbody>

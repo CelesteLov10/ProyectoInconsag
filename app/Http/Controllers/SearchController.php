@@ -129,7 +129,7 @@ class SearchController extends Controller
         $data =[];
         foreach($querys as $query){
         $data[] = [
-        'label' => $query->nombreCompleto
+        'label' => $query->formaVenta
         ];
         }
         return $data;

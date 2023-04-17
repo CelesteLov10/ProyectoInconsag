@@ -4,7 +4,7 @@
 @section('title', ' Listado')
 
 @section('content_header')
-    <h1>Listado de contactos</h1>
+    <h1>Listado de mensajería</h1>
     <hr>
 @stop
 
@@ -21,7 +21,6 @@
         @if (session('mensaje'))
           <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
             {{ session('mensaje')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" id="alert" aria-label="Close"></button>
           </div>
         @endif
 
@@ -31,7 +30,7 @@
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
             <a href="{{route('contacto.index')}}" id="sinLinea">
-              <h6 class = "n-font-weight-bold" title="Volver a todos los registros">Listado de contacto</h6></a> 
+              <h6 class = "n-font-weight-bold" title="Volver a todos los registros">Listado de mensajería</h6></a> 
           </div >
 
           <div class="m-0 align-items-center justify-content-center ">
