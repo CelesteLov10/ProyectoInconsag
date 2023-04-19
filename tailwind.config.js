@@ -9,6 +9,9 @@ module.exports = {
     ],
 
     theme: {
+      /*  container:{
+            center:false,
+        },*/
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

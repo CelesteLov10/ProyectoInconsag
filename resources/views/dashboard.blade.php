@@ -74,9 +74,16 @@
 @stop
 
 @section('content')
+        {{-- alerta de mensaje cuando se guardo correctamente --}}
+        @if (session('mensajeContacto'))
+          <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert" >
+            {{ session('mensajeContacto')}}
+          {{--  <button type="button" class="btn-close" data-bs-dismiss="alert" id="alert" aria-label="Close"></button> --}}
+          </div>
+        @endif
     <div class="p-6" style="margin:0%">
         @if (session('status'))
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert">
                 {{ session('status') }}
             </div>
         @endif
@@ -368,5 +375,22 @@
           video.play();
         });
       });
+    </script>
+
+    <script>
+      $('#alert').fadeIn();     
+      setTimeout(function() {
+          $("#alert").fadeOut();           
+      },5000);
+    </script>
+    {{-- script para que muestre el datables en español, y que funcione el datables --}}
+    <script>
+      $(document).ready(function() {
+      $('#example').DataTable({
+        "language": {
+          "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        }
+      });
+    });
     </script>
 @stop
