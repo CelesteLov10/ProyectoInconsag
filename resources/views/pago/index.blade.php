@@ -159,15 +159,19 @@
 
                             @if ($ventas->validacion>=3)
                             <td>
-                              
-                                <i class="fa-solid fa-volume-off"></i>                                                          
+                              <a class="btn text-BLACK" id="borsi">
+                                <i class="fa-solid fa-volume-off"></i>     
+                            </a>
+                                                                                     
                             </td>
                             @endif
 
                             @if($ventas->validacion==1 || $ventas->validacion==2)
                             <td>
-                                
-                                <i class="fa-solid fa-volume-low"></i>                                
+                                <a class="btn text-BLACK" id="borsi"> 
+                                    <i class="fa-solid fa-volume-low"></i>    
+                                 </a>
+                                                          
                             </td>
 
                             @endif
