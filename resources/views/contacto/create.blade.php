@@ -4,7 +4,7 @@
 @section('title', 'Nuevo')
 
 @section('content_header')
-    <h1>Registro de contacto</h1>
+    <h1>Nuevo mensaje</h1>
     <hr>
 @stop
 
@@ -16,7 +16,7 @@
     {{-- encabezado  --}}
     <div class = " card shadow ab-4 btaura" >
       <div class = " card-header py-3 " >
-          <h5 class = "n-font-weight-bold text-white">Registro de contacto</h5 > 
+          <h5 class = "n-font-weight-bold text-white">Nuevo mensaje</h5 > 
       </div >
 
       <div class="m-0 text-center align-items-center justify-content-center">
