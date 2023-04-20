@@ -30,10 +30,7 @@
   .ani {
     animation-duration: 3s;
     animation-name: slidein;
-  }
-
-    
-    
+  }  
     
   header {
     display: flex;
@@ -55,7 +52,7 @@
     display: flex;
   }
 
-  nav li {
+  .list {
       display: inline-block;
     }
 
@@ -98,17 +95,17 @@
           </div>
           <nav>
               <ul id="nave" style="list-style: none; margin: 0; padding: 0; text-align: center;">
-                <li>
+                <li class="list">
                 <a href="#ubicacion" style="border-right: white solid 2px">
                   <span>UBICACIÓN</span>
                 </a>
                 </li>
-                <li>
+                <li class="list">
                   <a href="#quienessomos" style="border-right: white solid 2px">
                     <span>QUIÉNES SOMOS</span>
                   </a>
                 </li>
-                <li>
+                <li class="list">
                   <a href="#contactanos">
                     <span>CONTÁCTANOS</span>
                   </a>
@@ -126,35 +123,43 @@
                 </video>
                 </div>
                 <div class="carousel-item">
-                  <img src="./imagenes/0.jpg" class="d-block w-100" alt="Imagen 1" 
+                  <img src="./imagenes/(1).jpg" class="d-block w-100" alt="Imagen 1" 
                   style="width: 16in; height: 7in">
                 </div>
                 <div class="carousel-item">
-                  <img src="./imagenes/1.jpg" class="d-block w-100" alt="Imagen 2" 
+                  <img src="./imagenes/(2).jpg" class="d-block w-100" alt="Imagen 4" 
                   style="width: 16in; height: 7in">
                 </div>
                 <div class="carousel-item">
-                  <img src="./imagenes/2.jpg" class="d-block w-100" alt="Imagen 3" 
+                  <img src="./imagenes/(3).jpg" class="d-block w-100" alt="Imagen 5" 
                   style="width: 16in; height: 7in">
                 </div>
                 <div class="carousel-item">
-                  <img src="./imagenes/3.jpg" class="d-block w-100" alt="Imagen 4" 
+                  <img src="./imagenes/(4).jpg" class="d-block w-100" alt="Imagen 6" 
                   style="width: 16in; height: 7in">
                 </div>
                 <div class="carousel-item">
-                  <img src="./imagenes/4.jpg" class="d-block w-100" alt="Imagen 5" 
+                  <img src="./imagenes/(5).jpg" class="d-block w-100" alt="Imagen 7" 
                   style="width: 16in; height: 7in">
                 </div>
                 <div class="carousel-item">
-                  <img src="./imagenes/5.jpg" class="d-block w-100" alt="Imagen 6" 
+                  <img src="./imagenes/(6).jpg" class="d-block w-100" alt="Imagen 9" 
                   style="width: 16in; height: 7in">
                 </div>
                 <div class="carousel-item">
-                  <img src="./imagenes/loti1.jpg" class="d-block w-100" alt="Imagen 7" 
+                  <img src="./imagenes/(7).jpg" class="d-block w-100" alt="Imagen 10" 
                   style="width: 16in; height: 7in">
                 </div>
                 <div class="carousel-item">
-                  <img src="./imagenes/loti2.jpg" class="d-block w-100" alt="Imagen 8" 
+                  <img src="./imagenes/(8).jpg" class="d-block w-100" alt="Imagen 11" 
+                  style="width: 16in; height: 7in">
+                </div>
+                <div class="carousel-item">
+                  <img src="./imagenes/(9).jpg" class="d-block w-100" alt="Imagen 12" 
+                  style="width: 16in; height: 7in">
+                </div>
+                <div class="carousel-item">
+                  <img src="./imagenes/(10).jpg" class="d-block w-100" alt="Imagen 13" 
                   style="width: 16in; height: 7in">
                 </div>
               </div>
@@ -162,7 +167,7 @@
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Anterior</span>
               </a>
-              <a class="carousel-control-next" href="#miCarrusel" role="button" data-slide="next" >
+              <a class="carousel-control-next" href="#miCarrusel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Siguiente</span>
               </a>
@@ -177,26 +182,25 @@
       <div class="column mcb-column mcb-item-0jh0gveal one column_fancy_heading">
         <h2 id="ubicacion" style="color:white; text-align: left;">
           Ubicación <i class="fa fa-map-pin" style="color:red"></i></h2>
-          <div class="centrado" id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+          <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
             <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div><script>(function () {
                 var setting = {
-                "height":457,
-                "width":1000,
-                "zoom":17,
-                "queryString":"UNAH-TEC Danlí, Danlí, Honduras",
-                "place_id":"ChIJuekEdvBpbo8R67s8Mba-0SY",
-                "satellite":false,
-                "centerCoord":[13.993218253957401,-86.56962469999999],
-                "cid":"0x26d1beb6313cbbeb",
-                "lang":"es",
-                "cityUrl":"/honduras/danli-467803",
-                "cityAnchorText":"Mapa de Danli, Honduras",
-                "id":"map-9cd199b9cc5410cd3b1ad21cab2e54d3",
-                "embed_id":"911662"
-                };
+                  "height":500,
+                  "width":1080,
+                  "zoom":16,
+                  "queryString":"Residencial Valle del Sauce, La Paz, Honduras",
+                  "place_id":"ChIJwb7v7USDZY8RTVNxrpfpAMQ",
+                  "satellite":true,
+                  "centerCoord":[14.31090187873376,-87.65863363477482],
+                  "cid":"0xc400e997ae71534d",
+                  "lang":"es",
+                  "cityUrl":"/honduras/comayagua-64822",
+                  "cityAnchorText":"Mapa de Comayagua, Honduras",
+                  "id":"map-9cd199b9cc5410cd3b1ad21cab2e54d3",
+                  "embed_id":"914454"};
                 var d = document;
                 var s = d.createElement('script');
-                s.src = 'https://1map.com/js/script-for-user.js?embed_id=911662';
+                s.src = 'https://1map.com/js/script-for-user.js?embed_id=914454';
                 s.async = true;
                 s.onload = function (e) {
                   window.OneMap.initMap(setting)
@@ -215,11 +219,9 @@
       <div class="ani">
         <h2 id="quienessomos" style="color:white; text-align: center;"><b>Quiénes Somos</b></h2>
           <p style="color:azure; text-align:justify; font-size:20px">
-            Quiénes Somos es el punto de mira para muchos de tus clientes, de hecho 
-            las estadísticas confirman que es una de las páginas más visitadas de 
-            una web porque es la que más habla de ti o de tu empresa y permite a 
-            los usuarios descubrir tu "rostro", algo fundamental para aumentar la 
-            credibilidad de tu marca.
+            Inmobiliaria y constructora Sauceda Galindo INCONSAG de R.L de C.V. Nace para satisfacer 
+            las necesidades habitacionales de la región, ofreciendo el mejor servicio de atención, los
+            mejores terrenos y la mejor calidad de vida para ti.
           </p>
           <div class="text-center">
           <img src="./imagenes/logoFondoNegro.jpg" alt="logoNegro">
@@ -233,10 +235,9 @@
       <div class="ani">
         <h2 id="mision" style="color:rgb(0, 238, 255); text-align: center;">Misión</h2>
           <p style="color:azure; text-align:justify; font-size:20px">
-            La misión de una empresa es el motivo por el que existe dicha empresa, 
-            su razón de ser. Indica la actividad que realiza la empresa. 
-            Suele plasmarse en una declaración escrita (una frase o un párrafo) 
-            que refleja la razón de ser de la empresa.
+            Construir desarrollos habitacionales con la infraestructura y equipamiento 
+            urbano necesarios, para mejorar cualitativamente el nivel de vida de nuestros 
+            clientes, utilizando insumos de la mejor calidad y personal altamente calificado.
           </p>
       </div>
 
@@ -246,9 +247,8 @@
       <div class="ani">
         <h2 id="vision" style="color:rgb(0, 238, 255); text-align: center;">Visión</h2>
           <p style="color:azure; text-align:justify; font-size:20px">
-            La visión de una empresa describe el objetivo que espera lograr en 
-            un futuro. Se trata de la expectativa ideal de lo que quiere alcanzar 
-            la organización, indicando además cómo planea conseguir sus metas.
+            Mantenerse como una organización líder en el desarrollo de viviendas en la zona 
+            central del país ofreciendo siempre excelencia en todos nuestros procesos y resultados.
           </p>
       </div>
 
@@ -261,25 +261,25 @@
       <div>
         <nav>
           <ul style="list-style: none; margin: 0; padding: 0; text-align: center;">
-          <li style="margin-right:1%">
-          <span style="color:azure; text-align:justify; font-size:20px; padding: 10px; 
-          border:rgb(0, 238, 255) solid 2px; border-radius:20px">Transparencia</span>
+          <li style="margin-right:1%" class="list">
+          <span style="color:azure; text-align:justify; font-size:20px; margin: 5px; padding:5px 
+          border-radius:20px"><b>• Transparencia</b></span>
           </li>
-          <li style="margin-right:1%">
-            <span style="color:azure; text-align:justify; font-size:20px; padding: 10px; 
-            border:rgb(0, 238, 255) solid 2px; border-radius:20px">Honestidad</span>
+          <li style="margin-right:1%" class="list">
+            <span style="color:azure; text-align:justify; font-size:20px; margin: 5px; padding:5px
+            border-radius:20px"><b>• Honestidad</b></span>
           </li>
-          <li style="margin-right:1%">
-            <span style="color:azure; text-align:justify; font-size:20px; padding: 10px; 
-            border:rgb(0, 238, 255) solid 2px; border-radius:20px">Respeto</span>
+          <li style="margin-right:1%" class="list">
+            <span style="color:azure; text-align:justify; font-size:20px; margin: 5px; padding:5px
+            border-radius:20px"><b>• Respeto</b></span>
           </li>
-          <li style="margin-right:1%">
-            <span style="color:azure; text-align:justify; font-size:20px; padding: 10px; 
-            border:rgb(0, 238, 255)solid 2px; border-radius:20px">Trabajo en equipo</span>
+          <li style="margin-right:1%" class="list">
+            <span style="color:azure; text-align:justify; font-size:20px; margin: 5px; padding:5px
+            border-radius:20px"><b>• Trabajo en equipo</b></span>
           </li>
-          <li>
-            <span style="color:azure; text-align:justify; font-size:20px; padding: 10px; 
-            border:rgb(0, 238, 255) solid 2px; border-radius:20px">Responsabilidad</span>
+          <li class="list">
+            <span style="color:azure; text-align:justify; font-size:20px; margin: 5px; padding:5px
+            border-radius:20px"><b>• Responsabilidad</b></span>
           </li>
           </ul>
         </nav>				
@@ -301,17 +301,17 @@
             
         <nav>
           <ul style="list-style: none; margin: 0; padding: 0; text-align: center;">
-            <li style="margin-right:3%">
+            <li style="margin-right:3%" class="list">
         <div>
           <p style="color:rgb(255, 255, 255); font-size:20px">WhatsApp 
-            <a type="submit" id="submit-and-print" href="https://wa.link/y2rtgb" 
+            <a type="submit" id="submit-and-print" href="https://wa.link/k87nr5" 
               class="btn btn-outline-success" style="height:37px; width:40px">
               <i class="fa-brands fa-whatsapp"></i>
             </a>                      
           </p>
         </div>
             </li>
-            <li style="margin-right:3%">
+            <li style="margin-right:3%" class="list">
         <div>
           <p style="color:rgb(255, 255, 255); font-size:20px">Facebook 
             <a type="submit" id="submit-and-print" 
@@ -322,7 +322,7 @@
           </p>
         </div>
             </li>
-            <li>
+            <li class="list">
           <div>
             <p style="color:rgb(255, 255, 255); font-size:20px">Correo
               <a type="submit" id="submit-and-print" href="mailto:inconsaghn2022@gmail.com" 
@@ -339,8 +339,8 @@
 
         {{-- HORARIOS DE ATENCION --}}
         <h5 style="color:rgb(255, 243, 215);">Horarios de atención.</h5>
-        <p class="text-light" style="margin: 0%">Lunes-viernes: 8am-6pm</p>
-        <p class="text-light">Sábado-domingo: 9am-12pm</p> 
+        <p class="text-light" style="margin: 0%">Lunes-viernes: 8am-4pm</p>
+        <p class="text-light">Sábado-domingo: 8am-12pm</p> 
     </section>
   </div>
 
