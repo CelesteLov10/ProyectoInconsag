@@ -4,7 +4,7 @@
 @section('title', 'Actualizar')
 
 @section('content_header')
-    <h1>Asignar un rol</h1>
+    <h1>Actualizar usuario</h1>
     <hr>
 @stop
 

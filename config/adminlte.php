@@ -354,11 +354,13 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => 'puesto/create',
                     'icon' => 'fa-sharp fa-solid fa-file-circle-plus', //si no permite un emoji usar este para los de agregar
+                    'shift' => 'ml-4',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'puesto',
                     'icon' => 'fa-solid fa-users-rectangle',
+                    'shift' => 'ml-4',
                 ],
         
             ],
@@ -373,6 +375,7 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/oficina/create',
                     'icon' => 'fa-sharp fa-solid fa-file-circle-plus',
+                    'shift' => 'ml-4',
                     //'icon' => 'fa-solid fa-building-circle-exclamation', no hay con el signo +
 
                 ],
@@ -380,6 +383,7 @@ return [
                     'text' => 'Listado',
                     'url'  => 'oficina',
                     'icon' => 'fa-solid fa-building-circle-check',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -393,11 +397,13 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/empleado/create',
                     'icon' => 'fa-sharp fa-solid fa-person-circle-plus',
+                    'shift' => 'ml-4',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'empleado',
                     'icon' => 'fa-solid fa-person-booth',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -411,11 +417,13 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/inventario/create',
                     'icon' => 'fa-sharp fa-solid fa-folder-plus',
+                    'shift' => 'ml-4',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'inventario',
                     'icon' => 'fa-solid fa-folder-open',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -429,20 +437,21 @@ return [
                     'text' => 'Nuevo registro de bloque',
                     'url'  => '/bloque/create',
                     'icon' => 'fa-solid fa-cubes',
+                    'shift' => 'ml-4',
                 ],
-
-         
 
                 [
                     'text' => 'Nuevo registro de lote',
                     'url'  => '/lote/create',
                     'icon' => 'fa-solid fa-cubes-stacked',
+                    'shift' => 'ml-4',
                 ],
 
                 [
                     'text' => 'Listado bloque',
                     'url'  => '/bloque',
                     'icon' => 'fa-solid fa-chart-simple',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -455,11 +464,13 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/cliente/create',
                     'icon' => 'fa-solid fa-user-plus',
+                    'shift' => 'ml-4',
                 ],
                 [
                     'text' => 'Listado',
                     'url'  => 'cliente',
                     'icon' => 'fa-solid fa-users-line',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -474,12 +485,14 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/venta/create',
                     'icon' => 'fa-solid fa-money-check-dollar',
+                    'shift' => 'ml-4',
                 ],
 
                 [
                     'text' => 'Listado',
                     'url'  => 'venta',
                     'icon' => 'fa-solid fa-money-check',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -493,17 +506,18 @@ return [
                     'text' => 'Listado lotes vendidos',
                     'url'  => '/pago',
                     'icon' => 'fa-solid fa-clipboard-list',
+                    'shift' => 'ml-4',
                 ],
 
                 [
                     'text' => 'Listado lotes liberados',
                     'url'  => '/liberado',
                     'icon' => 'fa-solid fa-unlock',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
 
- 
         [
             'text'    => 'Proveedor',
             'icon'    => 'fas fa-fw fa-user',
@@ -513,12 +527,14 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/proveedor/create',
                     'icon' => 'fa-sharp fa-solid fa-person-circle-plus',
+                    'shift' => 'ml-4',
                 ],
 
                 [
                     'text' => 'Listado',
                     'url'  => 'proveedor',
                     'icon' => 'fa-solid fa-clipboard-user',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -532,12 +548,14 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/maquinaria/create',
                     'icon' => 'fa-sharp fa-solid fa-file-circle-plus',
+                    'shift' => 'ml-4',
                 ],
 
                 [
                     'text' => 'Listado',
                     'url'  => 'maquinaria',
                     'icon' => 'fa-solid fa-sheet-plastic',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -551,12 +569,14 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/constructora/create',
                     'icon' => 'fa-sharp fa-solid fa-file-circle-plus',
+                    'shift' => 'ml-4',
                 ],
 
                 [
                     'text' => 'Listado',
                     'url'  => 'constructora',
                     'icon' => 'fa-solid fa-sheet-plastic',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -570,12 +590,14 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/casa/create',
                     'icon' => 'fa-sharp fa-solid fa-house-medical-flag',
+                    'shift' => 'ml-4',
                 ],
 
                 [
                     'text' => 'Listado',
                     'url'  => 'casa',
                     'icon' => 'fa-solid fa-warehouse',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -589,12 +611,14 @@ return [
                     'text' => 'Nuevo registro',
                     'icon' => 'fa-solid fa-file-circle-plus',
                     'url'  => '/gasto/create',
+                    'shift' => 'ml-4',
                 ],
 
                 [
                     'text' => 'Listado',
                     'url'  => 'gasto',
                     'icon' => 'fa-solid fa-file-zipper',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -608,12 +632,14 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/planilla/create',
                     'icon' => 'fa-solid fa-file-circle-plus',
+                    'shift' => 'ml-4',
                 ],
 
                 [
                     'text' => 'Listado',
                     'url'  => 'planilla',
                     'icon' => 'fa-solid fa-box-archive',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -627,12 +653,14 @@ return [
                     'text' => 'Nuevo registro',
                     'url'  => '/reservacion/create',
                     'icon' => 'fa-solid fa-calendar-plus',
+                    'shift' => 'ml-4',
                 ],
 
                 [
                     'text' => 'Listado',
                     'url'  => 'reservacion',
                     'icon' => 'fa-solid fa-calendar',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
@@ -642,11 +670,11 @@ return [
             'icon'    => 'fa-solid fa-comment',
             'can' => 'Admin.contacto.index',
             'submenu' => [
-               
                 [
                     'text' => 'Listado',
                     'url'  => 'contacto',
                     'icon' => 'fa-solid fa-address-book',
+                    'shift' => 'ml-4',
                 ],
             ],
         ],
