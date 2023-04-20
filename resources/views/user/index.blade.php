@@ -104,7 +104,6 @@
                         <table id="example" class="table table-striped table-bordered border-2 ">
                             <thead class="">
                             <tr>
-                                <th scope="col">ID</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Correo electrónico</th>
                                 <th scope="col">Actualizar usuario</th>
@@ -113,7 +112,6 @@
                             <tbody>
                             @forelse($user as $users)
                             <tr>
-                                <td>{{$users->id}}</td>
                                 <td>{{$users->name}}</td>
                                 <td>{{$users->email}}</td>
                                 <td><a class="btn btn-outline-warning" 
