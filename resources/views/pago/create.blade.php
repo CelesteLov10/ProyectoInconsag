@@ -82,7 +82,7 @@
     <div class="col-sm-5">
         <input type="text" class="border border-0 form-control rounded-pill @error('fechaPago') is-invalid @enderror" 
         maxlength="10" placeholder="Fecha actual"
-        name="fechaPago" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)" > 
+        name="fechaPago" autocomplete="off" value="<?php echo date("d-m-Y");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)" > 
             @error('fechaPago')
         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
     @enderror
@@ -179,8 +179,8 @@
     <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}"> 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
- {{-- cdn para el css de los emojis de fontawesomw --}}
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- cdn para el css de los emojis de fontawesomw --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     @stop
 
