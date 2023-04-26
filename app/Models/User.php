@@ -25,6 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_image',
     ];
 
     /**
@@ -55,5 +56,17 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function adminlte_image()//Metodo que recupera la imagen del usuario
+    {
+        $user = auth()->user();
+        $imagePath = $user->profile_image ? 'storage/profile_images/' . $user->profile_image : 'storage/profile_images/1682401579_1139446.jpg';
+        return asset($imagePath);
+    }
+
+    public function adminlte_desc()
+    {
+        return $this->roles()->pluck('name')->implode(' ');
     }
 }

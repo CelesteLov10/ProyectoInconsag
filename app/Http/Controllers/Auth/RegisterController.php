@@ -55,6 +55,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:25','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'email' => ['required', 'string', 'email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#', 'max:60', 'unique:users',],
             'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,50}$/'],
+            'profile_image' => ['required'],
+
         ],[
 
             'name.required'=>'Debe ingresar el nombre, no debe ir vacío.',
@@ -72,6 +74,8 @@ class RegisterController extends Controller
             'password.min' => 'Las contraseñas debe contener minímo 8 caracteres.',
             'password.confirmed' => 'Las contraseñas deben de coincidir.',
             'password.regex' => 'La contraseña debe contener letras mayúsculas y minúsculas, números y caracteres especiales.',
+
+            'profile_image.required' => 'Debe seleccionar una imagen. ',
             
 
         ]);
@@ -89,7 +93,17 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'profile_image' => $data['profile_image'],
         ]);
+
+        // Guardar imagen de perfil si se proporcionó
+        if (isset($data['profile_image'])) {
+            $filename = time() . '_' . $data['profile_image']->getClientOriginalName();
+            $data['profile_image']->storeAs('public/profile_images', $filename);
+            $user->profile_image = $filename;
+            $user->save();
+        }
+
         $user->assignRole(ModelsRole::where('name', 'Cliente')->first());//Para que se guarde predeterminadamente como cliente
     
         return $user;
