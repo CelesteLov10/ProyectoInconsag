@@ -26,44 +26,7 @@ table {
  width: 800px;
 }
 
-th {
- background:
-   linear-gradient(#1f1414, #5de0bd);
- border-left: 1px solid #555;
- border-right: 1px solid #777;
- border-top: 1px solid #555;
- border-bottom: 1px solid #333;
- box-shadow: inset 0 1px 0 #999;
- color: #fff;
- font-weight: bold;
- padding: 10px 15px;
- position: relative;
- text-shadow: 0 1px 0 #000;
-}
 
-th:after {
- background: linear-gradient(
-   rgba(255, 255, 255, 0),
-   rgba(255, 255, 255, 0.08)
- );
- content: "";
- display: block;
- height: 25%;
- left: 0;
- margin: 1px 0 0 0;
- position: absolute;
- top: 25%;
- width: 100%;
-}
-
-th:first-child {
- border-left: 1px solid #777;
- box-shadow: inset 1px 1px 0 #999;
-}
-
-th:last-child {
- box-shadow: inset -1px 1px 0 #999;
-}
 
 td {
  border-right: 1px solid #fff;
