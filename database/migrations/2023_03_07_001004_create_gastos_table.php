@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nombreGastos');
             $table->bigInteger('montoGastos');
             $table->string('nombreEmpresa');
-            $table->date('fechaGastos');
+            $table->string('fechaGastos');
             $table->string('descripcion');
             $table->unsignedBigInteger('empleado_id');//Relacion con tabla empleado
             $table->foreign('empleado_id')->references('id')->on('empleados');// Restriccion llave foranea

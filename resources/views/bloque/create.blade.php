@@ -30,7 +30,7 @@
             <label class="col-sm-3 col-form-label">Nombre del bloque:</label>
                 <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('nombreBloque') is-invalid @enderror" 
-                placeholder="Ingrese el nombre del bloque. (ejem. bloque1)" 
+                placeholder="Ingrese el nombre del bloque. (Bloque A)" 
                 name="nombreBloque" value="{{old('nombreBloque')}}" maxlength="50">
                 @error('nombreBloque')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
