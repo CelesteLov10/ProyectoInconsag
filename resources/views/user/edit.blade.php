@@ -24,7 +24,7 @@
           </div >
         <div class="m-0 text-center align-items-center justify-content-center">
           <div class="bg-light p-5">   
-        <form action="{{route('user.update', $user)}}" id="form1" class="puesto-actualizar" method="POST" autocomplete="off">
+        <form action="{{route('user.update', $user)}}" id="form1" class="puesto-actualizar" method="POST" autocomplete="off" enctype="multipart/form-data">
             <!-- metodo put para que guarde los cambios en la base de datos-->
             @method('put')
   
@@ -68,6 +68,18 @@
             </div>
         </div>
       </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Foto perfil:</label>
+        <div class="col-sm-5">
+            <input accept="image/*" type="file" id="profile_image" class="form-control rounded-pill  @error('profile_image') is-invalid @enderror" 
+                name="profile_image" value="{{old('profile_image')}}" >
+                @error('profile_image')
+                <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+                @enderror
+                <div ><small class="text-danger" id="myElement" ></small></div>
+        </div>
+    </div>
   
           <div class="mb-3 row">
             <div class="offset-sm-3 col-sm-9">
