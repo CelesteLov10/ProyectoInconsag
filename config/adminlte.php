@@ -666,7 +666,7 @@ return [
         ],
         
         [
-            'text'    => 'Mensajeria',
+            'text'    => 'Mensajería',
             'icon'    => 'fa-solid fa-comment',
             'can' => 'Admin.contacto.index',
             'submenu' => [

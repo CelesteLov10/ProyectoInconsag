@@ -61,7 +61,7 @@ class User extends Authenticatable
     public function adminlte_image()//Metodo que recupera la imagen del usuario
     {
         $user = auth()->user();
-        $imagePath = $user->profile_image ? 'storage/profile_images/' . $user->profile_image : 'storage/profile_images/1682401579_1139446.jpg';
+        $imagePath = $user->profile_image ? 'storage/profile_images/' . $user->profile_image : 'storage/profile_images/1139446.jpeg';
         return asset($imagePath);
     }
 
