@@ -35,21 +35,25 @@ class ReportController extends Controller
       // dd($ventas);
       
     }
+    /**Crear el controlador BusquedaController con el método index que devuelva la vista de búsqueda: */
     public function reportsDate(){
-      $ventas = Venta::whereDate('fechaVenta', Carbon::today('America/Mexico_City')->format('d-m-Y'))->get();
-        $valorPrima = $ventas->sum('valorPrima');
-        return view('report.reports_date', compact('ventas', 'valorPrima'));
+      $busqueda = Venta::whereDate('fechaVenta', Carbon::today('America/Mexico_City')->format('d-m-Y'))->get();
+        $valorPrima = $busqueda->sum('valorPrima');
+        return view('report.reports_date', compact('busqueda', 'valorPrima'));
   
     }
     public function reportResults(Request $request){
-      $fi = $request->fecha_ini. ' 00:00:00';
-      $ff = $request->fecha_fin. ' 23:59:59';
-      $ventas = Venta::whereBetween('fechaVenta', [$fi, $ff])->get();
-      $valorPrima = $ventas->sum('valorPrima');
-     return view('report.reports_date', compact('ventas', 'valorPrima'));
+      $fi = $request->input('fecha_ini');
+      $ff = $request->input('fecha_fin');
+
+      $busqueda = Venta::whereBetween('fechaVenta', [$fi, $ff])->get();
+
+      $valorPrima = $busqueda->sum('valorPrima');
+
+     return view('report.reports_date', compact('busqueda', 'valorPrima'));
 
      
-      
+
    
     }
         // Metodo para mostrar pdf por dia
@@ -82,7 +86,7 @@ class ReportController extends Controller
        // return $pdf -> stream();
         
        //probando si este funciona
-      $fecha_ini = $request->input('fecha_ini');
+   /*   $fecha_ini = $request->input('fecha_ini');
        $fecha_fin = $request->input('fecha_fin');
        
        $ventas = Venta::whereBetween('fechaVenta', [$fecha_ini, $fecha_fin])->get();
@@ -92,9 +96,16 @@ class ReportController extends Controller
        
        $pdf = PDF::loadView('report.pdfReportFecha', $data);
        
-       return $pdf->stream('reporte-busquedas.pdf');
+       return $pdf->stream('reporte-busquedas.pdf');*/
 
        //PRUEBA FINAL
+     //  $fecha_inicio = request()->input('fecha_inicio');
+       //$fecha_fin = request()->input('fecha_fin');
+
+       $busqueda = $request->input('busqueda');
+      
+        return view('report.pdfReportFecha', ['busqueda' => $busqueda]);
+      //  dd($busqueda);
 
          // Query the database for search records during the given date range
  /* $ventas = Venta::whereBetween('created_at', [$fecha_ini, $fecha_fin])->get();

@@ -281,11 +281,12 @@ Route::controller(PagoController::class)->middleware(['auth', 'verified'])->grou
 
 Route::controller(ReportController::class)->middleware(['auth', 'verified'])->group(function(){
 //Reporte de ventas por fecha
-Route::get('reports_day', 'reportsDay')->name('report.reports_day');
-Route::get('reports_date','reportsDate')->name('reports.reports_date');
-Route::post('report_results','reportResults')->name('report.report_results');
-Route::get('pdfReportDia', 'pdfDia')->name('reports.pdfReportDia');
-Route::get('pdfReportFecha', 'pdfFecha')->name('reports.pdfReportFecha');
+Route::get('reports_day', 'reportsDay')->name('report.reports_day');// funciona
+Route::get('reports_date','reportsDate')->name('reports.reports_date'); //ruta de busqueda (funcina. metrae los resultados)
+/**Crear una nueva ruta en el archivo web.php para procesar la búsqueda y devolver los resultados */
+Route::post('report_results','reportResults')->name('report.report_results'); // ruta para mostrar los resultadps (funcina. metrae los resultados)
+Route::get('pdfReportDia', 'pdfDia')->name('reports.pdfReportDia'); //funciona
+Route::post('pdfReportFecha', 'pdfFecha')->name('reports.pdfReportFecha'); // no funciona, no me imprime  los resultados buscados
 //Route::get('/search/report/{start_date}/{end_date}', 'SearchController@generateSearchReportPDF');
 
 });

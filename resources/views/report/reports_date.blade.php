@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Reporte de ventas')
+@section('title', 'Reporte de busqueda')
 
 @section('content_header')
-    <h1>Reporte de ventas por fecha</h1>
+    <h1>Reporte de busqueda por fecha</h1>
     <hr>
 @stop
 
@@ -72,14 +72,24 @@ tbody:hover tr:hover td {
   
   <div class="container">
     <div class="mb-3 text-end">
-      <a class="btn btn-outline-primary text-BLACK" href="{{route('reports.pdfReportFecha')}}" title="Imprimir PDF">Imprimir reporte <i class="bi bi-printer"></i></a>
+     {{-- <input type="hidden" name="ventas" value="{{ $ventas }}">
+      <a href="{{route('reports.pdfReportFecha')}}">Imprimir parte nose</a> --}}
+   
+   {{--   <form method="POST" action="{{route('reports.pdfReportFecha')}}">
+        @csrf
+        <input type="hidden" name="busqueda[]" value="{{ $busqueda }}">
+        <button type="submit">Imprimir</button>
+      </form> --}}
+      
+     {{-- <a class="btn btn-outline-primary text-BLACK" onclick="imprimir()" title="Imprimir PDF">Imprimir reporte <i class="bi bi-printer"></i></a> --}}
     </div>
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
               <a href="{{route('venta.index')}}" id="sinLinea">
-                <h6 class = "n-font-weight-bold" title="Volver a todos los registros">Reporte de ventas</h6></a> 
+                <h6 class = "n-font-weight-bold" title="Volver a todos los registros">Reporte de busqueda</h6></a> 
           </div >
+         
 
           <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
@@ -104,41 +114,24 @@ tbody:hover tr:hover td {
                                     name="fecha_fin" id="fecha_fin">
                                 </div>
                             </div>
-                            {{-- <div class="input-daterange datepicker row align-items-center" data-date-format="d-m-y">
-                              <div class="col">
-                                  <div class="form-group">
-                                      <div class="input-group">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                          </div>
-                                          <input class="form-control" placeholder="Fecha de inicio"
-                                           type="text" value="{{ $start }}">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col">
-                                  <div class="form-group">
-                                      <div class="input-group">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                          </div>
-                                          <input class="form-control" placeholder="Fecha final" 
-                                          type="text" value="{{$end}}">
-                                      </div>
-                                  </div>
-                              </div>
-                          </div> --}}
                             <div class="col-12 col-md-2 text-center mt-4">
                                 <div class="form-group">
                                    <button type="submit" class="btn btn-outline-primary text-BLACK">Consultar</button>
                                 </div>
                             </div>
+                            <div class="col-12 col-md-2 text-center mt-4">
+                              <div class="form-group">
+                                <button class="btn btn-outline-primary text-BLACK" onclick="window.print()">Imprimir a PDF</button>
+                              </div>
+                          </div>
+                        
                             <div class="col-12 col-md-3 text-center">
                                 <span>Total de ingresos por prima: <b> </b></span>
                                 <div class="form-group">
                                     <strong>s/ {{$valorPrima}}</strong>
                                 </div>
                             </div>
+                          
                         </div>
                       </form>
             <div class="m-0 align-items-center justify-content-center ">
@@ -146,15 +139,16 @@ tbody:hover tr:hover td {
                 <table id="example" class="table table-striped table-bordered border-2 ">
                          <thead class="">
                     <tr>
+          
                       <th >Nombre del cliente</th>
                       <th>Forma de venta</th>
                       <th >Fecha de venta</th>
                       <th >Valor prima</th>
                     </tr>
                   </thead>
-                  @if (isset($ventas))
+                  @if (isset($busqueda))
                   <tbody>
-                    @forelse($ventas as $venta)
+                    @forelse($busqueda as $venta)
                       <tr>
                         <td>{{$venta->cliente->nombreCompleto}}</td>
                         <td>{{$venta->formaVenta}}</td>
@@ -243,4 +237,11 @@ tbody:hover tr:hover td {
   });
 });
 </script>
+
+<script>
+  function imprimir() {
+      window.open('{{route('reports.pdfReportFecha')}}', '_blank');
+  }
+  </script>
 @stop
+{{--  href="{{route('reports.pdfReportFecha')}}" --}}
