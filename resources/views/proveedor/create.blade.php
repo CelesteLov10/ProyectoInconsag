@@ -30,7 +30,7 @@
           <label class="col-sm-3 col-form-label">Nombre del proveedor:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('nombreProveedor') is-invalid @enderror" 
-            placeholder="Ingrese el nombre del proveedor. Ejem. 'La casita de Maria'" 
+            placeholder="Ingrese el nombre del proveedor. Ejem. 'La casita de Maria'" oninput="validateTextarea()" id="myTextarea"
             name="nombreProveedor" value="{{old('nombreProveedor')}}" maxlength="50">
             @error('nombreProveedor')
             <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -42,7 +42,7 @@
           <label class="col-sm-3 col-form-label">Nombre del contacto:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('nombreContacto') is-invalid @enderror" 
-            placeholder="Ingrese el nombre del contacto. Ejem. 'Juan Rodolfo Diaz Martinez'" 
+            placeholder="Ingrese el nombre del contacto. Ejem. 'Juan Rodolfo Diaz Martinez'" oninput="validateTextarea()" id="myTextarea"
             name="nombreContacto" value="{{old('nombreContacto')}}" maxlength="50">
             @error('nombreContacto')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -54,7 +54,7 @@
           <label class="col-sm-3 col-form-label">Cargo del contacto:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill  @error('cargoContacto') is-invalid @enderror" 
-            placeholder="Ingrese el cargo del contacto. Ejem. 'distribuidor'" 
+            placeholder="Ingrese el cargo del contacto. Ejem. 'distribuidor'" oninput="validateTextarea()" id="myTextarea"
             name="cargoContacto" value="{{old('cargoContacto')}}" maxlength="50">
             @error('cargoContacto')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -66,7 +66,7 @@
           <label class="col-sm-3 col-form-label">Dirección:</label>
           <div class="col-sm-5">
             <textarea type="text" class="form-control rounded-pill  @error('direccion') is-invalid @enderror" 
-            maxlength="150" placeholder="Ingrese la dirección"
+            maxlength="150" placeholder="Ingrese la dirección" oninput="validateTextarea()" id="myTextarea"
             name="direccion" value="">{{old('direccion')}}</textarea>
           @error('direccion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -139,5 +139,15 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+
+    <script>
+      function validateTextarea() {
+var textarea = document.getElementById("myTextarea");
+var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+if (regex.test(textarea.value)) {
+  textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+}
+}
+    </script>
 @stop
 @endcan

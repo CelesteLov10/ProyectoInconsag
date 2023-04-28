@@ -43,7 +43,7 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Dirección:</label>
         <div class="col-sm-5">
-          <textarea type="text" maxlength="150" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
+          <textarea type="text" oninput="validateTextarea()" id="myTextarea"  maxlength="150" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
           placeholder="Ingrese la dirección de la oficina " 
           name="direccion">{{old('direccion')}}</textarea>
         @error('direccion')
@@ -56,7 +56,7 @@
         <label class="col-sm-3 col-form-label">Nombre del gerente:</label>
         <div class="col-sm-5">
           <input type="text" maxlength="50" class="form-control rounded-pill @error('nombreGerente') is-invalid @enderror" 
-          placeholder="Ingrese el gerente de la oficina. Ejem. 'Juan Rodolfo Diaz Martinez'" 
+          placeholder="Ingrese el gerente de la oficina. Ejem. 'Juan Rodolfo Diaz Martinez'" oninput="validateTextarea()" id="myTextarea"
           name="nombreGerente" value="{{old('nombreGerente')}}">
           @error('nombreGerente')
           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -191,6 +191,16 @@ $('#municipio').append("<option value='"+ municipio[i].id+"'>"+municipio[i].nomb
   $(document).ready(function(){
     cargarselectmunicipio($('#departamento').val(),$('#prueba').val())
     });      
+</script>
+
+<script>
+  function validateTextarea() {
+var textarea = document.getElementById("myTextarea");
+var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+if (regex.test(textarea.value)) {
+textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+}
+}
 </script>
 @stop
 @endcan

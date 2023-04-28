@@ -9,6 +9,8 @@
 @stop
 
 @section('content')
+@inject('estado', 'App\Services\Estados')
+
 
   <div class="container ">
     <div class="mb-3 text-end">
@@ -46,7 +48,7 @@
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('nombres') is-invalid @enderror" 
             placeholder="Ingrese los nombres (ejem. Pablo Jose)" 
-            name="nombres" value="{{old('nombres')}}" maxlength="30">
+            name="nombres" value="{{old('nombres')}}" maxlength="30" >
             @error('nombres')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -58,7 +60,7 @@
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('apellidos') is-invalid @enderror" 
             placeholder="Ingrese los apellidos (ejem. Mendoza Sauceda)" 
-            name="apellidos" value="{{old('apellidos')}}" maxlength="30">
+            name="apellidos" value="{{old('apellidos')}}" maxlength="30" >
             @error('apellidos')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
@@ -69,7 +71,7 @@
           <label class="col-sm-3 col-form-label">Teléfono:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('telefono') is-invalid @enderror" 
-            placeholder="Ingrese el numero de teléfono"
+            placeholder="Ingrese el numero de teléfono" 
             name="telefono" value="{{old('telefono')}}" maxlength="8">
           @error('telefono')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -77,28 +79,30 @@
           </div>
         </div>
 
-        <div class="mb-3 row form-group">
-          <label class="col-sm-3 col-form-label">Estado:</label>
-          <div class="col-sm-5 form">
-            <select class="form-control form-select rounded-pill @error('estado') is-invalid @enderror" name="estado">
-              <option value="" disabled selected>-- Seleccione un estado --</option>
-              {{--  {{old('estado' , $estado->nombreE)==$estado->id ? 'selected' : ''}} --}}
-              @foreach ($estados as $estado)
-                  <option value="{{$estado->nombreE}}" 
-                  >{{$estado->nombreE}}</option>
+
+
+        <div class="mb-3 row">
+          <label for="estado" class="col-sm-3 col-form-label">estado:</label>
+          <div class="col-sm-5">
+          <select id="estado" name="estado_id" class="form-control form-select rounded-pill @error('estado_id') is-invalid @enderror">
+              @foreach ($estado->get() as $index => $estados)
+              <option value="{{$index}}" 
+                {{old('estado_id') == $index ? 'selected' : '' }}>  {{ $estados}}
+              </option>
               @endforeach
-            </select>
-          @error('estado')
+          </select> 
+          @error('estado_id')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
           </div>
         </div>
 
+
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Correo:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control rounded-pill @error('correo') is-invalid @enderror" 
-            placeholder="Ingrese el correo electrónico"
+            placeholder="Ingrese el correo electrónico" 
             name="correo" value="{{old('correo')}}" maxlength="40">
           @error('correo')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -122,7 +126,7 @@
           <label class="col-sm-3 col-form-label">Dirección:</label>
           <div class="col-sm-5">
             <textarea type="text" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
-            maxlength="150" placeholder="Ingrese la dirección"
+            maxlength="150" placeholder="Ingrese la dirección" oninput="validateTextarea()" id="myTextarea"
             name="direccion" value="">{{old('direccion')}}</textarea>
           @error('direccion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -242,6 +246,16 @@
                 minDate: 0,
             });//.datepicker("setDate", new Date());
           } );
+      </script>
+
+      <script>
+        function validateTextarea() {
+  var textarea = document.getElementById("myTextarea");
+  var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+  if (regex.test(textarea.value)) {
+    textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+  }
+}
       </script>
 @stop
 @endcan

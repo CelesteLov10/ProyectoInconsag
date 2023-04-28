@@ -89,7 +89,7 @@
                     <label class="col-sm-3 col-form-label">Mensaje:</label>
                     <div class="col-sm-5">
                         <textarea type="text" class="form-control rounded-pill @error('mensaje') is-invalid @enderror" 
-                        maxlength="250" placeholder="Ingrese un mensaje personalizado."
+                        maxlength="250" placeholder="Ingrese un mensaje personalizado." oninput="validateTextarea()" id="myTextarea"
                         name="mensaje" value="">{{old('mensaje')}}</textarea>
                     @error('mensaje')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -151,6 +151,16 @@
             });
             } );
         </script>
+
+<script>
+  function validateTextarea() {
+var textarea = document.getElementById("myTextarea");
+var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+if (regex.test(textarea.value)) {
+textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+}
+}
+</script>
 @stop
 @endcan
 

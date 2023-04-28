@@ -31,17 +31,18 @@ class EmpleadoController extends Controller
 
     public function show($id){
         $empleado = Empleado::findOrFail($id);
-        return view('empleado.showEmp')->with('empleado', $empleado);
+        $estado = Estado::all();
+        return view('empleado.showEmp', compact('estado'))->with('empleado', $empleado);
     
     }
     public function create(){ 
         //select de estados 
         //esta es una prueba deberia de funcionar, pero bueno
-        $estados = Estado::all();
+        $estado = Estado::all();
         $oficina = Oficina::all();
         $puesto = Puesto::orderBy('nombreCargo')->get();
         
-        return view('empleado.createEmp', compact('estados', 'puesto', 'oficina'));
+        return view('empleado.createEmp', compact('estado', 'puesto', 'oficina'));
     }
 
     public function store(Request $request){
@@ -60,13 +61,13 @@ class EmpleadoController extends Controller
             'nombres'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'apellidos' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:empleados'],
-            'estado'    => ['required','alpha','in:activo,inactivo'],
             'correo'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:empleados'],
             'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
             'direccion'       => ['required','min:10','max:150'],
             'fechaIngreso'    => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'puesto_id'       => ['required'],
             'oficina_id'       => ['required'],
+            'estado_id'       => ['required', 'exists:estados,id'],
 
         ],[
             'identidad.required'=>'El número de identidad es obligatorio, no puede estar vacío.',
@@ -77,11 +78,11 @@ class EmpleadoController extends Controller
 
             'nombres.required' => 'El nombre del empleado es obligatorio, no puede estar vacío.',
             'nombres.alpha' => 'En el nombre sólo se permite letras.',
-            'nombres.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'nombres.regex' => 'El nombre debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
             'apellidos.required' => 'El apellido es obligatorio, no puede estar vacío.',
             'apellidos.alpha' => 'El apellido sólo permite letras.',
-            'apellidos.regex' => 'El apellido debe iniciar con mayúscula y sólo permite un espacio entre ellos.',
+            'apellidos.regex' => 'El apellido debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
             'telefono.required' => 'El teléfono del empleado es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
@@ -108,6 +109,8 @@ class EmpleadoController extends Controller
             'puesto_id.required' => 'Debe seleccionar el puesto de trabajo, no puede estar vacío.',
 
             'oficina_id.required'=> 'Debe seleccionar la oficina, no puede estar vacío.',
+
+            'estado_id.required' => 'Debe seleccionar el estado del empleado, no puede estar vacío.',
             
             
 
@@ -124,12 +127,12 @@ class EmpleadoController extends Controller
 
     public function edit($id){
         $empleado = Empleado::findOrFail($id);
-        $estado = Estado::all();
+        $estados = Estado::all();
         $oficina = Oficina::with(['empleado.oficina'])->get();
         $puesto = Puesto::with(['empleado.puesto'])->get();
         // $puesto = DB::table('puestos')->orderBy('name', 'asc')->list('name');
         
-        return view('empleado.editEmp', compact('empleado', 'estado','puesto','oficina'))
+        return view('empleado.editEmp', compact('empleado', 'estados','puesto','oficina'))
         ->with('empleado', $empleado);
     }
 
@@ -145,13 +148,13 @@ class EmpleadoController extends Controller
             'nombres'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'apellidos' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
             'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:empleados,telefono,'.$id.'id'],
-            'estado'    => ['required','string','in:activo,inactivo'],
             'correo'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:empleados,correo,'.$id.'id'],
             'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u', 'before:'. $before],
             'direccion'       => ['required','min:10','max:150'],
             'fechaIngreso'    => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'puesto_id'       => ['required'],
             'oficina_id'       => ['required'],
+            'estado_id'       => ['required', 'exists:estados,id'],
         ], [
     
             'identidad.required'=>'El número de identidad es obligatorio, no puede estar vacío.',
@@ -162,11 +165,11 @@ class EmpleadoController extends Controller
 
             'nombres.required' => 'El nombre del empleado es obligatorio, no puede estar vacío.',
             'nombres.alpha' => 'El nombre sólo permite letras.',
-            'nombres.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'nombres.regex' => 'El nombre debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
             'apellidos.required' => 'El apellido es obligatorio, no puede estar vacío.',
             'apellidos.alpha' =>'El apellido sólo permite letras.',
-            'apellidos.regex' =>'El apellido debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'apellidos.regex' =>'El apellido debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
             'telefono.required' => 'El teléfono del empleado es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
@@ -174,7 +177,6 @@ class EmpleadoController extends Controller
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
             'telefono.unique' => 'El número de teléfono ya está en uso.',
 
-            'estado.required' => 'Debe seleccionar un estado.',
 
             'correo.required' => 'El correo electrónico es obligatorio, no puede estar vacío.',
             'correo.email' =>'Debe ingresar un correo electrónico válido.',
@@ -192,6 +194,9 @@ class EmpleadoController extends Controller
             'puesto_id.required' =>'El puesto de trabajo es obligatorio, no puede estar vacío.',
 
             'oficina_id.required'=>'Debe seleccionar la oficina, no puede estar vacío.',
+
+            
+            'estado_id.required' => 'Debe seleccionar el estado del empleado, no puede estar vacío.',
         
         ]);
    
@@ -201,13 +206,14 @@ class EmpleadoController extends Controller
         $empleado->nombres = $request->input('nombres');
         $empleado->apellidos = $request->input('apellidos');
         $empleado->telefono = $request->input('telefono');
-        $empleado->estado = $request->estado;
         $empleado->correo = $request->correo;
         $empleado->fechaNacimiento = $request->fechaNacimiento;
         $empleado->direccion = $request->input('direccion');
         $empleado->fechaIngreso = $request->fechaIngreso;
         $empleado->puesto_id = $request->puesto_id;
         $empleado->oficina_id = $request->oficina_id;
+        $empleado->estado_id = $request->estado_id;
+
         
         $update = $empleado->save();
         

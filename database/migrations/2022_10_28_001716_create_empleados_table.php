@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('telefono');
-            $table->string('estado');
             $table->string('correo');
             $table->string('fechaNacimiento');
             $table->string('direccion');
@@ -28,7 +27,9 @@ return new class extends Migration
             $table->unsignedBigInteger('puesto_id');//Relacion con tabla puesto
             $table->foreign('puesto_id')->references('id')->on('puestos');// Restriccion llave foranea
             $table->unsignedBigInteger('oficina_id');//Relacion con tabla oficina
-            $table->foreign('oficina_id')->references('id')->on('oficinas');// Restriccion llave foranea
+           
+            $table->foreign('estado_id')->references('id')->on('estados');// Restriccion llave foranea
+            $table->unsignedBigInteger('estado_id');//Relacion con tabla estado
             $table->timestamps();
         });
     }

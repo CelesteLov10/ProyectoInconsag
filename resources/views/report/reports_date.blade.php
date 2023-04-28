@@ -87,7 +87,7 @@ tbody:hover tr:hover td {
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
               <a href="{{route('venta.index')}}" id="sinLinea">
-                <h6 class = "n-font-weight-bold" title="Volver a todos los registros">Reporte de busqueda</h6></a> 
+                <h6 class = "n-font-weight-bold" title="Volver a todos los registros">Regresar a ventas</h6></a> 
           </div >
          
 
@@ -119,11 +119,12 @@ tbody:hover tr:hover td {
                                    <button type="submit" class="btn btn-outline-primary text-BLACK">Consultar</button>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-2 text-center mt-4">
+                            
+                        <div class="col-12 col-md-2 text-center mt-4">
                               <div class="form-group">
                                 <button class="btn btn-outline-primary text-BLACK" onclick="window.print()">Imprimir a PDF</button>
                               </div>
-                          </div>
+                          </div> 
                         
                             <div class="col-12 col-md-3 text-center">
                                 <span>Total de ingresos por prima: <b> </b></span>
@@ -238,10 +239,10 @@ tbody:hover tr:hover td {
 });
 </script>
 
-<script>
+{{-- <script> 
   function imprimir() {
       window.open('{{route('reports.pdfReportFecha')}}', '_blank');
   }
-  </script>
+  {{-- </script> --}}
 @stop
 {{--  href="{{route('reports.pdfReportFecha')}}" --}}

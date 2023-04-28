@@ -92,7 +92,7 @@
                             <label class="col-sm-3 col-form-label">Valor del terreno:</label>
                             <div class="col-sm-5">
                                 <input type="text" id="valorTerreno" class="form-control rounded-pill  @error('valorTerreno') is-invalid @enderror" 
-                                placeholder="Ingrese el valor del terreno. Ejem. 1000000" 
+                                placeholder="Ingrese el valor del terreno. Ejem. 1000000"
                                     name="valorTerreno" value="{{old('valorTerreno')}}" maxlength="8">
                                     @error('valorTerreno')
                                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -107,7 +107,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-3 col-form-label">Medida lateral derecha:</label>
                             <div class="col-sm-5">
-                                <input type="number" id="medidaLateralR"
+                                <input type="number" id="medidaLateralR" 
                                        class="form-control rounded-pill @error('medidaLateralR') is-invalid @enderror"
                                        placeholder="0.00" name="medidaLateralR" value="{{old('medidaLateralR')}}"
                                        maxlength="5">
@@ -120,7 +120,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-3 col-form-label">Medida lateral izquierda:</label>
                             <div class="col-sm-5">
-                                <input type="number" id="medidaLateralL"
+                                <input type="number" id="medidaLateralL" 
                                        class="form-control rounded-pill @error('medidaLateralL') is-invalid @enderror"
                                        placeholder="0.00" name="medidaLateralL" value="{{old('medidaLateralL')}}"
                                        maxlength="5">
@@ -133,7 +133,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-3 col-form-label">Medida lateral enfrente:</label>
                             <div class="col-sm-5">
-                                <input type="number" id="medidaEnfrente"
+                                <input type="number" id="medidaEnfrente" 
                                        class="form-control rounded-pill @error('medidaEnfrente') is-invalid @enderror"
                                        placeholder="0.00" name="medidaEnfrente" value="{{old('medidaEnfrente')}}"
                                        maxlength="5">
@@ -148,7 +148,7 @@
                             <div class="col-sm-5">
                                 <input type="number" id="medidaAtras"
                                        class="form-control rounded-pill @error('medidaAtras') is-invalid @enderror"
-                                       placeholder="0.00" name="medidaAtras" value="{{old('medidaAtras')}}"
+                                       placeholder="0.00" name="medidaAtras" value="{{old('medidaAtras')}}" 
                                        maxlength="5">
                                 @error('medidaAtras')
                                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -165,7 +165,7 @@
                             <div class="col-sm-5">
             <textarea type="text" id="colindanciaN"
                       class="form-control rounded-pill  @error('colindanciaN') is-invalid @enderror"
-                      placeholder="Ingrese la colindancia norte del bloque."
+                      placeholder="Ingrese la colindancia norte del bloque." 
                       name="colindanciaN" value="{{old('colindanciaN')}}" maxlength="150"></textarea>
                                 @error('colindanciaN')
                                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -178,7 +178,7 @@
                             <div class="col-sm-5">
                <textarea type="text" id="colindanciaS"
                          class="form-control rounded-pill  @error('colindanciaS') is-invalid @enderror"
-                         placeholder="Ingrese la colindancia sur del bloque."
+                         placeholder="Ingrese la colindancia sur del bloque." 
                          name="colindanciaS" value="{{old('colindanciaS')}}" maxlength="150"></textarea>
                                 @error('colindanciaS')
                                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -192,7 +192,7 @@
                             <div class="col-sm-5">
         <textarea type="text" id="colindanciaE"
                   class="form-control rounded-pill  @error('colindanciaE') is-invalid @enderror"
-                  placeholder="Ingrese la colindancia este del bloque. "
+                  placeholder="Ingrese la colindancia este del bloque. " 
                   name="colindanciaE" value="{{old('colindanciaE')}}" maxlength="150"></textarea>
                                 @error('colindanciaE')
                                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -205,7 +205,7 @@
                             <div class="col-sm-5">
      <textarea type="text" id="colindanciaO"
                class="form-control rounded-pill  @error('colindanciaO') is-invalid @enderror"
-               placeholder="Ingrese la colindancia oeste del bloque"
+               placeholder="Ingrese la colindancia oeste del bloque" 
                name="colindanciaO" value="{{old('colindanciaO')}}" maxlength="150"></textarea>
                                 @error('colindanciaO')
                                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -283,5 +283,15 @@ try
     }
 
 </script>
+
+<script>
+    function validateTextarea() {
+var textarea = document.getElementById("myTextarea");
+var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+if (regex.test(textarea.value)) {
+textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+}
+}
+  </script>
 @stop
 @endcan

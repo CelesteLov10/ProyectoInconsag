@@ -137,7 +137,7 @@ tbody:hover tr:hover td {
                       <td>{{$empleado->nombres}}</td>
                       <td>{{$empleado->apellidos}}</td>
                       <td>{{$empleado->puesto->nombreCargo}}</td>
-                      <td>{{$empleado->estado}}</td>
+                      <td>{{$empleado->estado->nombreE}}</td>
 
                       <td><a class="btn btn-outline-primary" href="{{route('empleado.showEmp', ['id'=>$empleado->id])}}">
                         <i class="fa fa-eye"></i> 

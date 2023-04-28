@@ -68,7 +68,7 @@
           <label class="col-sm-3 col-form-label">Dirección:</label>
           <div class="col-sm-5">
             <textarea type="text" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
-            maxlength="150" placeholder="Ingrese la dirección" name="direccion"
+            maxlength="150" placeholder="Ingrese la dirección" name="direccion" oninput="validateTextarea()" id="myTextarea"
             value="">{{old('direccion', $cliente->direccion)}}</textarea>
             @error('direccion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -161,6 +161,15 @@
                   minDate: "-80Y"
             });
           } );
+</script>
+<script>
+  function validateTextarea() {
+var textarea = document.getElementById("myTextarea");
+var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+if (regex.test(textarea.value)) {
+textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+}
+}
 </script>
 @stop
 @endcan

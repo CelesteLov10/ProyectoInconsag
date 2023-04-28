@@ -33,7 +33,7 @@
         <label class="col-sm-3 col-form-label">Nombre de la oficina:</label>
         <div class="col-sm-5">
           <input type="text" autofocus class="form-control rounded-pill @error('nombreOficina') is-invalid @enderror" 
-          placeholder="Ingrese una oficina" name="nombreOficina"
+          placeholder="Ingrese una oficina" name="nombreOficina" oninput="validateTextarea()" id="myTextarea"
           value="{{old('nombreOficina', $oficina->nombreOficina)}}" maxlength="50">
             @error('nombreOficina')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -46,7 +46,7 @@
         <label class="col-sm-3 col-form-label">Dirección:</label>
         <div class="col-sm-5">
           <textarea type="text" maxlength="150" class="form-control rounded-pill @error('direccion') is-invalid @enderror" 
-          placeholder="Ingrese una dirección" 
+          placeholder="Ingrese una dirección" oninput="validateTextarea()" id="myTextarea"
           name="direccion">{{old('direccion', $oficina->direccion)}}</textarea>
         @error('direccion')
           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -58,7 +58,7 @@
         <label class="col-sm-3 col-form-label">Nombre del gerente:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control rounded-pill @error('nombreGerente') is-invalid @enderror" 
-          placeholder="Ingrese el gerente de la oficina" 
+          placeholder="Ingrese el gerente de la oficina"  oninput="validateTextarea()" id="myTextarea"
           name="nombreGerente" value="{{old('nombreGerente', $oficina->nombreGerente)}}" maxlength="50">
           @error('nombreGerente')
           <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -201,6 +201,15 @@
     $(document).ready(function(){
       cargarselectmunicipio($('#departamento').val(),$('#prueba').val())
       });      
+</script>
+<script>
+  function validateTextarea() {
+var textarea = document.getElementById("myTextarea");
+var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+if (regex.test(textarea.value)) {
+textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+}
+}
 </script>
 @stop
 @endcan

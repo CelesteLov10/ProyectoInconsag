@@ -29,7 +29,7 @@ class LoteController extends Controller
         'medidaLateralL'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'medidaEnfrente'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
         'medidaAtras'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
-        'valorTerreno' => 'required|numeric|min:1|regex:/^[0-9]{1,8}+$/',
+        'valorTerreno' => 'required|numeric|min:80000|regex:/^[0-9]{1,8}+$/',
         'colindanciaN'    => 'required',
         'colindanciaS'    => 'required',
         'colindanciaE'    => 'required',
@@ -63,7 +63,7 @@ class LoteController extends Controller
         'valorTerreno.required' => 'El valor del terreno es obligatorio, no puede estar vacío.',
         'valorTerreno.numeric' => 'Solo se permite números enteros. Ejem. "12345678"',
         'valorTerreno.regex' => 'El valor es incorrecto. Ejem. "123"',
-        'valorTerreno.min' => 'El valor mínimo del terreno es  "1". ',
+        'valorTerreno.min' => 'El valor mínimo del terreno es  "80000". ',
 
     ];
     $this->validate($request, $reglas, $mensaje);

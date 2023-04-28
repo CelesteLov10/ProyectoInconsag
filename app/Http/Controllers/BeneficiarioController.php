@@ -39,7 +39,7 @@ class BeneficiarioController extends Controller
 
             'nombreCompletoBen.required' => 'El nombre es obligatorio, no puede estar vacío.',
             'nombreCompletoBen.alpha' => 'En el nombre sólo se permite letras.',
-            'nombreCompletoBen.regex' => 'El nombre debe iniciar con mayúscula y solo se permite un espacio entre ellos.',
+            'nombreCompletoBen.regex' => 'El nombre debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
             'telefonoBen.required' => 'El teléfono es obligatorio, no puede estar vacío.',
             'telefonoBen.numeric' => 'El teléfono debe contener sólo números.',
@@ -89,7 +89,7 @@ class BeneficiarioController extends Controller
 
             'nombreCompletoBen.required' => 'El nombre es obligatorio, no puede estar vacío.',
             'nombreCompletoBen.alpha' => 'En el nombre sólo se permite letras.',
-            'nombreCompletoBen.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'nombreCompletoBen.regex' => 'El nombre debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
             'telefonoBen.required' => 'El teléfono es obligatorio, no puede estar vacío.',
             'telefonoBen.numeric' => 'El teléfono debe contener sólo números.',

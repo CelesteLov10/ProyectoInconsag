@@ -140,5 +140,14 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script>
+        function validateTextarea() {
+  var textarea = document.getElementById("myTextarea");
+  var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+  if (regex.test(textarea.value)) {
+    textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+  }
+}
+      </script>
 @stop
 @endcan

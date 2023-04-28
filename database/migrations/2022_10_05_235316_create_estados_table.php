@@ -23,12 +23,12 @@ return new class extends Migration
             
             DB::table("estados")
             ->insert([
-                "nombreE" => "activo", 
+                "nombreE" => "Activo", 
             ]);
 
             DB::table("estados")
             ->insert([
-                "nombreE" => "inactivo", 
+                "nombreE" => "Inactivo", 
             ]);
     }
 

@@ -60,7 +60,7 @@ class ReservacionController extends Controller
             ], [
             'nombreCliente.required' => 'El nombre del cliente es obligatorio, no puede estar vacío.',
             'nombreCliente.alpha' => 'En el nombre sólo se permite letras.',
-            'nombreCliente.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'nombreCliente.regex' => 'El nombre debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
             'identidadCliente.required'=>'El número de identidad es obligatorio, no puede estar vacío.',
             'identidadCliente.digits' => 'El número de identidad debe tener 13 dígitos. ',

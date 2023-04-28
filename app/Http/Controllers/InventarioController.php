@@ -86,7 +86,7 @@ class InventarioController extends Controller
         $reglas = [
 
             'nombreInv'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u',
-            'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u',
+            'cantidad'    => 'required|numeric|regex:/^[0-9]{1,4}+$/u|min:1',
             'precioInv'   => 'required|numeric|min:1.00|max:99999|regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/',
             'descripcion' => 'required|min:10|max:150',
             'fecha'       => 'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
@@ -102,6 +102,8 @@ class InventarioController extends Controller
             'cantidad.required' => 'La cantidad del inventario es obligatoria, no puede estar vacío.', 
             'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',
             'cantidad.regex' => 'No puede ingresar mas de 9999 artículos.',
+            'cantidad.min' => 'La cantidad mínima de inventario no puede ser menor a 1.',
+
 
             'precioInv.required' => 'El precio del inventario es obligatorio, no puede estar vacío.',
             'precioInv.numeric'=> 'No se permiten letras o espacios vacíos.',
@@ -161,7 +163,7 @@ class InventarioController extends Controller
         $this->validate($request,[
 
             'nombreInv'   => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
-            'cantidad'    => ['required','numeric','regex:/^[0-9]{1,4}+$/u'],
+            'cantidad'    => ['required','numeric','regex:/^[0-9]{1,4}+$/u', 'min:1'],
             'precioInv'   => ['required','numeric','max:99999','min:1.00','regex:/^[0-9]{1,5}(\.[0-9]{1,2})?$/'],
             'descripcion' => ['required','min:10','max:150'],
             'fecha'       => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
@@ -175,6 +177,8 @@ class InventarioController extends Controller
             'cantidad.required' => 'La cantidad del inventario es obligatoria, no puede estar vacío.', 
             'cantidad.numeric' => 'En cantidad de inventario no se permiten letras.',
             'cantidad.regex' => 'No puede ingresar mas de 9999 artículos.',
+            'cantidad.min' => 'La cantidad mínima de inventario no puede ser menor a 1.',
+
 
             'precioInv.required' => 'El precio del inventario es obligatorio, no puede estar vacío.',
             'precioInv.numeric'=> 'No se permiten letras o espacios vacíos.',

@@ -264,7 +264,6 @@
         <div class="modal-content">
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Registro de beneficiario</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
         
@@ -276,7 +275,7 @@
                 <div class="col-sm-7">
                 <input type="text" class="form-control rounded-pill @error('identidadBen') is-invalid @enderror" 
                     placeholder="0000000000000" 
-                    name="identidadBen" value="{{old('identidadBen')}}" required='required'
+                    name="identidadBen" value="{{old('identidadBen')}}"
                     title="Ingrese un numero de identidad válido" maxlength="13">
                     @error('identidadBen')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -288,7 +287,7 @@
                 <label class="col-sm-4 col-form-label">Nombre completo:</label>
                 <div class="col-sm-7">
                 <input type="text" class="form-control rounded-pill @error('nombreCompletoBen') is-invalid @enderror" 
-                placeholder="Ingrese el nombre completo (ejem. Pablo Jose Ramos Mendoza)" required='required'
+                placeholder="Ingrese el nombre completo (ejem. Pablo Jose Ramos Mendoza)"  oninput="validateTextarea()" id="myTextarea"
                 name="nombreCompletoBen" value="{{old('nombreCompletoBen')}}" maxlength="80">
                 @error('nombreCompletoBen')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -300,7 +299,7 @@
             <label class="col-sm-4 col-form-label">Teléfono:</label>
             <div class="col-sm-7">
                 <input type="text" class="form-control rounded-pill @error('telefonoBen') is-invalid @enderror" 
-                placeholder="00000000" required='required'
+                placeholder="00000000" oninput="validateTextarea()" id="myTextarea"
                 name="telefonoBen" value="{{old('telefonoBen')}}" maxlength="8">
             @error('telefonoBen')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -312,7 +311,7 @@
             <label class="col-sm-4 col-form-label">Dirección:</label>
             <div class="col-sm-7">
                 <textarea type="text" class="form-control rounded-pill @error('direccionBen') is-invalid @enderror" 
-                maxlength="150" placeholder="Ingrese la dirección" required='required'
+                maxlength="150" placeholder="Ingrese la dirección"  oninput="validateTextarea()" id="myTextarea"
                 name="direccionBen" value="">{{old('direccionBen')}}</textarea>
             @error('direccionBen')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -323,7 +322,7 @@
             <div class="mb-3 row">
             <label class="col-sm-4 col-form-label">Nombre del cliente relacionado:</label>
             <div class="col-sm-7">
-            <select name="cliente_id" id="" class="form-select form-control rounded-pill @error('cliente_id') is-invalid @enderror" required='required'>
+            <select name="cliente_id" id="" class="form-select form-control rounded-pill @error('cliente_id') is-invalid @enderror" >
                 <option value="" disabled selected>-- Seleccione un cliente --</option>
                 @foreach ($cliente as $clientes)
                     <option value="{{$clientes->id}}" 
@@ -657,5 +656,14 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
         
+        <script>
+            function validateTextarea() {
+      var textarea = document.getElementById("myTextarea");
+      var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+      if (regex.test(textarea.value)) {
+        textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+      }
+    }
+          </script>
 @stop
 @endcan

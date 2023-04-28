@@ -30,7 +30,7 @@
                     <label class="col-sm-3 col-form-label">Nombre Cliente:</label>
                     <div class="col-sm-5">
                     <input type="text" class="form-control rounded-pill @error('nombreCliente') is-invalid @enderror" 
-                    placeholder="Ingrese el nombre completo (ejem. Nataly Caballero)" 
+                    placeholder="Ingrese el nombre completo (ejem. Nataly Caballero)" oninput="validateTextarea()" id="myTextarea"
                     name="nombreCliente" value="{{old('nombreCliente')}}" maxlength="80">
                     @error('nombreCliente')
                     <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -231,6 +231,16 @@ setInterval(updateOptions, 0 * 120 * 1000);
 // Ejecutar la función una vez al cargar la página
 updateOptions();
           </script> 
+
+<script>
+  function validateTextarea() {
+var textarea = document.getElementById("myTextarea");
+var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+if (regex.test(textarea.value)) {
+textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+}
+}
+</script>
 @stop
 
   

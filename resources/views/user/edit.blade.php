@@ -33,7 +33,7 @@
             <label class="col-sm-3 col-form-label">Nombre completo:</label>
             <div class="col-sm-5">
               <input type="text" autofocus class="form-control rounded-pill @error('name') is-invalid @enderror" 
-              placeholder="Ingrese un nombre de usuario Ejem: 'Maria Lovo' " name="name" maxlength="50"
+              placeholder="Ingrese un nombre de usuario Ejem: 'Maria Lovo' " name="name" maxlength="50" oninput="validateTextarea()" id="myTextarea"
               value="{{old('name', $user->name)}}">
                 @error('name')
                   <small class="text-danger"><strong>*</strong>{{$message}}</small>
@@ -110,6 +110,14 @@
 @stop
 
 @section('js')
-    
+<script>
+  function validateTextarea() {
+var textarea = document.getElementById("myTextarea");
+var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+if (regex.test(textarea.value)) {
+textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+}
+}
+</script>
 @stop
 @endcan

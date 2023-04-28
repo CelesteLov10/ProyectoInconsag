@@ -15,19 +15,20 @@ class Empleado extends Model
     'nombres', 
     'apellidos',
     'telefono',
-    'estado',
     'correo',
     'fechaNacimiento',
     'direccion', 
     'fechaIngreso', 
     'puesto_id', 
-    'oficina_id'];
+    'oficina_id', 
+'estado_id'];
     public function puesto(){
         return $this->belongsTo(Puesto::class);
     }
     
+    //un empleado pertenefce a un estado
     public function estado(){ 
-    // return $this->belongsTo(Estado::class);
+    return $this->belongsTo(Estado::class);
     }
 
     // un empleado puede ingresar varios inventarios

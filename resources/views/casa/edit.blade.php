@@ -51,7 +51,7 @@
           <label class="col-sm-3 col-form-label">Clase de Casa:</label>
           <div class="col-sm-5">
             <input type="text" autofocus class="form-control rounded-pill @error('claseCasa') is-invalid @enderror" 
-            placeholder="Ingrese el tipo de la clase de casa" name="claseCasa"
+            placeholder="Ingrese el tipo de la clase de casa" name="claseCasa" 
             value="{{old('claseCasa', $casa->claseCasa)}}"  maxlength="50">
               @error('claseCasa')
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -87,7 +87,7 @@
           <label class="col-sm-3 col-form-label">Descripción:</label>
           <div class="col-sm-5">
             <textarea type="text" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
-            maxlength="150" placeholder="Ingrese la descripción" name="descripcion"
+            maxlength="150" placeholder="Ingrese la descripción" name="descripcion" oninput="validateTextarea()" id="myTextarea"
             value="">{{old('descripcion', $casa->descripcion)}}</textarea>
             @error('descripcion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
@@ -161,6 +161,16 @@
   <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+  <script>
+    function validateTextarea() {
+var textarea = document.getElementById("myTextarea");
+var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+if (regex.test(textarea.value)) {
+textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+}
+}
+  </script>
 
 @stop
 @endcan

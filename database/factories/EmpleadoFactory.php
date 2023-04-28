@@ -22,13 +22,13 @@ class EmpleadoFactory extends Factory
             'nombres'=>$this->faker->name(),
             'apellidos'=>$this->faker->lastname(),
             'telefono'=>$this->faker->phoneNumber(),
-            'estado'=>$this->faker->randomElement(['activo','inactivo']),
             'correo'=>$this->faker->unique()->email(),
             'fechaNacimiento'=>$this->faker->date($format = 'd-m-Y',$max = 2001),
             'direccion'=>$this->faker->address(),
             'fechaIngreso'=>$this->faker->date($format = 'd-m-Y'),
             'puesto_id'=>$this->faker->numberBetween(1,30),
-            'oficina_id'=>$this->faker->numberBetween(1,5)
+            'oficina_id'=>$this->faker->numberBetween(1,5), 
+            'estado_id'=>$this->faker->numberBetween(1,2),
         ];
     }
 }

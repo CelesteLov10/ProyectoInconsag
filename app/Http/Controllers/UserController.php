@@ -27,7 +27,7 @@ class UserController extends Controller
         'profile_image' => ['max:2048'],
     ],[
         'name.required' => 'El nombre del usuario es obligatorio, no puede estar vacío.',
-        'name.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+        'name.regex' => 'El nombre debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
         'email.required' => 'El correo electrónico es obligatorio, no puede estar vacío.',
         'email.unique' => 'El correo electrónico ya está en uso.',

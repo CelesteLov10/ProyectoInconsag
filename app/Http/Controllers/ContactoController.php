@@ -48,12 +48,12 @@ class ContactoController extends Controller
             ], [
             'nombre.required' => 'Su nombre es obligatorio, no puede estar vacío.',
             'nombre.alpha' => 'En el nombre sólo se permite letras.',
-            'nombre.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'nombre.regex' => 'El nombre debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
 
             'apellido.required' => 'Su apellido es obligatorio, no puede estar vacío.',
             'apellido.alpha' => 'En el apellido sólo se permite letras.',
-            'apellido.regex' => 'El apellido debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'apellido.regex' => 'El apellido debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
 
             'telefono.required' => 'El número de su teléfono es obligatorio, no puede estar vacío.',

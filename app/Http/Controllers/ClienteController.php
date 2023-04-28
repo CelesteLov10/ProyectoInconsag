@@ -49,7 +49,7 @@ class ClienteController extends Controller
 
             'nombreCompleto.required' => 'El nombre del cliente es obligatorio, no puede estar vacío.',
             'nombreCompleto.alpha' => 'En el nombre sólo se permite letras.',
-            'nombreCompleto.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'nombreCompleto.regex' => 'El nombre debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
             'telefono.required' => 'El teléfono del cliente es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
@@ -108,7 +108,7 @@ class ClienteController extends Controller
 
             'nombreCompleto.required' => 'El nombre del cliente es obligatorio, no puede estar vacío.',
             'nombreCompleto.alpha' => 'En el nombre sólo se permite letras.',
-            'nombreCompleto.regex' => 'El nombre debe iniciar con mayúscula y solo permite un espacio entre ellos.',
+            'nombreCompleto.regex' => 'El nombre debe iniciar con mayúscula, solo permite un espacio entre ellos y no se permiten números.',
 
             'telefono.required' => 'El teléfono del cliente es obligatorio, no puede estar vacío.',
             'telefono.numeric' => 'El teléfono debe contener sólo números.',

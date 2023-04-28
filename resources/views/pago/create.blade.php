@@ -38,7 +38,7 @@
 <div class="mb-3 row" hidden>
     <label class="col-sm-3 col-form-label">Número de venta:</label>
     <div class="col-sm-5">
-        <input type="text" class="border border-0 form-control rounded-pill  @error('venta_id') is-invalid @enderror " 
+        <input type="text" class=" border-0 form-control rounded-pill  @error('venta_id') is-invalid @enderror " 
             placeholder="Ingrese el nuevo nombre de proveedor" 
             name="venta_id" value="{{old('venta_id', $venta->id)}}" maxlength="50" style="background-color: rgba(206, 206, 206, 0)">
             @error('venta_id')
@@ -50,7 +50,7 @@
 <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Nombre de cliente:</label>
     <div class="col-sm-5">
-    <select name="cliente_id" id="" class="border border-0 form-control rounded-pill @error('cliente_id') is-invalid @enderror"
+    <select name="cliente_id" id="" class=" border-0 form-control rounded-pill @error('cliente_id') is-invalid @enderror"
     style="background-color: rgba(206, 206, 206, 0)">
         {{-- se muestra el registro guardado --}}
         <option value="{{$venta->cliente->id}}" 
@@ -65,7 +65,7 @@
 <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Nombre de lote:</label>
     <div class="col-sm-5">
-    <select name="lote_id" id="" class="border border-0 form-control rounded-pill @error('lote_id') is-invalid @enderror"
+    <select name="lote_id" id="" class="border-0 form-control rounded-pill @error('lote_id') is-invalid @enderror"
     style="background-color: rgba(206, 206, 206, 0)">
         {{-- se muestra el registro guardado --}}
         <option value="{{$venta->lote->id}}" 
@@ -80,7 +80,7 @@
 <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Fecha de pago:</label>
     <div class="col-sm-5">
-        <input type="text" class="border border-0 form-control rounded-pill @error('fechaPago') is-invalid @enderror" 
+        <input type="text" class="border-0 form-control rounded-pill @error('fechaPago') is-invalid @enderror" 
         maxlength="10" placeholder="Fecha actual"
         name="fechaPago" autocomplete="off" value="<?php echo date("d-m-Y");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)" > 
             @error('fechaPago')
@@ -284,6 +284,15 @@ if (form && submitBtn) {
     });
 }
 </script>
+      <script>
+        function validateTextarea() {
+  var textarea = document.getElementById("myTextarea");
+  var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+  if (regex.test(textarea.value)) {
+    textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+  }
+}
+      </script>
 
 {{-- comment 
 <script>

@@ -148,7 +148,7 @@
             </tr>
             <tr>
                 <td scope="row"><strong>Estado</strong></td>
-                <td>{{$empleado->estado}}</td>    
+                <td>{{$empleado->estado->nombreE}}</td>    
             </tr>
             <tr>
                 <td scope="row"><strong>Correo</strong></td>
