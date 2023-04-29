@@ -298,7 +298,7 @@
                     <td>{{$venta->fechaVenta}}</td>    
                 </tr>
             <tr>
-                <td scope="row"><strong>Total a pagar:</strong></td>
+                <td scope="row"><strong>Total pagado:</strong></td>
                 <td>{{$venta->total}}</td>    
             </tr> 
 

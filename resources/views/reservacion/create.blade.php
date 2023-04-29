@@ -27,7 +27,7 @@
       enctype="multipart/form-data">
         @csrf {{-- TOKEN INPUT OCULTO --}}
     <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Nombre Cliente:</label>
+                    <label class="col-sm-3 col-form-label">Nombre del cliente:</label>
                     <div class="col-sm-5">
                     <input type="text" class="form-control rounded-pill @error('nombreCliente') is-invalid @enderror" 
                     placeholder="Ingrese el nombre completo (ejem. Nataly Caballero)" oninput="validateTextarea()" id="myTextarea"
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Fecha cita:</label>
+                    <label class="col-sm-3 col-form-label">Fecha de la cita:</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control rounded-pill @error('fechaCita') is-invalid @enderror" 
                         maxlength="10" placeholder="Seleccione la fecha de cita"
@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Hora cita:</label>
+                    <label class="col-sm-3 col-form-label">Hora de la cita:</label>
                     <div class="col-sm-5">
                           {{--<input type="hidden" class="form-control rounded-pill @error('horaCita') is-invalid @enderror" 
                         maxlength="7" placeholder="Seleccione la hora de cita"

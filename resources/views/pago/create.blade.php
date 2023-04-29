@@ -82,7 +82,7 @@
     <div class="col-sm-5">
         <input type="text" class="border-0 form-control rounded-pill @error('fechaPago') is-invalid @enderror" 
         maxlength="10" placeholder="Fecha actual"
-        name="fechaPago" autocomplete="off" value="<?php echo date("d-m-Y");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)" > 
+        name="fechaPago" autocomplete="off" value="<?php echo date("Y-m-d");?>" readonly=»readonly» style="background-color: rgba(206, 206, 206, 0)" > 
             @error('fechaPago')
         <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
     @enderror

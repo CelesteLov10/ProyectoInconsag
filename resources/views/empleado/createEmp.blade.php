@@ -82,7 +82,7 @@
 
 
         <div class="mb-3 row">
-          <label for="estado" class="col-sm-3 col-form-label">estado:</label>
+          <label for="estado" class="col-sm-3 col-form-label">Estado:</label>
           <div class="col-sm-5">
           <select id="estado" name="estado_id" class="form-control form-select rounded-pill @error('estado_id') is-invalid @enderror">
               @foreach ($estado->get() as $index => $estados)

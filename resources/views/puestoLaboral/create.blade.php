@@ -48,11 +48,24 @@
           </div>
         </div>
 
-        <div class="mb-3 row">
+        {{-- <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Descripción:</label>
           <div class="col-sm-5">
             <textarea type="text" oninput="validateTextarea()" id="myTextarea" maxlength="150" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
-            placeholder="Ingrese una descripción del puesto" name="descripcion">{{old('descripcion')}} </textarea>
+            placeholder="Ingrese una descripción del puesto"
+             name="descripcion">{{old('descripcion')}} </textarea>
+          @error('descripcion')
+            <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
+          @enderror
+          </div>
+        </div> --}}
+
+        <div class="mb-3 row">
+          <label class="col-sm-3 col-form-label">Descripción:</label>
+          <div class="col-sm-5">
+            <textarea type="text" oninput="validateTextarea()" id="myTextarea"  maxlength="150" class="form-control rounded-pill @error('descripcion') is-invalid @enderror" 
+            placeholder="Ingrese una descripción del puesto " 
+            name="descripcion">{{old('descripcion')}}</textarea>
           @error('descripcion')
             <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
           @enderror
