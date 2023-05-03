@@ -107,7 +107,7 @@ tbody:hover tr:hover td {
         <div class = " card shadow ab-4 btaura" >
           <div class = " card-header py-3 " >
              <a href="{{route('venta.index')}}" id="sinLinea">
-                <h6 class = "n-font-weight-bold " title="Volver a todos los registros">Ventas por día</h6></a> 
+                <h6 class = "n-font-weight-bold " title="Volver a todos los registros">Regresar a ventas</h6></a> 
           </div >
 
           <div class="m-0 align-items-center justify-content-center ">

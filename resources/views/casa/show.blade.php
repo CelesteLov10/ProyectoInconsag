@@ -119,7 +119,7 @@
         {{-- encabezado --}}
         <div class = " card shadow ab-4 btaura" >
             <div class = " card-header py-3 " >
-                <h5 class = "n-font-weight-bold text-black">Detalles de {{$casa->claseCasa}} </h5> 
+                <h5 class = "n-font-weight-bold text-black">Detalles de la casa {{$casa->claseCasa}} </h5> 
             </div >
         
         <div class="m-0 text-left align-items-center justify-content-center">
