@@ -505,7 +505,7 @@ return [
                 [
                     'text' => 'Listado lotes vendidos',
                     'url'  => '/pago',
-                    'icon' => 'fa-solid fa-clipboard-list',
+                    'icon' => 'fa-solid fa-file-invoice',
                     'shift' => 'ml-4',
                 ],
 

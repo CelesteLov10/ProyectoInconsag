@@ -87,15 +87,11 @@
 </div>    
 </form> --}}
 <style>
-    .fa-volume-high{
-        color: rgb(42, 209, 131)
-    }
-    .fa-volume-off{
+
+    .fa-triangle-exclamation{
         color: brown
     }
-    .fa-volume-low{
-        color: goldenrod
-    }
+ 
     .fa-file-check{
         color: antiquewhite
     }
@@ -160,7 +156,7 @@
                             @if ($ventas->validacion>=3)
                             <td>
                               <a class="btn text-BLACK" id="borsi">
-                                <i class="fa-solid fa-volume-off"></i>     
+                                <i class="fa-solid fa-triangle-exclamation"></i>    
                             </a>
                                                                                      
                             </td>
@@ -169,8 +165,9 @@
                             @if($ventas->validacion==1 || $ventas->validacion==2)
                             <td>
                                 <a class="btn text-BLACK" id="borsi"> 
-                                    <i class="fa-solid fa-volume-low"></i>    
-                                 </a>
+                                    <i class="fa-solid fa-money-check-dollar" style="
+                                        color: goldenrod"></i>
+                                </a>
                                                           
                             </td>
 
@@ -179,7 +176,9 @@
                             @if($ventas->validacion==0)
                             <td>
                                 <a class="btn text-BLACK" id="borsi">
-                                    <i class="fa-solid fa-volume-high"></i>                                
+                                    <i class="fa-solid fa-money-check-dollar" style="
+                                         color: rgb(42, 209, 131)">
+                                    </i>                         
                                 </a>
                             </td>
 

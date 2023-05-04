@@ -33,9 +33,9 @@ class PagoController extends Controller
             ,:bloque
             ,:cliente)', [
 
-            "nombrelote",
-            "bloque" , 
-            "cliente"
+            "nombrelote"=>"",
+            "bloque"=>"" , 
+            "cliente"=>""
         ]);
         } else {
             # si se realiza una busqueda traera todos esos datos relacionados con la busqueda
@@ -51,21 +51,6 @@ class PagoController extends Controller
     
         }
         
-      
-
-    /*  $ventas = Venta::query()
-    ->when(request('search'), function($query){
-    return $query->where('formaVenta', 'LIKE', '%' .request('search') .'%')
-    ->orWhereHas('lote', function($q){
-        $q->where('nombreLote','LIKE', '%' .request('search') .'%');
-    })
-    ->orWhereHas('bloque', function($q){
-        $q->where('nombreBloque','LIKE', '%' .request('search') .'%');
-    })
-        ->orWhereHas('cliente', function($q){
-            $q->where('nombreCompleto','LIKE', '%' .request('search') .'%');
-    });
-    })->orderBy('id','desc')->paginate(30)->withQueryString();*/
         return view('pago.index', compact('lote', 'pago', 'venta', 'bloques', 'cliente', 'busqueda'));
      //  dd($busqueda);
     
