@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'Maria Celeste Lovo',
             'email' => 'celestelovohp@gmail.com',
             'password' => bcrypt('12345678'),
-            'profile_image' => ''
+            'profile_image' => '1690366661_kuramita.jpg'
         ])->assignRole('Administrador');
 
         User::create([
