@@ -64,11 +64,11 @@ class MaquinariaController extends Controller
         $reglas = [
             'nombreMaquinaria'   => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/',
             'modelo' => 'required|regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9-.]+\s{0,1})+$/',
-            'placa'  => 'nullable|min:7|regex:/^[A-Za-z0-9]+$/u', // regex: /^[A-Z]{2,3}[0-9]{4}+$/u
+            'placa'  => 'required|nullable|min:7|regex:/^[A-Za-z0-9]+$/u', // regex: /^[A-Z]{2,3}[0-9]{4}+$/u
             'descripcion'       => 'required|min:10|max:150',
             'fechaAdquisicion'    =>'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'proveedor_id'       => 'required',
-            'cantidadHoraAlquilada' => 'required_if:maquinaria,alquilada','nullable|numeric|min:1|nullable|regex:/^[0-9]{1,3}+$/U', 
+            'cantidadHoraAlquilada' => 'required_if:maquinaria,alquilada|nullable|numeric|min:1|nullable|regex:/^[0-9]{1,3}+$/U', 
             'valorHora' => 'required_if:maquinaria,alquilada|numeric|regex:/^[0-9]{1,4}+$/|min:1|nullable', 
             //'cantidadAlquilada' => 'nullable|min:1|numeric|regex:/^[0-9]{1,4}+$/',
             'totalPagar' => 'required_if:maquinaria,alquilada','nullable',
@@ -102,7 +102,8 @@ class MaquinariaController extends Controller
 
             'proveedor_id.required' => 'Debe seleccionar el nombre del proveedor, no puede estar vacío.',
 
-            'cantidadHoraAlquilada.numeric' => 'Solo se permite números enteros. Ejem. "123"',
+            'cantidadHoraAlquilada.required' => 'La cantidad de horas alquiladas es requerida, no puede estar vacío.',
+            'cantidadHoraAlquilada.numeric' => 'Solo se permite ingresar números enteros. Ejem. "123"',
             'cantidadHoraAlquilada.regex' => 'El valor es incorrecto. Ejem. "123"',
             'cantidadHoraAlquilada.min' => 'La cantidad de hora alquilada mínima es "1". ',
 
@@ -149,12 +150,12 @@ class MaquinariaController extends Controller
 
             'nombreMaquinaria' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/'],
             'modelo' => ['required', 'regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ0-9-.]+\s{0,1})+$/'],
-            'placa'  => ['nullable','min:7','regex:/^[A-Za-z0-9]+$/u'],
+            'placa'  => ['required','nullable','min:7','regex:/^[A-Za-z0-9]+$/u'],
             //'cantidad' => 'required|min:1|numeric|regex:/^[0-9]{1,4}+$/',
             'descripcion'       => ['required','min:10','max:150'],
             'fechaAdquisicion'  => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'proveedor_id'      => ['required'],
-            'cantidadHoraAlquilada' => ['numeric|nullable','min:1','regex:/^[0-9]{1,3}+$/U'], 
+            'cantidadHoraAlquilada' => ['required_if:maquinaria,alquilada','numeric','nullable','min:1','regex:/^[0-9]{1,3}+$/U'], 
             'valorHora' => ['numeric', 'min:1', 'regex:/^[0-9]{1,4}+$/', 'nullable'],
             //'cantidadAlquilada' => 'nullable|min:1|numeric|regex:/^[0-9]{1,4}+$/', 
             'totalPagar' => ['nullable'], 
@@ -186,9 +187,11 @@ class MaquinariaController extends Controller
 
             'proveedor_id.required' => 'Debe seleccionar el nombre del proveedor, no puede estar vacío.',
 
-            'cantidadHoraAlquilada.numeric' => 'Solo se permite números enteros. Ejem. "12"',
+            'cantidadHoraAlquilada.required' => 'La cantidad de horas alquiladas es requerida, no puede estar vacío.',
+            'cantidadHoraAlquilada.numeric' => 'Solo se permite ingresar números enteros. Ejem. "123"',
             'cantidadHoraAlquilada.regex' => 'El valor es incorrecto. Ejem. "12"',
             'cantidadHoraAlquilada.min' => 'La cantidad de hora alquilada mínima es "1". ',
+    
 
             'valorHora.numeric' => 'Solo se permite ingresar números.',
             'valorHora.regex' => 'El valor por hora solo permite numeros enteros. Ejem. "1850"',
