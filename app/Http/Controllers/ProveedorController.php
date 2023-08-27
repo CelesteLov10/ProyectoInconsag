@@ -23,11 +23,11 @@ class ProveedorController extends Controller
 
             $categoria = Categoria::all();
             return view('proveedor.index', compact('proveedor','categoria'));
-        
+
         //
     }
 
-    public function create(){   
+    public function create(){
         $categoria = Categoria::orderBy('nombreCat')->get();
         return view('proveedor.create', compact('categoria'));
     }
@@ -42,7 +42,7 @@ class ProveedorController extends Controller
             'telefono'  => 'required|numeric|digits:8|regex:/^[(2)(3)(8)(9)][0-9]/|unique:proveedores',
             'email'    => 'required|email|regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#|unique:proveedores',
             'categoria_id' => 'required',
-    
+
         ];
         $mensaje =[
             'nombreProveedor.required' => 'El nombre del proveedor es obligatorio, no puede estar vacío. ',
@@ -82,9 +82,9 @@ class ProveedorController extends Controller
                 'direccion'=>$request['direccion'],
                 'telefono'=>$request['telefono'],
                 'email' =>$request[ 'email' ],
-                'categoria_id'=>$request['categoria_id'], 
+                'categoria_id'=>$request['categoria_id'],
             ]);
-            
+
             return redirect()->route('proveedor.index')
             ->with('mensaje', 'Se guardó un nuevo registro de proveedor correctamente');
     }
@@ -102,19 +102,19 @@ class ProveedorController extends Controller
     }
 
     public function update(Request $request, $id){
-        
+
         $this->validate($request,[
-            
+
             'nombreProveedor' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]{1}[a-záéíóúñ]+\s{0,1}([0-9]{0,15}?))+$/u','unique:proveedores,nombreProveedor,'.$id.'id'],
             'nombreContacto' => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
-            'cargoContacto' => ['required','regex:/^([A-ZÁÉÍÓÚÑa-záéíóúñ]+\s{0,1})+$/u'],
+            'cargoContacto' => ['required','regex:/^[A-Za-z]+\s[A-Za-z]+$/'],
             'direccion' => ['required','min:10','max:150'],
             'telefono' => ['required','numeric','digits:8','regex:/^[(2)(3)(8)(9)][0-9]/','unique:proveedores,telefono,'.$id.'id'],
             'email'  => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:proveedores,email,'.$id.'id'],
             'categoria_id' => ['required'],
         ],[
             'nombreProveedor.required' => 'El nombre del proveedor es obligatorio, no puede estar vacío. ',
-            'nombreProveedor.regex' => 'El nombre del proveedor solo permite un espacio 
+            'nombreProveedor.regex' => 'El nombre del proveedor solo permite un espacio
             entre los nombres y no se admiten números o caracteres especiales.',
             'nombreProveedor.unique' => 'El nombre del proveedor ya está en uso.',
 
@@ -137,12 +137,12 @@ class ProveedorController extends Controller
             'email.required' => 'Debe ingresar el correo electrónico.',
             'email.email' => 'Debe ingresar un correo electrónico válido.',
             'email.unique' => 'El correo electrónico ya está en uso.',
-            
+
             'categoria_id.required' => 'Debe seleccionar una categoría',
 
-    
+
         ]);
-        
+
         $proveedor = Proveedor::findOrFail($id);
 
         $proveedor->nombreProveedor = $request->input('nombreProveedor');
@@ -152,13 +152,13 @@ class ProveedorController extends Controller
         $proveedor->telefono = $request->input('telefono');
         $proveedor->email = $request->input('email');
         $proveedor->categoria_id = $request->input('categoria_id');;
-        
+
         $update = $proveedor->save();
-        
+
         if ($update){
             return redirect()->route('proveedor.index')
             ->with('mensajeW', 'Se actualizó el registro del proveedor correctamente');
-        } 
+        }
     }
 
 }
