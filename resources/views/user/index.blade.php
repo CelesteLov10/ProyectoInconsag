@@ -111,13 +111,17 @@
                             </thead>
                             <tbody>
                             @forelse($user as $users)
+                            @if ($users->id != 1)
                             <tr>
                                 <td>{{$users->name}}</td>
                                 <td>{{$users->email}}</td>
+                                
+                                    
                                 <td><a class="btn btn-outline-warning" 
                                     href="{{route('user.edit', ['id' => $users->id])}}">
                                     <i class="fa fa-clipboard"></i></a>
                                 </td>
+                                @endif
                                     @csrf
                             @empty
                             <tr>
