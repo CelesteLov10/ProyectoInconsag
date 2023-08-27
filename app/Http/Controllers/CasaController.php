@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Casa;
 use App\Models\Image;
 use App\Models\Constructora;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class CasaController extends Controller
@@ -34,11 +34,11 @@ class CasaController extends Controller
                 'cantHabitacion' => ['required','numeric','min:1','max:5','regex:/^[0-9]{1,5}/u'],
                 'descripcion' => ['required', 'min:10','max:150'],
                 'constructora_id' => ['required'],
-            
+
             ],[
 
             'claseCasa.required' => 'El nombre del modelo de la casa es obligatorio, no puede estar vacío.',
-            'claseCasa.regex' => 'El nombre de la casa no permite números.',
+            'claseCasa.regex' => 'No se permiten números, ni espacios dobles en el nombre del modelo de la casa.',
 
             'valorCasa.required' => 'El valor de la casa es obligatorio, no puede estar vacío.',
             'valorCasa.numeric' => 'El valor de la casa debe contener sólo números.',
@@ -87,13 +87,13 @@ class CasaController extends Controller
                     Image::create($request->all());
                 }
             }
-            
+
             //Casa::create($input);
                 return redirect()->route('casa.index')
-                ->with('mensaje', 'Se guardó el registro de la nueva casa modelo correctamente');         
+                ->with('mensaje', 'Se guardó el registro de la nueva casa modelo correctamente');
          /** redireciona una vez enviado  */
     }
-    
+
     public function show($id){
         $casa = Casa::findOrFail($id);
         return view('casa.show', compact('casa'));
@@ -141,7 +141,7 @@ class CasaController extends Controller
         $casa->cantHabitacion = $request->input('cantHabitacion');
         $casa->descripcion = $request->input('descripcion');
         $casa->constructora_id = $request->input('constructora_id');
-        
+
 
         if($request->hasFile("images")){
             $files=$request->file("images");
