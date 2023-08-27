@@ -104,8 +104,8 @@ class PagoController extends Controller
             'lote_id' => 'required',
             'fechaPago' =>'required',
             'cantidadCuotasPagar' => 'required|numeric|min:1|max:6|regex:/^[0-9]{1,2}+$/u',
-            'cuotaPagar' => 'required',
-            'saldoEnCuotas' => 'required',
+            'cuotaPagar' => 'required|numeric|min:1',
+            'saldoEnCuotas' => 'required|regex:/^[0.000-9.000]{1,9}+$/u',
             'valorTerrenoPagar' => 'required|min:1|regex:/^[0-9]{1,40}/u',
             //'nuevoSaldo' => 'required',
     
@@ -114,9 +114,8 @@ class PagoController extends Controller
 
             'cantidadCuotasPagar.required' => 'La cantidad de cuotas es obligatoria, no puede estar vacío.',
             'cantidadCuotasPagar.numeric' => 'La cantidad de cuotas debe contener sólo números.',
-            'cantidadCuotasPagar.digits' => 'La cantidad de cuotas debe contener 8 dígitos.',
             'cantidadCuotasPagar.min' => 'La cantidad de cuotas debe ser 1 como minimo.',
-            'cantidadCuotasPagar.max' => 'La cantidad de cuotas debe ser 6 como máximo.',
+            'cantidadCuotasPagar.max' => 'La cantidad de cuotas debe ser 1 como máximo.',
 
             'saldoEnCuotas.required' => 'El saldo en cuotas es obligatorio, no puede estar vacío.',
             'saldoEnCuotas.required' => 'El saldo en cuotas es obligatorio, no puede estar vacío.',

@@ -185,57 +185,29 @@
     @stop
 
 @section('js')
-<script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js')}}"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script>
     
-try
-    {function calcularPago1(){
-    
-    let cantidadCuotasPagar = document.getElementById('cantidadCuotasPagar').value;
-    let cuotaPagar = document.getElementById('cuotaPagar').value;
-    let saldoEnCuotas = document.getElementById('saldoEnCuotas');
-    let valorTerrenoPagar = document.getElementById('valorTerrenoPagar');
-    let valorTe = document.getElementById('valorTe').value;
-    let resultado = 0;
-    let restant = 0;
-    
+    try
+        {function calcularPago1(){
         
-        // if (cantidadCuotasPagar === "") {
-        //     valorTerrenoPagar.value = 0;
-        //     saldoEnCuotas.value = 0;
-        //     location.reload();//Funcion para que refresque la pagina y elimine los datos de las variables almacenadas
-            
-        // }else
-        
-            
-            resultado = cantidadCuotasPagar * cuotaPagar; 
-            saldoEnCuotas.value = resultado;
-            
-            restant = (valorTe - (cuotaPagar * {{$cantCuotas}})) - resultado; //Ahora si toma el valor insertado.
-            valorTerrenoPagar.value = restant;
-        
-
-        // $('submit-and-print').click(function (event) {
-        // event.preventDefault();
-        
-        // let cantidadCuotasPagar = document.getElementById('cantidadCuotasPagar').value;
-        //cantidadCuotasPagar = parseInt(cantidadCuotasPagar);
-        // var sumaCuotas = ({{$cantCuotas}} + cantidadCuotasPagar);
-
-        // if(sumaCuotas >= {{$cantCuotas}}){
-        //     alert('kjnjhdpppppppppppppppppppppppppppppppppppppppppppppppppppppn');
-        // }
-    
-    //document.getElementById('valorTerrenoPagar').innerHTML = valorTerrenoPagar;
-    //document.querySelector("#valorTerrenoPagar").value = nuevoSaldo;
-    // let refresh = document.getElementById('refresh');
-    //         refresh.addEventListener('click', => {
-    //             location.reload();
-    //         })
-        }
+        let cantidadCuotasPagar = document.getElementById('cantidadCuotasPagar').value;
+        let cuotaPagar = document.getElementById('cuotaPagar').value;
+        let saldoEnCuotas = document.getElementById('saldoEnCuotas');
+        let valorTerrenoPagar = document.getElementById('valorTerrenoPagar');
+        let valorTe = document.getElementById('valorTe').value;
+        let resultado = 0;
+        let restant = 0;
+                
+                resultado = cantidadCuotasPagar * cuotaPagar; 
+                saldoEnCuotas.value = resultado;
+                
+                restant = (valorTe - (cuotaPagar * {{$cantCuotas}})) - resultado; //Ahora si toma el valor insertado.
+                valorTerrenoPagar.value = restant;
+            }
     }catch (error) {
         throw error;}
 
@@ -243,56 +215,70 @@ try
 
 <script>
     // Validación del número de teléfono
-const input = document.getElementById("cantidadCuotasPagar");
+//const input = document.getElementById("cantidadCuotasPagar");
 
-if (input) {
-    input.addEventListener("input", function (e) {
-        // Elimina todo lo que no sea números
-        let numbers = e.target.value.replace(/\D/g, "");
+// if (input) {
+//     input.addEventListener("input", function (e) {
+//         // Elimina todo lo que no sea números
+//         let numbers = e.target.value.replace(/\D/g, "");
 
-        let cantidadCuotasPagar = document.getElementById('cantidadCuotasPagar').value;
-        cantidadCuotasPagar = parseInt(cantidadCuotasPagar);
-        var sumaCuotas = ({{$cantCuotas}} + cantidadCuotasPagar);
+//         let cantidadCuotasPagar = document.getElementById('cantidadCuotasPagar').value;
+//         cantidadCuotasPagar = parseInt(cantidadCuotasPagar);
+//         var sumaCuotas = ({{$cantCuotas}} + cantidadCuotasPagar);
 
-        // Valida que el primer dígito sea 3, 8 o 9
-        if (!/^[123456]/.test(numbers.charAt(0))) {
-            numbers = numbers.slice(1);
-            location.reload();
-        }
-    });
-}
+//         // Valida que solo se ingrese del 1 al 6
+//         if (!/^[123456]/.test(numbers.charAt(0))) {
+//             numbers = numbers.slice(1);
+//             location.reload();
+//         }
+//     });
+// }
 
-// Validación del formulario para que no se envien cuando este autorrellenado incorectamente el input PEDIDOS
+//Funcion que solo permita ingresar del 1 al 6 
+const cantidadCuotasPagar = document.getElementById("cantidadCuotasPagar");
+    cantidadCuotasPagar.addEventListener("input", function() {
+            const inputValue = this.value;
+            const validValues = ["1", "2", "3", "4", "5", "6"];
+
+            if (!validValues.includes(inputValue)) {
+                this.value = ""; // Limpiar el valor si no es válido
+                saldoEnCuotas.value = '';
+                valorTerrenoPagar.value = '';
+            }            
+});
+
+// Validación del formulario para que no se envien cuando este autorrellenado incorectamente el input
 let form = document.getElementById("form1");
 let submitBtn = document.getElementById("submit-and-print");
 let small = document.getElementById("error1");
 
-if (form && submitBtn) {
-    form.addEventListener("submit", function (e) {
-        let input = document.getElementById("cantidadCuotasPagar");
-        if (input) {
-            let numbers = input.value.replace(/\D/g, "");
+    if (form && submitBtn) {
+        form.addEventListener("submit", function (e) {
+            let input = document.getElementById("cantidadCuotasPagar");
+            if (input) {
+                let numbers = input.value.replace(/\D/g, "");
 
-            // Valida que el número de teléfono cumpla con las condiciones
-            if (!/^[123456]/.test(numbers.charAt(0))) {
-                alert();
-                e.preventDefault(); // Previene el envío del formulario
-                small.innerHTML = "La cantidad de cuotas excede de las ya z.";
-                small.style.display = "block";
+                // Valida que la cantidad de cuotas cumpla con las condiciones
+                if (!/^[123456]/.test(numbers.charAt(0))) {
+                    //alert();
+                    e.preventDefault(); // Previene el envío del formulario
+                    small.innerHTML = "La cantidad de cuotas excede del total de cuotas.";
+                    small.style.display = "block";
+                }
             }
-        }
-    });
-}
+        });
+    }
 </script>
-      <script>
-        function validateTextarea() {
-  var textarea = document.getElementById("myTextarea");
-  var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
-  if (regex.test(textarea.value)) {
-    textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
-  }
-}
-      </script>
+
+<script>
+    function validateTextarea() {
+    var textarea = document.getElementById("myTextarea");
+    var regex = /\.{2,}/g; // expresión regular para encontrar 2 o más puntos seguidos
+        if (regex.test(textarea.value)) {
+            textarea.value = textarea.value.replace(regex, "."); // reemplazar cualquier punto repetido con solo uno
+        }
+    }
+</script>
 
 {{-- comment 
 <script>
@@ -302,6 +288,7 @@ if (form && submitBtn) {
         window.open('{{route('pago.print', ['id' =>$venta->id])}}', '_blank');
     });
 </script>
+
 else{
             $(document).ready(function() {
             $('form1').submit();

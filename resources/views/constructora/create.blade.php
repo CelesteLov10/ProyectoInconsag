@@ -78,7 +78,7 @@
           <div class="col-sm-5">
               <input type="text" class="form-control rounded-pill @error('fechaContrato') is-invalid @enderror" 
               maxlength="10" placeholder="Seleccione la fecha del contrato de la constructora."
-              name="fechaContrato" autocomplete="off" value="<?php echo date("Y-m-d");?>"> 
+              name="fechaContrato" autocomplete="off" value="<?php echo date("d-m-Y");?>"> 
                 @error('fechaContrato')
               <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
             @enderror
