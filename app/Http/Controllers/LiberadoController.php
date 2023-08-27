@@ -58,7 +58,7 @@ class LiberadoController extends Controller
         'nomBloque.required' => 'El nombre del bloque es obligatorio, no puede estar vacío.',
 
         'nomLote.required' => 'El nombre del lote es obligatorio, no puede estar vacío.',
-
+        
         'nomCliente.required' => 'El nombre del cliente es obligatorio, no puede estar vacío.',
 
         'fecha.required' => 'La fecha de liberación del lotes es obligatoria, no puede estar vacía.',

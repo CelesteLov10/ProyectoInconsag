@@ -51,7 +51,7 @@ class ProveedorController extends Controller
             'nombreProveedor.unique' => 'El nombre del proveedor ya está en uso.',
 
             'nombreContacto.required' => 'El nombre del contacto es obligatorio, no puede estar vacío. ',
-            'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
+            'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números ni caracteres especiales.',
 
             'cargoContacto.required' => 'El cargo del contacto es obligatorio, no puede estar vacío. ',
             'cargoContacto.regex' => 'El cargo del contacto solo permite un espacio entre los nombres y no permite números.',
@@ -119,7 +119,7 @@ class ProveedorController extends Controller
             'nombreProveedor.unique' => 'El nombre del proveedor ya está en uso.',
 
             'nombreContacto.required' => 'El nombre del contacto es obligatorio, no puede estar vacío. ',
-            'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números.',
+            'nombreContacto.regex' => 'Debe iniciar con mayúscula cada palabra, solo permite un espacio entre los nombres y no se admiten números ni caracteres especiales.',
 
             'cargoContacto.required' => 'El cargo del contacto es obligatorio, no puede estar vacío. ',
             'cargoContacto.regex' => 'El cargo del contacto solo permite un espacio entre los nombres y no permite números.',

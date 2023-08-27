@@ -69,7 +69,7 @@ class MaquinariaController extends Controller
             'fechaAdquisicion'    =>'required|regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u',
             'proveedor_id'       => 'required',
             'cantidadHoraAlquilada' => 'required_if:maquinaria,alquilada','nullable|numeric|min:1|nullable|regex:/^[0-9]{1,3}+$/U', 
-            'valorHora' => 'required_if:maquinaria,alquilada','numeric|regex:/^[0-9]{1,4}+$/|min:1|nullable', 
+            'valorHora' => 'required_if:maquinaria,alquilada|numeric|regex:/^[0-9]{1,4}+$/|min:1|nullable', 
             //'cantidadAlquilada' => 'nullable|min:1|numeric|regex:/^[0-9]{1,4}+$/',
             'totalPagar' => 'required_if:maquinaria,alquilada','nullable',
             
@@ -154,7 +154,7 @@ class MaquinariaController extends Controller
             'descripcion'       => ['required','min:10','max:150'],
             'fechaAdquisicion'  => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u'],
             'proveedor_id'      => ['required'],
-            'cantidadHoraAlquilada' => ['numeric', 'nullable','min:1','regex:/^[0-9]{1,3}+$/U'], 
+            'cantidadHoraAlquilada' => ['numeric|nullable','min:1','regex:/^[0-9]{1,3}+$/U'], 
             'valorHora' => ['numeric', 'min:1', 'regex:/^[0-9]{1,4}+$/', 'nullable'],
             //'cantidadAlquilada' => 'nullable|min:1|numeric|regex:/^[0-9]{1,4}+$/', 
             'totalPagar' => ['nullable'], 

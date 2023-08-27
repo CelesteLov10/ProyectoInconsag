@@ -35,7 +35,7 @@
       <form action="{{route('planilla.store')}}" class="planilla-guardar" method="POST" autocomplete="off">
           @csrf {{-- TOKEN INPUT OCULTO --}}
 
-          <div class="mb-3 row">
+          {{-- <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Fecha:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill @error('fecha') is-invalid @enderror" 
@@ -45,10 +45,10 @@
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
               @enderror
             </div>
-        </div>
+        </div> --}}
 
         {{-- INPUT DE PRUEBA --}}
-        {{-- <div class="mb-3 row">
+        <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Fecha:</label>
             <div class="col-sm-5">
                 <input type="text" id="datepicker" class="form-control rounded-pill @error('fecha') is-invalid @enderror" 
@@ -58,17 +58,17 @@
                 <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
               @enderror
             </div>
-        </div> --}}
+        </div>
 
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre del empleado</label>
         <div class="col-sm-5">
-        <select name="empleado_id" id="empleado" 
+        <select name="empleado_id" id="empleado"
         class="form-select form-control rounded-pill @error('empleado_id') is-invalid @enderror" 
         onchange="f_obtener_datos()" onclick="calcularTotal()" onchange="document.getElementById('dias').focus()">   
             <option value="" disabled selected>-- Seleccione un empleado --</option>
             @foreach ($empleado as $empleados)
-            @if ($empleados->estado == 'activo')
+            @if ($empleados->estado->nombreE == 'Activo')
                 <option value="{{$empleados->id}}"{{old('empleado_id') == $empleados->id ? 'selected' : ''}}>
                   {{$empleados['nombres']}} {{$empleados['apellidos']}}</option>
             @endif
@@ -141,7 +141,7 @@
 {{-- de esta manera se puede extraer los empleados activos --}}
 @php $empactivos = 0; @endphp
 @foreach ($empleado as $empleados)
-@if ($empleados->estado == 'activo')
+@if ($empleados->estado->nombreE == 'Activo')
     <?php $empactivos = $empactivos + 1;?> 
 @endif
 @endforeach
@@ -285,7 +285,7 @@
           </div>
         </div>
 
-        <div class="mb-3 row">
+        {{-- <div class="mb-3 row">
           <label hidden class="col-sm-3 col-form-label">Fecha:</label>
           <div class="col-sm-5">
                   <input hidden type="text" class="form-control rounded-pill  @error('fechap') is-invalid @enderror" 
@@ -294,10 +294,10 @@
                       <small class="text-danger invalid-feedback"><strong>*</strong>{{$message}}</small>
                   @enderror
               </div>
-        </div>
+        </div> --}}
       
       {{-- INPUT DE PRUEBA --}}
-      {{-- <div class="mb-3 row">
+      <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Fecha:</label>
         <div class="col-sm-5">
                 <input type="text" class="form-control rounded-pill  @error('fechap') is-invalid @enderror" 
@@ -307,7 +307,7 @@
                     <small class="text-danger invalid-feedback"><strong></strong>{{$message}}</small>
                 @enderror
         </div>
-      </div> --}}
+      </div>
       </form>
     </div>
   </div>
