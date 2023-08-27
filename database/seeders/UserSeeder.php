@@ -29,6 +29,12 @@ class UserSeeder extends Seeder
             'profile_image' => ''
         ])->assignRole('Administrador');
 
+        User::create([
+            'name' => 'Estefany López',
+            'email' => 'estefany@unah.hn',
+            'password' => bcrypt('12345678'),
+            'profile_image' => ''
+        ])->assignRole('Administrador');
 
         // User::factory(5)->create();
     }

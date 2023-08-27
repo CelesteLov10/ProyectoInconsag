@@ -11,11 +11,11 @@ class ReservacionController extends Controller
     public function index()
     {
         //Campo busqueda
-        
+
         $reservaciones = Reservacion::query()
             ->when(request('search'), function($query){
             return $query->where('fechaCita', 'LIKE', '%' .request('search') .'%');
-        })->orderBy('id','desc')->paginate(10)->withQueryString(); 
+        })->orderBy('id','desc')->paginate(10)->withQueryString();
         return view('reservacion.index', compact('reservaciones'));
     }
 
@@ -28,7 +28,7 @@ class ReservacionController extends Controller
     }
 
     public function store(Request $request)
-    {         
+    {
 
         $fechaCita = $request->input('fechaCita');
         $horaCita = $request->input('horaCita');
@@ -36,13 +36,13 @@ class ReservacionController extends Controller
         $existe = Reservacion::where('fechaCita', $fechaCita)->where('horaCita', $horaCita)->first();
 
     if ($existe) {
-        // Mostrar un mensaje de error si la fecha con la hora existe en Reservaciones 
+        // Mostrar un mensaje de error si la fecha con la hora existe en Reservaciones
         return back()->withErrors(['horaCita' => 'La hora ya esta reservada']);
     }
 
 
 
-        
+
             $this->validate($request,[
                 'nombreCliente'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
                 'identidadCliente' => ['required','numeric','unique:reservacions',
@@ -55,7 +55,7 @@ class ReservacionController extends Controller
                  //'horaCita'=> ['required','unique:reservacions'],
                 'horaCita'  => ['required'],
                  //'empleado_id' => ['required'],
-                
+
 
             ], [
             'nombreCliente.required' => 'El nombre del cliente es obligatorio, no puede estar vacío.',
@@ -72,11 +72,11 @@ class ReservacionController extends Controller
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
-           
+
 
             'correoCliente.required' => 'El correo electrónico es obligatorio, no puede estar vacío.',
             'correoCliente.email' => 'Debe ingresar un correo electrónico válido.',
-           
+
 
             'fechaCita.required' => 'La fecha de reservación de la cita es obligatorio, no puede estar vacío.',
             'fechaCita.regex' => 'Debe ser mayor un mes antes.',
@@ -87,16 +87,16 @@ class ReservacionController extends Controller
 
              //'empleado_id.required' => 'seleccione el nombre del empleado es obligatorio, no puede estar vacío.',
 
-            
+
             ]);
 
             $input = $request->all();
-            
+
             Reservacion::create($input);
                 return redirect()->route('reservacion.index')
-                ->with('mensaje', 'Se guardó el registro de la nueva reservación de la cita correctamente');         
-         
-            
+                ->with('mensaje', 'Se guardó el registro de la nueva reservación de la cita correctamente');
+
+
     }
 
     public function show($id)
@@ -119,10 +119,9 @@ class ReservacionController extends Controller
         $existe = Reservacion::where('fechaCita', $fechaCita)->where('horaCita', $horaCita)->first();
 
     if ($existe) {
-        // Mostrar un mensaje de error si la fecha con la hora existe en Reservaciones 
-        return back()->withErrors(['horaCita' => 'La hora ya esta reservada']);
+
     }
-    
+
         $this->validate($request,[
 
             'nombreCliente'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
@@ -135,7 +134,7 @@ class ReservacionController extends Controller
              //'horaCita'  => ['required', 'unique:reservacions,horaCita,' .$id.'id'],
             'horaCita'  => ['required'],
              //'empleado_id' => ['required'],
-            
+
         ],[
             'nombreCliente.required' => 'El nombre del cliente es obligatorio, no puede estar vacío.',
             'nombreCliente.alpha' => 'En el nombre sólo se permite letras.',
@@ -153,11 +152,11 @@ class ReservacionController extends Controller
             'telefono.numeric' => 'El teléfono debe contener sólo números.',
             'telefono.digits' => 'El teléfono debe contener 8 dígitos.',
             'telefono.regex' => 'El teléfono debe empezar sólo con los siguientes dígitos: "2", "3", "8", "9".',
-           
+
 
             'correoCliente.required' => 'El correo electrónico es obligatorio, no puede estar vacío.',
             'correoCliente.email' => 'Debe ingresar un correo electrónico válido.',
-            
+
 
             'fechaCita.required' => 'La fecha de reservación de la cita es obligatorio, no puede estar vacío.',
             'fechaCita.regex' => 'Debe ser mayor un mes antes.',
@@ -178,12 +177,12 @@ class ReservacionController extends Controller
         $reservacion->fechaCita = $request->input('fechaCita');
         $reservacion->horaCita = $request->input('horaCita');
          //$reservacion->empleado_id = $request->empleado_id;
-        
+
         $update = $reservacion->save();
-        
+
         if ($update){
             return redirect()->route('reservacion.index')
             ->with('mensajeW', 'Se actualizó la cita correctamente');
-        } 
+        }
     }
 }
