@@ -77,9 +77,9 @@ class ConstructoraController extends Controller
     public function update(Request $request, $id){
 
         $this->validate($request,[
-            'nombreConstructora'   => ['required'],
+            'nombreConstructora'   => ['required','alpha','regex:/^[A-Z][a-zA-Z]*$/'],
             'direccion'       => ['required','min:10','max:150'],
-            'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:constructoras,telefono,'.$id.'id'],
+            'telefono'  => ['required','numeric','digits:8','regex:/^[(2)(3)(8)(9)][0-9]/','unique:constructoras,telefono,'.$id.'id'],
             'email'    => ['required','email','regex:#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,8}$#','unique:constructoras,email,'.$id.'id'],
             'fechaContrato'  => ['required',],
         ],[
