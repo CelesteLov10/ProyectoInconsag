@@ -34,15 +34,15 @@ class ClienteController extends Controller
             $before = $dt->subYears(18);
     
             $this->validate($request,[
-                'identidadC' => ['required','numeric','unique:clientes',
+                'identidadC' => ['required','numeric', 'digits:13','unique:clientes',
                 'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
                 'nombreCompleto'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
-                'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes'],
+                'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes', 'digits:8'],
                 'direccion'       => ['required','min:10','max:150'],
                 'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
             ],[
             'identidadC.required'=>'El número de identidad es obligatorio, no puede estar vacío.',
-            'identidadC.digits' => 'El número de identidad debe tener 13 dígitos. ',
+            'identidadC.digits' => 'El número de identidad debe tener 13 dígitos.',
             'identidadC.unique' => 'El número de identidad debe ser único.',
             'identidadC.numeric' => 'En la identidad sólo se permiten números ',
             'identidadC.regex' => 'El formato para el número de identidad no es válido.',
@@ -93,15 +93,15 @@ class ClienteController extends Controller
         $before = $dt->subYears(18);
 
         $this->validate($request,[
-            'identidadC' => ['numeric','required','unique:clientes,identidadC,'.$id.'id'
+            'identidadC' => ['numeric','digits:13','required','unique:clientes,identidadC,'.$id.'id'
             ,'regex:/^(?!0{2})(?!1{1}9{1})[0-1]{1}[0-9]{1}[0-2]{1}[0-9]{1}[1-2]{1}[0,9]{1}[0-9]+$/u'],
             'nombreCompleto'   => ['required','regex:/^([A-ZÁÉÍÓÚÑ]{1}[a-záéíóúñ]+\s{0,1})+$/u'],
-            'telefono'  => ['required','numeric','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes,telefono,'.$id.'id'],
+            'telefono'  => ['required','numeric', 'digits:8','regex:/^[(2)(3)(8)(9)][0-9]/','unique:clientes,telefono,'.$id.'id'],
             'direccion'       => ['required','min:10','max:150'],
             'fechaNacimiento' => ['required','regex:/^[0-9]{2}+-[0-9]{2}+-[0-9]{4}+$/u','before:'. $before],
         ],[
             'identidadC.required'=>'El número de identidad es obligatorio, no puede estar vacío.',
-            'identidadC.digits' => 'El número de identidad debe tener 13 dígitos. ',
+            'identidadC.digits' => 'El número de identidad debe tener 13 dígitos.',
             'identidadC.unique' => 'El número de identidad debe ser único.',
             'identidadC.numeric' => 'En la identidad sólo se permiten números ',
             'identidadC.regex' => 'El formato para el número de identidad no es válido.',
